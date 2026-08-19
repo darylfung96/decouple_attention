@@ -1,0 +1,134 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2607.27692v1",
+    "title": "Recall Before You Rank: Similarity-Guided Top-$K$ Reuse for Efficient Long-Context Attention",
+    "published": "2026-07-30",
+    "summary": "Top-$K$ sparse attention reduces the cost of Softmax and value aggregation by attending to only a small subset of key--value (KV) entries. However, identifying this subset still requires scoring the current query against the full KV cache and performing global Top-$K$ selection, leaving selector cos"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.23319v1",
+    "title": "WISTERIA: Weak Implicit Signal-based Temporal Relation Extraction with Attention",
+    "published": "2026-03-24",
+    "summary": "Temporal Relation Extraction (TRE) requires identifying how two events or temporal expressions are related in time. Existing attention-based models often highlight globally salient tokens but overlook the pair-specific cues that actually determine the temporal relation. We propose WISTERIA (Weak Imp"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.12271v1",
+    "title": "MonarchRT: Efficient Attention for Real-Time Video Generation",
+    "published": "2026-02-12",
+    "summary": "Real-time video generation with Diffusion Transformers is bottlenecked by the quadratic cost of 3D self-attention, especially in real-time regimes that are both few-step and autoregressive, where errors compound across time and each denoising step must carry substantially more information. In this s"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.07397v1",
+    "title": "Scout Before You Attend: Sketch-and-Walk Sparse Attention for Efficient LLM Inference",
+    "published": "2026-02-07",
+    "summary": "Self-attention dominates the computational and memory cost of long-context LLM inference across both prefill and decode phases. To address this challenge, we introduce Sketch&Walk Attention, a training-free sparse attention method that determines sparsity with lightweight sketches and deterministic "
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.01219v5",
+    "title": "Mixture-of-Top-k Attention: Efficient Attention via Scalable Fast Weights",
+    "published": "2026-02-01",
+    "summary": "The vanilla self-attention mechanism in Transformers can be viewed as a two-layer fast-weight MLP, whose weights are dynamically induced by inputs and whose hidden dimension is equal to the sequence length $N$. As the context extends, the expressive capacity of such an $N$-width MLP increases, but i"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.22766v3",
+    "title": "Sparse Attention as Compact Kernel Regression",
+    "published": "2026-01-30",
+    "summary": "Recent work has revealed a link between self-attention mechanisms in transformers and test-time kernel regression via the Nadaraya-Watson estimator, with standard softmax attention corresponding to a Gaussian kernel. However, a kernel-theoretic understanding of sparse attention mechanisms is current"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.12301v1",
+    "title": "TwinFormer: A Dual-Level Transformer for Long-Sequence Time-Series Forecasting",
+    "published": "2025-12-13",
+    "summary": "TwinFormer is a hierarchical Transformer for long-sequence time-series forecasting. It divides the input into non-overlapping temporal patches and processes them in two stages: (1) a Local Informer with top-$k$ Sparse Attention models intra-patch dynamics, followed by mean pooling; (2) a Global Info"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.07647v1",
+    "title": "A Mathematical Theory of Top-$k$ Sparse Attention via Total Variation Distance",
+    "published": "2025-12-08",
+    "summary": "We develop a unified mathematical framework for certified Top-$k$ attention truncation that quantifies approximation error at both the distribution and output levels. For a single attention distribution $P$ and its Top-$k$ truncation $\\hat P$, we show that the total-variation distance coincides with"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.03494v1",
+    "title": "A Preliminary Study on the Promises and Challenges of Native Top-$k$ Sparse Attention",
+    "published": "2025-12-03",
+    "summary": "Large Language Models (LLMs) are increasingly prevalent in the field of long-context modeling, however, their inference computational costs have become a critical bottleneck hindering the advancement of tasks such as agents and multimodal applications. This report conducts a preliminary investigatio"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.14510v2",
+    "title": "LiteCache: A Query Similarity-Driven, GPU-Centric KVCache Subsystem for Efficient LLM Inference",
+    "published": "2025-11-18",
+    "summary": "During LLM inference, KVCache memory usage grows linearly with sequence length and batch size and often exceeds GPU capacity. Recent proposals offload KV states to host memory and reduce transfers using top-k attention. But their CPU-centric management of the on-GPU cache and CPU-GPU data movement i"
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.09885v3",
+    "title": "MCGA: Mixture of Codebooks Hyperspectral Reconstruction via Grayscale-Aware Attention",
+    "published": "2025-07-14",
+    "summary": "Reconstructing hyperspectral images (HSIs) from RGB inputs provides a cost-effective alternative to hyperspectral cameras, but reconstructing high-dimensional spectra from three channels is inherently ill-posed. Existing methods typically directly regress RGB-to-HSI mappings using large attention ne"
+  },
+  {
+    "id": "http://arxiv.org/abs/2506.02572v1",
+    "title": "HATA: Trainable and Hardware-Efficient Hash-Aware Top-k Attention for Scalable Large Model Inference",
+    "published": "2025-06-03",
+    "summary": "Large Language Models (LLMs) have emerged as a pivotal research area, yet the attention module remains a critical bottleneck in LLM inference, even with techniques like KVCache to mitigate redundant computations. While various top-$k$ attention mechanisms have been proposed to accelerate LLM inferen"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.19155v2",
+    "title": "Sparse-to-Dense: A Free Lunch for Lossless Acceleration of Video Understanding in LLMs",
+    "published": "2025-05-25",
+    "summary": "Due to the auto-regressive nature of current video large language models (Video-LLMs), the inference latency increases as the input sequence length grows, posing challenges for the efficient processing of video sequences that are usually very long. We observe that during decoding, the attention scor"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.16950v4",
+    "title": "Bottlenecked Transformers: Periodic KV Cache Consolidation for Generalised Reasoning",
+    "published": "2025-05-22",
+    "summary": "Transformer LLMs have been shown to exhibit strong reasoning ability that scales with inference-time compute, most prominently through token-space \"thinking\" chains of thought. A growing line of work pushes extra computation into the model's latent space, which we term Auxiliary Latent-Space Computa"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.16411v2",
+    "title": "Mitigating Hallucinations in Vision-Language Models through Image-Guided Head Suppression",
+    "published": "2025-05-22",
+    "summary": "Despite their remarkable progress in multimodal understanding tasks, large vision language models (LVLMs) often suffer from \"hallucinations\", generating texts misaligned with the visual context. Existing methods aimed at reducing hallucinations through inference time intervention incur a significant"
+  },
+  {
+    "id": "http://arxiv.org/abs/2504.12088v2",
+    "title": "AttentionDrop: A Novel Regularization Method for Transformer Models",
+    "published": "2025-04-16",
+    "summary": "Transformer-based architectures achieve state-of-the-art performance across a wide range of tasks in natural language processing, computer vision, and speech processing. However, their immense capacity often leads to overfitting, especially when training data is limited or noisy. In this research, a"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.14051v3",
+    "title": "RocketKV: Accelerating Long-Context LLM Inference via Two-Stage KV Cache Compression",
+    "published": "2025-02-19",
+    "summary": "Transformer-based Large Language Models rely critically on the KV cache to efficiently handle extended contexts during the decode phase. Yet, the size of the KV cache grows proportionally with the input length, burdening both memory bandwidth and capacity as decoding progresses. To address this chal"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.11116v2",
+    "title": "Gumbel Reranking: Differentiable End-to-End Reranker Optimization",
+    "published": "2025-02-16",
+    "summary": "RAG systems rely on rerankers to identify relevant documents. However, fine-tuning these models remains challenging due to the scarcity of annotated query-document pairs. Existing distillation-based approaches suffer from training-inference misalignment and fail to capture interdependencies among ca"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.08363v3",
+    "title": "Top-Theta Attention: Sparsifying Transformers by Compensated Thresholding",
+    "published": "2025-02-12",
+    "summary": "We present Top-Theta (Top-$\u03b8$) Attention, a training-free method for sparsifying transformer attention during inference. Our key insight is that static, per-head thresholds can be calibrated to retain the desired constant number of significant elements per attention row. This approach enables conten"
+  },
+  {
+    "id": "http://arxiv.org/abs/2501.14577v3",
+    "title": "ZETA: Leveraging Z-order Curves for Efficient Top-k Attention",
+    "published": "2025-01-24",
+    "summary": "Over recent years, the Transformer has become a fundamental building block for sequence modeling architectures. Yet at its core is the use of self-attention, whose memory and computational cost grow quadratically with the sequence length $N$, rendering it prohibitively expensive for long sequences. "
+  },
+  {
+    "id": "http://arxiv.org/abs/2407.15176v3",
+    "title": "ReAttention: Training-Free Infinite Context with Finite Attention Scope",
+    "published": "2024-07-21",
+    "summary": "The long-context capability of the Large Language Models (LLM) has made significant breakthroughs, but the maximum supported context length in length extrapolation remains a critical bottleneck limiting their practical applications. The constraint of context length in LLMs arises from the self-atten"
+  },
+  {
+    "id": "http://arxiv.org/abs/2407.02328v1",
+    "title": "Efficient Sparse Attention needs Adaptive Token Release",
+    "published": "2024-07-02",
+    "summary": "In recent years, Large Language Models (LLMs) have demonstrated remarkable capabilities across a wide array of text-centric tasks. However, their `large' scale introduces significant computational and storage challenges, particularly in managing the key-value states of the transformer, which limits "
+  }
+]

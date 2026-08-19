@@ -1,0 +1,73 @@
+\section{Documented negative results}
+\label{sec:appendix-negatives}
+Six failed designs were tried and documented during the development of this
+family (each with runnable or archived implementations and failure modes):
+sparse-gather routing ($\sim$5$\times$ slower than dense masking on CPU);
+a hierarchical (multi-scale pyramid) indexer (consistently worse than the
+flat indexer); a multi-scale KV pyramid at 224 KV tokens
+(overparameterized for the budget); a learnable block-bias offset (NaN
+instability in $\sim$50\% of runs; root cause later traced to uninitialized
+memory---`torch.empty' biases---and fixed); a linear-pool indexer with
+gated residual KV (loses the per-head $\times$ per-dimension routing
+flexibility of the softmax-overlap gate); and stacked $2{:}1 \rightarrow
+2{:}1$ compression (harder to optimize within the budget). Negative results
+of this kind are a deliberate part of the reproducibility package; they are
+secondary to the paper's core claim.
+
+\section{Surrogate attention (separate line of work)}
+\label{sec:appendix-surrogate}
+A separate pipeline distills the attention block's output into a cheap
+student that replaces attention at inference: a per-token MLP student
+($5.3\times$ faster, $+31\%$ validation MSE---per-token functions cannot
+replicate cross-token routing) and a windowed-plus-global-prototypes
+student ($2.18\times$ faster, ${\sim}0.4\%$ gap to its teacher at a
+5+1-epoch distillation schedule, ${\sim}82\%$ fewer parameters than the
+teacher). These numbers predate the frozen task and are not apples-to-apples
+with the results in Section~\ref{sec:experiments}; the surrogate line is
+kept in this paper only to acknowledge the overlap with attention
+distillation work \citep{goldstein2025radlads} and is intended for a
+separate publication \todo{decide retention: align distillation epochs to
+the main protocol and add an equal-budget small-transformer control
+(PUBLICATION.md \S 3.5 item 9)}.
+
+\section{Reproducibility}
+\label{sec:appendix-repro}
+Every number in this paper traces to a repository artifact: the frozen task
+specification (the sole authority on task definition), the pre-registered
+factorial design, the run harness and its machine-readable results manifest
+(20 factorial runs + 5 Normal-baseline runs, JSONL), a verified
+per-module parameter registry, causality-verification and wiring-audit
+suites (all variants pass future-invariance and exact-zero-future-gradient
+checks; the Normal baseline is bit-identical to a naive causal reference),
+and a sanity-test suite covering shapes, gradients, parameter counts, and
+tiny-task fitting. Reported means and deltas are computed from the audited
+manifests; the figure-generation scripts in this paper's source tree read
+the same manifests, so every figure is regenerable.
+\todo{freeze-clean package before submission: environment lockfile, data
+hashes, automated table regeneration, unit tests as CI (plan/next\_step.md
+\S 16)}.
+
+\section{Roadmap}
+\label{sec:appendix-roadmap}
+\begin{enumerate}
+  \item \textbf{Statistics (Gate 4):} 5--10 paired seeds; mixed-effects
+        model with $\beta_2 > \beta_1$ as the main claim; TOST or Bayesian
+        ROPE for any equivalence statement; paired Wilcoxon/Friedman with
+        Holm correction; block bootstrap or HAC-robust tests for temporal
+        dependence.
+  \item \textbf{Datasets (Gate 3):} ETT family (ETTh2, ETTm1, ETTm2), large
+        multivariate (Electricity, Traffic, Weather), different dynamics
+        (Exchange, Solar-Energy, PEMS), plus a mechanistic synthetic; H and
+        L sweeps.
+  \item \textbf{Baselines:} PatchTST, iTransformer, DLinear, Informer,
+        TimesNet, plus a linear and an SSM baseline under the identical
+        frozen protocol.
+  \item \textbf{Hardware/latency (Gate 5):} p50/p90/p99 with bootstrap CIs,
+        throughput, FLOPs and memory accounting, scaling sweeps
+        ($L \in \{128, \dots, 4096\}$), and cross-hardware transfer
+        (Apple Silicon, x86 CPU, GPU).
+  \item \textbf{Literature re-audit:} fresh 2024--2026 sweep of
+        routing/compression-attention and TS-efficiency work before locking
+        the title; resolve the outstanding citation-verification items
+        flagged in the related-work section.
+\end{enumerate}

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepSeek CSA vs Modified CSA - Interactive Architecture</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <style>
+      :root {
+        --bg: #0b1021;
+        --bg-2: #141a2e;
+        --border: #2a3454;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --accent: #38bdf8;
+        --accent-2: #a78bfa;
+        --warn: #fbbf24;
+        --success: #34d399;
+        --code-bg: #0d1117;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #1e293b 0%, var(--bg) 60%);
+        color: var(--text);
+        min-height: 100vh;
+      }
+
+      .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+
+      header {
+        display: flex; justify-content: space-between; align-items: center;
+        margin-bottom: 24px; gap: 16px; flex-wrap: wrap;
+      }
+      h1 { margin: 0; font-size: 1.8rem; background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .header-desc { color: var(--muted); font-size: 0.95rem; margin-top: 4px; }
+
+      .controls { display: flex; gap: 16px; align-items: center; background: var(--bg-2); padding: 8px; border-radius: 12px; border: 1px solid var(--border); }
+      .btn { background: transparent; color: var(--muted); border: 1px solid transparent; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; }
+      .btn:hover { color: var(--text); }
+      .btn.active { background: var(--border); color: var(--accent); border-color: var(--accent); }
+      .nav-btn { background: var(--bg-2); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+      .nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+      .layout { display: grid; grid-template-columns: 300px 1fr; gap: 24px; }
+      
+      .step-list { display: flex; flex-direction: column; gap: 8px; }
+      .step-item { padding: 12px 16px; border-radius: 8px; background: var(--bg-2); border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; }
+      .step-item:hover { border-color: var(--accent); }
+      .step-item.active { background: rgba(56, 189, 248, 0.1); border-color: var(--accent); }
+      .step-item.active .step-title { color: var(--accent); }
+      .step-num { font-size: 0.75rem; color: var(--muted); font-weight: 700; }
+      .step-title { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-top: 2px; }
+
+      .main-panel { display: flex; flex-direction: column; gap: 20px; }
+      
+      .card { background: var(--bg-2); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+      .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+      .card-header h2 { margin: 0; font-size: 1.2rem; color: var(--text); }
+      .card-body { padding: 20px; }
+
+      .code-block { background: var(--code-bg); border-radius: 8px; padding: 16px; font-family: 'Fira Code', 'Courier New', monospace; font-size: 0.85rem; line-height: 1.5; overflow-x: auto; border: 1px solid var(--border); position: relative; }
+      .code-block pre { margin: 0; background: transparent !important; }
+      .code-block .hljs-keyword { color: var(--accent-2); }
+      .code-block .hljs-string { color: var(--success); }
+      .code-block .hljs-comment { color: var(--muted); font-style: italic; }
+      .code-block .hljs-built_in, .code-block .hljs-title { color: var(--warn); }
+
+      .visual-area { display: flex; flex-direction: column; gap: 24px; padding: 10px; align-items: center; }
+      
+      .vis-label { font-size: 0.85rem; color: var(--muted); font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; width: 100%; text-align: center; }
+      .tensor-box { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; justify-content: center; }
+      .tensor { padding: 8px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; color: white; text-align: center; display: flex; flex-direction: column; gap: 2px; min-width: 30px; }
+      .t-input { background: var(--accent); color: #0b1021; }
+      .t-kv { background: var(--success); color: #0b1021; }
+      .t-q { background: var(--accent-2); }
+      .t-comp { background: #f472b6; } /* Ca */
+      .t-cb { background: #34d399; color: #0b1021; } /* Cb */
+      .t-idx { background: var(--warn); color: #0b1021; }
+      .t-proj { background: #6b7280; color: white; }
+      
+      .group-box { border: 1px dashed var(--border); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; gap: 4px; align-items: center; position: relative; }
+      .group-label { position: absolute; top: -8px; left: 8px; background: var(--bg-2); padding: 0 4px; font-size: 0.65rem; color: var(--muted); font-weight: 700; }
+      
+      .arrow { color: var(--muted); font-size: 1.2rem; margin: 0 8px; }
+
+      /* Projection & Splitting Diagram */
+      .proj-row { display: flex; align-items: center; gap: 8px; justify-content: center; margin-bottom: 8px; }
+      .split-box { display: flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+      .split-half { padding: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
+      
+      /* Why Ca/Cb Box */
+      .why-box { width: 100%; max-width: 800px; background: rgba(167, 139, 250, 0.05); border: 1px solid rgba(167, 139, 250, 0.3); border-radius: 8px; padding: 16px; margin-top: 16px; }
+      .why-title { color: var(--accent-2); font-weight: 700; margin-bottom: 12px; text-align: center; }
+      .why-flex { display: flex; gap: 24px; justify-content: center; align-items: center; }
+      .why-col { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+      .boundary-line { width: 2px; height: 100%; background: #ef4444; margin: 0 8px; }
+
+      /* Detailed Step 2 Mapping Styles */
+      .mapping-container { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 800px; }
+      .map-row { display: flex; align-items: center; gap: 12px; justify-content: center; }
+      .map-label { width: 80px; text-align: right; font-size: 0.85rem; font-weight: 700; color: var(--text); }
+      .slots-array { display: flex; gap: 4px; padding: 8px; border: 1px solid var(--border); border-radius: 6px; background: rgba(0,0,0,0.3); position: relative; }
+      .arr-slot { width: 50px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 0.7rem; font-weight: 700; border: 1px solid; flex-direction: column; gap: 2px; }
+      .arr-slot span { font-size: 0.6rem; opacity: 0.7; font-weight: 400; }
+      .arr-empty { background: rgba(255,255,255,0.05); color: var(--muted); border-color: var(--border); border-style: dashed; }
+      .arr-ca { background: rgba(244, 114, 182, 0.15); color: #f472b6; border-color: #f472b6; }
+      .arr-cb { background: rgba(52, 211, 153, 0.15); color: #34d399; border-color: #34d399; }
+      .arr-out { background: var(--accent-2); color: white; border-color: var(--accent-2); width: 60px; }
+      
+      .math-box { background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 12px; margin-top: 8px; font-size: 0.85rem; color: var(--text); width: 100%; }
+      .math-box strong { color: var(--accent); }
+
+      .desc-text { color: var(--muted); line-height: 1.6; margin-bottom: 16px; font-size: 0.95rem; width: 100%; }
+      .desc-text strong { color: var(--text); }
+
+      .mask-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; }
+      .mask-cell { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 700; border-radius: 4px; }
+      .mask-0 { background: var(--success); color: #0b1021; }
+      .mask-inf { background: #ef4444; color: white; }
+
+      @media (max-width: 1024px) {
+        .layout { grid-template-columns: 1fr; }
+        .step-list { flex-direction: row; overflow-x: auto; padding-bottom: 8px; }
+        .step-item { min-width: 200px; }
+        .map-row { flex-direction: column; }
+        .map-label { text-align: center; }
+        .why-flex { flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div>
+          <h1>CSA Attention Architecture Breakdown</h1>
+          <div class="header-desc">Step-by-step interactive visualizer mapping exactly to the Python source code.</div>
+        </div>
+        <div class="controls">
+          <button class="btn active" id="btn-original" onclick="switchMode('original')">Original CSA</button>
+          <button class="btn" id="btn-modified" onclick="switchMode('modified')">Modified CSA</button>
+          <button class="nav-btn" onclick="prevStep()">← Prev</button>
+          <button class="nav-btn" onclick="nextStep()">Next →</button>
+        </div>
+      </header>
+
+      <div class="layout">
+        <div class="step-list" id="step-list"></div>
+        
+        <div class="main-panel">
+          <div class="card">
+            <div class="card-header">
+              <h2 id="step-title">Step Title</h2>
+            </div>
+            <div class="card-body" style="display:flex; flex-direction:column; align-items:center;">
+              <p class="desc-text" id="step-desc"></p>
+              <div class="visual-area" id="visual-area"></div>
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="card-header">
+              <h2>Implementation Code</h2>
+            </div>
+            <div class="card-body" style="padding: 0;">
+              <div class="code-block">
+                <pre><code class="language-python" id="code-block"></code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Helper to generate tensor sequences
+      function genTensors(count, prefix, cls, suffix='') {
+        let html = '';
+        for(let i=0; i<count; i++) html += `<div class="tensor ${cls}">${prefix}${i}${suffix}</div>`;
+        return html;
+      }
+
+      // Helper to generate the projection diagram
+      function genProjDiagram(count) {
+        let html = '';
+        for(let i=0; i<count; i++) {
+          html += `
+            <div class="proj-row">
+              <div class="tensor t-input">t${i}</div>
+              <div class="arrow">→</div>
+              <div class="group-box" style="border-color: var(--muted);">
+                <span class="group-label">kv_proj (Linear)</span>
+                <div class="tensor t-proj">2*dim</div>
+              </div>
+              <div class="arrow">→</div>
+              <div class="split-box">
+                <div class="split-half t-comp">Ca${i} (dim)</div>
+                <div class="split-half t-cb">Cb${i} (dim)</div>
+              </div>
+            </div>`;
+        }
+        return html;
+      }
+
+      const flows = {
+        original: [
+          {
+            title: "1. Input Projection & RoPE",
+            desc: "Hidden states are projected into Queries (Q) via Low-Rank (LoRA) projection and local Keys/Values (KV). Rotary Position Embeddings (RoPE) are applied to both. The sliding window KV is extracted from the end of the sequence.",
+            code: `q = self.q_b_proj(self.q_a_norm(self.q_a_proj(hidden_states)))\nkv = self.kv_norm(self.kv_proj(hidden_states))\nq, kv = apply_rotary_pos_emb(q, kv, cos, sin)\nsw_k = kv[:, :, -self.sliding_window:, :]`,
+            visual: `<div class="visual-area" style="width:100%;">
+              <div><div class="vis-label">Hidden States [B, S, C]</div><div class="tensor-box">${genTensors(16, 'h', 't-input')}</div></div>
+              <div style="display:flex; gap: 32px; align-items: center; margin-top: 16px; justify-content:center;">
+                <div><div class="vis-label">Query (Q) [B, H, S, D]</div><div class="tensor-box">${genTensors(16, 'q', 't-q')}</div></div>
+                <div><div class="vis-label">Sliding Window KV [B, 1, 16, D]</div><div class="tensor-box">${genTensors(8, 'k', 't-kv')}</div></div>
+              </div>
+            </div>`
+          },
+          {
+            title: "2. Flat KV Compression (Two-Series)",
+            desc: "To prevent the 'boundary problem' where tokens at the edge of a block lose context, we create an overlap. The projection layer outputs 2*dim. The first half (Ca) is passed to the *next* block. The second half (Cb) stays in the current block. Compressed Block B1 is actually a learned blend of Ca0 (from W0) and Cb1 (from W1).",
+            code: `# 1. Project to 2*dim and view as [B, n_win, m, 2*dim]\ncomp_kv = kv_proj(hidden_states)\n\n# 2. Initialize empty array of size 2*m for each window\nnew_kv = torch.zeros(B, n_win, 2 * m, dim)\n\n# 3. Fill right half (Cb) with current window's projection\nnew_kv[:, :, m:] = comp_kv[..., dim:] \n\n# 4. Fill left half (Ca) with PREVIOUS window's projection\nif n_win > 1:\n    new_kv[:, 1:, :m] = comp_kv[:, :-1, :, :dim]\n    \n# 5. Softmax compress the 2*m slots into 1 block\nweights = F.softmax(comp_gate.view(B, n_win, 2*m, dim), dim=2)\ncompressed = norm((new_kv * weights).sum(dim=2))`,
+            visual: `<div class="visual-area" style="width:100%;">
+              
+              <div class="why-box">
+                <div class="why-title">Why do we need Ca and Cb? (The Boundary Problem)</div>
+                <div class="why-flex">
+                  <div class="why-col">
+                    <div class="vis-label">Problem: Hard Boundary</div>
+                    <div style="display:flex; align-items:center;">
+                      <div class="group-box"><span class="group-label">W0</span>${genTensors(4, 't', 't-input')}</div>
+                      <div class="boundary-line"></div>
+                      <div class="group-box"><span class="group-label">W1</span>${genTensors(4, 't', 't-input')}</div>
+                    </div>
+                    <div style="font-size:0.75rem; color:var(--muted); text-align:center;">t3 and t4 are isolated. They cannot mix.</div>
+                  </div>
+                  <div class="arrow" style="font-size: 2rem;">→</div>
+                  <div class="why-col">
+                    <div class="vis-label">Solution: Overlap via Ca/Cb</div>
+                    <div style="display:flex; align-items:center;">
+                      <div class="group-box"><span class="group-label">W0 Array</span><div style="display:flex; gap:2px;">${genTensors(4, 'Ca', 't-comp')}<div style="width:2px; background:var(--border);"></div>${genTensors(4, 'Cb', 't-cb')}</div></div>
+                      <div class="arrow">→</div>
+                      <div class="group-box" style="border-color: var(--accent-2);"><span class="group-label" style="color:var(--accent-2)">W1 Array</span><div style="display:flex; gap:2px;">${genTensors(4, 'Ca', 't-comp')}<div style="width:2px; background:var(--border);"></div>${genTensors(4, 'Cb', 't-cb')}</div></div>
+                    </div>
+                    <div style="font-size:0.75rem; color:var(--muted); text-align:center;">W1 Array steals W0's Ca. They mix in Softmax!</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="vis-label">Step A: Split Sequence into Windows (m=4)</div>
+              <div style="display: flex; gap: 8px; margin-bottom: 24px; justify-content: center;">
+                <div class="group-box"><span class="group-label">W0 (t0-t3)</span>${genTensors(4, 't', 't-input')}</div>
+                <div class="group-box"><span class="group-label">W1 (t4-t7)</span>${genTensors(4, 't', 't-input')}</div>
+              </div>
+              
+              <div class="vis-label">Step B: kv_proj projects each token to 2*dim, split into Ca and Cb</div>
+              <div style="margin-bottom: 24px;">
+                ${genProjDiagram(4)}
+              </div>
+
+              <div class="vis-label">Step C: Build Overlap Array (new_kv) & Compress</div>
+              <div class="mapping-container">
+                <div class="map-row">
+                  <div class="map-label">W0 Array</div>
+                  <div class="slots-array">
+                    <div class="arr-slot arr-empty">0<span>Empty</span></div>
+                    <div class="arr-slot arr-empty">1<span>Empty</span></div>
+                    <div class="arr-slot arr-empty">2<span>Empty</span></div>
+                    <div class="arr-slot arr-empty">3<span>Empty</span></div>
+                    <div class="arr-slot arr-cb">Cb0<span>t0</span></div>
+                    <div class="arr-slot arr-cb">Cb1<span>t1</span></div>
+                    <div class="arr-slot arr-cb">Cb2<span>t2</span></div>
+                    <div class="arr-slot arr-cb">Cb3<span>t3</span></div>
+                  </div>
+                  <div class="arrow">→</div>
+                  <div class="arr-slot arr-out">B0</div>
+                </div>
+                <div class="map-row">
+                  <div class="map-label">W1 Array</div>
+                  <div class="slots-array" style="border-color: var(--accent-2);">
+                    <div class="arr-slot arr-ca">Ca0<span>t0</span></div>
+                    <div class="arr-slot arr-ca">Ca1<span>t1</span></div>
+                    <div class="arr-slot arr-ca">Ca2<span>t2</span></div>
+                    <div class="arr-slot arr-ca">Ca3<span>t3</span></div>
+                    <div class="arr-slot arr-cb">Cb4<span>t4</span></div>
+                    <div class="arr-slot arr-cb">Cb5<span>t5</span></div>
+                    <div class="arr-slot arr-cb">Cb6<span>t6</span></div>
+                    <div class="arr-slot arr-cb">Cb7<span>t7</span></div>
+                  </div>
+                  <div class="arrow">→</div>
+                  <div class="arr-slot arr-out">B1</div>
+                </div>
+              </div>
+              <div class="math-box"><strong>Why Ca is missing in W0:</strong> The code <code>new_kv[:, 1:, :m] = comp_kv[:, :-1, :, :dim]</code> starts at index 1. W0 (index 0) retains the initialized Zeros.<br><strong>Math:</strong> Block = Softmax(Gate) · Array</div>
+            </div>`
+          },
+          {
+            title: "3. Flat Indexer Compression",
+            desc: "A parallel flat compression path creates 'Indexer' tokens. These represent the blocks but are projected into a smaller index dimension to save compute during top-k retrieval.",
+            code: `# _compress_idx uses the same _flat_two_series_compress\ncompressed_idx = self._compress_idx(hidden_states, n_win, usable)\n# Output shape: [B, 1, n_win, index_head_dim]`,
+            visual: `<div class="visual-area">
+              <div style="display:flex; gap: 32px; justify-content: center; align-items: center;">
+                <div><div class="vis-label">Compressed KV</div><div class="tensor-box">${genTensors(4, 'B', 't-comp')}</div></div>
+                <div class="arrow">+</div>
+                <div><div class="vis-label">Indexer Tokens</div><div class="tensor-box">${genTensors(4, 'I', 't-idx')}</div></div>
+              </div>
+              <div class="math-box">Indexers allow the model to quickly score blocks without using the full high-dimensional KV vectors.</div>
+            </div>`
+          },
+          {
+            title: "4. Index Scoring & Top-K Masking",
+            desc: "Queries are projected into index space and scored against Indexer tokens via ReLU(Q·K). The top-k highest scoring blocks are selected for each query. A block_bias mask (0 for selected, -inf otherwise) is built.",
+            code: `scores = F.relu(torch.matmul(q_idx, compressed_idx.transpose(-1, -2)))\nindex_scores = (scores * weights).sum(dim=2)\ntop_k_indices = index_scores.topk(top_k, dim=-1).indices\nblock_bias = torch.full(..., float('-inf'))\nblock_bias.scatter_(-1, top_k_indices, 0.0)`,
+            visual: `<div class="visual-area">
+              <div class="vis-label">Top-K Block Selection (e.g., Top-2 selected)</div>
+              <div style="display: flex; gap: 16px; justify-content: center;">
+                <div style="text-align: center;"><div class="vis-label">Q0 Mask</div><div class="mask-grid"><div class="mask-cell mask-0">0</div><div class="mask-cell mask-inf">-∞</div><div class="mask-cell mask-0">0</div><div class="mask-cell mask-inf">-∞</div></div></div>
+                <div style="text-align: center;"><div class="vis-label">Q1 Mask</div><div class="mask-grid"><div class="mask-cell mask-inf">-∞</div><div class="mask-cell mask-0">0</div><div class="mask-cell mask-0">0</div><div class="mask-cell mask-inf">-∞</div></div></div>
+              </div>
+              <div class="math-box">Queries can only attend to Sliding Window + Blocks with mask <strong>0</strong>.</div>
+            </div>`
+          },
+          {
+            title: "5. Final Attention & Output",
+            desc: "The final Keys are Sliding Window KV + Compressed KV Blocks. Attention weights are computed, masked by SW mask + block_bias, and 'sinks' are appended to absorb unused probability mass. Output is then projected via grouped linear layers.",
+            code: `total_k = torch.cat([sw_k, compressed_kv], dim=2)\nattn_weights = torch.matmul(q, total_k.transpose(2, 3)) + final_mask\ncombined = torch.cat([attn_weights, sinks], dim=-1)\nprobs = F.softmax(combined, dim=-1)[..., :-1]\nattn_output = torch.matmul(probs, total_k)\nreturn self.o_b_proj(grouped)`,
+            visual: `<div class="visual-area">
+              <div class="vis-label">Final Key/Value Structure</div>
+              <div style="display:flex; gap: 12px; align-items: center; justify-content: center;">
+                <div class="group-box"><span class="group-label">Sliding Window (16)</span><div class="tensor-box">${genTensors(4, 'sw', 't-kv')}</div></div>
+                <div class="arrow">+</div>
+                <div class="group-box"><span class="group-label">Compressed Blocks (4)</span><div class="tensor-box">${genTensors(4, 'B', 't-comp')}</div></div>
+              </div>
+              <div style="margin-top: 16px;"><div class="vis-label">Attention + Sinks</div><div style="display:flex; gap:12px; justify-content:center;"><div class="tensor-box">${genTensors(4, 'B', 't-comp')}</div><div class="arrow">+</div><div class="tensor t-q">Sink</div></div></div>
+            </div>`
+          }
+        ],
+        modified: [
+          {
+            title: "1. Input Projection & RoPE",
+            desc: "Identical to original. Hidden states are projected into Q and local KV. Sliding window is extracted. The modified changes only affect the compression and masking phases downstream.",
+            code: `q = self.q_b_proj(self.q_a_norm(self.q_a_proj(hidden_states)))\nkv = self.kv_norm(self.kv_proj(hidden_states))\nq, kv = apply_rotary_pos_emb(q, kv, cos, sin)\nsw_k = kv[:, :, -self.sliding_window:, :]`,
+            visual: `<div class="visual-area" style="width:100%;">
+              <div><div class="vis-label">Hidden States [B, S, C]</div><div class="tensor-box">${genTensors(16, 'h', 't-input')}</div></div>
+              <div style="display:flex; gap: 32px; align-items: center; margin-top: 16px; justify-content:center;">
+                <div><div class="vis-label">Query (Q) [B, H, S, D]</div><div class="tensor-box">${genTensors(16, 'q', 't-q')}</div></div>
+                <div><div class="vis-label">Sliding Window KV [B, 1, 16, D]</div><div class="tensor-box">${genTensors(8, 'k', 't-kv')}</div></div>
+              </div>
+            </div>`
+          },
+          {
+            title: "2. Level 0 Hierarchical Compression",
+            desc: "To prevent the 'boundary problem' where tokens at the edge of a block lose context, we create an overlap. The projection layer outputs 2*dim. The first half (Ca) is passed to the *next* pair. The second half (Cb) stays in the current pair. Compressed Token L0_1 is actually a learned blend of Ca0 (from P0) and Cb2 (from P1).",
+            code: `# 1. Project to 2*dim and view as [B, n_pairs, 2, 2*dim]\nkv = self.comp_kv_proj(hidden)\nchunk_kv = kv.view(B, n_pairs, 2, 2 * dim)\n\n# 2. Initialize empty array of size 4 for each pair\nnew_kv = torch.zeros(B, n_pairs, 4, dim)\n\n# 3. Fill right 2 slots (Cb) with current pair's projection\nnew_kv[:, :, 2:] = chunk_kv[..., dim:] \n\n# 4. Fill left 2 slots (Ca) with PREVIOUS pair's projection\nif n_pairs > 1:\n    new_kv[:, 1:, :2] = chunk_kv[:, :-1, :, :dim]\n    \n# 5. Softmax compress the 4 slots into 1 token\nweights = F.softmax(chunk_gate + pos_bias, dim=2)\ncompressed = norm(softmax_out + residual)`,
+            visual: `<div class="visual-area" style="width:100%;">
+              
+              <div class="why-box">
+                <div class="why-title">Why do we need Ca and Cb? (The Boundary Problem)</div>
+                <div class="why-flex">
+                  <div class="why-col">
+                    <div class="vis-label">Problem: Hard Boundary</div>
+                    <div style="display:flex; align-items:center;">
+                      <div class="group-box"><span class="group-label">P0</span>${genTensors(2, 't', 't-input')}</div>
+                      <div class="boundary-line"></div>
+                      <div class="group-box"><span class="group-label">P1</span>${genTensors(2, 't', 't-input')}</div>
+                    </div>
+                    <div style="font-size:0.75rem; color:var(--muted); text-align:center;">t1 and t2 are isolated. They cannot mix.</div>
+                  </div>
+                  <div class="arrow" style="font-size: 2rem;">→</div>
+                  <div class="why-col">
+                    <div class="vis-label">Solution: Overlap via Ca/Cb</div>
+                    <div style="display:flex; align-items:center;">
+                      <div class="group-box"><span class="group-label">P0 Array</span><div style="display:flex; gap:2px;">${genTensors(2, 'Ca', 't-comp')}<div style="width:2px; background:var(--border);"></div>${genTensors(2, 'Cb', 't-cb')}</div></div>
+                      <div class="arrow">→</div>
+                      <div class="group-box" style="border-color: var(--accent-2);"><span class="group-label" style="color:var(--accent-2)">P1 Array</span><div style="display:flex; gap:2px;">${genTensors(2, 'Ca', 't-comp')}<div style="width:2px; background:var(--border);"></div>${genTensors(2, 'Cb', 't-cb')}</div></div>
+                    </div>
+                    <div style="font-size:0.75rem; color:var(--muted); text-align:center;">P1 Array steals P0's Ca. They mix in Softmax!</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="vis-label">Step A: Split Sequence into Pairs (size 2)</div>
+              <div style="display: flex; gap: 8px; margin-bottom: 24px; justify-content: center;">
+                <div class="group-box"><span class="group-label">P0 (t0, t1)</span>${genTensors(2, 't', 't-input')}</div>
+                <div class="group-box"><span class="group-label">P1 (t2, t3)</span>${genTensors(2, 't', 't-input')}</div>
+              </div>
+              
+              <div class="vis-label">Step B: kv_proj projects each token to 2*dim, split into Ca and Cb</div>
+              <div style="margin-bottom: 24px;">
+                ${genProjDiagram(2)}
+              </div>
+
+              <div class="vis-label">Step C: Build 4-Slot Overlap Array (new_kv) & Compress</div>
+              <div class="mapping-container">
+                <div class="map-row">
+                  <div class="map-label">P0 Array</div>
+                  <div class="slots-array">
+                    <div class="arr-slot arr-empty">0<span>Empty</span></div>
+                    <div class="arr-slot arr-empty">1<span>Empty</span></div>
+                    <div class="arr-slot arr-cb">Cb0<span>t0</span></div>
+                    <div class="arr-slot arr-cb">Cb1<span>t1</span></div>
+                  </div>
+                  <div class="arrow">→</div>
+                  <div class="arr-slot arr-out">L0_0</div>
+                </div>
+                <div class="map-row">
+                  <div class="map-label">P1 Array</div>
+                  <div class="slots-array" style="border-color: var(--accent-2);">
+                    <div class="arr-slot arr-ca">Ca0<span>t0</span></div>
+                    <div class="arr-slot arr-ca">Ca1<span>t1</span></div>
+                    <div class="arr-slot arr-cb">Cb2<span>t2</span></div>
+                    <div class="arr-slot arr-cb">Cb3<span>t3</span></div>
+                  </div>
+                  <div class="arrow">→</div>
+                  <div class="arr-slot arr-out">L0_1</div>
+                </div>
+              </div>
+              <div class="math-box"><strong>Why Ca is missing in P0:</strong> The code <code>new_kv[:, 1:, :2] = chunk_kv[:, :-1, :, :dim]</code> starts at index 1. P0 (index 0) retains the initialized Zeros.<br><strong>Phase C2 (Gated Residual):</strong> Compressed = Softmax(Gate)·Array + Softmax(ResidualW)·Array</div>
+            </div>`
+          },
+          {
+            title: "3. Level 1+ Hierarchical Compression",
+            desc: "The output of Level 0 is fed directly into Level 1. This builds a multi-scale pyramid. Level 1 uses a PER-LEVEL position bias (shape 2). The same 4-slot overlap and gated residual applies.",
+            code: `# Level 1+\nkv = torch.cat([compressed, compressed], dim=-1)\ngate = getattr(self, f'comp_gate_proj_{l}')(compressed) + pos_bias_l\ncompressed = self._compress_pair_level(kv, gate, ...)\n# RoPE at native scale (e.g., L0=2, L1=4, L2=8)\npositions = torch.arange(n_tok) * (2 ** (l + 1))`,
+            visual: `<div class="visual-area">
+              <div style="display: flex; gap: 32px; justify-content: center; align-items: center;">
+                <div><div class="vis-label">Level 0 Output</div><div class="tensor-box">${genTensors(8, 'L0', 't-comp')}</div></div>
+              </div>
+              <div class="arrow">↓</div>
+              <div class="vis-label">Level 1 Overlap (4-Slot)</div>
+              <div class="map-row">
+                <div class="slots-array">
+                  <div class="arr-slot arr-ca">L0_0</div>
+                  <div class="arr-slot arr-ca">L0_1</div>
+                  <div class="arr-slot arr-cb">L0_2</div>
+                  <div class="arr-slot arr-cb">L0_3</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="arr-slot arr-out">L1_0</div>
+              </div>
+              <div class="math-box"><strong>Phase C3 (Multi-Scale):</strong> All levels are kept and RoPE'd at their specific scale.</div>
+            </div>`
+          },
+          {
+            title: "4. Flat Indexer (Parallel)",
+            desc: "While the KV compressor is hierarchical, the Indexer remains a flat two-series compressor. This allows fast top-k retrieval against a single flat sequence of index tokens representing the original m=4 blocks.",
+            code: `# Indexer remains flat\ncompressed_idx = self._flat_two_series_compress(\n    hidden_states, n_win, usable,\n    self.idx_kv_proj, self.idx_gate_proj, self.idx_position_bias,\n    self.idx_norm, self.index_head_dim\n)`,
+            visual: `<div class="visual-area">
+              <div style="display:flex; gap: 32px; justify-content: center; align-items: center;">
+                <div><div class="vis-label">Indexer Tokens (Flat)</div><div class="tensor-box">${genTensors(4, 'I', 't-idx')}</div></div>
+              </div>
+              <div class="math-box">Indexing flat over m=4 blocks maintains a fixed, fast retrieval space.</div>
+            </div>`
+          },
+          {
+            title: "5. Multi-Scale Block Bias",
+            desc: "Top-K blocks are selected using the flat indexer. The block_bias mask is then expanded to fit the multi-scale KV pyramid. A bounded tanh(scale) offset is added per level, giving coarser levels a slight positive bias (Phase C3+).",
+            code: `# Phase C3+: Scale-dependent block bias offset\nfor l in range(self.levels):\n    tpb = m // (2 ** (l + 1))\n    offset = torch.tanh(self.block_bias_scale[l])\n    expanded.append((block_bias + offset).repeat_interleave(tpb, dim=-1))`,
+            visual: `<div class="visual-area">
+              <div class="vis-label">1. Base Top-K Mask</div>
+              <div style="display: flex; gap: 4px; justify-content: center;"><div class="mask-cell mask-0">0</div><div class="mask-cell mask-inf">-∞</div><div class="mask-cell mask-0">0</div><div class="mask-cell mask-inf">-∞</div></div>
+              <div class="arrow">↓</div>
+              <div class="vis-label">2. Expanded to Pyramid + Offset</div>
+              <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+                <div class="group-box" style="border-color: var(--accent);"><span class="group-label" style="color:var(--accent)">L0 (Offset 0.0)</span><div class="mask-grid" style="grid-template-columns: repeat(8, 1fr);"><div class="mask-cell mask-0">0</div><div class="mask-cell mask-inf">-∞</div><div class="mask-cell mask-0">0</div><div class="mask-cell mask-inf">-∞</div></div></div>
+                <div class="group-box" style="border-color: var(--accent-2);"><span class="group-label" style="color:var(--accent-2)">L1 (Offset +0.4)</span><div class="mask-grid" style="grid-template-columns: repeat(4, 1fr);"><div class="mask-cell mask-0" style="background:#3b82f6">0.4</div><div class="mask-cell mask-inf">-∞</div><div class="mask-cell mask-0" style="background:#3b82f6">0.4</div><div class="mask-cell mask-inf">-∞</div></div></div>
+              </div>
+            </div>`
+          },
+          {
+            title: "6. Final Attention & Output",
+            desc: "The final Keys are Sliding Window KV + ALL levels of the multi-scale KV pyramid. Attention is computed, masked, and softmaxed with sinks, identical to the original architecture but attending to a much richer multi-scale memory.",
+            code: `# Pyramid is concatenated\ntotal_k = torch.cat([sw_k, compressed_kv], dim=2)\nattn_weights = torch.matmul(q, total_k.transpose(2, 3)) + final_mask\n# Sinks and Softmax\ncombined = torch.cat([attn_weights, sinks], dim=-1)\nprobs = F.softmax(combined, dim=-1)[..., :-1]`,
+            visual: `<div class="visual-area">
+              <div class="vis-label">Final Key/Value Structure</div>
+              <div style="display:flex; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap;">
+                <div class="group-box"><span class="group-label">Sliding Window</span><div class="tensor-box">${genTensors(4, 'sw', 't-kv')}</div></div>
+                <div class="arrow">+</div>
+                <div class="group-box"><span class="group-label">L0 Pyramid (8)</span><div class="tensor-box">${genTensors(4, 'L0', 't-comp')}</div></div>
+                <div class="group-box"><span class="group-label">L1 Pyramid (4)</span><div class="tensor-box">${genTensors(2, 'L1', 't-comp')}</div></div>
+                <div class="group-box"><span class="group-label">L2 Pyramid (2)</span><div class="tensor-box">${genTensors(1, 'L2', 't-comp')}</div></div>
+              </div>
+              <div class="math-box">The model sees fine-grained (L0) and coarse-grained (L2) history simultaneously.</div>
+            </div>`
+          }
+        ]
+      };
+
+      let currentMode = 'original';
+      let currentStep = 0;
+
+      function render() {
+        const flow = flows[currentMode];
+        const step = flow[currentStep];
+
+        // Render Step List
+        const listEl = document.getElementById('step-list');
+        listEl.innerHTML = '';
+        flow.forEach((s, i) => {
+          const item = document.createElement('div');
+          item.className = `step-item ${i === currentStep ? 'active' : ''}`;
+          item.innerHTML = `<div class="step-num">STEP ${i + 1}</div><div class="step-title">${s.title}</div>`;
+          item.onclick = () => { currentStep = i; render(); };
+          listEl.appendChild(item);
+        });
+
+        // Render Main Content
+        document.getElementById('step-title').innerText = step.title;
+        document.getElementById('step-desc').innerHTML = step.desc;
+        document.getElementById('visual-area').innerHTML = step.visual;
+        
+        // Render Code
+        const codeEl = document.getElementById('code-block');
+        codeEl.innerHTML = step.code;
+        hljs.highlightElement(codeEl);
+      }
+
+      function switchMode(mode) {
+        currentMode = mode;
+        currentStep = 0;
+        document.getElementById('btn-original').classList.toggle('active', mode === 'original');
+        document.getElementById('btn-modified').classList.toggle('active', mode === 'modified');
+        render();
+      }
+
+      function nextStep() {
+        const len = flows[currentMode].length;
+        currentStep = (currentStep + 1) % len;
+        render();
+      }
+
+      function prevStep() {
+        const len = flows[currentMode].length;
+        currentStep = (currentStep - 1 + len) % len;
+        render();
+      }
+
+      // Initial render
+      render();
+    </script>
+  </body>
+</html>

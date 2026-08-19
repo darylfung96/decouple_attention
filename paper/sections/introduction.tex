@@ -1,0 +1,70 @@
+\section{Introduction}
+\label{sec:intro}
+
+Long-horizon time-series forecasting---predicting the next $H$ steps from a
+lookback window of length $L$---is a core task in energy, traffic, and
+finance applications. Transformer-based forecasting models \citep{zhou2021informer,nie2023patchtst,liu2024itransformer}
+are accurate but pay a quadratic cost $O(L^2)$ in the attention mechanism as
+the lookback grows. One widely used remedy is \emph{compressed-and-indexed}
+attention: compress the $L$ key/value (KV) positions into $C = L / c_{KV}$
+blocks, and have each query attend to only a small, \emph{routed} subset of
+those blocks plus a local sliding window. This family underlies recent
+efficient-attention designs for large language models
+\citep{yuan2025nsa,deepseekv4_2026}, and its components---content-based
+routing \citep{roy2020routing}, low-rank KV compression
+\citep{deepseekv2_2024}---are individually well known.
+
+What is not well studied is the \emph{design space} of this family: how the
+two independent compression axes interact. We identify two axes:
+\begin{itemize}
+  \item \textbf{KV compression rate} $c_{KV}$: how aggressively the content
+        stream is compressed into blocks ($C = L / c_{KV}$ blocks);
+  \item \textbf{Routing resolution} $c_R$: how finely the router represents
+        the history when deciding which blocks to attend to
+        ($M = L / c_R$ index tokens).
+\end{itemize}
+Coarsening either axis cuts compute, but the two axes may not trade
+accuracy equally. Our central question is therefore a controlled, empirical
+one: \emph{which axis carries accuracy, and which axis only buys
+efficiency?}
+
+This paper is a \textbf{design study}, not a proposal of a new attention
+mechanism: every building block we use is a configuration of known ideas
+(Section~\ref{sec:method}), and overlaps with concurrent work
+\citep{yuan2025nsa,deepseekv4_2026} are acknowledged rather than elided
+(Section~\ref{sec:related}). Our contributions are:
+\begin{enumerate}
+  \item[(a)] \textbf{A controlled $2\times2$ factorial design.} All four
+        combinations of $c_{KV}, c_R \in \{4{:}1, 8{:}1\}$ are evaluated on a
+        frozen task---ETTh1, direct 96-step forecasting---under an
+        \emph{auxiliary-identical} contract (identical window, top-$k$, heads,
+        hidden size, optimizer, schedule) with attention-parameter
+        equalization to within $0.3\%$, across five paired seeds
+        (Section~\ref{sec:experiments}).
+  \item[(b)] \textbf{A decoupled-rate finding (directional).} Coarsening the
+        router deteriorates accuracy ($+0.046$ validation MSE for
+        $c_R{:}4{:}1 \to 8{:}1$), while coarsening KV compression is
+        mildly beneficial ($-0.043$). The best cell $(c_{KV}{=}8, c_R{=}4)$
+        reduces the attention matrix 5.3$\times$ relative to full attention
+        at equal parameters. We report these as directional observations:
+        effect sizes are smaller than the within-cell seed standard
+        deviation, and no significance test has been run.
+  \item[(c)] \textbf{An honest efficiency/accuracy characterization.} A
+        surprising---and wiring-verified---baseline result: all compressed
+        configurations beat full causal attention on the frozen task
+        ($-18.5\%$ to $-29.1\%$ validation MSE), with explicit limitations
+        (single dataset, CPU-scale models, descriptive statistics).
+  \item[(d)] \textbf{Reproducibility artifacts.} A frozen task specification,
+        machine-readable results manifests, a verified parameter registry,
+        causality-verification suites, and a codebase in which every reported
+        number traces to a file (Appendix~\ref{sec:appendix-repro}).
+\end{enumerate}
+
+\textbf{Scope and non-claims.} This work does not claim a novel attention
+mechanism, does not claim state-of-the-art forecasting accuracy (no external
+baselines are run yet), does not claim statistical equivalence or
+significance (descriptive statistics only, five seeds), and does not report
+wall-clock speedups: the pre-freeze latency figures from earlier stages of
+this project are superseded and are deliberately \emph{not} used here.
+Measured latency, FLOPs, and hardware transfer are
+planned follow-up work (Section~\ref{sec:discussion}).

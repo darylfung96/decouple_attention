@@ -1,0 +1,80 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2606.04511v1",
+    "title": "SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference",
+    "published": "2026-06-03",
+    "summary": "Sparse attention reduces compute and memory bandwidth for long-context LLM inference. However, two key challenges remain: (1) KV cache capacity still grows with sequence length, and offloading to CPU memory introduces a PCIe transfer bottleneck; (2) the sparse selection step itself retains $O(T^2)$ "
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.16429v3",
+    "title": "(Sparse) Attention to the Details: Preserving Spectral Fidelity in ML-based Weather Forecasting Models",
+    "published": "2026-04-06",
+    "summary": "We introduce Mosaic, a probabilistic weather forecasting model that addresses three failure modes of spectral degradation in ML-based weather prediction: spectral damping (statistical), high-frequency aliasing (architectural), and residual high-frequency leakage (parametric). Mosaic generates ensemb"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.06227v1",
+    "title": "A Benchmark of Classical and Deep Learning Models for Agricultural Commodity Price Forecasting on A Novel Bangladeshi Market Price Dataset",
+    "published": "2026-03-27",
+    "summary": "Accurate short-term forecasting of agricultural commodity prices is critical for food security planning and smallholder income stabilisation in developing economies, yet machine-learning-ready datasets for this purpose remain scarce in South Asia. This paper makes two contributions. First, we introd"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.18712v1",
+    "title": "Accurate and Efficient Multi-Channel Time Series Forecasting via Sparse Attention Mechanism",
+    "published": "2026-03-19",
+    "summary": "The task of multi-channel time series forecasting is ubiquitous in numerous fields such as finance, supply chain management, and energy planning. It is critical to effectively capture complex dynamic dependencies within and between channels for accurate predictions. However, traditional method paid "
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.20646v1",
+    "title": "TGSBM: Transformer-Guided Stochastic Block Model for Link Prediction",
+    "published": "2026-01-28",
+    "summary": "Link prediction is a cornerstone of the Web ecosystem, powering applications from recommendation and search to knowledge graph completion and collaboration forecasting. However, large-scale networks present unique challenges: they contain hundreds of thousands of nodes and edges with heterogeneous a"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.07396v1",
+    "title": "Forecast the Principal, Stabilize the Residual: Subspace-Aware Feature Caching for Efficient Diffusion Transformers",
+    "published": "2026-01-12",
+    "summary": "Diffusion Transformer (DiT) models have achieved unprecedented quality in image and video generation, yet their iterative sampling process remains computationally prohibitive. To accelerate inference, feature caching methods have emerged by reusing intermediate representations across timesteps. Howe"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.12301v1",
+    "title": "TwinFormer: A Dual-Level Transformer for Long-Sequence Time-Series Forecasting",
+    "published": "2025-12-13",
+    "summary": "TwinFormer is a hierarchical Transformer for long-sequence time-series forecasting. It divides the input into non-overlapping temporal patches and processes them in two stages: (1) a Local Informer with top-$k$ Sparse Attention models intra-patch dynamics, followed by mean pooling; (2) a Global Info"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.27366v1",
+    "title": "A Sensing Whole Brain Zebrafish Foundation Model for Neuron Dynamics and Behavior",
+    "published": "2025-10-31",
+    "summary": "Neural dynamics underlie behaviors from memory to sleep, yet identifying mechanisms for higher-order phenomena (e.g., social interaction) is experimentally challenging. Existing whole-brain models often fail to scale to single-neuron resolution, omit behavioral readouts, or rely on PCA/conv pipeline"
+  },
+  {
+    "id": "http://arxiv.org/abs/2504.12262v1",
+    "title": "SCENT: Robust Spatiotemporal Learning for Continuous Scientific Data via Scalable Conditioned Neural Fields",
+    "published": "2025-04-16",
+    "summary": "Spatiotemporal learning is challenging due to the intricate interplay between spatial and temporal dependencies, the high dimensionality of the data, and scalability constraints. These challenges are further amplified in scientific domains, where data is often irregularly distributed (e.g., missing "
+  },
+  {
+    "id": "http://arxiv.org/abs/2501.14183v3",
+    "title": "VarDrop: Enhancing Training Efficiency by Reducing Variate Redundancy in Periodic Time Series Forecasting",
+    "published": "2025-01-24",
+    "summary": "Variate tokenization, which independently embeds each variate as separate tokens, has achieved remarkable improvements in multivariate time series forecasting. However, employing self-attention with variate tokens incurs a quadratic computational cost with respect to the number of variates, thus lim"
+  },
+  {
+    "id": "http://arxiv.org/abs/2405.15903v1",
+    "title": "UnitNorm: Rethinking Normalization for Transformers in Time Series",
+    "published": "2024-05-24",
+    "summary": "Normalization techniques are crucial for enhancing Transformer models' performance and stability in time series analysis tasks, yet traditional methods like batch and layer normalization often lead to issues such as token shift, attention shift, and sparse attention. We propose UnitNorm, a novel app"
+  },
+  {
+    "id": "http://arxiv.org/abs/2405.13646v1",
+    "title": "A Transformer variant for multi-step forecasting of water level and hydrometeorological sensitivity analysis based on explainable artificial intelligence technology",
+    "published": "2024-05-22",
+    "summary": "Understanding the combined influences of meteorological and hydrological factors on water level and flood events is essential, particularly in today's changing climate environments. Transformer, as one kind of the cutting-edge deep learning methods, offers an effective approach to model intricate no"
+  },
+  {
+    "id": "http://arxiv.org/abs/2403.17753v2",
+    "title": "CCDSReFormer: Traffic Flow Prediction with a Criss-Crossed Dual-Stream Enhanced Rectified Transformer Model",
+    "published": "2024-03-26",
+    "summary": "Accurate, and effective traffic forecasting is vital for smart traffic systems, crucial in urban traffic planning and management. Current Spatio-Temporal Transformer models, despite their prediction capabilities, struggle with balancing computational efficiency and accuracy, favoring global over loc"
+  }
+]

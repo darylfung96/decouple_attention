@@ -1,0 +1,502 @@
+[
+  {
+    "title": "PDDLCoder: Agentic PDDL Generation for LLM-Assisted Symbolic Planning",
+    "year": 2026,
+    "arxiv": "2608.16637"
+  },
+  {
+    "title": "DuplexGen: Decoupling Content, Timing, and Acoustics for Synthetic Dialogue Speech",
+    "year": 2026,
+    "arxiv": "2608.16053"
+  },
+  {
+    "title": "Every Coin Has Two Sides: On the Dual Nature of Generalization in On-Policy Distillation of Large Language Models",
+    "year": 2026,
+    "arxiv": "2608.16647"
+  },
+  {
+    "title": "Mint-Agent: Introducing Finance-Native Agentic Foundation Models",
+    "year": 2026,
+    "arxiv": "2608.16386"
+  },
+  {
+    "title": "$R^3$-Bench: LLMs Struggle with Resource-Rational Reasoning under Shared Budgets",
+    "year": 2026,
+    "arxiv": "2608.16033"
+  },
+  {
+    "title": "Augmenting Text to Increase Translation Difficulty",
+    "year": 2026,
+    "arxiv": "2608.15932"
+  },
+  {
+    "title": "WeSCE: A Benchmark for Measuring Security Drift in LLM-Driven Code Editing",
+    "year": 2026,
+    "arxiv": "2608.15092"
+  },
+  {
+    "title": "SimpleOPD: Simple Tokenizer-Agnostic On-Policy Distillation for Long-Context Reasoning",
+    "year": 2026,
+    "arxiv": "2608.14277"
+  },
+  {
+    "title": "MathForm: Scaling Mathematical Autoformalization with Knowledge Retrieval and Verification-Guided Refinement",
+    "year": 2026,
+    "arxiv": "2608.14221"
+  },
+  {
+    "title": "TimeSage-EV: A Live Benchmark for Agentic Time Series Analysis in Evolving Environments",
+    "year": 2026,
+    "arxiv": "2608.14270"
+  },
+  {
+    "title": "CoRun: Padding is Simple and Efficient for Deterministic LLM Inference",
+    "year": 2026,
+    "arxiv": "2608.14376"
+  },
+  {
+    "title": "Approximate Muon with low-rank adapters",
+    "year": 2026,
+    "arxiv": "2608.14492"
+  },
+  {
+    "title": "Beyond Outcome Rewards: Step-Level Self-Distilled Policy Optimization for Deep Search Agents",
+    "year": 2026,
+    "arxiv": "2608.12764"
+  },
+  {
+    "title": "EviReform: Evidence-Guided Query Reformulation for Multi-Hop Graph Retrieval",
+    "year": 2026,
+    "arxiv": "2608.13006"
+  },
+  {
+    "title": "ATOBench: Tracing How Autonomous Penetration-Testing Agents Verify Vulnerabilities When Target Evidence Lies",
+    "year": 2026,
+    "arxiv": "2608.12996"
+  },
+  {
+    "title": "Polish Medical Visual Question Answering: Vision-Language Models Underutilize Visual Evidence",
+    "year": 2026,
+    "arxiv": "2608.12928"
+  },
+  {
+    "title": "Better Decomposition, Free Aggregation: A Synthesizer-Folding Framework for Multilingual Multi-Hop Question Answering",
+    "year": 2026,
+    "arxiv": "2608.13160"
+  },
+  {
+    "title": "Beyond Final Scores: A Systematic Evaluation of Agents for Long-Horizon AI Research and Development",
+    "year": 2026,
+    "arxiv": "2608.13417"
+  },
+  {
+    "title": "Intern-S2-Preview: Scientific Agentic Foundation Model",
+    "year": 2026,
+    "arxiv": "2608.13505"
+  },
+  {
+    "title": "Second Thought: Reasoning in Parallel as LLM Agents Act and Observe",
+    "year": 2026,
+    "arxiv": "2608.13667"
+  },
+  {
+    "title": "Towards Understanding On-Policy Distillation through the Lens of Test-Time Scaling",
+    "year": 2026,
+    "arxiv": "2608.11829"
+  },
+  {
+    "title": "LazyTrain: Limited-resource Allocation toward Zero-waste Yield Optimization in Large Language Model Training",
+    "year": 2026,
+    "arxiv": "2608.11919"
+  },
+  {
+    "title": "RoutePack: Expert Placement and Attention-Aware Data Packing for MoE Reinforcement Learning",
+    "year": 2026,
+    "arxiv": "2608.12146"
+  },
+  {
+    "title": "Do LLMs Take Care of Their Own? Similarity Signals Can Induce Cooperation",
+    "year": 2026,
+    "arxiv": "2608.12125"
+  },
+  {
+    "title": "VideoGAIA: A Benchmark for General AI Assistants on Agentic Video Understanding",
+    "year": 2026,
+    "arxiv": "2608.14718"
+  },
+  {
+    "title": "Tail-Aware Top-$k$ On-Policy Distillation",
+    "year": 2026,
+    "arxiv": "2608.14728"
+  },
+  {
+    "title": "A Sharp Local-Question Threshold for GHZ-Equatorial Completeness in Four-Player XOR Games",
+    "year": 2026,
+    "arxiv": "2608.11139"
+  },
+  {
+    "title": "RadFusion: Towards Threshold-Controllable Radiology Report Generation",
+    "year": 2026,
+    "arxiv": "2608.10505"
+  },
+  {
+    "title": "ConRub-Med: Reinforcement Learning with Consensus Rubrics for Open-Ended Medical Question Answering",
+    "year": 2026,
+    "arxiv": "2608.10996"
+  },
+  {
+    "title": "ConVAWG: A Retrieval-Grounded Framework for Controlled Synthetic Dialogue Generation in Violence Against Women and Girls",
+    "year": 2026,
+    "arxiv": "2608.11200"
+  },
+  {
+    "title": "Hypothesis Frontier: Verifier Guided LLM and Symbolic Search for First-Order Induction",
+    "year": 2026,
+    "arxiv": "2608.10843"
+  },
+  {
+    "title": "Matryoshka Language Model Suites",
+    "year": 2026,
+    "arxiv": "2608.09703"
+  },
+  {
+    "title": "LexKairos: Benchmarking Legal Temporal Capabilities in LLMs",
+    "year": 2026,
+    "arxiv": "2608.09106"
+  },
+  {
+    "title": "OpenLoopEvolve: A Verifiable Self-Evolution Framework for Loop Policies in Long-Horizon Complex Tasks",
+    "year": 2026,
+    "arxiv": "2608.09380"
+  },
+  {
+    "title": "Evo-Bench: Can Language Models Improve Agent Harness?",
+    "year": 2026,
+    "arxiv": "2608.09096"
+  },
+  {
+    "title": "MusicLayout: Explicit Structural Planning for Controllable Text-to-Music Generation",
+    "year": 2026,
+    "arxiv": "2608.09035"
+  },
+  {
+    "title": "ELBench: A Multi-Dimensional Benchmark for Education-Facing Large Language Models",
+    "year": 2026,
+    "arxiv": "2608.09548"
+  },
+  {
+    "title": "Learning Preference Adaptation for Large Language Model Personalization via Verbal Reinforcement Learning",
+    "year": 2026,
+    "arxiv": "2608.09507"
+  },
+  {
+    "title": "Reading is not Reasoning: Bridging the Agentic Policy Gap in Vision-Text Compression",
+    "year": 2026,
+    "arxiv": "2608.08960"
+  },
+  {
+    "title": "ForestBench: A Unified Graph Framework for Evaluating Multi-Agent Collaboration",
+    "year": 2026,
+    "arxiv": "2608.08605"
+  },
+  {
+    "title": "BOUND: Brief-Guided Corrective Preference Distillation at Search-Control Boundaries",
+    "year": 2026,
+    "arxiv": "2608.08768"
+  },
+  {
+    "title": "Tied Trit-Planes: Constraining PTQTP to a Uniform Nine-Level Quantizer, with a Persistent Folded Format for Disk-Streamed Mixture-of-Experts Serving",
+    "year": 2026,
+    "arxiv": "2608.08910"
+  },
+  {
+    "title": "Instability of LLM Pre-Pretraining: It Doesn't Always Help. An Investigation on Multiple Languages",
+    "year": 2026,
+    "arxiv": "2608.08800"
+  },
+  {
+    "title": "Time Present and Time Past: Benchmarking Large Language Models on Temporally Evolving Document Understanding",
+    "year": 2026,
+    "arxiv": "2608.08512"
+  },
+  {
+    "title": "Beyond Tables: Doc2DB-Bench for Relationally Faithful Document-to-Database Construction",
+    "year": 2026,
+    "arxiv": "2608.08459"
+  },
+  {
+    "title": "TRACE-Memory: Public-Conditioned Retrieval and Utility-Aware Evidence Admission for Personalized Generation",
+    "year": 2026,
+    "arxiv": "2608.08446"
+  },
+  {
+    "title": "Persuasive and Compliant Tendencies Predict Group Decision-Making in Humans and Language Models",
+    "year": 2026,
+    "arxiv": "2608.08199"
+  },
+  {
+    "title": "Long SKILL Compliance as Logical Reasoning: Closure-Grounded Detection with Scaling-Guided On-Policy Distillation",
+    "year": 2026,
+    "arxiv": "2608.08146"
+  },
+  {
+    "title": "Thinking Hard, Not Smart: Reasoning Models Fail to Ration Test-Time Compute Across Questions",
+    "year": 2026,
+    "arxiv": "2608.07968"
+  },
+  {
+    "title": "An AI4AI Framework for Visual Token Pruning",
+    "year": 2026,
+    "arxiv": "2608.07193"
+  },
+  {
+    "title": "Who Verifies the Benchmark? Decentralizing Trust in Large Language Model Evaluation",
+    "year": 2026,
+    "arxiv": "2608.07762"
+  },
+  {
+    "title": "HiSparse: Scaling Sparse-Attention Decoding with Hierarchical KV Cache Management",
+    "year": 2026,
+    "arxiv": "2608.07009"
+  },
+  {
+    "title": "HLSmith: An Expert-Guided Agentic Framework for C/C++-to-HLS Translation",
+    "year": 2026,
+    "arxiv": "2608.06791"
+  },
+  {
+    "title": "Simple-OPD: Demystifying Warm-up for On-policy Distillation",
+    "year": 2026,
+    "arxiv": "2608.06802"
+  },
+  {
+    "title": "GraphVerse: A Comprehensive Visual Graph Reasoning Benchmark for Multimodal Large Language Models",
+    "year": 2026,
+    "arxiv": "2608.06769"
+  },
+  {
+    "title": "Fisher-R1: Training LLM Agents for Reliable Hypothesis Testing",
+    "year": 2026,
+    "arxiv": "2608.07437"
+  },
+  {
+    "title": "Zero Gap Is Not Restoration: Stratified Per-Question Probability Evaluation and Step-wise Mitigation of Benchmark Contamination",
+    "year": 2026,
+    "arxiv": "2608.07341"
+  },
+  {
+    "title": "Controlled Memory Interference in Continual LLM Agents",
+    "year": 2026,
+    "arxiv": "2608.07622"
+  },
+  {
+    "title": "Reasoning from Traces: Divergence-Guided Agentic Repair of WebAssembly Discrepancies",
+    "year": 2026,
+    "arxiv": "2608.05521"
+  },
+  {
+    "title": "CalibForge: Adversarial Solver Calibration for Scaling Learnable Terminal Tasks",
+    "year": 2026,
+    "arxiv": "2608.06352"
+  },
+  {
+    "title": "RP-OPSD: Reasoning-Pivot-Guided On-Policy Self-Distillation for Multilingual Reasoning Transfer",
+    "year": 2026,
+    "arxiv": "2608.06347"
+  },
+  {
+    "title": "When History Lies: Evaluating and Improving Tool Use under Misleading Multi-Turn Histories",
+    "year": 2026,
+    "arxiv": "2608.06057"
+  },
+  {
+    "title": "Game Hopping in Lean",
+    "year": 2026,
+    "arxiv": "2608.06261"
+  },
+  {
+    "title": "IcFuzz: Fuzzing Isaac Sim with Semantic Stage Guidance and Multi-level Mutation",
+    "year": 2026,
+    "arxiv": "2608.06088"
+  },
+  {
+    "title": "Do AI Personas Grow? Analyzing and Benchmarking Personality Evolution in LLM Agents After Life Events",
+    "year": 2026,
+    "arxiv": "2608.06485"
+  },
+  {
+    "title": "TradeVerse: A Longitudinal Benchmark of Political Negotiation in International Trade",
+    "year": 2026,
+    "arxiv": "2608.06549"
+  },
+  {
+    "title": "K-EXAONE 2.0 Technical Report",
+    "year": 2026,
+    "arxiv": "2608.04505"
+  },
+  {
+    "title": "COMPAS: Difficulty-Aware Joint Search for Optimizing Code Generation",
+    "year": 2026,
+    "arxiv": "2608.04336"
+  },
+  {
+    "title": "NOLLI: A Difficulty-Calibrated Puzzle Benchmark for Diagnosing the English-Korean Performance Gap",
+    "year": 2026,
+    "arxiv": "2608.04397"
+  },
+  {
+    "title": "The Personalization Mirage: How LLMs Fabricate User Profiles, and Why Self-Monitoring Misleads",
+    "year": 2026,
+    "arxiv": "2608.04570"
+  },
+  {
+    "title": "Skills Know Their Neighbors: Cluster-Contrastive Capability Pages for Skill Retrieval",
+    "year": 2026,
+    "arxiv": "2608.04482"
+  },
+  {
+    "title": "Active-SWE: Benchmarking Coding Agents for Proactive Bug Fixing without Issue Reports",
+    "year": 2026,
+    "arxiv": "2608.04682"
+  },
+  {
+    "title": "Equitable System-Prompt Selection via Constrained Mixed-Strategy GroupDRO",
+    "year": 2026,
+    "arxiv": "2608.04339"
+  },
+  {
+    "title": "ABSeeker: Training Long-Horizon Search Agents via Answer-Backtracked Credit Assignment",
+    "year": 2026,
+    "arxiv": "2608.05102"
+  },
+  {
+    "title": "State2State: Environment-Derived Mid-Training for LLM Agents",
+    "year": 2026,
+    "arxiv": "2608.04934"
+  },
+  {
+    "title": "Recursive Synthesis for Long-Horizon Terminal Tasks",
+    "year": 2026,
+    "arxiv": "2608.05466"
+  },
+  {
+    "title": "Robust Context-Aware Detection of Malicious Instructions in Text",
+    "year": 2026,
+    "arxiv": "2608.05430"
+  },
+  {
+    "title": "One Score, Two Decisions: Selective Prediction on the Rare-Disease Tail",
+    "year": 2026,
+    "arxiv": "2608.14683"
+  },
+  {
+    "title": "Evaluating Counterfactual Sensitivity to Patient Information in Medication-Safety Reasoning",
+    "year": 2026,
+    "arxiv": "2608.03028"
+  },
+  {
+    "title": "AgenticVAU: Multi-Agent Explore-Verify Reasoning for Video Anomaly Understanding",
+    "year": 2026,
+    "arxiv": "2608.03779"
+  },
+  {
+    "title": "ToolLIFT: Lifting Tool-Specific Trajectories into Function-Level Graphs for Generalizable Tool Planning",
+    "year": 2026,
+    "arxiv": "2608.03468"
+  },
+  {
+    "title": "Language-Specialized Multi-Teacher On-Policy Distillation for Multilingual LLM-Based ASR",
+    "year": 2026,
+    "arxiv": "2608.03610"
+  },
+  {
+    "title": "Heterogeneity-Aware Microscaling for Efficient Low-Bit LLM Inference",
+    "year": 2026,
+    "arxiv": "2608.03867"
+  },
+  {
+    "title": "Behavioral Skill Reconstruction: Reconstructing Hidden Functionality from LLM Agent Skills",
+    "year": 2026,
+    "arxiv": "2608.04192"
+  },
+  {
+    "title": "BrainBench: Benchmarking Large Language Models for Comprehensive EEG Understanding",
+    "year": 2026,
+    "arxiv": "2608.04156"
+  },
+  {
+    "title": "Strategic Evaluation of Planning Strategies for LLM Agents in Cyber-Physical Systems",
+    "year": 2026,
+    "arxiv": "2608.04265"
+  },
+  {
+    "title": "OneDayAgent: Towards a Long-Horizon Harness for Autonomous Agents",
+    "year": 2026,
+    "arxiv": "2608.05013"
+  },
+  {
+    "title": "AI Security Leaderboard: Methodology, Results and Minimal Standard",
+    "year": 2026,
+    "arxiv": "2608.03070"
+  },
+  {
+    "title": "VulnGym: Benchmarking Coding Agents for Repository-Level Vulnerability Detection",
+    "year": 2026,
+    "arxiv": "2608.02001"
+  },
+  {
+    "title": "PredAct-Bench: Benchmarking Tool-Augmented Dialogue under Controlled Tool Noise",
+    "year": 2026,
+    "arxiv": "2608.02372"
+  },
+  {
+    "title": "From Simple QA to Deep Research: A Verifiable Benchmark Constructed through Iterative Task Evolution",
+    "year": 2026,
+    "arxiv": "2608.02163"
+  },
+  {
+    "title": "When Memory Becomes Authority: Benchmarking Authority Collapse at the Memory Consolidation Boundary",
+    "year": 2026,
+    "arxiv": "2608.01679"
+  },
+  {
+    "title": "Homebot: A Personal AI Agent for Conversational Home Assistance and Automation",
+    "year": 2026,
+    "arxiv": "2608.02254"
+  },
+  {
+    "title": "Fetch-then-Explore: Decoupling Selection from Extraction over a Persistent Workspace for Search Agents",
+    "year": 2026,
+    "arxiv": "2608.02097"
+  },
+  {
+    "title": "PCSD: Persistent Consistency for Self-Distillation in Agentic Reinforcement Learning",
+    "year": 2026,
+    "arxiv": "2608.01837"
+  },
+  {
+    "title": "Diagnosing Search Behavior and Failure Modes in Long-Horizon Search Agents",
+    "year": 2026,
+    "arxiv": "2608.01913"
+  },
+  {
+    "title": "Harness-R1: Learning to Edit Executable Runtime Harnesses from Agent Failure Trajectories",
+    "year": 2026,
+    "arxiv": "2608.02276"
+  },
+  {
+    "title": "Coding Agents as Test-Suite Auditors: Finding What Official Suites Miss While Approaching What They Catch",
+    "year": 2026,
+    "arxiv": "2608.01715"
+  },
+  {
+    "title": "CRISP: Critical Step Perception for Training Efficient Deep Search Agents",
+    "year": 2026,
+    "arxiv": "2608.01867"
+  },
+  {
+    "title": "MedPRESS: A Multi-turn Benchmark for Patient-Pressure-Induced Medical Sycophancy in LLMs",
+    "year": 2026,
+    "arxiv": "2608.02520"
+  }
+]

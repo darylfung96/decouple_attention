@@ -1,0 +1,82 @@
+% ---------------------------------------------------------------------------
+% neurips_2026.sty -- self-contained layout fallback for the NeurIPS format.
+%
+% IMPORTANT: this file is a minimal, dependency-light fallback that reproduces
+% the standard NeurIPS look (single column, 10pt Times, 1in margins, bold
+% centered title/authors, labelled abstract, numbered bold sections, natbib
+% author--year references). Before submission, replace it with the official
+% style file from the NeurIPS website or the Overleaf template gallery.
+% main.tex is written so that swapping in the official style requires no
+% content changes.
+% ---------------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{neurips_2026}[2026/08/16 NeurIPS 2026 layout fallback]
+
+% --- options ---------------------------------------------------------------
+\newif\if@neuripsnonatbib
+\DeclareOption{final}{\@neuripsnonatbibfalse}
+\DeclareOption{preprint}{\@neuripsnonatbibfalse}
+\DeclareOption{nonatbib}{\@neuripsnonatbibtrue}
+\ExecuteOptions{final}
+\ProcessOptions\relax
+
+% --- page geometry ---------------------------------------------------------
+\RequirePackage{geometry}
+\geometry{letterpaper, margin=1in}
+
+% --- fonts -----------------------------------------------------------------
+\RequirePackage[T1]{fontenc}
+\RequirePackage{times}
+
+% --- math / misc -----------------------------------------------------------
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{microtype}
+\RequirePackage{xcolor}
+
+% --- citations (author--year; opt out with [nonatbib]) ---------------------
+\if@neuripsnonatbib\else
+  \RequirePackage[authoryear,round]{natbib}
+\fi
+
+% --- section formatting ----------------------------------------------------
+\RequirePackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{2.2ex plus 1ex minus .2ex}{1.2ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{1.8ex plus 1ex minus .2ex}{1.0ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{1.5ex plus 1ex minus .2ex}{0.8ex plus .2ex}
+
+% --- title / author / abstract ---------------------------------------------
+\newcommand{\@neuripstitle}{}
+\renewcommand{\title}[1]{\renewcommand{\@neuripstitle}{#1}}
+\newcommand{\@neuripsauthor}{}
+\renewcommand{\author}[1]{\renewcommand{\@neuripsauthor}{#1}}
+% author separator (as in the official style): line break with a gap.
+% \def (not \newcommand): amsmath already defines \And; \def overwrites it,
+% exactly as the official neurips style does.
+\def\And{\\[0.8em]}
+
+\renewcommand{\maketitle}{%
+  \begin{center}%
+    {\Large\bfseries\@neuripstitle\par}%
+    \vskip 1.2em%
+    {\large\@neuripsauthor\par}%
+    \vskip 0.5em%
+  \end{center}%
+}
+
+\renewenvironment{abstract}{%
+  \begin{center}{\bfseries Abstract}\end{center}%
+  \begin{quote}\small}{%
+  \end{quote}}
+
+% --- acknowledgments -------------------------------------------------------
+\newcommand{\acks}[1]{%
+  \vskip 1em\noindent{\bfseries Acknowledgments.}\ #1\par}
+
+% --- paragraph layout ------------------------------------------------------
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{1em}

@@ -1,0 +1,502 @@
+[
+  {
+    "title": "HydraPIM: A Heterogeneous PIM Architecture for Efficient Attention in Long-Context LLMs",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Reduced Matrix Multiplication: Input-Adaptive Matrix-Product Reduction for LLM Inference",
+    "year": 2026,
+    "arxiv": "2608.13426"
+  },
+  {
+    "title": "Hybrid Gated Attention",
+    "year": 2026,
+    "arxiv": "2608.11805"
+  },
+  {
+    "title": "MARCH: Scaling Recurrent Memory with Content-Routed State Anchors",
+    "year": 2026,
+    "arxiv": "2608.12435"
+  },
+  {
+    "title": "Turbo: Efficiently Serving Long-Context Large Language Models with In-Network Aggregation",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "OasisKV: Scaling In-Decode KV Cache Beyond HBM with Lookahead Sparse Prefetching",
+    "year": 2026,
+    "arxiv": "2608.08097"
+  },
+  {
+    "title": "HiSparse: Scaling Sparse-Attention Decoding with Hierarchical KV Cache Management",
+    "year": 2026,
+    "arxiv": "2608.07009"
+  },
+  {
+    "title": "Teacher Retains Full Tokens, Student Merges Efficiently: TM20K for E-Commerce Sequence Modeling in Ad Recommendation",
+    "year": 2026,
+    "arxiv": "2608.07055"
+  },
+  {
+    "title": "Runtime Observability for Heterogeneous Attention Memory",
+    "year": 2026,
+    "arxiv": "2608.05863"
+  },
+  {
+    "title": "Large Language Models: From Internal Architecture and Distributed Training Optimisation to Adaptation Strategies",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "OctoLong: Mid-Training On Cross-Repository Code Contexts Enhances Long-Context Modeling",
+    "year": 2026,
+    "arxiv": "2608.05141"
+  },
+  {
+    "title": "PI-Mem: Pushing Long-Context Reasoning to 3.6M Tokens with Parallel-Iterative Memory",
+    "year": 2026,
+    "arxiv": "2608.03048"
+  },
+  {
+    "title": "SAKI: Score-Aware Low-Rank Key Indexing with Random-Matrix Noise Correction for KV Retrieval",
+    "year": 2026,
+    "arxiv": "2608.03228"
+  },
+  {
+    "title": "Understanding Sparse Attention Selectivity in Long-Context Foundation Models via Counterfactual Evaluation",
+    "year": 2026,
+    "arxiv": "2608.01676"
+  },
+  {
+    "title": "Learning What to Remember: Test-Time Training via Context Distillation",
+    "year": 2026,
+    "arxiv": "2608.01672"
+  },
+  {
+    "title": "LongCat Sparse Attention: Taming the Lightning via Streaming-aware Hierarchical Cross-Layer Indexing",
+    "year": 2026,
+    "arxiv": "2608.01662"
+  },
+  {
+    "title": "An Internet for the KV Cache: Rethinking Classical Infrastructure Boundaries in the LLM Inference Age",
+    "year": 2026,
+    "arxiv": "2608.01526"
+  },
+  {
+    "title": "Mask-Based Priors Are More Persistent than Query-Key Initializations",
+    "year": 2026,
+    "arxiv": "2608.00418"
+  },
+  {
+    "title": "CCFormer: Efficient Cross-Field Interaction and Hierarchical Sequence Compression for Industrial Recommendation at Tencent",
+    "year": 2026,
+    "arxiv": "2607.28070"
+  },
+  {
+    "title": "SmartGen: Seamless Disaggregated LLM Inference with Selective KV Cache Transfer",
+    "year": 2026,
+    "arxiv": "2607.28150"
+  },
+  {
+    "title": "Chimera: Designing and Chinchilla-Scaling Hybrid Visual Diffusion Transformers",
+    "year": 2026,
+    "arxiv": "2607.28611"
+  },
+  {
+    "title": "Memory for Large Language Models",
+    "year": 2026,
+    "arxiv": "2607.25380"
+  },
+  {
+    "title": "CoSA: Accelerating Long-Context Inference via Proxy-Kernel Co-Designed Sparse Attention",
+    "year": 2026,
+    "arxiv": "2607.25291"
+  },
+  {
+    "title": "LOCKS: Page-Local Compact Key Summaries for Efficient Long-Context Decoding",
+    "year": 2026,
+    "arxiv": "2607.24555"
+  },
+  {
+    "title": "Sol-Attn: Accelerating Video Generation Inference via On-the-Fly Attention Sparsification",
+    "year": 2026,
+    "arxiv": "2607.24027"
+  },
+  {
+    "title": "PIVOT: Efficient Query-Group Indexing for Token-Level Sparse Attention",
+    "year": 2026,
+    "arxiv": "2607.24593"
+  },
+  {
+    "title": "SANA-Video 2.0: Hybrid Linear Attention with Attention Residuals for Efficient Video Generation",
+    "year": 2026,
+    "arxiv": "2607.21553"
+  },
+  {
+    "title": "Parameter-free Adaptive Sparse Attention via Compression-Based Content Selection",
+    "year": 2026,
+    "arxiv": "2607.21752"
+  },
+  {
+    "title": "Learning What Matters: Supervising Global Context Pruning with Causal Evidence Sets",
+    "year": 2026,
+    "arxiv": "2607.21692"
+  },
+  {
+    "title": "BMFA: Boundary-Minority Free-Energy Adaptive Screening",
+    "year": 2026,
+    "arxiv": "2607.17656"
+  },
+  {
+    "title": "xHC: Expanded Hyper-Connections",
+    "year": 2026,
+    "arxiv": "2607.14530"
+  },
+  {
+    "title": "AVQ-Attention: Adaptive Vector-Quantized Attention",
+    "year": 2026,
+    "arxiv": "2607.12789"
+  },
+  {
+    "title": "LiteTopK: Exploiting the Curse of Dimensionality for a Fused Indexer-TopK Kernel in Long-Context Sparse Attention",
+    "year": 2026,
+    "arxiv": "2607.11976"
+  },
+  {
+    "title": "COBS: Cumulant Order Block Sparse Attention",
+    "year": 2026,
+    "arxiv": "2607.09052"
+  },
+  {
+    "title": "MOSAIC: Adaptive Inter-layer Composition for Efficient Heterogeneous Vision-Language Models",
+    "year": 2026,
+    "arxiv": "2607.09029"
+  },
+  {
+    "title": "Towards Efficient Large Language Model Serving: A Survey on System-Aware KV Cache Optimization",
+    "year": 2026,
+    "arxiv": "2607.08057"
+  },
+  {
+    "title": "What to Keep, What to Forget: A Rate--Distortion View of Memory Compaction in LLMs and Agents",
+    "year": 2026,
+    "arxiv": "2607.08032"
+  },
+  {
+    "title": "Structural Bottlenecks on Frequency Representation in End-to-End Audio Models",
+    "year": 2026,
+    "arxiv": "2607.08545"
+  },
+  {
+    "title": "KVpop -- Key-Value Cache Compression with Predictive Online Pruning",
+    "year": 2026,
+    "arxiv": "2607.05061"
+  },
+  {
+    "title": "DynSpAttn: Efficient Attention via Dual-Side Dynamic Sparsity on Sparse Tensor Cores",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Uncertainty-gated selection for block-sparse attention",
+    "year": 2026,
+    "arxiv": "2607.07724"
+  },
+  {
+    "title": "Hierarchical Sparse Attention Done Right: Toward Infinite Context Modeling",
+    "year": 2026,
+    "arxiv": "2607.02980"
+  },
+  {
+    "title": "SAF3R: Dynamic Sparse Attention for Feed-Forward 3D Reconstruction Transformers",
+    "year": 2026,
+    "arxiv": "2607.03612"
+  },
+  {
+    "title": "Agentic Mobile AI Systems: From Post-Hoc Optimization to Runtime-Elastic Realization",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "ACE: Pluggable Adaptive Context Elasticizer across Agents",
+    "year": 2026,
+    "arxiv": "2606.31564"
+  },
+  {
+    "title": "LDS-Net: a lightweight detection network for real-time steel surface-defect detection",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "MMLA: How Memory Lets the Past Shape the Future",
+    "year": 2026,
+    "arxiv": "2606.28876"
+  },
+  {
+    "title": "CMSL: Constructive Multi-Sequence Learning for Recommendation Systems",
+    "year": 2026,
+    "arxiv": "2606.28533"
+  },
+  {
+    "title": "LCG: Long-Context Consistent Image Generation with Sparse Relational Attention",
+    "year": 2026,
+    "arxiv": "2606.26171"
+  },
+  {
+    "title": "SpotAttention: Plug-In Block-Sparse Routing for Pretrained Long-Context Transformers",
+    "year": 2026,
+    "arxiv": "2606.22874"
+  },
+  {
+    "title": "Scalable Physics-Inspired Transformers for Spin Glasses",
+    "year": 2026,
+    "arxiv": "2606.22984"
+  },
+  {
+    "title": "ScalingAttention: Discovering Intrinsic Sparse Attention Topology for Video Diffusion Transformers",
+    "year": 2026,
+    "arxiv": "2606.23019"
+  },
+  {
+    "title": "Act Before It\u2019s Too Late: Power-Efficient LLM Inference on Mobile Device",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "FiLM-Coordinated Dual-Branch Transformer for Global-Local Dependency Modeling in Language Modeling",
+    "year": 2026,
+    "arxiv": "2606.21075"
+  },
+  {
+    "title": "An expressivity analysis of hierarchical modelling in deep transformers via bounded-depth grammars",
+    "year": 2026,
+    "arxiv": "2606.17522"
+  },
+  {
+    "title": "BTHA: Block-Then-Hash Attention for Efficient Long Context",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "MiniMax Sparse Attention",
+    "year": 2026,
+    "arxiv": "2606.13392"
+  },
+  {
+    "title": "Prefilling-dLLM: Predictive Prefilling for Long-Context Inference in Diffusion Language Models",
+    "year": 2026,
+    "arxiv": "2606.10537"
+  },
+  {
+    "title": "K-Forcing: Joint Next-K-Token Decoding via Push-Forward Language Modeling",
+    "year": 2026,
+    "arxiv": "2606.10820"
+  },
+  {
+    "title": "Sparrow: Sparse Rollout for Stable and Efficient Long-context RL of Large Language Models",
+    "year": 2026,
+    "arxiv": "2606.08446"
+  },
+  {
+    "title": "How Much Dense Attention is Necessary? Oracle-Guided Sparse Prefill for Full/GQA Layers in Hybrid Long-Context Models",
+    "year": 2026,
+    "arxiv": "2606.07703"
+  },
+  {
+    "title": "Still: Amortized KV Cache Compaction in a Single Forward Pass",
+    "year": 2026,
+    "arxiv": "2606.07878"
+  },
+  {
+    "title": "QCFuse: Query-Aware Cache Fusion via Compressed View for Efficient RAG Serving",
+    "year": 2026,
+    "arxiv": "2606.05875"
+  },
+  {
+    "title": "Vortex: Efficient and Programmable Sparse Attention Serving for AI Agents",
+    "year": 2026,
+    "arxiv": "2606.06453"
+  },
+  {
+    "title": "You Only Index Once: Cross-Layer Sparse Attention with Shared Routing",
+    "year": 2026,
+    "arxiv": "2606.06467"
+  },
+  {
+    "title": "SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference",
+    "year": 2026,
+    "arxiv": "2606.04511"
+  },
+  {
+    "title": "Gsformer: a dual-architecture deep learning framework with CNN-self-attention and sparse-attention for genomic selection",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Multi-view dynamic perception framework for Chinese harmful meme detection",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Continual predictive learning of attention reinforcement based on Q-learning with prioritized experience replay",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "PRLoRA: Pyramid-Structured Low-Rank Adaptation Balancing Global Context and Local Precision in Large Language Models",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "ViDA: Lossless VideoQA Acceleration via Selective Sparse Self-Speculation With Parallel Computational Load Management",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Locality Does Not Imply Reachability: Boundary Repair in Block-Sparse Causal Attention",
+    "year": 2026,
+    "arxiv": "2606.02680"
+  },
+  {
+    "title": "Do Value Vectors in Deep Layers Need Context from the Residual Stream?",
+    "year": 2026,
+    "arxiv": "2606.02780"
+  },
+  {
+    "title": "ROSETTA: ROM-Overlaid STT-MRAM for Efficient MVM and Softmax Operations Toward Accelerating Transformer Inference",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Memory-Efficient Chunked Tropical Attention for Long Sequences",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "QiMeng-Tensify: Scaling Up Tensor Computation Optimization via Architecture-Aware LLM-Guided MCTS",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Move the Query, Not the Cache: Characterizing Cross-Instance Latent Attention Redistribution Across GPU Fabrics",
+    "year": 2026,
+    "arxiv": "2606.01502"
+  },
+  {
+    "title": "FlowNar: Scalable Streaming Narration for Long-Form Videos",
+    "year": 2026,
+    "arxiv": "2606.00620"
+  },
+  {
+    "title": "OmniMem: Scalable and Adaptive Memory Retrieval for Long Video Generation",
+    "year": 2026,
+    "arxiv": "2605.30519"
+  },
+  {
+    "title": "Veda: Scalable Video Diffusion via Distilled Sparse Attention",
+    "year": 2026,
+    "arxiv": "2605.30325"
+  },
+  {
+    "title": "Meta-Attention: Bayesian Per-Token Routing for Efficient Transformer Inference",
+    "year": 2026,
+    "arxiv": "2605.28384"
+  },
+  {
+    "title": "Multi-Mixer Models: Flexible Sequence Modeling with Shared Representations",
+    "year": 2026,
+    "arxiv": "2605.28769"
+  },
+  {
+    "title": "Parallax: Parameterized Local Linear Attention for Language Modeling",
+    "year": 2026,
+    "arxiv": "2605.29157"
+  },
+  {
+    "title": "UNIQUE: Universal Top-k Sparse Attention for Training-free Inference and Sparsity-aware Training",
+    "year": 2026,
+    "arxiv": "2605.27740"
+  },
+  {
+    "title": "IndexMem: Learned KV-Cache Eviction with Latent Memory for Long-Context LLM Inference",
+    "year": 2026,
+    "arxiv": "2605.25475"
+  },
+  {
+    "title": "ThriftAttention: Selective Mixed Precision for Long-Context FP4 Attention",
+    "year": 2026,
+    "arxiv": "2605.23081"
+  },
+  {
+    "title": "Characterizing Real-World Bugs in Tile Programs for Automated Bug Detection",
+    "year": 2026,
+    "arxiv": "2605.19652"
+  },
+  {
+    "title": "SSV: Sparse Speculative Verification for Efficient LLM Inference",
+    "year": 2026,
+    "arxiv": "2605.19893"
+  },
+  {
+    "title": "KVDrive: A Holistic Multi-Tier KV Cache Management System for Long-Context LLM Inference",
+    "year": 2026,
+    "arxiv": "2605.18071"
+  },
+  {
+    "title": "DashAttention: Differentiable and Adaptive Sparse Hierarchical Attention",
+    "year": 2026,
+    "arxiv": "2605.18753"
+  },
+  {
+    "title": "Memory-Efficient KV Cache Optimization for Large Language Model Inference at the Edge",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "CompactAttention: Accelerating Chunked Prefill with Block-Union KV Selection",
+    "year": 2026,
+    "arxiv": "2605.16839"
+  },
+  {
+    "title": "A Framework for Automated Cyber Threat Intelligence Extraction Based on Knowledge Graph",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Learning to See What You Need: Gaze Attention for Multimodal Large Language Models",
+    "year": 2026,
+    "arxiv": "2605.13080"
+  },
+  {
+    "title": "Z-Order Transformer for Feed-Forward Gaussian Splatting",
+    "year": 2026,
+    "arxiv": "2605.13465"
+  },
+  {
+    "title": "A Regularization-Based Strategy for Balancing Cross-Template Temporal Relation Extraction",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Training-Inference Consistent Segmented Execution for Long-Context LLMs",
+    "year": 2026,
+    "arxiv": "2605.11744"
+  },
+  {
+    "title": "Position: LLM Inference Should Be Evaluated as Energy-to-Token Production",
+    "year": 2026,
+    "arxiv": "2605.11733"
+  },
+  {
+    "title": "\u03b4-mem: Efficient Online Memory for Large Language Models",
+    "year": 2026,
+    "arxiv": "2605.12357"
+  },
+  {
+    "title": "BFLA: Block-Filtered Long-Context Attention Mechanism",
+    "year": 2026,
+    "arxiv": "2605.12193"
+  }
+]

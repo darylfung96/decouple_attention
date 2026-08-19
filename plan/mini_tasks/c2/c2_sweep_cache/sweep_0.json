@@ -1,0 +1,122 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2606.30709v1",
+    "title": "Hierarchical Global Attention (HGA)",
+    "published": "2026-06-29",
+    "summary": "Hierarchical Global Attention (HGA) is a drop-in replacement for dense causal attention in pretrained long-context transformers. HGA preserves the original checkpoint parameters: the pretrained $W_Q$, $W_K$, $W_V$, and $W_O$ projections remain unchanged, no calibration parameters are introduced, and"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.13839v1",
+    "title": "Explaining RhythmFormer: A Systematic XAI Analysis of Periodic Sparse Attention for Remote Photoplethysmography",
+    "published": "2026-06-11",
+    "summary": "Remote photoplethysmography (rPPG) transformers achieve low heart-rate error on benchmarks, yet their decisions remain opaque--a growing concern as rPPG moves toward clinical heart rate estimation. Existing rPPG XAI is dominated by qualitative heatmap inspection without quantitative faithfulness met"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.07210v1",
+    "title": "VersaVogue: Visual Expert Orchestration and Preference Alignment for Unified Fashion Synthesis",
+    "published": "2026-04-08",
+    "summary": "Diffusion models have driven remarkable advancements in fashion image generation, yet prior works usually treat garment generation and virtual dressing as separate problems, limiting their flexibility in real-world fashion workflows. Moreover, fashion image synthesis under multi-source heterogeneous"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.20586v2",
+    "title": "MKA: Memory-Keyed Attention for Efficient Long-Context Reasoning",
+    "published": "2026-03-21",
+    "summary": "As long-context language modeling becomes increasingly important, the cost of maintaining and attending to large Key/Value (KV) caches grows rapidly, becoming a major bottleneck in both training and inference. While prior works such as Multi-Query Attention (MQA) and Multi-Latent Attention (MLA) red"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.21009v2",
+    "title": "HiSAC: Hierarchical Sparse Activation Compression for Ultra-long Sequence Modeling in Recommenders",
+    "published": "2026-02-24",
+    "summary": "Modern recommender systems leverage ultra-long user behavior sequences to capture dynamic preferences, but end-to-end modeling is infeasible in production due to latency and memory constraints. While summarizing history via interest centers offers a practical alternative, existing methods struggle t"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.02133v2",
+    "title": "A Theoretical Analysis of Why Masked Diffusion Models Mitigate the Reversal Curse",
+    "published": "2026-02-02",
+    "summary": "Autoregressive language models (ARMs) suffer from the reversal curse: after learning ''$A$ is $B$,'' they often fail on the reverse query ''$B$ is $A$.'' Masked diffusion language models (MDMs) exhibit this failure in a much weaker form, but the underlying reason has remained unclear. A common expla"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.22214v1",
+    "title": "Signal-SGN++: Topology-Enhanced Time-Frequency Spiking Graph Network for Skeleton-Based Action Recognition",
+    "published": "2025-12-22",
+    "summary": "Graph Convolutional Networks (GCNs) demonstrate strong capability in modeling skeletal topology for action recognition, yet their dense floating-point computations incur high energy costs. Spiking Neural Networks (SNNs), characterized by event-driven and sparse activation, offer energy efficiency bu"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.21309v2",
+    "title": "CaliTex: Geometry-Calibrated Attention for View-Coherent 3D Texture Generation",
+    "published": "2025-11-26",
+    "summary": "Despite major advances brought by diffusion-based models, current 3D texture generation systems remain hindered by cross-view inconsistency -- textures that appear convincing from one viewpoint often fail to align across others. We find that this issue arises from attention ambiguity, where unstruct"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.22854v2",
+    "title": "Train Once, Reuse Everywhere: Generalizable Implicit In-Context Learning by Routing Attention",
+    "published": "2025-09-26",
+    "summary": "Implicit in-context learning (ICL) has newly emerged as a promising paradigm that simulates ICL behaviors in the representation space of large language models (LLMs), aiming to attain few-shot performance at zero-shot cost. However, existing approaches largely rely on injecting shift vectors into re"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.24792v1",
+    "title": "Lightweight Relational Embedding in Task-Interpolated Few-Shot Networks for Enhanced Gastrointestinal Disease Classification",
+    "published": "2025-05-30",
+    "summary": "Traditional diagnostic methods like colonoscopy are invasive yet critical tools necessary for accurately diagnosing colorectal cancer (CRC). Detection of CRC at early stages is crucial for increasing patient survival rates. However, colonoscopy is dependent on obtaining adequate and high-quality end"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.11001v1",
+    "title": "CL-MFAP: A Contrastive Learning-Based Multimodal Foundation Model for Molecular Property Prediction and Antibiotic Screening",
+    "published": "2025-02-16",
+    "summary": "Due to the rise in antimicrobial resistance, identifying novel compounds with antibiotic potential is crucial for combatting this global health issue. However, traditional drug development methods are costly and inefficient. Recognizing the pressing need for more effective solutions, researchers hav"
+  },
+  {
+    "id": "http://arxiv.org/abs/2412.06499v2",
+    "title": "HYATT-Net is Grand: A Hybrid Attention Network for Performant Anatomical Landmark Detection",
+    "published": "2024-12-09",
+    "summary": "Anatomical landmark detection (ALD) from a medical image is crucial for a wide array of clinical applications. While existing methods achieve quite some success in ALD, they often struggle to balance global context with computational efficiency, particularly with high-resolution images, thereby lead"
+  },
+  {
+    "id": "http://arxiv.org/abs/2411.15034v1",
+    "title": "HeadRouter: A Training-free Image Editing Framework for MM-DiTs by Adaptively Routing Attention Heads",
+    "published": "2024-11-22",
+    "summary": "Diffusion Transformers (DiTs) have exhibited robust capabilities in image generation tasks. However, accurate text-guided image editing for multimodal DiTs (MM-DiTs) still poses a significant challenge. Unlike UNet-based structures that could utilize self/cross-attention maps for semantic editing, M"
+  },
+  {
+    "id": "http://arxiv.org/abs/2410.22649v2",
+    "title": "WaveRoRA: Wavelet Rotary Route Attention for Multivariate Time Series Forecasting",
+    "published": "2024-10-30",
+    "summary": "In recent years, Transformer-based models (Transformers) have achieved significant success in multivariate time series forecasting (MTSF). However, previous works focus on extracting features either from the time domain or the frequency domain, which inadequately captures the trends and periodic cha"
+  },
+  {
+    "id": "http://arxiv.org/abs/2410.10352v2",
+    "title": "Pubic Symphysis-Fetal Head Segmentation Network Using BiFormer Attention Mechanism and Multipath Dilated Convolution",
+    "published": "2024-10-14",
+    "summary": "Pubic symphysis-fetal head segmentation in transperineal ultrasound images plays a critical role for the assessment of fetal head descent and progression. Existing transformer segmentation methods based on sparse attention mechanism use handcrafted static patterns, which leads to great differences i"
+  },
+  {
+    "id": "http://arxiv.org/abs/2410.08582v1",
+    "title": "DeBiFormer: Vision Transformer with Deformable Agent Bi-level Routing Attention",
+    "published": "2024-10-11",
+    "summary": "Vision Transformers with various attention modules have demonstrated superior performance on vision tasks. While using sparsity-adaptive attention, such as in DAT, has yielded strong results in image classification, the key-value pairs selected by deformable points lack semantic relevance when fine-"
+  },
+  {
+    "id": "http://arxiv.org/abs/2406.19703v1",
+    "title": "Vision Transformer with Key-select Routing Attention for Single Image Dehazing",
+    "published": "2024-06-28",
+    "summary": "We present Ksformer, utilizing Multi-scale Key-select Routing Attention (MKRA) for intelligent selection of key areas through multi-channel, multi-scale windows with a top-k operator, and Lightweight Frequency Processing Module (LFPM) to enhance high-frequency features, outperforming other dehazing "
+  },
+  {
+    "id": "http://arxiv.org/abs/2406.05992v1",
+    "title": "MHS-VM: Multi-Head Scanning in Parallel Subspaces for Vision Mamba",
+    "published": "2024-06-10",
+    "summary": "Recently, State Space Models (SSMs), with Mamba as a prime example, have shown great promise for long-range dependency modeling with linear complexity. Then, Vision Mamba and the subsequent architectures are presented successively, and they perform well on visual tasks. The crucial step of applying "
+  },
+  {
+    "id": "http://arxiv.org/abs/2403.08426v1",
+    "title": "Language-Driven Visual Consensus for Zero-Shot Semantic Segmentation",
+    "published": "2024-03-13",
+    "summary": "The pre-trained vision-language model, exemplified by CLIP, advances zero-shot semantic segmentation by aligning visual features with class embeddings through a transformer decoder to generate semantic masks. Despite its effectiveness, prevailing methods within this paradigm encounter challenges, in"
+  },
+  {
+    "id": "http://arxiv.org/abs/2401.00722v2",
+    "title": "BRAU-Net++: U-Shaped Hybrid CNN-Transformer Network for Medical Image Segmentation",
+    "published": "2024-01-01",
+    "summary": "Accurate medical image segmentation is essential for clinical quantification, disease diagnosis, treatment planning and many other applications. Both convolution-based and transformer-based u-shaped architectures have made significant success in various medical image segmentation tasks. The former c"
+  }
+]

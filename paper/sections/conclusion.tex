@@ -1,0 +1,19 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We presented a controlled $2\times2$ factorial design study of
+compressed-and-indexed attention for long-horizon time-series forecasting,
+varying the KV compression rate $c_{KV}$ and the routing resolution $c_R$
+independently under a frozen task, an auxiliary-identical contract, and
+parameter equalization, across five paired seeds. On ETTh1 direct-96
+forecasting, all compressed configurations outperformed full causal
+attention ($-18.5\%$ to $-29.1\%$ validation MSE; 20/20 paired seed
+comparisons; wiring-audited baseline), and the factorial separates the two
+axes directionally: coarser routing deteriorates accuracy while coarser KV
+compression is mildly beneficial, with the champion cell $(8,4)$ cutting
+the attention matrix 5.3$\times$ at equal parameters. We deliberately stop
+short of significance, generalization, or latency claims. The immediate
+roadmap is statistical testing with temporal-dependence-aware methods,
+multi-dataset replication, external baselines, and hardware latency
+benchmarking; each is itemized in the appendix roadmap
+(Appendix~\ref{sec:appendix-roadmap}).

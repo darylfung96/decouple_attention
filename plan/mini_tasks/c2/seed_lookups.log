@@ -1,0 +1,87 @@
+=== SEED: all:"Mixture of Block Attention" ===
+2026-04-01  http://arxiv.org/abs/2604.00754v2  Stochastic Attention: Connectome-Inspired Randomized Routing for Expressive Linear-Time Attenti
+2025-11-14  http://arxiv.org/abs/2511.11571v2  Optimizing Mixture of Block Attention
+2025-06-30  http://arxiv.org/abs/2506.23858v1  VMoBA: Mixture-of-Block Attention for Video Diffusion Models
+2025-02-18  http://arxiv.org/abs/2502.13189v1  MoBA: Mixture of Block Attention for Long-Context LLMs
+=== SEED: all:"DeepSeek Sparse Attention" ===
+2026-08-03  http://arxiv.org/abs/2608.01662v2  LongCat Sparse Attention: Taming the Lightning via Streaming-aware Hierarchical Cross-Layer Ind
+2026-07-27  http://arxiv.org/abs/2607.24593v1  PIVOT: Efficient Query-Group Indexing for Token-Level Sparse Attention
+2026-07-13  http://arxiv.org/abs/2607.11976v3  LiteTopK: Exploiting the Curse of Dimensionality for a Fused Indexer-TopK Kernel in Long-Contex
+2026-06-09  http://arxiv.org/abs/2606.10651v1  Kwai Keye-VL-2.0 Technical Report
+2026-05-23  http://arxiv.org/abs/2605.24518v1  Grammatically-Guided Sparse Attention for Efficient and Interpretable Transformers
+2026-05-08  http://arxiv.org/abs/2605.07363v1  MISA: Mixture of Indexer Sparse Attention for Long-Context LLM Inference
+2026-04-24  http://arxiv.org/abs/2604.22312v1  Guess-Verify-Refine: Data-Aware Top-K for Sparse-Attention Decoding on Blackwell via Temporal C
+2026-03-30  http://arxiv.org/abs/2603.28458v3  HISA: Efficient Hierarchical Indexing for Fine-Grained Sparse Attention
+2026-03-12  http://arxiv.org/abs/2603.12201v1  IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse
+2025-12-02  http://arxiv.org/abs/2512.02556v1  DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models
+=== SEED: all:"MInference" ===
+2026-08-03  http://arxiv.org/abs/2608.02947v1  ATFlash: Per-RoPE-Wavelength Attention Windows for Compute/Memory-Efficient LLM Inference
+2025-12-16  http://arxiv.org/abs/2512.14082v1  A Unified Sparse Attention via Multi-Granularity Compression
+2025-10-21  http://arxiv.org/abs/2510.18830v2  MTraining: Distributed Dynamic Sparse Attention for Efficient Ultra-Long Context Training
+2025-05-28  http://arxiv.org/abs/2505.22918v4  Re-ttention: Ultra Sparse Visual Generation via Attention Statistical Reshape
+2024-07-02  http://arxiv.org/abs/2407.02490v2  MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention
+2015-02-24  http://arxiv.org/abs/1502.06671v1  Minfer: Inferring Motif Statistics From Sampled Edges
+=== SEED: all:"Quest: Query-Aware Sparsity" ===
+2024-06-16  http://arxiv.org/abs/2406.10774v2  Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference
+=== SEED: all:"SnapKV" ===
+2026-08-09  http://arxiv.org/abs/2608.08878v1  DistillCache: KL-Guided Adaptive KV-Cache Eviction for Memory-Efficient LLM Inference
+2026-07-27  http://arxiv.org/abs/2607.24667v1  Eviction as Estimation: A Fixed-Lag Smoothing View of Test-Time Memory, and When Measuring Beat
+2026-07-16  http://arxiv.org/abs/2607.15498v1  VarRate: Training-Free Variable-Rate KV Cache Compression for Long-Context LLMs
+2026-07-14  http://arxiv.org/abs/2607.13205v2  Adaptive Filtering of the KV Cache: Diagnosing and Correcting Structural-Role Bias in LLM Infer
+2026-07-11  http://arxiv.org/abs/2607.11942v1  How Query Visibility Changes KV-Cache Compression Rankings: A Matched-Budget Audit
+2026-06-09  http://arxiv.org/abs/2606.11164v1  ReasonAlloc: Hierarchical Decoding-Time KV Cache Budget Allocation for Reasoning Models
+2026-06-08  http://arxiv.org/abs/2606.09508v1  From Rigid to Dynamic: Entropy-Guided Adaptive Inference for Long-Context LLMs
+2026-06-01  http://arxiv.org/abs/2606.01790v1  STaR-KV: Spatio-Temporal Adaptive Re-weighting for KV Cache Compression in GUI Vision-Language 
+2026-05-27  http://arxiv.org/abs/2605.28640v1  Augmenting Attention with Exponentially Decaying Memory Improves Query-Aware KV Sparsity
+2026-05-18  http://arxiv.org/abs/2605.18053v1  Protection Is (Nearly) All You Need: Structural Protection Dominates Scoring in Globally Capped
+2026-05-03  http://arxiv.org/abs/2607.05399v1  Benchmarking KV-Cache Optimizations across Task Quality and System Performance for Long-Context
+2026-04-13  http://arxiv.org/abs/2604.11288v1  Transactional Attention: Semantic Sponsorship for KV-Cache Retention
+2026-03-20  http://arxiv.org/abs/2603.19664v1  The Residual Stream Is All You Need: On the Redundancy of the KV Cache in Transformer Inference
+2026-02-09  http://arxiv.org/abs/2602.08686v3  CompilerKV: Risk-Adaptive KV Compression via Offline Experience Compilation
+2026-02-03  http://arxiv.org/abs/2603.04411v1  One Size Does Not Fit All: Token-Wise Adaptive Compression for KV Cache
+2026-01-12  http://arxiv.org/abs/2601.07667v2  Adaptive Layer Selection for Layer-Wise Token Pruning in LLM Inference
+2025-12-12  http://arxiv.org/abs/2512.12008v1  Hold Onto That Thought: Assessing KV Cache Compression On Reasoning
+2025-11-05  http://arxiv.org/abs/2511.03092v6  SnapStream: Efficient Long Sequence Decoding on Dataflow Accelerators
+2025-10-23  http://arxiv.org/abs/2510.20707v2  Mixing Importance with Diversity: Joint Optimization for KV Cache Compression in Large Vision-L
+2025-09-30  http://arxiv.org/abs/2510.00231v2  The Pitfalls of KV Cache Compression
+2025-09-18  http://arxiv.org/abs/2509.15038v1  Value-Guided KV Compression for LLMs via Approximated CUR Decomposition
+2025-08-30  http://arxiv.org/abs/2509.00388v1  GraphKV: Breaking the Static Selection Paradigm with Graph-Based KV Cache Eviction
+2025-04-07  http://arxiv.org/abs/2504.04704v2  LagKV: Lag-Relative Information of the KV Cache Tells Which Tokens Are Important
+2025-03-30  http://arxiv.org/abs/2503.23274v1  PromptDistill: Query-based Selective Token Retention in Intermediate Layers for Efficient Large
+2025-03-04  http://arxiv.org/abs/2503.02812v1  Q-Filters: Leveraging QK Geometry for Efficient KV Cache Compression
+2024-09-25  http://arxiv.org/abs/2409.17422v1  Discovering the Gems in Early Layers: Accelerating Long-Context LLMs with 1000x Input Token Red
+2024-04-22  http://arxiv.org/abs/2404.14469v2  SnapKV: LLM Knows What You are Looking for Before Generation
+=== SEED: all:"Mixture of Depths" ===
+2026-07-15  http://arxiv.org/abs/2607.14334v1  MixCompress: Mixture of Experts for Variable Rate Learned Image Compression
+2026-07-11  http://arxiv.org/abs/2607.10203v3  Adaptive Compute in Latent World Models: When Depth Helps, Hurts, or Doesn't Matter
+2026-07-07  http://arxiv.org/abs/2607.06601v1  TriRoute: Unified Learned Routing for Joint Adaptive Attention, Experts, and KV-Cache Allocatio
+2026-06-15  http://arxiv.org/abs/2606.16112v1  Scaling Adaptive Depth with Norm-Agnostic Residual Networks
+2026-03-16  http://arxiv.org/abs/2603.15619v1  Mixture-of-Depths Attention
+2026-01-31  http://arxiv.org/abs/2602.00624v1  MoDEx: Mixture of Depth-specific Experts for Multivariate Long-term Time Series Forecasting
+2025-10-13  http://arxiv.org/abs/2510.13876v3  What Layers When: Learning to Skip Compute in LLMs with Residual Gates
+2025-06-27  http://arxiv.org/abs/2506.22389v1  Towards Distributed Neural Architectures
+2025-06-10  http://arxiv.org/abs/2506.08424v2  SHIELD: Multi-task Multi-distribution Vehicle Routing Solver with Sparsity and Hierarchy
+2025-05-20  http://arxiv.org/abs/2505.14864v2  Balanced and Elastic End-to-end Training of Dynamic LLMs
+2025-02-10  http://arxiv.org/abs/2502.06474v1  UniMoD: Efficient Unified Multimodal Transformers with Mixture-of-Depths
+2025-02-04  http://arxiv.org/abs/2502.02040v1  M2R2: Mixture of Multi-Rate Residuals for Efficient Transformer Inference
+2024-12-30  http://arxiv.org/abs/2412.20875v1  Attention Is All You Need For Mixture-of-Depths Routing
+2024-12-05  http://arxiv.org/abs/2412.04449v2  p-MoD: Building Mixture-of-Depths MLLMs via Progressive Ratio Decay
+2024-10-18  http://arxiv.org/abs/2410.14268v1  MoDification: Mixture of Depths Made Easy
+2024-10-17  http://arxiv.org/abs/2410.13859v1  $γ-$MoD: Exploring Mixture-of-Depth Adaptation for Multimodal Large Language Models
+2024-10-17  http://arxiv.org/abs/2410.13184v6  Router-Tuning: A Simple and Effective Approach for Enabling Dynamic-Depth in Transformers
+2024-10-16  http://arxiv.org/abs/2410.13077v2  Tuning Language Models by Mixture-of-Depths Ensemble
+2024-09-25  http://arxiv.org/abs/2409.17016v1  CNN Mixture-of-Depths
+2024-08-29  http://arxiv.org/abs/2408.16730v1  VideoLLM-MoD: Efficient Video-Language Streaming with Mixture-of-Depths Vision Computation
+2024-07-31  http://arxiv.org/abs/2407.21770v3  MoMa: Efficient Early-Fusion Pre-training with Mixture of Modality-Aware Experts
+2024-04-02  http://arxiv.org/abs/2404.02258v1  Mixture-of-Depths: Dynamically allocating compute in transformer-based language models
+2023-07-31  http://arxiv.org/abs/2307.16803v1  DPMix: Mixture of Depth and Point Cloud Video Experts for 4D Action Segmentation
+2020-09-30  http://arxiv.org/abs/2009.14486v1  Spectral investigation of Ceres analogue mixtures: in-depth analysis of crater central peak mat
+=== SEED: all:"Lightning Attention" ===
+2026-06-13  http://arxiv.org/abs/2606.15079v1  Ling and Ring 2.6 Technical Report: Efficient and Instant Agentic Intelligence at Trillion-Para
+2026-06-09  http://arxiv.org/abs/2606.10913v1  Conservation Laws from Data Symmetry in Neural Networks
+2026-02-12  http://arxiv.org/abs/2602.11761v2  MiniCPM-SALA: Hybridizing Sparse and Linear Attention for Efficient Long-Context Modeling
+2025-06-16  http://arxiv.org/abs/2506.13585v1  MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention
+2025-01-14  http://arxiv.org/abs/2501.08313v1  MiniMax-01: Scaling Foundation Models with Lightning Attention
+2024-05-27  http://arxiv.org/abs/2405.17381v2  Various Lengths, Constant Speed: Efficient Language Modeling with Lightning Attention
+2024-01-09  http://arxiv.org/abs/2401.04658v2  Lightning Attention-2: A Free Lunch for Handling Unlimited Sequence Lengths in Large Language M
+2023-07-27  http://arxiv.org/abs/2307.14995v2  TransNormerLLM: A Faster and Better Large Language Model with Improved TransNormer

@@ -1,0 +1,62 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{The decoupling insight (directional)}
+The cleanest reading of the factorial is that the two axes play different
+roles: \emph{routing granularity carries accuracy; KV content density only
+buys efficiency}. The control logic is internal to the design: the $(8,4)$
+cell (coarse content, fine router) matches or beats the equal-rate cells
+with half the attention columns, while the $(4,8)$ cell (fine content,
+coarse router) is the worst cell despite having the same columns as $(4,4)$.
+The per-seed consistency (7/10 in the same direction for each effect) and
+the effect-size-to-seed-noise comparison (both effects ${\sim}0.04$ vs.\
+within-cell std ${\sim}0.065$) mean we currently report this as a
+\emph{directional} finding; significance testing and a multi-dataset
+confirmation are the immediate next steps before this can be stated as a
+general design principle.
+
+\subsection{Why might compression help on this task?}
+We do not have a verified explanation for the compressed $>$ full-attention
+outcome, and we explicitly do not claim one. Candidate (unverified)
+explanations include: compression acting as an inductive-bias regularizer;
+the block structure effectively smoothing the attention field over
+multi-step correlations; and the fixed 10-epoch budget interacting with
+optimization landscape differences. Each is testable, and the
+pre-registered hypothesis program in the project plan is designed to
+separate them \todo{H1--H5 status per plan/paper\_notes.md \S 5; mechanistic
+analyses are pending}.
+
+\subsection{Limitations}
+\label{sec:limitations}
+\begin{itemize}
+  \item \textbf{Single dataset.} All results are on ETTh1 (7 features, the
+        smallest of the ETT family) at CPU-scale model sizes. No
+        cross-dataset or cross-scale generalization claim is made.
+        \todo{Gate 3: ETTh2/ETTm1/ETTm2, Electricity, Traffic, Weather,
+        Exchange; horizons $\{96, 192, 336, 720\}$}.
+  \item \textbf{Descriptive statistics.} Five paired seeds; no significance
+        tests, confidence intervals beyond the reported std, or equivalence
+        tests. ``Best on mean'' and ``directional'' are used advisedly.
+  \item \textbf{No external baselines.} Comparisons are internal to the
+        family plus the full-attention same-backbone baseline; PatchTST,
+        iTransformer, DLinear, Informer, and linear/SSM baselines under the
+        same protocol are pending \todo{Gate 3 baselines}.
+  \item \textbf{No latency or hardware results} for the frozen protocol;
+        complexity claims are structural only \todo{Gate 5}.
+  \item \textbf{Non-IID samples.} Stride-1 windows overlap heavily; samples
+        are not independent, which standard significance tests would
+        assume \todo{Gate 4: block bootstrap / HAC-robust tests}.
+  \item \textbf{Fixed budget, single checkpoint policy.} 10 epochs,
+        epoch-10 weights; no early stopping or best-validation selection.
+  \item \textbf{CPU-only, fp32, small models.} Dense-with-masking
+        implementation choices are CPU-oriented and may not transfer to
+        GPU-flash-attention regimes.
+\end{itemize}
+
+\subsection{What this paper does not claim}
+Consistent with the project's pre-registered warnings: this is not a novel
+sparse-attention mechanism; it is not a state-of-the-art forecasting
+system; the word ``equivalence'' is not used for any accuracy comparison;
+no subquadratic claim is made beyond the structural column counts above;
+and no component is claimed to be original. The contribution is the
+controlled study, its measurements, and its honest boundaries.

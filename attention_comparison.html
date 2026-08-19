@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Normal vs Flat vs ExpertPlusPlus — Visual Comparison</title>
+<style>
+:root{
+  --bg:#0d1117; --panel:#161b22; --panel2:#1c2128; --border:#30363d; --border2:#444c56;
+  --text:#e6edf3; --muted:#8b949e; --dim:#6e7681;
+  --blue:#58a6ff; --green:#3fb950; --gold:#e3b341; --red:#f85149; --purple:#bc8cff;
+  --blue-bg:rgba(88,166,255,.12); --green-bg:rgba(63,185,80,.12); --gold-bg:rgba(227,179,65,.12);
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.55;font-size:15px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px 80px}
+h1{font-size:28px;letter-spacing:-.02em;margin:34px 0 6px}
+h2{font-size:22px;margin:38px 0 14px;letter-spacing:-.01em}
+h3{font-size:17px;margin:22px 0 10px}
+h4{font-size:14px;margin:16px 0 8px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+p{margin:10px 0}
+a{color:var(--blue);text-decoration:none}
+code,.code{font-family:var(--mono);font-size:.86em;background:var(--panel2);border:1px solid var(--border);border-radius:5px;padding:1px 5px}
+pre{background:#010409;border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;font-family:var(--mono);font-size:12.5px;line-height:1.5;margin:12px 0}
+pre code{background:none;border:none;padding:0}
+.subtitle{color:var(--muted);font-size:15px;margin:0 0 6px}
+.meta{color:var(--dim);font-size:12.5px;margin-bottom:10px}
+
+/* ── tabs ── */
+.nav{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);margin:24px -24px 0;padding:0 24px}
+.tabs{display:flex;gap:2px;overflow-x:auto;max-width:1180px;margin:0 auto}
+.tab{padding:11px 16px;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;user-select:none}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--text);border-bottom-color:var(--gold)}
+.panel{display:none;animation:fade .25s ease}
+.panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* ── cards ── */
+.card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:16px 0}
+.card h3{margin-top:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:900px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+.stat{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.stat .v{font-size:24px;font-weight:700;font-family:var(--mono)}
+.stat .l{font-size:12px;color:var(--muted);margin-top:2px}
+.stat .s{font-size:11.5px;color:var(--dim);margin-top:2px}
+.blue{color:var(--blue)} .green{color:var(--green)} .gold{color:var(--gold)} .red{color:var(--red)} .muted{color:var(--muted)} .dim{color:var(--dim)}
+.big{font-family:var(--mono);font-size:15px;font-weight:700}
+
+/* callouts */
+.callout{border-left:3px solid var(--gold);background:var(--gold-bg);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+.callout.blue{border-color:var(--blue);background:var(--blue-bg)}
+.callout.green{border-color:var(--green);background:var(--green-bg)}
+.callout.red{border-color:var(--red);background:rgba(248,81,73,.08)}
+
+/* ── step stepper ── */
+.step{display:flex;gap:16px;margin:20px 0}
+.stepnum{flex:0 0 34px;height:34px;border-radius:50%;background:var(--panel2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-weight:700;font-family:var(--mono);font-size:14px;margin-top:2px}
+.step .body{flex:1;min-width:0}
+.step .body h4{margin:2px 0 6px;color:var(--text);text-transform:none;letter-spacing:0;font-size:15px}
+svg{max-width:100%;height:auto;display:block;margin:8px 0}
+.svginline{width:100%;height:auto}
+.figcap{font-size:12px;color:var(--dim);margin-top:4px}
+
+/* ── tables ── */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+th,td{padding:8px 10px;border:1px solid var(--border);text-align:left;vertical-align:top}
+th{background:var(--panel2);font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+td.num,th.num{text-align:right;font-family:var(--mono)}
+tr.hl td{background:var(--gold-bg)}
+td .pill{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:20px;font-weight:700;font-family:var(--mono)}
+.pill.blue{background:var(--blue-bg);color:var(--blue)} .pill.green{background:var(--green-bg);color:var(--green)} .pill.gold{background:var(--gold-bg);color:var(--gold)} .pill.red{background:rgba(248,81,73,.15);color:var(--red)}
+
+/* ── bars (JS charts) ── */
+.chart{margin:14px 0}
+.chart .row{display:flex;align-items:center;gap:10px;margin:7px 0}
+.chart .lab{flex:0 0 150px;font-size:12.5px;color:var(--muted);text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chart .track{flex:1;background:var(--panel2);border:1px solid var(--border);border-radius:6px;height:22px;position:relative;overflow:hidden}
+.chart .fill{height:100%;border-radius:5px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-family:var(--mono);font-size:11.5px;color:#fff;font-weight:700;min-width:44px;transition:width .6s ease}
+.chart .note{flex:0 0 110px;font-size:11px;color:var(--dim)}
+.chart.legend .row{margin:3px 0}
+.chart.legend .track{height:16px}
+
+/* tooltips */
+.tip{position:relative;border-bottom:1px dashed var(--border2);cursor:help}
+.tip:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#010409;border:1px solid var(--border2);border-radius:6px;padding:8px 10px;font-size:12px;color:var(--text);white-space:normal;width:240px;z-index:60;box-shadow:0 4px 16px rgba(0,0,0,.5);font-weight:400}
+.tip:hover::before{content:"";position:absolute;bottom:calc(100% + 2px);left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--border2);z-index:60}
+
+/* file tree */
+.tree{font-family:var(--mono);font-size:13px;line-height:1.7}
+.tree .d{color:var(--gold)}
+.tree .f{color:var(--text)}
+.tree .c{color:var(--dim)}
+
+/* badges */
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;margin-left:6px;vertical-align:middle}
+.badge.gold{background:var(--gold-bg);color:var(--gold)}
+.badge.green{background:var(--green-bg);color:var(--green)}
+.badge.red{background:rgba(248,81,73,.15);color:var(--red)}
+.chip{display:inline-block;font-size:11.5px;font-family:var(--mono);padding:2px 8px;border-radius:5px;border:1px solid var(--border2);background:var(--panel2);margin:2px 2px 2px 0;color:var(--muted)}
+ul,ol{padding-left:22px;margin:8px 0}
+li{margin:4px 0}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);margin:10px 0}
+.legend span{display:flex;align-items:center;gap:6px}
+.swatch{width:12px;height:12px;border-radius:3px;display:inline-block}
+.formula{font-family:var(--mono);font-size:13px;background:var(--panel2);border:1px solid var(--border);border-radius:6px;padding:8px 12px;margin:8px 0;overflow-x:auto}
+hr{border:none;border-top:1px solid var(--border);margin:26px 0}
+.hlbox{background:var(--panel2);border:1px solid var(--border2);border-radius:8px;padding:10px 14px;margin:8px 0;font-size:13px}
+.hlbox b{color:var(--gold)}
+.kbd{font-family:var(--mono);font-size:12px;background:var(--panel2);border:1px solid var(--border2);border-bottom-width:2px;border-radius:5px;padding:1px 6px}
+
+/* ── worked examples ── */
+.exwrap{border:1px solid var(--border2);border-radius:10px;overflow:hidden;margin:14px 0}
+.exwrap .extitle{background:var(--panel2);padding:8px 14px;font-family:var(--mono);font-size:12.5px;color:var(--gold);border-bottom:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center}
+.exwrap .exbody{padding:14px 16px;background:var(--panel)}
+.exwrap .exbody p{font-size:13.5px}
+table.ex{width:100%;border-collapse:collapse;margin:10px 0;font-family:var(--mono);font-size:12.5px}
+table.ex th{background:var(--panel2);padding:5px 8px;border:1px solid var(--border2);font-size:11px;color:var(--muted);text-transform:none;letter-spacing:0}
+table.ex td{padding:5px 8px;border:1px solid var(--border);text-align:center}
+table.ex td.lab{text-align:left;color:var(--muted)}
+table.ex tr.eq td{background:var(--gold-bg);font-weight:700;color:var(--gold)}
+table.ex tr.ans td{background:rgba(63,185,80,.14);color:var(--green);font-weight:700}
+table.ex td.fut{color:var(--red);font-weight:700}
+table.ex td.hl{background:rgba(248,81,73,.12);color:var(--red);font-weight:700}
+table.ex td.hl2{background:rgba(227,179,65,.16);color:var(--gold);font-weight:700}
+.arr{color:var(--muted);font-size:15px}
+.hint{font-size:12.5px;color:var(--dim);margin-top:6px}
+
+/* ── interactive explorer ── */
+.explorer{background:var(--panel);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:16px 0}
+.exp-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.exp-top label{font-size:13px;color:var(--muted);font-weight:600}
+.exp-top input[type=range]{flex:1;min-width:220px;accent-color:var(--gold)}
+.exp-top .qval{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--gold);min-width:64px;text-align:center}
+.trace{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:12px}
+@media(max-width:900px){.trace{grid-template-columns:1fr}}
+.tracecard{border:1px solid var(--border);border-radius:10px;padding:12px 14px;background:var(--panel2)}
+.tracecard h5{margin:0 0 6px;font-size:13px;display:flex;align-items:center;gap:6px}
+.tracecard .tl{font-size:12px;color:var(--muted);line-height:1.55}
+.tracecard .num{font-family:var(--mono);font-size:16px;font-weight:700;display:block;margin:4px 0}
+.tracecard svg{width:100%;height:auto}
+.stripwrap{background:#010409;border:1px solid var(--border);border-radius:8px;padding:10px 8px 4px;margin:10px 0}
+.stripwrap .slab{font-size:11px;color:var(--muted);margin-bottom:4px;font-family:var(--mono)}
+.statrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.mini{display:inline-block;font-size:11px;font-family:var(--mono);padding:2px 8px;border-radius:5px;border:1px solid var(--border2);background:var(--panel);color:var(--muted)}
+.mini b{color:var(--text)}
+.legendx{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin:10px 0 4px}
+.legendx span{display:inline-flex;align-items:center;gap:5px}
+
+/* ── input→output flow animations ── */
+.animwrap{border:1px solid var(--border2);border-radius:12px;background:var(--panel);margin:16px 0;overflow:hidden}
+.anim-head{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--panel2);border-bottom:1px solid var(--border2)}
+.anim-title{font-family:var(--mono);font-size:13px;color:var(--gold);font-weight:700}
+.anim-btn{background:var(--green-bg);color:var(--green);border:1px solid var(--green);border-radius:6px;padding:4px 14px;font-family:var(--mono);font-size:12px;font-weight:700;cursor:pointer;transition:transform .1s}
+.anim-btn:hover{transform:scale(1.04)}
+.anim-btn:active{transform:scale(.97)}
+.anim-status{font-family:var(--mono);font-size:11.5px;color:var(--dim);margin-left:auto}
+.animwrap svg{width:100%;height:auto;display:block}
+.anim-node{transition:opacity .25s ease, fill .25s ease, stroke .25s ease}
+.anim-flow{stroke-dasharray:6 5;animation:flowdash 1s linear infinite}
+@keyframes flowdash{to{stroke-dashoffset:-11}}
+.anim-pulse{animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.anim-glow{filter:drop-shadow(0 0 6px currentColor)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>⚡ Normal vs Flat vs ExpertPlusPlus</h1>
+<p class="subtitle">A step-by-step visual dissection of three causal attention mechanisms for long-sequence time-series forecasting (ETTh1, lookback 256, horizon 96).</p>
+<p class="meta">All diagrams are drawn from the actual code in this repository (<span class="code">normal_attention.py</span>, <span class="code">attention.py</span>, <span class="code">expert_plus_plus_attention.py</span>). Every number is measured, not estimated. CPU-only Apple Silicon, fp32, seed 42, 10 epochs.</p>
+
+<div class="nav"><div class="tabs">
+  <div class="tab active" data-target="p-overview">📊 Overview</div>
+  <div class="tab" data-target="p-normal">🧱 Normal</div>
+  <div class="tab" data-target="p-flat">🌿 Flat</div>
+  <div class="tab" data-target="p-epp">🏆 ExpertPlusPlus</div>
+  <div class="tab" data-target="p-vs">⚔️ Side-by-Side</div>
+  <div class="tab" data-target="p-repro">🔬 Reproduce</div>
+</div></div>
+
+<!-- ═══════════════════════════ OVERVIEW ═══════════════════════════ -->
+<section id="p-overview" class="panel active">
+
+<div class="grid4">
+  <div class="stat"><div class="v blue">Normal</div><div class="l">vanilla full self-attention</div><div class="s">O(S²) · 256 cols · no compression</div></div>
+  <div class="stat"><div class="v green">Flat</div><div class="l">CSA V4 · two-series compressor</div><div class="s">4:1 KV + 4:1 routing · 96 cols</div></div>
+  <div class="stat"><div class="v gold">ExpertPlusPlus</div><div class="l">decoupled granularity CSA</div><div class="s">8:1 KV + 4:1 routing · 48 cols</div></div>
+  <div class="stat"><div class="v">🏆 1.32×</div><div class="l">faster than Flat (fwd)</div><div class="s">at statistically tied val accuracy</div></div>
+</div>
+
+<h2>The one-sentence insight</h2>
+<div class="callout"><b>Routing granularity carries accuracy; KV content density only buys speed.</b><br>
+ExpertPlusPlus keeps Flat's fine 4:1 router (64 index tokens) but halves the attention matrix by attending to 8:1-compressed KV blocks. A naive "ExpertFlat" (8:1 on <i>both</i> axes) lost accuracy (0.1102) because the router got coarser too.</div>
+
+<h2>Shared Transformer block — only the attention module differs</h2>
+<p>All three models wrap their attention in the <i>identical</i> minimal Transformer block (<span class="code">CSATimeSeriesModel</span>, <span class="code">model.py</span>). The only difference between the three variants is the middle box.</p>
+
+<svg viewBox="0 0 980 330" class="svginline" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#8b949e"/></marker>
+    <linearGradient id="gBlue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6feb"/><stop offset="1" stop-color="#58a6ff"/></linearGradient>
+    <linearGradient id="gGreen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#238636"/><stop offset="1" stop-color="#3fb950"/></linearGradient>
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9e6a03"/><stop offset="1" stop-color="#e3b341"/></linearGradient>
+  </defs>
+  <!-- input -->
+  <rect x="20" y="120" width="120" height="44" rx="8" fill="#1c2128" stroke="#444c56"/>
+  <text x="80" y="139" text-anchor="middle" fill="#e6edf3" font-size="12" font-family="Menlo,monospace">x</text>
+  <text x="80" y="155" text-anchor="middle" fill="#8b949e" font-size="10.5">[B,256,7]</text>
+  <text x="80" y="108" text-anchor="middle" fill="#6e7681" font-size="11">ETTh1 window</text>
+  <line x1="140" y1="142" x2="170" y2="142" stroke="#8b949e" marker-end="url(#arr)"/>
+  <!-- input proj -->
+  <rect x="172" y="120" width="110" height="44" rx="8" fill="#1c2128" stroke="#444c56"/>
+  <text x="227" y="139" text-anchor="middle" fill="#e6edf3" font-size="11">input_proj</text>
+  <text x="227" y="155" text-anchor="middle" fill="#8b949e" font-size="10">Linear 7→128</text>
+  <line x1="282" y1="142" x2="312" y2="142" stroke="#8b949e" marker-end="url(#arr)"/>
+  <!-- + pos emb -->
+  <rect x="314" y="120" width="100" height="44" rx="8" fill="#1c2128" stroke="#444c56"/>
+  <text x="364" y="139" text-anchor="middle" fill="#e6edf3" font-size="11">+ pos_emb</text>
+  <text x="364" y="155" text-anchor="middle" fill="#8b949e" font-size="10">learned (1,256,128)</text>
+  <line x1="414" y1="142" x2="444" y2="142" stroke="#8b949e" marker-end="url(#arr)"/>
+  <!-- attention module -->
+  <rect x="446" y="60" width="180" height="164" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="536" y="82" text-anchor="middle" fill="#8b949e" font-size="11">◈ ATTENTION</text>
+  <!-- 3 variant chips -->
+  <rect x="458" y="94" width="156" height="30" rx="6" fill="rgba(88,166,255,.12)" stroke="#58a6ff"/>
+  <text x="536" y="113" text-anchor="middle" fill="#58a6ff" font-size="10.5">Normal · 256 cols</text>
+  <rect x="458" y="130" width="156" height="30" rx="6" fill="rgba(63,185,80,.12)" stroke="#3fb950"/>
+  <text x="536" y="149" text-anchor="middle" fill="#3fb950" font-size="10.5">Flat · 96 cols</text>
+  <rect x="458" y="166" width="156" height="30" rx="6" fill="rgba(227,179,65,.12)" stroke="#e3b341"/>
+  <text x="536" y="185" text-anchor="middle" fill="#e3b341" font-size="10.5">ExpertPlusPlus · 48 cols</text>
+  <text x="536" y="210" text-anchor="middle" fill="#6e7681" font-size="9.5">residual add + LayerNorm</text>
+  <line x1="626" y1="142" x2="656" y2="142" stroke="#8b949e" marker-end="url(#arr)"/>
+  <!-- MLP -->
+  <rect x="658" y="120" width="100" height="44" rx="8" fill="#1c2128" stroke="#444c56"/>
+  <text x="708" y="139" text-anchor="middle" fill="#e6edf3" font-size="11">MLP</text>
+  <text x="708" y="155" text-anchor="middle" fill="#8b949e" font-size="10">128→512→128</text>
+  <line x1="758" y1="142" x2="788" y2="142" stroke="#8b949e" marker-end="url(#arr)"/>
+  <!-- out -->
+  <rect x="790" y="120" width="120" height="44" rx="8" fill="#1c2128" stroke="#444c56"/>
+  <text x="850" y="139" text-anchor="middle" fill="#e6edf3" font-size="11">output_proj</text>
+  <text x="850" y="155" text-anchor="middle" fill="#8b949e" font-size="10">Linear 128→7</text>
+  <line x1="910" y1="142" x2="940" y2="142" stroke="#8b949e" marker-end="url(#arr)"/>
+  <text x="960" y="146" fill="#8b949e" font-size="11">out</text>
+  <!-- residual loop -->
+  <path d="M536 224 V 252 H 214 V 224" fill="none" stroke="#6e7681" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+  <text x="375" y="268" text-anchor="middle" fill="#6e7681" font-size="10.5">residual skip (×2: attn &amp; MLP)</text>
+  <text x="375" y="296" text-anchor="middle" fill="#8b949e" font-size="11">loss = MSE( out[:, -96:, :], y[:, -96:, :] )  — only the last 96 positions count</text>
+</svg>
+<div class="figcap">Fig. 0 — The block is identical for all three; attention columns per query are 256 / 96 / 48 (plus 1 sink for the CSA variants).</div>
+
+<h2>Headline numbers</h2>
+<div class="grid3">
+  <div class="stat"><div class="v blue">0.1083</div><div class="l">Normal — val MSE</div><div class="s">test 0.1637 · 102,496 params · 38.31 ms fwd*</div></div>
+  <div class="stat"><div class="v green">0.1085</div><div class="l">Flat — val MSE</div><div class="s">test 0.1617 · 144,548 params · 29.66 ms fwd†</div></div>
+  <div class="stat"><div class="v gold">0.1099</div><div class="l">ExpertPlusPlus — val MSE</div><div class="s">test 0.1654 · 95,652 params · 22.42 ms fwd†</div></div>
+</div>
+<div class="grid3">
+  <div class="stat"><div class="v gold">1.32×</div><div class="l">faster than Flat (forward)</div><div class="s">29.66 → 22.42 ms, head-to-head</div></div>
+  <div class="stat"><div class="v">+0.0014</div><div class="l">val gap vs Flat</div><div class="s">inside the ±0.002 run-to-run band</div></div>
+  <div class="stat"><div class="v gold">405.9</div><div class="l">Perf/Spd score (EPP)</div><div class="s">(1/ValMSE)/FwdMs×1000 · Flat: 310.7</div></div>
+</div>
+<p class="meta">* single sequential run (variance caveat — see Reproduce tab). † alternating head-to-head measurement (authoritative).</p>
+
+<h2>What "column" means here</h2>
+<p>Every query position runs a softmax over a set of <b>key columns</b>, then takes a weighted sum of the corresponding values. The number of columns is the single biggest cost driver:</p>
+<div id="chart-cols" class="chart legend"></div>
+<div class="figcap">Fig. 1 — Softmax width per query. CSA variants also append 1 learnable <b>sink</b> logit (dropped after softmax, so it only affects normalization).</div>
+
+</section>
+
+<!-- ═══════════════════════════ NORMAL ═══════════════════════════ -->
+<section id="p-normal" class="panel">
+<h2>🧱 Normal Attention — vanilla full self-attention</h2>
+<p class="subtitle">Standard quadratic attention with causal masking. <span class="code">normal_attention.py</span>, class <span class="code">NormalAttention</span>. Params: <b class="blue">102,496</b>. Complexity: <b>O(S²)</b> in time and memory.</p>
+
+<div class="animwrap">
+  <div class="anim-head">
+    <span class="anim-title">▶ Input → Output flow</span>
+    <button class="anim-btn" id="btn-normal">Play</button>
+    <span class="anim-status" id="st-normal">ready</span>
+  </div>
+  <svg id="anim-normal" class="svginline" viewBox="0 0 980 150"></svg>
+</div>
+
+<h3>The full pipeline, from raw tokens to output — one continuous flow</h3>
+<p>This is the entire journey of the input through Normal attention, top to bottom. Each stage shows the tensor shape it produces. Follow the arrows — nothing is skipped.</p>
+<svg viewBox="0 0 980 720" class="svginline">
+  <defs>
+    <marker id="arrN" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8b949e"/></marker>
+  </defs>
+  <!-- 1 raw -->
+  <rect x="40" y="10" width="900" height="56" rx="8" fill="#1c2128" stroke="#444c56"/>
+  <text x="60" y="34" fill="#8b949e" font-size="11" font-family="Menlo,monospace">1 · raw input</text>
+  <text x="60" y="54" fill="#e6edf3" font-size="12.5">x — ETTh1 window</text>
+  <text x="880" y="46" text-anchor="end" fill="#58a6ff" font-size="12" font-family="Menlo,monospace">[B, 256, 7]</text>
+  <line x1="180" y1="76" x2="180" y2="104" stroke="#8b949e" marker-end="url(#arrN)"/>
+  <!-- 2 input_proj -->
+  <rect x="30" y="106" width="300" height="56" rx="8" fill="#1c2128" stroke="#58a6ff"/>
+  <text x="60" y="126" fill="#8b949e" font-size="11" font-family="Menlo,monospace">2 · input_proj + pos_emb</text>
+  <text x="60" y="146" fill="#e6edf3" font-size="12.5">Linear 7→128 + learned pos</text>
+  <text x="880" y="136" text-anchor="end" fill="#58a6ff" font-size="12" font-family="Menlo,monospace">h [B, 256, 128]</text>
+  <line x1="180" y1="132" x2="180" y2="160" stroke="#8b949e" marker-end="url(#arrN)"/>
+  <!-- 3 q -->
+  <rect x="30" y="162" width="300" height="56" rx="8" fill="#1c2128" stroke="#58a6ff"/>
+  <text x="60" y="182" fill="#8b949e" font-size="11" font-family="Menlo,monospace">3 · q_a → q_b → RoPE</text>
+  <text x="60" y="202" fill="#e6edf3" font-size="12.5">LoRA 128→64→128, 4 heads</text>
+  <text x="880" y="192" text-anchor="end" fill="#58a6ff" font-size="12" font-family="Menlo,monospace">q [B, 4, 256, 32]</text>
+  <line x1="180" y1="218" x2="180" y2="246" stroke="#8b949e" marker-end="url(#arrN)"/>
+  <!-- 4 kv -->
+  <rect x="30" y="248" width="300" height="56" rx="8" fill="#1c2128" stroke="#3fb950"/>
+  <text x="60" y="268" fill="#8b949e" font-size="11" font-family="Menlo,monospace">4 · kv_proj → RoPE</text>
+  <text x="60" y="288" fill="#e6edf3" font-size="12.5">tied K=V, single KV head</text>
+  <text x="880" y="258" text-anchor="end" fill="#3fb950" font-size="12" font-family="Menlo,monospace">k = v [1, 256, 32]</text>
+  <line x1="180" y1="304" x2="180" y2="332" stroke="#8b949e" marker-end="url(#arrN)"/>
+  <!-- 5 scores -->
+  <rect x="30" y="334" width="300" height="56" rx="8" fill="rgba(88,166,255,.14)" stroke="#58a6ff" stroke-width="1.5"/>
+  <text x="60" y="354" fill="#8b949e" font-size="11" font-family="Menlo,monospace">5 · scores = q·kᵀ/√32</text>
+  <text x="60" y="374" fill="#e6edf3" font-size="12.5">full S×S matmul</text>
+  <text x="880" y="344" text-anchor="end" fill="#f85149" font-size="12" font-family="Menlo,monospace">[4, 256, 256]</text>
+  <text x="880" y="362" text-anchor="end" fill="#f85149" font-size="10.5">O(S²) — the cost</text>
+  <line x1="180" y1="390" x2="180" y2="418" stroke="#8b949e" marker-end="url(#arrN)"/>
+  <!-- 6 mask -->
+  <rect x="30" y="420" width="300" height="56" rx="8" fill="#1c2128" stroke="#f85149"/>
+  <text x="60" y="440" fill="#8b949e" font-size="11" font-family="Menlo,monospace">6 · causal mask</text>
+  <text x="60" y="460" fill="#e6edf3" font-size="12.5">triu(−∞, diagonal=1)</text>
+  <text x="880" y="450" text-anchor="end" fill="#f85149" font-size="12" font-family="Menlo,monospace">future → −∞</text>
+  <line x1="180" y1="476" x2="180" y2="504" stroke="#8b949e" marker-end="url(#arrN)"/>
+  <!-- 7 softmax -->
+  <rect x="30" y="506" width="300" height="56" rx="8" fill="#1c2128" stroke="#58a6ff"/>
+  <text x="60" y="526" fill="#8b949e" font-size="11" font-family="Menlo,monospace">7 · softmax(dim=−1)</text>
+  <text x="60" y="546" fill="#e6edf3" font-size="12.5">row-normalize over 256 keys</text>
+  <text x="880" y="536" text-anchor="end" fill="#58a6ff" font-size="12" font-family="Menlo,monospace">probs [4, 256, 256]</text>
+  <line x1="180" y1="562" x2="180" y2="590" stroke="#8b949e" marker-end="url(#arrN)"/>
+  <!-- 8 weighted sum -->
+  <rect x="30" y="592" width="300" height="56" rx="8" fill="#1c2128" stroke="#3fb950"/>
+  <text x="60" y="612" fill="#8b949e" font-size="11" font-family="Menlo,monospace">8 · attn_out = probs·v</text>
+  <text x="60" y="632" fill="#e6edf3" font-size="12.5">weighted sum of values</text>
+  <text x="880" y="622" text-anchor="end" fill="#3fb950" font-size="12" font-family="Menlo,monospace">[4, 256, 32]</text>
+  <line x1="180" y1="648" x2="180" y2="676" stroke="#8b949e" marker-end="url(#arrN)"/>
+  <!-- 9 output -->
+  <rect x="30" y="678" width="300" height="56" rx="8" fill="rgba(63,185,80,.2)" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="60" y="698" fill="#8b949e" font-size="11" font-family="Menlo,monospace">9 · grouped O → MLP → out</text>
+  <text x="60" y="718" fill="#e6edf3" font-size="12.5">o_a 32→128, o_b 512→128</text>
+  <text x="880" y="708" text-anchor="end" fill="#3fb950" font-size="12" font-family="Menlo,monospace">out [B, 256, 7]</text>
+</svg>
+<div class="figcap">Fig. 2b — Normal's full pipeline. The whole cost is stage 5: a 256×256 matmul per head. Everything else is cheap.</div>
+
+<div class="step"><div class="stepnum">1</div><div class="body">
+<h4>Project inputs to Q, K, V (identical to the CSA variants)</h4>
+<svg viewBox="0 0 980 200" class="svginline">
+  <!-- x -->
+  <rect x="20" y="70" width="90" height="40" rx="7" fill="#1c2128" stroke="#444c56"/>
+  <text x="65" y="90" text-anchor="middle" fill="#e6edf3" font-size="11.5">h</text>
+  <text x="65" y="105" text-anchor="middle" fill="#8b949e" font-size="9.5">[B,256,128]</text>
+  <!-- q_a -->
+  <line x1="110" y1="90" x2="150" y2="90" stroke="#58a6ff" marker-end="url(#arr)"/>
+  <rect x="152" y="30" width="120" height="44" rx="7" fill="#1c2128" stroke="#58a6ff"/>
+  <text x="212" y="49" text-anchor="middle" fill="#e6edf3" font-size="11">q_a_proj</text>
+  <text x="212" y="65" text-anchor="middle" fill="#8b949e" font-size="9.5">Linear 128→64</text>
+  <line x1="272" y1="52" x2="296" y2="52" stroke="#58a6ff" marker-end="url(#arr)"/>
+  <rect x="298" y="30" width="74" height="44" rx="7" fill="#1c2128" stroke="#58a6ff"/>
+  <text x="335" y="49" text-anchor="middle" fill="#e6edf3" font-size="11">RMSNorm</text>
+  <text x="335" y="65" text-anchor="middle" fill="#8b949e" font-size="9.5">(64)</text>
+  <line x1="372" y1="52" x2="396" y2="52" stroke="#58a6ff" marker-end="url(#arr)"/>
+  <rect x="398" y="30" width="110" height="44" rx="7" fill="#1c2128" stroke="#58a6ff"/>
+  <text x="453" y="49" text-anchor="middle" fill="#e6edf3" font-size="11">q_b_proj</text>
+  <text x="453" y="65" text-anchor="middle" fill="#8b949e" font-size="9.5">Linear 64→4·32</text>
+  <line x1="508" y1="52" x2="532" y2="52" stroke="#58a6ff" marker-end="url(#arr)"/>
+  <rect x="534" y="30" width="104" height="44" rx="7" fill="#1c2128" stroke="#58a6ff"/>
+  <text x="586" y="49" text-anchor="middle" fill="#e6edf3" font-size="11">q_b_norm</text>
+  <text x="586" y="65" text-anchor="middle" fill="#8b949e" font-size="9.5">unweighted RMS</text>
+  <line x1="638" y1="52" x2="662" y2="52" stroke="#58a6ff" marker-end="url(#arr)"/>
+  <rect x="664" y="30" width="110" height="44" rx="7" fill="rgba(88,166,255,.14)" stroke="#58a6ff" stroke-width="1.5"/>
+  <text x="719" y="49" text-anchor="middle" fill="#58a6ff" font-size="11">RoPE</text>
+  <text x="719" y="65" text-anchor="middle" fill="#8b949e" font-size="9.5">last 8 of 32 dims</text>
+  <text x="719" y="110" text-anchor="middle" fill="#e6edf3" font-size="11.5" font-family="Menlo,monospace">q  [B,4,256,32]</text>
+  <!-- kv -->
+  <line x1="110" y1="100" x2="150" y2="150" stroke="#3fb950" marker-end="url(#arr)"/>
+  <rect x="152" y="128" width="110" height="44" rx="7" fill="#1c2128" stroke="#3fb950"/>
+  <text x="207" y="147" text-anchor="middle" fill="#e6edf3" font-size="11">kv_proj</text>
+  <text x="207" y="163" text-anchor="middle" fill="#8b949e" font-size="9.5">Linear 128→32</text>
+  <line x1="262" y1="150" x2="286" y2="150" stroke="#3fb950" marker-end="url(#arr)"/>
+  <rect x="288" y="128" width="74" height="44" rx="7" fill="#1c2128" stroke="#3fb950"/>
+  <text x="325" y="147" text-anchor="middle" fill="#e6edf3" font-size="11">RMSNorm</text>
+  <text x="325" y="163" text-anchor="middle" fill="#8b949e" font-size="9.5">(32)</text>
+  <line x1="362" y1="150" x2="386" y2="150" stroke="#3fb950" marker-end="url(#arr)"/>
+  <rect x="388" y="128" width="110" height="44" rx="7" fill="rgba(63,185,80,.14)" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="443" y="147" text-anchor="middle" fill="#3fb950" font-size="11">RoPE</text>
+  <text x="443" y="163" text-anchor="middle" fill="#8b949e" font-size="9.5">same cos/sin</text>
+  <text x="540" y="150" text-anchor="middle" fill="#e6edf3" font-size="11.5" font-family="Menlo,monospace">k = v  [B,1,256,32]</text>
+  <text x="540" y="168" text-anchor="middle" fill="#6e7681" font-size="10">tied K=V, single KV head broadcast over 4 Q heads</text>
+</svg>
+<div class="figcap">Fig. 2 — Q via LoRA-style 128→64→128 with RMSNorms, K=V via a single 128→32 head. RoPE rotates only the last <code>head_dim/4 = 8</code> channels (base 10000).</div>
+</div></div>
+
+<div class="step"><div class="stepnum">2</div><div class="body">
+<h4>Full S×S score matrix + causal mask — <span class="red">this is the O(S²) cost</span></h4>
+<svg viewBox="0 0 980 300" class="svginline">
+  <!-- q column -->
+  <rect x="40" y="60" width="34" height="170" rx="4" fill="rgba(88,166,255,.14)" stroke="#58a6ff"/>
+  <text x="57" y="250" text-anchor="middle" fill="#58a6ff" font-size="10">q</text>
+  <line x1="74" y1="145" x2="150" y2="145" stroke="#8b949e" marker-end="url(#arr)"/>
+  <!-- scores grid -->
+  <g>
+    <!-- cells -->
+    <g id="normal-grid"></g>
+  </g>
+  <text x="160" y="286" text-anchor="middle" fill="#8b949e" font-size="10.5">scores = q·kᵀ / √32   [B,4,256,256]</text>
+  <!-- k row -->
+  <line x1="300" y1="36" x2="300" y2="60" stroke="#8b949e" marker-end="url(#arr)"/>
+  <rect x="283" y="6" width="34" height="26" rx="4" fill="rgba(63,185,80,.14)" stroke="#3fb950"/>
+  <text x="300" y="23" text-anchor="middle" fill="#3fb950" font-size="9">k</text>
+  <!-- causal legend -->
+  <g transform="translate(520,40)">
+    <rect x="0" y="0" width="24" height="24" fill="rgba(88,166,255,.25)" stroke="#58a6ff"/>
+    <text x="32" y="16" fill="#8b949e" font-size="11">allowed (past + self)</text>
+    <rect x="0" y="34" width="24" height="24" fill="#21262d" stroke="#30363d"/>
+    <text x="32" y="50" fill="#8b949e" font-size="11">masked → −∞ (future)</text>
+    <rect x="0" y="68" width="24" height="24" fill="#f85149" fill-opacity=".25" stroke="#f85149"/>
+    <text x="32" y="84" fill="#8b949e" font-size="11">diagonal = self-token</text>
+  </g>
+  <text x="760" y="80" fill="#e6edf3" font-size="12" font-family="Menlo,monospace">triu(−∞, diagonal=1)</text>
+  <text x="760" y="110" fill="#8b949e" font-size="11.5">Cells = 256 × 256 = 65,536 per head.</text>
+  <text x="760" y="128" fill="#8b949e" font-size="11.5">At S=4096 that is 16.7M cells —</text>
+  <text x="760" y="146" fill="#8b949e" font-size="11.5">this is what the CSA variants avoid.</text>
+</svg>
+<div class="figcap">Fig. 3 — Every query attends to <i>every</i> previous key. (Grid is schematic — real matrix is 256×256 per head.)</div>
+<div class="exwrap"><div class="extitle">Where the scores come from — one cell at a time</div><div class="exbody">
+<p>Each cell in the grid is a <b>scaled dot product</b> between one query vector and one key vector. In code (<span class="code">attention.py</span>, <span class="code">_attend</span>):</p>
+<div class="formula">attn_weights = matmul(q, kᵀ) · (head_dim)⁻¹ᐟ²&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;q · k / √32</div>
+<p>Concretely, for query position <b>i</b> and key position <b>j</b>, the score is the sum over the 32 channels:</p>
+<div class="formula">score(i, j) = Σₘ q[i, m] · k[j, m] / √32</div>
+<p>So the <b>row</b> of the grid is fixed by the query (which position is asking), and the <b>column</b> is fixed by the key (which position is being asked about). The <span class="code">/ √32</span> is a stabilizer: it keeps the dot products from growing with the vector length, so the softmax in Step 3 doesn't saturate. The causal mask then overwrites the upper triangle (future columns) with <span class="code">−∞</span>.</p>
+<p class="hint">The worked example below (Step B) does exactly this arithmetic by hand for a 2-dim world: q₂ = [−0.4, 0.9] dotted with each key gives −0.15, 0.75, 0.29, −0.45.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">The matmul shapes — before and after</div><div class="exbody">
+<p>Here is exactly what the matrix multiply consumes and produces, with the <b>contraction dimension</b> (the one that sums away) highlighted:</p>
+<table class="ex">
+<tr><th>tensor</th><th>shape</th><th>meaning</th></tr>
+<tr><td>q</td><td>[B, 4, 256, <b>32</b>]</td><td>4 heads × 256 queries × 32 dims</td></tr>
+<tr><td>k</td><td>[B, 4, 256, <b>32</b>]</td><td>4 heads × 256 keys × 32 dims</td></tr>
+<tr><td>kᵀ (transposed)</td><td>[B, 4, <b>32</b>, 256]</td><td>swap last two axes → keys become columns</td></tr>
+<tr class="ans"><td>scores = q · kᵀ</td><td>[B, 4, 256, 256]</td><td>256 queries × 256 keys — the 32 dims summed away</td></tr>
+</table>
+<p>The rule: <span class="code">matmul(A, B)</span> contracts the <b>last axis of A</b> with the <b>second-to-last axis of B</b>. Here <span class="code">q [B,4,256,32]</span> × <span class="code">kᵀ [B,4,32,256]</span> → the shared <b>32</b> is the contraction dim, leaving <span class="code">[B,4,256,256]</span>. Each output cell <span class="code">[b,h,i,j]</span> = Σₘ q[b,h,i,m]·k[b,h,j,m] — the dot product of query i with key j.</p>
+<p class="hint">The <span class="code">/ √32</span> scaling happens after the matmul, element-wise, so it doesn't change the shape.</p>
+</div></div>
+</div></div>
+
+<div class="step"><div class="stepnum">3</div><div class="body">
+<h4>Softmax over the 256 columns → weighted sum of values</h4>
+<div class="formula">probs = softmax( scores + causal_mask , dim = −1 )&nbsp;&nbsp;&nbsp;attn_out = probs · v</div>
+<p>Row-normalized: each query's attention weights sum to 1 over its 256 allowed keys. The output is <span class="code">[B,4,256,32]</span>. Then RoPE is <b>rotated back</b> with <span class="code">−sin</span> (undoing the query rotation so the output stays in an unrotated basis before the O projection).</p>
+</div></div>
+
+<div class="step"><div class="stepnum">4</div><div class="body">
+<h4>Grouped O projection → hidden size</h4>
+<svg viewBox="0 0 980 150" class="svginline">
+  <rect x="20" y="50" width="150" height="42" rx="7" fill="#1c2128" stroke="#444c56"/>
+  <text x="95" y="70" text-anchor="middle" fill="#e6edf3" font-size="11">attn_out [B,4,256,32]</text>
+  <text x="95" y="85" text-anchor="middle" fill="#8b949e" font-size="9.5">(after −sin rotate back)</text>
+  <line x1="170" y1="71" x2="200" y2="71" stroke="#8b949e" marker-end="url(#arr)"/>
+  <rect x="202" y="50" width="150" height="42" rx="7" fill="#1c2128" stroke="#8b949e"/>
+  <text x="277" y="70" text-anchor="middle" fill="#e6edf3" font-size="11">o_a_proj (Grouped)</text>
+  <text x="277" y="85" text-anchor="middle" fill="#8b949e" font-size="9.5">4 groups · out 4×128=512</text>
+  <line x1="352" y1="71" x2="382" y2="71" stroke="#8b949e" marker-end="url(#arr)"/>
+  <rect x="384" y="50" width="150" height="42" rx="7" fill="#1c2128" stroke="#8b949e"/>
+  <text x="459" y="70" text-anchor="middle" fill="#e6edf3" font-size="11">o_b_proj</text>
+  <text x="459" y="85" text-anchor="middle" fill="#8b949e" font-size="9.5">Linear 512→128</text>
+  <line x1="534" y1="71" x2="564" y2="71" stroke="#8b949e" marker-end="url(#arr)"/>
+  <rect x="566" y="50" width="120" height="42" rx="7" fill="#1c2128" stroke="#444c56"/>
+  <text x="626" y="70" text-anchor="middle" fill="#e6edf3" font-size="11">out [B,256,128]</text>
+  <text x="626" y="85" text-anchor="middle" fill="#8b949e" font-size="9.5">→ MLP → output_proj</text>
+</svg>
+<div class="figcap">Fig. 4 — Normal uses <code>o_lora_rank = 128</code> (same as Flat; EPP halves it to 64).</div>
+<div class="exwrap"><div class="extitle">How the grouping works — heads stay separate, then merge</div><div class="exbody">
+<p>The input is <span class="code">attn_out [B, 4, 256, 32]</span> — 4 heads, each a 32-dim vector per position. The trick: <b>each head is projected by its own small matrix, not all heads by one big matrix.</b> In code (<span class="code">attention.py</span>, <span class="code">forward</span>):</p>
+<div class="formula">grouped = attn_out.transpose(1,2).reshape(B, S, 4, 32)&nbsp;&nbsp;→&nbsp;&nbsp;o_a_proj&nbsp;&nbsp;→&nbsp;&nbsp;flatten(2)&nbsp;&nbsp;→&nbsp;&nbsp;o_b_proj</div>
+<p>Step by step:</p>
+<table class="ex">
+<tr><th>step</th><th>shape</th><th>what happens</th></tr>
+<tr><td>attn_out</td><td>[B, 4, 256, 32]</td><td>4 heads × 32 dims</td></tr>
+<tr><td>transpose + reshape</td><td>[B, 256, 4, 32]</td><td>reorder so the 4 heads sit on their own axis</td></tr>
+<tr><td>o_a_proj (Grouped)</td><td>[B, 256, 4, 128]</td><td>each of the 4 heads: 32 → 128, <b>independently</b></td></tr>
+<tr><td>flatten(2)</td><td>[B, 256, 512]</td><td>concatenate the 4 × 128 back into one 512-dim vector</td></tr>
+<tr><td>o_b_proj</td><td>[B, 256, 128]</td><td>Linear 512 → 128, back to hidden size</td></tr>
+</table>
+<p>So <b>grouping = 4 separate 32→128 projections</b> (one per head) instead of one 128→512. The <span class="code">GroupedLinear</span> class implements this as a single <span class="code">nn.Linear(512, 32)</span> whose weight is reshaped to <span class="code">(4, 128, 32)</span> and applied per-group with a batched matmul — so it is <b>one</b> parameter tensor of <span class="code">512 × 32 = 16,384</span> params, <i>not</i> 4 separate 512×32 matrices.</p>
+<p class="hint">Why do it this way? It lets each head keep its own output subspace (no cross-head mixing in the low-rank step), while sharing the single <span class="code">o_b_proj</span> that merges them. EPP shrinks the per-head rank from 128 → 64, cutting this weight from 16,384 → 8,192 params — the single biggest parameter saving.</p>
+</div></div>
+</div></div>
+
+<h3>Worked example — trace one query by hand (tiny world: S = 4, head_dim = 2)</h3>
+<p>To see the arithmetic, shrink the world: <b>S = 4 tokens</b>, <b>head_dim = 2</b>. Suppose projection + RoPE already produced these vectors for one head (values chosen to be round):</p>
+
+<div class="exwrap"><div class="extitle">Step A — the 4 key vectors (k = v, tied)</div><div class="exbody">
+<table class="ex">
+<tr><th>position</th><th>k (and v)</th></tr>
+<tr><td>0</td><td>[0.6, 0.1]</td></tr>
+<tr><td>1</td><td>[−0.3, 0.7]</td></tr>
+<tr><td>2</td><td>[0.4, 0.5]</td></tr>
+<tr><td>3</td><td>[0.9, −0.1]</td></tr>
+</table>
+</div></div>
+
+<div class="exwrap"><div class="extitle">Step B — pick query 2 (q₂ = [−0.4, 0.9]) and compute all 4 dot products</div><div class="exbody">
+<p>scores = q₂ · kᵀ (skip the √D scaling for readability):</p>
+<table class="ex">
+<tr><th>col</th><th>k</th><th>dot with q₂</th><th>note</th></tr>
+<tr><td>0</td><td>[0.6, 0.1]</td><td>−0.4·0.6 + 0.9·0.1 = <b>−0.15</b></td><td>past ✓</td></tr>
+<tr><td>1</td><td>[−0.3, 0.7]</td><td>−0.4·(−0.3) + 0.9·0.7 = <b>0.75</b></td><td>past ✓</td></tr>
+<tr><td>2</td><td>[0.4, 0.5]</td><td>−0.4·0.4 + 0.9·0.5 = <b>0.29</b></td><td>self ✓</td></tr>
+<tr><td>3</td><td>[0.9, −0.1]</td><td>−0.4·0.9 + 0.9·(−0.1) = <b>−0.45</b></td><td>future → <span class="fut">−∞</span></td></tr>
+</table>
+<p class="hint">The causal mask sets column 3 to −∞ — the query must never see the future. Everything else is kept.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">Step C — softmax over the 4 columns</div><div class="exbody">
+<table class="ex">
+<tr><th>col</th><th>logit</th><th>e^logit</th><th>prob = e/Σe</th></tr>
+<tr><td>0</td><td>−0.15</td><td>0.861</td><td>0.199</td></tr>
+<tr><td>1</td><td>0.75</td><td>2.117</td><td><b>0.491</b></td></tr>
+<tr><td>2</td><td>0.29</td><td>1.336</td><td>0.310</td></tr>
+<tr><td>3</td><td>−∞</td><td>0</td><td>0</td></tr>
+<tr class="eq"><td colspan="2">sum Σe</td><td colspan="2">0.861 + 2.117 + 1.336 + 0 = 4.314</td></tr>
+</table>
+<p class="hint">Position 1 (score 0.75) gets the largest weight — the query will "listen" to it most.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">Step D — weighted sum of values</div><div class="exbody">
+<p>attn_out = 0.199·v₀ + 0.491·v₁ + 0.310·v₂ + 0·v₃</p>
+<table class="ex">
+<tr><th>term</th><th>computation</th></tr>
+<tr><td>0.199·[0.6, 0.1]</td><td>[0.119, 0.020]</td></tr>
+<tr><td>0.491·[−0.3, 0.7]</td><td>[−0.147, 0.344]</td></tr>
+<tr><td>0.310·[0.4, 0.5]</td><td>[0.124, 0.155]</td></tr>
+<tr class="ans"><td>attn_out(q₂)</td><td>[0.096, 0.519]</td></tr>
+</table>
+<p class="hint">This 2-dim vector is then rotated back (−sin RoPE) and fed to the grouped O projection. <b>The real model does exactly this but with 256 positions × 4 heads × 32 dims — 65,536 dot products per head per sequence.</b></p>
+</div></div>
+
+<h3>Why it is slow</h3>
+<div class="card"><ul>
+<li><b>Quadratic:</b> the score matrix is S×S per head → 256×256 = 65,536 cells per head at S=256.</li>
+<li><b>No reuse:</b> every query sees every key; there is no compression and no caching of history.</li>
+<li><b>Yet also the most accurate baseline</b> — it never loses information, hence the lowest val MSE (0.1083).</li>
+</ul></div>
+
+</section>
+
+<!-- ═══════════════════════════ FLAT ═══════════════════════════ -->
+<section id="p-flat" class="panel">
+<h2>🌿 Flat (CSA V4) — two-series compressor + flat indexer</h2>
+<p class="subtitle"><span class="code">attention.py</span>, class <span class="code">CSAAttention</span>. Params: <b class="green">144,548</b>. Attention columns per query: <b>96</b> = 32 (full-res window) + 64 (compressed blocks) + 1 sink. Compression 4:1 on <i>both</i> the KV content and the routing index.</p>
+
+<div class="animwrap">
+  <div class="anim-head">
+    <span class="anim-title">▶ Input → Output flow</span>
+    <button class="anim-btn" id="btn-flat">Play</button>
+    <span class="anim-status" id="st-flat">ready</span>
+  </div>
+  <svg id="anim-flat" class="svginline" viewBox="0 0 980 150"></svg>
+</div>
+
+<h3>The full pipeline, from raw tokens to output — one continuous flow</h3>
+<p>Flat's entire journey, top to bottom. The compression (stages 3–6) runs <b>once per sequence</b>; the router and dense attention (stages 7–9) run <b>per query</b>. Follow the arrows.</p>
+<svg viewBox="0 0 980 760" class="svginline">
+  <defs>
+    <marker id="arrF" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8b949e"/></marker>
+  </defs>
+  <!-- 1 raw -->
+  <rect x="40" y="10" width="900" height="50" rx="8" fill="#1c2128" stroke="#444c56"/>
+  <text x="60" y="30" fill="#8b949e" font-size="11" font-family="Menlo,monospace">1 · raw input</text>
+  <text x="60" y="48" fill="#e6edf3" font-size="12.5">x — ETTh1 window</text>
+  <text x="880" y="40" text-anchor="end" fill="#58a6ff" font-size="12" font-family="Menlo,monospace">[B, 256, 7]</text>
+  <line x1="180" y1="70" x2="180" y2="96" stroke="#8b949e" marker-end="url(#arrF)"/>
+  <!-- 2 h -->
+  <rect x="30" y="98" width="300" height="50" rx="8" fill="#1c2128" stroke="#58a6ff"/>
+  <text x="60" y="118" fill="#8b949e" font-size="11" font-family="Menlo,monospace">2 · input_proj + pos_emb</text>
+  <text x="60" y="136" fill="#e6edf3" font-size="12.5">Linear 7→128 + learned pos</text>
+  <text x="880" y="128" text-anchor="end" fill="#58a6ff" font-size="12" font-family="Menlo,monospace">h [B, 256, 128]</text>
+  <line x1="180" y1="148" x2="180" y2="174" stroke="#8b949e" marker-end="url(#arrF)"/>
+  <!-- 3 kv_proj -->
+  <rect x="30" y="176" width="300" height="50" rx="8" fill="#1c2128" stroke="#3fb950"/>
+  <text x="60" y="196" fill="#8b949e" font-size="11" font-family="Menlo,monospace">3 · kv_proj → RoPE</text>
+  <text x="60" y="214" fill="#e6edf3" font-size="12.5">tied K=V, single KV head</text>
+  <text x="880" y="206" text-anchor="end" fill="#3fb950" font-size="12" font-family="Menlo,monospace">k = v [1, 256, 32]</text>
+  <line x1="180" y1="226" x2="180" y2="252" stroke="#8b949e" marker-end="url(#arrF)"/>
+  <!-- 4 slot assembly -->
+  <rect x="30" y="254" width="340" height="50" rx="8" fill="rgba(227,179,65,.14)" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="60" y="274" fill="#8b949e" font-size="11" font-family="Menlo,monospace">4 · slot assembly (2m = 8) — on k = v</text>
+  <text x="60" y="292" fill="#e6edf3" font-size="12.5">carried + fresh, per block</text>
+  <text x="880" y="284" text-anchor="end" fill="#e3b341" font-size="12" font-family="Menlo,monospace">64 blocks × 8 slots</text>
+  <line x1="180" y1="304" x2="180" y2="330" stroke="#8b949e" marker-end="url(#arrF)"/>
+  <!-- 5 softmax -->
+  <rect x="30" y="332" width="340" height="50" rx="8" fill="rgba(227,179,65,.14)" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="60" y="352" fill="#8b949e" font-size="11" font-family="Menlo,monospace">5 · per-dim softmax over 8</text>
+  <text x="60" y="370" fill="#e6edf3" font-size="12.5">channel-wise overlap gating</text>
+  <text x="880" y="362" text-anchor="end" fill="#e3b341" font-size="12" font-family="Menlo,monospace">runs ONCE / seq</text>
+  <line x1="180" y1="382" x2="180" y2="408" stroke="#8b949e" marker-end="url(#arrF)"/>
+  <!-- 6 compressed -->
+  <rect x="30" y="410" width="340" height="50" rx="8" fill="rgba(227,179,65,.14)" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="60" y="430" fill="#8b949e" font-size="11" font-family="Menlo,monospace">6 · weighted sum → RMSNorm → RoPE</text>
+  <text x="60" y="448" fill="#e6edf3" font-size="12.5">64 blocks, each 32-dim (= head_dim)</text>
+  <text x="880" y="440" text-anchor="end" fill="#e3b341" font-size="12" font-family="Menlo,monospace">[1, 64, 32]</text>
+  <line x1="180" y1="460" x2="180" y2="486" stroke="#8b949e" marker-end="url(#arrF)"/>
+  <!-- 7 router -->
+  <rect x="30" y="488" width="340" height="50" rx="8" fill="rgba(88,166,255,.14)" stroke="#58a6ff" stroke-width="1.5"/>
+  <text x="60" y="508" fill="#8b949e" font-size="11" font-family="Menlo,monospace">7 · router (top-16)</text>
+  <text x="60" y="526" fill="#e6edf3" font-size="12.5">q_idx · compressed_idxᵀ → topk</text>
+  <text x="880" y="518" text-anchor="end" fill="#58a6ff" font-size="12" font-family="Menlo,monospace">16 blocks / query</text>
+  <line x1="180" y1="538" x2="180" y2="564" stroke="#8b949e" marker-end="url(#arrF)"/>
+  <!-- 8 dense -->
+  <rect x="30" y="566" width="340" height="50" rx="8" fill="rgba(88,166,255,.14)" stroke="#58a6ff" stroke-width="1.5"/>
+  <text x="60" y="586" fill="#8b949e" font-size="11" font-family="Menlo,monospace">8 · dense attention (97 cols)</text>
+  <text x="60" y="604" fill="#e6edf3" font-size="12.5">32 window + 64 blocks + 1 sink</text>
+  <text x="880" y="596" text-anchor="end" fill="#58a6ff" font-size="12" font-family="Menlo,monospace">[4, 256, 97]</text>
+  <line x1="180" y1="616" x2="180" y2="642" stroke="#8b949e" marker-end="url(#arrF)"/>
+  <!-- 9 output -->
+  <rect x="30" y="644" width="300" height="50" rx="8" fill="rgba(63,185,80,.2)" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="60" y="664" fill="#8b949e" font-size="11" font-family="Menlo,monospace">9 · grouped O → MLP → out</text>
+  <text x="60" y="682" fill="#e6edf3" font-size="12.5">o_a 32→128, o_b 512→128</text>
+  <text x="880" y="674" text-anchor="end" fill="#3fb950" font-size="12" font-family="Menlo,monospace">out [B, 256, 7]</text>
+</svg>
+<div class="figcap">Fig. 5b — Flat's full pipeline. Stages 3–6 (compression) are a one-time setup; stages 7–9 repeat for every query. The win: stage 8 touches 97 columns, not 256.</div>
+
+<div class="exwrap"><div class="extitle">Stage 4 — what exactly is being compressed? (k, not q)</div><div class="exbody">
+<p>The compressor runs on the <b>key/value stream only</b> — the <span class="code">k = v</span> tensor from stage 3, shape <span class="code">[1, 256, 32]</span>. The query <span class="code">q</span> is <b>never compressed</b>; it stays at full 256 positions and is used later (stage 7) to <i>ask</i> which compressed blocks to look at.</p>
+<p>In code (<span class="code">attention.py</span>, <span class="code">_flat_two_series_compress</span>):</p>
+<div class="formula">comp_kv = kv_proj(hidden_states[:, :usable])&nbsp;&nbsp;→&nbsp;&nbsp;[B, 64, 4, 2·32]</div>
+<p>Each of the 256 k/v tokens is projected to <span class="code">2·32 = 64</span> channels — a <b>first half</b> (the "fresh" content) and a <b>second half</b> (the "carried" content). These halves are what get placed into the 8 slots of each block. So the answer to "is it k, v, or q?": it is <b>k = v</b> (tied), and q is untouched.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">Stage 6 — where does the 32 dimension come from?</div><div class="exbody">
+<p>The 32 is <b>not</b> invented by the compressor — it is the <b>head dimension</b> <span class="code">head_dim = 32</span>, the same width as every key/value vector. The compressor never changes the per-vector width; it only changes <i>how many</i> vectors there are (256 → 64).</p>
+<table class="ex">
+<tr><th>stage</th><th>shape</th><th>what changed</th></tr>
+<tr><td>3 · kv_proj</td><td>[1, 256, 32]</td><td>256 tokens, each 32-dim</td></tr>
+<tr><td>4 · slots</td><td>[64, 8, 32]</td><td>64 blocks × 8 slots, each slot still 32-dim</td></tr>
+<tr><td>5 · softmax</td><td>[64, 8, 32]</td><td>weights over the 8 slots, per channel</td></tr>
+<tr><td>6 · weighted sum</td><td>[1, 64, 32]</td><td>8 slots → 1, width stays 32</td></tr>
+</table>
+<p>The <span class="code">2·dim</span> in stage 4 is a <b>temporary</b> doubling (fresh + carried halves) that the softmax recombines; the output width is back to <span class="code">dim = 32</span>. So <span class="code">[1, 64, 32]</span> = 64 blocks × 32-dim keys, ready to be dotted with the 32-dim queries.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">Stage 8 — 16 blocks per query, but 97 columns? The math</div><div class="exbody">
+<p>The router picks <b>16 blocks per query</b>, but the dense attention still runs over <b>all 97 columns</b>. These are two different things:</p>
+<div class="formula">97 columns = 32 (sliding window) + 64 (all blocks) + 1 (sink)</div>
+<p>The router's 16 choices are <b>not</b> used to shrink the matrix. Instead, they become a <b>mask</b>: the 16 chosen blocks get a score of <span class="code">0</span>, and the other 48 blocks get <span class="code">−∞</span> (so their softmax weight is exactly 0). The GEMM still computes all 97 columns — on CPU, a dense GEMM over 97 columns beats a per-query gather+bmm even though only ~16 blocks are "used".</p>
+<p>So the <span class="code">16</span> is the <i>routing</i> budget (which history matters), and the <span class="code">97</span> is the <i>compute</i> width (what the matmul actually touches). They are decoupled by design.</p>
+</div></div>
+
+<div class="callout blue"><b>The two-series compressor (the core idea).</b> Consecutive blocks overlap by one window: each block's first half of slots carry the <i>previous</i> window's tokens, the second half carry the <i>current</i> window's tokens. A <b>per-dimension softmax over 2m=8 slots</b> decides, for each output channel independently, whether to trust the carried-over memory or the fresh token. This is not pooling — it is learned, channel-wise, position-aware gating.</div>
+
+<!-- COMPRESSOR DIAGRAM (shared) -->
+<h3>The compressor, step by step (m = 4 for Flat)</h3>
+<svg viewBox="0 0 980 430" class="svginline">
+  <defs>
+    <linearGradient id="gA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2ea043"/><stop offset="1" stop-color="#1a7f37"/></linearGradient>
+    <linearGradient id="gB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3b341"/><stop offset="1" stop-color="#9e6a03"/></linearGradient>
+  </defs>
+  <!-- input tokens -->
+  <text x="30" y="30" fill="#8b949e" font-size="11">raw tokens</text>
+  <g transform="translate(30,40)">
+    <g id="tokens-a"></g>
+  </g>
+  <text x="330" y="120" fill="#6e7681" font-size="10">window W₀ = positions 0–3</text>
+  <text x="560" y="120" fill="#6e7681" font-size="10">window W₁ = positions 4–7</text>
+  <!-- proj arrow -->
+  <line x1="480" y1="120" x2="480" y2="150" stroke="#8b949e" marker-end="url(#arr)"/>
+  <text x="545" y="140" fill="#8b949e" font-size="10.5">kv_proj → 2·dim per token: [first half | second half]</text>
+  <!-- slot assembly -->
+  <text x="30" y="180" fill="#8b949e" font-size="11">slot assembly (2m = 8 slots per block)</text>
+  <!-- block 0 -->
+  <rect x="30" y="196" width="400" height="64" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="230" y="190" text-anchor="middle" fill="#6e7681" font-size="10">Block 0</text>
+  <g transform="translate(38,204)">
+    <!-- 8 slots -->
+    <rect x="0" y="0" width="42" height="44" fill="#21262d" stroke="#30363d"/><text x="21" y="30" text-anchor="middle" fill="#6e7681" font-size="9">0</text>
+    <rect x="46" y="0" width="42" height="44" fill="#21262d" stroke="#30363d"/><text x="67" y="30" text-anchor="middle" fill="#6e7681" font-size="9">0</text>
+    <rect x="92" y="0" width="42" height="44" fill="#21262d" stroke="#30363d"/><text x="113" y="30" text-anchor="middle" fill="#6e7681" font-size="9">0</text>
+    <rect x="138" y="0" width="42" height="44" fill="#21262d" stroke="#30363d"/><text x="159" y="30" text-anchor="middle" fill="#6e7681" font-size="9">0</text>
+    <rect x="184" y="0" width="42" height="44" fill="#238636" stroke="#2ea043"/><text x="205" y="30" text-anchor="middle" fill="#fff" font-size="9">B₀</text>
+    <rect x="230" y="0" width="42" height="44" fill="#238636" stroke="#2ea043"/><text x="251" y="30" text-anchor="middle" fill="#fff" font-size="9">B₁</text>
+    <rect x="276" y="0" width="42" height="44" fill="#238636" stroke="#2ea043"/><text x="297" y="30" text-anchor="middle" fill="#fff" font-size="9">B₂</text>
+    <rect x="322" y="0" width="42" height="44" fill="#238636" stroke="#2ea043"/><text x="343" y="30" text-anchor="middle" fill="#fff" font-size="9">B₃</text>
+    <text x="184" y="64" text-anchor="middle" fill="#6e7681" font-size="9">2nd halves of W₀ (positions 0–3)</text>
+    <text x="55" y="64" text-anchor="middle" fill="#6e7681" font-size="9">no prev window → 0</text>
+  </g>
+  <!-- block 1 -->
+  <rect x="470" y="196" width="440" height="64" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="690" y="190" text-anchor="middle" fill="#6e7681" font-size="10">Block 1</text>
+  <g transform="translate(478,204)">
+    <rect x="0" y="0" width="42" height="44" fill="#e3b341" stroke="#d29922"/><text x="21" y="30" text-anchor="middle" fill="#000" font-size="9">A₀</text>
+    <rect x="46" y="0" width="42" height="44" fill="#e3b341" stroke="#d29922"/><text x="67" y="30" text-anchor="middle" fill="#000" font-size="9">A₁</text>
+    <rect x="92" y="0" width="42" height="44" fill="#e3b341" stroke="#d29922"/><text x="113" y="30" text-anchor="middle" fill="#000" font-size="9">A₂</text>
+    <rect x="138" y="0" width="42" height="44" fill="#e3b341" stroke="#d29922"/><text x="159" y="30" text-anchor="middle" fill="#000" font-size="9">A₃</text>
+    <rect x="184" y="0" width="42" height="44" fill="#238636" stroke="#2ea043"/><text x="205" y="30" text-anchor="middle" fill="#fff" font-size="9">B₄</text>
+    <rect x="230" y="0" width="42" height="44" fill="#238636" stroke="#2ea043"/><text x="251" y="30" text-anchor="middle" fill="#fff" font-size="9">B₅</text>
+    <rect x="276" y="0" width="42" height="44" fill="#238636" stroke="#2ea043"/><text x="297" y="30" text-anchor="middle" fill="#fff" font-size="9">B₆</text>
+    <rect x="322" y="0" width="42" height="44" fill="#238636" stroke="#2ea043"/><text x="343" y="30" text-anchor="middle" fill="#fff" font-size="9">B₇</text>
+    <text x="80" y="64" text-anchor="middle" fill="#6e7681" font-size="9">1st halves of W₀ (tokens 0–3)</text>
+    <text x="253" y="64" text-anchor="middle" fill="#6e7681" font-size="9">2nd halves of W₁ (tokens 4–7)</text>
+  </g>
+  <!-- softmax -->
+  <line x1="230" y1="268" x2="230" y2="290" stroke="#8b949e" marker-end="url(#arr)"/>
+  <line x1="690" y1="268" x2="690" y2="290" stroke="#8b949e" marker-end="url(#arr)"/>
+  <rect x="60" y="292" width="340" height="34" rx="7" fill="rgba(227,179,65,.12)" stroke="#e3b341"/>
+  <text x="230" y="313" text-anchor="middle" fill="#e3b341" font-size="11">per-dimension softmax over 8 slots (gate = gate_proj + pos_bias)</text>
+  <rect x="500" y="292" width="380" height="34" rx="7" fill="rgba(227,179,65,.12)" stroke="#e3b341"/>
+  <text x="690" y="313" text-anchor="middle" fill="#e3b341" font-size="11">softmax over 8 slots · weighted sum · RMSNorm · RoPE</text>
+  <!-- output -->
+  <line x1="230" y1="326" x2="230" y2="348" stroke="#8b949e" marker-end="url(#arr)"/>
+  <line x1="690" y1="326" x2="690" y2="348" stroke="#8b949e" marker-end="url(#arr)"/>
+  <rect x="150" y="350" width="160" height="44" rx="8" fill="rgba(227,179,65,.2)" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="230" y="369" text-anchor="middle" fill="#e3b341" font-size="11.5" font-family="Menlo,monospace">compressed₀</text>
+  <text x="230" y="385" text-anchor="middle" fill="#8b949e" font-size="9.5">covers [0,3] · pos 0</text>
+  <rect x="610" y="350" width="160" height="44" rx="8" fill="rgba(227,179,65,.2)" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="690" y="369" text-anchor="middle" fill="#e3b341" font-size="11.5" font-family="Menlo,monospace">compressed₁</text>
+  <text x="690" y="385" text-anchor="middle" fill="#8b949e" font-size="9.5">covers [0,7] · pos 4</text>
+</svg>
+<div class="figcap">Fig. 5 — The two-series overlap: block w mixes the <b>first halves of window w−1's tokens</b> (gold, the carried memory) with the <b>second halves of window w's own tokens</b> (green). Each of the 32 output channels independently softmaxes over the 8 slots. RoPE is applied at the block start position (4w).</div>
+
+<h3>Worked example — the compressor on tiny vectors</h3>
+<p>Take a <b>2-dimension world</b> (real: 32 dims). Two windows of m = 4 tokens, each token a 2-dim vector (assume already projected by <span class="code">kv_proj</span>):</p>
+
+<div class="exwrap"><div class="extitle">The 8 tokens · window W₀ = tokens 0–3, window W₁ = tokens 4–7</div><div class="exbody">
+<table class="ex">
+<tr><th>token</th><th>d₀</th><th>d₁</th><th>belongs to</th></tr>
+<tr><td>t₀</td><td>1.00</td><td>0.00</td><td>W₀</td></tr>
+<tr><td>t₁</td><td>0.50</td><td>0.50</td><td>W₀</td></tr>
+<tr><td>t₂</td><td>0.00</td><td>1.00</td><td>W₀</td></tr>
+<tr><td>t₃</td><td>0.25</td><td>0.75</td><td>W₀</td></tr>
+<tr><td>t₄</td><td>1.00</td><td>1.00</td><td>W₁</td></tr>
+<tr><td>t₅</td><td>0.00</td><td>0.00</td><td>W₁</td></tr>
+<tr><td>t₆</td><td>0.50</td><td>0.00</td><td>W₁</td></tr>
+<tr><td>t₇</td><td>1.00</td><td>0.50</td><td>W₁</td></tr>
+</table>
+</div></div>
+
+<div class="exwrap"><div class="extitle">Building block 1 (the one that covers W₁ = tokens 4–7) — 8 slots</div><div class="exbody">
+<p>Slots [0,4) hold the <b>first halves of W₀'s tokens</b> (the carried memory); slots [4,8) hold the <b>second halves of W₁'s tokens</b> (the fresh content). The gate network <span class="code">gate_proj(h) + pos_bias</span> produces 8 gate vectors, softmaxed <i>per dimension</i> (columns here are the two dimensions):</p>
+<table class="ex">
+<tr><th>slot</th><th>source</th><th>value d₀</th><th>value d₁</th><th>gate w·d₀</th><th>gate w·d₁</th></tr>
+<tr><td>0</td><td>t₀ 1st half</td><td>1.00</td><td>0.00</td><td>0.05</td><td>0.20</td></tr>
+<tr><td>1</td><td>t₁ 1st half</td><td>0.50</td><td>0.50</td><td>0.10</td><td>0.05</td></tr>
+<tr><td>2</td><td>t₂ 1st half</td><td>0.00</td><td>1.00</td><td>0.05</td><td>0.30</td></tr>
+<tr><td>3</td><td>t₃ 1st half</td><td>0.25</td><td>0.75</td><td>0.10</td><td>0.05</td></tr>
+<tr><td>4</td><td>t₄ 2nd half</td><td>1.00</td><td>1.00</td><td>0.25</td><td>0.15</td></tr>
+<tr><td>5</td><td>t₅ 2nd half</td><td>0.00</td><td>0.00</td><td>0.10</td><td>0.05</td></tr>
+<tr><td>6</td><td>t₆ 2nd half</td><td>0.50</td><td>0.00</td><td>0.20</td><td>0.10</td></tr>
+<tr><td>7</td><td>t₇ 2nd half</td><td>1.00</td><td>0.50</td><td>0.15</td><td>0.10</td></tr>
+</table>
+<p class="hint">Each gate column sums to 1 (that's the per-dimension softmax). <b>d₀ mostly trusts t₄ (0.25) and t₆ (0.20) — fresh signal; d₁ mostly trusts t₂ (0.30) and t₄ (0.15) — carried memory.</b> The two channels can disagree about what to keep. This is why it beats plain averaging/pooling.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">The weighted sum → compressed₁</div><div class="exbody">
+<table class="ex">
+<tr><th>dim</th><th>computation</th><th>result</th></tr>
+<tr><td>d₀</td><td>0.05(1.0)+0.10(0.5)+0.05(0)+0.10(0.25)+0.25(1.0)+0.10(0)+0.20(0.5)+0.15(1.0)</td><td class="hl2">= 0.625</td></tr>
+<tr><td>d₁</td><td>0.20(0)+0.05(0.5)+0.30(1.0)+0.05(0.75)+0.15(1.0)+0.05(0)+0.10(0)+0.10(0.5)</td><td class="hl2">= 0.5625</td></tr>
+</table>
+<p class="hint">Then RMSNorm + RoPE at position 4. The same procedure runs for every block w = 0…63, producing the 64 compressed KV vectors the router points at.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">⚠️ The key insight — this 8-slot sum runs ONCE per sequence, not once per query</div><div class="exbody">
+<p>This is the part that's easy to miss. The compressor's weighted sum is <b>amortized</b>: it is computed <b>one time for the whole sequence</b>, before any query is processed. Every one of the 256 query positions then <i>reuses</i> the same 64 compressed blocks.</p>
+<table class="ex">
+<tr><th></th><th>Normal (no compression)</th><th>Flat (compressed)</th></tr>
+<tr><td>What each query attends to</td><td>256 raw keys</td><td>32 window keys + 16 selected blocks</td></tr>
+<tr><td>Per-query dot products</td><td>256</td><td>32 + 16 = <b>48</b></td></tr>
+<tr><td>Compression work</td><td>none</td><td>64 blocks × 8 slots = 512 sums, <b>once</b></td></tr>
+<tr><td>Total dot products (256 queries)</td><td>256 × 256 = <b>65,536</b></td><td>256 × 48 + 512 ≈ <b>12,800</b></td></tr>
+</table>
+<p>So the compression is <b>not</b> "8 times the work per query" — it's a <b>one-time setup cost</b> that shrinks the per-query attention from 256 columns to 48. The 8-slot sum you traced above is done <i>once</i> for block 1, and the result <span class="code">compressed₁</span> is then shared by all 256 queries. That's the whole point: <b>pay the compression once, attend cheaply many times.</b></p>
+<p class="hint">In the tiny example: 8 tokens → 2 blocks. The 8-slot sums run twice (once per block). Then each query attends to just 2 blocks instead of 8 raw tokens. The savings grow with sequence length — at S=256 it's 65,536 vs ~12,800 dot products.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">What happens to each block, and how they're combined — the full pipeline</div><div class="exbody">
+<p>You asked: after splitting into blocks, what happens to each one, and how are they combined again? Here is the complete journey of the 8 tokens → 2 blocks → final output, in order:</p>
+<table class="ex">
+<tr><th>#</th><th>stage</th><th>what happens</th><th>result</th></tr>
+<tr><td>1</td><td>Split</td><td>8 tokens grouped into 2 windows of 4 (W₀ = t₀…t₃, W₁ = t₄…t₇)</td><td>2 windows</td></tr>
+<tr><td>2</td><td>Project</td><td>each token → <span class="code">kv_proj</span> → 2·dim vector: <b>[first half | second half]</b></td><td>8 × 2-dim</td></tr>
+<tr><td>3</td><td>Assemble slots</td><td>block 1's 8 slots = first halves of W₀ (carried memory) + second halves of W₁ (fresh)</td><td>8 slots</td></tr>
+<tr><td>4</td><td>Gate</td><td>per-dimension softmax over the 8 slots → 8 weights per channel</td><td>8 weights × 2 dims</td></tr>
+<tr><td>5</td><td>Weighted sum</td><td>Σ slot_value × gate_weight → one 2-dim vector</td><td><b>compressed₁</b> = [0.625, 0.5625]</td></tr>
+<tr><td>6</td><td>Normalize + RoPE</td><td>RMSNorm, then rotate at position 4</td><td>final block vector</td></tr>
+<tr><td>7</td><td>Repeat</td><td>same for block 0 → <b>compressed₀</b></td><td>2 blocks total</td></tr>
+<tr><td>8</td><td>Router</td><td>each query scores the 2 blocks, picks top-k (here k=2, both)</td><td>2 selected</td></tr>
+<tr><td>9</td><td>Attend</td><td>query softmaxes over the 2 block columns (+ window), weighted-sum their values</td><td>attn_out</td></tr>
+<tr><td>10</td><td>Combine</td><td>attn_out → grouped O projection → hidden size</td><td>final output</td></tr>
+</table>
+<p>The crucial point is <b>steps 1–7 happen once</b> (amortized), and <b>steps 8–10 happen per query</b> but on the tiny 2-block set. The blocks are <i>not</i> re-combined into 8 tokens — they stay compressed, and the query just attends to the compressed summaries. That's the entire trick.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">"Does it always split into 2?" — No. The 2 is the two-series, not the block count</div><div class="exbody">
+<p>This is the most common confusion. The <b>2</b> in the diagram is the <b>two-series</b>: every block has <b>2m slots</b> = <b>m carried-over + m fresh</b>. It is a <i>constant</i> — it never changes with sequence length.</p>
+<p>The <b>number of blocks</b> is a different number: <span class="code">n_win = S ÷ m</span>. It grows with the sequence. The example above used 8 tokens with m=4, so it happened to make 2 blocks — but that's a coincidence of the toy size, not a rule.</p>
+<table class="ex">
+<tr><th>sequence length S</th><th>window m</th><th>blocks n_win = S/m</th><th>slots per block</th></tr>
+<tr><td>8</td><td>4</td><td>2</td><td>2m = 8</td></tr>
+<tr><td>16</td><td>4</td><td class="hl2">4</td><td>2m = 8</td></tr>
+<tr><td>32</td><td>4</td><td class="hl2">8</td><td>2m = 8</td></tr>
+<tr><td>256 (real config)</td><td>4</td><td class="hl2">64</td><td>2m = 8</td></tr>
+</table>
+<p class="hint">So: <b>slots-per-block stays 8 forever</b> (that's the "two-series"), but <b>the block count grows with S</b>. More tokens → more blocks, each still just 8 slots. The compression ratio is always m:1 (here 4:1), so 256 tokens → 64 blocks.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">From scratch — 16 tokens → 4 blocks, the full input flow</div><div class="exbody">
+<p>Let's trace 16 raw tokens (m = 4) end-to-end, so you see exactly how the input flows. The windows are W₀ = tokens 0–3, W₁ = 4–7, W₂ = 8–11, W₃ = 12–15.</p>
+<table class="ex">
+<tr><th>block</th><th>slots [0,4) = carried (1st halves of prev window)</th><th>slots [4,8) = fresh (2nd halves of own window)</th><th>covers</th></tr>
+<tr><td>0</td><td class="hl">none → zeros</td><td>2nd halves of W₀ (tokens 0–3)</td><td>[0,3]</td></tr>
+<tr><td>1</td><td>1st halves of W₀ (tokens 0–3)</td><td>2nd halves of W₁ (tokens 4–7)</td><td>[0,7]</td></tr>
+<tr><td>2</td><td>1st halves of W₁ (tokens 4–7)</td><td>2nd halves of W₂ (tokens 8–11)</td><td>[4,11]</td></tr>
+<tr><td>3</td><td>1st halves of W₂ (tokens 8–11)</td><td>2nd halves of W₃ (tokens 12–15)</td><td>[8,15]</td></tr>
+</table>
+<p>Each block then does the same 3 steps as before: <b>(a)</b> per-dimension softmax over its 8 slots, <b>(b)</b> weighted sum → one 32-dim vector, <b>(c)</b> RMSNorm + RoPE at the block's start position. Result: <b>4 compressed vectors</b>.</p>
+<p>Then the router: 16 tokens at 4:1 → <b>4 index tokens</b>, each covering [4t, 4t+3]. Identity map → index token t <i>is</i> block t. A query picks its top-k (here k=4, all of them), and attends over <b>window + 4 blocks</b>.</p>
+<p class="hint">Compare with the 8-token example: same 8 slots per block, but <b>2 blocks instead of 4</b>. The machinery is identical — only the block count scales with S. At the real S=256 you get 64 blocks, and each query attends to 32 window + 16 selected blocks = 48 columns.</p>
+</div></div>
+
+<div class="step"><div class="stepnum">1</div><div class="body">
+<h4>Projections — identical to Normal</h4>
+<p>Same Q (LoRA 128→64→128) and tied K=V (128→32) projections as Normal (Fig. 2). The attention module additionally owns two compressor stacks and a router (see below).</p>
+</div></div>
+
+<div class="step"><div class="stepnum">2</div><div class="body">
+<h4>KV compressor — 4:1 → <span class="green">64 blocks</span></h4>
+<div class="formula">compressed_kv = _flat_two_series_compress( h, n_win=64, m=4 ) &nbsp;→&nbsp; [B,1,64,32]</div>
+<ul>
+<li>Each block = weighted sum of 8 slots (Fig. 5). RoPE at positions <span class="code">{0,4,8,…,252}</span>.</li>
+<li>This is the <b>content</b> the router will point at. The 64 blocks always exist; non-selected ones are masked later, not gathered (dense, CPU-friendly).</li>
+</ul>
+</div></div>
+
+<div class="step"><div class="stepnum">3</div><div class="body">
+<h4>Indexer — 4:1 → <span class="green">64 index tokens</span></h4>
+<div class="formula">compressed_idx = _flat_two_series_compress( h, n_idx=64, m=4 ) &nbsp;→&nbsp; [B,1,64,32]</div>
+<p>The <i>same</i> compressor mechanism, but with its own weights (<span class="code">idx_kv_proj</span>, <span class="code">idx_gate_proj</span>, <span class="code">idx_position_bias</span>, <span class="code">idx_norm</span>), producing a <b>routing index</b> — a low-dimensional summary of each block used only for scoring, not for content.</p>
+</div></div>
+
+<div class="step"><div class="stepnum">4</div><div class="body">
+<h4>Router query — <span class="green">own learned idx_q_proj</span> (this is what EPP deletes)</h4>
+<svg viewBox="0 0 980 120" class="svginline">
+  <rect x="20" y="30" width="120" height="44" rx="7" fill="#1c2128" stroke="#444c56"/>
+  <text x="80" y="49" text-anchor="middle" fill="#e6edf3" font-size="11">q_residual</text>
+  <text x="80" y="65" text-anchor="middle" fill="#8b949e" font-size="9.5">[B,256,64] (post q_a_norm)</text>
+  <line x1="140" y1="52" x2="170" y2="52" stroke="#3fb950" marker-end="url(#arr)"/>
+  <rect x="172" y="30" width="130" height="44" rx="7" fill="rgba(63,185,80,.2)" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="237" y="49" text-anchor="middle" fill="#3fb950" font-size="11" font-family="Menlo,monospace">idx_q_proj</text>
+  <text x="237" y="65" text-anchor="middle" fill="#8b949e" font-size="9.5">Linear 64 → 4·32</text>
+  <line x1="302" y1="52" x2="332" y2="52" stroke="#3fb950" marker-end="url(#arr)"/>
+  <rect x="334" y="30" width="120" height="44" rx="7" fill="rgba(63,185,80,.14)" stroke="#3fb950"/>
+  <text x="394" y="49" text-anchor="middle" fill="#3fb950" font-size="11">RoPE</text>
+  <text x="394" y="65" text-anchor="middle" fill="#8b949e" font-size="9.5">+ per-head split</text>
+  <text x="500" y="52" fill="#e6edf3" font-size="11.5" font-family="Menlo,monospace">q_idx [B,4,256,32]</text>
+  <text x="500" y="72" fill="#6e7681" font-size="10">8,192 params — a dedicated routing query, learned from the low-rank residual</text>
+</svg>
+</div></div>
+
+<div class="step"><div class="stepnum">5</div><div class="body">
+<h4>Score every index token × every query, mix over heads, mask the future</h4>
+<div class="formula">scores = q_idx · compressed_idxᵀ · ReLU · (32)^−½ &nbsp;&nbsp;[B,4,256,64]<br>
+w = idx_weights_proj(h) · (4)^−½ &nbsp;&nbsp;[B,256,4]<br>
+index_scores = Σ_head scores ⊙ w &nbsp;&nbsp;[B,256,64]</div>
+<svg viewBox="0 0 980 210" class="svginline">
+  <!-- q_idx -->
+  <rect x="30" y="40" width="40" height="120" rx="4" fill="rgba(63,185,80,.14)" stroke="#3fb950"/>
+  <text x="50" y="175" text-anchor="middle" fill="#3fb950" font-size="10">q_idx</text>
+  <line x1="70" y1="100" x2="120" y2="100" stroke="#8b949e" marker-end="url(#arr)"/>
+  <!-- score grid 64 cols -->
+  <g id="flat-score-grid"></g>
+  <text x="150" y="180" text-anchor="middle" fill="#8b949e" font-size="10.5">scores [4 heads × 256 queries × 64 tokens]</text>
+  <!-- future mask note -->
+  <rect x="380" y="20" width="300" height="70" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="530" y="42" text-anchor="middle" fill="#e6edf3" font-size="11">Future mask</text>
+  <text x="530" y="60" text-anchor="middle" fill="#8b949e" font-size="10.5">index token t covers [4t, 4t+3]</text>
+  <text x="530" y="76" text-anchor="middle" fill="#8b949e" font-size="10.5">masked if 4t+3 &gt; q → set to −∞</text>
+  <rect x="380" y="100" width="300" height="84" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="530" y="122" text-anchor="middle" fill="#e6edf3" font-size="11">Head mixing</text>
+  <text x="530" y="140" text-anchor="middle" fill="#8b949e" font-size="10.5">each head's vote weighted by</text>
+  <text x="530" y="156" text-anchor="middle" fill="#8b949e" font-size="10.5">learned per-position weights,</text>
+  <text x="530" y="172" text-anchor="middle" fill="#8b949e" font-size="10.5">scaled by 1/√4 → [B,256,64]</text>
+  <!-- topk -->
+  <line x1="330" y1="100" x2="380" y2="140" stroke="#8b949e" marker-end="url(#arr)"/>
+  <rect x="700" y="40" width="240" height="60" rx="8" fill="rgba(63,185,80,.2)" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="820" y="62" text-anchor="middle" fill="#3fb950" font-size="12" font-family="Menlo,monospace">top-k = 16</text>
+  <text x="820" y="80" text-anchor="middle" fill="#8b949e" font-size="10.5">per query → [B,256,16] indices</text>
+  <rect x="700" y="112" width="240" height="52" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="820" y="132" text-anchor="middle" fill="#e6edf3" font-size="11">invalid → sentinel n_idx (dropped)</text>
+  <text x="820" y="150" text-anchor="middle" fill="#8b949e" font-size="10.5">identity map: token = block (4:1 = 4:1)</text>
+</svg>
+<div class="figcap">Fig. 6 — Flat's router. Note the <b>identity</b>: because KV and index granularities are both 4:1, index token t <i>is</i> block t. EPP breaks this mapping (Fig. 10).</div>
+<div class="exwrap"><div class="extitle">The router matmul shapes — before and after</div><div class="exbody">
+<table class="ex">
+<tr><th>tensor</th><th>shape</th><th>meaning</th></tr>
+<tr><td>q_idx</td><td>[B, 4, 256, <b>32</b>]</td><td>4 routing heads × 256 queries × 32 dims</td></tr>
+<tr><td>compressed_idx</td><td>[B, 1, 64, <b>32</b>]</td><td>64 index tokens × 32 dims (broadcast over 4 heads)</td></tr>
+<tr><td>compressed_idxᵀ</td><td>[B, 1, <b>32</b>, 64]</td><td>transposed → tokens become columns</td></tr>
+<tr class="ans"><td>scores = q_idx · compressed_idxᵀ</td><td>[B, 4, 256, 64]</td><td>256 queries × 64 tokens — the 32 dims summed away</td></tr>
+</table>
+<p>Same contraction rule: the shared <b>32</b> dim sums away, leaving <span class="code">[B,4,256,64]</span> — one score per (query, index-token) pair. Then ReLU, scale by 1/√32, mix over the 4 heads → <span class="code">[B,256,64]</span>, mask the future, top-16.</p>
+</div></div>
+</div></div>
+
+<div class="step"><div class="stepnum">6</div><div class="body">
+<h4>Dense attention — 96 columns: 32 window + 64 blocks (+1 sink)</h4>
+<svg viewBox="0 0 980 190" class="svginline">
+  <!-- window -->
+  <rect x="30" y="60" width="150" height="54" rx="8" fill="rgba(88,166,255,.14)" stroke="#58a6ff"/>
+  <text x="105" y="82" text-anchor="middle" fill="#58a6ff" font-size="11">sliding window · 32</text>
+  <text x="105" y="99" text-anchor="middle" fill="#8b949e" font-size="9.5">last 32 tokens, FULL resolution</text>
+  <!-- blocks -->
+  <g id="flat-block-chips"></g>
+  <text x="460" y="130" text-anchor="middle" fill="#8b949e" font-size="10">64 compressed blocks · selected → bias 0.0 · others → −∞</text>
+  <!-- sink -->
+  <rect x="800" y="60" width="60" height="54" rx="8" fill="rgba(227,179,65,.14)" stroke="#e3b341"/>
+  <text x="830" y="82" text-anchor="middle" fill="#e3b341" font-size="10">sink</text>
+  <text x="830" y="98" text-anchor="middle" fill="#8b949e" font-size="9">4 logits</text>
+  <!-- total -->
+  <rect x="600" y="140" width="260" height="34" rx="7" fill="var(--green-bg)" stroke="#3fb950"/>
+  <text x="730" y="162" text-anchor="middle" fill="#3fb950" font-size="11.5" font-family="Menlo,monospace">softmax width = 32 + 64 + 1 = 97</text>
+</svg>
+<div class="figcap">Fig. 7 — Dense GEMM over all 64 blocks (not a sparse gather): the block bias is −∞ for unselected blocks so their softmax weight is exactly 0. The sink logit is appended, then <b>removed after softmax</b> — it only absorbs probability mass (a "dump" channel), never contributes a value.</div>
+<div class="exwrap"><div class="extitle">The dense-attention matmul shapes — before and after</div><div class="exbody">
+<table class="ex">
+<tr><th>tensor</th><th>shape</th><th>meaning</th></tr>
+<tr><td>q</td><td>[B, 4, 256, <b>32</b>]</td><td>4 heads × 256 queries × 32 dims</td></tr>
+<tr><td>total_k</td><td>[B, 1, 97, <b>32</b>]</td><td>32 window + 64 blocks + 1 sink = 97 keys</td></tr>
+<tr><td>total_kᵀ</td><td>[B, 1, <b>32</b>, 97]</td><td>transposed → keys become columns</td></tr>
+<tr class="ans"><td>attn_weights = q · total_kᵀ</td><td>[B, 4, 256, 97]</td><td>256 queries × 97 keys — the 32 dims summed away</td></tr>
+</table>
+<p>Same rule again: the shared <b>32</b> contracts away → <span class="code">[B,4,256,97]</span>. The block bias (0 for selected, −∞ for unselected) is added, then softmax over the 97 columns, sink sliced off → <span class="code">probs [B,4,256,96]</span>. The final value sum <span class="code">probs · total_v</span> contracts the 96 columns back to <span class="code">[B,4,256,32]</span>.</p>
+</div></div>
+<div class="exwrap"><div class="extitle">What are the "32 window" and the "1 sink"? (the other two parts of the 97)</div><div class="exbody">
+<p>You already know the <b>64 blocks</b>: compressed 4:1 summaries of the whole sequence. The other two pieces come straight from <span class="code">_attend</span>:</p>
+<table class="ex">
+<tr><th></th><th>the 32 window</th><th>the 1 sink</th></tr>
+<tr><td>code</td><td><span class="code">sw_k = kv[:, :, -32:, :]</span></td><td><span class="code">self.sinks = nn.Parameter(torch.zeros(4))</span></td></tr>
+<tr><td>what it is</td><td>the <b>last 32 raw key tokens</b> before the query — <i>uncompressed</i>, full resolution</td><td><b>4 learnable scalars</b> (one per head), broadcast into ONE extra column</td></tr>
+<tr><td>what happens to it</td><td>causal-masked inside (future window positions → −∞), then attended normally — columns 0–31</td><td>appended as column 96, then <span class="code">scores = probs[..., :-1]</span> <b>slices it off after softmax</b></td></tr>
+<tr><td>why it exists</td><td>each block averages 4 tokens, smearing fine detail — the window keeps the <i>exact</i> recent context, usually what matters most</td><td>softmax always sums to 1; the sink <b>catches leftover probability mass</b> so the selected blocks' weights stay calibrated. It <b>never contributes a value</b></td></tr>
+</table>
+<p>So <b>96 real keys + 1 dump column = 97</b> softmax columns; after softmax the sink is sliced off and <span class="code">probs · total_v</span> contracts the 96 real columns back to <span class="code">[B,4,256,32]</span>. The window is <i>always</i> attended — the router never touches it; the blocks are what the router picks.</p>
+</div></div>
+<div class="exwrap"><div class="extitle">Why does the sink exist? — softmax is forced to spend 100% of its probability</div><div class="exbody">
+<p>Softmax never leaves money on the table: whatever columns you give it, the probabilities <b>always sum to 1</b>. If a query matches nothing well, its 48 unmasked logits are all small — yet softmax still hands out 1.0 total, so the output becomes a near-uniform blend of every value. The sink is a place to <b>throw probability away</b> instead.</p>
+<p>Toy numbers, one head, learned sink logit <span class="code">s = 0.5</span>. Three real columns:</p>
+<table class="ex">
+<tr><th>query strength</th><th>real logits</th><th>probs WITHOUT sink</th><th>probs WITH sink</th><th>sink takes</th></tr>
+<tr><td class="hl2">strong match</td><td>[5.0, 4.0, 3.0]</td><td>[0.665, 0.245, 0.090]</td><td>[0.660, 0.243, 0.089]</td><td class="hl">0.7% — barely matters</td></tr>
+<tr><td class="hl">weak match</td><td>[0.5, 0.3, 0.1]</td><td>[0.402, 0.329, 0.269]</td><td>[0.287, 0.235, 0.192]</td><td class="hl2">28.7% — dumps a quarter of the budget</td></tr>
+</table>
+<p>The sink is a <b>learned confidence gate</b>: when a query finds a clear winner it's ignored; when a query is uncertain it automatically swallows mass (the denominator grows relative to the weak real logits). After softmax, <span class="code">scores = probs[..., :-1]</span> deletes the sink column, so that mass simply <b>vanishes from the weighted sum</b> — the output shrinks, and the downstream layers read "small output = low confidence". Without the sink, the uncertain query would be forced to average all 96 values uniformly. Note the relative ratios of the real columns are <i>unchanged</i> — softmax only rescales — so the sink can't hurt the ranking, it only modulates overall confidence. The sink has no key/value of its own: it's purely a normalization device, costing just <span class="code">num_heads = 4</span> parameters.</p>
+</div></div>
+<div class="exwrap"><div class="extitle">"Doesn't the sink leave the probs basically the same?" — yes, and that's the point</div><div class="exbody">
+<p>Sharp question, and the answer is <b>yes</b>: the sink does <b>not</b> change which keys get attended. Softmax is shift-invariant, and the sink is just one extra column, so every real probability is multiplied by the <i>same</i> scalar:</p>
+<div class="formula">output = (1 / (1 + e<sup>s − log Σ e<sup>l<sub>j</sub></sup></sup>)) × Σ<sub>i</sub> e<sup>l<sub>i</sub></sup> v<sub>i</sub></div>
+<p>The ratios p₁ : p₂ : p₃ are <b>identical</b> with or without the sink. So what does it actually change? <b>Only the magnitude of the output vector</b> — a per-query, per-head gain:</p>
+<table class="ex">
+<tr><th></th><th>strong match (Σ e<sup>l<sub>j</sub></sup> huge)</th><th>weak match (Σ e<sup>l<sub>j</sub></sup> small)</th></tr>
+<tr><td>the factor</td><td>≈ 1 → no effect</td><td>shrinks → output scaled <b>down</b></td></tr>
+<tr><td>what it reads as</td><td>"confident, pass it through"</td><td>"unsure, shrink your vote"</td></tr>
+</table>
+<p><b>Why bother, if it's just a scale?</b> Because the scale is <b>per-query and per-head</b> and <b>nonlinear</b> — it depends on that query's own match quality. A linear O projection can only apply a fixed weight; it can't know "this particular query was a weak match." The sink gives the model that per-query nonlinearity for just 4 parameters. The residual stream reads "small output = low confidence."</p>
+<p class="hint"><b>Honest caveat:</b> it's a <i>mild</i> effect, not the main mechanism — the model could partly compensate in the O projection. It's a cheap, stable regularizer, not the reason CSA is fast or accurate. The speed/accuracy story is the window + blocks + router; the sink is a small confidence knob on top.</p>
+</div></div>
+<div class="exwrap"><div class="extitle">"Isn't scaling down when unsure the same as just having a smaller output?" — the one thing it unlocks</div><div class="exbody">
+<p>This is the crux, and the answer is: <b>plain softmax attention literally cannot output less than a full weighted average.</b> Its weights always sum to 1, so the output always sits <i>inside</i> the convex hull of the values — it has the same "energy" as the values it averages, no matter how unsure the query is. The sink is the <b>only</b> mechanism that lets the output be a <b>sub-convex</b> combination (weights sum to &lt; 1), i.e. have <i>less</i> magnitude than the values it's averaging.</p>
+<table class="ex">
+<tr><th>objection</th><th>why it's not the same</th></tr>
+<tr><td>"Couldn't the O projection just learn a scale?"</td><td>O is a <b>fixed linear map</b> applied to every query identically. It can't shrink <i>this</i> query and not the next. The sink is <b>per-query</b>.</td></tr>
+<tr><td>"Couldn't the values just be small?"</td><td>The KV blocks are <b>shared by all 256 queries</b>. Shrinking them shrinks every query. The sink shrinks <b>one query only</b>.</td></tr>
+<tr><td>"Couldn't the model just not attend?"</td><td>Softmax <b>forces</b> it to attend — weights sum to 1. The sink is the only escape hatch that lets the sum drop below 1.</td></tr>
+</table>
+<p>So the point isn't "scale down" per se — it's that the sink is the <b>only per-query, per-head, nonlinear gain</b> in the whole attention path. It lets a low-confidence query <b>withdraw its vote</b> instead of being forced to average noise into the residual stream. That's a real degree of freedom that a plain softmax attention doesn't have — and it costs just 4 parameters.</p>
+<p class="hint">Still honest: it's a <i>small</i> degree of freedom, and the model could partly mimic it elsewhere. But it is <b>not</b> redundant with anything else in the architecture — no other component can produce a per-query sub-convex output.</p>
+</div></div>
+<div class="exwrap"><div class="extitle">"So it scales down the output until some queries withdraw their votes?" — almost, one fix</div><div class="exbody">
+<p>Your core idea is right — low-confidence queries end up contributing <i>less</i> to the residual stream. But the mechanism is <b>not</b> "some queries opt out." The sink is <b>one scalar per head</b>, shared by all 256 queries of that head, so it applies a <b>single continuous gain to every query</b> — and that gain is <b>smaller for weak matches, ≈ 1 for strong matches</b>:</p>
+<div class="formula">output<sub>q</sub> = (1 / (1 + e<sup>s − log Σ e<sup>l<sub>jq</sub></sup></sup>)) × Σ<sub>i</sub> e<sup>l<sub>iq</sub></sup> v<sub>i</sub></div>
+<table class="ex">
+<tr><th></th><th>strong match</th><th>weak match</th></tr>
+<tr><td>gain<sub>q</sub></td><td>→ 1 (pass through)</td><td>shrinks (vote withdrawn)</td></tr>
+<tr><td>effect</td><td>confident query contributes fully</td><td>uncertain query contributes less</td></tr>
+</table>
+<p>So it's a <b>smooth, per-query gain</b> — not a discrete "some queries withdraw." The <b>scalar</b> <span class="code">s</span> is learned once per head (the model picks a "skepticism level" per head), but the <b>gain</b> is still per-query because it depends on that query's own logits. Every query gets scaled by its own <span class="code">gain<sub>q</sub></span>; confident ones ≈ 1, unsure ones &lt; 1.</p>
+</div></div>
+<div class="exwrap"><div class="extitle">OK, but what is the MAIN point? — abstention, not gradients</div><div class="exbody">
+<p>One sentence: <b>the sink lets attention output "nothing" when it's unsure, instead of being forced to inject a full-strength average of noise.</b> It's an <b>abstention mechanism</b> — and here's why that matters.</p>
+<p>Every query's output lands in the residual stream (<span class="code">x + attn_out</span>). Without a sink, a weak query is <b>forced</b> to emit a full convex combination (Σp = 1): a near-uniform blend of the 16 selected blocks + 32 window values — i.e. <b>random noise written into the residual at every unsure position</b>. With a sink, the same weak query emits ≈ 0, so the residual passes through <b>unchanged</b>. The output magnitude becomes a clean, readable signal: "how confident is this layer about this position?"</p>
+<table class="ex">
+<tr><th>your question</th><th>honest answer</th></tr>
+<tr><td>Main point?</td><td><b>Abstention</b> — output "nothing" when unsure, instead of forced noise injection</td></tr>
+<tr><td>"When most outputs have the same vote confidence"?</td><td>All-equal logits → uniform softmax → output = plain <b>mean of all values</b> (a noise blob). The sink scales that mean down: <b>same shape, smaller magnitude</b> — the network learns "flat distribution = abstain"</td></tr>
+<tr><td>Is it for gradients?</td><td><b>No.</b> Softmax already gives clean gradients to all logits; the sink fixes nothing there. The <i>only</i> gradient side-effect: weak queries produce proportionally smaller gradients to the KV values — an implicit per-query learning-rate. A stability bonus, not the goal.</td></tr>
+<tr><td>Where does it come from?</td><td>The CSA paper: with 48 of 64 blocks masked to −∞, a query with <b>no good match</b> would otherwise be forced onto its selected blocks anyway. The sink is the escape hatch.</td></tr>
+<tr><td>How much does it matter?</td><td><b>Mild but real</b> — 4 parameters, calibration/stability. It is <i>not</i> the speed/accuracy engine; that's the window + blocks + router.</td></tr>
+</table>
+<p>Concretely, if all N unmasked logits are equal to <span class="code">l</span>, the no-sink output is <span class="code">mean(v)</span>; with sink <span class="code">s</span> it becomes <span class="code">(N·e<sup>l</sup> / (N·e<sup>l</sup> + e<sup>s</sup>)) × mean(v)</span> — the same average, scaled by a factor &lt; 1 that shrinks as the match gets weaker. Downstream can then treat "small attention output" as "this position had no reliable information" — something plain softmax attention simply cannot express.</p>
+</div></div>
+</div></div>
+
+<div class="step"><div class="stepnum">7</div><div class="body">
+<h4>Rotate back, grouped O (rank 128) → out</h4>
+<p>Same −sin rotate-back and <span class="code">o_lora_rank=128</span> grouped O projection as Normal (Fig. 4).</p>
+</div></div>
+
+<h3>Worked example — one full query, q = 100</h3>
+<p>The complete path for query position <b>q = 100</b> (choose a number that makes the arithmetic visible; every other query follows the identical steps):</p>
+
+<div class="exwrap"><div class="extitle">Step 1 — the raw query sees only the 32-token window</div><div class="exbody">
+<p><span class="code">h</span> at position 100, after the LoRA-Q path and RMSNorm → <span class="code">q [B,4,256,32]</span>, RoPE applied at position 100. The 4 head vectors are the actual attention queries (e.g. head 0 might be <span class="code">[−0.6, 0.3, 0.8, …]</span> in its 32 dims — shown conceptually).</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">Step 2 — the router picks 16 of the 64 index tokens</div><div class="exbody">
+<p>scores = q_idx·compressed_idxᵀ·ReLU·(32)^−½ for all 64 index tokens. Token t covers <span class="code">[4t, 4t+3]</span>, so the future mask kills every token with 4t+3 &gt; 100 → t &gt; 24.25 → tokens <b>25…63 masked</b>. Top-16 from the remaining 0…24:</p>
+<table class="ex">
+<tr><th>rank</th><th>token t</th><th>covers</th><th>score (toy)</th><th>map to block</th></tr>
+<tr><td>1</td><td>21</td><td>[84,87]</td><td>3.4</td><td>identity → <b>21</b></td></tr>
+<tr><td>2</td><td>4</td><td>[16,19]</td><td>3.1</td><td>identity → <b>4</b></td></tr>
+<tr><td>3</td><td>23</td><td>[92,95]</td><td>2.9</td><td>identity → <b>23</b></td></tr>
+<tr><td>4</td><td>10</td><td>[40,43]</td><td>2.7</td><td>identity → <b>10</b></td></tr>
+<tr><td>5</td><td>0</td><td>[0,3]</td><td>2.5</td><td>identity → <b>0</b></td></tr>
+<tr><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+<tr><td>16</td><td>12</td><td>[48,51]</td><td>1.1</td><td>identity → <b>12</b></td></tr>
+</table>
+<p class="hint">For <b>Flat the map is the identity</b> (4:1 = 4:1) — token 21 <i>is</i> block 21, token 4 <i>is</i> block 4, etc. Every selected block is automatically future-safe (all of its positions 4t…4t+3 ≤ 100). <b>Contrast with EPP (same q, same toy scores):</b> token 21 → block ⌊21/2⌋ = 10 covering [80,87] — two tokens collapsed into one coarser block.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">Step 3 — the dense 97-column softmax</div><div class="exbody">
+<p>The 32 window keys get bias 0; the 16 selected blocks get bias 0; the other 48 blocks get −∞; the sink gets a small learned logit. For illustration, the unmasked columns and their toy logits:</p>
+<table class="ex">
+<tr><th>col</th><th>source</th><th>logit (toy)</th><th>softmax ≈</th></tr>
+<tr><td>0–31</td><td>window tokens 69…100</td><td>…various…</td><td>≈ 0.55 total</td></tr>
+<tr><td>32 + 21</td><td>block 21 (tokens 84–87)</td><td>3.4</td><td>0.120</td></tr>
+<tr><td>32 + 4</td><td>block 4 (tokens 16–19)</td><td>3.1</td><td>0.089</td></tr>
+<tr><td>32 + 23</td><td>block 23 (tokens 92–95)</td><td>2.9</td><td>0.071</td></tr>
+<tr><td>32 + 10</td><td>block 10 (tokens 40–43)</td><td>2.7</td><td>0.059</td></tr>
+<tr><td>32 + 0</td><td>block 0 (tokens 0–3)</td><td>2.5</td><td>0.048</td></tr>
+<tr><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+<tr><td class="hl">32 + 48 others</td><td>unselected blocks</td><td>−∞</td><td class="hl">0 exactly</td></tr>
+</table>
+<p class="hint">The sink logit is removed <i>after</i> softmax (it never contributes a value). The weighted sum of values is then rotated back and projected. <b>Note the GEMM still touches all 97 columns</b> — the −∞ cells just produce exact zeros — that's the "dense not sparse" design.</p>
+</div></div>
+
+<div class="callout red"><b>Where Flat's time goes:</b> 96 dense columns per query is still a big softmax+GEMM on CPU. Cutting the window 32→16 and KV 4:1→8:1 is exactly what EPP does to reach 48 columns.</div>
+
+</section>
+
+<!-- ═══════════════════════════ EPP ═══════════════════════════ -->
+<section id="p-epp" class="panel">
+<h2>🏆 ExpertPlusPlus — decoupled granularity (8:1 KV + 4:1 routing)</h2>
+<p class="subtitle"><span class="code">expert_plus_plus_attention.py</span>, class <span class="code">ExpertPlusPlusAttention</span>. Params: <b class="gold">95,652</b> (fewer than even Normal!). Attention columns: <b>48</b> = 16 (window) + 32 (blocks) + 1 sink.</p>
+
+<div class="animwrap">
+  <div class="anim-head">
+    <span class="anim-title">▶ Input → Output flow</span>
+    <button class="anim-btn" id="btn-epp">Play</button>
+    <span class="anim-status" id="st-epp">ready</span>
+  </div>
+  <svg id="anim-epp" class="svginline" viewBox="0 0 980 150"></svg>
+</div>
+
+<h3>The full pipeline, from raw tokens to output — one continuous flow</h3>
+<p>ExpertPlusPlus's entire journey, top to bottom. Note the <b>decoupled compression</b>: the KV content is compressed 8:1 (32 blocks) while the router index is compressed only 4:1 (64 tokens). The router keeps Flat's precision; the KV content is coarser. Follow the arrows.</p>
+<svg viewBox="0 0 980 800" class="svginline">
+  <defs>
+    <marker id="arrE" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8b949e"/></marker>
+  </defs>
+  <!-- 1 raw -->
+  <rect x="40" y="10" width="900" height="50" rx="8" fill="#1c2128" stroke="#444c56"/>
+  <text x="60" y="30" fill="#8b949e" font-size="11" font-family="Menlo,monospace">1 · raw input</text>
+  <text x="60" y="48" fill="#e6edf3" font-size="12.5">x — ETTh1 window</text>
+  <text x="880" y="40" text-anchor="end" fill="#58a6ff" font-size="12" font-family="Menlo,monospace">[B, 256, 7]</text>
+  <line x1="180" y1="70" x2="180" y2="96" stroke="#8b949e" marker-end="url(#arrE)"/>
+  <!-- 2 h -->
+  <rect x="30" y="98" width="300" height="50" rx="8" fill="#1c2128" stroke="#58a6ff"/>
+  <text x="60" y="118" fill="#8b949e" font-size="11" font-family="Menlo,monospace">2 · input_proj + pos_emb</text>
+  <text x="60" y="136" fill="#e6edf3" font-size="12.5">Linear 7→128 + learned pos</text>
+  <text x="880" y="128" text-anchor="end" fill="#58a6ff" font-size="12" font-family="Menlo,monospace">h [B, 256, 128]</text>
+  <line x1="180" y1="148" x2="180" y2="174" stroke="#8b949e" marker-end="url(#arrE)"/>
+  <!-- 3 kv_proj -->
+  <rect x="30" y="176" width="300" height="50" rx="8" fill="#1c2128" stroke="#3fb950"/>
+  <text x="60" y="196" fill="#8b949e" font-size="11" font-family="Menlo,monospace">3 · kv_proj → RoPE</text>
+  <text x="60" y="214" fill="#e6edf3" font-size="12.5">tied K=V, single KV head</text>
+  <text x="880" y="206" text-anchor="end" fill="#3fb950" font-size="12" font-family="Menlo,monospace">k = v [1, 256, 32]</text>
+  <line x1="180" y1="238" x2="180" y2="264" stroke="#8b949e" marker-end="url(#arrE)"/>
+  <!-- 4 KV compressor -->
+  <rect x="30" y="266" width="300" height="50" rx="8" fill="rgba(227,179,65,.14)" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="60" y="286" fill="#8b949e" font-size="11" font-family="Menlo,monospace">4 · KV compressor (8:1)</text>
+  <text x="60" y="304" fill="#e6edf3" font-size="12.5">_flat_two_series_compress</text>
+  <text x="880" y="296" text-anchor="end" fill="#e3b341" font-size="12" font-family="Menlo,monospace">32 blocks</text>
+  <line x1="180" y1="316" x2="180" y2="342" stroke="#8b949e" marker-end="url(#arrE)"/>
+  <!-- 5 index compressor -->
+  <rect x="30" y="344" width="300" height="50" rx="8" fill="rgba(227,179,65,.14)" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="60" y="364" fill="#8b949e" font-size="11" font-family="Menlo,monospace">5 · index compressor (4:1)</text>
+  <text x="60" y="382" fill="#e6edf3" font-size="12.5">separate, finer path</text>
+  <text x="880" y="374" text-anchor="end" fill="#e3b341" font-size="12" font-family="Menlo,monospace">64 index tokens</text>
+  <line x1="180" y1="394" x2="180" y2="420" stroke="#8b949e" marker-end="url(#arrE)"/>
+  <!-- 6 router -->
+  <rect x="30" y="422" width="340" height="50" rx="8" fill="rgba(88,166,255,.14)" stroke="#58a6ff" stroke-width="1.5"/>
+  <text x="60" y="442" fill="#8b949e" font-size="11" font-family="Menlo,monospace">6 · router (top-16) — shared-Q</text>
+  <text x="60" y="460" fill="#e6edf3" font-size="12.5">main q (RoPE'd) · 64 index tokens</text>
+  <text x="880" y="452" text-anchor="end" fill="#58a6ff" font-size="12" font-family="Menlo,monospace">16 tokens / query</text>
+  <line x1="180" y1="472" x2="180" y2="498" stroke="#8b949e" marker-end="url(#arrE)"/>
+  <!-- 7 mapping -->
+  <rect x="30" y="500" width="340" height="50" rx="8" fill="rgba(88,166,255,.14)" stroke="#58a6ff" stroke-width="1.5"/>
+  <text x="60" y="520" fill="#8b949e" font-size="11" font-family="Menlo,monospace">7 · token → block map (⌊t/2⌋)</text>
+  <text x="60" y="538" fill="#e6edf3" font-size="12.5">index token t → block ⌊t/2⌋</text>
+  <text x="880" y="530" text-anchor="end" fill="#58a6ff" font-size="12" font-family="Menlo,monospace">dedupe → ≤16</text>
+  <line x1="180" y1="550" x2="180" y2="576" stroke="#8b949e" marker-end="url(#arrE)"/>
+  <!-- 8 dense -->
+  <rect x="30" y="578" width="340" height="50" rx="8" fill="rgba(88,166,255,.14)" stroke="#58a6ff" stroke-width="1.5"/>
+  <text x="60" y="598" fill="#8b949e" font-size="11" font-family="Menlo,monospace">8 · dense attention (49 cols)</text>
+  <text x="60" y="616" fill="#e6edf3" font-size="12.5">16 window + 32 blocks + 1 sink</text>
+  <text x="880" y="608" text-anchor="end" fill="#58a6ff" font-size="12" font-family="Menlo,monospace">[4, 256, 49]</text>
+  <line x1="180" y1="628" x2="180" y2="654" stroke="#8b949e" marker-end="url(#arrE)"/>
+  <!-- 9 output -->
+  <rect x="30" y="656" width="300" height="50" rx="8" fill="rgba(63,185,80,.2)" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="60" y="676" fill="#8b949e" font-size="11" font-family="Menlo,monospace">9 · grouped O → MLP → out</text>
+  <text x="60" y="694" fill="#e6edf3" font-size="12.5">slim O rank 64</text>
+  <text x="880" y="686" text-anchor="end" fill="#3fb950" font-size="12" font-family="Menlo,monospace">out [B, 256, 7]</text>
+</svg>
+<div class="figcap">Fig. 7b — ExpertPlusPlus's full pipeline. Two compressors feed one router; the router's 64-token precision is what keeps accuracy, while the 32-block KV content keeps the dense GEMM small (49 columns).</div>
+
+<div class="exwrap"><div class="extitle">Stage 6 — what does "shared-Q" mean?</div><div class="exbody">
+<p>In Flat, the router uses a <b>separate</b> query projection: <span class="code">idx_q_proj</span> takes the low-rank query residual and produces a dedicated routing query <span class="code">q_idx</span>. In EPP, that projection is <b>deleted entirely</b> (<span class="code">del self.idx_q_proj</span>), and the router reuses the <b>main attention query</b> <span class="code">q</span> — already RoPE'd and normalized — as its routing query.</p>
+<div class="formula">q_idx = q&nbsp;&nbsp;&nbsp;(the same [B, 4, 256, 32] tensor that attends)</div>
+<p>This works because EPP requires <span class="code">head_dim == index_head_dim</span> (both 32), so the main Q's 32-dim vectors are shape-compatible with the 32-dim index tokens. The router then scores all 64 index tokens:</p>
+<div class="formula">scores = q · compressed_idxᵀ · ReLU · (32)⁻¹ᐟ²&nbsp;&nbsp;→&nbsp;&nbsp;[B, 4, 256, 64]</div>
+<p>It's a <b>compute-only</b> saving: one fewer projection (and its params) with no routing-quality loss, because the main Q is already a good routing signal.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">Stage 7 — what does "dedupe" do, and how?</div><div class="exbody">
+<p>The router picks <b>16 index tokens</b> (4:1, each covering 4 positions). But the KV blocks are <b>coarser</b> (8:1, each covering 8 positions). Two adjacent index tokens map onto the <b>same</b> KV block:</p>
+<div class="formula">index token t covers [4t, 4t+3]&nbsp;&nbsp;→&nbsp;&nbsp;KV block ⌊t/2⌋ covers [8·⌊t/2⌋, 8·⌊t/2⌋+7]</div>
+<p>So tokens <span class="code">2j</span> and <span class="code">2j+1</span> both map to block <span class="code">j</span>. If the router picks both, they collapse to one block — that's the <b>dedupe</b>. In code (<span class="code">_postprocess_topk</span>):</p>
+<div class="formula">blocks = top_k_indices // 2&nbsp;&nbsp;&nbsp;# integer division collapses pairs</div>
+<p>16 tokens → at most 16 blocks, but usually <b>fewer</b> because pairs collide. The result is a set of ≤16 distinct KV blocks per query.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">Stage 7 — how do 64 index tokens map onto 32 blocks? The math</div><div class="exbody">
+<p>This is the heart of the decoupled design. The index tokens and KV blocks live on <b>different grids</b>, and the mapping is a simple integer division:</p>
+<table class="ex">
+<tr><th>index token t</th><th>covers positions</th><th>KV block ⌊t/2⌋</th><th>block covers</th></tr>
+<tr><td>0</td><td>[0,3]</td><td>0</td><td>[0,7]</td></tr>
+<tr><td>1</td><td>[4,7]</td><td>0</td><td>[0,7]</td></tr>
+<tr><td>2</td><td>[8,11]</td><td>1</td><td>[8,15]</td></tr>
+<tr><td>3</td><td>[12,15]</td><td>1</td><td>[8,15]</td></tr>
+<tr><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+<tr><td>62</td><td>[248,251]</td><td>31</td><td>[248,255]</td></tr>
+<tr><td>63</td><td>[252,255]</td><td>31</td><td>[248,255]</td></tr>
+</table>
+<p>Each 8:1 block <span class="code">j</span> is the union of index tokens <span class="code">{2j, 2j+1}</span>. So the router's <b>fine</b> 4:1 decision (which 4-token span matters) is preserved at scoring time, but the <b>content</b> it reads is the coarser 8:1 block. The router keeps Flat's precision; the KV density is halved. That's the whole trick.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">Stage 8 — 16 blocks per query, but 49 columns? Same as Flat</div><div class="exbody">
+<p>Identical logic to Flat, just smaller numbers:</p>
+<div class="formula">49 columns = 16 (window) + 32 (all KV blocks) + 1 (sink)</div>
+<p>The router's ≤16 chosen blocks get bias <span class="code">0</span>; the other 32−16 blocks get <span class="code">−∞</span> (softmax weight exactly 0). But the GEMM still runs over <b>all 49 columns</b> — dense, not sparse. The <span class="code">16</span> is the routing budget; the <span class="code">49</span> is the compute cost. EPP's win over Flat is that this is 49 columns instead of 97 (window 32→16, blocks 64→32).</p>
+</div></div>
+
+<div class="callout"><b>The design bet:</b> keep the router <i>exactly as fine as Flat</i> (64 index tokens, 4:1) but make the KV content 2× coarser (32 blocks, 8:1). The router's precision — the ability to distinguish which 4-token span of history matters — is what preserves accuracy; the KV density only affects the size of the dense attention GEMM. Then recover speed from three compute-only cuts: <b>shared-Q routing</b>, <b>slim O (rank 64)</b>, <b>window 32→16</b>.</div>
+
+<div class="step"><div class="stepnum">1</div><div class="body">
+<h4>Projections — identical to Normal and Flat</h4>
+<p>Same Q, same tied K=V. Nothing changes here.</p>
+</div></div>
+
+<div class="step"><div class="stepnum">2</div><div class="body">
+<h4>KV compressor — <span class="gold">8:1 → 32 blocks</span> (coarser content)</h4>
+<svg viewBox="0 0 980 130" class="svginline">
+  <rect x="20" y="40" width="170" height="50" rx="8" fill="#1c2128" stroke="#444c56"/>
+  <text x="105" y="60" text-anchor="middle" fill="#e6edf3" font-size="11">_flat_two_series_compress</text>
+  <text x="105" y="77" text-anchor="middle" fill="#8b949e" font-size="9.5">m = compress_rate = 8</text>
+  <line x1="190" y1="65" x2="230" y2="65" stroke="#e3b341" marker-end="url(#arr)"/>
+  <g transform="translate(240,38)">
+    <rect x="0" y="0" width="150" height="54" rx="8" fill="rgba(227,179,65,.14)" stroke="#e3b341"/>
+    <text x="75" y="22" text-anchor="middle" fill="#e3b341" font-size="11">16 slots per block</text>
+    <text x="75" y="40" text-anchor="middle" fill="#8b949e" font-size="9.5">2m = 16 · per-dim softmax</text>
+  </g>
+  <g transform="translate(420,38)">
+    <rect x="0" y="0" width="150" height="54" rx="8" fill="rgba(227,179,65,.14)" stroke="#e3b341"/>
+    <text x="75" y="22" text-anchor="middle" fill="#e3b341" font-size="11">32 blocks</text>
+    <text x="75" y="40" text-anchor="middle" fill="#8b949e" font-size="9.5">256 / 8</text>
+  </g>
+  <g transform="translate(600,38)">
+    <rect x="0" y="0" width="150" height="54" rx="8" fill="rgba(227,179,65,.14)" stroke="#e3b341"/>
+    <text x="75" y="22" text-anchor="middle" fill="#e3b341" font-size="11">RoPE @ {0,8,…,248}</text>
+    <text x="75" y="40" text-anchor="middle" fill="#8b949e" font-size="9.5">block j covers [8j, 8j+7]</text>
+  </g>
+  <g transform="translate(780,38)">
+    <rect x="0" y="0" width="170" height="54" rx="8" fill="rgba(227,179,65,.2)" stroke="#e3b341" stroke-width="1.5"/>
+    <text x="85" y="22" text-anchor="middle" fill="#e3b341" font-size="11" font-family="Menlo,monospace">ckv [B,1,32,32]</text>
+    <text x="85" y="40" text-anchor="middle" fill="#8b949e" font-size="9.5">comp_position_bias (8,64)=512</text>
+  </g>
+</svg>
+<div class="figcap">Fig. 8 — 8:1 KV: half the blocks of Flat. The compressor's position bias grows from (4,64) to (8,64) — +256 params, the only parameter <i>increase</i> vs Flat.</div>
+</div></div>
+
+<div class="step"><div class="stepnum">3</div><div class="body">
+<h4>Indexer — <span class="gold">4:1 → 64 index tokens</span> (same as Flat — this is deliberate)</h4>
+<div class="formula">compressed_idx = _flat_two_series_compress( h, n_idx=64, m=index_compress_rate=4 ) → [B,1,64,32]</div>
+<p>The router still works on <b>64 fine-grained tokens</b> at positions <span class="code">{0,4,…,252}</span> — identical granularity to Flat. Only the KV <i>content</i> is coarser. This is the decoupling.</p>
+</div></div>
+
+<div class="step"><div class="stepnum">4</div><div class="body">
+<h4>Router query — <span class="gold">shared-Q</span>: idx_q_proj is deleted</h4>
+<svg viewBox="0 0 980 130" class="svginline">
+  <rect x="20" y="30" width="120" height="44" rx="7" fill="#1c2128" stroke="#444c56"/>
+  <text x="80" y="49" text-anchor="middle" fill="#e6edf3" font-size="11">main q</text>
+  <text x="80" y="65" text-anchor="middle" fill="#8b949e" font-size="9.5">[B,4,256,32] already RoPE'd + normalized</text>
+  <line x1="140" y1="52" x2="200" y2="52" stroke="#e3b341" marker-end="url(#arr)"/>
+  <rect x="202" y="30" width="220" height="44" rx="7" fill="rgba(227,179,65,.2)" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="312" y="49" text-anchor="middle" fill="#e3b341" font-size="11" font-family="Menlo,monospace">q_idx = q&nbsp;&nbsp;(no idx_q_proj)</text>
+  <text x="312" y="65" text-anchor="middle" fill="#8b949e" font-size="9.5">head_dim == index_head_dim == 32 → reuses per-head Q directly</text>
+  <line x1="422" y1="52" x2="460" y2="52" stroke="#8b949e" marker-end="url(#arr)"/>
+  <rect x="462" y="30" width="200" height="44" rx="7" fill="#161b22" stroke="#30363d" stroke-dasharray="4 3"/>
+  <text x="562" y="49" text-anchor="middle" fill="#f85149" font-size="11" text-decoration="line-through">idx_q_proj (−8,192)</text>
+  <text x="562" y="65" text-anchor="middle" fill="#6e7681" font-size="9.5">deleted — the head count &amp; dim match, so it is redundant</text>
+  <text x="720" y="52" fill="#8b949e" font-size="11.5">saves 8,192 params + one 64→128 GEMM</text>
+</svg>
+<div class="figcap">Fig. 9 — Shared-Q routing works <i>only because</i> <code>head_dim == index_head_dim</code> (both 32). The 4 main Q heads serve as the 4 routing heads.</div>
+</div></div>
+
+<div class="step"><div class="stepnum">5</div><div class="body">
+<h4>Scoring + future mask — identical logic to Flat</h4>
+<div class="formula">scores = q · compressed_idxᵀ · ReLU · (32)^−½ &nbsp;→&nbsp; mix heads &nbsp;→&nbsp; [B,256,64]</div>
+<p>Same ReLU, same 1/√32 scale, same head mixing via <span class="code">idx_weights_proj</span> (512 params, kept), same future mask (token t masked if 4t+3 &gt; q).</p>
+</div></div>
+
+<div class="step"><div class="stepnum">6</div><div class="body">
+<h4>Top-16 → <span class="gold">token→block mapping with future-safety</span> (the key new machinery)</h4>
+<div class="callout blue"><b>The crux.</b> 64 index tokens (4:1) must now address 32 KV blocks (8:1). The mapping: <b>token t → block ⌊t/2⌋</b>. Each block j covers positions [8j, 8j+7] == index tokens {2j, 2j+1}. A block is only readable when its <i>entire</i> span is in the past: <b>8j+7 ≤ q</b>, otherwise it leaks future positions and is replaced by the sentinel (which the attend step slices off).</div>
+
+<svg viewBox="0 0 980 300" class="svginline">
+  <!-- index tokens row -->
+  <text x="30" y="40" fill="#8b949e" font-size="11">index tokens (4:1) — 64 of them</text>
+  <g transform="translate(30,48)">
+    <rect x="0" y="0" width="26" height="34" fill="rgba(63,185,80,.2)" stroke="#3fb950"/><text x="13" y="22" text-anchor="middle" fill="#3fb950" font-size="10">0</text>
+    <rect x="28" y="0" width="26" height="34" fill="rgba(63,185,80,.2)" stroke="#3fb950"/><text x="41" y="22" text-anchor="middle" fill="#3fb950" font-size="10">1</text>
+    <rect x="56" y="0" width="26" height="34" fill="rgba(63,185,80,.2)" stroke="#3fb950"/><text x="69" y="22" text-anchor="middle" fill="#3fb950" font-size="10">2</text>
+    <rect x="84" y="0" width="26" height="34" fill="rgba(63,185,80,.2)" stroke="#3fb950"/><text x="97" y="22" text-anchor="middle" fill="#3fb950" font-size="10">3</text>
+    <rect x="140" y="0" width="26" height="34" fill="rgba(63,185,80,.2)" stroke="#3fb950"/><text x="153" y="22" text-anchor="middle" fill="#3fb950" font-size="10">…</text>
+    <rect x="168" y="0" width="26" height="34" fill="rgba(63,185,80,.2)" stroke="#3fb950"/><text x="181" y="22" text-anchor="middle" fill="#3fb950" font-size="10">62</text>
+    <rect x="196" y="0" width="26" height="34" fill="rgba(63,185,80,.2)" stroke="#3fb950"/><text x="209" y="22" text-anchor="middle" fill="#3fb950" font-size="10">63</text>
+  </g>
+  <text x="280" y="72" fill="#8b949e" font-size="11">t → ⌊t/2⌋</text>
+  <line x1="96" y1="82" x2="120" y2="110" stroke="#3fb950" marker-end="url(#arr)"/>
+  <line x1="150" y1="82" x2="126" y2="110" stroke="#3fb950" marker-end="url(#arr)"/>
+  <line x1="180" y1="82" x2="160" y2="110" stroke="#3fb950" marker-end="url(#arr)"/>
+  <line x1="208" y1="82" x2="168" y2="110" stroke="#3fb950" marker-end="url(#arr)"/>
+  <!-- kv blocks -->
+  <text x="30" y="130" fill="#8b949e" font-size="11">KV blocks (8:1) — 32 of them</text>
+  <g transform="translate(30,138)">
+    <rect x="0" y="0" width="60" height="34" fill="rgba(227,179,65,.2)" stroke="#e3b341"/><text x="30" y="22" text-anchor="middle" fill="#e3b341" font-size="10">blk 0</text>
+    <rect x="64" y="0" width="60" height="34" fill="rgba(227,179,65,.2)" stroke="#e3b341"/><text x="94" y="22" text-anchor="middle" fill="#e3b341" font-size="10">blk 1</text>
+    <rect x="128" y="0" width="60" height="34" fill="rgba(227,179,65,.2)" stroke="#e3b341"/><text x="158" y="22" text-anchor="middle" fill="#e3b341" font-size="10">blk 31</text>
+    <text x="30" y="52" text-anchor="middle" fill="#6e7681" font-size="9">covers [0,7]</text>
+    <text x="94" y="52" text-anchor="middle" fill="#6e7681" font-size="9">covers [8,15]</text>
+    <text x="158" y="52" text-anchor="middle" fill="#6e7681" font-size="9">covers [248,255]</text>
+  </g>
+  <text x="320" y="150" fill="#8b949e" font-size="11">tokens {2j, 2j+1} both map to block j</text>
+  <!-- worked example -->
+  <rect x="30" y="200" width="920" height="84" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="46" y="222" fill="#e6edf3" font-size="12" font-family="Menlo,monospace">Example: query at q = 20</text>
+  <text x="46" y="242" fill="#8b949e" font-size="11">token 4 covers [16,19] → passes index future-mask (19 ≤ 20) → maps to block 2 → block 2 covers [16,23]</text>
+  <text x="46" y="258" fill="#8b949e" font-size="11">but 8·2+7 = 23 &gt; 20 → block 2 would leak positions 21–23 → <tspan fill="#f85149">replaced by sentinel</tspan> (sliced off in _attend)</text>
+  <text x="46" y="274" fill="#8b949e" font-size="11">∴ this query effectively attends to blocks with 8j+7 ≤ 20, i.e. blocks 0..1, plus the 16-token window.</text>
+</svg>
+<div class="figcap">Fig. 10 — The token→block map. This is why the sentinel can never be unmasked: even if a future-masked token's ⌊t/2⌋ maps to a "safe-looking" block, the explicit <code>block_end ≤ q</code> check catches it (edge case at q = S−1 handled by <code>torch.where(sentinel, n_kv, kv_blocks)</code>).</div>
+
+<div class="exwrap"><div class="extitle">Worked example — a full top-16 set at q = 20, mapped &amp; safety-checked</div><div class="exbody">
+<p>Say the router returned these 16 index tokens for query 20 (toy scores). For each: does it pass the <i>index</i> future mask (4t+3 ≤ 20)? Which block does ⌊t/2⌋ address? Does <i>that</i> block pass the <i>content</i> safety check (8·⌊t/2⌋+7 ≤ 20)?</p>
+<table class="ex">
+<tr><th>token t</th><th>covers</th><th>index mask 4t+3≤20?</th><th>block ⌊t/2⌋</th><th>block covers</th><th>8b+7 ≤ 20?</th><th>result</th></tr>
+<tr><td>4</td><td>[16,19]</td><td>✓ (19≤20)</td><td>2</td><td>[16,23]</td><td class="hl">✗ 23 &gt; 20</td><td class="hl">sentinel</td></tr>
+<tr><td>5</td><td>[20,23]</td><td class="hl">✗ 23 &gt; 20</td><td>2</td><td>[16,23]</td><td>✗</td><td class="hl">sentinel</td></tr>
+<tr><td>3</td><td>[12,15]</td><td>✓</td><td>1</td><td>[8,15]</td><td>✓ 15 ≤ 20</td><td class="hl2">block 1</td></tr>
+<tr><td>2</td><td>[8,11]</td><td>✓</td><td>1</td><td>[8,15]</td><td>✓</td><td class="hl2">block 1</td></tr>
+<tr><td>1</td><td>[4,7]</td><td>✓</td><td>0</td><td>[0,7]</td><td>✓ 7 ≤ 20</td><td class="hl2">block 0</td></tr>
+<tr><td>0</td><td>[0,3]</td><td>✓</td><td>0</td><td>[0,7]</td><td>✓</td><td class="hl2">block 0</td></tr>
+<tr><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+</table>
+<p class="hint"><b>Notice token 4 vs token 3:</b> token 4 individually passes the index mask (its own span 16–19 is past) yet must still be dropped because the <i>block</i> it maps to (block 2) reaches into positions 21–23. The block-level safety check is what prevents future leakage. Tokens 2 and 3 both resolve to block 1 — duplicates are fine; the attend step just weights that block's single value by both probabilities (well, by the dense bias trick — see step 7).</p>
+</div></div>
+</div></div>
+
+<div class="step"><div class="stepnum">7</div><div class="body">
+<h4>Dense attention — <span class="gold">48 columns</span>: 16 window + 32 blocks (+1 sink)</h4>
+<svg viewBox="0 0 980 190" class="svginline">
+  <rect x="30" y="60" width="150" height="54" rx="8" fill="rgba(88,166,255,.14)" stroke="#58a6ff"/>
+  <text x="105" y="82" text-anchor="middle" fill="#58a6ff" font-size="11">sliding window · 16</text>
+  <text x="105" y="99" text-anchor="middle" fill="#8b949e" font-size="9.5">last 16 tokens (32→16 = free speed)</text>
+  <g id="epp-block-chips"></g>
+  <text x="460" y="130" text-anchor="middle" fill="#8b949e" font-size="10">32 compressed blocks · selected → bias 0.0 · others → −∞</text>
+  <rect x="800" y="60" width="60" height="54" rx="8" fill="rgba(227,179,65,.14)" stroke="#e3b341"/>
+  <text x="830" y="82" text-anchor="middle" fill="#e3b341" font-size="10">sink</text>
+  <text x="830" y="98" text-anchor="middle" fill="#8b949e" font-size="9">4 logits</text>
+  <rect x="600" y="140" width="260" height="34" rx="7" fill="var(--gold-bg)" stroke="#e3b341"/>
+  <text x="730" y="162" text-anchor="middle" fill="#e3b341" font-size="11.5" font-family="Menlo,monospace">softmax width = 16 + 32 + 1 = 49</text>
+</svg>
+<div class="figcap">Fig. 11 — Half of Flat's 96 columns. Still a <b>dense</b> GEMM over all 32 blocks — on CPU, dense beats sparse per-query gather by ~5× (measured), even though only ≤16 blocks are unmasked per query.</div>
+<div class="exwrap"><div class="extitle">The dense-attention matmul shapes — before and after</div><div class="exbody">
+<table class="ex">
+<tr><th>tensor</th><th>shape</th><th>meaning</th></tr>
+<tr><td>q</td><td>[B, 4, 256, <b>32</b>]</td><td>4 heads × 256 queries × 32 dims</td></tr>
+<tr><td>total_k</td><td>[B, 1, 49, <b>32</b>]</td><td>16 window + 32 blocks + 1 sink = 49 keys</td></tr>
+<tr><td>total_kᵀ</td><td>[B, 1, <b>32</b>, 49]</td><td>transposed → keys become columns</td></tr>
+<tr class="ans"><td>attn_weights = q · total_kᵀ</td><td>[B, 4, 256, 49]</td><td>256 queries × 49 keys — the 32 dims summed away</td></tr>
+</table>
+<p>Identical structure to Flat, but <b>49 columns instead of 97</b> — the per-query GEMM is ~2× smaller. The shared <b>32</b> contracts away → <span class="code">[B,4,256,49]</span>, softmax, sink sliced → <span class="code">probs [B,4,256,48]</span>, then <span class="code">probs · total_v</span> → <span class="code">[B,4,256,32]</span>.</p>
+</div></div>
+<div class="exwrap"><div class="extitle">The same 3-part story, scaled down — 16 window + 32 blocks + 1 sink</div><div class="exbody">
+<p>Identical mechanics to Flat's 97, only the sizes shrink: the window is the <b>last 16 raw tokens</b> (<span class="code">sliding_window=16</span>, causal-masked), the <b>32 blocks</b> are the 8:1 compressed KV, and the <b>1 sink</b> is the same per-head scalar appended then sliced off (<span class="code">probs[..., :-1]</span>) — it only absorbs probability mass, never contributes a value. That's <b>48 real keys + 1 dump = 49</b> columns.</p>
+</div></div>
+</div></div>
+
+<div class="step"><div class="stepnum">8</div><div class="body">
+<h4>Slim O — <span class="gold">o_lora_rank = 64</span> (was 128)</h4>
+<p><span class="code">o_a_proj</span>: 16,384 → 8,192 params · <span class="code">o_b_proj</span>: 65,536 → 32,768 params. This single cut removes <b>40,960</b> parameters (the biggest chunk of EPP's −48,896 vs Flat).</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">"Does it always split into 2?" — EPP has TWO different block counts</div><div class="exbody">
+<p>EPP is the decoupled design, so it has <b>two</b> granularities running at once. The "2" you see is again the <b>two-series</b> (2m slots per block) — a constant. But the <b>block counts</b> differ between the two compressors:</p>
+<table class="ex">
+<tr><th>compressor</th><th>rate</th><th>blocks = S ÷ rate</th><th>slots per block</th></tr>
+<tr><td>KV content (comp_kv)</td><td>8:1</td><td>256 ÷ 8 = <b>32</b></td><td>2m = 16</td></tr>
+<tr><td>Routing index (comp_idx)</td><td>4:1</td><td>256 ÷ 4 = <b>64</b></td><td>2m = 8</td></tr>
+</table>
+<p class="hint">So EPP runs <b>two compressors in parallel</b>: a coarse 8:1 one that makes the 32 KV blocks the query attends to (fast), and a fine 4:1 one that makes the 64 index tokens the router scores (accurate). The two-series "2" is baked into both — it's the overlap, not the count.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">From scratch — 16 tokens, the decoupled flow (KV 8:1 + index 4:1)</div><div class="exbody">
+<p>Let's trace 16 raw tokens through EPP's two compressors. This is where EPP differs from Flat: <b>the KV blocks and the index tokens are different sizes.</b></p>
+<p><b>① KV compressor (8:1):</b> 16 tokens → <b>2 KV blocks</b>, each covering 8 positions. Block 0 = tokens 0–7, block 1 = tokens 8–15. Each block has 2m = 16 slots (8 carried + 8 fresh).</p>
+<p><b>② Index compressor (4:1):</b> 16 tokens → <b>4 index tokens</b>, each covering 4 positions. Token 0 = [0,3], token 1 = [4,7], token 2 = [8,11], token 3 = [12,15]. Each has 2m = 8 slots.</p>
+<table class="ex">
+<tr><th>index token t</th><th>covers</th><th>maps to KV block ⌊t/2⌋</th><th>block covers</th></tr>
+<tr><td>0</td><td>[0,3]</td><td>0</td><td>[0,7]</td></tr>
+<tr><td>1</td><td>[4,7]</td><td>0</td><td>[0,7]</td></tr>
+<tr><td>2</td><td>[8,11]</td><td>1</td><td>[8,15]</td></tr>
+<tr><td>3</td><td>[12,15]</td><td>1</td><td>[8,15]</td></tr>
+</table>
+<p>So the router scores <b>4 fine index tokens</b> (precise routing), but they address only <b>2 coarse KV blocks</b> (fast attention). Two index tokens share one KV block — that's the decoupling. The query attends over <b>window + 2 blocks</b>, not 4.</p>
+<p class="hint">At the real S=256: 64 index tokens (fine routing, keeps accuracy) → map onto 32 KV blocks (coarse content, fast). The router precision is what Flat has; the attention width is what ExpertFlat has. That's the whole EPP trick.</p>
+</div></div>
+
+<h3>Worked example — one full query, q = 100 (compare with Flat above)</h3>
+<p>Identical input, same q = 100 — now watch the two numbers that differ from Flat: <b>16 index tokens → but only blocks with 8j+7 ≤ 100 can survive</b>, and the softmax is only 49 wide.</p>
+
+<div class="exwrap"><div class="extitle">Step 1 — router (identical to Flat, shared-Q)</div><div class="exbody">
+<p><span class="code">q_idx = q</span> (the deleted <span class="code">idx_q_proj</span> saves the 64→128 GEMM but the math is the same). Same ReLU scores, same head mixing, same future mask on the 64 index tokens (tokens 25…63 killed at q=100), same top-16 pick.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">Step 2 — the decoupled mapping, with safety</div><div class="exbody">
+<p>Same toy top-16 as Flat's example, but now each token maps to a 2× coarser block and must satisfy <b>8·⌊t/2⌋+7 ≤ 100</b>:</p>
+<table class="ex">
+<tr><th>token t</th><th>covers</th><th>score</th><th>block ⌊t/2⌋</th><th>block covers</th><th>8b+7 ≤ 100?</th><th>result</th></tr>
+<tr><td>21</td><td>[84,87]</td><td>3.4</td><td>10</td><td>[80,87]</td><td>✓ 87 ≤ 100</td><td class="hl2">block 10 ✓</td></tr>
+<tr><td>4</td><td>[16,19]</td><td>3.1</td><td>2</td><td>[16,23]</td><td>✓ 23 ≤ 100</td><td class="hl2">block 2 ✓</td></tr>
+<tr><td>23</td><td>[92,95]</td><td>2.9</td><td>11</td><td>[88,95]</td><td>✓ 95 ≤ 100</td><td class="hl2">block 11 ✓</td></tr>
+<tr><td>10</td><td>[40,43]</td><td>2.7</td><td>5</td><td>[40,47]</td><td>✓ 47 ≤ 100</td><td class="hl2">block 5 ✓</td></tr>
+<tr><td>0</td><td>[0,3]</td><td>2.5</td><td>0</td><td>[0,7]</td><td>✓ 7 ≤ 100</td><td class="hl2">block 0 ✓</td></tr>
+<tr><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+<tr><td>12</td><td>[48,51]</td><td>1.1</td><td>6</td><td>[48,55]</td><td>✓ 55 ≤ 100</td><td class="hl2">block 6 ✓</td></tr>
+</table>
+<p class="hint">At q = 100 no selected token is near the boundary, so nothing falls to the sentinel — but notice the <b>compression of address space</b>: 16 tokens collapse to ≤ 16 distinct blocks (some share), and the 49-column softmax replaces Flat's 97.</p>
+</div></div>
+
+<div class="exwrap"><div class="extitle">Step 3 — the 49-column dense softmax</div><div class="exbody">
+<table class="ex">
+<tr><th>col</th><th>source</th><th>logit (toy)</th><th>softmax ≈</th></tr>
+<tr><td>0–15</td><td>window tokens 85…100</td><td>…various…</td><td>≈ 0.61 total</td></tr>
+<tr><td>16 + 10</td><td>block 10 (tokens 80–87)</td><td>3.4</td><td>0.122</td></tr>
+<tr><td>16 + 2</td><td>block 2 (tokens 16–23)</td><td>3.1</td><td>0.090</td></tr>
+<tr><td>16 + 11</td><td>block 11 (tokens 88–95)</td><td>2.9</td><td>0.072</td></tr>
+<tr><td>16 + 5</td><td>block 5 (tokens 40–47)</td><td>2.7</td><td>0.060</td></tr>
+<tr><td>16 + 0</td><td>block 0 (tokens 0–7)</td><td>2.5</td><td>0.049</td></tr>
+<tr><td class="hl">16 + 27 others</td><td>unselected blocks</td><td>−∞</td><td class="hl">0 exactly</td></tr>
+</table>
+<p class="hint">Half the columns of Flat → the per-query GEMM is ~2× smaller. <b>The router precision is unchanged</b> (still 64 fine index tokens) — that's why val MSE stays at 0.1099 instead of degrading like a straight 8:1-everything design (ExpertFlat: 0.1102).</p>
+</div></div>
+
+<h3>Where the parameter savings come from (exact, measured)</h3>
+<table>
+<tr><th>Module</th><th class="num">Flat</th><th class="num">EPP</th><th class="num">Δ</th><th>Why</th></tr>
+<tr><td><code>o_b_proj.weight</code></td><td class="num">65,536</td><td class="num">32,768</td><td class="num red">−32,768</td><td>slim O rank 128→64</td></tr>
+<tr><td><code>o_a_proj.weight</code></td><td class="num">16,384</td><td class="num">8,192</td><td class="num red">−8,192</td><td>slim O rank 128→64</td></tr>
+<tr><td><code>idx_q_proj.weight</code></td><td class="num">8,192</td><td class="num">0</td><td class="num red">−8,192</td><td>shared-Q routing</td></tr>
+<tr><td><code>comp_position_bias</code></td><td class="num">256</td><td class="num">512</td><td class="num green">+256</td><td>8:1 KV → (8,64) bias</td></tr>
+<tr class="hl"><td><b>Total</b></td><td class="num"><b>144,548</b></td><td class="num"><b>95,652</b></td><td class="num"><b>−48,896</b></td><td><b>−34%, fewer than Normal's 102,496</b></td></tr>
+</table>
+
+</section>
+
+<!-- ═══════════════════════════ SIDE-BY-SIDE ═══════════════════════════ -->
+<section id="p-vs" class="panel">
+<h2>⚔️ Side-by-side comparison</h2>
+
+<h3>0 · 🕹️ Interactive: watch one query flow through all three models</h3>
+<p>Drag the slider — the number shows the query position q. The same position is traced through <b>Normal</b> (full 256-column causal attention), <b>Flat</b> (64 index tokens → top-16 → 97 dense cols), and <b>ExpertPlusPlus</b> (64 index tokens → top-16 → block mapping → 49 dense cols).</p>
+
+<div class="explorer">
+<div class="exp-top">
+<label for="qslider">query position</label>
+<input type="range" id="qslider" min="15" max="255" value="100">
+<span class="qval" id="qval">100</span>
+</div>
+<div class="legendx">
+<span><svg width="12" height="12"><rect x="0" y="0" width="12" height="12" fill="rgba(88,166,255,.4)" stroke="#58a6ff"/></svg> full-res tokens (window)</span>
+<span><svg width="12" height="12"><rect x="0" y="0" width="12" height="12" fill="rgba(227,179,65,.4)" stroke="#e3b341"/></svg> compressed KV block</span>
+<span><svg width="12" height="12"><rect x="0" y="0" width="12" height="12" fill="rgba(63,185,80,.4)" stroke="#3fb950"/></svg> index token (router)</span>
+<span><svg width="12" height="12"><rect x="0" y="0" width="12" height="12" fill="rgba(248,81,73,.4)" stroke="#f85149"/></svg> masked (future / unselected)</span>
+</div>
+<div class="trace" id="trace">
+
+<div class="tracecard">
+<h5>🔵 Normal — <span class="code">q·kᵀ</span> over 256 positions</h5>
+<div class="stripwrap"><div class="slab">allowed keys (causal): 0 … q (q+1 of 256)</div><div id="n-strip"></div></div>
+<div class="tl">Every past position participates in the softmax — no compression, no router. Cost scales O(S²) regardless of q.</div>
+<div class="statrow"><span class="mini">softmax width <b id="n-w">257</b></span><span class="mini">masked <b id="n-m">0</b></span><span class="mini">cost <b>O(256²)</b></span></div>
+</div>
+
+<div class="tracecard">
+<h5>🟢 Flat — router on 64 index tokens</h5>
+<div class="stripwrap"><div class="slab">64 index tokens (4:1) · green = future-pass, red = masked</div><div id="f-idx"></div></div>
+<div class="stripwrap"><div class="slab">top-16 selected → their blocks get bias 0.0</div><div id="f-top"></div></div>
+<div class="stripwrap"><div class="slab">97-col dense softmax: 32 window + 64 blocks + sink</div><div id="f-cols"></div></div>
+<div class="statrow"><span class="mini">dense cols <b id="f-w">97</b></span><span class="mini">selected blocks <b id="f-k">16</b></span><span class="mini">identity map t→t</span></div>
+</div>
+
+<div class="tracecard">
+<h5>🟡 ExpertPlusPlus — router 64, KV 32</h5>
+<div class="stripwrap"><div class="slab">64 index tokens (4:1) — same router as Flat</div><div id="e-idx"></div></div>
+<div class="stripwrap"><div class="slab">top-16 → ⌊t/2⌋ → blocks (red = future-leak → sentinel)</div><div id="e-top"></div></div>
+<div class="stripwrap"><div class="slab">49-col dense softmax: 16 window + 32 blocks + sink</div><div id="e-cols"></div></div>
+<div class="statrow"><span class="mini">dense cols <b id="e-w">49</b></span><span class="mini">selected blocks <b id="e-k">16</b></span><span class="mini">map t→⌊t/2⌋ + safety</span></div>
+</div>
+
+</div>
+<div class="tl" style="margin-top:10px" id="exp-notes"></div>
+</div>
+
+<h3>1 · Attention columns per query</h3>
+<div id="chart-cols2" class="chart legend"></div>
+
+<h3>2 · Parameters (attention module only)</h3>
+<div id="chart-params" class="chart"></div>
+
+<h3>3 · Forward latency (ms)</h3>
+<div id="chart-speed" class="chart"></div>
+<p class="meta">Flat &amp; EPP from alternating head-to-head measurement (authoritative). Normal from a single sequential run — treat as indicative (*).</p>
+
+<h3>4 · Accuracy — val / test MSE (10 epochs, seed 42)</h3>
+<div id="chart-acc" class="chart"></div>
+
+<h3>5 · Perf/Spd composite = (1 / ValMSE) / FwdMs × 1000</h3>
+<div id="chart-perf" class="chart"></div>
+
+<h3>6 · The full results table</h3>
+<table>
+<tr><th>Model</th><th class="num">Val MSE</th><th class="num">Test MSE</th><th class="num">Params</th><th class="num">Fwd (ms)</th><th class="num">Perf/Spd</th><th>Speed vs Flat</th></tr>
+<tr><td>Normal</td><td class="num">0.1083</td><td class="num">0.1637</td><td class="num">102,496</td><td class="num">38.31*</td><td class="num">241.0</td><td>0.77×</td></tr>
+<tr><td>Flat (CSA V4)</td><td class="num">0.1085</td><td class="num">0.1617</td><td class="num">144,548</td><td class="num">29.66†</td><td class="num">310.7</td><td>1.00×</td></tr>
+<tr class="hl"><td>ExpertPlusPlus</td><td class="num">0.1099</td><td class="num">0.1654</td><td class="num">95,652</td><td class="num">22.42†</td><td class="num">405.9</td><td><b>1.32× 🏆</b></td></tr>
+<tr><td>ExpertFlat (failed ablation)</td><td class="num">0.1102</td><td class="num">0.1645</td><td class="num">~0.096M</td><td class="num">28.88†</td><td class="num">314.3</td><td>1.03×</td></tr>
+<tr><td>FlatPlus</td><td class="num">0.1098</td><td class="num">0.1635</td><td class="num">—</td><td class="num">39.44</td><td class="num">230.9</td><td>0.75×</td></tr>
+<tr><td>Modified</td><td class="num">0.1088</td><td class="num">0.1624</td><td class="num">—</td><td class="num">52.19</td><td class="num">176.1</td><td>0.57×</td></tr>
+<tr><td>Stacked</td><td class="num">0.1116</td><td class="num">0.1665</td><td class="num">—</td><td class="num">34.31</td><td class="num">261.2</td><td>0.86×</td></tr>
+</table>
+
+<h3>7 · The contract, checked</h3>
+<table>
+<tr><th>Goal</th><th>Target</th><th>Result</th><th>Verdict</th></tr>
+<tr><td>Speed</td><td>≥ 1.30× Flat forward</td><td><b>1.32×</b> (29.66 → 22.42 ms)</td><td><span class="pill green">PASS</span></td></tr>
+<tr><td>Accuracy</td><td>same val as Flat (0.1085)</td><td>0.1099 (+0.0014)</td><td><span class="pill green">PASS</span> (inside ±0.002 band)</td></tr>
+<tr><td>Test MSE</td><td>≈ 0.1617</td><td>0.1654 (+0.0037)</td><td><span class="pill gold">SLIGHTLY WORSE</span> — noted honestly</td></tr>
+<tr><td>Params</td><td>—</td><td>−34% (144,548 → 95,652)</td><td><span class="pill green">BONUS</span></td></tr>
+<tr><td>Perf/Spd</td><td>—</td><td>405.9 vs 310.7</td><td><span class="pill green">WINNER</span></td></tr>
+</table>
+
+<h3>8 · Architectural comparison matrix</h3>
+<table>
+<tr><th>Component</th><th>Normal</th><th>Flat</th><th>ExpertPlusPlus</th></tr>
+<tr><td>KV compression</td><td>none</td><td>4:1 (64 blocks)</td><td><b>8:1 (32 blocks)</b></td></tr>
+<tr><td>Routing granularity</td><td>—</td><td>64 tokens (4:1)</td><td><b>64 tokens (4:1) — same as Flat</b></td></tr>
+<tr><td>Router query</td><td>—</td><td>own <code>idx_q_proj</code></td><td><b>shared main Q</b></td></tr>
+<tr><td>Sliding window</td><td>none</td><td>32 tokens (full res)</td><td><b>16 tokens (full res)</b></td></tr>
+<tr><td>Dense columns</td><td>256</td><td>96</td><td><b>48</b></td></tr>
+<tr><td>Sink tokens</td><td>none</td><td>4 logits</td><td>4 logits</td></tr>
+<tr><td>O rank</td><td>128</td><td>128</td><td><b>64</b></td></tr>
+<tr><td>Complexity</td><td>O(S²)</td><td>O(S·(S/4 + 32))</td><td><b>O(S·(S/8 + 16))</b></td></tr>
+<tr><td>Index→KV mapping</td><td>—</td><td>identity (4:1 = 4:1)</td><td><b>token → ⌊t/2⌋ with future-safety</b></td></tr>
+</table>
+
+<h3>9 · Step-by-step pipeline comparison</h3>
+<table>
+<tr><th>#</th><th>Normal</th><th>Flat</th><th>ExpertPlusPlus</th></tr>
+<tr><td>1</td><td colspan="3">Q = q_b_norm(q_b(q_a_norm(q_a(h)))) + RoPE · KV = kv_norm(kv_proj(h)) + RoPE (tied K=V)</td></tr>
+<tr><td>2</td><td>—</td><td>KV compressor 4:1 → 64 blocks</td><td>KV compressor <b>8:1</b> → 32 blocks</td></tr>
+<tr><td>3</td><td>—</td><td>Indexer 4:1 → 64 tokens</td><td>Indexer <b>4:1</b> → 64 tokens (same)</td></tr>
+<tr><td>4</td><td>—</td><td>Router q via <code>idx_q_proj</code></td><td>Router q = <b>shared main Q</b></td></tr>
+<tr><td>5</td><td>scores = q·kᵀ/√32 [256 cols]</td><td colspan="2">scores = ReLU(q_idx·cidxᵀ)·1/√32 · mix heads · future-mask [64 cols]</td></tr>
+<tr><td>6</td><td>—</td><td>top-16 (identity map)</td><td>top-16 → <b>t→⌊t/2⌋ + block safety</b></td></tr>
+<tr><td>7</td><td>causal softmax over 256</td><td>dense softmax over 32+64+1</td><td>dense softmax over <b>16+32+1</b></td></tr>
+<tr><td>8</td><td colspan="3">attn_out = softmax·v → RoPE(−sin) → grouped O → residual + LN → MLP → out</td></tr>
+</table>
+
+<h3>10 · What was tried and failed (ablation honesty)</h3>
+<div class="card"><ul>
+<li><b>ExpertFlat</b> (8:1 on both axes, 64 dense cols): fastest-ish (1.34×) but <b>val 0.1102</b> — the coarsened router lost accuracy. This is the counterfactual that proves the decoupling thesis.</li>
+<li><b>Sparse gather</b> (only gather the ~16 selected blocks): ~5× <i>slower</i> than dense on CPU — per-query indexing + bmm kills cache locality.</li>
+<li><b>Hierarchical / multi-scale pyramid compressors</b>: extra params, no accuracy gain.</li>
+<li><b>Linear-pool indexer</b>: worse routing signal than the two-series overlap gate.</li>
+<li><b>Stacked</b> (2 blocks of attention): 0.1116 val — deeper but worse.</li>
+<li><b>FlatPlus / Modified</b>: hyperparameter variants that did not move the needle.</li>
+<li><b>torch.empty bug</b>: uninitialized bias memory (up to 10²⁸) on macOS caused NaN in softmax gates — fixed with <code>torch.zeros</code>.</li>
+</ul></div>
+
+</section>
+
+<!-- ═══════════════════════════ REPRODUCE ═══════════════════════════ -->
+<section id="p-repro" class="panel">
+<h2>🔬 Reproduction guide</h2>
+
+<h3>Environment</h3>
+<div class="card"><ul>
+<li>Python 3.11 · PyTorch (CPU, Apple Silicon M-series, fp32) · no CUDA</li>
+<li>Interpreter used here: <span class="code">~/.uv_env/py311/bin/python</span></li>
+<li>No extra packages beyond PyTorch (dataset downloads ETTh1.csv at runtime)</li>
+</ul></div>
+
+<h3>Files</h3>
+<div class="tree">
+<pre>
+new_attention/
+├── <span class="f">attention.py</span>                    <span class="c">— BaseCSAAttention (shared Q/KV/O, router, _attend) + CSAAttention (Flat)</span>
+├── <span class="f">normal_attention.py</span>             <span class="c">— NormalAttention (vanilla O(S²))</span>
+├── <span class="f">expert_plus_plus_attention.py</span>  <span class="c">— ExpertPlusPlusAttention (decoupled 8:1 KV + 4:1 routing)</span>
+├── <span class="f">expert_flat_attention.py</span>       <span class="c">— ExpertFlatAttention (the failed 8:1/8:1 ablation)</span>
+├── <span class="f">flat_plus_attention.py</span>         <span class="c">— FlatPlus variant</span>
+├── <span class="f">modified_attention.py</span>          <span class="c">— Modified variant</span>
+├── <span class="f">model.py</span>                       <span class="c">— CSATimeSeriesModel + 6 subclasses (Flat, Normal, EPP, …)</span>
+├── <span class="f">dataset.py</span>                     <span class="c">— ETTForecastDataset + download_and_preprocess_etth1()</span>
+├── <span class="f">compare.py</span>                     <span class="c">— trains 6 models, 10 epochs each, prints table</span>
+├── <span class="f">test_expert_plus_plus.py</span>      <span class="c">— 4 structural/functional checks (all pass)</span>
+├── <span class="f">benchmark_speed.py</span>             <span class="c">— all-variant speed benchmark</span>
+├── <span class="f">main.py</span>                       <span class="c">— reference training script</span>
+├── <span class="f">RESULTS.md</span>                     <span class="c">— final results write-up</span>
+└── <span class="f">WRITEUP.md</span>                     <span class="c">— full technical write-up</span>
+</pre>
+</div>
+
+<h3>Reproduce the numbers</h3>
+<pre><code>cd new_attention
+
+# 1) Full 6-model accuracy comparison (10 epochs, seed 42 re-seeded per model)
+~/.uv_env/py311/bin/python compare.py
+#   → expect: Normal 0.1083 · Flat 0.1085 · EPP 0.1099 · ExpertFlat 0.1102
+
+# 2) Structural tests of ExpertPlusPlus (4 checks)
+~/.uv_env/py311/bin/python test_expert_plus_plus.py
+#   → expect: ALL CHECKS PASSED
+#     ckv [B,1,32,32] · cidx [B,1,64,32] · token→block map · future-safety
+#     params: Flat 0.145M vs EPP 0.096M
+
+# 3) Reliable speed comparison — ALWAYS head-to-head, alternating:
+</code></pre>
+
+<div class="callout red"><b>The #1 reproduction trap: CPU benchmark variance.</b> Single sequential runs are unreliable — Flat has measured 29.7–45.3 ms with <i>no code change</i>, and one run under load-19 showed 273 ms. Use the alternating head-to-head harness below, and keep the machine quiet (this machine also runs backups from /Volumes/X9 that skew timings).</div>
+
+<pre><code># benchmark_speed_head_to_head.py — the authoritative harness
+import torch, time
+from attention import CSAAttention
+from expert_plus_plus_attention import ExpertPlusPlusAttention
+
+torch.manual_seed(0)
+B, S, D = 32, 256, 128
+x = torch.randn(B, S, D)
+flat = CSAAttention(hidden_size=D, num_heads=4, head_dim=32, q_lora_rank=64,
+                    compress_rate=4, index_topk=16, sliding_window=32)
+epp  = ExpertPlusPlusAttention(hidden_size=D, num_heads=4, head_dim=32, q_lora_rank=64,
+                    compress_rate=8, index_compress_rate=4, index_topk=16,
+                    sliding_window=16, o_groups=4, o_lora_rank=64)
+
+def timeit(m, n=100):
+    with torch.no_grad():
+        for _ in range(20): m(x)          # warmup
+        t0 = time.perf_counter()
+        for _ in range(n): m(x)
+        return (time.perf_counter() - t0) / n * 1e3   # ms
+
+# alternating: A B A B ... — cancels thermal drift
+ts_f, ts_e = [], []
+for _ in range(10):
+    ts_f.append(timeit(flat)); ts_e.append(timeit(epp))
+print(f"Flat {sorted(ts_f)[5]:.2f} ms  |  EPP {sorted(ts_e)[5]:.2f} ms  "
+      f"|  speedup {sorted(ts_f)[5]/sorted(ts_e)[5]:.2f}x")
+#   → expect ≈ 29.7 ms vs 22.4 ms ≈ 1.32×
+</code></pre>
+
+<h3>Key configuration values</h3>
+<table>
+<tr><th>Hyperparameter</th><th>Value</th><th>Where</th></tr>
+<tr><td>hidden_size</td><td>128</td><td>model.py</td></tr>
+<tr><td>num_heads / head_dim</td><td>4 / 32</td><td>model.py</td></tr>
+<tr><td>q_lora_rank</td><td>64</td><td>attention.py</td></tr>
+<tr><td>index_head_dim / index_n_heads</td><td>32 / 4</td><td>attention.py</td></tr>
+<tr><td>index_topk</td><td>16</td><td>attention.py</td></tr>
+<tr><td>RoPE</td><td>rope_head_dim=8 (last 8 dims), base 10000, rotate back −sin</td><td>attention.py</td></tr>
+<tr><td>Flat: compress_rate / window</td><td>4 / 32</td><td>model.py</td></tr>
+<tr><td>EPP: compress_rate / index_compress_rate / window</td><td><b>8 / 4 / 16</b></td><td>model.py</td></tr>
+<tr><td>EPP: o_lora_rank</td><td>64 (vs 128)</td><td>model.py</td></tr>
+<tr><td>Optimizer</td><td>AdamW lr 1e-4, wd 1e-5, clip_grad_norm 10.0, batch 32</td><td>compare.py</td></tr>
+<tr><td>Epochs / seed</td><td>10 / 42 (re-seeded before each model)</td><td>compare.py</td></tr>
+<tr><td>Loss</td><td>MSE on out[:, -96:, :] vs y[:, -96:, :]</td><td>compare.py</td></tr>
+</table>
+
+<h3>Gotchas</h3>
+<div class="card"><ul>
+<li><b>Shared-Q routing requires <code>head_dim == index_head_dim</code></b> (both 32 here). If you change one, EPP breaks.</li>
+<li><b>GroupedLinear param counting:</b> implemented as ONE <code>nn.Linear(out, in_per_group)</code> reshaped to <code>(n_groups, out/n_groups, in_per_group)</code> — params = out × in_per_group, NOT × n_groups. Naive per-group reimplementation double-counts.</li>
+<li><b>Sentinel edge case:</b> at q = S−1, ⌊t/2⌋ could map a sentinel to a valid block. EPP guards with an explicit <code>torch.where(sentinel, n_kv, kv_blocks)</code> — keep it.</li>
+<li><b>Use <code>torch.zeros</code> for learnable biases</b> — uninitialized macOS memory caused 10²⁸-scale NaNs in softmax gates.</li>
+<li><b>z-score is over the ENTIRE series</b> in dataset.py (not train-only) — keep identical for reproduction.</li>
+<li><b>Window 32→16 was free accuracy</b> (0.1099 both ways, better test) — but re-verify if you change S.</li>
+</ul></div>
+
+</section>
+
+</div><!-- /wrap -->
+
+<script>
+/* ── tab switching ── */
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById(t.dataset.target).classList.add('active');
+    window.scrollTo({top: 0, behavior: 'instant'});
+  });
+});
+
+/* ── horizontal bar charts ── */
+const C = {
+  blue:  '#58a6ff', green: '#3fb950', gold: '#e3b341', red: '#f85149', muted: '#8b949e'
+};
+function barChart(sel, rows, max) {
+  const el = document.getElementById(sel);
+  if (!el) return;
+  const m = max || Math.max(...rows.map(r => r.value));
+  el.innerHTML = rows.map(r => `
+    <div class="row">
+      <div class="lab">${r.label}</div>
+      <div class="track"><div class="fill" style="width:${(r.value/m*100).toFixed(1)}%;background:${r.color}">${r.value}</div></div>
+      <div class="note">${r.note || ''}</div>
+    </div>`).join('');
+}
+
+/* columns */
+const cols = [
+  {label:'Normal',       value:256, color:C.blue,  note:'256 × 256 = 65,536 cells/head'},
+  {label:'Flat',         value:96,  color:C.green, note:'32 window + 64 blocks'},
+  {label:'ExpertPlusPlus',value:48, color:C.gold,  note:'16 window + 32 blocks'},
+];
+barChart('chart-cols', cols, 256);
+barChart('chart-cols2', cols, 256);
+
+/* params */
+barChart('chart-params', [
+  {label:'Normal',        value:102496, color:C.blue,  note:'102.5k'},
+  {label:'Flat',          value:144548, color:C.green, note:'144.5k'},
+  {label:'ExpertPlusPlus',value:95652,  color:C.gold,  note:'95.7k — smallest'},
+], 160000);
+
+/* speed */
+barChart('chart-speed', [
+  {label:'Normal',        value:38.31, color:C.blue,  note:'38.31 ms*'},
+  {label:'Flat',          value:29.66, color:C.green, note:'29.66 ms†'},
+  {label:'ExpertPlusPlus',value:22.42, color:C.gold,  note:'22.42 ms† · 1.32×'},
+], 45);
+
+/* accuracy — val and test side by side (two rows per model) */
+(function(){
+  const data = [
+    {label:'Normal',        val:0.1083, test:0.1637, color:C.blue},
+    {label:'Flat',          val:0.1085, test:0.1617, color:C.green},
+    {label:'ExpertPlusPlus',val:0.1099, test:0.1654, color:C.gold},
+  ];
+  const max = 0.18;
+  const el = document.getElementById('chart-acc');
+  el.innerHTML = '<div class="row"><div class="lab"></div><div class="track" style="height:16px;background:none;border:none"></div><div class="note" style="font-size:11px">lower is better</div></div>' +
+  data.map(r => `
+    <div class="row">
+      <div class="lab">${r.label} · val</div>
+      <div class="track"><div class="fill" style="width:${(r.val/max*100).toFixed(1)}%;background:${r.color}">${r.val}</div></div>
+      <div class="note">val</div>
+    </div>
+    <div class="row">
+      <div class="lab"></div>
+      <div class="track"><div class="fill" style="width:${(r.test/max*100).toFixed(1)}%;background:${r.color};opacity:.55">${r.test}</div></div>
+      <div class="note">test</div>
+    </div>`).join('');
+})();
+
+/* perf/spd */
+barChart('chart-perf', [
+  {label:'Normal',        value:241.0, color:C.blue,  note:''},
+  {label:'Flat',          value:310.7, color:C.green, note:''},
+  {label:'ExpertPlusPlus',value:405.9, color:C.gold,  note:'🏆'},
+], 450);
+
+/* ── SVG grid helpers ── */
+/* Normal 8×8 causal grid */
+(function(){
+  const g = document.getElementById('normal-grid');
+  if(!g) return;
+  const n = 8, c = 20, x0 = 130, y0 = 60;
+  for(let r=0;r<n;r++) for(let c2=0;c2<n;c2++){
+    const allowed = c2 <= r;
+    const self = c2 === r;
+    const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x', x0 + c2*c);
+    rect.setAttribute('y', y0 + r*c);
+    rect.setAttribute('width', c-1.5); rect.setAttribute('height', c-1.5);
+    rect.setAttribute('rx', 2);
+    if(self){ rect.setAttribute('fill','rgba(248,81,73,.25)'); rect.setAttribute('stroke','#f85149'); }
+    else if(allowed){ rect.setAttribute('fill','rgba(88,166,255,.25)'); rect.setAttribute('stroke','#58a6ff'); }
+    else { rect.setAttribute('fill','#21262d'); rect.setAttribute('stroke','#30363d'); }
+    g.appendChild(rect);
+  }
+  // query label on left
+  const t = document.createElementNS('http://www.w3.org/2000/svg','text');
+  t.setAttribute('x', x0-6); t.setAttribute('y', y0-8); t.setAttribute('text-anchor','end');
+  t.setAttribute('fill','#58a6ff'); t.setAttribute('font-size','10.5');
+  t.textContent = 'query ↓';
+  g.appendChild(t);
+})();
+
+/* Flat 16×8 scores grid */
+(function(){
+  const g = document.getElementById('flat-score-grid');
+  if(!g) return;
+  const nq = 16, nt = 8, c = 13, x0 = 120, y0 = 40;
+  for(let r=0;r<nq;r++) for(let c2=0;c2<nt;c2++){
+    const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x', x0 + c2*c);
+    rect.setAttribute('y', y0 + r*c);
+    rect.setAttribute('width', c-1.5); rect.setAttribute('height', c-1.5);
+    rect.setAttribute('rx', 1.5);
+    const hot = (c2*16+r)%3===0;
+    rect.setAttribute('fill', hot ? 'rgba(63,185,80,.5)' : 'rgba(63,185,80,.16)');
+    rect.setAttribute('stroke', hot ? '#3fb950' : '#2ea043');
+    g.appendChild(rect);
+  }
+  const t = document.createElementNS('http://www.w3.org/2000/svg','text');
+  t.setAttribute('x', x0-6); t.setAttribute('y', y0-8); t.setAttribute('text-anchor','end');
+  t.setAttribute('fill','#3fb950'); t.setAttribute('font-size','10.5');
+  t.textContent = 'query ↓';
+  g.appendChild(t);
+})();
+
+/* Flat 64 block chips */
+(function(){
+  const g = document.getElementById('flat-block-chips');
+  if(!g) return;
+  const n = 64, w = 9, gap = 1.5, x0 = 200, y0 = 60;
+  for(let i=0;i<n;i++){
+    const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x', x0 + i*(w+gap)); rect.setAttribute('y', y0 + 14);
+    rect.setAttribute('width', w); rect.setAttribute('height', 26);
+    rect.setAttribute('rx', 2);
+    const sel = (i%13 < 4) ? 'rgba(63,185,80,.65)' : 'rgba(63,185,80,.12)';
+    rect.setAttribute('fill', sel); rect.setAttribute('stroke', sel==='rgba(63,185,80,.65)' ? '#3fb950' : '#2ea043');
+    g.appendChild(rect);
+  }
+})();
+
+/* EPP 32 block chips */
+(function(){
+  const g = document.getElementById('epp-block-chips');
+  if(!g) return;
+  const n = 32, w = 19, gap = 3, x0 = 200, y0 = 60;
+  for(let i=0;i<n;i++){
+    const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x', x0 + i*(w+gap)); rect.setAttribute('y', y0 + 14);
+    rect.setAttribute('width', w); rect.setAttribute('height', 26);
+    rect.setAttribute('rx', 2);
+    const sel = (i%5 < 2) ? 'rgba(227,179,65,.7)' : 'rgba(227,179,65,.12)';
+    rect.setAttribute('fill', sel); rect.setAttribute('stroke', sel==='rgba(227,179,65,.7)' ? '#e3b341' : '#d29922');
+    g.appendChild(rect);
+  }
+})();
+
+/* ═══════════ interactive explorer (tab 4) ═══════════ */
+const E = {
+  idx:  (t,q) => 4*t+3 <= q,                    // index future mask
+  safe: (b,q) => 8*b+7 <= q,                    // EPP block safety
+  score:(t)   => 0.5 + 0.5*Math.sin(t*2.13) + 0.12*Math.cos(t*0.71) + (t%5)*0.03, // pseudo router score (illustrative)
+  topk: (allowed, q, k) => allowed.slice().sort((a,b)=>E.score(b)-E.score(a)).slice(0,k),
+};
+function strip(id, n, colorOf){           // colorOf(i) -> css color string or null (skip)
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.innerHTML = '';
+  const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('height','16');
+  const w = n > 40 ? 4.5 : 7, gap = 1;
+  svg.setAttribute('width', Math.max(40, n*(w+gap)+2));
+  for(let i=0;i<n;i++){
+    const c = colorOf(i);
+    if(!c) continue;
+    const r = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    r.setAttribute('x', 1+i*(w+gap)); r.setAttribute('y', 1);
+    r.setAttribute('width', w); r.setAttribute('height', 12);
+    r.setAttribute('rx', 1.5); r.setAttribute('fill', c);
+    svg.appendChild(r);
+  }
+  el.appendChild(svg);
+}
+function renderExplorer(){
+  const q = +document.getElementById('qslider').value;
+  document.getElementById('qval').textContent = q;
+
+  /* Normal: causal — q+1 allowed of 256 */
+  strip('n-strip', 256, i => i <= q ? 'rgba(88,166,255,.75)' : 'rgba(248,81,73,.55)');
+  document.getElementById('n-w').textContent = (q+1);
+
+  /* index tokens (shared by Flat & EPP) */
+  const idxArr = Array.from({length:64},(_,t)=>t).filter(t=>E.idx(t,q));
+  strip('f-idx', 64, t => E.idx(t,q) ? 'rgba(63,185,80,.8)' : 'rgba(248,81,73,.5)');
+  strip('e-idx', 64, t => E.idx(t,q) ? 'rgba(63,185,80,.8)' : 'rgba(248,81,73,.5)');
+
+  const top = E.topk(idxArr, q, 16);
+  const topSet = new Set(top);
+
+  /* Flat: identity t→t */
+  strip('f-top', 64, t => topSet.has(t) ? 'rgba(63,185,80,.95)' : 'rgba(63,185,80,.12)');
+  strip('f-cols', 97, i => {
+    if(i < 32) return 'rgba(88,166,255,.7)';                       // window
+    if(i < 96) return topSet.has(i-32) ? 'rgba(63,185,80,.9)' : 'rgba(248,81,73,.35)'; // blocks
+    return 'rgba(227,179,65,.55)';                                 // sink
+  });
+  document.getElementById('f-w').textContent = '97';
+  document.getElementById('f-k').textContent = top.length;
+
+  /* EPP: t→⌊t/2⌋ + safety */
+  const blkOf = t => Math.floor(t/2);
+  const selBlk = new Set(), sent = [];
+  for(const t of top){
+    const b = blkOf(t);
+    if(E.safe(b,q)) selBlk.add(b); else sent.push(t);
+  }
+  strip('e-top', 64, t => {
+    if(!topSet.has(t)) return 'rgba(63,185,80,.12)';
+    const b = blkOf(t);
+    return E.safe(b,q) ? 'rgba(227,179,65,.95)' : 'rgba(248,81,73,.9)';
+  });
+  strip('e-cols', 49, i => {
+    if(i < 16) return 'rgba(88,166,255,.7)';                        // window
+    if(i < 48) return selBlk.has(i-16) ? 'rgba(227,179,65,.9)' : 'rgba(248,81,73,.35)'; // blocks
+    return 'rgba(227,179,65,.55)';                                  // sink
+  });
+  document.getElementById('e-w').textContent = '49';
+  document.getElementById('e-k').textContent = selBlk.size;
+
+  /* notes */
+  const idxMasked = 64 - idxArr.length;
+  const notes = document.getElementById('exp-notes');
+  notes.innerHTML = `<b>q = ${q}:</b> Normal softmaxes over <b>${q+1}</b> of 256 positions. ` +
+    `Index future-mask kills <b>${idxMasked}</b> of 64 index tokens (tokens where 4t+3 &gt; ${q}). ` +
+    `Flat then attends densely over all <b>97</b> columns (16 selected blocks unmasked). ` +
+    (sent.length ? `EPP drops <b>${sent.length}</b> token${sent.length===1?'':'s'} (index-passing but block-leaking → sentinel). ` : `EPP: every selected block is future-safe (no sentinels at this q). `) +
+    `EPP attends over <b>49</b> columns with ${selBlk.size} blocks unmasked.`;
+}
+const qsl = document.getElementById('qslider');
+if(qsl){ qsl.addEventListener('input', renderExplorer); renderExplorer(); }
+
+/* ═══════════ input→output flow animations ═══════════ */
+const NS = 'http://www.w3.org/2000/svg';
+function svgEl(tag, attrs){
+  const el = document.createElementNS(NS, tag);
+  for(const k in attrs) el.setAttribute(k, attrs[k]);
+  return el;
+}
+/* A tiny stage: a labeled box with an optional animated flow line into it. */
+function stageBox(svg, x, y, w, h, label, sub, color, id){
+  const g = svgEl('g', {class:'anim-stage', id});
+  const r = svgEl('rect', {x, y, width:w, height:h, rx:8, fill:'#1c2128', stroke:color});
+  g.appendChild(r);
+  const t = svgEl('text', {x:x+w/2, y:y+h/2-2, 'text-anchor':'middle', fill:'#e6edf3', 'font-size':'11.5', 'font-family':'Menlo,monospace'});
+  t.textContent = label; g.appendChild(t);
+  if(sub){
+    const s = svgEl('text', {x:x+w/2, y:y+h/2+14, 'text-anchor':'middle', fill:'#8b949e', 'font-size':'9.5'});
+    s.textContent = sub; g.appendChild(s);
+  }
+  svg.appendChild(g);
+  return g;
+}
+function flowLine(svg, x1,y1,x2,y2, color, id){
+  const l = svgEl('line', {x1,y1,x2,y2, stroke:color, 'stroke-width':2, 'marker-end':'url(#arr)', class:'anim-flow', id});
+  svg.appendChild(l);
+  return l;
+}
+/* Build a horizontal pipeline of stages with animated connectors. */
+function buildPipeline(svg, stages, y){
+  const gap = 26, boxW = 150, boxH = 52;
+  let x = 20;
+  stages.forEach((s, i) => {
+    stageBox(svg, x, y, boxW, boxH, s.label, s.sub, s.color, 'st'+i);
+    if(i < stages.length-1) flowLine(svg, x+boxW, y+boxH/2, x+boxW+gap, y+boxH/2, s.color, 'fl'+i);
+    x += boxW + gap;
+  });
+}
+/* Generic animation runner: highlight stages in sequence, then pulse the output. */
+function runAnim(svgId, statusId, stages, loop){
+  const svg = document.getElementById(svgId);
+  const st = document.getElementById(statusId);
+  if(!svg) return;
+  svg.innerHTML = '';
+  buildPipeline(svg, stages, 50);
+  const n = stages.length;
+  let i = 0, timer = null;
+  const clear = () => {
+    for(let k=0;k<n;k++){
+      const s = svg.getElementById('st'+k); if(s) s.classList.remove('anim-pulse');
+      const f = svg.getElementById('fl'+k); if(f) f.classList.remove('anim-glow');
+    }
+  };
+  const step = () => {
+    clear();
+    const s = svg.getElementById('st'+i); if(s) s.classList.add('anim-pulse');
+    const f = svg.getElementById('fl'+i); if(f) f.classList.add('anim-glow');
+    st.textContent = stages[i].label;
+    i++;
+    if(i < n){ timer = setTimeout(step, 700); }
+    else if(loop){ i = 0; timer = setTimeout(step, 900); }
+    else { st.textContent = 'done'; }
+  };
+  const btn = document.getElementById('btn-'+svgId.replace('anim-',''));
+  if(btn){
+    btn.onclick = () => { clearTimeout(timer); i = 0; clear(); step(); };
+  }
+  step();
+}
+
+/* Normal: h → Q/K/V → scores → softmax → output */
+runAnim('anim-normal', 'st-normal', [
+  { label:'h',    sub:'[B,256,128]', color:'#8b949e'},
+  { label:'Q,K,V', sub:'proj',       color:'#58a6ff'},
+  { label:'scores', sub:'Q·Kᵀ/√32',  color:'#58a6ff'},
+  { label:'softmax', sub:'causal mask', color:'#58a6ff'},
+  { label:'output', sub:'·V → O',    color:'#3fb950'},
+], false);
+
+/* Flat: h → compress → blocks → router → attend → output */
+runAnim('anim-flat', 'st-flat', [
+  {label:'h', sub:'[B,256,128]', color:'#8b949e'},
+  {label:'compress', sub:'4:1 → 64', color:'#e3b341'},
+  {label:'router', sub:'top-16', color:'#3fb950'},
+  {label:'attend', sub:'97 cols', color:'#3fb950'},
+  {label:'output', sub:'·V', color:'#3fb950'},
+], false);
+
+/* EPP: h → compress(8:1) → router(4:1) → map → attend → output */
+runAnim('anim-epp', 'st-epp', [
+  {label:'h', sub:'[B,256,128]', color:'#8b949e'},
+  {label:'compress', sub:'8:1 → 32', color:'#e3b341'},
+  {label:'router', sub:'4:1 → 64', color:'#3fb950'},
+  {label:'map', sub:'t→⌊t/2⌋', color:'#e3b341'},
+  {label:'attend', sub:'49 cols', color:'#3fb950'},
+  {label:'output', sub:'·V', color:'#3fb950'},
+], false);
+</script>
+</body>
+</html>

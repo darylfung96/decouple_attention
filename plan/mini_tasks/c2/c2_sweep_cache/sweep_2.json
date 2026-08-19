@@ -1,0 +1,86 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2607.28699v3",
+    "title": "WitCert: Sound Runtime Risk Observability and Gating for KV-Cache Quantization",
+    "published": "2026-07-30",
+    "summary": "KV-cache quantization is validated today by offline benchmark averages; a deployed system cannot tell whether compression is damaging the request it is serving right now. We give it a provably sound runtime meter -- a \"DTrace for KV quantization\": a per-(layer, head, step) upper bound on the total v"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.23054v1",
+    "title": "Through the Bottleneck: How Multi-head Latent Attention Separates Content from Position in Language Models",
+    "published": "2026-07-25",
+    "summary": "Multi-head Latent Attention (MLA), introduced in DeepSeek-V2, compresses key-value pairs through a shared low-rank bottleneck (cKV), achieving 81% KV-cache reduction during inference. Despite its adoption in massive production models, no prior work has studied what information this bottleneck preser"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.06601v1",
+    "title": "TriRoute: Unified Learned Routing for Joint Adaptive Attention, Experts, and KV-Cache Allocation",
+    "published": "2026-07-07",
+    "summary": "Conditional computation can decouple language model quality from per-token inference cost, yet leading techniques act on a single axis in isolation: Mixture-of-Experts (MoE) sparsifies the FFN, Mixture-of-Depths (MoD) skips whole transformer blocks, and KV-cache quantization compresses attention mem"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.11733v1",
+    "title": "Position: LLM Inference Should Be Evaluated as Energy-to-Token Production",
+    "published": "2026-05-12",
+    "summary": "LLM inference is still evaluated mainly as a model or software problem: accuracy, latency, throughput, and hardware utilization. This is incomplete. At deployment scale, the relevant output is a quality-conditioned token produced under joint constraints from effective compute, delivered data-center "
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.19348v1",
+    "title": "DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence",
+    "published": "2026-04-26",
+    "summary": "We present a preview version of DeepSeek-V4 series, including two strong Mixture-of-Experts (MoE) language models -- DeepSeek-V4-Pro with 1.6T parameters (49B activated) and DeepSeek-V4-Flash with 284B parameters (13B activated) -- both supporting a context length of one million tokens. DeepSeek-V4 "
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.06473v2",
+    "title": "MICA: Multivariate Infini Compressive Attention for Time Series Forecasting",
+    "published": "2026-04-07",
+    "summary": "Multivariate forecasting with Transformers faces a core scalability challenge: modeling cross-channel dependencies via attention compounds attention's quadratic sequence complexity with quadratic channel scaling, making full cross-channel attention impractical for high-dimensional time series. We pr"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.14694v1",
+    "title": "Near-Lossless Model Compression Enables Longer Context Inference in DNA Large Language Models",
+    "published": "2025-11-18",
+    "summary": "Trained on massive cross-species DNA corpora, DNA large language models (LLMs) learn the fundamental \"grammar\" and evolutionary patterns of genomic sequences. This makes them powerful priors for DNA sequence modeling, particularly over long ranges. However, two major constraints hinder their use in "
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.04058v1",
+    "title": "TCSAFormer: Efficient Vision Transformer with Token Compression and Sparse Attention for Medical Image Segmentation",
+    "published": "2025-08-06",
+    "summary": "In recent years, transformer-based methods have achieved remarkable progress in medical image segmentation due to their superior ability to capture long-range dependencies. However, these methods typically suffer from two major limitations. First, their computational complexity scales quadratically "
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.02957v1",
+    "title": "CS-VLM: Compressed Sensing Attention for Efficient Vision-Language Representation Learning",
+    "published": "2025-06-30",
+    "summary": "Vision-Language Models (vLLMs) have emerged as powerful architectures for joint reasoning over visual and textual inputs, enabling breakthroughs in image captioning, cross modal retrieval, and multimodal dialogue. However, as these models scale to longer video sequences and richer language descripti"
+  },
+  {
+    "id": "http://arxiv.org/abs/2506.14384v1",
+    "title": "GrFormer: A Novel Transformer on Grassmann Manifold for Infrared and Visible Image Fusion",
+    "published": "2025-06-17",
+    "summary": "In the field of image fusion, promising progress has been made by modeling data from different modalities as linear subspaces. However, in practice, the source images are often located in a non-Euclidean space, where the Euclidean methods usually cannot encapsulate the intrinsic topological structur"
+  },
+  {
+    "id": "http://arxiv.org/abs/2506.11169v1",
+    "title": "Advances in Small-Footprint Keyword Spotting: A Comprehensive Review of Efficient Models and Algorithms",
+    "published": "2025-06-12",
+    "summary": "Small-Footprint Keyword Spotting (SF-KWS) has gained popularity in today's landscape of smart voice-activated devices, smartphones, and Internet of Things (IoT) applications. This surge is attributed to the advancements in Deep Learning, enabling the identification of predefined words or keywords fr"
+  },
+  {
+    "id": "http://arxiv.org/abs/2503.16726v2",
+    "title": "EDiT: Efficient Diffusion Transformers with Linear Compressed Attention",
+    "published": "2025-03-20",
+    "summary": "Diffusion Transformers (DiTs) have emerged as a leading architecture for text-to-image synthesis, producing high-quality and photorealistic images. However, the quadratic scaling properties of the attention in DiTs hinder image generation with higher resolution or on devices with limited resources. "
+  },
+  {
+    "id": "http://arxiv.org/abs/2411.02941v1",
+    "title": "A Mamba Foundation Model for Time Series Forecasting",
+    "published": "2024-11-05",
+    "summary": "Time series foundation models have demonstrated strong performance in zero-shot learning, making them well-suited for predicting rapidly evolving patterns in real-world applications where relevant training data are scarce. However, most of these models rely on the Transformer architecture, which inc"
+  },
+  {
+    "id": "http://arxiv.org/abs/2407.08334v4",
+    "title": "ADMM Based Semi-Structured Pattern Pruning Framework For Transformer",
+    "published": "2024-07-11",
+    "summary": "NLP(natural language processsing) has achieved great success through the transformer model.However, the model has hundreds of millions or billions parameters,which is huge burden for its deployment on personal computer or small scale of server.To deal with it, we either make the model's weight matri"
+  }
+]

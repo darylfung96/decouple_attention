@@ -1,0 +1,131 @@
+\section{Method}
+\label{sec:method}
+
+\subsection{Task and evaluation protocol (frozen)}
+\label{sec:task}
+All experiments use a single frozen task specification
+\todo{cite plan/gate1\_task.md}. The dataset is ETTh1 (Electricity
+Transformer Temperature, hourly; 7 features), split chronologically
+$60\%/20\%/20\%$ into train/validation/test with stride-1 sliding windows of
+length $L{=}256$ that never span a split boundary. Normalization is a
+per-feature z-score whose statistics are fit on the \emph{train} split only
+and applied to all splits (the earlier practice of fitting over the full
+series was a future-statistics leak and is fixed). The task is
+\emph{direct} 96-step forecasting: in one forward pass the model maps
+$x \in \mathbb{R}^{B \times 256 \times 7}$ to $\hat{y} \in \mathbb{R}^{B
+\times 96 \times 7}$, and the loss is the pooled MSE over all
+$(B, 96, 7)$ elements, reported in standardized units (lower is better).
+No autoregressive decoding and no teacher forcing is used. Causality is
+enforced by construction and verified empirically: a future-invariance and
+exact-zero-future-gradient suite passes for every variant.
+\todo{note: windows overlap by 255/256 positions and are therefore not
+independent samples; this is a declared limitation, see
+Section~\ref{sec:limitations}.}
+
+Training is identical for every configuration: AdamW ($\mathrm{lr}{=}10^{-4}$,
+weight decay $10^{-5}$), gradient clipping at norm 10, batch size 32, a
+fixed budget of 10 epochs, float32 on CPU (Apple Silicon, 8 threads), and
+deterministic seeding with the same seed used for data loading and model
+initialization. The fixed 10-epoch budget is justified by learning-curve
+analysis: all cells are in a plateau regime after epoch 4 and the mean
+last-3-epoch drift across all 20 runs is $+0.0009$; no cell keeps improving
+systematically, so the budget does not bias cell comparisons.
+
+\subsection{Model family}
+\label{sec:family}
+All configurations share one minimal Transformer block (hidden size 128,
+4 heads, head dimension 32) with a horizon head
+$\mathrm{Linear}(128 \rightarrow 96 \cdot 7)$ applied to the last hidden
+state:
+\begin{equation}
+x = \mathrm{input\_proj}(u) + \mathrm{pos\_embedding}, \qquad
+h = \mathrm{MLP}(\mathrm{LN}(\mathrm{attn}(x) + x)), \qquad
+\hat{y} = \mathrm{horizon\_head}(h[:, -1, :]),
+\end{equation}
+The only difference between configurations is the attention module. The
+shared Q/KV/O projections follow the MLA-style pattern: a low-rank query
+projection with RMSNorm, a tied single-head KV projection (K = V) with
+RoPE applied to the last 8 of 32 dimensions, and a grouped O projection.
+A full causal attention variant (\emph{Normal}) with no compression serves
+as the task-appropriate baseline.
+
+\subsection{The compressed-and-indexed attention family}
+\label{sec:family-mech}
+Each compressed configuration consists of three components, all inherited
+verbatim from the reference implementation:
+
+\textbf{Two-series compressor.} The $L$ positions are projected to double
+width and gated by a per-dimension softmax over $2m$ slots, so that every
+token contributes to two adjacent windows (its own and the next); the
+weighted sum is RMSNormed and RoPE-encoded at block starts. With rate
+$m$, this yields $C = L/m$ KV blocks covering $[mj, mj + m - 1]$. The
+same compressor, with its own parameters, produces the $M = L / m_{idx}$
+routing index tokens.
+
+\textbf{Router.} Each query scores all $M$ index tokens
+($\mathrm{ReLU}(q \cdot \mathrm{idx}^\top)/\sqrt{d}$, head-mixed by a
+learned weight), masks tokens that lie in the future, and selects the
+top-$k$ ($k{=}16$). In all compressed configurations the router reuses the
+main query (shared-Q), valid because the query head dimension equals the
+index head dimension; this removes one projection and one RoPE application.
+
+\textbf{Dense masked attention over the sparse selection.} Instead of
+gathering the selected blocks, attention is computed densely over a fixed
+column set---the $C$ KV blocks plus a sliding window of $W{=}16$---with
+$-\infty$ masking of unselected blocks and a single learnable ``sink''
+softmax column for stability. Masking to $-\infty$ makes the dense result
+exactly equal to the sparse top-$k$ selection, with no approximation. On
+CPU this formulation is several times faster than per-query gather in our
+implementation, and it keeps the softmax exact.
+
+\subsection{The two design axes and the factorial}
+\label{sec:factorial}
+The two axes are the KV compression rate $c_{KV} = m$ and the routing
+resolution $c_R = m_{idx}$. We evaluate the $2 \times 2$ factorial over
+$c_{KV}, c_R \in \{4{:}1, 8{:}1\}$, i.e.\ cells $(4,4)$, $(8,4)$, $(4,8)$,
+$(8,8)$. Table~\ref{tab:configs} lists the resulting geometry and
+parameter counts.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Configuration geometry and parameters (measured; attention module
+and full model). All compressed cells share the auxiliary contract
+(window 16, top-$k$ 16, 4 heads, head dimension 32, hidden 128, shared-Q,
+$q$/$o$ ranks 64) and differ only in $(c_{KV}, c_R)$; the low-rank
+bottlenecks are equalized to within $0.27\%$ of the $(8,4)$ reference.
+\emph{Softmax cols} $= C + W + 1$ sink. Normal attends to all 256 columns
+with no sink.}
+\label{tab:configs}
+\begin{tabular}{lcccccc}
+\toprule
+Config & $c_{KV}$ & $c_R$ & KV blocks $C$ & Index tokens $M$ & Softmax cols & Params (attn / full) \\
+\midrule
+Normal & --- & --- & --- & --- & 256 & 102{,}496 / 355{,}200 \\
+$(4,4)$ & 4 & 4 & 64 & 64 & 80 + 1 & 95{,}396 / 348{,}100 \\
+$(8,4)$ & 8 & 4 & 32 & 64 & 48 + 1 & 95{,}652 / 348{,}356 \\
+$(4,8)$ & 4 & 8 & 64 & 32 & 80 + 1 & 95{,}652 / 348{,}356 \\
+$(8,8)$ & 8 & 8 & 32 & 32 & 48 + 1 & 95{,}908 / 348{,}612 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Parameter equalization.} The factorial is pre-registered with an
+auxiliary-identical contract: all cells share window, top-$k$, heads, hidden
+size, optimizer, and schedule, and differ only in $(c_{KV}, c_R)$--the cell
+definition. Because the position-bias terms of the two compressors grow with
+their rates, attention-parameter counts differ slightly between cells; the
+only free compute-quality knobs not part of the cell definition (the
+low-rank $q$ and $o$ bottlenecks) are fixed at the champion ranks
+$(64, 64)$, which is the lattice minimum for \emph{every} cell. The largest
+remaining attention-parameter delta is $0.268\%$ (full-model delta
+$\le 0.074\%$), well inside the pre-registered $0.5\%$ tolerance.
+
+\textbf{Complexity.} Attention cost per query is proportional to the number
+of softmax columns: 256 for Normal, 80 for $c_{KV}{=}4$ cells, and 48 for
+$c_{KV}{=}8$ cells (5.3$\times$ fewer than Normal). Routing cost is
+$O(L \cdot M)$; with $c_R{=}4$, $M{=}64$ index tokens, identical to the
+$c_R{=}4$ cells regardless of $c_{KV}$. These are structural complexity
+facts; measured wall-clock latency is deferred to follow-up hardware
+benchmarking \todo{Gate 5: latency (p50/p90/p99, bootstrap CIs), FLOPs and
+memory accounting, cross-hardware (Apple Silicon + x86 CPU, GPU)}.

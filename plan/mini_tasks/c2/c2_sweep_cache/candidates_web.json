@@ -1,0 +1,884 @@
+[
+  {
+    "title": "Squeezed Attention: Accelerating Long Context Length LLM Inference",
+    "arxiv": "2411.09688",
+    "url": "https://arxiv.org/abs/2411.09688",
+    "year": 2024,
+    "source": "web3",
+    "note": "Abstract (arXiv): offline K-means compression of fixed context + centroid attention at inference; single compression mechanism. Oldest kept candidate (2024).",
+    "looks_two_axis": "false"
+  },
+  {
+    "title": "Block Sparse Flash Attention",
+    "arxiv": "2512.07011",
+    "url": "https://arxiv.org/abs/2512.07011",
+    "year": 2025,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "GateTS: Versatile and Efficient Forecasting via Attention-Inspired routed Mixture-of-Experts",
+    "arxiv": "2508.17515",
+    "url": "https://arxiv.org/abs/2508.17515",
+    "year": 2025,
+    "source": "web4",
+    "note": "Abstract (arXiv): univariate time-series forecasting; sparse MoE + attention-inspired gating replacing standard MoE routing; routing/gating knob, compression not an independent axis.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "High-Precision Peanut Pod Detection Device Based on Dual-Route Attention Mechanism",
+    "arxiv": null,
+    "url": null,
+    "year": 2025,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "In-Context Compositional Learning via Sparse Coding Transformer",
+    "arxiv": "2511.20194",
+    "url": "https://arxiv.org/abs/2511.20194",
+    "year": 2025,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Mixture of Sparse Attention: Content-Based Learnable Sparse Attention via Expert-Choice Routing",
+    "arxiv": "2505.00315",
+    "url": "https://arxiv.org/abs/2505.00315",
+    "year": 2025,
+    "source": "web3",
+    "note": "Abstract (arXiv): expert-choice routing selects k tokens per head; sweeps sparsity and scale across sparse variants; selection-resolution knob primary.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "SWAN: Sparse Winnowed Attention for Reduced Inference Memory via Decompression-Free KV-Cache Compression",
+    "arxiv": "2511.18936",
+    "url": "https://arxiv.org/abs/2511.18936",
+    "year": 2025,
+    "source": "web3",
+    "note": "Abstract (arXiv): offline orthogonal rotation + KV pruning used directly without decompression; sweeps compression ratio (50-60% per-token savings); single knob.",
+    "looks_two_axis": "false"
+  },
+  {
+    "title": "Trellis: Learning to Compress Key-Value Memory in Attention Models",
+    "arxiv": "2512.23852",
+    "url": "https://arxiv.org/abs/2512.23852",
+    "year": 2025,
+    "source": "cit_cit_routing",
+    "note": "Abstract (arXiv): single axis (fixed-size KV memory with test-time learned compression + forget gate); evaluated on LM, commonsense, recall, time series.",
+    "looks_two_axis": "false"
+  },
+  {
+    "title": "Understanding and Improving Length Generalization in Hierarchical Sparse Attention Models",
+    "arxiv": "2510.17196",
+    "url": "https://arxiv.org/abs/2510.17196",
+    "year": 2025,
+    "source": "web2",
+    "note": "Abstract (arXiv): \"systematic dissection\" of hierarchical chunk-based sparse attention with \"comprehensive ablation studies\"; chunk encoder (content) + CLS token + chunk selection (routing) shown jointly critical on a fixed task. Inferred from abstract.",
+    "looks_two_axis": "true"
+  },
+  {
+    "title": "A Physics-Informed Graph Attention Network with Sparse Temporal Block Selection for Aircraft Hydraulic System Fault Diagnosis",
+    "arxiv": null,
+    "url": null,
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "A textual-guided compact visual attention features for continuous sign language recognition",
+    "arxiv": null,
+    "url": null,
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "APSDA: Adversarially Pruned Sparse Dynamic Attention for Robust Handwritten Text Recognition",
+    "arxiv": null,
+    "url": null,
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "AVQ-Attention: Adaptive Vector-Quantized Attention",
+    "arxiv": "2607.12789",
+    "url": "https://arxiv.org/abs/2607.12789",
+    "year": 2026,
+    "source": "cit_cit_nsa + cit_cit_routing",
+    "note": "Title match only (abstract not read). Cited by multiple seeds: cit_cit_nsa, cit_cit_routing.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "An AI4AI Framework for Visual Token Pruning",
+    "arxiv": "2608.07193",
+    "url": "https://arxiv.org/abs/2608.07193",
+    "year": 2026,
+    "source": "cit_cit_dsv4",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Approximate Muon with low-rank adapters",
+    "arxiv": "2608.14492",
+    "url": "https://arxiv.org/abs/2608.14492",
+    "year": 2026,
+    "source": "cit_cit_dsv4",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Beyond Outcome Rewards: Step-Level Self-Distilled Policy Optimization for Deep Search Agents",
+    "arxiv": "2608.12764",
+    "url": "https://arxiv.org/abs/2608.12764",
+    "year": 2026,
+    "source": "cit_cit_dsv4",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "CCFormer: Efficient Cross-Field Interaction and Hierarchical Sequence Compression for Industrial Recommendation at Tencent",
+    "arxiv": "2607.28070",
+    "url": "https://arxiv.org/abs/2607.28070",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "COBS: Cumulant Order Block Sparse Attention",
+    "arxiv": "2607.09052",
+    "url": "https://arxiv.org/abs/2607.09052",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "CoSA: Accelerating Long-Context Inference via Proxy-Kernel Co-Designed Sparse Attention",
+    "arxiv": "2607.25291",
+    "url": "https://arxiv.org/abs/2607.25291",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "CompactAttention: Accelerating Chunked Prefill with Block-Union KV Selection",
+    "arxiv": "2605.16839",
+    "url": "https://arxiv.org/abs/2605.16839",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "CompilerKV: Risk-Adaptive KV Compression via Offline Experience Compilation",
+    "arxiv": "2602.08686",
+    "url": "https://arxiv.org/abs/2602.08686",
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "ConSA: Controllable Sparsity in Hybrid Attention via Learnable Allocation",
+    "arxiv": "2606.18056",
+    "url": "https://arxiv.org/abs/2606.18056",
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Abstract (arXiv): learns FA/SWA allocation under a user-specified sparsity target (L0 + augmented Lagrangian), enforced at layer or KV-head granularity; reports KV-head-wise allocation gains over layer-wise on fixed 0.6B/1.7B LLMs. Content-budget x routing-resolution knobs with separate effects.",
+    "looks_two_axis": "true"
+  },
+  {
+    "title": "DARS: An algorithm-hardware co-design framework for accelerating sparse attention via dynamic adaptive hierarchical Top-K pruning",
+    "arxiv": null,
+    "url": null,
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "DSformer: Dynamic sparse transformer for efficient image restoration",
+    "arxiv": null,
+    "url": null,
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "DashAttention: Differentiable and Adaptive Sparse Hierarchical Attention",
+    "arxiv": "2605.18753",
+    "url": "https://arxiv.org/abs/2605.18753",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Dual Sparse Long-Short Term Transformer for Video Shadow Detection",
+    "arxiv": null,
+    "url": null,
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "DynSpAttn: Efficient Attention via Dual-Side Dynamic Sparsity on Sparse Tensor Cores",
+    "arxiv": null,
+    "url": null,
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "ELSAA: Efficient Low-Rank and Sparse Attention Approximation for Training Transformers",
+    "arxiv": "2607.20214",
+    "url": "https://arxiv.org/abs/2607.20214",
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Fasa: Frequency-Aware Sparse Attention",
+    "arxiv": null,
+    "url": "https://mlanthology.org/iclr/2026/wang2026iclr-fasa/",
+    "year": 2026,
+    "source": "web3",
+    "note": "ICLR 2026 proceedings entry from search; title indicates frequency-aware sparse attention; no arXiv id surfaced; abstract not read.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Fetch-then-Explore: Decoupling Selection from Extraction over a Persistent Workspace for Search Agents",
+    "arxiv": "2608.02097",
+    "url": "https://arxiv.org/abs/2608.02097",
+    "year": 2026,
+    "source": "cit_cit_dsv4",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Gsformer: a dual-architecture deep learning framework with CNN-self-attention and sparse-attention for genomic selection",
+    "arxiv": null,
+    "url": null,
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "HSCFA: Hierarchical sparse and collaborative fusion attention with large foundation models for diagnosing Alzheimer's disease",
+    "arxiv": null,
+    "url": null,
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "HiSAC: Hierarchical Sparse Activation Compression for Ultra-long Sequence Modeling in Recommenders",
+    "arxiv": "2602.21009",
+    "url": "https://arxiv.org/abs/2602.21009",
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "HiSC: Hierarchical Spatial Clustering Token Compression for Efficient 3D Scene Understanding",
+    "arxiv": "2608.04610",
+    "url": "https://arxiv.org/abs/2608.04610",
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "HiSparse: Scaling Sparse-Attention Decoding with Hierarchical KV Cache Management",
+    "arxiv": "2608.07009",
+    "url": "https://arxiv.org/abs/2608.07009",
+    "year": 2026,
+    "source": "cit_cit_nsa + cit_cit_dsv4",
+    "note": "Title match only (abstract not read). Cited by multiple seeds: cit_cit_nsa, cit_cit_dsv4.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Hierarchical Sparse Attention Done Right: Toward Infinite Context Modeling",
+    "arxiv": "2607.02980",
+    "url": "https://arxiv.org/abs/2607.02980",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "How Much Dense Attention is Necessary? Oracle-Guided Sparse Prefill for Full/GQA Layers in Hybrid Long-Context Models",
+    "arxiv": "2606.07703",
+    "url": "https://arxiv.org/abs/2606.07703",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "HubRouter: A Pluggable Sub-Quadratic Routing Primitive for Hybrid Sequence Models",
+    "arxiv": "2604.22442",
+    "url": "https://arxiv.org/abs/2604.22442",
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Implementing automated task scheduling framework for fog network using adaptive actor critic deep reinforcement learning with sparse attention through multi-objective constraints",
+    "arxiv": null,
+    "url": null,
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "IndexMem: Learned KV-Cache Eviction with Latent Memory for Long-Context LLM Inference",
+    "arxiv": "2605.25475",
+    "url": "https://arxiv.org/abs/2605.25475",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "KVpop -- Key-Value Cache Compression with Predictive Online Pruning",
+    "arxiv": "2607.05061",
+    "url": "https://arxiv.org/abs/2607.05061",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "LCG: Long-Context Consistent Image Generation with Sparse Relational Attention",
+    "arxiv": "2606.26171",
+    "url": "https://arxiv.org/abs/2606.26171",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "LOCKS: Page-Local Compact Key Summaries for Efficient Long-Context Decoding",
+    "arxiv": "2607.24555",
+    "url": "https://arxiv.org/abs/2607.24555",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "LWM-Temporal: Sparse Spatio-Temporal Attention for Wireless Channel Representation Learning",
+    "arxiv": "2603.10024",
+    "url": "https://arxiv.org/abs/2603.10024",
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Large Language Model as Token Compressor and Decompressor",
+    "arxiv": "2603.25340",
+    "url": "https://arxiv.org/abs/2603.25340",
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Learning What Matters: Supervising Global Context Pruning with Causal Evidence Sets",
+    "arxiv": "2607.21692",
+    "url": "https://arxiv.org/abs/2607.21692",
+    "year": 2026,
+    "source": "cit_cit_nsa + cit_cit_routing",
+    "note": "Title match only (abstract not read). Cited by multiple seeds: cit_cit_nsa, cit_cit_routing.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Learning What to Remember: Test-Time Training via Context Distillation",
+    "arxiv": "2608.01672",
+    "url": "https://arxiv.org/abs/2608.01672",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Learning to route in time and frequency domains: a dual-domain MoE transformer for multi-horizon forecasting",
+    "arxiv": null,
+    "url": "https://www.nature.com/articles/s41598-026-50232-8",
+    "year": 2026,
+    "source": "web4",
+    "note": "Scientific Reports; RL-driven dual-domain (time+frequency) MoE routing for multi-horizon forecasting; year 2026 inferred from DOI suffix; abstract not read.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "LiteTopK: Exploiting the Curse of Dimensionality for a Fused Indexer-TopK Kernel in Long-Context Sparse Attention",
+    "arxiv": "2607.11976",
+    "url": "https://arxiv.org/abs/2607.11976",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Locality Does Not Imply Reachability: Boundary Repair in Block-Sparse Causal Attention",
+    "arxiv": "2606.02680",
+    "url": "https://arxiv.org/abs/2606.02680",
+    "year": 2026,
+    "source": "cit_cit_nsa + cit_cit_routing",
+    "note": "Title match only (abstract not read). Cited by multiple seeds: cit_cit_nsa, cit_cit_routing.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "LongCat Sparse Attention: Taming the Lightning via Streaming-aware Hierarchical Cross-Layer Indexing",
+    "arxiv": "2608.01662",
+    "url": "https://arxiv.org/abs/2608.01662",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "MARCH: Scaling Recurrent Memory with Content-Routed State Anchors",
+    "arxiv": "2608.12435",
+    "url": "https://arxiv.org/abs/2608.12435",
+    "year": 2026,
+    "source": "cit_cit_nsa + cit_cit_routing",
+    "note": "Title match only (abstract not read). Cited by multiple seeds: cit_cit_nsa, cit_cit_routing.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "MambaFormer: Token-Level Guided Routing Mixture-of-Experts for Accurate and Efficient Clinical Assistance",
+    "arxiv": "2601.01260",
+    "url": "https://arxiv.org/abs/2601.01260",
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Meta-Attention: Bayesian Per-Token Routing for Efficient Transformer Inference",
+    "arxiv": "2605.28384",
+    "url": "https://arxiv.org/abs/2605.28384",
+    "year": 2026,
+    "source": "cit_cit_nsa + cit_cit_routing",
+    "note": "Abstract (arXiv): per-token Bayesian routing among full/linear/window attention under a compute-aware prior; routing knob central, factorial not confirmed. Cited by multiple seeds: cit_cit_nsa, cit_cit_routing.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "MiniMax Sparse Attention",
+    "arxiv": "2606.13392",
+    "url": "https://arxiv.org/abs/2606.13392",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Mixture-of-Top-k Attention: Efficient Attention via Scalable Fast Weights",
+    "arxiv": "2602.01219",
+    "url": "https://arxiv.org/abs/2602.01219",
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Multi-scale spatio-temporal-spectral sparse attention-based hierarchical graph convolutional network for seizure prediction",
+    "arxiv": null,
+    "url": null,
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "OasisKV: Scaling In-Decode KV Cache Beyond HBM with Lookahead Sparse Prefetching",
+    "arxiv": "2608.08097",
+    "url": "https://arxiv.org/abs/2608.08097",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "PIVOT: Efficient Query-Group Indexing for Token-Level Sparse Attention",
+    "arxiv": "2607.24593",
+    "url": "https://arxiv.org/abs/2607.24593",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "PRLoRA: Pyramid-Structured Low-Rank Adaptation Balancing Global Context and Local Precision in Large Language Models",
+    "arxiv": null,
+    "url": null,
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Parameter-free Adaptive Sparse Attention via Compression-Based Content Selection",
+    "arxiv": "2607.21752",
+    "url": "https://arxiv.org/abs/2607.21752",
+    "year": 2026,
+    "source": "cit_cit_nsa + cit_cit_routing",
+    "note": "Abstract (arXiv): per-block gzip compression ratio IS the selection signal - compression and routing coupled, not independently varied; compared vs BigBird/Longformer/NSA/SBM-Transformer/Dynamic Mask Attention. Cited by multiple seeds: cit_cit_nsa, cit_cit_routing.",
+    "looks_two_axis": "false"
+  },
+  {
+    "title": "Power-based Partial Attention: Bridging Linear-Complexity and Full Attention",
+    "arxiv": "2601.17334",
+    "url": "https://arxiv.org/abs/2601.17334",
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "QCFuse: Query-Aware Cache Fusion via Compressed View for Efficient RAG Serving",
+    "arxiv": "2606.05875",
+    "url": "https://arxiv.org/abs/2606.05875",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Reading is not Reasoning: Bridging the Agentic Policy Gap in Vision-Text Compression",
+    "arxiv": "2608.08960",
+    "url": "https://arxiv.org/abs/2608.08960",
+    "year": 2026,
+    "source": "cit_cit_dsv4",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "RoutePack: Expert Placement and Attention-Aware Data Packing for MoE Reinforcement Learning",
+    "arxiv": "2608.12146",
+    "url": "https://arxiv.org/abs/2608.12146",
+    "year": 2026,
+    "source": "cit_cit_dsv4",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Routers Learn the Geometry of Their Experts: Geometric Coupling in Sparse Mixture-of-Experts",
+    "arxiv": "2605.12476",
+    "url": "https://arxiv.org/abs/2605.12476",
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "SAF3R: Dynamic Sparse Attention for Feed-Forward 3D Reconstruction Transformers",
+    "arxiv": "2607.03612",
+    "url": "https://arxiv.org/abs/2607.03612",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "SAKI: Score-Aware Low-Rank Key Indexing with Random-Matrix Noise Correction for KV Retrieval",
+    "arxiv": "2608.03228",
+    "url": "https://arxiv.org/abs/2608.03228",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "SAS: Sparse Attention Synthesizer for Efficient Language Model Inference",
+    "arxiv": null,
+    "url": null,
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "SLA2: Sparse-Linear Attention with Learnable Routing and QAT",
+    "arxiv": "2602.12675",
+    "url": "https://arxiv.org/abs/2602.12675",
+    "year": 2026,
+    "source": "web1",
+    "note": "Abstract (arXiv): learnable router (sparse vs linear branch per computation) + learnable sparse/linear mix ratio + low-bit attention; two mechanisms, one coupled design, factorial not confirmed.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "SSV: Sparse Speculative Verification for Efficient LLM Inference",
+    "arxiv": "2605.19893",
+    "url": "https://arxiv.org/abs/2605.19893",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Scaling Attention via Feature Sparsity",
+    "arxiv": "2603.22300",
+    "url": "https://arxiv.org/abs/2603.22300",
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "ScalingAttention: Discovering Intrinsic Sparse Attention Topology for Video Diffusion Transformers",
+    "arxiv": "2606.23019",
+    "url": "https://arxiv.org/abs/2606.23019",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "SeKV: Resolution-Adaptive KV Cache with Hierarchical Semantic Memory for Long-Context LLM Inference",
+    "arxiv": "2606.31145",
+    "url": "https://arxiv.org/abs/2606.31145",
+    "year": 2026,
+    "source": "web2",
+    "note": "Abstract (arXiv): \"resolution-adaptive\" semantic KV cache - GPU summary vector for coarse routing + low-rank SVD basis for detail; a resolution axis exists, independent sweep not confirmed from abstract.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Simplified Sparse Attention via Gist Tokens",
+    "arxiv": "2604.20920",
+    "url": "https://arxiv.org/abs/2604.20920",
+    "year": 2026,
+    "source": "web2",
+    "note": "Abstract (arXiv): gist-token chunk compression + top-k chunk selection at inference; web2 snippet reports \"extensive ablation studies\" over gist/selection design variants. Title note: ar5iv shows \"Forget, Then Recall: Learnable Compression and Selective Unfolding via Gist Sparse Attention\"; arXiv API title used. Inferred from abstract+snippet.",
+    "looks_two_axis": "true"
+  },
+  {
+    "title": "SmartGen: Seamless Disaggregated LLM Inference with Selective KV Cache Transfer",
+    "arxiv": "2607.28150",
+    "url": "https://arxiv.org/abs/2607.28150",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Sol-Attn: Accelerating Video Generation Inference via On-the-Fly Attention Sparsification",
+    "arxiv": "2607.24027",
+    "url": "https://arxiv.org/abs/2607.24027",
+    "year": 2026,
+    "source": "cit_cit_nsa + cit_cit_routing",
+    "note": "Title match only (abstract not read). Cited by multiple seeds: cit_cit_nsa, cit_cit_routing.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference",
+    "arxiv": "2606.04511",
+    "url": "https://arxiv.org/abs/2606.04511",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Abstract (arXiv): \"decoupled\" = a Forecast projection for lookahead KV prefetch overlapping PCIe transfer; no compression x routing factorial visible.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Sparrow: Sparse Rollout for Stable and Efficient Long-context RL of Large Language Models",
+    "arxiv": "2606.08446",
+    "url": "https://arxiv.org/abs/2606.08446",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "SpotAttention: Plug-In Block-Sparse Routing for Pretrained Long-Context Transformers",
+    "arxiv": "2606.22874",
+    "url": "https://arxiv.org/abs/2606.22874",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Still: Amortized KV Cache Compaction in a Single Forward Pass",
+    "arxiv": "2606.07878",
+    "url": "https://arxiv.org/abs/2606.07878",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "ThriftAttention: Selective Mixed Precision for Long-Context FP4 Attention",
+    "arxiv": "2605.23081",
+    "url": "https://arxiv.org/abs/2605.23081",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Tied Trit-Planes: Constraining PTQTP to a Uniform Nine-Level Quantizer, with a Persistent Folded Format for Disk-Streamed Mixture-of-Experts Serving",
+    "arxiv": "2608.08910",
+    "url": "https://arxiv.org/abs/2608.08910",
+    "year": 2026,
+    "source": "cit_cit_dsv4",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "TriRoute: Unified Learned Routing for Joint Adaptive Attention, Experts, and KV-Cache Allocation",
+    "arxiv": "2607.06601",
+    "url": "https://arxiv.org/abs/2607.06601",
+    "year": 2026,
+    "source": "web2",
+    "note": "Abstract (arXiv): explicitly names three coupled axes - attention resolution (skip/local/full), FFN expert selection, KV-cache bit-width - with a shared per-token controller; closest found to treating compression and routing as separate axes. Inferred from abstract.",
+    "looks_two_axis": "true"
+  },
+  {
+    "title": "UNIQUE: Universal Top-k Sparse Attention for Training-free Inference and Sparsity-aware Training",
+    "arxiv": "2605.27740",
+    "url": "https://arxiv.org/abs/2605.27740",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Uncertainty-gated selection for block-sparse attention",
+    "arxiv": "2607.07724",
+    "url": "https://arxiv.org/abs/2607.07724",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Understanding Sparse Attention Selectivity in Long-Context Foundation Models via Counterfactual Evaluation",
+    "arxiv": "2608.01676",
+    "url": "https://arxiv.org/abs/2608.01676",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Understanding the Physics of Key-Value Cache Compression for LLMs through Attention Dynamics",
+    "arxiv": "2603.01426",
+    "url": "https://arxiv.org/abs/2603.01426",
+    "year": 2026,
+    "source": "web1",
+    "note": "Abstract (arXiv): varies KV compression rate on fixed synthetic probe tasks; measures effects on routing structure (Global Eviction Ratio; \"hallucination safety cliff\" near 90% compression). Compression controlled, routing is a measured outcome, not a second controlled knob.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Unleashing the Potential of Sparse Attention on Long-term Behaviors for CTR Prediction",
+    "arxiv": "2601.17836",
+    "url": "https://arxiv.org/abs/2601.17836",
+    "year": 2026,
+    "source": "cit_cit_routing",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Veda: Scalable Video Diffusion via Distilled Sparse Attention",
+    "arxiv": "2605.30325",
+    "url": "https://arxiv.org/abs/2605.30325",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "ViDA: Lossless VideoQA Acceleration via Selective Sparse Self-Speculation With Parallel Computational Load Management",
+    "arxiv": null,
+    "url": null,
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Vortex: Efficient and Programmable Sparse Attention Serving for AI Agents",
+    "arxiv": "2606.06453",
+    "url": "https://arxiv.org/abs/2606.06453",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "What to Keep, What to Forget: A Rate--Distortion View of Memory Compaction in LLMs and Agents",
+    "arxiv": "2607.08032",
+    "url": "https://arxiv.org/abs/2607.08032",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Abstract (arXiv): unifying rate-distortion lens + seven-axis taxonomy over memory compaction (KV cache, prompts, state, agent memory); position/analysis paper, no factorial experiment.",
+    "looks_two_axis": "false"
+  },
+  {
+    "title": "You Only Index Once: Cross-Layer Sparse Attention with Shared Routing",
+    "arxiv": "2606.06467",
+    "url": "https://arxiv.org/abs/2606.06467",
+    "year": 2026,
+    "source": "cit_cit_nsa",
+    "note": "Title match only (abstract not read).",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "A Lightweight Self-Attention Routing Capsule Network for Time Series Classification",
+    "arxiv": null,
+    "url": "https://d.wanfangdata.com.cn/conference/ChNDb25mZXJlbmNlTmV3U1F1aWNrEiBmMzFjNDNkMGIyOWU1NDQ2YjZhMDUxNjQ5OTFjM2QwYRoIb2NpcXZiMnM%3D",
+    "year": null,
+    "source": "web4",
+    "note": "Wanfang conference entry; lightweight self-attention routing capsule network for time-series classification; abstract not read.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "BiTST: Transformer for Time Series Forecasting with Bi-level Routing Attention along a Single Dimension",
+    "arxiv": null,
+    "url": "https://xplorestaging.ieee.org/document/11227154",
+    "year": null,
+    "source": "web4",
+    "note": "IEEE Xplore entry; \"bi-level routing attention\" suggests a routing-resolution knob; abstract/year not surfaced.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "Efficient time series adaptive representation learning via Dynamic Routing Sparse Attention",
+    "arxiv": null,
+    "url": "https://ouci.dntb.gov.ua/en/works/ldeYjgn9/",
+    "year": null,
+    "source": "web4",
+    "note": "OUCI mirror entry; dynamic routing + sparse attention for time-series representation learning; abstract not read.",
+    "looks_two_axis": "unknown"
+  },
+  {
+    "title": "WaveRoRA: Wavelet Rotary Route Attention for Multivariate Time Series Forecasting",
+    "arxiv": null,
+    "url": "https://ieeexplore.ieee.org/document/11125972",
+    "year": null,
+    "source": "web4",
+    "note": "IEEE Xplore entry; wavelet rotary route attention for multivariate time series; abstract not read.",
+    "looks_two_axis": "unknown"
+  }
+]

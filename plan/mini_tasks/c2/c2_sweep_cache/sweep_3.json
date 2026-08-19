@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2608.15522v1",
+    "title": "Efficient Audio-Visual Generation via Synchrony-Aware Cross-Modal Sparse Attention",
+    "published": "2026-08-16",
+    "summary": "Recent audio-visual generation models can synthesize synchronized video and sound in a unified diffusion process, but their inference cost remains high because long video token sequences require repeated attention computation across denoising steps.A variety of acceleration techniques have been deve"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.15459v1",
+    "title": "Not All Attention Is Equal: A Quantitative Survey of the EEI Trade-off",
+    "published": "2026-08-16",
+    "summary": "Attention mechanisms have driven machine learning for a decade, from neural machine translation to language models that do general-purpose reasoning. This survey covers four connected threads: their formulation for sequence-to-sequence tasks, adaptation to computer vision, efficiency innovations tha"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.13546v1",
+    "title": "Alaya-EVOKE: From Linear-Scaling Supervision to Endless World",
+    "published": "2026-08-13",
+    "summary": "Interactive world models must support persistent memory, responsive interaction, and long-horizon generation, yet these requirements place conflicting demands on the model. Maintaining history in the denoiser context or key-value cache incurs growing cost, forcing a trade-off between session length "
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.12780v1",
+    "title": "SCOPE: Subspace Clustering with Online Per-Head Top-K Estimation for Sparse Video Attention",
+    "published": "2026-08-13",
+    "summary": "Diffusion Transformers (DiTs) incur quadratic self-attention cost over spatiotemporal tokens. Existing training-free sparse attention methods often construct sparse masks from block-level or cluster-level proxy scores, which can obscure fine-grained differences among keys and miss high contribution "
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.12032v1",
+    "title": "LoSA: Near-Lossless Sparse Attention for Training-Free Video Diffusion Acceleration",
+    "published": "2026-08-12",
+    "summary": "Video diffusion transformers are costly to sample: every denoising step applies self-attention over a long 3D token sequence, a quadratic cost that dominates as resolution and duration grow. Sparse attention reduces this cost without retraining, but existing methods pursue aggressive sparsity, where"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.11173v1",
+    "title": "A Quantum Roadmap for Softmax Attention: Exact Born-Rule Analogs for Softmax Attention on the Probability Simplex",
+    "published": "2026-08-11",
+    "summary": "The attention mechanism forms the foundation of many modern AI models such as the Transformer. In one subclass of problems where attention is used, inputs and outputs are bound to the probability simplex so that all outputs sum to one. In this setting, softmax attention admits an exact, component-by"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.10519v1",
+    "title": "SparSTAR: Sparse Attention for SpaceTime AutoRegressive Video Synthesis",
+    "published": "2026-08-11",
+    "summary": "InfinityStar extends visual autoregressive generation to video through a sequence of image and clip pyramids. Its changing scale and cross-clip context, however, leave late-scale attention costly and make sparse patterns reused from diffusion or image VAR models unreliable. We introduce SparSTAR, a "
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.08873v1",
+    "title": "Sparse Attention to Emotion: Efficient Facial Emotion Recognition via Token Reduction",
+    "published": "2026-08-09",
+    "summary": "Facial Emotion Recognition (FER) is an important task that has significant implications across various fields such as biometrics, health, and human-computer interaction. Current Vision Transformer-based approaches display quadratic complexity $\\mathcal{O}(N^2)$, with N being the input sequence lengt"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.08553v1",
+    "title": "MotionCraft: Latent World Modeling with Sparse Attention for Visual Upscaling",
+    "published": "2026-08-09",
+    "summary": "Video super-resolution (VSR) aims to recover high-fidelity high-resolution videos from low-resolution inputs and is central to applications ranging from mobile capture to streaming and archival restoration. Existing approaches trade off among local-detail fidelity, long-range spatio-temporal modelin"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.07009v1",
+    "title": "HiSparse: Scaling Sparse-Attention Decoding with Hierarchical KV Cache Management",
+    "published": "2026-08-07",
+    "summary": "Top-k sparse attention makes long-context LLM decoding cheap to compute: each step reads only a few thousand selected KV entries rather than the full context. Serving systems, however, typically keep the entire KV cache in GPU HBM so that every position stays selectable, so a request's memory bill s"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.06849v1",
+    "title": "Autonomy-of-Heads: Data-Free Sparse Attention from Frozen Query-Key Geometry",
+    "published": "2026-08-07",
+    "summary": "Long-context LLM inference is bottlenecked by quadratic attention computation and growing KV-cache costs. Existing sparse attention and KV-compression methods typically decide which tokens or heads to preserve from runtime attention scores, observation windows, calibration prompts, or learned gates,"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.05780v1",
+    "title": "Evidence-Driven Dynamic Visual Selector for Efficient Long Video Understanding",
+    "published": "2026-08-06",
+    "summary": "Recent advancements in MLLM-based long-form video understanding have mitigated inference-time computational cost and limited context lengths by selecting query-relevant frames. However, existing approaches predominantly rely on external proxy scorers and rigid heuristic rules, inevitably suffering f"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.04472v1",
+    "title": "EndoVLM: An Endoscopy Vision-Language Pre-training Model via Anatomy-Guided Sparsity and Progressive Alignment",
+    "published": "2026-08-05",
+    "summary": "The development of foundation models (FMs) is crucial for advancing endoscopic image analysis. However, existing endoscopy FMs mainly rely on self-supervised learning from uni-modal images or videos, overlooking the rich semantic knowledge contained in clinical reports. Furthermore, effectively leve"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.04405v1",
+    "title": "Training-Free Hashing-Based Attention via Binary Principal Components",
+    "published": "2026-08-05",
+    "summary": "Long-context large language models (LLMs) are increasingly deployed in real-world applications, yet self-attention remains a major efficiency bottleneck -- especially during decoding -- due to the necessity of repeatedly processing ever-growing key-value (KV) caches. Existing sparse attention reduce"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.03555v1",
+    "title": "Heterogeneous LLM Serving with General-Purpose Processing-Near-Memory for Retrieval-Based Sparse Attention",
+    "published": "2026-08-04",
+    "summary": "This paper presents a heterogeneous decode-phase serving system that relocates the KV cache out of GPU memory, motivated by the retrieval-based sparse attention that recent frontier LLMs adopt to serve million-token contexts. It partitions a decode step by operation type: GPU nodes hold the model we"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.03335v1",
+    "title": "SPADE: An Input-Adaptive Sparse Attention Engine for Fast Video Diffusion Models Inference",
+    "published": "2026-08-04",
+    "summary": "Video diffusion transformers (vDiTs) generate high quality but pay quadratic self-attention cost, making inference prohibitive at video-token scales. The challenge is input-adaptive sparsity: selecting critical Q/K/V tokens with negligible overhead and executing them for end-to-end gains. We present"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.01676v1",
+    "title": "Understanding Sparse Attention Selectivity in Long-Context Foundation Models via Counterfactual Evaluation",
+    "published": "2026-08-03",
+    "summary": "Sparse attention is widely deployed in long-context serving stacks, yet no framework audits how discarding blocks changes the influence of specific content on model output. We first establish that the phenomenon is real and causal: Block Sparse Flash Attention (BSFA) route replay across four archite"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.01662v2",
+    "title": "LongCat Sparse Attention: Taming the Lightning via Streaming-aware Hierarchical Cross-Layer Indexing",
+    "published": "2026-08-03",
+    "summary": "DeepSeek Sparse Attention (DSA) enables efficient long-context modeling through its Lightning Indexer. However, practical deployment remains constrained by the indexer's expensive $O(L^2)$ scoring overhead and the hardware-inefficient, discontinuous memory-access patterns induced by its outputs. To "
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.01223v1",
+    "title": "Perspectives on Tsallis Statistics for Artificial Intelligence",
+    "published": "2026-08-02",
+    "summary": "Tsallis statistics generalizes Boltzmann-Gibbs statistical mechanics through a single real parameter $q$ that controls the weight assigned to rare and frequent events. Originally proposed to describe physical systems with long-range correlations, multifractal geometry, and heavy-tailed fluctuations,"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.27692v1",
+    "title": "Recall Before You Rank: Similarity-Guided Top-$K$ Reuse for Efficient Long-Context Attention",
+    "published": "2026-07-30",
+    "summary": "Top-$K$ sparse attention reduces the cost of Softmax and value aggregation by attending to only a small subset of key--value (KV) entries. However, identifying this subset still requires scoring the current query against the full KV cache and performing global Top-$K$ selection, leaving selector cos"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.27591v1",
+    "title": "Prox: Training-Free FFN Activation Sparsity via Approximate Intermediate-Channel Salience in LLMs",
+    "published": "2026-07-30",
+    "summary": "Feed-forward networks (FFNs) dominate memory traffic and computation in large language model (LLM) inference, making them a primary target for activation sparsification. However, existing training-free methods suffer substantial model-quality degradation at high sparsity due to limitations in their "
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.26633v1",
+    "title": "NELSSA: A GPU-PNM Heterogeneous System for Mixed-Length LLM Serving via Length-based Request Placement",
+    "published": "2026-07-29",
+    "summary": "Modern LLMs and their agentic applications are broadening the range of serving workloads, spanning context lengths from a few hundred tokens to hundreds of thousands. As these requests frequently interleave within the same serving window, LLM serving systems must handle highly heterogeneous mixed-le"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.26037v1",
+    "title": "Wonder: Video World Model Done Better",
+    "published": "2026-07-28",
+    "summary": "We present Wonder, a general-purpose video world model for real-time, camera-controllable world exploration. Given an image or a conditional video, Wonder constructs a playable world where users can navigate interactively by moving the camera, discovering unseen regions, and revisiting previously ob"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.25291v2",
+    "title": "CoSA: Accelerating Long-Context Inference via Proxy-Kernel Co-Designed Sparse Attention",
+    "published": "2026-07-28",
+    "summary": "The quadratic cost of self-attention makes long-context inference prohibitively expensive, and proxy-based block-sparse attention has become a practical remedy. Existing methods typically rely on a proxy to predict a binary sparse mask and a kernel to consume this mask and perform sparse attention c"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.24593v1",
+    "title": "PIVOT: Efficient Query-Group Indexing for Token-Level Sparse Attention",
+    "published": "2026-07-27",
+    "summary": "Token-level sparse attention, as implemented by DeepSeek Sparse Attention (DSA) in production systems, makes the downstream attention efficient but shifts the bottleneck to the indexer that feeds it. To select the top-k tokens for each query, the indexer must still score every preceding token, incur"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.24027v1",
+    "title": "Sol-Attn: Accelerating Video Generation Inference via On-the-Fly Attention Sparsification",
+    "published": "2026-07-27",
+    "summary": "Diffusion transformers are essential for high-fidelity video generation, but long token sequences make attention a dominant inference bottleneck. Training-free dynamic sparse attention alleviates this bottleneck by computing only selected key-value blocks, yet existing methods struggle to sparsify a"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.21927v1",
+    "title": "RIS-Kernel: A Model-Agnostic Architecture for Long-Context LLM Inference via Sparse Attention",
+    "published": "2026-07-24",
+    "summary": "Full self-attention in large language models scales as O(N^2), which limits long-context document analysis to 65,536 tokens and requires costly GPU clusters. The Reduced Interaction Sampling (RIS) inference engine addresses this constraint as a model-agnostic architecture. Without modifying weights,"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.21752v1",
+    "title": "Parameter-free Adaptive Sparse Attention via Compression-Based Content Selection",
+    "published": "2026-07-23",
+    "summary": "Data-adaptive sparse attention masks substantially outperform fixed patterns (e.g., BigBird and Longformer) and can even exceed dense attention on long sequences. Existing adaptive approaches---including SBM-Transformer, Dynamic Mask Attention, and NSA---typically require additional learnable parame"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.21553v1",
+    "title": "SANA-Video 2.0: Hybrid Linear Attention with Attention Residuals for Efficient Video Generation",
+    "published": "2026-07-23",
+    "summary": "We introduce SANA-Video 2.0, a hybrid video diffusion transformer instantiated at 5B and 14B scales under a unified architecture. Designed to generate high-quality video up to 720p on a single GPU, SANA-Video 2.0 matches full-softmax video DiTs in quality while retaining the favorable long-sequence "
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.20214v1",
+    "title": "ELSAA: Efficient Low-Rank and Sparse Attention Approximation for Training Transformers",
+    "published": "2026-07-22",
+    "summary": "The quadratic $N\\times N$ attention score matrix remains a central obstacle to extending Transformers to longer input lengths. Existing efficient attention methods usually reduce this bottleneck by either imposing sparsity, so that each query attends to only a small subset of keys, or by using low-r"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.18152v1",
+    "title": "jina-reranker-v3.5: An Efficient Listwise Reranker with Hybrid Attention and Self-Distillation",
+    "published": "2026-07-20",
+    "summary": "Listwise rerankers are the discriminative core of agentic retrieval pipelines, yet production deployment demands efficiency, domain robustness, and fluency on semi-structured data at the same time. We present jina-reranker-v3.5, a 0.6B-parameter listwise reranker that meets these demands together wi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.16190v1",
+    "title": "FVAttn: Adaptive Sparse Attention with Runtime Load Balancing for Video Generation",
+    "published": "2026-07-17",
+    "summary": "Video Diffusion Transformers process long spatio-temporal sequences, making self-attention the main bottleneck in high-resolution video generation. Training-free sparse attention reduces this cost, but adaptive Top-$p$ routing creates uneven per-head workloads under multi-GPU sequence parallelism. T"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.15846v1",
+    "title": "DSTAR: Accelerating Diffusion Transformers via Spatial and Temporal Redundancy Reduction",
+    "published": "2026-07-17",
+    "summary": "Diffusion Transformers (DiTs) have been widely used in many tasks, including image synthesis, video generation, and content editing. However, their multi-iteration inference process leads to performance inefficiency and high energy consumption. Existing acceleration methods primarily focus on reduci"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.13925v1",
+    "title": "Thresholded Cross-Attention for Reliable Intensity-Chromaticity Fusion in Low-Light Image Enhancement",
+    "published": "2026-07-15",
+    "summary": "Low-Light Image Enhancement (LLIE) requires a careful balance among noise suppression, color fidelity, and efficiency. Recent HVI-based methods alleviate color entanglement by decoupling intensity and chromaticity, yet how reliably the two streams are fused again is an overlooked factor that largely"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.13770v1",
+    "title": "Kaleido: Algorithm-Hardware Co-Design for Video Diffusion Transformers by Exploiting Latent Space Correlations",
+    "published": "2026-07-15",
+    "summary": "Video diffusion transformers (vDiTs) generate high quality video but introduce extremely high compute cost due to the long diffusion timesteps and self attention computation. As diffusion timesteps are reduced, the computation cost of self attention becomes the dominant bottleneck. Existing accelera"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.12293v1",
+    "title": "Adaptive Cross-Modal Fusion with Sparse Attention for Pedestrian Crossing Intention Prediction",
+    "published": "2026-07-14",
+    "summary": "Predicting pedestrian crossing intention is a safety-critical task for autonomous driving, yet existing approaches often rely on single-modal inputs or dense multimodal fusion strategies that inadequately capture complementary visual and kinematic information while introducing redundant inter-modal "
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.11976v3",
+    "title": "LiteTopK: Exploiting the Curse of Dimensionality for a Fused Indexer-TopK Kernel in Long-Context Sparse Attention",
+    "published": "2026-07-13",
+    "summary": "Indexer-TopK, the operation to compute the scores and select the top-k candidates, is widely used by sparse attention algorithms in large language models and vector retrieval in recommendation systems and vector databases. However, existing GPU-based Indexer-TopK kernels like DeepSeek Sparse Attenti"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.09052v1",
+    "title": "COBS: Cumulant Order Block Sparse Attention",
+    "published": "2026-07-10",
+    "summary": "Block sparse attention is a hardware friendly way to alleviate the key-value (KV) cache read bottleneck in large language models (LLMs). However, it is not prevalent among leading open-weight LLMs, which rely instead on dense attention or fine-grained selection, thereby motivating our analysis. We s"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.07135v2",
+    "title": "Sparse Attention for Dense Open-Vocabulary Prediction in CLIP",
+    "published": "2026-07-08",
+    "summary": "Contrastive Language-Image Pre-training (CLIP) relies on softmax-based self-attention, a strictly positive distribution that assigns probability mass to every pair of tokens-even semantically irrelevant ones. While these dense softmax weights are effective for gathering broad context during pre-trai"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.05876v2",
+    "title": "Think Before You Grid-Search: Floor-First Triage for LLM Serving",
+    "published": "2026-07-07",
+    "summary": "LLM serving optimization typically benchmarks many configurations and reaches for heavy profilers when latency targets are missed. We argue for the reverse discipline: estimation is the analytical layer of profiling -- without it, optimization degenerates to grid search. Floor First is a residual-dr"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.07724v1",
+    "title": "Uncertainty-gated selection for block-sparse attention",
+    "published": "2026-07-04",
+    "summary": "Block-sparse attention scales long-context language models by replacing the O(N^2) softmax with a per-query top-k selection over key blocks. This cutoff is myopic: when the k-th and (k+1)-th blocks are nearly tied in score, the selector commits without spending extra budget, and a dropped block carr"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.03612v2",
+    "title": "SAF3R: Dynamic Sparse Attention for Feed-Forward 3D Reconstruction Transformers",
+    "published": "2026-07-03",
+    "summary": "Feed-forward 3D reconstruction (F3R) transformers have recently achieved remarkable success. However, scaling them to long image sequences remains challenging, as the quadratic complexity of cross-view global attention quickly becomes the dominant computational bottleneck. While recent efforts attem"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.03012v1",
+    "title": "HyperVAttention: Efficient Sparse Attention with Spatio-Temporal Clustering for Video Diffusion",
+    "published": "2026-07-03",
+    "summary": "Video Diffusion Transformers (VDiTs) have demonstrated significant capabilities in high-fidelity video generation. However, their ability to produce long-duration videos is fundamentally constrained by the quadratic complexity of the self-attention mechanism. Recent clustering-based sparse attention"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.02980v1",
+    "title": "Hierarchical Sparse Attention Done Right: Toward Infinite Context Modeling",
+    "published": "2026-07-03",
+    "summary": "Scaling modern large language models (LLMs) to long contexts is limited by the quadratic computation cost, and poor length extrapolation of dense attention. Chunk-wise sparse attention offers a promising alternative, but all existing methods fall short of full attention because of their inaccurate c"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.01538v1",
+    "title": "Can Language Models Actually Retrieve In-Context? Drowning in Documents at Million Token Scale",
+    "published": "2026-07-01",
+    "summary": "Language models (LMs) raise an intriguing alternative to vector-based retrieval: conditioning on an in-context corpus and directly generating a relevant answer. However, prior work has largely focused on proprietary systems or the smaller-scale reranking task, leaving corpus-scale in-context retriev"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.31519v1",
+    "title": "RaBitQCache: Rotated Binary Quantization for KVCache in Long Context LLM Inference",
+    "published": "2026-06-30",
+    "summary": "Long-context Large Language Model inference is severely bottlenecked by the massive Key-Value (KV) cache, yet existing sparse attention methods often suffer from static fixed-budget (Top-k) retrieval or rely on proxy scores that are computationally expensive and biased. To address these limitations,"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.30709v1",
+    "title": "Hierarchical Global Attention (HGA)",
+    "published": "2026-06-29",
+    "summary": "Hierarchical Global Attention (HGA) is a drop-in replacement for dense causal attention in pretrained long-context transformers. HGA preserves the original checkpoint parameters: the pretrained $W_Q$, $W_K$, $W_V$, and $W_O$ projections remain unchanged, no calibration parameters are introduced, and"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.30389v1",
+    "title": "Predict, Reuse, and Repair: Accelerating Dynamic Sparse Attention for Long-Context LLM Decoding",
+    "published": "2026-06-29",
+    "summary": "Dynamic sparse attention (DSA) accelerates long-context LLM decoding by attending to only the top-K KV blocks relevant to each query, but it introduces a serialized selection-to-attention dependency that emerges as a new latency bottleneck. We present PRR, a speculate-reuse-repair runtime that explo"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.29844v1",
+    "title": "MATCH: Modulating Attention via In-Context Retrieval for Long-Context Transformers",
+    "published": "2026-06-29",
+    "summary": "The quadratic computational cost of traditional attention mechanisms poses a major bottleneck to the scalability and practical deployment of large language models (LLMs), particularly in long-context scenarios. To improve efficiency, existing approaches often enforce rigid structural constraints suc"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.28560v1",
+    "title": "Depth-Staggered Fibonacci Spacing for Sparse Attention: Static Schedules Beat Learned Dilation and Extrapolate Where Dense Attention Fails",
+    "published": "2026-06-26",
+    "summary": "We study sparse self-attention in which each query attends to a dense local window plus a set of Fibonacci-spaced offsets, with a per-layer scalar alpha that compresses or expands the spacing. Across 21 language models trained under one matched recipe (60M parameters, 512 hidden, 16 layers, 426M tok"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.25136v1",
+    "title": "Memory Retrieval in Visuomotor Policies for Long-Horizon Robot Control",
+    "published": "2026-06-23",
+    "summary": "General-purpose robots operating in partially observable environments, such as homes, require memory to support autonomy. They must recall diverse information from the past, such as where objects were placed, which tasks a human partner has completed, and when an appliance was turned on. Achieving t"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.25040v1",
+    "title": "Chorus II: Cross-Request Sparsity Reuse for Efficient Image-to-Video Generation",
+    "published": "2026-06-23",
+    "summary": "Serving diffusion models for image-to-video generation is computationally expensive, posing significant challenges for large-scale deployment. Real I2V workloads often contain similar requests, such as repeated effect templates, related subjects, and recurring shot layouts. Existing cross-request ac"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.25010v1",
+    "title": "Emergent Capabilities Arise Randomly from Learning Sparse Attention Patterns",
+    "published": "2026-06-23",
+    "summary": "Neural scaling laws for transformer language models predict smooth improvements in pretraining loss with increasing parameters, but downstream capabilities such as in-context learning are known to emerge abruptly past a certain model scale. In this paper, we show that emergent capabilities arise sto"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.24737v1",
+    "title": "VSANet: View-aware Sparse Attention Network for Light Field Image Denoising",
+    "published": "2026-06-23",
+    "summary": "Light field (LF) image denoising is challenging due to the high-dimensional structure of LF data. While noise is independent across sub-aperture images, scene content exhibits strong cross-view correlations. We introduce VSANet, a view-aware sparse attention network for LF denoising. Specifically, w"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.23019v1",
+    "title": "ScalingAttention: Discovering Intrinsic Sparse Attention Topology for Video Diffusion Transformers",
+    "published": "2026-06-22",
+    "summary": "While Diffusion Transformers (DiTs) have revolutionized high-fidelity video generation, their reliance on 3D full attention creates a quadratic computational bottleneck. Existing sparse methods face a dilemma: dynamic pruning suffers from prohibitive runtime overhead and memory fragmentation, while "
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.22984v2",
+    "title": "Scalable Physics-Inspired Transformers for Spin Glasses",
+    "published": "2026-06-22",
+    "summary": "Efficient sampling of the Boltzmann distribution in frustrated spin glasses is central to statistical mechanics and combinatorial optimization. Despite advances in machine-learning-based approaches, two issues persist: limited understanding of why variational models fail to benefit from increased sc"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.22874v1",
+    "title": "SpotAttention: Plug-In Block-Sparse Routing for Pretrained Long-Context Transformers",
+    "published": "2026-06-22",
+    "summary": "Long contexts have become standard in pretrained LLMs, yet they remain expensive to run: prefill compute grows quadratically with sequence length, and every decode step re-reads a key-value cache that grows linearly with it. Sparse attention cuts these costs by attending only to a relevant subset of"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.23743v2",
+    "title": "Sol Video Inference Engine: Agent-Native Full-Stack Acceleration Framework for Efficient Video Generation",
+    "published": "2026-06-21",
+    "summary": "Modern video diffusion models achieve higher generation quality through scaling, but this also increases inference cost. Although many acceleration methods have been proposed, a central challenge is that the most effective acceleration strategy is highly instance-specific: a recipe that works well f"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.21633v2",
+    "title": "HERALD: High-Throughput Block Diffusion LLM Serving via CPU-GPU Cooperative KV Cache Retrieval",
+    "published": "2026-06-19",
+    "summary": "The KV cache dominates GPU memory in long-context LLM serving, crowding out batch capacity and leaving GPU compute idle. Offloading the cache to CPU DRAM restores capacity, but the limited PCIe bandwidth forces state-of-the-art offloading systems to pair it with sparse attention, fetching only a sma"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.20005v1",
+    "title": "StreamKL: Fast and Memory-Efficient KL Divergence for Boosting Attention Distillation",
+    "published": "2026-06-18",
+    "summary": "Attention distillation, which trains one attention distribution to match another by minimizing their Kullback-Leibler (KL) divergence, is widely used in knowledge distillation, model compression, continual learning, and sparse-attention LLM training. However, existing approaches materialize both att"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.19746v1",
+    "title": "SAC: Disaggregated KV Cache System for Sparse Attention LLMs with CXL",
+    "published": "2026-06-18",
+    "summary": "The scaling of LLMs toward long-context inference has shifted the primary serving system bottleneck from computation to memory capacity. Traditional solutions for dense attention models rely on RDMA-based disaggregated memory pools, which perform coarse-grained fetching of the entire prefix KV cache"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.18566v1",
+    "title": "Multi-Modal Hyper-Graph Fusion for Low-Light Crowd Counting",
+    "published": "2026-06-17",
+    "summary": "Crowd counting is a fundamental task in computer vision. However, crowd counting in low-light environments remains largely underexplored, despite its practical importance in the real world. Existing methods mainly focus on well-lit scenes or rely on single-modality Red-Green-Blue (RGB) representatio"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.16317v1",
+    "title": "Training-free sparse attention based on cumulative energy filtering",
+    "published": "2026-06-15",
+    "summary": "Sparse attention accelerates Diffusion Transformers (DiTs) for video generation by computing only the important tokens while skipping the rest. The token selection strategy is key to balancing sparsity and accuracy. We formulate the token filtering process as a dual-goal optimization problem: maximi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.13839v1",
+    "title": "Explaining RhythmFormer: A Systematic XAI Analysis of Periodic Sparse Attention for Remote Photoplethysmography",
+    "published": "2026-06-11",
+    "summary": "Remote photoplethysmography (rPPG) transformers achieve low heart-rate error on benchmarks, yet their decisions remain opaque--a growing concern as rPPG moves toward clinical heart rate estimation. Existing rPPG XAI is dominated by qualitative heatmap inspection without quantitative faithfulness met"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.13392v2",
+    "title": "MiniMax Sparse Attention",
+    "published": "2026-06-11",
+    "summary": "Ultra-long-context capability is becoming indispensable for frontier LLMs: agentic workflows, repository-scale code reasoning, and persistent memory all require the model to jointly attend over hundreds of thousands to millions of tokens, yet the quadratic cost of softmax attention makes this untena"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.10651v1",
+    "title": "Kwai Keye-VL-2.0 Technical Report",
+    "published": "2026-06-09",
+    "summary": "We introduce Kwai Keye-VL-2.0-30B-A3B, an open-source Mixture-of-Experts (MoE) multimodal foundation model designed to advance long-video understanding and agentic intelligence. To address the challenges of ultra-long contexts, information redundancy, and prohibitive computational costs inherent in "
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.09508v1",
+    "title": "From Rigid to Dynamic: Entropy-Guided Adaptive Inference for Long-Context LLMs",
+    "published": "2026-06-08",
+    "summary": "Existing sparse attention and KV cache compression methods for long-context LLM inference typically apply fixed sparsity patterns or uniform budgets across all attention heads, overlooking the substantial variation in attention behavior among heads and contexts. We observe two distinct entropy patte"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.09079v3",
+    "title": "FlashMemory-DeepSeek-V4: Lightning Index Ultra-Long Context via Lookahead Sparse Attention",
+    "published": "2026-06-08",
+    "summary": "Conventional LLMs keep the full KV cache loaded during decoding, causing a severe GPU memory bottleneck for ultra-long context serving. In this report, we propose \\textbf{Lookahead Sparse Attention (LSA)}, a novel inference paradigm powered by a Neural Memory Indexer built upon the DeepSeek-V4 archi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.08446v1",
+    "title": "Sparrow: Sparse Rollout for Stable and Efficient Long-context RL of Large Language Models",
+    "published": "2026-06-07",
+    "summary": "Despite being powerful, reinforcement learning with verifiable rewards (RLVR) induces extremely long COT, making it computationally expensive. Since RLVR per-step cost is dominated by long-context rollout generation, sparse attention offers a promising way to accelerate dense rollout. However, spars"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.06467v1",
+    "title": "You Only Index Once: Cross-Layer Sparse Attention with Shared Routing",
+    "published": "2026-06-04",
+    "summary": "Long-context inference in modern LLMs is increasingly constrained by decoding efficiency, especially in reasoning-heavy settings where models generate long intermediate chains of thought. Existing sparse attention methods often face a practical efficiency-quality trade-off. Structured block sparse m"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.06453v1",
+    "title": "Vortex: Efficient and Programmable Sparse Attention Serving for AI Agents",
+    "published": "2026-06-04",
+    "summary": "Sparse attention is becoming increasingly important for serving large language models (LLMs) as generation lengths continue to grow. However, deploying and evaluating new sparse attention algorithms at scale remains highly engineering-intensive, slowing both human researchers and AI agents in explor"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.06309v1",
+    "title": "RhymeFlow: Training-Free Acceleration for Video Generation with Asynchronous Denoising Flow Scheduling",
+    "published": "2026-06-04",
+    "summary": "Video generation models based on Diffusion Transformers (DiTs) have achieved remarkable performance in video synthesis, yet they suffer from high inference latency and computational costs due to the quadratic complexity of 3D attention. Existing acceleration methods primarily reduce computational co"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.04511v1",
+    "title": "SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference",
+    "published": "2026-06-03",
+    "summary": "Sparse attention reduces compute and memory bandwidth for long-context LLM inference. However, two key challenges remain: (1) KV cache capacity still grows with sequence length, and offloading to CPU memory introduces a PCIe transfer bottleneck; (2) the sparse selection step itself retains $O(T^2)$ "
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.03928v1",
+    "title": "Value-Aware Stochastic KV Cache Eviction for Reasoning Models",
+    "published": "2026-06-02",
+    "summary": "Reasoning models improve accuracy through extended chains of thought, but their long outputs create a memory and compute bottleneck. KV cache eviction methods reduce this cost by evicting unimportant key-value pairs from the cache, yet they often yield worse accuracy than selection-based sparse atte"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.01502v1",
+    "title": "Move the Query, Not the Cache: Characterizing Cross-Instance Latent Attention Redistribution Across GPU Fabrics",
+    "published": "2026-05-31",
+    "summary": "Frontier LLMs increasingly decide what a query attends to with a sparse-attention indexer that picks a few KV-cache blocks per query: attention's unit is now a small, reusable chunk. Agentic workloads hammer it: many sub-agents query one large codebase, reusing the same blocks. When that corpus outg"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.31485v1",
+    "title": "Graphical einops: bridging tensor networks and computation graphs",
+    "published": "2026-05-29",
+    "summary": "Architecture diagrams are ubiquitous in deep learning, but they are usually only representational: the tensor-program identities they suggest are still proved by prose and tensor-axis manipulation. We introduce a formal graphical calculus for the structural fragment of tensor programming underlying "
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.31158v3",
+    "title": "Light Interaction: Training-Free Inference Acceleration for Interactive Video World Models",
+    "published": "2026-05-29",
+    "summary": "Interactive video world models generate video chunk by chunk in response to user-controlled camera movements, enabling applications such as real-time game simulation, virtual scene navigation, and embodied AI training. However, scaling to long interactive trajectories is prohibitively expensive due "
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.31057v1",
+    "title": "LVSA: Training-Free Sparse Attention for Long Video Diffusion",
+    "published": "2026-05-29",
+    "summary": "Dense self-attention is the compute and quality bottleneck of long-video diffusion inference: cost grows quadratically with the sequence length, and beyond the training horizon the model converges to near-static output, that is, \"frozen\" repetitive video. State of the art approaches are either too c"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.19358v1",
+    "title": "LISA: Linear-Indexed Sparse Attention for Efficient Long-Context Reasoning",
+    "published": "2026-05-29",
+    "summary": "Recent advances in long chain-of-thought reasoning models such as DeepSeek-R1 have led to increasingly longer inference context lengths under the test-time scaling paradigm. However, the O(n^2) computational complexity of standard self-attention causes inference costs to grow sharply with long seque"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.30325v1",
+    "title": "Veda: Scalable Video Diffusion via Distilled Sparse Attention",
+    "published": "2026-05-28",
+    "summary": "Scaling Diffusion Transformers to generate high-resolution, long videos is constrained by the quadratic cost of self-attention, and existing sparse attention methods degrade under high sparsity. We show empirically that generation quality is determined not by the sparsity ratio itself, but by how we"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.28691v1",
+    "title": "OSP-Next: Efficient High-Quality Video Generation with Sparse Sequence Parallelism, HiF8 Quantization, and Reinforcement Learning",
+    "published": "2026-05-27",
+    "summary": "Diffusion Transformers achieve strong video generation quality, but the quadratic cost of full attention limits efficiency. We introduce OSP-Next, an efficient text-to-video generation model that integrates sparse attention, parallelism, quantization, and reinforcement learning. OSP-Next uses a hybr"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.27740v1",
+    "title": "UNIQUE: Universal Top-k Sparse Attention for Training-free Inference and Sparsity-aware Training",
+    "published": "2026-05-26",
+    "summary": "Long-context inference in large language models (LLMs) is bottlenecked by the linear growth of the self-attention key-value (KV) cache. Top-k sparse attention alleviates this by loading only a small fraction of the KV cache, but accurately and cheaply estimating cache importance, for both training-f"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.14560v1",
+    "title": "Agentic Kernel Optimization: Generating State-of-the-Art GPU Kernels Without Hand-Written CUDA",
+    "published": "2026-05-25",
+    "summary": "We study whether general-purpose code agents can produce state-of-the-art GPU kernels without any manually written CUDA code. We investigate this question using representative workloads from FlashInfer-Bench, focusing on the Fused MoE, DSA TopK Indexer, and DSA Sparse Attention, and evaluate all gen"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.24518v1",
+    "title": "Grammatically-Guided Sparse Attention for Efficient and Interpretable Transformers",
+    "published": "2026-05-23",
+    "summary": "The quadratic complexity of self-attention in Transformer models remains a significant bottleneck for processing long sequences and deploying large language models efficiently. For this approach, there has been significant research into Sparse Attention, and Deepseek Sparse Attention has combined va"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.23868v1",
+    "title": "Vision Transformers Need Better Token Interaction",
+    "published": "2026-05-22",
+    "summary": "Vision Transformers (ViTs) can learn strong image-level representations while their patch representations become less effective for dense prediction during prolonged training. We revisit this dense degradation phenomenon and argue that it is not fully explained by high-norm artifacts alone. Instead,"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.23445v1",
+    "title": "DFSAttn: Dynamic Fine-grained Sparse Attention for Efficient Video Generation",
+    "published": "2026-05-22",
+    "summary": "Diffusion transformers have achieved remarkable success in high-quality video generation, yet their reliance on spatiotemporal 3D full attention incurs prohibitive computational cost due to the quadratic complexity of attention. Block sparse attention is a common approach to mitigate this by focusin"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.23245v1",
+    "title": "SimInsert: Seamless Video Object Insertion via Regional Sparse Attention Fusion",
+    "published": "2026-05-22",
+    "summary": "Video object insertion requires ensuring spatio-temporal coherence and interactive realism, extending far beyond simple content placement. However, current approaches are often hindered by a reliance on explicit motion engineering or resource-intensive retraining, restricting their flexibility and g"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.22476v1",
+    "title": "Structured-Sparse Attention for Entity Tracking with Subquadratic Sequence Complexity",
+    "published": "2026-05-21",
+    "summary": "Entity tracking requires maintaining and updating latent states for entities and attributes over long sequences. Recent task-specific attention operators can compress deep Transformer stacks into a few layers by performing multi-hop state propagation within a single layer, but their dense evaluation"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.20813v1",
+    "title": "PulseCol: Periodically Refreshed Column-Sparse Attention for Accelerating Diffusion Language Models",
+    "published": "2026-05-20",
+    "summary": "Inference in diffusion large language models (dLLMs) is computationally expensive, as full self-attention must be repeatedly executed at each step of the denoising process without KV cache. Recent sparse attention methods for dLLMs mitigate this cost via block-sparse computation, which is applied on"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.20670v2",
+    "title": "LT2: Linear-Time Looped Transformers",
+    "published": "2026-05-20",
+    "summary": "Looped Transformers (LT) have emerged as a powerful architecture by iterating their layers multiple times before decoding the final token. However, pairing them with full attention retains quadratic complexity, making them computationally expensive and slow. We introduce LT2 (Linear-Time Looped Tran"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.19893v2",
+    "title": "SSV: Sparse Speculative Verification for Efficient LLM Inference",
+    "published": "2026-05-19",
+    "summary": "Speculative decoding and dynamic sparse attention are two complementary approaches for accelerating long-context LLM inference: the former amortizes target-model execution across multiple verifier queries, while the latter reduces each query's KV-cache working set. Directly combining them, however, "
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.19726v1",
+    "title": "Efficient Long-Context Modeling in Diffusion Language Models via Block Approximate Sparse Attention",
+    "published": "2026-05-19",
+    "summary": "Diffusion Language Models (DLMs) enable globally coherent, bidirectional, and controllable text generation, offering advantages over traditional autoregressive LLMs, while scaling to ultra-long sequences remains costly. Many existing block-sparse attention methods select blocks by fixed sampling pat"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.17633v1",
+    "title": "SparseSAM: Structured Sparsification of Activations in Segment Anything Models",
+    "published": "2026-05-17",
+    "summary": "The Segment Anything Model (SAM) achieves strong open-vocabulary segmentation, but its ViT-based image encoders dominate inference latency and memory. Existing activation compression methods, such as token merging, reduce the token length to process, yet introduce non-trivial runtime overhead and en"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.16928v2",
+    "title": "Full Attention Strikes Back: Transferring Full Attention into Sparse within Hundred Training Steps",
+    "published": "2026-05-16",
+    "summary": "Long-context inference in large language models is bottlenecked by the quadratic cost of full attention. Existing efficient alternatives often rely either on native sparse training or on heuristic token eviction, creating an undesirable trade-off among efficiency, training cost, and accuracy. In thi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.16839v1",
+    "title": "CompactAttention: Accelerating Chunked Prefill with Block-Union KV Selection",
+    "published": "2026-05-16",
+    "summary": "Chunked prefill has become a widely adopted serving strategy for long-context large language models, but efficient attention computation in this regime remains challenging. Existing sparse attention methods are primarily designed for one-shot prefill and do not translate efficiently to chunked prefi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.16579v2",
+    "title": "Attend Locally, Remember Linearly: Linear Attention as Cross-Frame Memory for Autoregressive Video Diffusion",
+    "published": "2026-05-15",
+    "summary": "Autoregressive (AR) video diffusion is a powerful paradigm for streaming and interactive video generation. However, its reliance on softmax self-attention leads to quadratic compute complexity in sequence length and memory usage due to key-value caching, which limits its scalability to long video ho"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.18865v1",
+    "title": "From Sparsity to Simplicity: Enabling Simpler Sequential Replacements via Sparse Attention Distillation",
+    "published": "2026-05-15",
+    "summary": "Self-attention serves as the core foundation of large-scale transformer pretraining, but its quadratic token interaction cost makes inference expensive. Replacing attention with simpler sequential modules is appealing, yet naive substitution is often lossy, especially at larger scales. This paper re"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.15684v1",
+    "title": "ElasticDiT: Efficient Diffusion Transformers via Elastic Architecture and Sparse Attention for High-Resolution Image Generation on Mobile Devices",
+    "published": "2026-05-15",
+    "summary": "The Diffusion Transformer (DiT) architecture is the state-of-the-art paradigm for high-fidelity image generation, underpinning models like Stable Diffusion-3 and FLUX.1. However, deploying these models on resource-constrained mobile devices entails prohibitive computational and memory overhead. Whil"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.15508v2",
+    "title": "STS: Efficient Sparse Attention with Speculative Token Sparsity",
+    "published": "2026-05-15",
+    "summary": "The quadratic complexity of attention imposes severe memory and computational bottlenecks on Large Language Model (LLM) inference. This challenge is particularly acute for emerging agentic applications that require processing multi-million token sequences. We propose STS, a sparse attention mechanis"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.14513v2",
+    "title": "HEART: Exploiting Head Heterogeneity in Sparse Attention for Video Diffusion",
+    "published": "2026-05-14",
+    "summary": "Sparse attention accelerates video diffusion by allowing each attention head to focus on only a small subset of interactions. Existing methods already construct head-specific sparse patterns conditioned on the input. However, we find that these heads also differ in two less obvious but practically i"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.15880v1",
+    "title": "FSCM: Frequency-Enhanced Spatial-Spectral Coupled Mamba for Infrared Hyperspectral Image Colorization",
+    "published": "2026-05-13",
+    "summary": "Thermal infrared imaging is robust to illumination variations and smoke interference, making it important for all-weather perception. However, the lack of natural color and fine texture limits target recognition, human visual interpretation, and the transfer of visible-light models. Existing infrare"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.13465v1",
+    "title": "Z-Order Transformer for Feed-Forward Gaussian Splatting",
+    "published": "2026-05-13",
+    "summary": "Recent advances in 3D Gaussian Splatting (3DGS) have enabled significant progress in photorealistic novel view synthesis. However, traditional 3DGS relies on a slow, iterative optimization process, which limits its use in scenarios demanding real-time results. To overcome this bottleneck, recent fee"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.12110v1",
+    "title": "AB-Sparse: Sparse Attention with Adaptive Block Size for Accurate and Efficient Long-Context Inference",
+    "published": "2026-05-12",
+    "summary": "As large language models scale to longer contexts, loading the growing KV cache during attention computation becomes a critical bottleneck. Previous work has shown that attention computation is dominated by a small subset of tokens. This motivates block sparse attention methods that partition the KV"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.11881v2",
+    "title": "Learning Subspace-Preserving Sparse Attention Graphs from Heterogeneous Multiview Data",
+    "published": "2026-05-12",
+    "summary": "The high-dimensional features extracted from large-scale unlabeled data via various pretrained models with diverse architectures are referred to as heterogeneous multiview data. Most existing unsupervised transfer learning methods fail to faithfully recover intrinsic subspace structures when exploit"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.10875v1",
+    "title": "Compute Where it Counts: Self Optimizing Language Models",
+    "published": "2026-05-11",
+    "summary": "Efficient LLM inference research has largely focused on reducing the cost of each decoding step (e.g., using quantization, pruning, or sparse attention), typically applying a uniform computation budget to every generated token. In practice, token difficulty varies widely, so static compression can o"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.08453v1",
+    "title": "Sink vs. diagonal patterns as mechanisms for attention switch and oversmoothing prevention",
+    "published": "2026-05-08",
+    "summary": "This paper studies the role of sinks and diagonal patterns as attention switch and anti-oversmoothing mechanisms. We analyze geometric conditions under which sinks can be represented, showing a necessary alignment between the embedding of the sink and all other embeddings. Next, we refine the curren"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.08073v1",
+    "title": "EmambaIR: Efficient Visual State Space Model for Event-guided Image Reconstruction",
+    "published": "2026-05-08",
+    "summary": "Recent event-based image reconstruction methods predominantly rely on Convolutional Neural Networks (CNNs) and Vision Transformers (ViTs) to process complementary event information. However, these architectures face fundamental limitations: CNNs often fail to capture global feature correlations, whe"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.07719v1",
+    "title": "An Efficient Hybrid Sparse Attention with CPU-GPU Parallelism for Long-Context Inference",
+    "published": "2026-05-08",
+    "summary": "Long-context inference increasingly operates over CPU-resident KV caches, either because decoding-time KV states exceed GPU memory capacity or because disaggregated prefill-decode systems place KV data in host memory. Although block-sparse attention reduces attention cost in this setting, sparsity a"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.07363v1",
+    "title": "MISA: Mixture of Indexer Sparse Attention for Long-Context LLM Inference",
+    "published": "2026-05-08",
+    "summary": "DeepSeek Sparse Attention (DSA) sets the state of the art for fine-grained inference-time sparse attention by introducing a learned token-wise indexer that scores every prefix token and selects the most relevant ones for the main attention. To remain expressive, the indexer uses many query heads (fo"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.06763v2",
+    "title": "Sparse Attention as a Range Searching Problem: Towards an Inference-Efficient Index for KV Cache",
+    "published": "2026-05-07",
+    "summary": "Sparse attention improves LLM inference efficiency by selecting a subset of key-value entries, but at the cost of potential accuracy degradation. In particular, omitting critical KV entries can induce substantial errors in model outputs. Existing methods typically operate under fixed or adaptive tok"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.06221v1",
+    "title": "UniPrefill: Universal Long-Context Prefill Acceleration via Block-wise Dynamic Sparsification",
+    "published": "2026-05-07",
+    "summary": "As large language models (LLMs) continue to advance rapidly, they are becoming increasingly capable while simultaneously demanding ever-longer context lengths. To improve the inference efficiency of long-context processing, several novel low-complexity hybrid architectures have recently been propose"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.05330v1",
+    "title": "Graph Normalization: Fast Binarizing Dynamics for Differentiable MWIS",
+    "published": "2026-05-06",
+    "summary": "We introduce Graph Normalization (GN), a principled dynamical system on graphs that serves as a differentiable approximation engine for the NP-hard Maximum Weight Independent Set (MWIS) problem. MWIS encompasses many combinatorial challenges, including optimal assignment, scheduling, set packing, an"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.04569v2",
+    "title": "LIVEditor-14B: Lightning Unified Video Editing via In-Context Sparse Attention",
+    "published": "2026-05-06",
+    "summary": "Video editing has evolved toward In-Context Learning (ICL) paradigms, yet the resulting quadratic attention costs create a critical computational bottleneck. In this work, we propose In-context Sparse Attention (ISA), the first near-lossless empirical sparse framework tailored for ICL video editing."
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.02568v1",
+    "title": "StreamIndex: Memory-Bounded Compressed Sparse Attention via Streaming Top-k",
+    "published": "2026-05-04",
+    "summary": "DeepSeek-V3.2 and V4 introduce Compressed Sparse Attention (CSA): a lightning indexer (a learned scoring projection over compressed keys) scores them, the top-k are selected per query, and a sparse attention kernel reads only those. Public CSA implementations materialize a [B, S, H_I, T] FP32 score "
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.02184v1",
+    "title": "RAFNet: Region-Aware Fusion Network for Pansharpening",
+    "published": "2026-05-04",
+    "summary": "Pansharpening aims to generate high-resolution multispectral (HRMS) images by fusing low-resolution multispectral (LRMS) and high-resolution panchromatic (PAN) images. Although deep learning has advanced this field, mainstream frequency-based methods relying on standard scaled dot-product attention "
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.01910v2",
+    "title": "Stochastic Sparse Attention for Memory-Bound Inference",
+    "published": "2026-05-03",
+    "summary": "Autoregressive decoding becomes bandwidth-limited at long contexts, as generating each token requires reading all $n_k$ key and value vectors from KV cache. We present Stochastic Additive No-mulT Attention (SANTA), a method that sparsifies value-cache access by sampling $S \\ll n_k$ indices from the "
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.00320v1",
+    "title": "VitaLLM: A Versatile and Tiny Accelerator for Mixed-Precision LLM Inference on Edge Devices",
+    "published": "2026-05-01",
+    "summary": "We present VitaLLM, a mixed precision accelerator that enables ternary weight large language models to run efficiently on edge devices. The design combines two compute cores, a multiplier free TINT core for ternary-INT projections and a BoothFlex core that reuses a radix-4 Booth datapath for both IN"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.27326v1",
+    "title": "Spectral Dynamic Attention Network for Hyperspectral Image Super-Resolution",
+    "published": "2026-04-30",
+    "summary": "Hyperspectral image super-resolution is essential for enhancing the spatial fidelity of HSI data, yet existing deep learning methods often struggle with substantial spectral redundancy and the limited non-linear modeling capacity of standard feed-forward networks (FFNs). To address these challenges,"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.26837v1",
+    "title": "Unifying Sparse Attention with Hierarchical Memory for Scalable Long-Context LLM Serving",
+    "published": "2026-04-29",
+    "summary": "Long-context LLM serving is bottlenecked by the cost of attending over ever-growing KV caches. Dynamic sparse attention promises relief by accessing only a small, query-dependent subset of the KV state per decoding step and extending the KV storage to CPU memory. In practice, however, these algorith"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.24820v1",
+    "title": "Salca: A Sparsity-Aware Hardware Accelerator for Efficient Long-Context Attention Decoding",
+    "published": "2026-04-27",
+    "summary": "Long contexts improve capabilities of large language models but pose serious hardware challenges: compute and memory footprints grow linearly with sequence length. Particularly, the decoding phase continuously accesses massive KV cache, dramatically increasing bandwidth and computing pressure. Exist"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.00887v2",
+    "title": "SparseContrast: Dynamic Sparse Attention for Efficient and Accurate Contrastive Learning in Medical Imaging",
+    "published": "2026-04-27",
+    "summary": "We propose SparseContrast, a new framework that merges dynamic sparse attention with contrastive learning for medical imaging, with a focus on chest X-ray disease detection in low-data settings. Traditional contrastive learning methods rely on dense attention mechanisms, which are computationally ex"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.19348v1",
+    "title": "DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence",
+    "published": "2026-04-26",
+    "summary": "We present a preview version of DeepSeek-V4 series, including two strong Mixture-of-Experts (MoE) language models -- DeepSeek-V4-Pro with 1.6T parameters (49B activated) and DeepSeek-V4-Flash with 284B parameters (13B activated) -- both supporting a context length of one million tokens. DeepSeek-V4 "
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.23310v1",
+    "title": "RadTwin: Generalizable Wireless Digital Twin for Dynamic Environments",
+    "published": "2026-04-25",
+    "summary": "Precisely modeling radio propagation in dynamic wireless environments is fundamental to the realization of wireless digital twins. Traditional ray tracing methods rely on accurate 3D models with detailed environment parameters, while recent neural radiance field approaches learn representations tied"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.22575v1",
+    "title": "SpikingBrain2.0: Brain-Inspired Foundation Models for Efficient Long-Context and Cross-Platform Inference",
+    "published": "2026-04-24",
+    "summary": "Scaling context length is reshaping large-model development, yet full-attention Transformers suffer from prohibitive computation and inference bottlenecks at long sequences. A key challenge is to design foundation models that maintain performance and long-context efficiency with minimal training ove"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.22312v1",
+    "title": "Guess-Verify-Refine: Data-Aware Top-K for Sparse-Attention Decoding on Blackwell via Temporal Correlation",
+    "published": "2026-04-24",
+    "summary": "Sparse-attention decoders rely on exact Top-K selection to choose the most important key-value entries for each query token. In long-context LLM serving, this Top-K stage runs once per decode query and becomes a meaningful latency bottleneck even when the indexer and attention kernels are already hi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.21592v1",
+    "title": "Sculpt4D: Generating 4D Shapes via Sparse-Attention Diffusion Transformers",
+    "published": "2026-04-23",
+    "summary": "Recent breakthroughs in 3D generative modeling have yielded remarkable progress in static shape synthesis, yet high-fidelity dynamic 4D generation remains elusive, hindered by temporal artifacts and prohibitive computational demand. We present Sculpt4D, a native 4D generative framework that seamless"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.21221v1",
+    "title": "Sparse Forcing: Native Trainable Sparse Attention for Real-time Autoregressive Diffusion Video Generation",
+    "published": "2026-04-23",
+    "summary": "We introduce Sparse Forcing, a training-and-inference paradigm for autoregressive video diffusion models that improves long-horizon generation quality while reducing decoding latency. Sparse Forcing is motivated by an empirical observation in autoregressive diffusion rollouts: attention concentrates"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.20470v1",
+    "title": "DynamicRad: Content-Adaptive Sparse Attention for Long Video Diffusion",
+    "published": "2026-04-22",
+    "summary": "Leveraging the natural spatiotemporal energy decay in video diffusion offers a path to efficiency, yet relying solely on rigid static masks risks losing critical long-range information in complex dynamics. To address this issue, we propose \\textbf{DynamicRad}, a unified sparse-attention paradigm tha"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.20920v2",
+    "title": "Simplified Sparse Attention via Gist Tokens",
+    "published": "2026-04-22",
+    "summary": "Sparse attention can reduce the cost of long-context inference, but most variants introduce new architectural components. We introduce Simplified Sparse Attention (SSA), a simpler approach to sparse attention that requires no architectural changes. Concretely, we first perform continued pretraining "
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.19747v1",
+    "title": "AnyRecon: Arbitrary-View 3D Reconstruction with Video Diffusion Model",
+    "published": "2026-04-21",
+    "summary": "Sparse-view 3D reconstruction is essential for modeling scenes from casual captures, but remain challenging for non-generative reconstruction. Existing diffusion-based approaches mitigates this issues by synthesizing novel views, but they often condition on only one or two capture frames, which rest"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.18348v1",
+    "title": "AdaCluster: Adaptive Query-Key Clustering for Sparse Attention in Video Generation",
+    "published": "2026-04-20",
+    "summary": "Video diffusion transformers (DiTs) suffer from prohibitive inference latency due to quadratic attention complexity. Existing sparse attention methods either overlook semantic similarity or fail to adapt to heterogeneous token distributions across layers, leading to model performance degradation. We"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.18137v1",
+    "title": "AQPIM: Breaking the PIM Capacity Wall for LLMs with In-Memory Activation Quantization",
+    "published": "2026-04-20",
+    "summary": "Processing-in-Memory (PIM) architectures offer a promising solution to the memory bottlenecks in data-intensive machine learning, yet often overlook the growing challenge of activation memory footprint. Conventional PIM approaches struggle with massive KV cache sizes generated in long-context scenar"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.15180v1",
+    "title": "AdaSplash-2: Faster Differentiable Sparse Attention",
+    "published": "2026-04-16",
+    "summary": "Sparse attention has been proposed as a way to alleviate the quadratic cost of transformers, a central bottleneck in long-context training. A promising line of work is $\u03b1$-entmax attention, a differentiable sparse alternative to softmax that enables input-dependent sparsity yet has lagged behind sof"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.14925v1",
+    "title": "Improving Sparse Autoencoder with Dynamic Attention",
+    "published": "2026-04-16",
+    "summary": "Recently, sparse autoencoders (SAEs) have emerged as a promising technique for interpreting activations in foundation models by disentangling features into a sparse set of concepts. However, identifying the optimal level of sparsity for each neuron remains challenging in practice: excessive sparsity"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.13847v2",
+    "title": "SparseBalance: Load-Balanced Long Context Training with Dynamic Sparse Attention",
+    "published": "2026-04-15",
+    "summary": "While sparse attention mitigates the computational bottleneck of long-context LLM training, its distributed training process exhibits extreme heterogeneity in both \\textit{1)} sequence length and \\textit{2)} sparsity sensitivity, leading to a severe imbalance problem and sub-optimal model accuracy. "
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.00024v3",
+    "title": "ART: Attention Run-time Termination for Efficient Large Language Model Decoding",
+    "published": "2026-04-15",
+    "summary": "Long-context decoding in Large Language Models (LLMs) is constrained by the cost of accessing and processing the Key-Value (KV) cache. Despite evidence that attention outputs depend jointly on keys and values, most existing KV management methods rely on key-only pruning, since incorporating values i"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.12798v1",
+    "title": "VFA: Relieving Vector Operations in Flash Attention with Global Maximum Pre-computation",
+    "published": "2026-04-14",
+    "summary": "FlashAttention-style online softmax enables exact attention computation with linear memory by streaming score tiles through on-chip memory and maintaining a running maximum and normalizer. However, as attention kernels approach peak tensor-core/cube-core throughput on modern accelerators, non-matmul"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.12452v2",
+    "title": "Latent-Condensed Transformer for Efficient Long Context Modeling",
+    "published": "2026-04-14",
+    "summary": "Large language models (LLMs) face significant challenges in processing long contexts due to the linear growth of the key-value (KV) cache and quadratic complexity of self-attention. Existing approaches address these bottlenecks separately: Multi-head Latent Attention (MLA) reduces the KV cache by pr"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.22808v1",
+    "title": "FreqFormer: Hierarchical Frequency-Domain Attention with Adaptive Spectral Routing for Long-Sequence Video Diffusion Transformers",
+    "published": "2026-04-14",
+    "summary": "Long-sequence video diffusion transformers hit a quadratic self-attention cost that dominates runtime and memory for very long token sequences. Most efficient attention methods use one approximation everywhere, yet video features are spectrally structured: low frequencies carry global layout and coa"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.12219v1",
+    "title": "Ride the Wave: Precision-Allocated Sparse Attention for Smooth Video Generation",
+    "published": "2026-04-14",
+    "summary": "Video Diffusion Transformers have revolutionized high-fidelity video generation but suffer from the massive computational burden of self-attention. While sparse attention provides a promising acceleration solution, existing methods frequently provoke severe visual flickering caused by static sparsit"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.12056v1",
+    "title": "LoSA: Locality Aware Sparse Attention for Block-Wise Diffusion Language Models",
+    "published": "2026-04-13",
+    "summary": "Block-wise diffusion language models (DLMs) generate multiple tokens in any order, offering a promising alternative to the autoregressive decoding pipeline. However, they still remain bottlenecked by memory-bound attention in long-context scenarios. Naive sparse attention fails on DLMs due to a KV I"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.16485v1",
+    "title": "Saccade Attention Networks: Using Transfer Learning of Attention to Reduce Network Sizes",
+    "published": "2026-04-13",
+    "summary": "One of the limitations of transformer networks is the sequence length due to the quadratic nature of the attention matrix. Classical self attention uses the entire sequence length, however, the actual attention being used is sparse. Humans use a form of sparse attention when analyzing an image or sc"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.10103v2",
+    "title": "Long-Horizon Streaming Video Generation via Hybrid Attention with Decoupled Distillation",
+    "published": "2026-04-11",
+    "summary": "Streaming video generation (SVG) distills a pretrained bidirectional video diffusion model into an autoregressive model equipped with sliding window attention (SWA). However, SWA inevitably loses distant history during long video generation, and its computational overhead remains a critical challeng"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.09349v2",
+    "title": "Visually-Guided Policy Optimization for Multimodal Reasoning",
+    "published": "2026-04-10",
+    "summary": "Reinforcement learning with verifiable rewards (RLVR) has significantly advanced the reasoning ability of vision-language models (VLMs). However, the inherent text-dominated nature of VLMs often leads to insufficient visual faithfulness, characterized by sparse attention activation to visual tokens."
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.09142v2",
+    "title": "Geometry Reinforced Efficient Attention Tuning Equipped with Normals for Robust Stereo Matching",
+    "published": "2026-04-10",
+    "summary": "Despite remarkable advances in image-driven stereo matching over the past decade, Synthetic-to-Realistic ZeroShot (Syn-to-Real) generalization remains an open challenge. This suboptimal generalization performance mainly stems from cross-domain shifts and ill-posed ambiguities inherent in image textu"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.08971v1",
+    "title": "Modality-Aware Zero-Shot Pruning and Sparse Attention for Efficient Multimodal Edge Inference",
+    "published": "2026-04-10",
+    "summary": "Edge devices increasingly run multimodal sensing pipelines that must remain accurate despite fluctuating power budgets and unpredictable sensor dropout. Existing pruning methods fail under these conditions: they generally require fine-tuning after compression, consuming over $10\\times$ the deploymen"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.07815v1",
+    "title": "AsyncTLS: Efficient Generative LLM Inference with Asynchronous Two-level Sparse Attention",
+    "published": "2026-04-09",
+    "summary": "Long-context inference in LLMs faces the dual challenges of quadratic attention complexity and prohibitive KV cache memory. While token-level sparse attention offers superior accuracy, its indexing overhead is costly; block-level methods improve efficiency but sacrifice precision. We propose AsyncTL"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.07394v1",
+    "title": "Flux Attention: Context-Aware Hybrid Attention for Efficient LLMs Inference",
+    "published": "2026-04-08",
+    "summary": "The quadratic computational complexity of standard attention mechanisms presents a severe scalability bottleneck for LLMs in long-context scenarios. While hybrid attention mechanisms combining Full Attention (FA) and Sparse Attention (SA) offer a potential solution, existing methods typically rely o"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.05449v1",
+    "title": "Not All Agents Matter: From Global Attention Dilution to Risk-Prioritized Game Planning",
+    "published": "2026-04-07",
+    "summary": "End-to-end autonomous driving resides not in the integration of perception and planning, but rather in the dynamic multi-agent game within a unified representation space. Most existing end-to-end models treat all agents equally, hindering the decoupling of real collision threats from complex backgro"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.05182v3",
+    "title": "LSRM: High-Fidelity Object-Centric Reconstruction via Scaled Context Windows",
+    "published": "2026-04-06",
+    "summary": "We introduce the Large Sparse Reconstruction Model to study how scaling transformer context windows affects feed-forward 3D reconstruction. Although recent object-centric feed-forward methods produce robust, high-quality reconstructions, they still lag behind dense-view optimization in recovering fi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.16429v3",
+    "title": "(Sparse) Attention to the Details: Preserving Spectral Fidelity in ML-based Weather Forecasting Models",
+    "published": "2026-04-06",
+    "summary": "We introduce Mosaic, a probabilistic weather forecasting model that addresses three failure modes of spectral degradation in ML-based weather prediction: spectral damping (statistical), high-frequency aliasing (architectural), and residual high-frequency leakage (parametric). Mosaic generates ensemb"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.29494v1",
+    "title": "VecAttention: Vector-wise Sparse Attention for Accelerating Long Context Inference",
+    "published": "2026-03-31",
+    "summary": "Long-context video understanding and generation pose a significant computational challenge for Transformer-based video models due to the quadratic complexity of self-attention. While existing sparse attention methods employ coarse-grained patterns to improve efficiency, they typically incur redundan"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.29002v3",
+    "title": "Understand and Accelerate Memory Processing Pipeline for Large Language Model Inference",
+    "published": "2026-03-30",
+    "summary": "Modern large language models (LLMs) increasingly depends on efficient long-context processing and generation mechanisms, including sparse attention, retrieval-augmented generation (RAG), and compressed contextual memory, to support complex reasoning. We show that these optimizations can be unified i"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.28458v3",
+    "title": "HISA: Efficient Hierarchical Indexing for Fine-Grained Sparse Attention",
+    "published": "2026-03-30",
+    "summary": "Token-level sparse attention mechanisms, exemplified by DeepSeek Sparse Attention (DSA), achieve fine-grained key selection by scoring every historical key for each query through a lightweight indexer, then computing attention only on the selected subset. While the downstream sparse attention itself"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.08584v1",
+    "title": "CSAttention: Centroid-Scoring Attention for Accelerating LLM Inference",
+    "published": "2026-03-30",
+    "summary": "Long-context LLMs increasingly rely on extended, reusable prefill prompts for agents and domain Q&A, pushing attention and KV-cache to become the dominant decode-time bottlenecks. While sparse attention reduces computation and transfer costs, it often struggles to maintain accuracy at high sparsity "
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.27138v1",
+    "title": "ScoutAttention: Efficient KV Cache Offloading via Layer-Ahead CPU Pre-computation for LLM Inference",
+    "published": "2026-03-28",
+    "summary": "Large language models encounter critical GPU memory capacity constraints during long-context inference, where KV cache memory consumption severely limits decode batch sizes. While existing research has explored offloading KV cache to DRAM, these approaches either demand frequent GPU-CPU data transfe"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.06227v1",
+    "title": "A Benchmark of Classical and Deep Learning Models for Agricultural Commodity Price Forecasting on A Novel Bangladeshi Market Price Dataset",
+    "published": "2026-03-27",
+    "summary": "Accurate short-term forecasting of agricultural commodity prices is critical for food security planning and smallholder income stabilisation in developing economies, yet machine-learning-ready datasets for this purpose remain scarce in South Asia. This paper makes two contributions. First, we introd"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.25209v1",
+    "title": "Free-Lunch Long Video Generation via Layer-Adaptive O.O.D Correction",
+    "published": "2026-03-26",
+    "summary": "Generating long videos using pre-trained video diffusion models, which are typically trained on short clips, presents a significant challenge. Directly applying these models for long-video inference often leads to a notable degradation in visual quality. This paper identifies that this issue primari"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.22858v1",
+    "title": "The Coordinate System Problem in Persistent Structural Memory for Neural Architectures",
+    "published": "2026-03-24",
+    "summary": "We introduce the Dual-View Pheromone Pathway Network (DPPN), an architecture that routes sparse attention through a persistent pheromone field over latent slot transitions, and use it to discover two independent requirements for persistent structural memory in neural networks. Through five progressi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.20997v2",
+    "title": "When Does Content-Based Routing Work? Representation Requirements for Selective Attention in Hybrid Sequence Models",
+    "published": "2026-03-22",
+    "summary": "We identify a routing paradox in hybrid sequence models: content-based routing - deciding which tokens deserve expensive attention - requires pairwise computation, and this requirement is inescapable. Through 20+ controlled experiments across three tasks, multiple scales (200K to 1.4B parameters), a"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.22323v1",
+    "title": "A Multi-Task Targeted Learning Framework for Lithium-Ion Battery State-of-Health and Remaining Useful Life",
+    "published": "2026-03-20",
+    "summary": "Accurately predicting the state-of-health (SOH) and remaining useful life (RUL) of lithium-ion batteries is crucial for ensuring the safe and efficient operation of electric vehicles while minimizing associated risks. However, current deep learning methods are limited in their ability to selectively"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.18712v1",
+    "title": "Accurate and Efficient Multi-Channel Time Series Forecasting via Sparse Attention Mechanism",
+    "published": "2026-03-19",
+    "summary": "The task of multi-channel time series forecasting is ubiquitous in numerous fields such as finance, supply chain management, and energy planning. It is critical to effectively capture complex dynamic dependencies within and between channels for accurate predictions. However, traditional method paid "
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.18636v2",
+    "title": "Attention Sparsity is Input-Stable: Training-Free Sparse Attention for Video Generation via Offline Sparsity Profiling and Online QK Co-Clustering",
+    "published": "2026-03-19",
+    "summary": "Diffusion Transformers (DiTs) achieve strong video generation quality but suffer from high inference cost due to dense 3D attention, motivating sparse attention techniques for improving efficiency. However, existing training-free sparse attention methods for video generation still face two unresolve"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.18572v1",
+    "title": "UEPS: Robust and Efficient MRI Reconstruction",
+    "published": "2026-03-19",
+    "summary": "Deep unrolled models (DUMs) have become the state of the art for accelerated MRI reconstruction, yet their robustness under domain shift remains a critical barrier to clinical adoption. In this work, we identify coil sensitivity map (CSM) estimation as the primary bottleneck limiting generalization."
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.18417v1",
+    "title": "Self-Tuning Sparse Attention: Multi-Fidelity Hyperparameter Optimization for Transformer Acceleration",
+    "published": "2026-03-19",
+    "summary": "Sparse attention mechanisms promise to break the quadratic bottleneck of long-context transformers, yet production adoption remains limited by a critical usability gap: optimal hyperparameters vary substantially across layers and models, and current methods (e.g., SpargeAttn) rely on manual grid sea"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.14483v2",
+    "title": "Disentangling Dynamical Systems: Causal Representation Learning Meets Local Sparse Attention",
+    "published": "2026-03-15",
+    "summary": "Parametric system identification methods estimate the parameters of explicitly defined physical systems from data. Yet, they remain constrained by the need to provide an explicit function space, typically through a predefined library of candidate functions chosen via available domain knowledge. In c"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.14224v1",
+    "title": "Self-Indexing KVCache: Predicting Sparse Attention from Compressed Keys",
+    "published": "2026-03-15",
+    "summary": "The KV cache in self-attention has emerged as a major bottleneck in long-context and large-batch inference for LLMs. Existing approaches often treat sparsity prediction and compression as separate modules, relying on auxiliary index structures to select relevant tokens, and on complex quantization s"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.13430v1",
+    "title": "Dynamic Sparse Attention: Access Patterns and Architecture",
+    "published": "2026-03-13",
+    "summary": "Dynamic sparse attention (DSA) reduces the per-token attention bandwidth by restricting computation to a top-k subset of cached key-value (KV) entries, but its token-dependent selection pattern introduces a system-level challenge: the KV working set is fragmented, volatile, and difficult to prefetch"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.12201v1",
+    "title": "IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse",
+    "published": "2026-03-12",
+    "summary": "Long-context agentic workflows have emerged as a defining use case for large language models, making attention efficiency critical for both inference speed and serving cost. Sparse attention addresses this challenge effectively, and DeepSeek Sparse Attention (DSA) is a representative production-grad"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.10781v1",
+    "title": "Taking Shortcuts for Categorical VQA Using Super Neurons",
+    "published": "2026-03-11",
+    "summary": "Sparse Attention Vectors (SAVs) have emerged as an excellent training-free alternative to supervised finetuning or low-rank adaptation to improve the performance of Vision Language Models (VLMs). At their heart, SAVs select a few accurate attention heads for a task of interest and use them as classi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.09573v2",
+    "title": "More than the Sum: Panorama-Language Models for Adverse Omni-Scenes",
+    "published": "2026-03-10",
+    "summary": "Existing vision-language models (VLMs) are tailored for pinhole imagery, stitching multiple narrow field-of-view inputs to piece together a complete omni-scene understanding. Yet, such multi-view perception overlooks the holistic spatial and contextual relationships that a single panorama inherently"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.08982v2",
+    "title": "SVG-EAR: Parameter-Free Linear Compensation for Sparse Video Generation via Error-aware Routing",
+    "published": "2026-03-09",
+    "summary": "Diffusion Transformers (DiTs) have become a leading backbone for video generation, yet their quadratic attention cost remains a major bottleneck. Sparse attention reduces this cost by computing only a subset of attention blocks. However, prior methods often either drop the remaining blocks, which in"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.06274v2",
+    "title": "Stem: Rethinking Causal Information Flow in Sparse Attention",
+    "published": "2026-03-06",
+    "summary": "The quadratic computational complexity of self-attention remains a fundamental bottleneck for scaling Large Language Models (LLMs) to long contexts, particularly during the pre-filling phase. In this paper, we rethink the causal attention mechanism from the perspective of information flow. Due to ca"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.06199v1",
+    "title": "FlashPrefill: Instantaneous Pattern Discovery and Thresholding for Ultra-Fast Long-Context Prefilling",
+    "published": "2026-03-06",
+    "summary": "Long-context modeling is a pivotal capability for Large Language Models, yet the quadratic complexity of attention remains a critical bottleneck, particularly during the compute-intensive prefilling phase. While various sparse attention mechanisms have been explored, they typically suffer from eithe"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.23516v2",
+    "title": "MSA: Memory Sparse Attention for Efficient End-to-End Memory Model Scaling to 100M Tokens",
+    "published": "2026-03-06",
+    "summary": "Long-term memory is a cornerstone of human intelligence. Enabling AI to process lifetime-scale information remains a long-standing pursuit in the field. Due to the constraints of full-attention architectures, the effective context length of large language models (LLMs) is typically limited to 1M tok"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.05503v1",
+    "title": "Accelerating Text-to-Video Generation with Calibrated Sparse Attention",
+    "published": "2026-03-05",
+    "summary": "Recent diffusion models enable high-quality video generation, but suffer from slow runtimes. The large transformer-based backbones used in these models are bottlenecked by spatiotemporal attention. In this paper, we identify that a significant fraction of token-to-token connections consistently yiel"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.04460v1",
+    "title": "VSPrefill: Vertical-Slash Sparse Attention with Lightweight Indexing for Long-Context Prefilling",
+    "published": "2026-03-03",
+    "summary": "The quadratic complexity of self-attention during the prefill phase impedes long-context inference in large language models. Existing sparse attention methods face a trade-off among context adaptivity, sampling overhead, and fine-tuning costs. We propose VSPrefill, a mechanism requiring lightweight "
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.00980v1",
+    "title": "Beyond the Flat Sequence: Hierarchical and Preference-Aware Generative Recommendations",
+    "published": "2026-03-01",
+    "summary": "Generative Recommenders (GRs), exemplified by the Hierarchical Sequential Transduction Unit (HSTU), have emerged as a powerful paradigm for modeling long user interaction sequences. However, we observe that their \"flat-sequence\" assumption overlooks the rich, intrinsic structure of user behavior. Th"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.22575v2",
+    "title": "S2O: Early Stopping for Sparse Attention via Online Permutation",
+    "published": "2026-02-26",
+    "summary": "Attention scales quadratically with sequence length, fundamentally limiting long-context inference. Existing block-granularity sparsification can reduce latency, but coarse blocks impose an intrinsic sparsity ceiling, making further improvements difficult even with carefully engineered designs. We p"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.20515v1",
+    "title": "FAST-Prefill: FPGA Accelerated Sparse Attention for Long Context LLM Prefill",
+    "published": "2026-02-24",
+    "summary": "In long-context large language model (LLM) inference, the prefill stage dominates computation due to self-attention over the complete input context. Sparse attention significantly reduces self-attention computation by limiting each token's interactions to a subset of tokens. The attention sparsity p"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.19822v1",
+    "title": "Efficient endometrial carcinoma screening via cross-modal synthesis and gradient distillation",
+    "published": "2026-02-23",
+    "summary": "Early detection of myometrial invasion is critical for the staging and life-saving management of endometrial carcinoma (EC), a prevalent global malignancy. Transvaginal ultrasound serves as the primary, accessible screening modality in resource-constrained primary care settings; however, its diagnos"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.19143v2",
+    "title": "Incremental Learning of Sparse Attention Patterns in Transformers",
+    "published": "2026-02-22",
+    "summary": "This paper studies simple transformers trained on a high-order Markov chain, where the model must incorporate information from multiple past positions, each with different statistical importance. We show that transformers learn the task incrementally, with each stage corresponding to learning how to"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.18109v4",
+    "title": "TempoNet: Slack-Quantized Transformer-Guided Reinforcement Scheduler for Adaptive Deadline-Centric Real-Time Dispatchs",
+    "published": "2026-02-20",
+    "summary": "Real-time schedulers must reason about tight deadlines under strict compute budgets. We present TempoNet, a reinforcement learning scheduler that pairs a permutation-invariant Transformer with a deep Q-approximation. An Urgency Tokenizer discretizes temporal slack into learnable embeddings, stabiliz"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.16986v2",
+    "title": "Bending the Scaling Law Curve in Large-Scale Recommendation Systems",
+    "published": "2026-02-19",
+    "summary": "Learning from user interaction history through sequential models has become a cornerstone of large-scale recommender systems. Recent advances in large language models have revealed promising scaling laws, sparking a surge of research into long-sequence modeling and deeper architectures for recommend"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.14209v2",
+    "title": "MAGE: All-[MASK] Block Already Knows Where to Look in Block Diffusion LLM",
+    "published": "2026-02-15",
+    "summary": "Block diffusion LLMs are an emerging paradigm for parallel language generation, but their KV caching makes memory access the dominant bottleneck in long-context inference. Sparse attention, which attends only to a small KV subset per query, can reduce this latency with minimal accuracy loss. In bloc"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.13804v1",
+    "title": "Attention in Constant Time: Vashista Sparse Attention for Long-Context Decoding with Exponential Guarantees",
+    "published": "2026-02-14",
+    "summary": "Large language models spend most of their inference cost on attention over long contexts, yet empirical behavior suggests that only a small subset of tokens meaningfully contributes to each query. We formalize this phenomenon by modeling attention as a projection onto the convex hull of key vectors "
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.13581v2",
+    "title": "Climber-Pilot: A Non-Myopic Generative Recommendation Model Towards Better Instruction-Following",
+    "published": "2026-02-14",
+    "summary": "Generative retrieval has emerged as a promising paradigm in recommender systems, offering superior sequence modeling capabilities over traditional dual-tower architectures. However, in large-scale industrial scenarios, such models often suffer from inherent myopia: due to single-step inference and s"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.13524v2",
+    "title": "Singular Vectors of Attention Heads Align with Features",
+    "published": "2026-02-13",
+    "summary": "Identifying feature representations in language models is a central task in mechanistic interpretability. Several recent studies have made the observation that feature representations can be inferred in some cases from singular vectors of attention matrices. However, sound justification for this phe"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.13515v1",
+    "title": "SpargeAttention2: Trainable Sparse Attention via Hybrid Top-k+Top-p Masking and Distillation Fine-Tuning",
+    "published": "2026-02-13",
+    "summary": "Many training-free sparse attention methods are effective for accelerating diffusion models. Recently, several works suggest that making sparse attention trainable can further increase sparsity while preserving generation quality. We study three key questions: (1) when do the two common masking rule"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.12271v1",
+    "title": "MonarchRT: Efficient Attention for Real-Time Video Generation",
+    "published": "2026-02-12",
+    "summary": "Real-time video generation with Diffusion Transformers is bottlenecked by the quadratic cost of 3D self-attention, especially in real-time regimes that are both few-step and autoregressive, where errors compound across time and each denoising step must carry substantially more information. In this s"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.12204v1",
+    "title": "Learning to Forget Attention: Memory Consolidation for Adaptive Compute Reduction",
+    "published": "2026-02-12",
+    "summary": "Hybrid architectures combining state-space models with attention have achieved strong efficiency-quality tradeoffs, yet existing approaches either apply attention uniformly or learn static sparse patterns. This misses a key opportunity: \\emph{attention demand should decrease over time as recurring p"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.11761v2",
+    "title": "MiniCPM-SALA: Hybridizing Sparse and Linear Attention for Efficient Long-Context Modeling",
+    "published": "2026-02-12",
+    "summary": "The evolution of large language models (LLMs) towards applications with ultra-long contexts faces challenges posed by the high computational and memory costs of the Transformer architecture. While existing sparse and linear attention mechanisms attempt to mitigate these issues, they typically involv"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.02227v1",
+    "title": "Routing Absorption in Sparse Attention: Why Random Gates Are Hard to Beat",
+    "published": "2026-02-11",
+    "summary": "Can a transformer learn which attention entries matter during training? In principle, yes: attention distributions are highly concentrated, and a small gate network can identify the important entries post-hoc with near-perfect accuracy. In practice, barely. When sparse attention is trained end-to-en"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.10811v1",
+    "title": "EST: Towards Efficient Scaling Laws in Click-Through Rate Prediction via Unified Modeling",
+    "published": "2026-02-11",
+    "summary": "Efficiently scaling industrial Click-Through Rate (CTR) prediction has recently attracted significant research attention. Existing approaches typically employ early aggregation of user behaviors to maintain efficiency. However, such non-unified or partially unified modeling creates an information bo"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.08722v1",
+    "title": "QUOKA: Query-Oriented KV Selection For Efficient LLM Prefill",
+    "published": "2026-02-09",
+    "summary": "We present QUOKA: Query-oriented KV selection for efficient attention, a training-free and hardware agnostic sparse attention algorithm for accelerating transformer inference under chunked prefill. While many queries focus on a smaller group of keys in the attention operator, we observe that queries"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.08426v2",
+    "title": "Prism: Spectral-Aware Block-Sparse Attention",
+    "published": "2026-02-09",
+    "summary": "Block-sparse attention is promising for accelerating long-context LLM pre-filling, yet identifying relevant blocks efficiently remains a bottleneck. Existing methods typically employ coarse-grained attention as a proxy for block importance estimation, but often resort to expensive token-level search"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.07854v3",
+    "title": "Geometry-Aware Rotary Position Embedding for Consistent Video World Model",
+    "published": "2026-02-08",
+    "summary": "Predictive world models that simulate future observations under explicit camera control are fundamental to interactive AI. Despite rapid advances, current systems lack spatial persistence: they fail to maintain stable scene structures over long trajectories, frequently hallucinating details when cam"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.21233v3",
+    "title": "AngelSlim: A more accessible, comprehensive, and efficient toolkit for large model compression",
+    "published": "2026-02-07",
+    "summary": "This technical report introduces AngelSlim, a comprehensive and versatile toolkit for large model compression developed by the Tencent Hunyuan team. By consolidating cutting-edge algorithms, including quantization, speculative decoding, token pruning, and distillation. AngelSlim provides a unified p"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.07397v1",
+    "title": "Scout Before You Attend: Sketch-and-Walk Sparse Attention for Efficient LLM Inference",
+    "published": "2026-02-07",
+    "summary": "Self-attention dominates the computational and memory cost of long-context LLM inference across both prefill and decode phases. To address this challenge, we introduce Sketch&Walk Attention, a training-free sparse attention method that determines sparsity with lightweight sketches and deterministic "
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.07223v2",
+    "title": "Vegas: Self-Speculative Decoding with Verification-Guided Sparse Attention",
+    "published": "2026-02-06",
+    "summary": "Long-context large language model (LLM) inference has become the norm for today's AI applications. However, it is severely bottlenecked by the increasing memory demands of its KV cache. Previous works have shown that self-speculative decoding with sparse attention, where tokens are drafted using a s"
+  }
+]

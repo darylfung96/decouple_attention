@@ -1,0 +1,64 @@
+% ===========================================================================
+% Dual-Rate Routed Attention for Efficient Long-Horizon Time-Series
+% Forecasting -- workshop draft (NeurIPS-style layout)
+%
+% How to compile: pdflatex -> bibtex -> pdflatex -> pdflatex (or use the
+% Overleaf "NeurIPS 2026" template and paste the files in). See README.md.
+%
+% NOTE ON THE STYLE FILE: paper/neurips_2026.sty is a self-contained layout
+% fallback. Replace it with the official NeurIPS style before submission;
+% the rest of this preamble is written to match the official template.
+% ===========================================================================
+\documentclass{article}
+
+\usepackage[preprint]{neurips_2026}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{hyperref}
+
+% relax overly-tight paragraph breaking in the working draft
+\emergencystretch=1.5em
+
+% --- working-draft markers (remove all TODO/NEEDS-VERIFICATION before
+%     submission; grep for "TODO:" and "NEEDS VERIFICATION" to find them) ---
+\newcommand{\todo}[1]{\textbf{\textcolor{red!70!black}{[TODO: #1]}}}
+\newcommand{\needverify}[1]{\textbf{\textcolor{orange!90!black}{[NEEDS VERIFICATION: #1]}}}
+
+% --- title and authors -----------------------------------------------------
+% TODO: fill in real authors/affiliations before submission.
+\title{Dual-Rate Routed Attention for Efficient Long-Horizon Time-Series Forecasting}
+
+\author{%
+  Author Name$^1$ \\ \texttt{email@example.com}
+  \And
+  Second Author$^2$ \\ \texttt{email2@example.com} \\
+  $^1$Affiliation 1 \quad $^2$Affiliation 2
+}
+
+\begin{document}
+
+\maketitle
+
+\input{sections/abstract}
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/method}
+\input{sections/experiments}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\newpage
+\appendix
+\input{sections/appendix}
+
+\end{document}

@@ -1,0 +1,5 @@
+{"cell": "Normal", "seed": 42, "val_mse": 0.96556434, "test_mse": 1.26050025, "final_train_mse": 0.28609113, "attn_params": 102496, "full_params": 355200, "c_kv": null, "c_r": null, "completed_utc": "2026-08-14T05:18:20Z"}
+{"cell": "Normal", "seed": 123, "val_mse": 0.87273854, "test_mse": 1.05896328, "final_train_mse": 0.28783805, "attn_params": 102496, "full_params": 355200, "c_kv": null, "c_r": null, "completed_utc": "2026-08-14T05:26:37Z"}
+{"cell": "Normal", "seed": 2024, "val_mse": 0.81704395, "test_mse": 1.10280108, "final_train_mse": 0.28704267, "attn_params": 102496, "full_params": 355200, "c_kv": null, "c_r": null, "completed_utc": "2026-08-14T05:34:15Z"}
+{"cell": "Normal", "seed": 7, "val_mse": 0.76875181, "test_mse": 0.99221513, "final_train_mse": 0.28735094, "attn_params": 102496, "full_params": 355200, "c_kv": null, "c_r": null, "completed_utc": "2026-08-14T05:49:43Z"}
+{"cell": "Normal", "seed": 99, "val_mse": 0.78399559, "test_mse": 0.99232398, "final_train_mse": 0.28438554, "attn_params": 102496, "full_params": 355200, "c_kv": null, "c_r": null, "completed_utc": "2026-08-14T05:59:15Z"}

@@ -1,0 +1,812 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2608.15943v1",
+    "title": "KV-Pipe: On the Relation Between KV Sharing and Pipeline Parallel Efficiency in LLMs",
+    "published": "2026-08-16",
+    "summary": "Pipeline parallelism (PP) is widely used to scale large language model (LLM) training, but its efficiency is often limited by stage imbalance and pipeline bubbles. Meanwhile, cross-layer KV sharing has primarily been studied as a mechanism for reducing KV-cache costs during inference, without examin"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.06205v1",
+    "title": "CFGPNet: Cross-Attention-Based Fused Gradient Programmed Network Framework for Multispectral Object Detection",
+    "published": "2026-08-06",
+    "summary": "RGB--T object detection exploits the complementary strengths of visible and infrared imagery, supporting robust perception in low-light, adverse-weather, and complex multi-scale environments. However, existing methods still suffer from insufficient cross-modal interaction, unstable fusion from modal"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.28418v1",
+    "title": "WIDE: Boosting Adaptive LLM Inference via Token-level Dynamic Width Pruning",
+    "published": "2026-07-30",
+    "summary": "Pruning is a promising approach for improving the efficiency of LLMs. Existing static structured pruning methods are hardware-friendly and can deliver practical throughput gains, but their input-agnostic computation allocation often causes substantial accuracy degradation under aggressive sparsity. "
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.18921v1",
+    "title": "Circuit Claims Depend on What Is Extracted and How It Is Compared",
+    "published": "2026-07-21",
+    "summary": "Circuit extraction identifies a small set of model components whose presence preserves a target behavior under ablation, and the resulting circuit is often read as the mechanism behind that behavior. We argue that this reading is under-determined: preserving behavior does not single out one circuit,"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.17151v1",
+    "title": "Strategic Gaze: Attention Allocation and Transition Patterns Across Functional Areas of Interest by Gameplay Outcome",
+    "published": "2026-07-19",
+    "summary": "Video games present players with complex, spatially distributed information across interface elements, with attention shaped by visual features and task goals. Eye tracking provides a useful method for examining player attention through gaze behaviour during gameplay. Yet empirical game research has"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.15650v1",
+    "title": "DiTango: Cost-Effective Parallel Diffusion Generation with Selective Attention State Reuse",
+    "published": "2026-07-17",
+    "summary": "Recent advances in AI-generated content have driven widespread adoption of Diffusion Transformers (DiTs) for high-resolution, long-duration content generation. While parallelization techniques accelerate diffusion inference, they face significant scalability challenges due to excessive communication"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.06260v2",
+    "title": "Large language models create an uneven informational layer over cities",
+    "published": "2026-07-07",
+    "summary": "Large language models (LLMs) are emerging as a new informational layer over cities, shaping which places people discover, consider, and ultimately visit. Yet little is known about which places they surface, which they ignore, and whether these patterns vary across communities and users and translate"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.04112v1",
+    "title": "DynaVieW: Schema-Guided World Modeling for Understanding Hierarchical Visual Dynamics",
+    "published": "2026-07-05",
+    "summary": "Multimodal LLMs struggle to systematically model the temporal evolution of visual scenes in videos or multi-image sequences. Such inputs require models to predict or simulate multiple levels of dynamic constituents, such as actions taken in the visual sequence, and the associated changes to the visu"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.02343v1",
+    "title": "SelectTSL: Prompt-Guided Selective Target Sound Localization in Complex Scenarios",
+    "published": "2026-07-02",
+    "summary": "Humans can selectively attend to a target sound and estimate its direction in complex scenarios, whereas such selective localization remains challenging for current deep learning-based systems. Sound source localization (SSL) has achieved remarkable success with deep learning, yet most methods local"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.01420v3",
+    "title": "MultAttnAttrib: Training-Free Multimodal Attribution in Long Document Question Answering",
+    "published": "2026-07-01",
+    "summary": "As grounded QA systems are increasingly deployed in AI assistants, accurately attributing generated answers to evidence is critical for user trust and model safety. While unimodal attributions have been explored in depth, the multimodal setting remains relatively under-researched. As a result, we in"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.26348v1",
+    "title": "What We are Missing in Multimodal LLM Evaluation?",
+    "published": "2026-06-24",
+    "summary": "Multimodal large language models (MLLMs) can process diverse inputs, e.g., text, images, audio, and video, and generate textual responses. While their capabilities have advanced rapidly, evaluation of such models has not kept pace. Most existing evaluation benchmarks are limited to isolated tasks an"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.24667v1",
+    "title": "DREAM: Dense Retrieval Embeddings via Autoregressive Modeling",
+    "published": "2026-06-23",
+    "summary": "Dense retrieval embedding models are a fundamental component of modern retrieval-based AI systems. Most dense retrievers are trained with contrastive objectives, which require labeled positive and negative document pairs that are often costly and difficult to obtain. In this work, we investigate whe"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.19150v1",
+    "title": "Complementary Attention Head Pruning for Efficient Transformers",
+    "published": "2026-06-17",
+    "summary": "The remarkable success of Transformer-based models in natural language processing stems from architectural scaling, which leads to a large number of parameters and hinders deployment in resource-constrained environments. While structured pruning offers a pathway to compression, existing state-of-the"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.16615v2",
+    "title": "SUP-MCRL: Subject-aware Unified Pseudo-feature Coded Multimodal Contrastive Representation Learning for EEG Visual Decoding",
+    "published": "2026-06-15",
+    "summary": "Non-invasive brain-computer interfaces exhibit significant performance degradation when moving from controlled laboratory stimuli to real-world natural images. This degradation occurs because conventional multimodal contrastive representation learning models focus exclusively on optimizing geometric"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.10423v1",
+    "title": "WebChallenger: A Reliable and Efficient Generalist Web Agent",
+    "published": "2026-06-09",
+    "summary": "Autonomous web navigation remains challenging for LLM agents, and the strongest generalist systems rely on proprietary reasoning models whose inference cost is prohibitive for the repetitive tasks where such agents would be most useful. We argue this gap stems not from insufficient model capability "
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.10046v2",
+    "title": "Inside the Latent Flow: Causal Deciphering of Attention Dynamics in Audio Separation Foundation Models",
+    "published": "2026-06-08",
+    "summary": "Flow-matching transformers achieve strong audio separation, yet their attention dynamics are opaque. We adapt established causal-intervention principles into a deterministic, inference-time probing protocol for SAM Audio. Orthogonal probing uncovers a dual-pathway text-conditioning mechanism: additi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.06142v1",
+    "title": "Computation-Aware Event-to-Frame Reconstruction via Selective Attention",
+    "published": "2026-06-04",
+    "summary": "Event-to-frame (E2F) reconstruction bridges asynchronous event streams with frame-based vision pipelines, but existing methods often face a trade-off between reconstruction quality and computational efficiency. In this work, we propose an efficient E2F framework that emphasizes causal temporal model"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.17889v2",
+    "title": "CoX-MoE: Coalesced Expert Execution for High-Throughput MoE Inference with AMX-Enabled CPU-GPU Co-Execution",
+    "published": "2026-05-18",
+    "summary": "The Mixture-of-Experts (MoE) architecture improves computational efficiency via sparse expert activation, but throughput-oriented inference faces substantial GPU memory pressure due to a significant parameter size and intermediate data. Prior works attempt to mitigate this using expert offloading wi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.16810v1",
+    "title": "Training-Free Occluded Text Rendering via Glyph Priors and Attention-Guided Semantic Blending",
+    "published": "2026-05-16",
+    "summary": "We present a training-free framework for occluded text rendering with a pretrained FLUX.1-dev backbone. The task requires a model to render recognizable typography and place an occluding object over the intended text region. This setting remains difficult for existing text-to-image generators: the o"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.16418v1",
+    "title": "Neural Visual Decoding via Cognitive guided Adaptive Blurring and Information Constrained Alignment",
+    "published": "2026-05-14",
+    "summary": "EEG-based visual decoding aims to establish a mapping between neural signals and visual semantics. However, it remains constrained by the dual challenges of severe information granularity mismatch and the low signal-to-noise ratio (SNR) of EEG signals. Existing approaches typically treat static visu"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.12938v1",
+    "title": "CRePE: Curved Ray Expectation Positional Encoding for Unified-Camera-Controlled Video Generation",
+    "published": "2026-05-13",
+    "summary": "Camera-conditioned video generation requires positional encoding that remains reliable under changes in camera motion, lens configuration, and scene structure. However, existing attention-level camera encodings either provide ray-only camera signals or rely on pinhole camera geometry, limiting their"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.07817v1",
+    "title": "GazeVLM: Active Vision via Internal Attention Control for Multimodal Reasoning",
+    "published": "2026-05-08",
+    "summary": "Human visual reasoning is governed by active vision, a process where metacognitive control drives top-down goal-directed attention, dynamically routing foveal focus toward task-relevant details while maintaining peripheral awareness of the global scene. In contrast, modern Vision-Language Models (VL"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.07443v1",
+    "title": "RcLLM: Accelerating Generative Recommendation via Beyond-Prefix KV Caching",
+    "published": "2026-05-08",
+    "summary": "Large Language Models (LLMs) are transforming recommendation from ranking into a generative task, but industrial deployment remains limited by the high latency of processing long, personalized prompts. Standard prefix caching provides limited benefit because reuse in recommendation workloads is ofte"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.21599v1",
+    "title": "Decoupled Attention Fusion: Accelerating RAG with Efficient KV Cache Reuse",
+    "published": "2026-05-03",
+    "summary": "Retrieval-Augmented Generation (RAG) effectively mitigates hallucinations in Large Language Models (LLMs) but suffers from prohibitive Time-To-First-Token (TTFT) latency in long-context scenarios. Reusing pre-computed document KV caches addresses this but introduces a distribution mismatch, where of"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.26848v2",
+    "title": "STARRY: Spatial-Temporal Action-Centric World Modeling for Robotic Manipulation",
+    "published": "2026-04-29",
+    "summary": "Robotic manipulation requires reasoning about future spatial-temporal interactions and geometric constraints, yet existing Vision-Language-Action (VLA) policies often leave predictive representation weakly coupled with action execution, causing failures in tasks requiring precise spatial-temporal co"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.00886v1",
+    "title": "Selective Attention-Based Network for Robust Infrared Small Target Detection",
+    "published": "2026-04-27",
+    "summary": "Infrared small target detection (IRSTD) plays a pivotal role in a broad spectrum of mission-critical applications, including maritime surveillance, military search and rescue, early warning systems, and precision-guided strikes, all of which demand the precise identification of dim, sub-pixel target"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.05222v1",
+    "title": "Adaptive Computation Depth via Learned Token Routing in Transformers",
+    "published": "2026-04-18",
+    "summary": "Standard transformer architectures apply the same number of layers to every token regardless of contextual difficulty. We present Token-Selective Attention (TSA), a learned per-token gate on residual updates between consecutive transformer blocks. Each gate is a lightweight two-layer multi-layer per"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.15583v2",
+    "title": "SAGE: Selective Attention-Guided Extraction for Token-Efficient Document Indexing",
+    "published": "2026-04-16",
+    "summary": "Large language models with long context windows can answer complex questions directly from full-length academic, technical, and policy documents, but passing entire documents is often costly, slow, and can degrade answer quality while increasing the risk of unnecessary data leakage. This paper targe"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.13731v1",
+    "title": "Doc-V*:Coarse-to-Fine Interactive Visual Reasoning for Multi-Page Document VQA",
+    "published": "2026-04-15",
+    "summary": "Multi-page Document Visual Question Answering requires reasoning over semantics, layouts, and visual elements in long, visually dense documents. Existing OCR-free methods face a trade-off between capacity and precision: end-to-end models scale poorly with document length, while visual retrieval-base"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.10181v1",
+    "title": "Learning to Attend to Depression-Related Patterns: An Adaptive Cross-Modal Gating Network for Depression Detection",
+    "published": "2026-04-11",
+    "summary": "Automatic depression detection using speech signals with acoustic and textual modalities is a promising approach for early diagnosis. Depression-related patterns exhibit sparsity in speech: diagnostically relevant features occur in specific segments rather than being uniformly distributed. However, "
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.08412v1",
+    "title": "Selective Attention System (SAS): Device-Addressed Speech Detection for Real-Time On-Device Voice AI",
+    "published": "2026-04-09",
+    "summary": "We study device-addressed speech detection under pre-ASR edge deployment constraints, where systems must decide whether to forward audio before transcription under strict latency and compute limits. We show that, in multi-speaker environments with temporally ambiguous utterances, this task is more e"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.08077v1",
+    "title": "AdaSpark: Adaptive Sparsity for Efficient Long-Video Understanding",
+    "published": "2026-04-09",
+    "summary": "Processing long-form videos with Video Large Language Models (Video-LLMs) is computationally prohibitive. Current efficiency methods often compromise fine-grained perception through irreversible information disposal or inhibit long-range temporal modeling via rigid, predefined sparse patterns. This "
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.20997v2",
+    "title": "When Does Content-Based Routing Work? Representation Requirements for Selective Attention in Hybrid Sequence Models",
+    "published": "2026-03-22",
+    "summary": "We identify a routing paradox in hybrid sequence models: content-based routing - deciding which tokens deserve expensive attention - requires pairwise computation, and this requirement is inescapable. Through 20+ controlled experiments across three tasks, multiple scales (200K to 1.4B parameters), a"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.19634v1",
+    "title": "MetaCues: Enabling Critical Engagement with Generative AI for Information Seeking and Sensemaking",
+    "published": "2026-03-20",
+    "summary": "Generative AI (GenAI) search tools are increasingly used for information seeking, yet their design tends to encourage cognitive offloading, which may lead to passive engagement, selective attention, and informational homogenization. Effective use requires metacognitive engagement to craft good promp"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.15167v1",
+    "title": "Question-guided Visual Compression with Memory Feedback for Long-Term Video Understanding",
+    "published": "2026-03-16",
+    "summary": "In the context of long-term video understanding with large multimodal models, many frameworks have been proposed. Although transformer-based visual compressors and memory-augmented approaches are often used to process long videos, they usually compress each frame independently and therefore fail to "
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.09613v2",
+    "title": "A Saccade-inspired Approach to Image Classification using Vision Transformer Attention Maps",
+    "published": "2026-03-10",
+    "summary": "Human vision achieves remarkable perceptual performance while operating under strict metabolic constraints. A key ingredient is the selective attention mechanism, driven by rapid saccadic eye movements that constantly reposition the high-resolution fovea onto task-relevant locations, unlike conventi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.00975v2",
+    "title": "Forgetting is Competition: Rethinking Unlearning as Representation Interference in Diffusion Models",
+    "published": "2026-03-01",
+    "summary": "Deployed text-to-image diffusion models increasingly require post-hoc concept unlearning for copyright claims, artist opt-outs, safety updates, and protected-content mitigation without full retraining. A central challenge is erase-retain imbalance, aggressive updates suppress targets but damage shar"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.16132v1",
+    "title": "CHAI: CacHe Attention Inference for text2video",
+    "published": "2026-02-18",
+    "summary": "Text-to-video diffusion models deliver impressive results but remain slow because of the sequential denoising of 3D latents. Existing approaches to speed up inference either require expensive model retraining or use heuristic-based step skipping, which struggles to maintain video quality as the numb"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.11607v1",
+    "title": "Scene-Aware Memory Discrimination: Deciding Which Personal Knowledge Stays",
+    "published": "2026-02-12",
+    "summary": "Intelligent devices have become deeply integrated into everyday life, generating vast amounts of user interactions that form valuable personal knowledge. Efficient organization of this knowledge in user memory is essential for enabling personalized applications. However, current research on memory w"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.06437v1",
+    "title": "An attention economy model of co-evolution between content quality and audience selectivity",
+    "published": "2026-02-06",
+    "summary": "Human attention has become a scarce and strategically contested resource in digital environments. Content providers increasingly engage in excessive competition for visibility, often prioritizing attention-grabbing tactics over substantive quality. Despite extensive empirical evidence, however, ther"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.05454v1",
+    "title": "Attention Retention for Continual Learning with Vision Transformers",
+    "published": "2026-02-05",
+    "summary": "Continual learning (CL) empowers AI systems to progressively acquire knowledge from non-stationary data streams. However, catastrophic forgetting remains a critical challenge. In this work, we identify attention drift in Vision Transformers as a primary source of catastrophic forgetting, where the a"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.04428v1",
+    "title": "Fine-Grained Activation Steering: Steering Less, Achieving More",
+    "published": "2026-02-04",
+    "summary": "Activation steering has emerged as a cost-effective paradigm for modifying large language model (LLM) behaviors. Existing methods typically intervene at the block level, steering the bundled activations of selected attention heads, feedforward networks, or residual streams. However, we reveal that b"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.20267v1",
+    "title": "SATA: Sparsity-Aware Scheduling for Selective Token Attention",
+    "published": "2026-01-28",
+    "summary": "Transformers have become the foundation of numerous state-of-the-art AI models across diverse domains, thanks to their powerful attention mechanism for modeling long-range dependencies. However, the quadratic scaling complexity of attention poses significant challenges for efficient hardware impleme"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.15097v1",
+    "title": "Neural Tracking of Sustained Attention, Attention Switching, and Natural Conversation in Audiovisual Environments using Mobile EEG",
+    "published": "2026-01-21",
+    "summary": "Everyday communication is dynamic and multisensory, often involving shifting attention, overlapping speech and visual cues. Yet, most neural attention tracking studies are still limited to highly controlled lab settings, using clean, often audio-only stimuli and requiring sustained attention to a si"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.12790v1",
+    "title": "FocusNav: Spatial Selective Attention with Waypoint Guidance for Humanoid Local Navigation",
+    "published": "2026-01-19",
+    "summary": "Robust local navigation in unstructured and dynamic environments remains a significant challenge for humanoid robots, requiring a delicate balance between long-range navigation targets and immediate motion stability. In this paper, we propose FocusNav, a spatial selective attention framework that ad"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.08285v1",
+    "title": "Training Under Attentional Competition Produces Persistent Biases in Visual Appearance",
+    "published": "2026-01-13",
+    "summary": "Selective attention can momentarily alter visual appearance, but can such effects be learned? We tested whether training attention under sensory competition produces lasting changes in perceived contrast. Across seven days, participants trained on an orientation task with a fixed target location, wi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.04398v4",
+    "title": "Interpreting Transformers Through Attention Head Intervention",
+    "published": "2026-01-07",
+    "summary": "Neural networks are growing more capable on their own, but we do not understand their neural mechanisms. Understanding these mechanisms' decision-making processes, or mechanistic interpretability, enables (1) accountability and control in high-stakes domains, (2) the study of digital brains and the "
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.03400v1",
+    "title": "Eye-Q: A Multilingual Benchmark for Visual Word Puzzle Solving and Image-to-Phrase Reasoning",
+    "published": "2026-01-06",
+    "summary": "Vision-Language Models (VLMs) have achieved strong performance on standard vision-language benchmarks, yet often rely on surface-level recognition rather than deeper reasoning. We propose visual word puzzles as a challenging alternative, as they require discovering implicit visual cues, generating a"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.20014v3",
+    "title": "Bring My Cup! Personalizing Vision-Language-Action Models with Visual Attentive Prompting",
+    "published": "2025-12-23",
+    "summary": "While Vision-Language-Action (VLA) models generalize well to generic instructions, they struggle with personalized commands such as \"bring my cup,\" where the robot must act on one specific instance among visually similar objects. We study this setting of manipulating personal objects, in which a VLA"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.19365v2",
+    "title": "Efficient Spike-driven Transformer for High-performance Drone-View Geo-Localization",
+    "published": "2025-12-22",
+    "summary": "Traditional drone-view geo-localization (DVGL) methods based on artificial neural networks (ANNs) have achieved remarkable performance. However, ANNs rely on dense computation, which results in high power consumption. In contrast, spiking neural networks (SNNs), which benefit from spike-driven compu"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.13525v4",
+    "title": "Janus: Disaggregating Attention and Experts for Scalable MoE Inference",
+    "published": "2025-12-15",
+    "summary": "Serving large Mixture-of-Experts (MoE) models is challenging because of their large memory footprints, heterogeneous resource demands, and highly dynamic inference workloads. Most existing MoE inference systems deploy the entire model as a monolithic unit, forcing attention and MoE layers to share t"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.05528v1",
+    "title": "Decoding Selective Auditory Attention to Musical Elements in Ecologically Valid Music Listening",
+    "published": "2025-12-05",
+    "summary": "Art has long played a profound role in shaping human emotion, cognition, and behavior. While visual arts such as painting and architecture have been studied through eye tracking, revealing distinct gaze patterns between experts and novices, analogous methods for auditory art forms remain underdevelo"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.19928v1",
+    "title": "Context-Aware Token Pruning and Discriminative Selective Attention for Transformer Tracking",
+    "published": "2025-11-25",
+    "summary": "One-stream Transformer-based trackers have demonstrated remarkable performance by concatenating template and search region tokens, thereby enabling joint attention across all tokens. However, enabling an excessive proportion of background search tokens to attend to the target template tokens weakens"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.15459v1",
+    "title": "Driving in Spikes: An Entropy-Guided Object Detector for Spike Cameras",
+    "published": "2025-11-19",
+    "summary": "Object detection in autonomous driving suffers from motion blur and saturation under fast motion and extreme lighting. Spike cameras, offer microsecond latency and ultra high dynamic range for object detection by using per pixel asynchronous integrate and fire. However, their sparse, discrete output"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.00819v1",
+    "title": "Optimizing Native Sparse Attention with Latent Attention and Local Global Alternating Strategies",
+    "published": "2025-11-02",
+    "summary": "In this work, we conduct a systematic analysis of Native Sparse Attention (NSA) and propose targeted improvements that enhance long-context modeling. A key insight is that alternating between local (sliding-window) and global (compression, selective) attention across layers, rather than using fixed "
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.17771v1",
+    "title": "Seeing but Not Believing: Probing the Disconnect Between Visual Attention and Answer Correctness in VLMs",
+    "published": "2025-10-20",
+    "summary": "Vision-Language Models (VLMs) achieve strong results on multimodal tasks such as visual question answering, yet they can still fail even when the correct visual evidence is present. In this work, we systematically investigate whether these failures arise from not perceiving the evidence or from not "
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.05881v1",
+    "title": "Segment-Factorized Full-Song Generation on Symbolic Piano Music",
+    "published": "2025-10-07",
+    "summary": "We propose the Segmented Full-Song Model (SFS) for symbolic full-song generation. The model accepts a user-provided song structure and an optional short seed segment that anchors the main idea around which the song is developed. By factorizing a song into segments and generating each one through sel"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.17965v2",
+    "title": "Benchmarking Humans and Machines on Complex Multilingual Speech Understanding Tasks",
+    "published": "2025-09-22",
+    "summary": "Auditory attention and selective phase-locking are central to human speech understanding in complex acoustic scenes and cocktail party settings, yet these capabilities in multilingual subjects remain poorly understood. While machine understanding of natural speech has advanced in recent years, quest"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.15688v1",
+    "title": "Saccadic Vision for Fine-Grained Visual Classification",
+    "published": "2025-09-19",
+    "summary": "Fine-grained visual classification (FGVC) requires distinguishing between visually similar categories through subtle, localized features - a task that remains challenging due to high intra-class variability and limited inter-class differences. Existing part-based methods often rely on complex locali"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.10423v1",
+    "title": "Mutual Information Tracks Policy Coherence in Reinforcement Learning",
+    "published": "2025-09-12",
+    "summary": "Reinforcement Learning (RL) agents deployed in real-world environments face degradation from sensor faults, actuator wear, and environmental shifts, yet lack intrinsic mechanisms to detect and diagnose these failures. We present an information-theoretic framework that reveals both the fundamental dy"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.09479v1",
+    "title": "Short-term cognitive fatigue of spatial selective attention after face-to-face conversations in virtual noisy environments",
+    "published": "2025-09-11",
+    "summary": "Spatial selective attention is an important asset for communication in cocktail party situations but may be compromised by short-term cognitive fatigue. Here we tested whether an effortful conversation in a highly ecological setting depletes task performance in an auditory spatial selective attentio"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.01787v3",
+    "title": "AHAMask: Reliable Task Specification for Large Audio Language Models without Instructions",
+    "published": "2025-09-01",
+    "summary": "Although current large audio language models (LALMs) extend text large language models (LLMs) with generic acoustic understanding abilities, they usually suffer from prompt sensitivity, where different instructions of the same intention can yield drastically different outcomes. In this work, we prop"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.17150v2",
+    "title": "SACA: Selective Attention-Based Clustering Algorithm",
+    "published": "2025-08-23",
+    "summary": "Clustering algorithms are fundamental tools across many fields, with density-based methods offering particular advantages in identifying arbitrarily shaped clusters and handling noise. However, their effectiveness is often limited by the requirement of critical parameter tuning by users, which typic"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.14923v1",
+    "title": "A Fully Spectral Neuro-Symbolic Reasoning Architecture with Graph Signal Processing as the Computational Backbone",
+    "published": "2025-08-19",
+    "summary": "We propose a fully spectral, neuro\\-symbolic reasoning architecture that leverages Graph Signal Processing (GSP) as the primary computational backbone for integrating symbolic logic and neural inference. Unlike conventional reasoning models that treat spectral graph methods as peripheral components,"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.10824v2",
+    "title": "Memory-Augmented Transformers: A Systematic Review from Neuroscience Principles to Enhanced Model Architectures",
+    "published": "2025-08-14",
+    "summary": "Memory is fundamental to intelligence, enabling learning, reasoning, and adaptability across biological and artificial systems. While Transformer architectures excel at sequence modeling, they face critical limitations in long-range context retention, continual learning, and knowledge integration. T"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.09664v1",
+    "title": "Multimodal Fusion And Sparse Attention-based Alignment Model for Long Sequential Recommendation",
+    "published": "2025-08-13",
+    "summary": "Recent advances in multimodal recommendation enable richer item understanding, while modeling users' multi-scale interests across temporal horizons has attracted growing attention. However, effectively exploiting multimodal item sequences and mining multi-grained user interests to substantially brid"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.08183v1",
+    "title": "THAT: Token-wise High-frequency Augmentation Transformer for Hyperspectral Pansharpening",
+    "published": "2025-08-11",
+    "summary": "Transformer-based methods have demonstrated strong potential in hyperspectral pansharpening by modeling long-range dependencies. However, their effectiveness is often limited by redundant token representations and a lack of multi-scale feature modeling. Hyperspectral images exhibit intrinsic spectra"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.03338v1",
+    "title": "CIVQLLIE: Causal Intervention with Vector Quantization for Low-Light Image Enhancement",
+    "published": "2025-08-05",
+    "summary": "Images captured in nighttime scenes suffer from severely reduced visibility, hindering effective content perception. Current low-light image enhancement (LLIE) methods face significant challenges: data-driven end-to-end mapping networks lack interpretability or rely on unreliable prior guidance, str"
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.23091v1",
+    "title": "Moravec's Paradox: Towards an Auditory Turing Test",
+    "published": "2025-07-30",
+    "summary": "This research work demonstrates that current AI systems fail catastrophically on auditory tasks that humans perform effortlessly. Drawing inspiration from Moravec's paradox (i.e., tasks simple for humans often prove difficult for machines, and vice versa), we introduce an auditory Turing test compri"
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.21857v1",
+    "title": "Unleashing the Power of Motion and Depth: A Selective Fusion Strategy for RGB-D Video Salient Object Detection",
+    "published": "2025-07-29",
+    "summary": "Applying salient object detection (SOD) to RGB-D videos is an emerging task called RGB-D VSOD and has recently gained increasing interest, due to considerable performance gains of incorporating motion and depth and that RGB-D videos can be easily captured now in daily life. Existing RGB-D VSOD model"
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.19213v1",
+    "title": "PRE-MAP: Personalized Reinforced Eye-tracking Multimodal LLM for High-Resolution Multi-Attribute Point Prediction",
+    "published": "2025-07-25",
+    "summary": "Visual selective attention, driven by individual preferences, regulates human prioritization of visual stimuli by bridging subjective cognitive mechanisms with objective visual elements, thereby steering the semantic interpretation and hierarchical processing of dynamic visual scenes. However, exist"
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.02488v2",
+    "title": "MedFormer: Hierarchical Medical Vision Transformer with Content-Aware Dual Sparse Selection Attention",
+    "published": "2025-07-03",
+    "summary": "Medical image recognition serves as a key way to aid in clinical diagnosis, enabling more accurate and timely identification of diseases and abnormalities. Vision transformer-based approaches have proven effective in handling various medical recognition tasks. However, these methods encounter two pr"
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.01652v1",
+    "title": "Autoregressive Image Generation with Linear Complexity: A Spatial-Aware Decay Perspective",
+    "published": "2025-07-02",
+    "summary": "Autoregressive (AR) models have garnered significant attention in image generation for their ability to effectively capture both local and global structures within visual data. However, prevalent AR models predominantly rely on the transformer architectures, which are beset by quadratic computationa"
+  },
+  {
+    "id": "http://arxiv.org/abs/2506.22487v1",
+    "title": "AGI Enabled Solutions For IoX Layers Bottlenecks In Cyber-Physical-Social-Thinking Space",
+    "published": "2025-06-24",
+    "summary": "The integration of the Internet of Everything (IoX) and Artificial General Intelligence (AGI) has given rise to a transformative paradigm aimed at addressing critical bottlenecks across sensing, network, and application layers in Cyber-Physical-Social Thinking (CPST) ecosystems. In this survey, we p"
+  },
+  {
+    "id": "http://arxiv.org/abs/2506.18628v1",
+    "title": "AggTruth: Contextual Hallucination Detection using Aggregated Attention Scores in LLMs",
+    "published": "2025-06-23",
+    "summary": "In real-world applications, Large Language Models (LLMs) often hallucinate, even in Retrieval-Augmented Generation (RAG) settings, which poses a significant challenge to their deployment. In this paper, we introduce AggTruth, a method for online detection of contextual hallucinations by analyzing th"
+  },
+  {
+    "id": "http://arxiv.org/abs/2506.18346v2",
+    "title": "BSMamba: Brightness and Semantic Modeling for Long-Range Interaction in Low-Light Image Enhancement",
+    "published": "2025-06-23",
+    "summary": "Current low-light image enhancement (LLIE) methods face significant limitations in simultaneously improving brightness while preserving semantic consistency, fine details, and computational efficiency. With the emergence of state-space models, particularly Mamba, image restoration has achieved remar"
+  },
+  {
+    "id": "http://arxiv.org/abs/2506.10978v4",
+    "title": "Where and How to Perturb: On the Design of Perturbation Guidance in Diffusion and Flow Models",
+    "published": "2025-06-12",
+    "summary": "Recent guidance methods in diffusion models steer reverse sampling by perturbing the model to construct an implicit weak model and guide generation away from it. Among these approaches, attention perturbation has demonstrated strong empirical performance in unconditional scenarios where classifier-f"
+  },
+  {
+    "id": "http://arxiv.org/abs/2506.03684v1",
+    "title": "DSSAU-Net:U-Shaped Hybrid Network for Pubic Symphysis and Fetal Head Segmentation",
+    "published": "2025-06-04",
+    "summary": "In the childbirth process, traditional methods involve invasive vaginal examinations, but research has shown that these methods are both subjective and inaccurate. Ultrasound-assisted diagnosis offers an objective yet effective way to assess fetal head position via two key parameters: Angle of Progr"
+  },
+  {
+    "id": "http://arxiv.org/abs/2506.01781v1",
+    "title": "Enhancing Customer Service Chatbots with Context-Aware NLU through Selective Attention and Multi-task Learning",
+    "published": "2025-06-02",
+    "summary": "Customer service chatbots are conversational systems aimed at addressing customer queries, often by directing them to automated workflows. A crucial aspect of this process is the classification of the customer's intent. Presently, most intent classification models for customer care utilise only cust"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.22087v1",
+    "title": "Cognitively-Inspired Emergent Communication via Knowledge Graphs for Assisting the Visually Impaired",
+    "published": "2025-05-28",
+    "summary": "Assistive systems for visually impaired individuals must deliver rapid, interpretable, and adaptive feedback to facilitate real-time navigation. Current approaches face a trade-off between latency and semantic richness: natural language-based systems provide detailed guidance but are too slow for dy"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.21538v2",
+    "title": "Caption This, Reason That: VLMs Caught in the Middle",
+    "published": "2025-05-24",
+    "summary": "Vision-Language Models (VLMs) have shown remarkable progress in visual understanding in recent years. Yet, they still lag behind human capabilities in specific visual tasks such as counting or relational reasoning. To understand the underlying limitations, we adopt methodologies from cognitive scien"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.17834v1",
+    "title": "Hybrid Mamba-Transformer Decoder for Error-Correcting Codes",
+    "published": "2025-05-23",
+    "summary": "We introduce a novel deep learning method for decoding error correction codes based on the Mamba architecture, enhanced with Transformer layers. Our approach proposes a hybrid decoder that leverages Mamba's efficient sequential modeling while maintaining the global context capabilities of Transforme"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.16360v2",
+    "title": "Style Transfer with Diffusion Models for Synthetic-to-Real Domain Adaptation",
+    "published": "2025-05-22",
+    "summary": "Semantic segmentation models trained on synthetic data often perform poorly on real-world images due to domain gaps, particularly in adverse conditions where labeled data is scarce. Yet, recent foundation models enable to generate realistic images without any training. This paper proposes to leverag"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.14305v3",
+    "title": "JOLT-SQL: Joint Loss Tuning of Text-to-SQL with Confusion-aware Noisy Schema Sampling",
+    "published": "2025-05-20",
+    "summary": "Text-to-SQL, which maps natural language to SQL queries, has benefited greatly from recent advances in Large Language Models (LLMs). While LLMs offer various paradigms for this task, including prompting and supervised fine-tuning (SFT), SFT approaches still face challenges such as complex multi-stag"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.09859v1",
+    "title": "Few-Shot Learning of Visual Compositional Concepts through Probabilistic Schema Induction",
+    "published": "2025-05-14",
+    "summary": "The ability to learn new visual concepts from limited examples is a hallmark of human cognition. While traditional category learning models represent each example as an unstructured feature vector, compositional concept learning is thought to depend on (1) structured representations of examples (e.g"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.08961v2",
+    "title": "Learning Informative Attention Weights for Person Re-Identification",
+    "published": "2025-05-13",
+    "summary": "Attention mechanisms have been widely used in deep learning, and recent efforts have been devoted to incorporating attention modules into deep neural networks (DNNs) for person Re-Identification (Re-ID) to enhance their discriminative feature learning capabilities. Existing attention modules, includ"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.05772v2",
+    "title": "Sparse Attention Remapping with Clustering for Efficient LLM Decoding on PIM",
+    "published": "2025-05-09",
+    "summary": "Transformer-based models are the foundation of modern machine learning, but their execution, particularly during autoregressive decoding in large language models (LLMs), places significant pressure on memory systems due to frequent memory accesses and growing key-value (KV) caches. This creates a bo"
+  },
+  {
+    "id": "http://arxiv.org/abs/2504.11793v3",
+    "title": "Selective Attention Federated Learning: Improving Privacy and Efficiency for Clinical Text Classification",
+    "published": "2025-04-16",
+    "summary": "Federated Learning (FL) faces major challenges regarding communication overhead and model privacy when training large language models (LLMs), especially in healthcare applications. To address these, we introduce Selective Attention Federated Learning (SAFL), a novel approach that dynamically fine-tu"
+  },
+  {
+    "id": "http://arxiv.org/abs/2504.08166v1",
+    "title": "Learning Object Focused Attention",
+    "published": "2025-04-10",
+    "summary": "We propose an adaptation to the training of Vision Transformers (ViTs) that allows for an explicit modeling of objects during the attention computation. This is achieved by adding a new branch to selected attention layers that computes an auxiliary loss which we call the object-focused attention (OF"
+  },
+  {
+    "id": "http://arxiv.org/abs/2504.06634v1",
+    "title": "Crafting Query-Aware Selective Attention for Single Image Super-Resolution",
+    "published": "2025-04-09",
+    "summary": "Single Image Super-Resolution (SISR) reconstructs high-resolution images from low-resolution inputs, enhancing image details. While Vision Transformer (ViT)-based models improve SISR by capturing long-range dependencies, they suffer from quadratic computational costs or employ selective attention me"
+  },
+  {
+    "id": "http://arxiv.org/abs/2504.04329v2",
+    "title": "Auditory steady-state response and gamma oscillations in an excitatory-inhibitory balanced neuronal network",
+    "published": "2025-04-06",
+    "summary": "This study introduces a novel auditory neuronal network model that integrates speech signal input, cochlear processing, and a cortical excitatory-inhibitory (E-I) balanced network. Our findings reveal that increasing noise intensity attenuates the auditory steady-state responses in gamma oscillation"
+  },
+  {
+    "id": "http://arxiv.org/abs/2503.23461v7",
+    "title": "Investigating Text Insulation and Attention Mechanisms for Complex Visual Text Generation",
+    "published": "2025-03-30",
+    "summary": "In this paper, we present TextCrafter, a Complex Visual Text Generation (CVTG) framework inspired by selective visual attention in cognitive science, and introduce the \"Text Insulation-and-Attention\" mechanisms. To implement the selective-attention principle that selection operates on discrete objec"
+  },
+  {
+    "id": "http://arxiv.org/abs/2503.12908v4",
+    "title": "HICD: Hallucination-Inducing via Attention Dispersion for Contrastive Decoding to Mitigate Hallucinations in Large Language Models",
+    "published": "2025-03-17",
+    "summary": "Large Language Models (LLMs) often generate hallucinations, producing outputs that are contextually inaccurate or factually incorrect. We introduce HICD, a novel method designed to induce hallucinations for contrastive decoding to mitigate hallucinations. Unlike existing contrastive decoding methods"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.21229v1",
+    "title": "A Method of Selective Attention for Reservoir Based Agents",
+    "published": "2025-02-28",
+    "summary": "Training of deep reinforcement learning agents is slowed considerably by the presence of input dimensions that do not usefully condition the reward function. Existing modules such as layer normalization can be trained with weight decay to act as a form of selective attention, i.e. an input mask, tha"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.14838v1",
+    "title": "Revealing and Mitigating Over-Attention in Knowledge Editing",
+    "published": "2025-02-20",
+    "summary": "Large Language Models have demonstrated superior performance across a wide range of tasks, but they still exhibit undesirable errors due to incorrect knowledge learned from the training data. To avoid this, knowledge editing methods emerged to precisely edit the specific model knowledge via efficien"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.14477v1",
+    "title": "Unshackling Context Length: An Efficient Selective Attention Approach through Query-Key Compression",
+    "published": "2025-02-20",
+    "summary": "Handling long-context sequences efficiently remains a significant challenge in large language models (LLMs). Existing methods for token selection in sequence extrapolation either employ a permanent eviction strategy or select tokens by chunk, which may lead to the loss of critical information. We pr"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.12574v1",
+    "title": "HeadInfer: Memory-Efficient LLM Inference by Head-wise Offloading",
+    "published": "2025-02-18",
+    "summary": "Transformer-based large language models (LLMs) demonstrate impressive performance in long context generation. Extending the context length has disproportionately shifted the memory footprint of LLMs during inference to the key-value cache (KV cache). In this paper, we propose HEADINFER, which offloa"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.06747v2",
+    "title": "Wandering around: A bioinspired approach to visual attention through object motion sensitivity",
+    "published": "2025-02-10",
+    "summary": "Active vision enables dynamic visual perception, offering an alternative to static feedforward architectures in computer vision, which rely on large datasets and high computational resources. Biological selective attention mechanisms allow agents to focus on salient Regions of Interest (ROIs), reduc"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.02831v3",
+    "title": "How the Stroop Effect Arises from Optimal Response Times in Laterally Connected Self-Organizing Maps",
+    "published": "2025-02-05",
+    "summary": "The Stroop effect refers to cognitive interference in a color-naming task: When the color and the word do not match, the response is slower and more likely to be incorrect. The Stroop task is used to assess cognitive flexibility, selective attention, and executive function. This paper implements the"
+  },
+  {
+    "id": "http://arxiv.org/abs/2501.17048v1",
+    "title": "Cortical Temporal Mismatch Compensation in Bimodal Cochlear Implant Users: Selective Attention Decoding and Pupillometry Study",
+    "published": "2025-01-28",
+    "summary": "Bimodal stimulation, combining cochlear implant (CI) and acoustic input from the opposite ear, typically enhances speech perception but varies due to factors like temporal mismatch. Previously, we used cortical auditory evoked potentials (CAEPs) to estimate this mismatch based on N1 latency differen"
+  },
+  {
+    "id": "http://arxiv.org/abs/2501.15270v1",
+    "title": "Inductive Biases for Zero-shot Systematic Generalization in Language-informed Reinforcement Learning",
+    "published": "2025-01-25",
+    "summary": "Sample efficiency and systematic generalization are two long-standing challenges in reinforcement learning. Previous studies have shown that involving natural language along with other observation modalities can improve generalization and sample efficiency due to its compositional and open-ended nat"
+  },
+  {
+    "id": "http://arxiv.org/abs/2501.12732v1",
+    "title": "GRAMA: Adaptive Graph Autoregressive Moving Average Models",
+    "published": "2025-01-22",
+    "summary": "Graph State Space Models (SSMs) have recently been introduced to enhance Graph Neural Networks (GNNs) in modeling long-range interactions. Despite their success, existing methods either compromise on permutation equivariance or limit their focus to pairwise interactions rather than sequences. Buildi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2501.08468v1",
+    "title": "Selective Attention Merging for low resource tasks: A case study of Child ASR",
+    "published": "2025-01-14",
+    "summary": "While Speech Foundation Models (SFMs) excel in various speech tasks, their performance for low-resource tasks such as child Automatic Speech Recognition (ASR) is hampered by limited pretraining data. To address this, we explore different model merging techniques to leverage knowledge from models tra"
+  },
+  {
+    "id": "http://arxiv.org/abs/2501.06909v1",
+    "title": "Local Foreground Selection aware Attentive Feature Reconstruction for few-shot fine-grained plant species classification",
+    "published": "2025-01-12",
+    "summary": "Plant species exhibit significant intra-class variation and minimal inter-class variation. To enhance classification accuracy, it is essential to reduce intra-class variation while maximizing inter-class variation. This paper addresses plant species classification using a limited number of labelled "
+  },
+  {
+    "id": "http://arxiv.org/abs/2501.05452v1",
+    "title": "ReFocus: Visual Editing as a Chain of Thought for Structured Image Understanding",
+    "published": "2025-01-09",
+    "summary": "Structured image understanding, such as interpreting tables and charts, requires strategically refocusing across various structures and texts within an image, forming a reasoning sequence to arrive at the final answer. However, current multimodal large language models (LLMs) lack this multihop selec"
+  },
+  {
+    "id": "http://arxiv.org/abs/2412.09907v2",
+    "title": "IQViC: In-context, Question Adaptive Vision Compressor for Long-term Video Understanding LMMs",
+    "published": "2024-12-13",
+    "summary": "With the increasing complexity of video data and the need for more efficient long-term temporal understanding, existing long-term video understanding methods often fail to accurately capture and analyze extended video sequences. These methods typically struggle to maintain performance over longer du"
+  },
+  {
+    "id": "http://arxiv.org/abs/2412.06243v1",
+    "title": "U-Know-DiffPAN: An Uncertainty-aware Knowledge Distillation Diffusion Framework with Details Enhancement for PAN-Sharpening",
+    "published": "2024-12-09",
+    "summary": "Conventional methods for PAN-sharpening often struggle to restore fine details due to limitations in leveraging high-frequency information. Moreover, diffusion-based approaches lack sufficient conditioning to fully utilize Panchromatic (PAN) images and low-resolution multispectral (LRMS) inputs effe"
+  },
+  {
+    "id": "http://arxiv.org/abs/2411.16618v1",
+    "title": "StructFormer: Document Structure-based Masked Attention and its Impact on Language Model Pre-Training",
+    "published": "2024-11-25",
+    "summary": "Most state-of-the-art techniques for Language Models (LMs) today rely on transformer-based architectures and their ubiquitous attention mechanism. However, the exponential growth in computational requirements with longer input sequences confines Transformers to handling short passages. Recent effort"
+  },
+  {
+    "id": "http://arxiv.org/abs/2411.16437v1",
+    "title": "Privacy Protection in Personalized Diffusion Models via Targeted Cross-Attention Adversarial Attack",
+    "published": "2024-11-25",
+    "summary": "The growing demand for customized visual content has led to the rise of personalized text-to-image (T2I) diffusion models. Despite their remarkable potential, they pose significant privacy risk when misused for malicious purposes. In this paper, we propose a novel and efficient adversarial attack me"
+  },
+  {
+    "id": "http://arxiv.org/abs/2411.12892v1",
+    "title": "Selective Attention: Enhancing Transformer through Principled Context Control",
+    "published": "2024-11-19",
+    "summary": "The attention mechanism within the transformer architecture enables the model to weigh and combine tokens based on their relevance to the query. While self-attention has enjoyed major success, it notably treats all queries $q$ in the same way by applying the mapping $V^\\top\\text{softmax}(Kq)$, where"
+  },
+  {
+    "id": "http://arxiv.org/abs/2411.09007v2",
+    "title": "Scale Contrastive Learning with Selective Attentions for Blind Image Quality Assessment",
+    "published": "2024-11-13",
+    "summary": "Human visual perception naturally evaluates image quality across multiple scales, a hierarchical process that existing blind image quality assessment (BIQA) algorithms struggle to replicate effectively. This limitation stems from a fundamental misunderstanding: current multi-scale approaches fail to"
+  },
+  {
+    "id": "http://arxiv.org/abs/2411.06171v1",
+    "title": "SEEKR: Selective Attention-Guided Knowledge Retention for Continual Learning of Large Language Models",
+    "published": "2024-11-09",
+    "summary": "Continual learning (CL) is crucial for language models to dynamically adapt to the evolving real-world demands. To mitigate the catastrophic forgetting problem in CL, data replay has been proven a simple and effective strategy, and the subsequent data-replay-based distillation can further enhance th"
+  },
+  {
+    "id": "http://arxiv.org/abs/2410.18572v1",
+    "title": "Taipan: Efficient and Expressive State Space Language Models with Selective Attention",
+    "published": "2024-10-24",
+    "summary": "Efficient long-context language modeling remains a significant challenge in Natural Language Processing (NLP). While Transformers dominate language tasks, they struggle with long sequences due to quadratic computational complexity in training and linearly scaling memory costs during inference. Recen"
+  },
+  {
+    "id": "http://arxiv.org/abs/2410.13710v1",
+    "title": "Linear-Threshold Network Models for Describing and Analyzing Brain Dynamics",
+    "published": "2024-10-17",
+    "summary": "Over the past two decades, an increasing array of control-theoretic methods have been used to study the brain as a complex dynamical system and better understand its structure-function relationship. This article provides an overview on one such family of methods, based on the linear-threshold rate ("
+  },
+  {
+    "id": "http://arxiv.org/abs/2410.02703v2",
+    "title": "Selective Attention Improves Transformer",
+    "published": "2024-10-03",
+    "summary": "Unneeded elements in the attention's context degrade performance. We introduce Selective Attention, a simple parameter-free change to the standard attention mechanism which reduces attention to unneeded elements. Selective attention consistently improves language modeling and downstream task perform"
+  },
+  {
+    "id": "http://arxiv.org/abs/2410.01469v3",
+    "title": "TIGER: Time-frequency Interleaved Gain Extraction and Reconstruction for Efficient Speech Separation",
+    "published": "2024-10-02",
+    "summary": "In recent years, much speech separation research has focused primarily on improving model performance. However, for low-latency speech processing systems, high efficiency is equally important. Therefore, we propose a speech separation model with significantly reduced parameters and computational cos"
+  },
+  {
+    "id": "http://arxiv.org/abs/2410.01225v3",
+    "title": "Perceptual Piercing: Human Visual Cue-based Object Detection in Low Visibility Conditions",
+    "published": "2024-10-02",
+    "summary": "This study proposes a novel deep learning framework inspired by atmospheric scattering and human visual cortex mechanisms to enhance object detection under poor visibility scenarios such as fog, smoke, and haze. These conditions pose significant challenges for object recognition, impacting various s"
+  },
+  {
+    "id": "http://arxiv.org/abs/2409.12562v2",
+    "title": "EEG-based Decoding of Selective Visual Attention in Superimposed Videos",
+    "published": "2024-09-19",
+    "summary": "Selective attention enables humans to efficiently process visual stimuli by enhancing important elements and filtering out irrelevant information. Locating visual attention is fundamental in neuroscience with potential applications in brain-computer interfaces. Conventional paradigms often use synth"
+  },
+  {
+    "id": "http://arxiv.org/abs/2409.08840v4",
+    "title": "Directed-CP: Directed Collaborative Perception for Connected and Autonomous Vehicles via Proactive Attention",
+    "published": "2024-09-13",
+    "summary": "Collaborative perception (CP) leverages visual data from connected and autonomous vehicles (CAV) to enhance an ego vehicle's field of view (FoV). Despite recent progress, current CP methods expand the ego vehicle's 360-degree perceptual range almost equally, which faces two key challenges. Firstly, "
+  },
+  {
+    "id": "http://arxiv.org/abs/2409.08710v1",
+    "title": "Using Ear-EEG to Decode Auditory Attention in Multiple-speaker Environment",
+    "published": "2024-09-13",
+    "summary": "Auditory Attention Decoding (AAD) can help to determine the identity of the attended speaker during an auditory selective attention task, by analyzing and processing measurements of electroencephalography (EEG) data. Most studies on AAD are based on scalp-EEG signals in two-speaker scenarios, which "
+  },
+  {
+    "id": "http://arxiv.org/abs/2409.00345v1",
+    "title": "PS-StyleGAN: Illustrative Portrait Sketching using Attention-Based Style Adaptation",
+    "published": "2024-08-31",
+    "summary": "Portrait sketching involves capturing identity specific attributes of a real face with abstract lines and shades. Unlike photo-realistic images, a good portrait sketch generation method needs selective attention to detail, making the problem challenging. This paper introduces \\textbf{Portrait Sketch"
+  },
+  {
+    "id": "http://arxiv.org/abs/2408.16232v1",
+    "title": "Enhancing Conditional Image Generation with Explainable Latent Space Manipulation",
+    "published": "2024-08-29",
+    "summary": "In the realm of image synthesis, achieving fidelity to a reference image while adhering to conditional prompts remains a significant challenge. This paper proposes a novel approach that integrates a diffusion model with latent space manipulation and gradient-based selective attention mechanisms to a"
+  },
+  {
+    "id": "http://arxiv.org/abs/2408.08709v1",
+    "title": "Multimodal Relational Triple Extraction with Query-based Entity Object Transformer",
+    "published": "2024-08-16",
+    "summary": "Multimodal Relation Extraction is crucial for constructing flexible and realistic knowledge graphs. Recent studies focus on extracting the relation type with entity pairs present in different modalities, such as one entity in the text and another in the image. However, existing approaches require en"
+  },
+  {
+    "id": "http://arxiv.org/abs/2408.01322v3",
+    "title": "A Robotics-Inspired Scanpath Model Reveals the Importance of Uncertainty and Semantic Object Cues for Gaze Guidance in Dynamic Scenes",
+    "published": "2024-08-02",
+    "summary": "The objects we perceive guide our eye movements when observing real-world dynamic scenes. Yet, gaze shifts and selective attention are critical for perceiving details and refining object boundaries. Object segmentation and gaze behavior are, however, typically treated as two independent processes. H"
+  },
+  {
+    "id": "http://arxiv.org/abs/2407.06677v1",
+    "title": "Mixture-of-Modules: Reinventing Transformers as Dynamic Assemblies of Modules",
+    "published": "2024-07-09",
+    "summary": "Is it always necessary to compute tokens from shallow to deep layers in Transformers? The continued success of vanilla Transformers and their variants suggests an undoubted \"yes\". In this work, however, we attempt to break the depth-ordered convention by proposing a novel architecture dubbed mixture"
+  },
+  {
+    "id": "http://arxiv.org/abs/2406.12236v1",
+    "title": "Binaural Selective Attention Model for Target Speaker Extraction",
+    "published": "2024-06-18",
+    "summary": "The remarkable ability of humans to selectively focus on a target speaker in cocktail party scenarios is facilitated by binaural audio processing. In this paper, we present a binaural time-domain Target Speaker Extraction model based on the Filter-and-Sum Network (FaSNet). Inspired by human selectiv"
+  },
+  {
+    "id": "http://arxiv.org/abs/2406.08816v1",
+    "title": "ToSA: Token Selective Attention for Efficient Vision Transformers",
+    "published": "2024-06-13",
+    "summary": "In this paper, we propose a novel token selective attention approach, ToSA, which can identify tokens that need to be attended as well as those that can skip a transformer layer. More specifically, a token selector parses the current attention maps and predicts the attention maps for the next layer,"
+  },
+  {
+    "id": "http://arxiv.org/abs/2405.16197v1",
+    "title": "A 7K Parameter Model for Underwater Image Enhancement based on Transmission Map Prior",
+    "published": "2024-05-25",
+    "summary": "Although deep learning based models for underwater image enhancement have achieved good performance, they face limitations in both lightweight and effectiveness, which prevents their deployment and application on resource-constrained platforms. Moreover, most existing deep learning based models use "
+  },
+  {
+    "id": "http://arxiv.org/abs/2405.11468v1",
+    "title": "Emphasizing Crucial Features for Efficient Image Restoration",
+    "published": "2024-05-19",
+    "summary": "Image restoration is a challenging ill-posed problem which estimates latent sharp image from its degraded counterpart. Although the existing methods have achieved promising performance by designing novelty architecture of module, they ignore the fact that different regions in a corrupted image under"
+  },
+  {
+    "id": "http://arxiv.org/abs/2404.15721v2",
+    "title": "SPARO: Selective Attention for Robust and Compositional Transformer Encodings for Vision",
+    "published": "2024-04-24",
+    "summary": "Selective attention helps us focus on task-relevant aspects in the constant flood of our sensory input. This constraint in our perception allows us to robustly generalize under distractions and to new compositions of perceivable concepts. Transformers employ a similar notion of attention in their ar"
+  },
+  {
+    "id": "http://arxiv.org/abs/2404.09336v1",
+    "title": "Self-Selected Attention Span for Accelerating Large Language Model Inference",
+    "published": "2024-04-14",
+    "summary": "Large language models (LLMs) can solve challenging tasks. However, their inference computation on modern GPUs is highly inefficient due to the increasing number of tokens they must attend to as they generate new ones. To address this inefficiency, we capitalize on LLMs' problem-solving capabilities "
+  },
+  {
+    "id": "http://arxiv.org/abs/2403.20086v1",
+    "title": "Selective Attention-based Modulation for Continual Learning",
+    "published": "2024-03-29",
+    "summary": "We present SAM, a biologically-plausible selective attention-driven modulation approach to enhance classification models in a continual learning setting. Inspired by neurophysiological evidence that the primary visual cortex does not contribute to object manifold untangling for categorization and th"
+  },
+  {
+    "id": "http://arxiv.org/abs/2402.14398v1",
+    "title": "Gradual Residuals Alignment: A Dual-Stream Framework for GAN Inversion and Image Attribute Editing",
+    "published": "2024-02-22",
+    "summary": "GAN-based image attribute editing firstly leverages GAN Inversion to project real images into the latent space of GAN and then manipulates corresponding latent codes. Recent inversion methods mainly utilize additional high-bit features to improve image details preservation, as low-bit codes cannot f"
+  },
+  {
+    "id": "http://arxiv.org/abs/2401.05187v2",
+    "title": "Comparison of linear and nonlinear methods for decoding selective attention to speech from ear-EEG recordings",
+    "published": "2024-01-10",
+    "summary": "Many people with hearing loss struggle to comprehend speech in crowded auditory scenes, even when they are using hearing aids. It has recently been demonstrated that the focus of a listener's selective attention to speech can be decoded from their electroencephalography (EEG) recordings, raising the"
+  },
+  {
+    "id": "http://arxiv.org/abs/2401.05030v1",
+    "title": "An event-based implementation of saliency-based visual attention for rapid scene analysis",
+    "published": "2024-01-10",
+    "summary": "Selective attention is an essential mechanism to filter sensory input and to select only its most important components, allowing the capacity-limited cognitive structures of the brain to process them in detail. The saliency map model, originally developed to understand the process of selective atten"
+  }
+]

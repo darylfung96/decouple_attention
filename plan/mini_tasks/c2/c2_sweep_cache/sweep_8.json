@@ -1,0 +1,32 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2604.06473v2",
+    "title": "MICA: Multivariate Infini Compressive Attention for Time Series Forecasting",
+    "published": "2026-04-07",
+    "summary": "Multivariate forecasting with Transformers faces a core scalability challenge: modeling cross-channel dependencies via attention compounds attention's quadratic sequence complexity with quadratic channel scaling, making full cross-channel attention impractical for high-dimensional time series. We pr"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.19281v2",
+    "title": "An Attention-Enhanced \u03a6-OTDR Event Recognition Framework for Edge-Based Distributed Acoustic Sensing",
+    "published": "2025-09-23",
+    "summary": "Phase-sensitive optical time-domain reflectometry \u03a6-OTDR has emerged as a promising sensing technology in Internet of Things (IoT) infrastructures, enabling large-scale distributed acoustic sensing (DAS) for real-time monitoring at the edge in smart cities, industrial pipelines, and critical infrast"
+  },
+  {
+    "id": "http://arxiv.org/abs/2410.03805v3",
+    "title": "Local Attention Mechanism: Boosting the Transformer Architecture for Long-Sequence Time Series Forecasting",
+    "published": "2024-10-04",
+    "summary": "Transformers have become the leading choice in natural language processing over other deep learning architectures. This trend has also permeated the field of time series analysis, especially for long-horizon forecasting, showcasing promising results both in performance and running time. In this pape"
+  },
+  {
+    "id": "http://arxiv.org/abs/2410.03159v4",
+    "title": "WAVE: Weighted Autoregressive Varying Gate for Time Series Forecasting",
+    "published": "2024-10-04",
+    "summary": "We propose a Weighted Autoregressive Varying gatE (WAVE) attention mechanism equipped with both Autoregressive (AR) and Moving-average (MA) components. It can adapt to various attention mechanisms, enhancing and decoupling their ability to capture long-range and local temporal patterns in time serie"
+  },
+  {
+    "id": "http://arxiv.org/abs/2406.06486v4",
+    "title": "Continuum Attention for Neural Operators",
+    "published": "2024-06-10",
+    "summary": "Transformers, and the attention mechanism in particular, have become ubiquitous in machine learning. Their success in modeling nonlocal, long-range correlations has led to their widespread adoption in natural language processing, computer vision, and time series problems. Neural operators, which map"
+  }
+]

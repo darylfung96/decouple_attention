@@ -1,0 +1,152 @@
+\section{Experiments}
+\label{sec:experiments}
+
+\subsection{Setup and data integrity}
+The factorial comprises $4$ cells $\times$ $5$ paired seeds
+$\{42, 123, 2024, 7, 99\}$ $= 20$ runs under the frozen protocol of
+Section~\ref{sec:task}. Data-integrity checks on the audited results
+manifest confirm: (i) parameter equalization within tolerance
+(max attention delta $0.268\%$, max full-model delta $0.074\%$);
+(ii) matched training across all runs (final training MSE span
+$0.2821$--$0.3002$); and (iii) all 20 runs present, all 5 seeds in every
+cell, no duplicates. Reported validation and test metrics come from the
+epoch-10 weights; no best-validation checkpoint selection is used.
+
+\subsection{RQ1: the $2\times2$ factorial}
+\label{sec:rq1}
+Table~\ref{tab:factorial} and Figure~\ref{fig:factorial} summarize
+validation MSE by cell. The champion cell is $(8,4)$ (mean validation
+$0.5967 \pm 0.0710$; mean test $0.7988$), matching the corner that
+combines aggressive KV compression with fine routing. The worst cell is
+$(4,8)$ ($0.6858 \pm 0.0875$), which combines mild KV compression with
+coarse routing.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Factorial results (5 paired seeds, frozen direct-96 protocol;
+pooled MSE in standardized units, lower is better). ``Beats (4,4)'' counts
+seeds where the cell's validation MSE is better than the same seed's $(4,4)$
+value.}
+\label{tab:factorial}
+\begin{tabular}{lcccc}
+\toprule
+Cell & Val mean $\pm$ std & Test mean & Train mean & Beats (4,4) \\
+\midrule
+$(4,4)$ & $0.6332 \pm 0.0611$ & 0.9079 & 0.2908 & --- \\
+$(8,4)$ & $\mathbf{0.5967} \pm 0.0710$ & $\mathbf{0.7988}$ & 0.2880 & 3 / 5 \\
+$(4,8)$ & $0.6858 \pm 0.0875$ & 0.8996 & 0.2983 & 1 / 5 \\
+$(8,8)$ & $0.6368 \pm 0.0393$ & 0.9159 & 0.2844 & 3 / 5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/fig1_factorial_val.pdf}
+\caption{Validation MSE by factorial cell (mean $\pm$ std over 5 paired
+seeds; individual seed points shown). Lower is better. The champion corner
+$(c_{KV}{=}8, c_R{=}4)$ combines coarse KV compression with fine routing.}
+\label{fig:factorial}
+\end{figure}
+
+\textbf{Main effects.} Averaging over the opposite axis (Figure
+\ref{fig:main-effects}): coarsening KV compression from $4{:}1$ to $8{:}1$
+\emph{lowers} validation MSE by $-0.0427$ (mildly beneficial), while
+coarsening routing resolution from $4{:}1$ to $8{:}1$ \emph{raises} it by
+$+0.0463$ (deterioration). Both signs are consistent in 7 of 10
+seed-column comparisons each.
+
+\textbf{Pre-registered hypothesis H1} asked whether coarsening the router
+deteriorates performance \emph{more} than coarsening KV compression. The
+strict form is \emph{not} confirmed: the two effects are nearly equal in
+magnitude ($0.0463$ vs.\ $0.0427$) and opposite in sign, so all observed
+deterioration is attributable to routing while KV compression is mildly
+beneficial. Both effect sizes (${\sim}0.04$) are smaller than the mean
+within-cell seed standard deviation ($0.0647$; per-cell range
+$0.0393$--$0.0875$), and no formal significance test was run. We therefore
+report the decoupling direction as \emph{directional evidence}, not a
+conclusive result \todo{Gate 4: mixed-effects model
+$\mathrm{MSE} = \beta_0 + \beta_1 \log_2 c_{KV} + \beta_2 \log_2 c_R +
+\beta_3 \log_2 c_{KV}\log_2 c_R + \text{random effects}$; the main claim
+requires $\beta_2 > \beta_1$; TOST/ROPE for equivalence; paired
+Wilcoxon/Friedman with Holm correction}. Per-seed trajectories
+(Figure~\ref{fig:perseed}) show the ordering across cells is not unanimous
+for every seed---another reason the champion claim is stated as ``best on
+mean,'' not ``best for every seed.''
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/fig2_main_effects.pdf}
+\caption{Main effects on validation MSE: $c_{KV}$ $4{:}1 \rightarrow 8{:}1$
+($-0.0427$, mildly beneficial) and $c_R$ $4{:}1 \rightarrow 8{:}1$
+($+0.0463$, deteriorates). Dashed lines: $\pm$ mean within-cell seed std
+($0.0647$); both effects are smaller than seed noise.}
+\label{fig:main-effects}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/fig3_per_seed.pdf}
+\caption{Per-seed validation MSE across configurations (parallel
+coordinates, one line per seed). All compressed cells beat Normal for every
+seed; the relative ordering of compressed cells varies by seed.}
+\label{fig:perseed}
+\end{figure}
+
+\subsection{RQ2: compressed vs.\ full attention}
+\label{sec:rq2}
+Table~\ref{tab:baseline} compares full causal attention (Normal, 256
+columns, no compression) with the two cells that anchor the family's
+design corners, $(4,4)$ and the champion $(8,4)$; Figure~\ref{fig:perseed}
+shows all four cells. Every compressed cell beats Normal on mean validation
+and mean test MSE, and \emph{every one of the 20 paired seed comparisons}
+favors the compressed configuration (range of validation deltas
+$-18.5\%$ to $-29.1\%$; the $(8,4)$ cell's advantage is the largest in 3 of
+5 seeds, with $(4,4)$ ahead at seeds 2024 and 99).
+
+\begin{table}[t]
+\centering
+\small
+\caption{Compressed vs.\ full attention (5 paired seeds, frozen protocol).
+Deltas are computed on the 4-decimal means. Parameter counts are not
+equalized across the three rows: Normal is a different attention class and
+carries $\sim$2\% more full-model parameters.}
+\label{tab:baseline}
+\begin{tabular}{lccccc}
+\toprule
+Config & Val mean $\pm$ std & Test mean & $\Delta$val vs.\ Normal & $\Delta$test vs.\ Normal & Seeds beating Normal \\
+\midrule
+Normal & $0.8416 \pm 0.0799$ & 1.0814 & --- & --- & --- \\
+$(4,4)$ & $0.6332 \pm 0.0611$ & 0.9079 & $-24.76\%$ & $-16.04\%$ & 5 / 5 \\
+$(8,4)$ & $\mathbf{0.5967} \pm 0.0710$ & $\mathbf{0.7988}$ & $-29.10\%$ & $-26.13\%$ & 5 / 5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Wiring verification.} Because the compressed variants beating an
+unmodified baseline by ${\sim}25$--$29\%$ is a surprising direction, we
+audited the Normal attention implementation before reporting it: a
+from-scratch naive reference (true causal masking, $1/\sqrt{d}$ scaling,
+independent RoPE reimplementation) matches the module output
+bit-exactly at $L{=}32$ and $L{=}64$ ($0.0$ max absolute difference) and to
+$1.19 \times 10^{-7}$ at $L{=}256$ (fp32 accumulation noise); future
+positions receive exactly zero weight and future-token perturbation leaves
+outputs unchanged. The baseline is correctly implemented, so the comparison
+stands. We also note the direction is surprising in the other sense:
+compression acting as a task-appropriate inductive bias (see
+Section~\ref{sec:discussion}) is a plausible but \emph{unverified}
+explanation \todo{H4 (pre-registered): mechanistic analysis of what the
+router attends to; change-point/event-based analyses}.
+
+\subsection{Efficiency}
+Table~\ref{tab:configs} gives the structural efficiency story: the
+champion attends to 48 columns per query (5.3$\times$ fewer than Normal)
+at 95{,}652 attention parameters---\emph{fewer} than Normal's 102{,}496---and
+a full-model count 2.0\% below Normal's. Routing cost is identical for the
+two $c_R{=}4$ cells regardless of $c_{KV}$, which is the deliberate
+trade-off: pay the full fine-routing cost, halve the attention cost.
+Measured wall-clock latency, throughput, FLOPs, and memory are not yet
+reported for the frozen protocol; the earlier pilot-era speed figures are
+superseded and intentionally absent here \todo{Gate 5 hardware/latency
+benchmarking; see plan/next\_step.md \S 10}.

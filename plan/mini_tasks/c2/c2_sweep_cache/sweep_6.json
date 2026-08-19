@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2608.11676v1",
+    "title": "XBridge: Entity-Grounded Latent Bridge for Heterogeneous LLM Communication",
+    "published": "2026-08-12",
+    "summary": "Heterogeneous multi-agent LLM systems, where agents are powered by different model families, can outperform homogeneous configurations by reducing redundant reasoning patterns. Yet existing communication protocols either operate through text, discarding the sender's internal representations, or requ"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.10489v1",
+    "title": "When Vision Becomes Text: Visual Token Pruning via Cross-Modal Residual Guidance in VLMs",
+    "published": "2026-08-11",
+    "summary": "Abundant visual information strengthens vision-language model (VLM) perception, yet massive visual tokens raise inference costs. Existing visual token pruning methods rely on similarity-based guidance, which exploits pairwise text-vision and vision-vision token correlations for compression. However,"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.09227v1",
+    "title": "Omni2LoRA: Coherence-Preserving Parametric Memory for Efficient Omni Language Models",
+    "published": "2026-08-10",
+    "summary": "Omnimodal language models (OLMs) enable unified audio-visual understanding, but processing long joint token sequences makes inference computationally prohibitive. While recent token compression methods attempt to alleviate this burden, compressing modalities in isolation often destroys the temporal "
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.09176v1",
+    "title": "Not All Visual Tokens Are Equally Safe to Remove:Consequence-Sensitive Visual Token Compression",
+    "published": "2026-08-10",
+    "summary": "Visual token compression for vision--language models (VLMs) has largely relied on criteria such as attention, redundancy, and uncertainty to maximize average accuracy under a fixed compute budget, implicitly assuming that all errors carry equal cost. However, the consequence of an incorrect predicti"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.08847v2",
+    "title": "Explicit Boundary Markers for Subword Vocabularies",
+    "published": "2026-08-09",
+    "summary": "Subword tokenizers represent many common words twice in space-using writing systems, once with a leading space and once without. The two entries have separate embeddings in models, so occurrences of one word are divided across rows that are trained independently, and the two forms need not even segm"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.08809v1",
+    "title": "Tevatron-Elastic: A Unified Abstraction for Training Elastic Retrievers and Rerankers",
+    "published": "2026-08-09",
+    "summary": "A single model scale challenges the flexibility of a production retrieval system: some settings need it faster, others need a smaller index, and the right trade-off changes with the workload. In the context of information retrieval (IR), a transformer-based model can be made smaller in three ways---"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.04610v1",
+    "title": "HiSC: Hierarchical Spatial Clustering Token Compression for Efficient 3D Scene Understanding",
+    "published": "2026-08-05",
+    "summary": "3D vision-language models (3D VLMs) enable spatial reasoning over multi-view scenes but suffer from substantial token redundancy due to duplicated observations and large uninformative regions, leading to high computational cost. Although visual token compression has shown promise in accelerating 2D "
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.04515v1",
+    "title": "CARVE: Cross-Slice Anisotropic Reallocation of Visual Evidence for Efficient 3D Medical Volume Understanding",
+    "published": "2026-08-05",
+    "summary": "Slice-based MLLMs leverage mature 2D encoders by representing 3D volumes as sequences of 2D slices. However, this slice-wise formulation produces thousands of visual tokens that burden the LLM backbone, many of which capture overlapping visual evidence across adjacent slices. To understand how effec"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.03812v1",
+    "title": "OmniPack: Unified Token Compression for Efficient Omni-modal Large Language Models",
+    "published": "2026-08-04",
+    "summary": "Omni-modal large language models (Omni-LLMs) have achieved remarkable performance on audio-visual understanding tasks, but processing long and highly redundant visual and audio token sequences incurs substantial computational overhead, demanding aggressive token compression for efficient deployment."
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.01848v1",
+    "title": "Decoupling semantics from vision: A framework for faithful visual-text compression evaluation",
+    "published": "2026-08-03",
+    "summary": "Recent visual-text compression (VTC) methods, typified by DeepSeek-OCR, report impressive high token compression ratios for long-context modeling tasks by leveraging text-to-image rendering. However, existing evaluation protocols heavily rely on downstream task performance. Such evaluation metrics f"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.01821v1",
+    "title": "DAVET: Denoising-Aware Visual Evidence Trajectory Allocation for Diffusion Vision-Language Models",
+    "published": "2026-08-03",
+    "summary": "Diffusion vision-language models (dVLMs) iteratively denoise masked responses while conditioning each denoising step on visual evidence, making visual conditioning a substantial recurring inference cost. Unlike autoregressive decoding, diffusion generation repeatedly revisits the entire response as "
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.01665v1",
+    "title": "Allocation Before Ranking: Decoupled Token Compression for OmniLLMs",
+    "published": "2026-08-03",
+    "summary": "Token compression in OmniLLMs is typically posed as a single saliency-ranking problem: score each multimodal token, keep the top-K. We argue this abstraction is mis-specified. The same attention score simultaneously decides two things: how much retained capacity each modality receives, and which tok"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.01644v1",
+    "title": "CRAFT: Compression via Recursive Adaptive Fusion of Video Tokens for Vision-Language Models",
+    "published": "2026-08-03",
+    "summary": "In video understanding, vision-language models (VLMs) must ingest massive numbers of visual tokens, causing the computational and memory cost of the prefill stage to rise sharply. Such visual sequences are highly redundant along the spatio-temporal dimension, yet a high compression ratio is often ac"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.01271v1",
+    "title": "Rethinking Video Token Compression with a Global Codebook: Learning Once, Compressing Everywhere",
+    "published": "2026-08-02",
+    "summary": "Video large language models (Video-LLMs) represent videos as dense sequences of visual tokens, whose length grows with the temporal and spatial extent of the input. These tokens often contain substantial redundancy arising from repeated visual patterns, leading to unnecessary computation in the subs"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.01185v1",
+    "title": "3DZip: Spatial-Aware Feature Diversity-Guided Token Compression for 3D Question Answering",
+    "published": "2026-08-02",
+    "summary": "Recent 3D vision-language models (3D VLMs) construct geometry aware tokens by projecting 2D visual features into world coordinates, enabling spatial reasoning for tasks such as 3D question answering. However, this design generates thousands of tokens per scene, resulting in substantial computational"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.01169v1",
+    "title": "Think in Sets for Streaming Video Token Compression",
+    "published": "2026-08-02",
+    "summary": "Streaming VideoLLMs process frames causally while visual tokens grow continuously, making compression essential for controlling prefilling latency and memory. Existing training-free methods independently rank tokens, ignoring marginal-gain interactions among retained tokens. We argue that streaming "
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.00368v1",
+    "title": "Agent-Native Task-Oriented Communication with Joint Token Compression Coding and Modulation",
+    "published": "2026-08-01",
+    "summary": "As large foundation models empower agents to become pervasive across industries and emerge as central actors in intelligent systems, a fundamental rethinking of communication paradigms toward AI-native, agent-centric designs in the post-Shannon era becomes inevitable. One essential shift is that tok"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.00345v1",
+    "title": "ORCA: ORgan-Centroid Aggregation for Training-Free 3D CT Visual Token Compression",
+    "published": "2026-07-31",
+    "summary": "A 3D CT scan entering a vision-language model produces a long sequence of visual tokens, often thousands to tens of thousands per volume, and this sequence must be compressed before a language model can consume it. Token compression is well studied in general vision, but little of it targets 3D CT s"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.26554v1",
+    "title": "MedARC: Training-Free Adaptive Redundancy Compression of Visual Tokens for 3D Medical Vision-Language Models",
+    "published": "2026-07-29",
+    "summary": "Integrating 3D medical images with vision-language models (VLMs) holds substantial promise for computer-aided diagnosis. However, volumetric images generate prohibitively long visual-token sequences with considerable spatial and inter-slice redundancy. Existing token compression methods typically ap"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.25669v1",
+    "title": "OmniDelta: Skill-Driven Budget Allocation for Token Compression in OmniLLMs",
+    "published": "2026-07-28",
+    "summary": "Emerging Omni-modal Large Language Models (OmniLLMs) enable unified understanding of text, audio, and video, but their long audio-video token sequences introduce substantial memory and inference costs. Existing compression methods mainly focus on selecting important tokens under fixed budgets, leavi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.23193v3",
+    "title": "OmniScope: Modality-Decoupled Token Compression for Omnimodal Large Language Models",
+    "published": "2026-07-25",
+    "summary": "Existing token compression methods for omnimodal large language models typically rely on one modality to determine what to retain in the other. We show that this assumption often breaks down: for the same query, audio and video relevance often peaks at different moments. This cross-modal salience mi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.22200v1",
+    "title": "LayoutLite: Token-Level Implicit Layout Analysis for Efficient Document OCR",
+    "published": "2026-07-24",
+    "summary": "End-to-end OCR systems based on vision-language models have achieved strong performance in complex document OCR, but their efficiency is limited by the large number of visual tokens produced from document images. Many of these tokens correspond to blank margins or visually redundant regions, yet dir"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.21231v1",
+    "title": "Progressive Cramming: Reliable Token Compression and What It Reveals",
+    "published": "2026-07-23",
+    "summary": "Token cramming compresses sequences into learned embeddings with near-perfect reconstruction, but fixed token budgets and 99\\% accuracy thresholds leave it unclear whether residual errors reflect optimization failures or fundamental limits. We introduce progressive cramming, which grows the target p"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.21179v1",
+    "title": "Out of Sight, Still in Mind: Token Compression for Omni-LLMs",
+    "published": "2026-07-23",
+    "summary": "The goal of this paper is to reduce the input token cost of Omni-modal large language models (Omni-LLMs) at inference time. Omni-LLMs reason jointly over audio, video and text, but the cost of the three streams is highly unbalanced: visual tokens account for the vast majority of the input, and are h"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.20981v1",
+    "title": "Beyond Independent Optimization: Compression, MoE Routing, and Quantization Interactions in Multimodal Edge Intelligence",
+    "published": "2026-07-23",
+    "summary": "Efficient multimodal inference is increasingly constrained not only by model quality or FLOP count, but also by the cost of preserving, moving, routing, caching, and quantizing multimodal representations under latency, memory, and energy constraints. This paper reviews recent advances in efficient v"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.22716v1",
+    "title": "Visual Token Compression Enhances Robustness of MLLMs",
+    "published": "2026-07-21",
+    "summary": "In this paper, we show for the first time that visual token pruning enhances the robustness of Multimodal Large Language Models (MLLMs), mitigating vulnerabilities such as jailbreak attacks and hallucinations. Given that vision and language modalities cannot be perfectly aligned, the misaligned visu"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.14568v1",
+    "title": "A Modern Multimodal Assistant on a 6 GB 2011 GPU: Stage-Validated, All-GPU CUDA Inference for Fermi",
+    "published": "2026-07-16",
+    "summary": "A companion study ran a 35B mixture-of-experts model on a 2011 NVIDIA Tesla C2075 (Fermi, sm_20, 6GB) as a GPU-prefill/CPU-decode hybrid, because the 4-bit model did not fit in device memory (arXiv:2606.24031). This report keeps the hardware and asks what a model that fits can do: we deploy MiniCPM-"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.12756v2",
+    "title": "VisCo: Leveraging Large Language Models as Intrinsic Encoders for Visual Token Compression",
+    "published": "2026-07-14",
+    "summary": "Vision-language models (VLMs) process large numbers of visual tokens, resulting in substantial inference latency and memory overhead. This has motivated extensive research on visual token compression. While training-free strategies rely on heuristic metrics and suffer significant performance degrada"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.11699v2",
+    "title": "Qwen-Music Technical Report",
+    "published": "2026-07-13",
+    "summary": "In this report, we introduce Qwen-Music, a powerful music generation model capable of producing highly musical and high-fidelity songs with complete vocal singing. Qwen-Music supports two core tasks: Text to Music Generation, which create entirely new songs from text descriptions, lyrics, and musica"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.11326v1",
+    "title": "Prompt Generation Technical Report",
+    "published": "2026-07-13",
+    "summary": "Generative retrieval has become an increasingly adopted paradigm for industrial search, recommendation, and advertising systems, delivering significant online gains. Most existing work combines user behavior sequences with large language models (LLMs) to model user preferences. In practice, feature "
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.10441v1",
+    "title": "Context by Distinct Information: An Auditable Dirichlet-Process Working Memory for Long, Redundant Context Streams",
+    "published": "2026-07-11",
+    "summary": "Context engineering decides what information a model carries forward, and current designs meter it in tokens: compressing the past into a bounded recurrent state, keeping a key-value entry for every token, or imposing a fixed budget through a window or eviction rule. All three make the token the uni"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.10120v1",
+    "title": "WeaveEarth: Structured Evidence Construction and Reasoning for Training-Free UHR Remote Sensing Understanding",
+    "published": "2026-07-11",
+    "summary": "Ultra-High-Resolution (UHR) remote sensing image understanding requires Vision-Language Models (VLMs) to capture both the global scene layout and sparse yet task-critical local details under limited computational budgets. Existing methods mainly follow two paradigms. One is passive perception, which"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.09080v2",
+    "title": "GeoTrace: Geometry-Aware Trajectory Token Compression for Video Large Language Models",
+    "published": "2026-07-10",
+    "summary": "Although Video Large Language Models (Video LLMs) have shown strong performance in video understanding, their efficiency is still limited by the large number of visual tokens. Existing video token compression methods typically rely on frame-wise saliency or heuristic token merging, which can over-fo"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.04605v2",
+    "title": "Do All Visual Tokens Matter Equally? Object-Evidence Preserving Token Merging for Vision-Language Retrieval",
+    "published": "2026-07-06",
+    "summary": "Multi-vector vision-language retrieval preserves fine-grained visual evidence through maximum-similarity late interaction, but dense image-side tokens make storage and scoring expensive. Existing token compression methods reduce this cost, yet they can remove or collapse object- and region-level evi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.03089v1",
+    "title": "STELLA: Efficient Sensor-to-LLM Translation for On-Device Human Activity Recognition",
+    "published": "2026-07-03",
+    "summary": "HAR is increasingly expected to run continuously on edge devices, yet recent LLM-based methods remain hard to deploy: raw sensor prompts are long, cloud inference adds latency and privacy risk, and fine-tuned LLM pipelines turn general-purpose models into task-specific classifiers. We present STELLA"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.03050v1",
+    "title": "OmniFocus: Query-Guided Modality-Balanced Token Compression for Omni-Modal Large Language Models",
+    "published": "2026-07-03",
+    "summary": "Omni modal large language models (OmniLLMs) have attracted wide attention for their ability to jointly process audio and video, but they generate large token sequences under audio-visual inputs, leading to substantial inference cost. Existing audio-visual token compression methods often rely on unim"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.02922v1",
+    "title": "STAC: Selective Spatiotemporal Aggregation and Compression for Video Reasoning Segmentation",
+    "published": "2026-07-03",
+    "summary": "Video reasoning segmentation demands pixel-accurate object tracking across hundreds of frames under complex natural language queries, producing dense spatiotemporal tokens whose quadratic self-attention cost makes long-video processing prohibitive. Existing methods address this through token compres"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.02237v1",
+    "title": "When Token Compression Breaks: Structural Pruning vs. Token Reduction for Robust ViT Segmentation under High Compression",
+    "published": "2026-07-02",
+    "summary": "Vision Transformers (ViTs) are strong backbones for semantic segmentation, but their computational cost limits deployment. Recent token compression methods for efficient transformer-based segmentation reduce this cost by decreasing the number of tokens. However, existing evaluations primarily focus "
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.25658v1",
+    "title": "Towards a Dynamic and Fixed-budget Memory Bank for Efficient Streaming Video Understanding",
+    "published": "2026-06-24",
+    "summary": "Currently, streaming video understanding is still a daunting task for existing \\emph{multimodal large language models} (MLLMs). Its difficulties not only lie in handling the ever-increasing video frames, but also in the unpredictability of future video content and input instructions. In this paper, "
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.24286v1",
+    "title": "AVOC: Enhancing Hour-Level Audio-Video Understanding in Omni-Modal LLMs via Retrieval-Inspired Token Compression",
+    "published": "2026-06-23",
+    "summary": "Multimodal Large Language Models have achieved remarkable progress in short-form audio-video understanding, yet long-form audio-video comprehension remains challenged by limited context windows and severe information redundancy. To address these bottlenecks, we propose AVOC, a framework for long-for"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.21501v1",
+    "title": "UniviewVLA: A Unified Multiview Vision-Language-Action Model with World Modeling",
+    "published": "2026-06-19",
+    "summary": "Occluded tasks remain a bottleneck in robot manipulation. Existing solutions either deploy additional physical cameras requiring training-inference camera parity, or rely on explicit 3D reconstruction with high computational cost. Moreover, both approaches rely on standard agent-view and wrist-view "
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.18406v1",
+    "title": "CoreMem: Riemannian Retrieval and Fisher-Guided Distillation for Long-Term Memory in Dialogue Agents",
+    "published": "2026-06-16",
+    "summary": "Personalized dialogue agents require continuous long-term memory to maintain coherent interactions across multiple sessions. However, deploying these capabilities on consumer-grade hardware (e.g., 8 GB VRAM edge devices) introduces severe memory and compute bottlenecks. Existing systems typically re"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.16353v1",
+    "title": "What Should a Streaming Video Model Remember?",
+    "published": "2026-06-15",
+    "summary": "Streaming video understanding models must answer queries at any moment during an ongoing stream, using only what they have observed so far and under fixed memory and computation budgets. Existing methods address this by adding memory banks, retrieval modules, or visual token compression to preserve "
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.15641v1",
+    "title": "Distilling Examples into Task Instructions: Enhanced In-Context Learning for Real-World B2B Conversations",
+    "published": "2026-06-14",
+    "summary": "In-context learning (ICL) is the standard method for low-resource classification, yet its efficacy in specialized domains remains largely unexplored. We address the challenge of classifying semantically complex, multi-party B2B conversations, where traditional ICL encounters significant limitations,"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.14277v1",
+    "title": "One Layer's Trash is Another Layer's Treasure: Adaptive Layer-wise Visual Token Selection in LVLMs",
+    "published": "2026-06-12",
+    "summary": "Large Vision-Language Models (LVLMs) have achieved remarkable success across diverse multimodal tasks, yet their practical deployment remains constrained by the computational burden arising from lengthy visual tokens. While visual token pruning has emerged as a promising solution, existing methods s"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.13898v1",
+    "title": "HiLo-Token: Input-Adaptive High-Low Frequency Token Compression for Efficient Image Editing",
+    "published": "2026-06-11",
+    "summary": "Creative image editing tools, such as Photoshop's Remove or Generative Fill buttons, are central to everyday customer use and account for a major share of traffic in Photoshop and Lightroom. However, current generative AI models face significant latency challenges, which become even more pronounced "
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.13624v1",
+    "title": "Beyond Uniform Tokens: Adaptive Compression for Time Series Language Models",
+    "published": "2026-06-11",
+    "summary": "Large language models (LLMs) have enabled time series (TS) analysis by jointly modeling numerical observations and textual context through a shared token interface. However, TS tokens and prompt tokens exhibit fundamentally different information structures, making uniform token processing inefficien"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.12203v1",
+    "title": "Adaptive Multi-Resolution Procedural Knowledge Compression for Large Language Models",
+    "published": "2026-06-10",
+    "summary": "Large language models (LLMs) are widely used to tackle complex tasks with autonomous workflows. Recently, reusable natural language skills have emerged as a popular paradigm to inject procedural knowledge into LLM applications. Since popular skills are often invoked repeatedly, placing their full te"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.11700v1",
+    "title": "CompRank: Efficient LLM Reranking via Token-Level Compression and Decoding-Free Scoring",
+    "published": "2026-06-10",
+    "summary": "Large language model (LLM) rerankers have become an important component of modern retrieval and retrieval-augmented generation pipelines, but their high computational cost limits their applicability to long candidate lists. In this paper, we propose \\textbf{CompRank}, a token-efficient reranking fra"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.07464v1",
+    "title": "Planning-aligned Token Compression for Long-Context Autonomous Driving",
+    "published": "2026-06-05",
+    "summary": "Monolithic vision-action models represent an emerging paradigm in autonomous driving. However, this architecture produces token sequences that quickly exceed real-time computational budgets when encoding extended temporal context for complex interactions. While approaches like linear transformers an"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.06891v1",
+    "title": "Stream3D-VLM: Online 3D Spatial Understanding with Incremental Geometry Priors",
+    "published": "2026-06-05",
+    "summary": "Despite advances in 3D scene understanding, existing 3D Large Multimodal Models operate in offline settings, requiring complete scene observations or predefined video clips. In this paper, we present an online 3D vision-language model that enables real-time spatial understanding from streaming video"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.05917v1",
+    "title": "MemoryCard: Topic-Aware Multi-Modal Clue Compression for Long-Video Question Answering",
+    "published": "2026-06-04",
+    "summary": "Long-video question answering remains challenging for Vision-Language Models (VLMs), as answer-relevant evidence is often sparse, transient, and temporally dispersed across lengthy video contexts. Existing frame-centric approaches improve efficiency through uniform sampling, query-aware frame select"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.04911v1",
+    "title": "BreastGPT: A Multimodal Large Language Model for the Full Spectrum of Breast Cancer Clinical Routine",
+    "published": "2026-06-03",
+    "summary": "Breast cancer remains a leading cause of cancer-related mortality among women. Its clinical management requires multimodal reasoning across a clinical workflow that spans \\textit{screening}, \\textit{diagnosis} and \\textit{treatment planning}, where each stage involves distinct imaging modalities, ta"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.03739v1",
+    "title": "Entropy Gate: Entropy Quenching for Near-Lossless Token Compression in LLM Pipelines",
+    "published": "2026-06-02",
+    "summary": "LLM pipelines waste substantial token budgets on low-information content: repeated context, verbose responses, and redundant boilerplate. We introduce Entropy Gate, a token compression framework applying entropy quenching $-$ a thermodynamic process that progressively freezes out low-energy tokens w"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.02522v1",
+    "title": "Moment-Video: Diagnosing Temporal Fidelity of Video MLLMs on Momentary Visual Events",
+    "published": "2026-06-01",
+    "summary": "Video multimodal large language models (MLLMs) have made rapid progress on general and long-form video understanding, yet their ability to preserve brief answer-critical visual evidence remains underexplored. Many practical questions are determined by momentary visual events: localized actions or st"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.02161v1",
+    "title": "InfoMerge: Information-aware Token Compression for Efficient Video Large Language Models",
+    "published": "2026-06-01",
+    "summary": "Video Large Language Models (Video-LLMs) achieve strong performance in video understanding, but their excessive visual tokens bring substantial computational overhead. Existing training-free compression methods improve inference efficiency by reducing visual tokens, yet they often rely on local adja"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.01934v1",
+    "title": "HMPO: Hybrid Median-length Policy Optimization for Chain-of-Thought Compression",
+    "published": "2026-06-01",
+    "summary": "Large language models achieve remarkable performance via extended chain-of-thought (CoT) reasoning, yet this lengthy process incurs substantial inference overhead. Existing CoT compression methods struggle with inflexible manual length budgets, computationally expensive multi-stage training pipeline"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.01756v1",
+    "title": "EvoCut: Multi-Layer Evolution-Aware Visual Token Compression for Efficient Large Vision-Language Models",
+    "published": "2026-06-01",
+    "summary": "Large vision-language models (LVLMs) achieve strong performance on image and video understanding tasks, but their inference efficiency is constrained by the large number of visual tokens produced by vision encoders. Most existing visual token compression methods estimate token importance from attent"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.01099v1",
+    "title": "MiCU: End-to-End Smart Home Command Understanding with Large Language Model",
+    "published": "2026-05-31",
+    "summary": "Command understanding systems in smart home ecosystems can automate device control and substantially improve user experience. However, while they perform well on precise utterances (e.g., \"turn on the bedroom light\"), they struggle with ambiguous or misaligned commands (e.g., \"make the bedroom cozy\""
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.00543v2",
+    "title": "ETC: Extreme Token Compression via Task-aware Visual Information Distillation in VLMs",
+    "published": "2026-05-30",
+    "summary": "In Vision-Language Models (VLMs), high-resolution images produce a large number of visual tokens, resulting in high computational costs and KV-cache overhead during inference. To address this problem, we propose an Extreme Token Compression (ETC) framework that minimizes task loss when reducing the "
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.30126v1",
+    "title": "PARCEL: Pool-Anchored Resampling with Conditioned Elastic Queries for Efficient Vision-Language Understanding",
+    "published": "2026-05-28",
+    "summary": "Large Vision-Language Models (LVLMs) map visual inputs into dense token sequences, imposing a quadratic computational bottleneck for inference. Elastic visual-token compression addresses this by training a single model that can run at multiple visual-token budgets. However, existing approaches strug"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.30010v1",
+    "title": "EarlyTom: Early Token Compression Completes Fast Video Understanding",
+    "published": "2026-05-28",
+    "summary": "Video large language models (Video-LLMs) have demonstrated strong capabilities in video understanding tasks. However, their practical deployment is still hindered by the inefficiency introduced by processing massive amounts of visual tokens. Although recent approaches achieve extremely low token ret"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.29657v1",
+    "title": "OccamToken: Efficient VLM Inference with Training-Free and Budget-Adaptive Token Pruning",
+    "published": "2026-05-28",
+    "summary": "Vision-language models (VLMs) rely on long visual token sequences for visual understanding, making the prefill stage expensive in both computation and memory. Most existing pruning methods follow an absolute-ranking paradigm, assigning importance scores to visual tokens and retaining a fixed top-K s"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.25979v1",
+    "title": "LLaVA-OneVision-2: Towards Next-Generation Perceptual Intelligence",
+    "published": "2026-05-25",
+    "summary": "We introduce LLaVA-OneVision-2 (LLaVA-OV-2), the most capable vision-language model in the LLaVA-OneVision series to date, achieving superior performance across a broad range of multimodal benchmarks. The model builds on a native OneVision-Encoder and incorporates Windowed Attention for efficient lo"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.25330v1",
+    "title": "How Reliable Are Semantic-ID Tokenizer Comparisons in Generative Recommendation?",
+    "published": "2026-05-25",
+    "summary": "In Semantic-ID (SID) based generative recommendation, each item is represented as a sequence of discrete codes, and an autoregressive model is trained to generate the SID sequence of the next item; top-K performance is then measured by checking whether the SID sequence of the target item appears amo"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.25179v1",
+    "title": "Locality Matters for Training-Free Audio Token Compression in Audio-Language Models",
+    "published": "2026-05-24",
+    "summary": "Audio-language models (ALMs) are increasingly used for audio captioning, question answering, and open-ended audio understanding, but their inference cost remains high when audio inputs are represented as long prefix-token sequences. These audio prefixes consume context budget, increase memory usage,"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.23451v1",
+    "title": "Efficient One-Step Diffusion Restoration Model with Compact Token Compression and Linear Attention",
+    "published": "2026-05-22",
+    "summary": "Real-world image super-resolution aims to recover high-quality images from complex and unknown real-world degradations. However, existing generative Real-ISR methods largely inherit the dense latent representations and quadratic-cost global modeling paradigm developed for high-resolution image synth"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.22269v1",
+    "title": "MuKV: Multi-Grained KV Cache Compression for Long Streaming Video Question-Answering",
+    "published": "2026-05-21",
+    "summary": "Long streaming video QA remains challenging due to growing visual tokens and limited reasoning length of large language models (LLMs). KV-caching stores the Key-Value (KV) of the historical tokens via LLM prefill and enables more efficient streaming QA. However, existing methods cache every one or t"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.22158v1",
+    "title": "ST-SimDiff: Balancing Spatiotemporal Similarity and Difference for Efficient Video Understanding with MLLMs",
+    "published": "2026-05-21",
+    "summary": "Multimodal Large Language Models (MLLMs) face significant computational overhead when processing long videos due to the massive number of visual tokens required. To improve efficiency, existing methods primarily reduce redundancy by pruning or merging tokens based on importance or similarity. Howeve"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.20683v2",
+    "title": "Layer-wise Token Compression for Efficient Document Reranking",
+    "published": "2026-05-20",
+    "summary": "Transformer-based document cross-encoder rerankers are a central component of modern information retrieval systems. Despite their success, these models suffer from high computational costs due to processing long query-document sequences at inference time. A known approach to improve efficiency is to"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.20448v2",
+    "title": "Do Vision-Language Models Understand 3D Scenes or Just Catalogue Objects?",
+    "published": "2026-05-19",
+    "summary": "Vision-language models reliably name objects in a scene, but do they represent the 3D layout those objects inhabit? We introduce a 3,034-sample human-curated benchmark targeting three components of spatial understanding: depth-ordered occlusion (probed via three independent counterfactual operationa"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.19322v1",
+    "title": "DynaTok: Temporally Adaptive and Positional Bias-Aware Token Compression for Video-LLMs",
+    "published": "2026-05-19",
+    "summary": "Recent advances in Video Large Language Models (Video-LLMs) have greatly expanded multimodal reasoning capabilities. However, the massive number of visual tokens extracted from long video sequences incurs prohibitive computational costs, limiting their deployment in real-world scenarios. Existing tr"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.19260v1",
+    "title": "AQuaUI: Visual Token Reduction for GUI Agents with Adaptive Quadtrees",
+    "published": "2026-05-19",
+    "summary": "Large Multimodal Models (LMMs) have recently emerged as promising backbones for GUI-agent models, where high-resolution GUI screenshots are introduced to the prompts at each iteration step. However, these screenshots exhibit highly non-uniform spatial information density: large regions may carry lit"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.18165v1",
+    "title": "Elastic-dLLM: Position Preserving Context Compression and Augmentation of Diffusion LLMs",
+    "published": "2026-05-18",
+    "summary": "Unlike autoregressive models, which generate one token at a time, dLLMs denoise a chunk of [MASK] tokens jointly and sample one or more tokens per step; despite enabling parallel decoding, this process incurs substantial computational cost due to the large chunk size of masked tokens. We observe tha"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.18041v1",
+    "title": "OmniSelect: Dynamic Modality-Aware Token Compression for Efficient Omni-modal Large Language Models",
+    "published": "2026-05-18",
+    "summary": "Omnimodal large language models (OmniLLMs) have recently gained increasing attention for unified audio-video understanding. However, processing long multimodal token sequences introduces substantial computational overhead, making efficient token compression crucial. Existing methods typically rely o"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.18013v1",
+    "title": "TinySAM 2: Extreme Memory Compression for Efficient Track Anything Model",
+    "published": "2026-05-18",
+    "summary": "Segment Anything Model 2 (SAM 2) serves as a core foundation model in the field of video segmentation. Building upon the original SAM model, it introduces a memory bank mechanism and demonstrates outstanding performance in tasks such as semi-supervised video object segmentation and tracking anything"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.23988v1",
+    "title": "TSFLora: Token-Compressed Split Fine-Tuning for Wireless Edge Networks",
+    "published": "2026-05-17",
+    "summary": "Adapting large AI models (LAMs) to personalized edge data is challenging because wireless devices have limited memory, computation, and uplink capacity. Federated fine-tuning preserves data privacy but still requires each device to host the full model, while split learning reduces device memory at t"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.15621v1",
+    "title": "LRCP: Low-Rank Compressibility Guided Visual Token Pruning for Efficient LVLMs",
+    "published": "2026-05-15",
+    "summary": "Large vision-language models (LVLMs) achieve strong multimodal understanding, but their inference cost grows rapidly with the number of visual tokens, especially for high-resolution images and long videos. Existing attention-based methods estimate token importance from attention scores, which may in"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.14913v1",
+    "title": "Representative Attention For Vision Transformers",
+    "published": "2026-05-14",
+    "summary": "Linear attention has emerged as a promising direction for scaling Vision Transformers beyond the quadratic cost of dense self-attention. A prevalent strategy is to compress spatial tokens into a compact set of intermediate proxies that mediate global information exchange. However, existing methods t"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.14458v1",
+    "title": "OmniDrop: Layer-wise Token Pruning for Omni-modal LLMs via Query-Guidance",
+    "published": "2026-05-14",
+    "summary": "Omni-modal large language models have demonstrated remarkable potential in holistic multimodal understanding; however, the token explosion caused by high-resolution audio and video inputs remains a critical bottleneck for real-time applications and long-form reasoning. Existing omni-modal token comp"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.13391v1",
+    "title": "RS-Claw: Progressive Active Tool Exploration via Hierarchical Skill Trees for Remote Sensing Agents",
+    "published": "2026-05-13",
+    "summary": "The rise of multi-modal large language models (MLLMs) is shifting remote sensing (RS) intelligence from \"see\" to \"action\", as OpenClaw-style frameworks enable agents to autonomously operate massive RS image-processing tools for complex tasks. Existing RS agents adopt a passive selection paradigm for"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.12056v1",
+    "title": "OmniRefine: Alignment-Aware Cooperative Compression for Efficient Omnimodal Large Language Models",
+    "published": "2026-05-12",
+    "summary": "Omnimodal large language models (Omni-LLMs) show strong capability in audio-video understanding, but their practical deployment remains limited by high inference cost of long video streams and dense audio sequences. Despite recent progress, existing compression methods for Omni-LLMs typically rely o"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.11803v1",
+    "title": "OTT-Vid: Optimal Transport Temporal Token Compression for Video Large Language Models",
+    "published": "2026-05-12",
+    "summary": "As Video Large Language Models (Video-LLMs) scale to longer and more complex videos, their inference cost grows rapidly due to the large volume of visual tokens accumulated across frames. Training-free token compression has emerged as a practical solution to this bottleneck. However, existing tempor"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.16366v2",
+    "title": "Fre-Res: Frequency-Residual Video Token Compression for Efficient Video MLLMs",
+    "published": "2026-05-10",
+    "summary": "Video MLLMs face a persistent tension between spatial fidelity and temporal coverage: preserving fine-grained visual details requires many spatial tokens, while capturing short-lived events requires dense temporal sampling. We propose \\textbf{Fre-Res}, a budget-adaptive dual-track video-token compre"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.08985v1",
+    "title": "LLaVA-UHD v4: What Makes Efficient Visual Encoding in MLLMs?",
+    "published": "2026-05-09",
+    "summary": "Visual encoding constitutes a major computational bottleneck in Multimodal Large Language Models (MLLMs), especially for high-resolution image inputs. The prevailing practice typically adopts global encoding followed by post-ViT compression. Global encoding produces massive token sequences, while po"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.08329v1",
+    "title": "An Efficient Token Compression Framework for Visual Object Tracking",
+    "published": "2026-05-08",
+    "summary": "Refining visual representations by eliminating their internal feature-level redundancy is crucial for simultaneously optimizing the performance and computational cost of models in visual tracking. To enhance their performance, many contemporary Transformer-based trackers leverage a larger number of "
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.07863v1",
+    "title": "ADKO: Agentic Decentralized Knowledge Optimization",
+    "published": "2026-05-08",
+    "summary": "We present Agentic Decentralized Knowledge Optimization (ADKO), a framework for collaborative black-box optimization across autonomous agents that achieves sample efficiency, privacy preservation, heterogeneous-objective handling, and communication efficiency. Each agent maintains a private Gaussian"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.07355v1",
+    "title": "TTF: Temporal Token Fusion for Efficient Video-Language Model",
+    "published": "2026-05-08",
+    "summary": "Video-language models (VLMs) face rapid inference costs as visual token counts scale with video length. For example, 32 frames at $448{\\times}448$ resolution already yield >8,000 visual tokens in Qwen3-VL, making LLM prefill the dominant throughput bottleneck. Existing methods often rely on global s"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.05899v1",
+    "title": "VisMMOE: Exploiting Visual-Expert Affinity for Efficient Visual-Language MoE Offloading",
+    "published": "2026-05-07",
+    "summary": "Large-scale vision-language mixture-of-experts (VL-MoE) models provide strong multimodal capability, but efficient deployment on memory-constrained platforms remains difficult. Existing MoE offloading systems are largely designed for text-centric workloads and become much less effective for visual-h"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.02378v1",
+    "title": "Enhancing Multimodal In-Context Learning via Inductive-Deductive Reasoning",
+    "published": "2026-05-04",
+    "summary": "In-context learning (ICL) allows large models to adapt to tasks using a few examples, yet its extension to vision-language models (VLMs) remains fragile. Our analysis reveals that the fundamental limitation lies in an inductive gap, models often produce correct answers from flawed reasoning, while s"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.01742v1",
+    "title": "Joint Architecture-Token-Bitwidth Multi-Axis Optimization of Vision Transformers for Semiconductor IC Packaging",
+    "published": "2026-05-03",
+    "summary": "Vision Transformers (ViTs) have achieved strong performance in visual recognition, yet their deployment in resource-constrained industrial environments remains limited. Some main challenges are their high computational cost, memory requirement, and energy consumption. While individual efficiency tec"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.23717v1",
+    "title": "HeadRouter: Dynamic Head-Weight Routing for Task-Adaptive Audio Token Pruning in Large Audio Language Models",
+    "published": "2026-04-26",
+    "summary": "Recent large audio language models (LALMs) demonstrate remarkable capabilities in processing extended multi-modal sequences, yet incur high inference costs. Token compression is an effective method that directly reduces redundant tokens in the sequence. Existing compression methods usually assume th"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.20267v1",
+    "title": "ATIR: Towards Audio-Text Interleaved Contextual Retrieval",
+    "published": "2026-04-22",
+    "summary": "Audio carries richer information than text, including emotion, speaker traits, and environmental context, while also enabling lower-latency processing compared to speech-to-text pipelines. However, recent multimodal information retrieval research has predominantly focused on images, largely overlook"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.17087v1",
+    "title": "EvoComp: Learning Visual Token Compression for Multimodal Large Language Models via Semantic-Guided Evolutionary Labeling",
+    "published": "2026-04-18",
+    "summary": "Recent Multimodal Large Language Models (MLLMs) have demonstrated strong performance on vision-language understanding tasks, yet their inference efficiency is often hampered by the large number of visual tokens, particularly in high-resolution or multi-image scenarios. To address this issue, we prop"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.15153v2",
+    "title": "Compressing Sequences in the Latent Embedding Space: $K$-Token Merging for Large Language Models",
+    "published": "2026-04-16",
+    "summary": "Large Language Models (LLMs) incur significant computational and memory costs when processing long prompts, as full self-attention scales quadratically with input length. Token compression aims to address this challenge by reducing the number of tokens representing inputs. However, existing prompt-c"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.14563v1",
+    "title": "Revisiting Token Compression for Accelerating ViT-based Sparse Multi-View 3D Object Detectors",
+    "published": "2026-04-16",
+    "summary": "Vision Transformer (ViT)-based sparse multi-view 3D object detectors have achieved remarkable accuracy but still suffer from high inference latency due to heavy token processing. To accelerate these models, token compression has been widely explored. However, our revisit of existing strategies, such"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.14149v2",
+    "title": "One Token per Highly Selective Frame: Towards Extreme Compression for Long Video Understanding",
+    "published": "2026-04-15",
+    "summary": "Long video understanding is inherently challenging for vision-language models (VLMs) because of the extensive number of frames. With each video frame typically expanding into tens or hundreds of tokens, the limited context length of large language models (LLMs) forces the VLMs to perceive the frames"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.13565v1",
+    "title": "UHR-BAT: Budget-Aware Token Compression Vision-Language model for Ultra-High-Resolution Remote Sensing",
+    "published": "2026-04-15",
+    "summary": "Ultra-high-resolution (UHR) remote sensing imagery couples kilometer-scale context with query-critical evidence that may occupy only a few pixels. Such vast spatial scale leads to a quadratic explosion of visual tokens and hinders the extraction of information from small objects. Previous works util"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.13432v1",
+    "title": "MaMe & MaRe: Matrix-Based Token Merging and Restoration for Efficient Visual Perception and Synthesis",
+    "published": "2026-04-15",
+    "summary": "Token compression is crucial for mitigating the quadratic complexity of self-attention mechanisms in Vision Transformers (ViTs), which often involve numerous input tokens. Existing methods, such as ToMe, rely on GPU-inefficient operations (e.g., sorting, scattered writes), introducing overheads that"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.11122v1",
+    "title": "Semantic-Geometric Dual Compression: Training-Free Visual Token Reduction for Ultra-High-Resolution Remote Sensing Understanding",
+    "published": "2026-04-13",
+    "summary": "Multimodal Large Language Models (MLLMs) have demonstrated immense potential in Earth observation. However, the massive visual tokens generated when processing Ultra-High-Resolution (UHR) imagery introduce prohibitive computational overhead, severely bottlenecking their inference efficiency. Existin"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.09442v1",
+    "title": "UIPress: Bringing Optical Token Compression to UI-to-Code Generation",
+    "published": "2026-04-10",
+    "summary": "UI-to-Code generation requires vision-language models (VLMs) to produce thousands of tokens of structured HTML/CSS from a single screenshot, making visual token efficiency critical. Existing compression methods either select tokens at inference time using task-agnostic heuristics, or zero out low-at"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.08933v1",
+    "title": "IAT: Instance-As-Token Compression for Historical User Sequence Modeling in Industrial Recommender Systems",
+    "published": "2026-04-10",
+    "summary": "Although sophisticated sequence modeling paradigms have achieved remarkable success in recommender systems, the information capacity of hand-crafted sequential features constrains the performance upper bound. To better enhance user experience by encoding historical interaction patterns, this paper p"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.03414v1",
+    "title": "KiToke: Kernel-based Interval-aware Token Compression for Video Large Language Models",
+    "published": "2026-04-03",
+    "summary": "Video Large Language Models (Video LLMs) achieve strong performance on video understanding tasks but suffer from high inference costs due to the large number of visual tokens. We propose KiToke, a training-free, query-agnostic token compression approach that reduces spatiotemporal redundancy while p"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.02492v1",
+    "title": "Token-Efficient Multimodal Reasoning via Image Prompt Packaging",
+    "published": "2026-04-02",
+    "summary": "Deploying large multimodal language models at scale is constrained by token-based inference costs, yet the cost-performance behavior of visual prompting strategies remains poorly characterized. We introduce Image Prompt Packaging (IPPg), a prompting paradigm that embeds structured text directly into"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.27960v2",
+    "title": "Towards Efficient Large Vision-Language Models: A Comprehensive Survey on Inference Strategies",
+    "published": "2026-03-30",
+    "summary": "Although Large Vision Language Models (LVLMs) have demonstrated impressive multimodal reasoning capabilities, their scalability and deployment are constrained by massive computational requirements. In particular, the massive amount of visual tokens from high-resolution input data aggravates the situ"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.27650v1",
+    "title": "V-CAST: Video Curvature-Aware Spatio-Temporal Pruning for Efficient Video Large Language Models",
+    "published": "2026-03-29",
+    "summary": "Video large language models (VideoLLMs) show strong capability in video understanding, yet long-context inference is still dominated by massive redundant visual tokens in the prefill stage. We revisit token compression for VideoLLMs under a tight budget and identify a key bottleneck, namely insuffic"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.26365v1",
+    "title": "Dynamic Token Compression for Efficient Video Understanding through Reinforcement Learning",
+    "published": "2026-03-27",
+    "summary": "Multimodal Large Language Models have demonstrated remarkable capabilities in video understanding, yet face prohibitive computational costs and performance degradation from ''context rot'' due to massive visual token redundancy. Existing compression strategies typically rely on heuristics or fixed t"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.25155v1",
+    "title": "Photon: Speedup Volume Understanding with Efficient Multimodal Large Language Models",
+    "published": "2026-03-26",
+    "summary": "Multimodal large language models are promising for clinical visual question answering tasks, but scaling to 3D imaging is hindered by high computational costs. Prior methods often rely on 2D slices or fixed-length token compression, disrupting volumetric continuity and obscuring subtle findings. We "
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.22911v2",
+    "title": "ForestPrune: High-ratio Visual Token Compression for Video Multimodal Large Language Models via Spatial-Temporal Forest Modeling",
+    "published": "2026-03-24",
+    "summary": "Due to the great saving of computation and memory overhead, token compression has become a research hot-spot for MLLMs and achieved remarkable progress in image-language tasks. However, for the video, existing methods still fall short of high-ratio token compression. We attribute this shortcoming to"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.21957v1",
+    "title": "Unified Spatiotemporal Token Compression for Video-LLMs at Ultra-Low Retention",
+    "published": "2026-03-23",
+    "summary": "Video large language models (Video-LLMs) face high computational costs due to large volumes of visual tokens. Existing token compression methods typically adopt a two-stage spatiotemporal compression strategy, relying on stage-specific metrics and an implicit assumption of spatiotemporal separabilit"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.21232v1",
+    "title": "QMoP: Query Guided Mixture-of-Projector for Efficient Visual Token Compression",
+    "published": "2026-03-22",
+    "summary": "Multimodal large language models suffer from severe computational and memory bottlenecks, as the number of visual tokens far exceeds that of textual tokens. While recent methods employ projector modules to align and compress visual tokens into text-aligned features, they typically depend on fixed he"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.18660v1",
+    "title": "Multimodal Model for Computational Pathology:Representation Learning and Image Compression",
+    "published": "2026-03-19",
+    "summary": "Whole slide imaging (WSI) has transformed digital pathology by enabling computational analysis of gigapixel histopathology images. Recent foundation model advances have accelerated progress in computational pathology, facilitating joint reasoning across pathology images, clinical reports, and struct"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.14892v1",
+    "title": "Balancing Saliency and Coverage: Semantic Prominence-Aware Budgeting for Visual Token Compression in VLMs",
+    "published": "2026-03-16",
+    "summary": "Large Vision-Language Models (VLMs) achieve strong multimodal understanding capabilities by leveraging high-resolution visual inputs, but the resulting large number of visual tokens creates a major computational bottleneck. Recent work mitigates this issue through visual token compression, typically"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.15685v2",
+    "title": "DASH: Dynamic Audio-Driven Semantic Chunking for Efficient Omnimodal Token Compression",
+    "published": "2026-03-15",
+    "summary": "Omnimodal large language models (OmniLLMs) jointly process audio and visual streams, but the resulting long multimodal token sequences make inference prohibitively expensive. Existing compression methods typically rely on fixed window partitioning and attention-based pruning, which overlook the piec"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.12793v1",
+    "title": "Cheers: Decoupling Patch Details from Semantic Representations Enables Unified Multimodal Comprehension and Generation",
+    "published": "2026-03-13",
+    "summary": "A recent cutting-edge topic in multimodal modeling is to unify visual comprehension and generation within a single model. However, the two tasks demand mismatched decoding regimes and visual representations, making it non-trivial to jointly optimize within a shared feature space. In this work, we pr"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.12240v1",
+    "title": "BiGain: Unified Token Compression for Joint Generation and Classification",
+    "published": "2026-03-12",
+    "summary": "Acceleration methods for diffusion models (e.g., token merging or downsampling) typically optimize synthesis quality under reduced compute, yet often ignore discriminative capacity. We revisit token compression with a joint objective and present BiGain, a training-free, plug-and-play framework that "
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.12208v1",
+    "title": "ForensicZip: More Tokens are Better but Not Necessary in Forensic Vision-Language Models",
+    "published": "2026-03-12",
+    "summary": "Multimodal Large Language Models (MLLMs) enable interpretable multimedia forensics by generating textual rationales for forgery detection. However, processing dense visual sequences incurs high computational costs, particularly for high-resolution images and videos. Visual token pruning is a practic"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.11846v1",
+    "title": "ZeroSense:How Vision matters in Long Context Compression",
+    "published": "2026-03-12",
+    "summary": "Recent visual-text compression (VTC) methods, typified by DeepSeek-OCR, report impressive high token compression ratios for long-context modeling tasks by leveraging text-to-image rendering. However, existing evaluation protocols heavily rely on downstream task performance. Such evaluation metrics f"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.11320v1",
+    "title": "UniCompress: Token Compression for Unified Vision-Language Understanding and Generation",
+    "published": "2026-03-11",
+    "summary": "Unified models aim to support both understanding and generation by encoding images into discrete tokens and processing them alongside text within a single autoregressive framework. This unified design offers architectural simplicity and cross-modal synergy, which facilitates shared parameterization,"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.13394v1",
+    "title": "Language-Guided Token Compression with Reinforcement Learning in Large Vision-Language Models",
+    "published": "2026-03-11",
+    "summary": "Large Vision-Language Models (LVLMs) incur substantial inference costs due to the processing of a vast number of visual tokens. Existing methods typically struggle to model progressive visual token reduction as a multi-step decision process with sequential dependencies and often rely on hand-enginee"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.10469v1",
+    "title": "DepthCache: Depth-Guided Training-Free Visual Token Merging for Vision-Language-Action Model Inference",
+    "published": "2026-03-11",
+    "summary": "Vision-Language-Action (VLA) models enable generalist robotic manipulation but suffer from high inference latency. This bottleneck stems from the massive number of visual tokens processed by large language backbones. Existing methods either prune or merge tokens uniformly, degrading the spatial reas"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.09480v2",
+    "title": "Prune Redundancy, Preserve Essence: Vision Token Compression in VLMs via Synergistic Importance-Diversity",
+    "published": "2026-03-10",
+    "summary": "Vision-language models (VLMs) face significant computational inefficiencies caused by excessive generation of visual tokens. While prior work shows that a large fraction of visual tokens are redundant, existing compression methods struggle to balance importance preservation and information diversity"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.13349v1",
+    "title": "MURE: Hierarchical Multi-Resolution Encoding via Vision-Language Models for Visual Document Retrieval",
+    "published": "2026-03-07",
+    "summary": "Visual Document Retrieval (VDR) requires representations that capture both fine-grained visual details and global document structure to ensure retrieval efficacy while maintaining computational efficiency. Existing VDR models struggle to balance effectiveness and efficiency when processing high-reso"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.02096v1",
+    "title": "FluxMem: Adaptive Hierarchical Memory for Streaming Video Understanding",
+    "published": "2026-03-02",
+    "summary": "This paper presents FluxMem, a training-free framework for efficient streaming video understanding. FluxMem adaptively compresses redundant visual memory through a hierarchical, two-stage design: (1) a Temporal Adjacency Selection (TAS) module removes redundant visual tokens across adjacent frames, "
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.01143v1",
+    "title": "TC-SSA: Token Compression via Semantic Slot Aggregation for Gigapixel Pathology Reasoning",
+    "published": "2026-03-01",
+    "summary": "The application of large vision-language models to computational pathology holds great promise for diagnostic assistants but faces a critical computational bottleneck: the gigapixel scale of Whole Slide Images (WSIs). A single WSI typically contains over 105 patches, creating sequence lengths that e"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.00578v1",
+    "title": "Draft-Thinking: Learning Efficient Reasoning in Long Chain-of-Thought LLMs",
+    "published": "2026-02-28",
+    "summary": "Long chain-of-thought~(CoT) has become a dominant paradigm for enhancing the reasoning capability of large reasoning models~(LRMs); however, the performance gains often come with a substantial increase in reasoning budget. Recent studies show that existing CoT paradigms tend to induce systematic ove"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.00155v1",
+    "title": "EfficientPosterGen: Semantic-aware Efficient Poster Generation via Token Compression and Accurate Violation Detection",
+    "published": "2026-02-25",
+    "summary": "Automated academic poster generation aims to distill lengthy research papers into concise, visually coherent presentations. Existing Multimodal Large Language Models (MLLMs) based approaches, however, suffer from three critical limitations: low information density in full-paper inputs, excessive tok"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.19870v1",
+    "title": "ApET: Approximation-Error Guided Token Compression for Efficient VLMs",
+    "published": "2026-02-23",
+    "summary": "Recent Vision-Language Models (VLMs) have demonstrated remarkable multimodal understanding capabilities, yet the redundant visual tokens incur prohibitive computational overhead and degrade inference efficiency. Prior studies typically relies on [CLS] attention or text-vision cross-attention to iden"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.19248v4",
+    "title": "No Need For Real Anomaly: MLLM Empowered Zero-Shot Video Anomaly Detection",
+    "published": "2026-02-22",
+    "summary": "The collection and detection of video anomaly data has long been a challenging problem due to its rare occurrence and spatio-temporal scarcity. Existing video anomaly detection (VAD) methods under perform in open-world scenarios. Key contributing factors include limited dataset diversity, and inadeq"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.15720v3",
+    "title": "ToaSt: Token Channel Selection and Structured Pruning for Efficient ViT",
+    "published": "2026-02-17",
+    "summary": "Vision Transformers (ViTs) have achieved remarkable success across various vision tasks, yet their deployment is often hindered by prohibitive computational costs. While structured weight pruning and token compression have emerged as promising solutions, they suffer from prolonged retraining and int"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.13738v1",
+    "title": "OneLatent: Single-Token Compression for Visual Latent Reasoning",
+    "published": "2026-02-14",
+    "summary": "Chain-of-thought (CoT) prompting improves reasoning but often increases inference cost by one to two orders of magnitude. To address these challenges, we present \\textbf{OneLatent}, a framework that compresses intermediate reasoning into a single latent token via supervision from rendered CoT images"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.05275v2",
+    "title": "Magic-MM-Embedding: Towards Visual-Token-Efficient Universal Multimodal Embedding with MLLMs",
+    "published": "2026-02-05",
+    "summary": "Multimodal Large Language Models (MLLMs) have shown immense promise in universal multimodal retrieval, which aims to find relevant items of various modalities for a given query. However, their practical application is often hindered by the substantial computational cost incurred from processing a la"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.04804v2",
+    "title": "OmniSIFT: Modality-Asymmetric Token Compression for Efficient Omni-modal Large Language Models",
+    "published": "2026-02-04",
+    "summary": "Omni-modal Large Language Models (Omni-LLMs) have demonstrated strong capabilities in audio-video understanding tasks. However, their reliance on long multimodal token sequences leads to substantial computational overhead. Despite this challenge, token compression methods designed for Omni-LLMs rema"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.04657v3",
+    "title": "TRIO: Token Reduction via Inference-Objective Guidance for Efficient Vision-Language Models",
+    "published": "2026-02-04",
+    "summary": "Recently, reducing redundant visual tokens in vision-language models (VLMs) to accelerate VLM inference has emerged as a hot topic. However, most existing methods rely on heuristics constructed based on inter-visual-token similarity or cross-modal visual-text similarity, which gives rise to certain "
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.04912v1",
+    "title": "Atomic Information Flow: A Network Flow Model for Tool Attributions in RAG Systems",
+    "published": "2026-02-04",
+    "summary": "Many tool-based Retrieval Augmented Generation (RAG) systems lack precise mechanisms for tracing final responses back to specific tool components -- a critical gap as systems scale to complex multi-agent architectures. We present \\textbf{Atomic Information Flow (AIF)}, a graph-based network flow mod"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.01649v2",
+    "title": "Contribution-aware Token Compression for Efficient Video Understanding via Reinforcement Learning",
+    "published": "2026-02-02",
+    "summary": "Video large language models have demonstrated remarkable capabilities in video understanding tasks. However, the redundancy of video tokens introduces significant computational overhead during inference, limiting their practical deployment. Many compression algorithms are proposed to prioritize reta"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.22674v3",
+    "title": "VisionTrim: Unified Vision Token Compression for Training-Free MLLM Acceleration",
+    "published": "2026-01-30",
+    "summary": "Multimodal large language models (MLLMs) suffer from high computational costs due to excessive visual tokens, particularly in high-resolution and video-based scenarios. Existing token reduction methods typically focus on isolated pipeline components and often neglect textual alignment, leading to pe"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.22069v2",
+    "title": "VTC-R1: Vision-Text Compression for Efficient Long-Context Reasoning",
+    "published": "2026-01-29",
+    "summary": "Long-context reasoning has significantly empowered large language models (LLMs) to tackle complex tasks, yet it introduces severe efficiency bottlenecks due to the computational complexity. Existing efficient approaches often rely on complex additional training or external models for compression, wh"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.21665v1",
+    "title": "AdaptBPE: From General Purpose to Specialized Tokenizers",
+    "published": "2026-01-29",
+    "summary": "Subword tokenization methods, such as Byte-Pair Encoding (BPE), significantly impact the performance and efficiency of large language models (LLMs). The standard approach involves training a general-purpose tokenizer that uniformly processes all textual data during both training and inference. Howev"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.21531v2",
+    "title": "On the Adversarial Robustness of Large Vision-Language Models under Visual Token Compression",
+    "published": "2026-01-29",
+    "summary": "Visual token compression is widely used to accelerate large vision-language models (LVLMs) by pruning or merging visual tokens, yet its adversarial robustness remains unexplored. We show that existing encoder-based attacks cannot fully disclose the robustness vulnerabilities of compressed LVLMs, due"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.14750v4",
+    "title": "Render-of-Thought: Rendering Textual Chain-of-Thought as Images for Visual Latent Reasoning",
+    "published": "2026-01-21",
+    "summary": "Chain-of-Thought (CoT) prompting has achieved remarkable success in unlocking the reasoning capabilities of Large Language Models (LLMs). Although CoT prompting enhances reasoning, its verbosity imposes substantial computational overhead. Recent works often focus exclusively on outcome alignment and"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.13879v4",
+    "title": "Chain-of-Thought Compression Should Not Be Blind: V-Skip for Efficient Multimodal Reasoning via Dual-Path Anchoring",
+    "published": "2026-01-20",
+    "summary": "While Chain-of-Thought (CoT) reasoning significantly enhances the performance of Multimodal Large Language Models (MLLMs), its autoregressive nature incurs prohibitive latency constraints. Current efforts to mitigate this via token compression often fail by blindly applying text-centric metrics to m"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.13588v1",
+    "title": "TREX: Tokenizer Regression for Optimal Data Mixture",
+    "published": "2026-01-20",
+    "summary": "Building effective tokenizers for multilingual Large Language Models (LLMs) requires careful control over language-specific data mixtures. While a tokenizer's compression performance critically affects the efficiency of LLM training and inference, existing approaches rely on heuristics or costly lar"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.12042v1",
+    "title": "Less Is More -- Until It Breaks: Security Pitfalls of Vision Token Compression in Large Vision-Language Models",
+    "published": "2026-01-17",
+    "summary": "Visual token compression is widely adopted to improve the inference efficiency of Large Vision-Language Models (LVLMs), enabling their deployment in latency-sensitive and resource-constrained scenarios. However, existing work has mainly focused on efficiency and performance, while the security impli"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.11631v1",
+    "title": "Compress to Focus: Efficient Coordinate Compression for Policy Optimization in Multi-Turn GUI Agents",
+    "published": "2026-01-14",
+    "summary": "Multi-turn GUI agents enable complex task completion through sequential decision-making, but suffer from severe context inflation as interaction history accumulates. Existing strategies either sacrifice long-term context via truncation or compromise spatial structure through token pruning. In this p"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.09039v1",
+    "title": "An Information-Theoretic Perspective on LLM Tokenizers",
+    "published": "2026-01-14",
+    "summary": "Large language model (LLM) tokenizers act as structured compressors: by mapping text to discrete token sequences, they determine token count (and thus compute and context usage) and the statistical structure seen by downstream models. Despite their central role in LLM pipelines, the link between tok"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.05083v2",
+    "title": "Driving on Registers",
+    "published": "2026-01-08",
+    "summary": "We present DrivoR, a simple and efficient transformer-based architecture for end-to-end autonomous driving. Our approach builds on pretrained Vision Transformers (ViTs) and introduces camera-aware register tokens that compress multi-camera features into a compact scene representation, significantly "
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.06199v3",
+    "title": "FastSLM: Hierarchical Temporal Abstraction for Efficient Long-Form Speech Adaptation",
+    "published": "2026-01-08",
+    "summary": "Scaling Multimodal Large Language Models (MLLMs) to long-form speech is bottlenecked by the explosive growth of input tokens. Unlike images or videos, audio lacks overlapping information, making extreme 1-token compression highly susceptible to the loss of fine-grained acoustic cues. To overcome thi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.04519v1",
+    "title": "TokenSeg: Efficient 3D Medical Image Segmentation via Hierarchical Visual Token Compression",
+    "published": "2026-01-08",
+    "summary": "Three-dimensional medical image segmentation is a fundamental yet computationally demanding task due to the cubic growth of voxel processing and the redundant computation on homogeneous regions. To address these limitations, we propose \\textbf{TokenSeg}, a boundary-aware sparse token representation "
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.18747v1",
+    "title": "IPCV: Information-Preserving Compression for MLLM Visual Encoders",
+    "published": "2025-12-21",
+    "summary": "Multimodal Large Language Models (MLLMs) deliver strong vision-language performance but at high computational cost, driven by numerous visual tokens processed by the Vision Transformer (ViT) encoder. Existing token pruning strategies are inadequate: LLM-stage token pruning overlooks the ViT's overhe"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.18496v1",
+    "title": "Adaptive-VoCo: Complexity-Aware Visual Token Compression for Vision-Language Models",
+    "published": "2025-12-20",
+    "summary": "In recent years, large-scale vision-language models (VLMs) have demonstrated remarkable performance on multimodal understanding and reasoning tasks. However, handling high-dimensional visual features often incurs substantial computational and memory costs. VoCo-LLaMA alleviates this issue by compres"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.15649v2",
+    "title": "VTCBench: Can Vision-Language Models Understand Long Context with Vision-Text Compression?",
+    "published": "2025-12-17",
+    "summary": "The computational and memory overheads associated with expanding the context window of LLMs severely limit their scalability. A noteworthy solution is vision-text compression (VTC), exemplified by frameworks like DeepSeek-OCR and Glyph, which convert long texts into dense 2D visual representations, "
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.09927v1",
+    "title": "Token Expand-Merge: Training-Free Token Compression for Vision-Language-Action Models",
+    "published": "2025-12-10",
+    "summary": "Vision-Language-Action (VLA) models pretrained on large-scale multimodal datasets have emerged as powerful foundations for robotic perception and control. However, their massive scale, often billions of parameters, poses significant challenges for real-time deployment, as inference becomes computati"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.09010v1",
+    "title": "Towards Lossless Ultimate Vision Token Compression for VLMs",
+    "published": "2025-12-09",
+    "summary": "Visual language models encounter challenges in computational efficiency and latency, primarily due to the substantial redundancy in the token representations of high-resolution images and videos. Current attention/similarity-based compression algorithms suffer from either position bias or class imba"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.08240v2",
+    "title": "Hybrid Token Compression for Vision-Language Models",
+    "published": "2025-12-09",
+    "summary": "Vision-language models (VLMs) rely on hundreds of visual tokens, leading to high computational and memory costs. Existing compression methods face a trade-off: continuous compression can weaken high-level semantics, while discrete quantization may lose fine-grained appearance details. We introduce H"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.07782v2",
+    "title": "GatedFWA: Linear Flash Windowed Attention with Gated Associative Memory",
+    "published": "2025-12-08",
+    "summary": "Modern autoregressive models rely on attention, yet the Softmax full attention in Transformers scales quadratically with sequence length. Sliding Window Attention (SWA) achieves linear-time encoding/decoding by constraining the attention pattern, but under an \\textit{Associative Memory} interpretati"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.06866v1",
+    "title": "Less Is More, but Where? Dynamic Token Compression via LLM-Guided Keyframe Prior",
+    "published": "2025-12-07",
+    "summary": "Recent advances in Video Large Language Models (VLLMs) have achieved remarkable video understanding capabilities, yet face critical efficiency bottlenecks due to quadratic computational growth with lengthy visual token sequences of long videos. While existing keyframe sampling methods can improve te"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.03575v2",
+    "title": "UniComp: Rethinking Video Compression Through Informational Uniqueness",
+    "published": "2025-12-03",
+    "summary": "Distinct from attention-based compression methods, this paper presents an information uniqueness driven video compression framework, termed UniComp, which aims to maximize the information fidelity of video representations under constrained computational budgets. Starting from the information-theoret"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.00891v2",
+    "title": "Accelerating Streaming Video Large Language Models via Hierarchical Token Compression",
+    "published": "2025-11-30",
+    "summary": "Streaming Video Large Language Models (VideoLLMs) have demonstrated impressive performance across various video understanding tasks, but they face significant challenges in real-time deployment due to the high computational cost of processing dense visual tokens from continuous video streams. In str"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.21150v1",
+    "title": "LLaVA-UHD v3: Progressive Visual Compression for Efficient Native-Resolution Encoding in MLLMs",
+    "published": "2025-11-26",
+    "summary": "Visual encoding followed by token condensing has become the standard architectural paradigm in multi-modal large language models (MLLMs). Many recent MLLMs increasingly favor global native- resolution visual encoding over slice-based methods. To investigate this trend, we systematically compare thei"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.20973v1",
+    "title": "Towards Audio Token Compression in Large Audio Language Models",
+    "published": "2025-11-26",
+    "summary": "Large Audio Language Models (LALMs) demonstrate impressive performance across diverse tasks, ranging from speech recognition to general audio understanding. However, their scalability is limited by the quadratic complexity of attention and the high token rates of audio signals. These challenges make"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.18950v1",
+    "title": "Compressor-VLA: Instruction-Guided Visual Token Compression for Efficient Robotic Manipulation",
+    "published": "2025-11-24",
+    "summary": "Vision-Language-Action (VLA) models have emerged as a powerful paradigm in Embodied AI. However, the significant computational overhead of processing redundant visual tokens remains a critical bottleneck for real-time robotic deployment. While standard token pruning techniques can alleviate this, th"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.15580v3",
+    "title": "CompTrack: Information Bottleneck-Guided Low-Rank Dynamic Token Compression for Point Cloud Tracking",
+    "published": "2025-11-19",
+    "summary": "3D single object tracking (SOT) in LiDAR point clouds is a critical task in computer vision and autonomous driving. Despite great success having been achieved, the inherent sparsity of point clouds introduces a dual-redundancy challenge that limits existing trackers: (1) vast spatial redundancy from"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.14582v2",
+    "title": "OmniZip: Audio-Guided Dynamic Token Compression for Fast Omnimodal Large Language Models",
+    "published": "2025-11-18",
+    "summary": "Omnimodal large language models (OmniLLMs) have attracted increasing research attention of late towards unified audio-video understanding. However, the high computational cost of processing longer joint audio-video token sequences has become a key bottleneck. Existing token compression methods have "
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.14405v2",
+    "title": "Jasper-Token-Compression-600M Technical Report",
+    "published": "2025-11-18",
+    "summary": "This technical report presents the training methodology and evaluation results of the open-source Jasper-Token-Compression-600M model, released in November 2025. Building on previous distillation-based recipes from the English Stella and Jasper models, we successfully extend this approach to a bilin"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.14169v2",
+    "title": "AdaTok: Adaptive Token Compression with Object-Aware Representations for Efficient Multimodal LLMs",
+    "published": "2025-11-18",
+    "summary": "Multimodal Large Language Models (MLLMs) have demonstrated substantial value in unified text-image understanding and reasoning, primarily by converting images into sequences of patch-level tokens that align with their architectural paradigm. However, patch-level tokenization leads to a quadratic gro"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.14143v2",
+    "title": "SMART: Shot-Aware Multimodal Video Moment Retrieval with Audio-Enhanced MLLM",
+    "published": "2025-11-18",
+    "summary": "Video Moment Retrieval is a task in video understanding that aims to localize a specific temporal segment in an untrimmed video based on a natural language query. Despite recent progress in moment retrieval from videos using both traditional techniques and Multimodal Large Language Models (MLLM), mo"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.14072v1",
+    "title": "CORE: Compact Object-centric REpresentations as a New Paradigm for Token Merging in LVLMs",
+    "published": "2025-11-18",
+    "summary": "Large Vision-Language Models (LVLMs) usually suffer from prohibitive computational and memory costs due to the quadratic growth of visual tokens with image resolution. Existing token compression methods, while varied, often lack a high-level semantic understanding, leading to suboptimal merges, info"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.12371v1",
+    "title": "Reasoning Text-to-Video Retrieval via Digital Twin Video Representations and Large Language Models",
+    "published": "2025-11-15",
+    "summary": "The goal of text-to-video retrieval is to search large databases for relevant videos based on text queries. Existing methods have progressed to handling explicit queries where the visual content of interest is described explicitly; however, they fail with implicit queries where identifying videos re"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.10552v1",
+    "title": "URaG: Unified Retrieval and Generation in Multimodal LLMs for Efficient Long Document Understanding",
+    "published": "2025-11-13",
+    "summary": "Recent multimodal large language models (MLLMs) still struggle with long document understanding due to two fundamental challenges: information interference from abundant irrelevant content, and the quadratic computational cost of Transformer-based architectures. Existing approaches primarily fall in"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.07253v3",
+    "title": "Omni-AVSR: Towards Unified Multimodal Speech Recognition with Large Language Models",
+    "published": "2025-11-10",
+    "summary": "Large language models (LLMs) have recently achieved impressive results in speech recognition across multiple modalities, including Auditory Speech Recognition (ASR), Visual Speech Recognition (VSR), and Audio-Visual Speech Recognition (AVSR). Despite this progress, current LLM-based approaches typic"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.02650v2",
+    "title": "Can Visual Input Be Compressed? A Visual Token Compression Benchmark for Large Multimodal Models",
+    "published": "2025-11-04",
+    "summary": "Large multimodal models (LMMs) often suffer from severe inference inefficiency due to the large number of visual tokens introduced by image encoders. While recent token compression methods, such as pruning and merging, have shown promise in reducing redundancy, their evaluation remains fragmented an"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.00141v2",
+    "title": "FLoC: Facility Location-Based Efficient Visual Token Compression for Long Video Understanding",
+    "published": "2025-10-31",
+    "summary": "Recent studies in long video understanding have harnessed the advanced visual-language reasoning capabilities of Large Multimodal Models (LMMs), driving the evolution of video-LMMs specialized for processing extended video sequences. However, the scalability of these models is severely limited by th"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.22936v2",
+    "title": "PPE: Positional Preservation Embedding for Token Compression in Multimodal Large Language Models",
+    "published": "2025-10-27",
+    "summary": "Multimodal large language models (MLLMs) have achieved strong performance on vision-language tasks, yet often suffer from inefficiencies due to redundant visual tokens. Existing token merging methods reduce sequence length but frequently disrupt spatial layouts and temporal continuity by disregardin"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.18269v2",
+    "title": "StreamingTOM: Streaming Token Compression for Efficient Video Understanding",
+    "published": "2025-10-21",
+    "summary": "Unlike offline processing, streaming video vision-language models face two fundamental constraints: causality and accumulation. Causality prevents access to future frames that offline methods exploit, while accumulation causes tokens to grow unbounded, creating efficiency bottlenecks. However, exist"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.17800v2",
+    "title": "Glyph: Scaling Context Windows via Visual-Text Compression",
+    "published": "2025-10-20",
+    "summary": "Large language models (LLMs) increasingly rely on long-context modeling for tasks such as document understanding, code analysis, and multi-step reasoning. However, scaling context windows to the million-token level brings prohibitive computational and memory costs, limiting the practicality of long-"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.16598v2",
+    "title": "VisionSelector: End-to-End Learnable Visual Token Compression for Efficient Multimodal LLMs",
+    "published": "2025-10-18",
+    "summary": "Multimodal Large Language Models (MLLMs) encounter significant computational and memory bottlenecks from the massive number of visual tokens generated by high-resolution images or multi-image inputs. Previous token compression techniques are often constrained by heuristic rules that risk discarding "
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.07915v3",
+    "title": "MARC: Memory-Augmented RL Token Compression for Efficient Video Understanding",
+    "published": "2025-10-09",
+    "summary": "The rapid progress of large language models (LLMs) has laid the foundation for multimodal models. However, visual language models (VLMs) still face heavy computational costs when extended from images to videos due to high frame rates and long durations. Token compression is a promising solution, yet"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.07143v3",
+    "title": "Are We Using the Right Benchmark: An Evaluation Framework for Visual Token Compression Methods",
+    "published": "2025-10-08",
+    "summary": "Recent efforts to accelerate inference in Multimodal Large Language Models (MLLMs) have largely focused on visual token compression. The effectiveness of these methods is commonly evaluated by measuring the accuracy drop on existing MLLM benchmarks before and after compression. However, these benchm"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.04136v1",
+    "title": "MoME: Mixture of Matryoshka Experts for Audio-Visual Speech Recognition",
+    "published": "2025-10-05",
+    "summary": "Large language models (LLMs) have recently shown strong potential in audio-visual speech recognition (AVSR), but their high computational demands and sensitivity to token granularity limit their practicality in resource-constrained settings. Token compression methods can reduce inference cost, but t"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.02295v2",
+    "title": "VideoNSA: Native Sparse Attention Scales Video Understanding",
+    "published": "2025-10-02",
+    "summary": "Video understanding in multimodal language models remains limited by context length: models often miss key transition frames and struggle to maintain coherence across long time scales. To address this, we adapt Native Sparse Attention (NSA) to video-language models. Our method, VideoNSA, adapts Qwen"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.00515v1",
+    "title": "Efficient Multi-modal Large Language Models via Progressive Consistency Distillation",
+    "published": "2025-10-01",
+    "summary": "Visual tokens consume substantial computational resources in multi-modal large models (MLLMs), significantly compromising their efficiency. Recent works have attempted to improve efficiency by compressing visual tokens during training, either through modifications to model components or by introduci"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.24871v1",
+    "title": "StreamForest: Efficient Online Video Understanding with Persistent Event Memory",
+    "published": "2025-09-29",
+    "summary": "Multimodal Large Language Models (MLLMs) have recently achieved remarkable progress in video understanding. However, their effectiveness in real-time streaming scenarios remains limited due to storage constraints of historical visual features and insufficient real-time spatiotemporal reasoning. To a"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.19244v3",
+    "title": "Lavida-O: Elastic Large Masked Diffusion Models for Unified Multimodal Understanding and Generation",
+    "published": "2025-09-23",
+    "summary": "We propose Lavida-O, a unified Masked Diffusion Model (MDM) for multimodal understanding and generation. Unlike existing multimodal MDMs such as MMaDa and Muddit which only support simple image-level understanding tasks and low-resolution image generation, Lavida-O presents a single framework that e"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.19191v2",
+    "title": "Reading Images Like Texts: Sequential Image Understanding in Vision-Language Models",
+    "published": "2025-09-23",
+    "summary": "Vision-Language Models (VLMs) have demonstrated remarkable performance across a variety of real-world tasks. However, existing VLMs typically process visual information by serializing images, a method that diverges significantly from the parallel nature of human vision. Moreover, their opaque intern"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.12159v2",
+    "title": "EfficientUICoder: A Bidirectional Token Compression Framework for Efficient MLLM-Based UI Code Generation",
+    "published": "2025-09-15",
+    "summary": "Multimodal Large Language Models have demonstrated exceptional performance in UI2Code tasks, significantly enhancing website development efficiency. However, these tasks incur substantially higher computational overhead than traditional code generation due to the large number of input image tokens a"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.01552v2",
+    "title": "Variation-aware Vision Token Dropping for Faster Large Vision-Language Models",
+    "published": "2025-09-01",
+    "summary": "Large vision-language models (LVLMs) have demonstrated remarkable capabilities in multimodal understanding tasks. However, the increasing demand for high-resolution image and long-video understanding results in substantial token counts, consequently leading to reduced inference efficiency. Token com"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.01221v2",
+    "title": "DaMoC: Efficiently Selecting the Optimal Large Language Model for Fine-tuning Domain Tasks Based on Data and Model Compression",
+    "published": "2025-09-01",
+    "summary": "Large language models (LLMs) excel in general tasks but struggle with domain-specific ones, requiring fine-tuning with specific data. With many open-source LLMs available, selecting the best model for fine-tuning downstream tasks is challenging, primarily focusing on how to quickly identify the opti"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.00969v2",
+    "title": "Seeing More, Saying More: Lightweight Language Experts are Dynamic Video Token Compressors",
+    "published": "2025-08-31",
+    "summary": "Recent advancements in large video-language models have revolutionized video understanding tasks. However, their efficiency is significantly constrained by processing high volumes of visual tokens. Existing token compression strategies apply a fixed compression ratio, ignoring the variability in sem"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.13460v1",
+    "title": "Revisiting MLLM Token Technology through the Lens of Classical Visual Coding",
+    "published": "2025-08-19",
+    "summary": "Classical visual coding and Multimodal Large Language Model (MLLM) token technology share the core objective - maximizing information fidelity while minimizing computational cost. Therefore, this paper reexamines MLLM token technology, including tokenization, token compression, and token reasoning, "
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.10974v2",
+    "title": "Failures to Surface Harmful Contents in Video Large Language Models",
+    "published": "2025-08-14",
+    "summary": "Video Large Language Models (VideoLLMs) are increasingly deployed on numerous critical applications, where users rely on auto-generated summaries while casually skimming the video stream. We show that this interaction hides a critical safety gap: if harmful content is embedded in a video, either as "
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.10552v1",
+    "title": "When Language Overrules: Revealing Text Dominance in Multimodal Large Language Models",
+    "published": "2025-08-14",
+    "summary": "Multimodal Large Language Models (MLLMs) have demonstrated remarkable capabilities across a diverse range of multimodal tasks. However, these models suffer from a core problem known as text dominance: they depend heavily on text for their inference, while underutilizing other modalities. While prior"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.09857v1",
+    "title": "OneVAE: Joint Discrete and Continuous Optimization Helps Discrete Video VAE Train Better",
+    "published": "2025-08-13",
+    "summary": "Encoding videos into discrete tokens could align with text tokens to facilitate concise and unified multi-modal LLMs, yet introducing significant spatiotemporal compression compared to continuous video representation. Previous discrete video VAEs experienced unstable training, long training time, an"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.06621v1",
+    "title": "Train It and Forget It: Merge Lists are Unnecessary for BPE Inference in Language Models",
+    "published": "2025-08-08",
+    "summary": "Standard Byte-Pair Encoding (BPE) tokenization compresses text by pairing a learned token vocabulary with a detailed merge list. Recent work has shown that this merge list exposes a potential attack surface for extracting information about language model's training data. In this paper, we explore th"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.06038v3",
+    "title": "Fourier Compressor: Frequency-Domain Visual Token Compression for Vision-Language Models",
+    "published": "2025-08-08",
+    "summary": "Vision-Language Models (VLMs) incur substantial computational overhead and inference latency due to the large number of vision tokens introduced by high-resolution image and video inputs. Existing parameter-free token compression methods typically rely on token selection or merging, yet they risk di"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.04058v1",
+    "title": "TCSAFormer: Efficient Vision Transformer with Token Compression and Sparse Attention for Medical Image Segmentation",
+    "published": "2025-08-06",
+    "summary": "In recent years, transformer-based methods have achieved remarkable progress in medical image segmentation due to their superior ability to capture long-range dependencies. However, these methods typically suffer from two major limitations. First, their computational complexity scales quadratically "
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.02134v1",
+    "title": "Free-MoRef: Instantly Multiplexing Context Perception Capabilities of Video-MLLMs within Single Inference",
+    "published": "2025-08-04",
+    "summary": "Video Multimodal Large Language Models~(Video-MLLM) have achieved remarkable advancements in video understanding tasks. However, constrained by the context length limitation in the underlying LLMs, existing Video-MLLMs typically exhibit suboptimal performance on long video scenarios. To understand e"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.01548v1",
+    "title": "A Glimpse to Compress: Dynamic Visual Token Pruning for Large Vision-Language Models",
+    "published": "2025-08-03",
+    "summary": "Visual token compression is critical for Large Vision-Language Models (LVLMs) to efficiently process high-resolution inputs. Existing methods that typically adopt fixed compression ratios cannot adapt to scenes of varying complexity, often causing imprecise pruning that discards informative visual t"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.00367v1",
+    "title": "Representation Shift: Unifying Token Compression with FlashAttention",
+    "published": "2025-08-01",
+    "summary": "Transformers have demonstrated remarkable success across vision, language, and video. Yet, increasing task complexity has led to larger models and more tokens, raising the quadratic cost of self-attention and the overhead of GPU memory access. To reduce the computation cost of self-attention, prior "
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.20198v5",
+    "title": "A Survey of Token Compression for Efficient Multimodal Large Language Models",
+    "published": "2025-07-27",
+    "summary": "Multimodal large language models (MLLMs) have made remarkable strides, largely driven by their ability to process increasingly long and complex contexts, such as high-resolution images, extended video sequences, and lengthy audio input. While this ability significantly enhances MLLM capabilities, it"
+  }
+]

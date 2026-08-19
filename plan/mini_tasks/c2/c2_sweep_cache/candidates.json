@@ -1,0 +1,1703 @@
+[
+  {
+    "id": "2606.13839",
+    "title": "Explaining RhythmFormer: A Systematic XAI Analysis of Periodic Sparse Attention for Remote Photoplethysmography",
+    "published": "2026-06-11",
+    "summary": "Remote photoplethysmography (rPPG) transformers achieve low heart-rate error on benchmarks, yet their decisions remain opaque--a growing concern as rPPG moves toward clinical heart rate estimation. Existing rPPG XAI is dominated by qualitative heatmap inspection without quantitative faithfulness met",
+    "family": "Routing",
+    "source": "sweep0,1,3",
+    "note": ""
+  },
+  {
+    "id": "2602.21009",
+    "title": "HiSAC: Hierarchical Sparse Activation Compression for Ultra-long Sequence Modeling in Recommenders",
+    "published": "2026-02-24",
+    "summary": "Modern recommender systems leverage ultra-long user behavior sequences to capture dynamic preferences, but end-to-end modeling is infeasible in production due to latency and memory constraints. While summarizing history via interest centers offers a practical alternative, existing methods struggle t",
+    "family": "Both",
+    "source": "sweep0,1",
+    "note": ""
+  },
+  {
+    "id": "2512.22214",
+    "title": "Signal-SGN++: Topology-Enhanced Time-Frequency Spiking Graph Network for Skeleton-Based Action Recognition",
+    "published": "2025-12-22",
+    "summary": "Graph Convolutional Networks (GCNs) demonstrate strong capability in modeling skeletal topology for action recognition, yet their dense floating-point computations incur high energy costs. Spiking Neural Networks (SNNs), characterized by event-driven and sparse activation, offer energy efficiency bu",
+    "family": "other",
+    "source": "sweep0,1",
+    "note": ""
+  },
+  {
+    "id": "2509.22854",
+    "title": "Train Once, Reuse Everywhere: Generalizable Implicit In-Context Learning by Routing Attention",
+    "published": "2025-09-26",
+    "summary": "Implicit in-context learning (ICL) has newly emerged as a promising paradigm that simulates ICL behaviors in the representation space of large language models (LLMs), aiming to attain few-shot performance at zero-shot cost. However, existing approaches largely rely on injecting shift vectors into re",
+    "family": "Routing",
+    "source": "sweep0,1",
+    "note": ""
+  },
+  {
+    "id": "2410.22649",
+    "title": "WaveRoRA: Wavelet Rotary Route Attention for Multivariate Time Series Forecasting",
+    "published": "2024-10-30",
+    "summary": "In recent years, Transformer-based models (Transformers) have achieved significant success in multivariate time series forecasting (MTSF). However, previous works focus on extracting features either from the time domain or the frequency domain, which inadequately captures the trends and periodic cha",
+    "family": "Routing",
+    "source": "sweep0,1",
+    "note": ""
+  },
+  {
+    "id": "2607.23054",
+    "title": "Through the Bottleneck: How Multi-head Latent Attention Separates Content from Position in Language Models",
+    "published": "2026-07-25",
+    "summary": "Multi-head Latent Attention (MLA), introduced in DeepSeek-V2, compresses key-value pairs through a shared low-rank bottleneck (cKV), achieving 81% KV-cache reduction during inference. Despite its adoption in massive production models, no prior work has studied what information this bottleneck preser",
+    "family": "other",
+    "source": "sweep2",
+    "note": ""
+  },
+  {
+    "id": "2604.06473",
+    "title": "MICA: Multivariate Infini Compressive Attention for Time Series Forecasting",
+    "published": "2026-04-07",
+    "summary": "Multivariate forecasting with Transformers faces a core scalability challenge: modeling cross-channel dependencies via attention compounds attention's quadratic sequence complexity with quadratic channel scaling, making full cross-channel attention impractical for high-dimensional time series. We pr",
+    "family": "Both",
+    "source": "sweep2,8",
+    "note": ""
+  },
+  {
+    "id": "2511.14694",
+    "title": "Near-Lossless Model Compression Enables Longer Context Inference in DNA Large Language Models",
+    "published": "2025-11-18",
+    "summary": "Trained on massive cross-species DNA corpora, DNA large language models (LLMs) learn the fundamental \"grammar\" and evolutionary patterns of genomic sequences. This makes them powerful priors for DNA sequence modeling, particularly over long ranges. However, two major constraints hinder their use in ",
+    "family": "KVcomp",
+    "source": "sweep2",
+    "note": ""
+  },
+  {
+    "id": "2608.07009",
+    "title": "HiSparse: Scaling Sparse-Attention Decoding with Hierarchical KV Cache Management",
+    "published": "2026-08-07",
+    "summary": "Top-k sparse attention makes long-context LLM decoding cheap to compute: each step reads only a few thousand selected KV entries rather than the full context. Serving systems, however, typically keep the entire KV cache in GPU HBM so that every position stays selectable, so a request's memory bill s",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2608.06849",
+    "title": "Autonomy-of-Heads: Data-Free Sparse Attention from Frozen Query-Key Geometry",
+    "published": "2026-08-07",
+    "summary": "Long-context LLM inference is bottlenecked by quadratic attention computation and growing KV-cache costs. Existing sparse attention and KV-compression methods typically decide which tokens or heads to preserve from runtime attention scores, observation windows, calibration prompts, or learned gates,",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2608.04405",
+    "title": "Training-Free Hashing-Based Attention via Binary Principal Components",
+    "published": "2026-08-05",
+    "summary": "Long-context large language models (LLMs) are increasingly deployed in real-world applications, yet self-attention remains a major efficiency bottleneck -- especially during decoding -- due to the necessity of repeatedly processing ever-growing key-value (KV) caches. Existing sparse attention reduce",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2608.03555",
+    "title": "Heterogeneous LLM Serving with General-Purpose Processing-Near-Memory for Retrieval-Based Sparse Attention",
+    "published": "2026-08-04",
+    "summary": "This paper presents a heterogeneous decode-phase serving system that relocates the KV cache out of GPU memory, motivated by the retrieval-based sparse attention that recent frontier LLMs adopt to serve million-token contexts. It partitions a decode step by operation type: GPU nodes hold the model we",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2608.01676",
+    "title": "Understanding Sparse Attention Selectivity in Long-Context Foundation Models via Counterfactual Evaluation",
+    "published": "2026-08-03",
+    "summary": "Sparse attention is widely deployed in long-context serving stacks, yet no framework audits how discarding blocks changes the influence of specific content on model output. We first establish that the phenomenon is real and causal: Block Sparse Flash Attention (BSFA) route replay across four archite",
+    "family": "Routing",
+    "source": "sweep3,5",
+    "note": ""
+  },
+  {
+    "id": "2608.01662",
+    "title": "LongCat Sparse Attention: Taming the Lightning via Streaming-aware Hierarchical Cross-Layer Indexing",
+    "published": "2026-08-03",
+    "summary": "DeepSeek Sparse Attention (DSA) enables efficient long-context modeling through its Lightning Indexer. However, practical deployment remains constrained by the indexer's expensive $O(L^2)$ scoring overhead and the hardware-inefficient, discontinuous memory-access patterns induced by its outputs. To ",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2607.27692",
+    "title": "Recall Before You Rank: Similarity-Guided Top-$K$ Reuse for Efficient Long-Context Attention",
+    "published": "2026-07-30",
+    "summary": "Top-$K$ sparse attention reduces the cost of Softmax and value aggregation by attending to only a small subset of key--value (KV) entries. However, identifying this subset still requires scoring the current query against the full KV cache and performing global Top-$K$ selection, leaving selector cos",
+    "family": "Routing",
+    "source": "sweep3,4",
+    "note": ""
+  },
+  {
+    "id": "2607.25291",
+    "title": "CoSA: Accelerating Long-Context Inference via Proxy-Kernel Co-Designed Sparse Attention",
+    "published": "2026-07-28",
+    "summary": "The quadratic cost of self-attention makes long-context inference prohibitively expensive, and proxy-based block-sparse attention has become a practical remedy. Existing methods typically rely on a proxy to predict a binary sparse mask and a kernel to consume this mask and perform sparse attention c",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2607.24593",
+    "title": "PIVOT: Efficient Query-Group Indexing for Token-Level Sparse Attention",
+    "published": "2026-07-27",
+    "summary": "Token-level sparse attention, as implemented by DeepSeek Sparse Attention (DSA) in production systems, makes the downstream attention efficient but shifts the bottleneck to the indexer that feeds it. To select the top-k tokens for each query, the indexer must still score every preceding token, incur",
+    "family": "KVcomp",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2607.21927",
+    "title": "RIS-Kernel: A Model-Agnostic Architecture for Long-Context LLM Inference via Sparse Attention",
+    "published": "2026-07-24",
+    "summary": "Full self-attention in large language models scales as O(N^2), which limits long-context document analysis to 65,536 tokens and requires costly GPU clusters. The Reduced Interaction Sampling (RIS) inference engine addresses this constraint as a model-agnostic architecture. Without modifying weights,",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2607.21752",
+    "title": "Parameter-free Adaptive Sparse Attention via Compression-Based Content Selection",
+    "published": "2026-07-23",
+    "summary": "Data-adaptive sparse attention masks substantially outperform fixed patterns (e.g., BigBird and Longformer) and can even exceed dense attention on long sequences. Existing adaptive approaches---including SBM-Transformer, Dynamic Mask Attention, and NSA---typically require additional learnable parame",
+    "family": "Both",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2607.20214",
+    "title": "ELSAA: Efficient Low-Rank and Sparse Attention Approximation for Training Transformers",
+    "published": "2026-07-22",
+    "summary": "The quadratic $N\\times N$ attention score matrix remains a central obstacle to extending Transformers to longer input lengths. Existing efficient attention methods usually reduce this bottleneck by either imposing sparsity, so that each query attends to only a small subset of keys, or by using low-r",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2607.12293",
+    "title": "Adaptive Cross-Modal Fusion with Sparse Attention for Pedestrian Crossing Intention Prediction",
+    "published": "2026-07-14",
+    "summary": "Predicting pedestrian crossing intention is a safety-critical task for autonomous driving, yet existing approaches often rely on single-modal inputs or dense multimodal fusion strategies that inadequately capture complementary visual and kinematic information while introducing redundant inter-modal ",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2607.11976",
+    "title": "LiteTopK: Exploiting the Curse of Dimensionality for a Fused Indexer-TopK Kernel in Long-Context Sparse Attention",
+    "published": "2026-07-13",
+    "summary": "Indexer-TopK, the operation to compute the scores and select the top-k candidates, is widely used by sparse attention algorithms in large language models and vector retrieval in recommendation systems and vector databases. However, existing GPU-based Indexer-TopK kernels like DeepSeek Sparse Attenti",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2607.09052",
+    "title": "COBS: Cumulant Order Block Sparse Attention",
+    "published": "2026-07-10",
+    "summary": "Block sparse attention is a hardware friendly way to alleviate the key-value (KV) cache read bottleneck in large language models (LLMs). However, it is not prevalent among leading open-weight LLMs, which rely instead on dense attention or fine-grained selection, thereby motivating our analysis. We s",
+    "family": "Routing",
+    "source": "sweep3,5",
+    "note": ""
+  },
+  {
+    "id": "2607.07724",
+    "title": "Uncertainty-gated selection for block-sparse attention",
+    "published": "2026-07-04",
+    "summary": "Block-sparse attention scales long-context language models by replacing the O(N^2) softmax with a per-query top-k selection over key blocks. This cutoff is myopic: when the k-th and (k+1)-th blocks are nearly tied in score, the selector commits without spending extra budget, and a dropped block carr",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2607.02980",
+    "title": "Hierarchical Sparse Attention Done Right: Toward Infinite Context Modeling",
+    "published": "2026-07-03",
+    "summary": "Scaling modern large language models (LLMs) to long contexts is limited by the quadratic computation cost, and poor length extrapolation of dense attention. Chunk-wise sparse attention offers a promising alternative, but all existing methods fall short of full attention because of their inaccurate c",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2606.30389",
+    "title": "Predict, Reuse, and Repair: Accelerating Dynamic Sparse Attention for Long-Context LLM Decoding",
+    "published": "2026-06-29",
+    "summary": "Dynamic sparse attention (DSA) accelerates long-context LLM decoding by attending to only the top-K KV blocks relevant to each query, but it introduces a serialized selection-to-attention dependency that emerges as a new latency bottleneck. We present PRR, a speculate-reuse-repair runtime that explo",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2606.28560",
+    "title": "Depth-Staggered Fibonacci Spacing for Sparse Attention: Static Schedules Beat Learned Dilation and Extrapolate Where Dense Attention Fails",
+    "published": "2026-06-26",
+    "summary": "We study sparse self-attention in which each query attends to a dense local window plus a set of Fibonacci-spaced offsets, with a per-layer scalar alpha that compresses or expands the spacing. Across 21 language models trained under one matched recipe (60M parameters, 512 hidden, 16 layers, 426M tok",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2606.25010",
+    "title": "Emergent Capabilities Arise Randomly from Learning Sparse Attention Patterns",
+    "published": "2026-06-23",
+    "summary": "Neural scaling laws for transformer language models predict smooth improvements in pretraining loss with increasing parameters, but downstream capabilities such as in-context learning are known to emerge abruptly past a certain model scale. In this paper, we show that emergent capabilities arise sto",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2606.22874",
+    "title": "SpotAttention: Plug-In Block-Sparse Routing for Pretrained Long-Context Transformers",
+    "published": "2026-06-22",
+    "summary": "Long contexts have become standard in pretrained LLMs, yet they remain expensive to run: prefill compute grows quadratically with sequence length, and every decode step re-reads a key-value cache that grows linearly with it. Sparse attention cuts these costs by attending only to a relevant subset of",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2606.20005",
+    "title": "StreamKL: Fast and Memory-Efficient KL Divergence for Boosting Attention Distillation",
+    "published": "2026-06-18",
+    "summary": "Attention distillation, which trains one attention distribution to match another by minimizing their Kullback-Leibler (KL) divergence, is widely used in knowledge distillation, model compression, continual learning, and sparse-attention LLM training. However, existing approaches materialize both att",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2606.19746",
+    "title": "SAC: Disaggregated KV Cache System for Sparse Attention LLMs with CXL",
+    "published": "2026-06-18",
+    "summary": "The scaling of LLMs toward long-context inference has shifted the primary serving system bottleneck from computation to memory capacity. Traditional solutions for dense attention models rely on RDMA-based disaggregated memory pools, which perform coarse-grained fetching of the entire prefix KV cache",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2606.13392",
+    "title": "MiniMax Sparse Attention",
+    "published": "2026-06-11",
+    "summary": "Ultra-long-context capability is becoming indispensable for frontier LLMs: agentic workflows, repository-scale code reasoning, and persistent memory all require the model to jointly attend over hundreds of thousands to millions of tokens, yet the quadratic cost of softmax attention makes this untena",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2606.09508",
+    "title": "From Rigid to Dynamic: Entropy-Guided Adaptive Inference for Long-Context LLMs",
+    "published": "2026-06-08",
+    "summary": "Existing sparse attention and KV cache compression methods for long-context LLM inference typically apply fixed sparsity patterns or uniform budgets across all attention heads, overlooking the substantial variation in attention behavior among heads and contexts. We observe two distinct entropy patte",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2606.09079",
+    "title": "FlashMemory-DeepSeek-V4: Lightning Index Ultra-Long Context via Lookahead Sparse Attention",
+    "published": "2026-06-08",
+    "summary": "Conventional LLMs keep the full KV cache loaded during decoding, causing a severe GPU memory bottleneck for ultra-long context serving. In this report, we propose \\textbf{Lookahead Sparse Attention (LSA)}, a novel inference paradigm powered by a Neural Memory Indexer built upon the DeepSeek-V4 archi",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2606.08446",
+    "title": "Sparrow: Sparse Rollout for Stable and Efficient Long-context RL of Large Language Models",
+    "published": "2026-06-07",
+    "summary": "Despite being powerful, reinforcement learning with verifiable rewards (RLVR) induces extremely long COT, making it computationally expensive. Since RLVR per-step cost is dominated by long-context rollout generation, sparse attention offers a promising way to accelerate dense rollout. However, spars",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2606.06467",
+    "title": "You Only Index Once: Cross-Layer Sparse Attention with Shared Routing",
+    "published": "2026-06-04",
+    "summary": "Long-context inference in modern LLMs is increasingly constrained by decoding efficiency, especially in reasoning-heavy settings where models generate long intermediate chains of thought. Existing sparse attention methods often face a practical efficiency-quality trade-off. Structured block sparse m",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2606.06453",
+    "title": "Vortex: Efficient and Programmable Sparse Attention Serving for AI Agents",
+    "published": "2026-06-04",
+    "summary": "Sparse attention is becoming increasingly important for serving large language models (LLMs) as generation lengths continue to grow. However, deploying and evaluating new sparse attention algorithms at scale remains highly engineering-intensive, slowing both human researchers and AI agents in explor",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2606.04511",
+    "title": "SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference",
+    "published": "2026-06-03",
+    "summary": "Sparse attention reduces compute and memory bandwidth for long-context LLM inference. However, two key challenges remain: (1) KV cache capacity still grows with sequence length, and offloading to CPU memory introduces a PCIe transfer bottleneck; (2) the sparse selection step itself retains $O(T^2)$ ",
+    "family": "Routing",
+    "source": "sweep3,9",
+    "note": ""
+  },
+  {
+    "id": "2606.01502",
+    "title": "Move the Query, Not the Cache: Characterizing Cross-Instance Latent Attention Redistribution Across GPU Fabrics",
+    "published": "2026-05-31",
+    "summary": "Frontier LLMs increasingly decide what a query attends to with a sparse-attention indexer that picks a few KV-cache blocks per query: attention's unit is now a small, reusable chunk. Agentic workloads hammer it: many sub-agents query one large codebase, reusing the same blocks. When that corpus outg",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2607.19358",
+    "title": "LISA: Linear-Indexed Sparse Attention for Efficient Long-Context Reasoning",
+    "published": "2026-05-29",
+    "summary": "Recent advances in long chain-of-thought reasoning models such as DeepSeek-R1 have led to increasingly longer inference context lengths under the test-time scaling paradigm. However, the O(n^2) computational complexity of standard self-attention causes inference costs to grow sharply with long seque",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.27740",
+    "title": "UNIQUE: Universal Top-k Sparse Attention for Training-free Inference and Sparsity-aware Training",
+    "published": "2026-05-26",
+    "summary": "Long-context inference in large language models (LLMs) is bottlenecked by the linear growth of the self-attention key-value (KV) cache. Top-k sparse attention alleviates this by loading only a small fraction of the KV cache, but accurately and cheaply estimating cache importance, for both training-f",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2608.14560",
+    "title": "Agentic Kernel Optimization: Generating State-of-the-Art GPU Kernels Without Hand-Written CUDA",
+    "published": "2026-05-25",
+    "summary": "We study whether general-purpose code agents can produce state-of-the-art GPU kernels without any manually written CUDA code. We investigate this question using representative workloads from FlashInfer-Bench, focusing on the Fused MoE, DSA TopK Indexer, and DSA Sparse Attention, and evaluate all gen",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.24518",
+    "title": "Grammatically-Guided Sparse Attention for Efficient and Interpretable Transformers",
+    "published": "2026-05-23",
+    "summary": "The quadratic complexity of self-attention in Transformer models remains a significant bottleneck for processing long sequences and deploying large language models efficiently. For this approach, there has been significant research into Sparse Attention, and Deepseek Sparse Attention has combined va",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.22476",
+    "title": "Structured-Sparse Attention for Entity Tracking with Subquadratic Sequence Complexity",
+    "published": "2026-05-21",
+    "summary": "Entity tracking requires maintaining and updating latent states for entities and attributes over long sequences. Recent task-specific attention operators can compress deep Transformer stacks into a few layers by performing multi-hop state propagation within a single layer, but their dense evaluation",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.19893",
+    "title": "SSV: Sparse Speculative Verification for Efficient LLM Inference",
+    "published": "2026-05-19",
+    "summary": "Speculative decoding and dynamic sparse attention are two complementary approaches for accelerating long-context LLM inference: the former amortizes target-model execution across multiple verifier queries, while the latter reduces each query's KV-cache working set. Directly combining them, however, ",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.16928",
+    "title": "Full Attention Strikes Back: Transferring Full Attention into Sparse within Hundred Training Steps",
+    "published": "2026-05-16",
+    "summary": "Long-context inference in large language models is bottlenecked by the quadratic cost of full attention. Existing efficient alternatives often rely either on native sparse training or on heuristic token eviction, creating an undesirable trade-off among efficiency, training cost, and accuracy. In thi",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.16839",
+    "title": "CompactAttention: Accelerating Chunked Prefill with Block-Union KV Selection",
+    "published": "2026-05-16",
+    "summary": "Chunked prefill has become a widely adopted serving strategy for long-context large language models, but efficient attention computation in this regime remains challenging. Existing sparse attention methods are primarily designed for one-shot prefill and do not translate efficiently to chunked prefi",
+    "family": "KVcomp",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.18865",
+    "title": "From Sparsity to Simplicity: Enabling Simpler Sequential Replacements via Sparse Attention Distillation",
+    "published": "2026-05-15",
+    "summary": "Self-attention serves as the core foundation of large-scale transformer pretraining, but its quadratic token interaction cost makes inference expensive. Replacing attention with simpler sequential modules is appealing, yet naive substitution is often lossy, especially at larger scales. This paper re",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.15508",
+    "title": "STS: Efficient Sparse Attention with Speculative Token Sparsity",
+    "published": "2026-05-15",
+    "summary": "The quadratic complexity of attention imposes severe memory and computational bottlenecks on Large Language Model (LLM) inference. This challenge is particularly acute for emerging agentic applications that require processing multi-million token sequences. We propose STS, a sparse attention mechanis",
+    "family": "KVcomp",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.12110",
+    "title": "AB-Sparse: Sparse Attention with Adaptive Block Size for Accurate and Efficient Long-Context Inference",
+    "published": "2026-05-12",
+    "summary": "As large language models scale to longer contexts, loading the growing KV cache during attention computation becomes a critical bottleneck. Previous work has shown that attention computation is dominated by a small subset of tokens. This motivates block sparse attention methods that partition the KV",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.11881",
+    "title": "Learning Subspace-Preserving Sparse Attention Graphs from Heterogeneous Multiview Data",
+    "published": "2026-05-12",
+    "summary": "The high-dimensional features extracted from large-scale unlabeled data via various pretrained models with diverse architectures are referred to as heterogeneous multiview data. Most existing unsupervised transfer learning methods fail to faithfully recover intrinsic subspace structures when exploit",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.07719",
+    "title": "An Efficient Hybrid Sparse Attention with CPU-GPU Parallelism for Long-Context Inference",
+    "published": "2026-05-08",
+    "summary": "Long-context inference increasingly operates over CPU-resident KV caches, either because decoding-time KV states exceed GPU memory capacity or because disaggregated prefill-decode systems place KV data in host memory. Although block-sparse attention reduces attention cost in this setting, sparsity a",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.07363",
+    "title": "MISA: Mixture of Indexer Sparse Attention for Long-Context LLM Inference",
+    "published": "2026-05-08",
+    "summary": "DeepSeek Sparse Attention (DSA) sets the state of the art for fine-grained inference-time sparse attention by introducing a learned token-wise indexer that scores every prefix token and selects the most relevant ones for the main attention. To remain expressive, the indexer uses many query heads (fo",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.06763",
+    "title": "Sparse Attention as a Range Searching Problem: Towards an Inference-Efficient Index for KV Cache",
+    "published": "2026-05-07",
+    "summary": "Sparse attention improves LLM inference efficiency by selecting a subset of key-value entries, but at the cost of potential accuracy degradation. In particular, omitting critical KV entries can induce substantial errors in model outputs. Existing methods typically operate under fixed or adaptive tok",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.02568",
+    "title": "StreamIndex: Memory-Bounded Compressed Sparse Attention via Streaming Top-k",
+    "published": "2026-05-04",
+    "summary": "DeepSeek-V3.2 and V4 introduce Compressed Sparse Attention (CSA): a lightning indexer (a learned scoring projection over compressed keys) scores them, the top-k are selected per query, and a sparse attention kernel reads only those. Public CSA implementations materialize a [B, S, H_I, T] FP32 score ",
+    "family": "Both",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.01910",
+    "title": "Stochastic Sparse Attention for Memory-Bound Inference",
+    "published": "2026-05-03",
+    "summary": "Autoregressive decoding becomes bandwidth-limited at long contexts, as generating each token requires reading all $n_k$ key and value vectors from KV cache. We present Stochastic Additive No-mulT Attention (SANTA), a method that sparsifies value-cache access by sampling $S \\ll n_k$ indices from the ",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2604.26837",
+    "title": "Unifying Sparse Attention with Hierarchical Memory for Scalable Long-Context LLM Serving",
+    "published": "2026-04-29",
+    "summary": "Long-context LLM serving is bottlenecked by the cost of attending over ever-growing KV caches. Dynamic sparse attention promises relief by accessing only a small, query-dependent subset of the KV state per decoding step and extending the KV storage to CPU memory. In practice, however, these algorith",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2604.24820",
+    "title": "Salca: A Sparsity-Aware Hardware Accelerator for Efficient Long-Context Attention Decoding",
+    "published": "2026-04-27",
+    "summary": "Long contexts improve capabilities of large language models but pose serious hardware challenges: compute and memory footprints grow linearly with sequence length. Particularly, the decoding phase continuously accesses massive KV cache, dramatically increasing bandwidth and computing pressure. Exist",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2605.00887",
+    "title": "SparseContrast: Dynamic Sparse Attention for Efficient and Accurate Contrastive Learning in Medical Imaging",
+    "published": "2026-04-27",
+    "summary": "We propose SparseContrast, a new framework that merges dynamic sparse attention with contrastive learning for medical imaging, with a focus on chest X-ray disease detection in low-data settings. Traditional contrastive learning methods rely on dense attention mechanisms, which are computationally ex",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2604.22312",
+    "title": "Guess-Verify-Refine: Data-Aware Top-K for Sparse-Attention Decoding on Blackwell via Temporal Correlation",
+    "published": "2026-04-24",
+    "summary": "Sparse-attention decoders rely on exact Top-K selection to choose the most important key-value entries for each query token. In long-context LLM serving, this Top-K stage runs once per decode query and becomes a meaningful latency bottleneck even when the indexer and attention kernels are already hi",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2604.20920",
+    "title": "Simplified Sparse Attention via Gist Tokens",
+    "published": "2026-04-22",
+    "summary": "Sparse attention can reduce the cost of long-context inference, but most variants introduce new architectural components. We introduce Simplified Sparse Attention (SSA), a simpler approach to sparse attention that requires no architectural changes. Concretely, we first perform continued pretraining ",
+    "family": "KVcomp",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2604.15180",
+    "title": "AdaSplash-2: Faster Differentiable Sparse Attention",
+    "published": "2026-04-16",
+    "summary": "Sparse attention has been proposed as a way to alleviate the quadratic cost of transformers, a central bottleneck in long-context training. A promising line of work is $\u03b1$-entmax attention, a differentiable sparse alternative to softmax that enables input-dependent sparsity yet has lagged behind sof",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2604.14925",
+    "title": "Improving Sparse Autoencoder with Dynamic Attention",
+    "published": "2026-04-16",
+    "summary": "Recently, sparse autoencoders (SAEs) have emerged as a promising technique for interpreting activations in foundation models by disentangling features into a sparse set of concepts. However, identifying the optimal level of sparsity for each neuron remains challenging in practice: excessive sparsity",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2604.13847",
+    "title": "SparseBalance: Load-Balanced Long Context Training with Dynamic Sparse Attention",
+    "published": "2026-04-15",
+    "summary": "While sparse attention mitigates the computational bottleneck of long-context LLM training, its distributed training process exhibits extreme heterogeneity in both \\textit{1)} sequence length and \\textit{2)} sparsity sensitivity, leading to a severe imbalance problem and sub-optimal model accuracy. ",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2604.12452",
+    "title": "Latent-Condensed Transformer for Efficient Long Context Modeling",
+    "published": "2026-04-14",
+    "summary": "Large language models (LLMs) face significant challenges in processing long contexts due to the linear growth of the key-value (KV) cache and quadratic complexity of self-attention. Existing approaches address these bottlenecks separately: Multi-head Latent Attention (MLA) reduces the KV cache by pr",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2604.07815",
+    "title": "AsyncTLS: Efficient Generative LLM Inference with Asynchronous Two-level Sparse Attention",
+    "published": "2026-04-09",
+    "summary": "Long-context inference in LLMs faces the dual challenges of quadratic attention complexity and prohibitive KV cache memory. While token-level sparse attention offers superior accuracy, its indexing overhead is costly; block-level methods improve efficiency but sacrifice precision. We propose AsyncTL",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2604.07394",
+    "title": "Flux Attention: Context-Aware Hybrid Attention for Efficient LLMs Inference",
+    "published": "2026-04-08",
+    "summary": "The quadratic computational complexity of standard attention mechanisms presents a severe scalability bottleneck for LLMs in long-context scenarios. While hybrid attention mechanisms combining Full Attention (FA) and Sparse Attention (SA) offer a potential solution, existing methods typically rely o",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2604.05182",
+    "title": "LSRM: High-Fidelity Object-Centric Reconstruction via Scaled Context Windows",
+    "published": "2026-04-06",
+    "summary": "We introduce the Large Sparse Reconstruction Model to study how scaling transformer context windows affects feed-forward 3D reconstruction. Although recent object-centric feed-forward methods produce robust, high-quality reconstructions, they still lag behind dense-view optimization in recovering fi",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2604.16429",
+    "title": "(Sparse) Attention to the Details: Preserving Spectral Fidelity in ML-based Weather Forecasting Models",
+    "published": "2026-04-06",
+    "summary": "We introduce Mosaic, a probabilistic weather forecasting model that addresses three failure modes of spectral degradation in ML-based weather prediction: spectral damping (statistical), high-frequency aliasing (architectural), and residual high-frequency leakage (parametric). Mosaic generates ensemb",
+    "family": "Routing",
+    "source": "sweep3,9",
+    "note": ""
+  },
+  {
+    "id": "2603.29002",
+    "title": "Understand and Accelerate Memory Processing Pipeline for Large Language Model Inference",
+    "published": "2026-03-30",
+    "summary": "Modern large language models (LLMs) increasingly depends on efficient long-context processing and generation mechanisms, including sparse attention, retrieval-augmented generation (RAG), and compressed contextual memory, to support complex reasoning. We show that these optimizations can be unified i",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2603.28458",
+    "title": "HISA: Efficient Hierarchical Indexing for Fine-Grained Sparse Attention",
+    "published": "2026-03-30",
+    "summary": "Token-level sparse attention mechanisms, exemplified by DeepSeek Sparse Attention (DSA), achieve fine-grained key selection by scoring every historical key for each query through a lightweight indexer, then computing attention only on the selected subset. While the downstream sparse attention itself",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2604.08584",
+    "title": "CSAttention: Centroid-Scoring Attention for Accelerating LLM Inference",
+    "published": "2026-03-30",
+    "summary": "Long-context LLMs increasingly rely on extended, reusable prefill prompts for agents and domain Q&A, pushing attention and KV-cache to become the dominant decode-time bottlenecks. While sparse attention reduces computation and transfer costs, it often struggles to maintain accuracy at high sparsity ",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2603.27138",
+    "title": "ScoutAttention: Efficient KV Cache Offloading via Layer-Ahead CPU Pre-computation for LLM Inference",
+    "published": "2026-03-28",
+    "summary": "Large language models encounter critical GPU memory capacity constraints during long-context inference, where KV cache memory consumption severely limits decode batch sizes. While existing research has explored offloading KV cache to DRAM, these approaches either demand frequent GPU-CPU data transfe",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2603.22858",
+    "title": "The Coordinate System Problem in Persistent Structural Memory for Neural Architectures",
+    "published": "2026-03-24",
+    "summary": "We introduce the Dual-View Pheromone Pathway Network (DPPN), an architecture that routes sparse attention through a persistent pheromone field over latent slot transitions, and use it to discover two independent requirements for persistent structural memory in neural networks. Through five progressi",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2603.20997",
+    "title": "When Does Content-Based Routing Work? Representation Requirements for Selective Attention in Hybrid Sequence Models",
+    "published": "2026-03-22",
+    "summary": "We identify a routing paradox in hybrid sequence models: content-based routing - deciding which tokens deserve expensive attention - requires pairwise computation, and this requirement is inescapable. Through 20+ controlled experiments across three tasks, multiple scales (200K to 1.4B parameters), a",
+    "family": "Routing",
+    "source": "sweep3,7",
+    "note": ""
+  },
+  {
+    "id": "2603.22323",
+    "title": "A Multi-Task Targeted Learning Framework for Lithium-Ion Battery State-of-Health and Remaining Useful Life",
+    "published": "2026-03-20",
+    "summary": "Accurately predicting the state-of-health (SOH) and remaining useful life (RUL) of lithium-ion batteries is crucial for ensuring the safe and efficient operation of electric vehicles while minimizing associated risks. However, current deep learning methods are limited in their ability to selectively",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2603.18712",
+    "title": "Accurate and Efficient Multi-Channel Time Series Forecasting via Sparse Attention Mechanism",
+    "published": "2026-03-19",
+    "summary": "The task of multi-channel time series forecasting is ubiquitous in numerous fields such as finance, supply chain management, and energy planning. It is critical to effectively capture complex dynamic dependencies within and between channels for accurate predictions. However, traditional method paid ",
+    "family": "Routing",
+    "source": "sweep3,9",
+    "note": ""
+  },
+  {
+    "id": "2603.18417",
+    "title": "Self-Tuning Sparse Attention: Multi-Fidelity Hyperparameter Optimization for Transformer Acceleration",
+    "published": "2026-03-19",
+    "summary": "Sparse attention mechanisms promise to break the quadratic bottleneck of long-context transformers, yet production adoption remains limited by a critical usability gap: optimal hyperparameters vary substantially across layers and models, and current methods (e.g., SpargeAttn) rely on manual grid sea",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2603.14483",
+    "title": "Disentangling Dynamical Systems: Causal Representation Learning Meets Local Sparse Attention",
+    "published": "2026-03-15",
+    "summary": "Parametric system identification methods estimate the parameters of explicitly defined physical systems from data. Yet, they remain constrained by the need to provide an explicit function space, typically through a predefined library of candidate functions chosen via available domain knowledge. In c",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2603.13430",
+    "title": "Dynamic Sparse Attention: Access Patterns and Architecture",
+    "published": "2026-03-13",
+    "summary": "Dynamic sparse attention (DSA) reduces the per-token attention bandwidth by restricting computation to a top-k subset of cached key-value (KV) entries, but its token-dependent selection pattern introduces a system-level challenge: the KV working set is fragmented, volatile, and difficult to prefetch",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2603.12201",
+    "title": "IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse",
+    "published": "2026-03-12",
+    "summary": "Long-context agentic workflows have emerged as a defining use case for large language models, making attention efficiency critical for both inference speed and serving cost. Sparse attention addresses this challenge effectively, and DeepSeek Sparse Attention (DSA) is a representative production-grad",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2603.06274",
+    "title": "Stem: Rethinking Causal Information Flow in Sparse Attention",
+    "published": "2026-03-06",
+    "summary": "The quadratic computational complexity of self-attention remains a fundamental bottleneck for scaling Large Language Models (LLMs) to long contexts, particularly during the pre-filling phase. In this paper, we rethink the causal attention mechanism from the perspective of information flow. Due to ca",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2603.06199",
+    "title": "FlashPrefill: Instantaneous Pattern Discovery and Thresholding for Ultra-Fast Long-Context Prefilling",
+    "published": "2026-03-06",
+    "summary": "Long-context modeling is a pivotal capability for Large Language Models, yet the quadratic complexity of attention remains a critical bottleneck, particularly during the compute-intensive prefilling phase. While various sparse attention mechanisms have been explored, they typically suffer from eithe",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2603.23516",
+    "title": "MSA: Memory Sparse Attention for Efficient End-to-End Memory Model Scaling to 100M Tokens",
+    "published": "2026-03-06",
+    "summary": "Long-term memory is a cornerstone of human intelligence. Enabling AI to process lifetime-scale information remains a long-standing pursuit in the field. Due to the constraints of full-attention architectures, the effective context length of large language models (LLMs) is typically limited to 1M tok",
+    "family": "KVcomp",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2602.22575",
+    "title": "S2O: Early Stopping for Sparse Attention via Online Permutation",
+    "published": "2026-02-26",
+    "summary": "Attention scales quadratically with sequence length, fundamentally limiting long-context inference. Existing block-granularity sparsification can reduce latency, but coarse blocks impose an intrinsic sparsity ceiling, making further improvements difficult even with carefully engineered designs. We p",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2602.20515",
+    "title": "FAST-Prefill: FPGA Accelerated Sparse Attention for Long Context LLM Prefill",
+    "published": "2026-02-24",
+    "summary": "In long-context large language model (LLM) inference, the prefill stage dominates computation due to self-attention over the complete input context. Sparse attention significantly reduces self-attention computation by limiting each token's interactions to a subset of tokens. The attention sparsity p",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2602.19143",
+    "title": "Incremental Learning of Sparse Attention Patterns in Transformers",
+    "published": "2026-02-22",
+    "summary": "This paper studies simple transformers trained on a high-order Markov chain, where the model must incorporate information from multiple past positions, each with different statistical importance. We show that transformers learn the task incrementally, with each stage corresponding to learning how to",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2602.13804",
+    "title": "Attention in Constant Time: Vashista Sparse Attention for Long-Context Decoding with Exponential Guarantees",
+    "published": "2026-02-14",
+    "summary": "Large language models spend most of their inference cost on attention over long contexts, yet empirical behavior suggests that only a small subset of tokens meaningfully contributes to each query. We formalize this phenomenon by modeling attention as a projection onto the convex hull of key vectors ",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2602.12204",
+    "title": "Learning to Forget Attention: Memory Consolidation for Adaptive Compute Reduction",
+    "published": "2026-02-12",
+    "summary": "Hybrid architectures combining state-space models with attention have achieved strong efficiency-quality tradeoffs, yet existing approaches either apply attention uniformly or learn static sparse patterns. This misses a key opportunity: \\emph{attention demand should decrease over time as recurring p",
+    "family": "other",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2602.11761",
+    "title": "MiniCPM-SALA: Hybridizing Sparse and Linear Attention for Efficient Long-Context Modeling",
+    "published": "2026-02-12",
+    "summary": "The evolution of large language models (LLMs) towards applications with ultra-long contexts faces challenges posed by the high computational and memory costs of the Transformer architecture. While existing sparse and linear attention mechanisms attempt to mitigate these issues, they typically involv",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2603.02227",
+    "title": "Routing Absorption in Sparse Attention: Why Random Gates Are Hard to Beat",
+    "published": "2026-02-11",
+    "summary": "Can a transformer learn which attention entries matter during training? In principle, yes: attention distributions are highly concentrated, and a small gate network can identify the important entries post-hoc with near-perfect accuracy. In practice, barely. When sparse attention is trained end-to-en",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2602.08722",
+    "title": "QUOKA: Query-Oriented KV Selection For Efficient LLM Prefill",
+    "published": "2026-02-09",
+    "summary": "We present QUOKA: Query-oriented KV selection for efficient attention, a training-free and hardware agnostic sparse attention algorithm for accelerating transformer inference under chunked prefill. While many queries focus on a smaller group of keys in the attention operator, we observe that queries",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2602.08426",
+    "title": "Prism: Spectral-Aware Block-Sparse Attention",
+    "published": "2026-02-09",
+    "summary": "Block-sparse attention is promising for accelerating long-context LLM pre-filling, yet identifying relevant blocks efficiently remains a bottleneck. Existing methods typically employ coarse-grained attention as a proxy for block importance estimation, but often resort to expensive token-level search",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2602.07397",
+    "title": "Scout Before You Attend: Sketch-and-Walk Sparse Attention for Efficient LLM Inference",
+    "published": "2026-02-07",
+    "summary": "Self-attention dominates the computational and memory cost of long-context LLM inference across both prefill and decode phases. To address this challenge, we introduce Sketch&Walk Attention, a training-free sparse attention method that determines sparsity with lightweight sketches and deterministic ",
+    "family": "Routing",
+    "source": "sweep3,4",
+    "note": ""
+  },
+  {
+    "id": "2602.07223",
+    "title": "Vegas: Self-Speculative Decoding with Verification-Guided Sparse Attention",
+    "published": "2026-02-06",
+    "summary": "Long-context large language model (LLM) inference has become the norm for today's AI applications. However, it is severely bottlenecked by the increasing memory demands of its KV cache. Previous works have shown that self-speculative decoding with sparse attention, where tokens are drafted using a s",
+    "family": "Routing",
+    "source": "sweep3",
+    "note": ""
+  },
+  {
+    "id": "2602.01219",
+    "title": "Mixture-of-Top-k Attention: Efficient Attention via Scalable Fast Weights",
+    "published": "2026-02-01",
+    "summary": "The vanilla self-attention mechanism in Transformers can be viewed as a two-layer fast-weight MLP, whose weights are dynamically induced by inputs and whose hidden dimension is equal to the sequence length $N$. As the context extends, the expressive capacity of such an $N$-width MLP increases, but i",
+    "family": "Routing",
+    "source": "sweep4",
+    "note": ""
+  },
+  {
+    "id": "2601.22766",
+    "title": "Sparse Attention as Compact Kernel Regression",
+    "published": "2026-01-30",
+    "summary": "Recent work has revealed a link between self-attention mechanisms in transformers and test-time kernel regression via the Nadaraya-Watson estimator, with standard softmax attention corresponding to a Gaussian kernel. However, a kernel-theoretic understanding of sparse attention mechanisms is current",
+    "family": "Routing",
+    "source": "sweep4",
+    "note": ""
+  },
+  {
+    "id": "2512.12301",
+    "title": "TwinFormer: A Dual-Level Transformer for Long-Sequence Time-Series Forecasting",
+    "published": "2025-12-13",
+    "summary": "TwinFormer is a hierarchical Transformer for long-sequence time-series forecasting. It divides the input into non-overlapping temporal patches and processes them in two stages: (1) a Local Informer with top-$k$ Sparse Attention models intra-patch dynamics, followed by mean pooling; (2) a Global Info",
+    "family": "other",
+    "source": "sweep4,9",
+    "note": ""
+  },
+  {
+    "id": "2512.07647",
+    "title": "A Mathematical Theory of Top-$k$ Sparse Attention via Total Variation Distance",
+    "published": "2025-12-08",
+    "summary": "We develop a unified mathematical framework for certified Top-$k$ attention truncation that quantifies approximation error at both the distribution and output levels. For a single attention distribution $P$ and its Top-$k$ truncation $\\hat P$, we show that the total-variation distance coincides with",
+    "family": "Routing",
+    "source": "sweep4",
+    "note": ""
+  },
+  {
+    "id": "2512.03494",
+    "title": "A Preliminary Study on the Promises and Challenges of Native Top-$k$ Sparse Attention",
+    "published": "2025-12-03",
+    "summary": "Large Language Models (LLMs) are increasingly prevalent in the field of long-context modeling, however, their inference computational costs have become a critical bottleneck hindering the advancement of tasks such as agents and multimodal applications. This report conducts a preliminary investigatio",
+    "family": "Routing",
+    "source": "sweep4",
+    "note": ""
+  },
+  {
+    "id": "2511.14510",
+    "title": "LiteCache: A Query Similarity-Driven, GPU-Centric KVCache Subsystem for Efficient LLM Inference",
+    "published": "2025-11-18",
+    "summary": "During LLM inference, KVCache memory usage grows linearly with sequence length and batch size and often exceeds GPU capacity. Recent proposals offload KV states to host memory and reduce transfers using top-k attention. But their CPU-centric management of the on-GPU cache and CPU-GPU data movement i",
+    "family": "other",
+    "source": "sweep4",
+    "note": ""
+  },
+  {
+    "id": "2506.02572",
+    "title": "HATA: Trainable and Hardware-Efficient Hash-Aware Top-k Attention for Scalable Large Model Inference",
+    "published": "2025-06-03",
+    "summary": "Large Language Models (LLMs) have emerged as a pivotal research area, yet the attention module remains a critical bottleneck in LLM inference, even with techniques like KVCache to mitigate redundant computations. While various top-$k$ attention mechanisms have been proposed to accelerate LLM inferen",
+    "family": "Routing",
+    "source": "sweep4",
+    "note": ""
+  },
+  {
+    "id": "2505.16950",
+    "title": "Bottlenecked Transformers: Periodic KV Cache Consolidation for Generalised Reasoning",
+    "published": "2025-05-22",
+    "summary": "Transformer LLMs have been shown to exhibit strong reasoning ability that scales with inference-time compute, most prominently through token-space \"thinking\" chains of thought. A growing line of work pushes extra computation into the model's latent space, which we term Auxiliary Latent-Space Computa",
+    "family": "other",
+    "source": "sweep4",
+    "note": ""
+  },
+  {
+    "id": "2502.14051",
+    "title": "RocketKV: Accelerating Long-Context LLM Inference via Two-Stage KV Cache Compression",
+    "published": "2025-02-19",
+    "summary": "Transformer-based Large Language Models rely critically on the KV cache to efficiently handle extended contexts during the decode phase. Yet, the size of the KV cache grows proportionally with the input length, burdening both memory bandwidth and capacity as decoding progresses. To address this chal",
+    "family": "KVcomp",
+    "source": "sweep4",
+    "note": ""
+  },
+  {
+    "id": "2501.14577",
+    "title": "ZETA: Leveraging Z-order Curves for Efficient Top-k Attention",
+    "published": "2025-01-24",
+    "summary": "Over recent years, the Transformer has become a fundamental building block for sequence modeling architectures. Yet at its core is the use of self-attention, whose memory and computational cost grow quadratically with the sequence length $N$, rendering it prohibitively expensive for long sequences. ",
+    "family": "Routing",
+    "source": "sweep4",
+    "note": ""
+  },
+  {
+    "id": "2407.02328",
+    "title": "Efficient Sparse Attention needs Adaptive Token Release",
+    "published": "2024-07-02",
+    "summary": "In recent years, Large Language Models (LLMs) have demonstrated remarkable capabilities across a wide array of text-centric tasks. However, their `large' scale introduces significant computational and storage challenges, particularly in managing the key-value states of the transformer, which limits ",
+    "family": "KVcomp",
+    "source": "sweep4",
+    "note": ""
+  },
+  {
+    "id": "2608.01075",
+    "title": "Role-Decoupled Attention Residuals: Separating Matching and Content Retrieval Across Depth",
+    "published": "2026-08-02",
+    "summary": "Depth-routing residual architectures allow Transformer layers to retrieve earlier representations instead of inheriting only the immediately preceding state. Existing Block Attention Residuals, however, use a single content-dependent depth mixture to construct the inputs to queries, keys, and values",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2606.29850",
+    "title": "Efficient Visual Pointing for Embodied AI:Agent-Driven Data Synthesis, Cross-Block Attention, and Iterative Correction",
+    "published": "2026-06-29",
+    "summary": "Visual pointing maps a language instruction to pixel co ordinates, a core skill for embodied AI. We describe our PointArena 2026 solution, which achieves 77.2% overall accuracy and ranks second on the benchmark. The ap proach targets three failure modes. First, agent-driven syn thesis builds large s",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2606.13168",
+    "title": "When Does Routing Become Interpretable? Causal Probes on Block Attention Residuals",
+    "published": "2026-06-11",
+    "summary": "Block Attention Residuals (Block AttnRes) by replace fixed additive residuals with a learned softmax over earlier depth-source representations, surfacing cross-layer routing as an inspectable tensor in the forward pass. This is a tempting interpretability target: information flow normally inferred i",
+    "family": "Routing",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2605.15913",
+    "title": "Towards Generalization of Block Attention via Automatic Segmentation and Block Distillation",
+    "published": "2026-05-15",
+    "summary": "Block attention, which processes the input as separate blocks that cannot attend to one another, offers significant potential to improve KV cache reuse in long-context scenarios such as Retrieval-Augmented Generation (RAG). However, its broader application is hindered by two key challenges: the diff",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2605.15032",
+    "title": "Multi-Block Attention for Efficient Channel Estimation in IRS-Assisted mmWave MIMO",
+    "published": "2026-05-14",
+    "summary": "Intelligent Reflecting Surfaces (IRSs) are a promising technology for enhancing the spectral and energy efficiency of millimeter-wave (mmWave) multiple-input multiple-output (MIMO) systems. In these systems, accurate channel estimation remains challenging due to the passive nature of IRS elements an",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2605.08234",
+    "title": "When Does Value-Aware KV Eviction Help? A Fixed-Contract Diagnostic for Non-Monotone Cache Compression",
+    "published": "2026-05-07",
+    "summary": "Long-context LLM inference is bottlenecked by the memory and bandwidth cost of reading large KV caches during decoding. KV compression reduces this cost by keeping only part of the cache, but task accuracy alone does not identify why a selector succeeds or fails. A selector can fail at three steps: ",
+    "family": "KVcomp",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2605.05394",
+    "title": "BARFI-Q: Quantum-Enhanced Block Attention Residual Fusion Framework for Multivariate Time-Series Forecasting in Atom Interferometry",
+    "published": "2026-05-06",
+    "summary": "Atom interferometry generates heterogeneous multivariate temporal streams governed by phase evolution, fringe dynamics, control variables, and auxiliary sensing measurements. Accurate forecasting of these signals is important for predictive monitoring, phase correction, and intelligent quantum sensi",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2605.00886",
+    "title": "Selective Attention-Based Network for Robust Infrared Small Target Detection",
+    "published": "2026-04-27",
+    "summary": "Infrared small target detection (IRSTD) plays a pivotal role in a broad spectrum of mission-critical applications, including maritime surveillance, military search and rescue, early warning systems, and precision-guided strikes, all of which demand the precise identification of dim, sub-pixel target",
+    "family": "Routing",
+    "source": "sweep5,7",
+    "note": ""
+  },
+  {
+    "id": "2604.22856",
+    "title": "Attention-Augmented YOLOv8 with Ghost Convolution for Real-Time Vehicle Detection in Intelligent Transportation Systems",
+    "published": "2026-04-22",
+    "summary": "Accurate vehicle detection is a critical component of autonomous driving, traffic surveillance, and intelligent transportation systems. This paper presents an enhanced YOLOv8n-based model that integrates the Ghost Module, Convolutional Block Attention Module (CBAM), and Deformable Convolutional Netw",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2604.16776",
+    "title": "SAVE: A Generalizable Framework for Multi-Condition Single-Cell Generation with Gene Block Attention",
+    "published": "2026-04-18",
+    "summary": "Modeling single-cell gene expression across diverse biological and technical conditions is crucial for characterizing cellular states and simulating unseen scenarios. Existing methods often treat genes as independent tokens, overlooking their high-level biological relationships and leading to poor p",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2604.00754",
+    "title": "Stochastic Attention: Connectome-Inspired Randomized Routing for Expressive Linear-Time Attention",
+    "published": "2026-04-01",
+    "summary": "The whole-brain connectome of a fruit fly comprises over 130K neurons connected with a probability of merely 0.02%, yet achieves an average shortest path of only 4.4 hops. Despite being highly structured at the circuit level, the network's long-range connections are broadly distributed across brain ",
+    "family": "Routing",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2512.12087",
+    "title": "BLASST: Dynamic BLocked Attention Sparsity via Softmax Thresholding",
+    "published": "2025-12-12",
+    "summary": "The growing demand for long-context inference capabilities in Large Language Models (LLMs) has intensified the computational and memory bottlenecks inherent to the self-attention mechanism. To address this challenge, we introduce BLASST, a drop-in, dynamic sparse attention mechanism that accelerates",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2511.11571",
+    "title": "Optimizing Mixture of Block Attention",
+    "published": "2025-11-14",
+    "summary": "Mixture of Block Attention (MoBA) (Lu et al., 2025) is a promising building block for efficiently processing long contexts in LLMs by enabling queries to sparsely attend to a small subset of key-value blocks, drastically reducing computational cost. However, the design principles governing MoBA's pe",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2510.21795",
+    "title": "Xihe: Scalable Zero-Shot Time Series Learner Via Hierarchical Interleaved Block Attention",
+    "published": "2025-10-20",
+    "summary": "The rapid advancement of time series foundation models (TSFMs) has been propelled by migrating architectures from language models. While existing TSFMs demonstrate impressive performance, their direct adoption of cross-domain architectures constrains effective capture of multiscale temporal dependen",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2506.15562",
+    "title": "Automated MRI Tumor Segmentation using hybrid U-Net with Transformer and Efficient Attention",
+    "published": "2025-06-18",
+    "summary": "Cancer is an abnormal growth with potential to invade locally and metastasize to distant organs. Accurate auto-segmentation of the tumor and surrounding normal tissues is required for radiotherapy treatment plan optimization. Recent AI-based segmentation models are generally trained on large public ",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2506.10683",
+    "title": "Enhancing Deepfake Detection using SE Block Attention with CNN",
+    "published": "2025-06-12",
+    "summary": "In the digital age, Deepfake present a formidable challenge by using advanced artificial intelligence to create highly convincing manipulated content, undermining information authenticity and security. These sophisticated fabrications surpass traditional detection methods in complexity and realism. ",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2504.16922",
+    "title": "Generalized Neighborhood Attention: Multi-dimensional Sparse Attention at the Speed of Light",
+    "published": "2025-04-23",
+    "summary": "Many sparse attention mechanisms such as Neighborhood Attention have typically failed to consistently deliver speedup over the self attention baseline. This is largely due to the level of complexity in attention infrastructure, and the rapid evolution of AI hardware architecture. At the same time, m",
+    "family": "Routing",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2504.08469",
+    "title": "Artifact detection and localization in single-channel mobile EEG for sleep research using deep learning and attention mechanisms",
+    "published": "2025-04-11",
+    "summary": "Current methods for detecting artifacts in sleep EEG range from threshold-based algorithms to machine learning approaches, yet applications remain limited for single-channel mobile EEG. We propose a convolutional neural network (CNN) model incorporating a convolutional block attention module (CNN-CB",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2502.13189",
+    "title": "MoBA: Mixture of Block Attention for Long-Context LLMs",
+    "published": "2025-02-18",
+    "summary": "Scaling the effective context length is essential for advancing large language models (LLMs) toward artificial general intelligence (AGI). However, the quadratic increase in computational complexity inherent in traditional attention mechanisms presents a prohibitive overhead. Existing approaches eit",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2410.21831",
+    "title": "Enhanced Survival Prediction in Head and Neck Cancer Using Convolutional Block Attention and Multimodal Data Fusion",
+    "published": "2024-10-29",
+    "summary": "Accurate survival prediction in head and neck cancer (HNC) is essential for guiding clinical decision-making and optimizing treatment strategies. Traditional models, such as Cox proportional hazards, have been widely used but are limited in their ability to handle complex multi-modal data. This pape",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2408.09894",
+    "title": "Preoperative Rotator Cuff Tear Prediction from Shoulder Radiographs using a Convolutional Block Attention Module-Integrated Neural Network",
+    "published": "2024-08-19",
+    "summary": "Research question: We test whether a plane shoulder radiograph can be used together with deep learning methods to identify patients with rotator cuff tears as opposed to using an MRI in standard of care. Findings: By integrating convolutional block attention modules into a deep neural network, our m",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2407.14464",
+    "title": "AttentNet: Fully Convolutional 3D Attention for Lung Nodule Detection",
+    "published": "2024-07-19",
+    "summary": "Motivated by the increasing popularity of attention mechanisms, we observe that popular convolutional (conv.) attention models like Squeeze-and-Excite (SE) and Convolutional Block Attention Module (CBAM) rely on expensive multi-layer perception (MLP) layers. These MLP layers significantly increase c",
+    "family": "other",
+    "source": "sweep5",
+    "note": ""
+  },
+  {
+    "id": "2608.01665",
+    "title": "Allocation Before Ranking: Decoupled Token Compression for OmniLLMs",
+    "published": "2026-08-03",
+    "summary": "Token compression in OmniLLMs is typically posed as a single saliency-ranking problem: score each multimodal token, keep the top-K. We argue this abstraction is mis-specified. The same attention score simultaneously decides two things: how much retained capacity each modality receives, and which tok",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2608.00368",
+    "title": "Agent-Native Task-Oriented Communication with Joint Token Compression Coding and Modulation",
+    "published": "2026-08-01",
+    "summary": "As large foundation models empower agents to become pervasive across industries and emerge as central actors in intelligent systems, a fundamental rethinking of communication paradigms toward AI-native, agent-centric designs in the post-Shannon era becomes inevitable. One essential shift is that tok",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2607.21231",
+    "title": "Progressive Cramming: Reliable Token Compression and What It Reveals",
+    "published": "2026-07-23",
+    "summary": "Token cramming compresses sequences into learned embeddings with near-perfect reconstruction, but fixed token budgets and 99\\% accuracy thresholds leave it unclear whether residual errors reflect optimization failures or fundamental limits. We introduce progressive cramming, which grows the target p",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2607.10441",
+    "title": "Context by Distinct Information: An Auditable Dirichlet-Process Working Memory for Long, Redundant Context Streams",
+    "published": "2026-07-11",
+    "summary": "Context engineering decides what information a model carries forward, and current designs meter it in tokens: compressing the past into a bounded recurrent state, keeping a key-value entry for every token, or imposing a fixed budget through a window or eviction rule. All three make the token the uni",
+    "family": "other",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2606.13624",
+    "title": "Beyond Uniform Tokens: Adaptive Compression for Time Series Language Models",
+    "published": "2026-06-11",
+    "summary": "Large language models (LLMs) have enabled time series (TS) analysis by jointly modeling numerical observations and textual context through a shared token interface. However, TS tokens and prompt tokens exhibit fundamentally different information structures, making uniform token processing inefficien",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2606.12203",
+    "title": "Adaptive Multi-Resolution Procedural Knowledge Compression for Large Language Models",
+    "published": "2026-06-10",
+    "summary": "Large language models (LLMs) are widely used to tackle complex tasks with autonomous workflows. Recently, reusable natural language skills have emerged as a popular paradigm to inject procedural knowledge into LLM applications. Since popular skills are often invoked repeatedly, placing their full te",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2606.11700",
+    "title": "CompRank: Efficient LLM Reranking via Token-Level Compression and Decoding-Free Scoring",
+    "published": "2026-06-10",
+    "summary": "Large language model (LLM) rerankers have become an important component of modern retrieval and retrieval-augmented generation pipelines, but their high computational cost limits their applicability to long candidate lists. In this paper, we propose \\textbf{CompRank}, a token-efficient reranking fra",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2606.04911",
+    "title": "BreastGPT: A Multimodal Large Language Model for the Full Spectrum of Breast Cancer Clinical Routine",
+    "published": "2026-06-03",
+    "summary": "Breast cancer remains a leading cause of cancer-related mortality among women. Its clinical management requires multimodal reasoning across a clinical workflow that spans \\textit{screening}, \\textit{diagnosis} and \\textit{treatment planning}, where each stage involves distinct imaging modalities, ta",
+    "family": "Routing",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2606.03739",
+    "title": "Entropy Gate: Entropy Quenching for Near-Lossless Token Compression in LLM Pipelines",
+    "published": "2026-06-02",
+    "summary": "LLM pipelines waste substantial token budgets on low-information content: repeated context, verbose responses, and redundant boilerplate. We introduce Entropy Gate, a token compression framework applying entropy quenching $-$ a thermodynamic process that progressively freezes out low-energy tokens w",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2606.01934",
+    "title": "HMPO: Hybrid Median-length Policy Optimization for Chain-of-Thought Compression",
+    "published": "2026-06-01",
+    "summary": "Large language models achieve remarkable performance via extended chain-of-thought (CoT) reasoning, yet this lengthy process incurs substantial inference overhead. Existing CoT compression methods struggle with inflexible manual length budgets, computationally expensive multi-stage training pipeline",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2605.25330",
+    "title": "How Reliable Are Semantic-ID Tokenizer Comparisons in Generative Recommendation?",
+    "published": "2026-05-25",
+    "summary": "In Semantic-ID (SID) based generative recommendation, each item is represented as a sequence of discrete codes, and an autoregressive model is trained to generate the SID sequence of the next item; top-K performance is then measured by checking whether the SID sequence of the target item appears amo",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2605.20683",
+    "title": "Layer-wise Token Compression for Efficient Document Reranking",
+    "published": "2026-05-20",
+    "summary": "Transformer-based document cross-encoder rerankers are a central component of modern information retrieval systems. Despite their success, these models suffer from high computational costs due to processing long query-document sequences at inference time. A known approach to improve efficiency is to",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2605.08329",
+    "title": "An Efficient Token Compression Framework for Visual Object Tracking",
+    "published": "2026-05-08",
+    "summary": "Refining visual representations by eliminating their internal feature-level redundancy is crucial for simultaneously optimizing the performance and computational cost of models in visual tracking. To enhance their performance, many contemporary Transformer-based trackers leverage a larger number of ",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2604.15153",
+    "title": "Compressing Sequences in the Latent Embedding Space: $K$-Token Merging for Large Language Models",
+    "published": "2026-04-16",
+    "summary": "Large Language Models (LLMs) incur significant computational and memory costs when processing long prompts, as full self-attention scales quadratically with input length. Token compression aims to address this challenge by reducing the number of tokens representing inputs. However, existing prompt-c",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2604.08933",
+    "title": "IAT: Instance-As-Token Compression for Historical User Sequence Modeling in Industrial Recommender Systems",
+    "published": "2026-04-10",
+    "summary": "Although sophisticated sequence modeling paradigms have achieved remarkable success in recommender systems, the information capacity of hand-crafted sequential features constrains the performance upper bound. To better enhance user experience by encoding historical interaction patterns, this paper p",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2603.25155",
+    "title": "Photon: Speedup Volume Understanding with Efficient Multimodal Large Language Models",
+    "published": "2026-03-26",
+    "summary": "Multimodal large language models are promising for clinical visual question answering tasks, but scaling to 3D imaging is hindered by high computational costs. Prior methods often rely on 2D slices or fixed-length token compression, disrupting volumetric continuity and obscuring subtle findings. We ",
+    "family": "other",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2603.21232",
+    "title": "QMoP: Query Guided Mixture-of-Projector for Efficient Visual Token Compression",
+    "published": "2026-03-22",
+    "summary": "Multimodal large language models suffer from severe computational and memory bottlenecks, as the number of visual tokens far exceeds that of textual tokens. While recent methods employ projector modules to align and compress visual tokens into text-aligned features, they typically depend on fixed he",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2603.00155",
+    "title": "EfficientPosterGen: Semantic-aware Efficient Poster Generation via Token Compression and Accurate Violation Detection",
+    "published": "2026-02-25",
+    "summary": "Automated academic poster generation aims to distill lengthy research papers into concise, visually coherent presentations. Existing Multimodal Large Language Models (MLLMs) based approaches, however, suffer from three critical limitations: low information density in full-paper inputs, excessive tok",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2601.13879",
+    "title": "Chain-of-Thought Compression Should Not Be Blind: V-Skip for Efficient Multimodal Reasoning via Dual-Path Anchoring",
+    "published": "2026-01-20",
+    "summary": "While Chain-of-Thought (CoT) reasoning significantly enhances the performance of Multimodal Large Language Models (MLLMs), its autoregressive nature incurs prohibitive latency constraints. Current efforts to mitigate this via token compression often fail by blindly applying text-centric metrics to m",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2601.13588",
+    "title": "TREX: Tokenizer Regression for Optimal Data Mixture",
+    "published": "2026-01-20",
+    "summary": "Building effective tokenizers for multilingual Large Language Models (LLMs) requires careful control over language-specific data mixtures. While a tokenizer's compression performance critically affects the efficiency of LLM training and inference, existing approaches rely on heuristics or costly lar",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2601.09039",
+    "title": "An Information-Theoretic Perspective on LLM Tokenizers",
+    "published": "2026-01-14",
+    "summary": "Large language model (LLM) tokenizers act as structured compressors: by mapping text to discrete token sequences, they determine token count (and thus compute and context usage) and the statistical structure seen by downstream models. Despite their central role in LLM pipelines, the link between tok",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2511.21150",
+    "title": "LLaVA-UHD v3: Progressive Visual Compression for Efficient Native-Resolution Encoding in MLLMs",
+    "published": "2025-11-26",
+    "summary": "Visual encoding followed by token condensing has become the standard architectural paradigm in multi-modal large language models (MLLMs). Many recent MLLMs increasingly favor global native- resolution visual encoding over slice-based methods. To investigate this trend, we systematically compare thei",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2511.14405",
+    "title": "Jasper-Token-Compression-600M Technical Report",
+    "published": "2025-11-18",
+    "summary": "This technical report presents the training methodology and evaluation results of the open-source Jasper-Token-Compression-600M model, released in November 2025. Building on previous distillation-based recipes from the English Stella and Jasper models, we successfully extend this approach to a bilin",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2510.17800",
+    "title": "Glyph: Scaling Context Windows via Visual-Text Compression",
+    "published": "2025-10-20",
+    "summary": "Large language models (LLMs) increasingly rely on long-context modeling for tasks such as document understanding, code analysis, and multi-step reasoning. However, scaling context windows to the million-token level brings prohibitive computational and memory costs, limiting the practicality of long-",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2510.07143",
+    "title": "Are We Using the Right Benchmark: An Evaluation Framework for Visual Token Compression Methods",
+    "published": "2025-10-08",
+    "summary": "Recent efforts to accelerate inference in Multimodal Large Language Models (MLLMs) have largely focused on visual token compression. The effectiveness of these methods is commonly evaluated by measuring the accuracy drop on existing MLLM benchmarks before and after compression. However, these benchm",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2510.00515",
+    "title": "Efficient Multi-modal Large Language Models via Progressive Consistency Distillation",
+    "published": "2025-10-01",
+    "summary": "Visual tokens consume substantial computational resources in multi-modal large models (MLLMs), significantly compromising their efficiency. Recent works have attempted to improve efficiency by compressing visual tokens during training, either through modifications to model components or by introduci",
+    "family": "other",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2508.13460",
+    "title": "Revisiting MLLM Token Technology through the Lens of Classical Visual Coding",
+    "published": "2025-08-19",
+    "summary": "Classical visual coding and Multimodal Large Language Model (MLLM) token technology share the core objective - maximizing information fidelity while minimizing computational cost. Therefore, this paper reexamines MLLM token technology, including tokenization, token compression, and token reasoning, ",
+    "family": "KVcomp",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2508.06621",
+    "title": "Train It and Forget It: Merge Lists are Unnecessary for BPE Inference in Language Models",
+    "published": "2025-08-08",
+    "summary": "Standard Byte-Pair Encoding (BPE) tokenization compresses text by pairing a learned token vocabulary with a detailed merge list. Recent work has shown that this merge list exposes a potential attack surface for extracting information about language model's training data. In this paper, we explore th",
+    "family": "other",
+    "source": "sweep6",
+    "note": ""
+  },
+  {
+    "id": "2607.02343",
+    "title": "SelectTSL: Prompt-Guided Selective Target Sound Localization in Complex Scenarios",
+    "published": "2026-07-02",
+    "summary": "Humans can selectively attend to a target sound and estimate its direction in complex scenarios, whereas such selective localization remains challenging for current deep learning-based systems. Sound source localization (SSL) has achieved remarkable success with deep learning, yet most methods local",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2605.17889",
+    "title": "CoX-MoE: Coalesced Expert Execution for High-Throughput MoE Inference with AMX-Enabled CPU-GPU Co-Execution",
+    "published": "2026-05-18",
+    "summary": "The Mixture-of-Experts (MoE) architecture improves computational efficiency via sparse expert activation, but throughput-oriented inference faces substantial GPU memory pressure due to a significant parameter size and intermediate data. Prior works attempt to mitigate this using expert offloading wi",
+    "family": "other",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2607.21599",
+    "title": "Decoupled Attention Fusion: Accelerating RAG with Efficient KV Cache Reuse",
+    "published": "2026-05-03",
+    "summary": "Retrieval-Augmented Generation (RAG) effectively mitigates hallucinations in Large Language Models (LLMs) but suffers from prohibitive Time-To-First-Token (TTFT) latency in long-context scenarios. Reusing pre-computed document KV caches addresses this but introduces a distribution mismatch, where of",
+    "family": "other",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2605.05222",
+    "title": "Adaptive Computation Depth via Learned Token Routing in Transformers",
+    "published": "2026-04-18",
+    "summary": "Standard transformer architectures apply the same number of layers to every token regardless of contextual difficulty. We present Token-Selective Attention (TSA), a learned per-token gate on residual updates between consecutive transformer blocks. Each gate is a lightweight two-layer multi-layer per",
+    "family": "KVcomp",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2604.15583",
+    "title": "SAGE: Selective Attention-Guided Extraction for Token-Efficient Document Indexing",
+    "published": "2026-04-16",
+    "summary": "Large language models with long context windows can answer complex questions directly from full-length academic, technical, and policy documents, but passing entire documents is often costly, slow, and can degrade answer quality while increasing the risk of unnecessary data leakage. This paper targe",
+    "family": "KVcomp",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2603.19634",
+    "title": "MetaCues: Enabling Critical Engagement with Generative AI for Information Seeking and Sensemaking",
+    "published": "2026-03-20",
+    "summary": "Generative AI (GenAI) search tools are increasingly used for information seeking, yet their design tends to encourage cognitive offloading, which may lead to passive engagement, selective attention, and informational homogenization. Effective use requires metacognitive engagement to craft good promp",
+    "family": "other",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2602.06437",
+    "title": "An attention economy model of co-evolution between content quality and audience selectivity",
+    "published": "2026-02-06",
+    "summary": "Human attention has become a scarce and strategically contested resource in digital environments. Content providers increasingly engage in excessive competition for visibility, often prioritizing attention-grabbing tactics over substantive quality. Despite extensive empirical evidence, however, ther",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2602.04428",
+    "title": "Fine-Grained Activation Steering: Steering Less, Achieving More",
+    "published": "2026-02-04",
+    "summary": "Activation steering has emerged as a cost-effective paradigm for modifying large language model (LLM) behaviors. Existing methods typically intervene at the block level, steering the bundled activations of selected attention heads, feedforward networks, or residual streams. However, we reveal that b",
+    "family": "other",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2601.20267",
+    "title": "SATA: Sparsity-Aware Scheduling for Selective Token Attention",
+    "published": "2026-01-28",
+    "summary": "Transformers have become the foundation of numerous state-of-the-art AI models across diverse domains, thanks to their powerful attention mechanism for modeling long-range dependencies. However, the quadratic scaling complexity of attention poses significant challenges for efficient hardware impleme",
+    "family": "KVcomp",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2601.08285",
+    "title": "Training Under Attentional Competition Produces Persistent Biases in Visual Appearance",
+    "published": "2026-01-13",
+    "summary": "Selective attention can momentarily alter visual appearance, but can such effects be learned? We tested whether training attention under sensory competition produces lasting changes in perceived contrast. Across seven days, participants trained on an orientation task with a fixed target location, wi",
+    "family": "other",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2512.05528",
+    "title": "Decoding Selective Auditory Attention to Musical Elements in Ecologically Valid Music Listening",
+    "published": "2025-12-05",
+    "summary": "Art has long played a profound role in shaping human emotion, cognition, and behavior. While visual arts such as painting and architecture have been studied through eye tracking, revealing distinct gaze patterns between experts and novices, analogous methods for auditory art forms remain underdevelo",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2511.15459",
+    "title": "Driving in Spikes: An Entropy-Guided Object Detector for Spike Cameras",
+    "published": "2025-11-19",
+    "summary": "Object detection in autonomous driving suffers from motion blur and saturation under fast motion and extreme lighting. Spike cameras, offer microsecond latency and ultra high dynamic range for object detection by using per pixel asynchronous integrate and fire. However, their sparse, discrete output",
+    "family": "other",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2511.00819",
+    "title": "Optimizing Native Sparse Attention with Latent Attention and Local Global Alternating Strategies",
+    "published": "2025-11-02",
+    "summary": "In this work, we conduct a systematic analysis of Native Sparse Attention (NSA) and propose targeted improvements that enhance long-context modeling. A key insight is that alternating between local (sliding-window) and global (compression, selective) attention across layers, rather than using fixed ",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2509.09479",
+    "title": "Short-term cognitive fatigue of spatial selective attention after face-to-face conversations in virtual noisy environments",
+    "published": "2025-09-11",
+    "summary": "Spatial selective attention is an important asset for communication in cocktail party situations but may be compromised by short-term cognitive fatigue. Here we tested whether an effortful conversation in a highly ecological setting depletes task performance in an auditory spatial selective attentio",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2508.17150",
+    "title": "SACA: Selective Attention-Based Clustering Algorithm",
+    "published": "2025-08-23",
+    "summary": "Clustering algorithms are fundamental tools across many fields, with density-based methods offering particular advantages in identifying arbitrarily shaped clusters and handling noise. However, their effectiveness is often limited by the requirement of critical parameter tuning by users, which typic",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2507.19213",
+    "title": "PRE-MAP: Personalized Reinforced Eye-tracking Multimodal LLM for High-Resolution Multi-Attribute Point Prediction",
+    "published": "2025-07-25",
+    "summary": "Visual selective attention, driven by individual preferences, regulates human prioritization of visual stimuli by bridging subjective cognitive mechanisms with objective visual elements, thereby steering the semantic interpretation and hierarchical processing of dynamic visual scenes. However, exist",
+    "family": "other",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2506.01781",
+    "title": "Enhancing Customer Service Chatbots with Context-Aware NLU through Selective Attention and Multi-task Learning",
+    "published": "2025-06-02",
+    "summary": "Customer service chatbots are conversational systems aimed at addressing customer queries, often by directing them to automated workflows. A crucial aspect of this process is the classification of the customer's intent. Presently, most intent classification models for customer care utilise only cust",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2505.05772",
+    "title": "Sparse Attention Remapping with Clustering for Efficient LLM Decoding on PIM",
+    "published": "2025-05-09",
+    "summary": "Transformer-based models are the foundation of modern machine learning, but their execution, particularly during autoregressive decoding in large language models (LLMs), places significant pressure on memory systems due to frequent memory accesses and growing key-value (KV) caches. This creates a bo",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2503.23461",
+    "title": "Investigating Text Insulation and Attention Mechanisms for Complex Visual Text Generation",
+    "published": "2025-03-30",
+    "summary": "In this paper, we present TextCrafter, a Complex Visual Text Generation (CVTG) framework inspired by selective visual attention in cognitive science, and introduce the \"Text Insulation-and-Attention\" mechanisms. To implement the selective-attention principle that selection operates on discrete objec",
+    "family": "other",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2502.21229",
+    "title": "A Method of Selective Attention for Reservoir Based Agents",
+    "published": "2025-02-28",
+    "summary": "Training of deep reinforcement learning agents is slowed considerably by the presence of input dimensions that do not usefully condition the reward function. Existing modules such as layer normalization can be trained with weight decay to act as a form of selective attention, i.e. an input mask, tha",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2502.14477",
+    "title": "Unshackling Context Length: An Efficient Selective Attention Approach through Query-Key Compression",
+    "published": "2025-02-20",
+    "summary": "Handling long-context sequences efficiently remains a significant challenge in large language models (LLMs). Existing methods for token selection in sequence extrapolation either employ a permanent eviction strategy or select tokens by chunk, which may lead to the loss of critical information. We pr",
+    "family": "Both",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2502.12574",
+    "title": "HeadInfer: Memory-Efficient LLM Inference by Head-wise Offloading",
+    "published": "2025-02-18",
+    "summary": "Transformer-based large language models (LLMs) demonstrate impressive performance in long context generation. Extending the context length has disproportionately shifted the memory footprint of LLMs during inference to the key-value cache (KV cache). In this paper, we propose HEADINFER, which offloa",
+    "family": "other",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2502.02831",
+    "title": "How the Stroop Effect Arises from Optimal Response Times in Laterally Connected Self-Organizing Maps",
+    "published": "2025-02-05",
+    "summary": "The Stroop effect refers to cognitive interference in a color-naming task: When the color and the word do not match, the response is slower and more likely to be incorrect. The Stroop task is used to assess cognitive flexibility, selective attention, and executive function. This paper implements the",
+    "family": "other",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2501.06909",
+    "title": "Local Foreground Selection aware Attentive Feature Reconstruction for few-shot fine-grained plant species classification",
+    "published": "2025-01-12",
+    "summary": "Plant species exhibit significant intra-class variation and minimal inter-class variation. To enhance classification accuracy, it is essential to reduce intra-class variation while maximizing inter-class variation. This paper addresses plant species classification using a limited number of labelled ",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2411.12892",
+    "title": "Selective Attention: Enhancing Transformer through Principled Context Control",
+    "published": "2024-11-19",
+    "summary": "The attention mechanism within the transformer architecture enables the model to weigh and combine tokens based on their relevance to the query. While self-attention has enjoyed major success, it notably treats all queries $q$ in the same way by applying the mapping $V^\\top\\text{softmax}(Kq)$, where",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2411.06171",
+    "title": "SEEKR: Selective Attention-Guided Knowledge Retention for Continual Learning of Large Language Models",
+    "published": "2024-11-09",
+    "summary": "Continual learning (CL) is crucial for language models to dynamically adapt to the evolving real-world demands. To mitigate the catastrophic forgetting problem in CL, data replay has been proven a simple and effective strategy, and the subsequent data-replay-based distillation can further enhance th",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2410.18572",
+    "title": "Taipan: Efficient and Expressive State Space Language Models with Selective Attention",
+    "published": "2024-10-24",
+    "summary": "Efficient long-context language modeling remains a significant challenge in Natural Language Processing (NLP). While Transformers dominate language tasks, they struggle with long sequences due to quadratic computational complexity in training and linearly scaling memory costs during inference. Recen",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2410.02703",
+    "title": "Selective Attention Improves Transformer",
+    "published": "2024-10-03",
+    "summary": "Unneeded elements in the attention's context degrade performance. We introduce Selective Attention, a simple parameter-free change to the standard attention mechanism which reduces attention to unneeded elements. Selective attention consistently improves language modeling and downstream task perform",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2409.08710",
+    "title": "Using Ear-EEG to Decode Auditory Attention in Multiple-speaker Environment",
+    "published": "2024-09-13",
+    "summary": "Auditory Attention Decoding (AAD) can help to determine the identity of the attended speaker during an auditory selective attention task, by analyzing and processing measurements of electroencephalography (EEG) data. Most studies on AAD are based on scalp-EEG signals in two-speaker scenarios, which ",
+    "family": "other",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2404.09336",
+    "title": "Self-Selected Attention Span for Accelerating Large Language Model Inference",
+    "published": "2024-04-14",
+    "summary": "Large language models (LLMs) can solve challenging tasks. However, their inference computation on modern GPUs is highly inefficient due to the increasing number of tokens they must attend to as they generate new ones. To address this inefficiency, we capitalize on LLMs' problem-solving capabilities ",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2403.20086",
+    "title": "Selective Attention-based Modulation for Continual Learning",
+    "published": "2024-03-29",
+    "summary": "We present SAM, a biologically-plausible selective attention-driven modulation approach to enhance classification models in a continual learning setting. Inspired by neurophysiological evidence that the primary visual cortex does not contribute to object manifold untangling for categorization and th",
+    "family": "Routing",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2401.05030",
+    "title": "An event-based implementation of saliency-based visual attention for rapid scene analysis",
+    "published": "2024-01-10",
+    "summary": "Selective attention is an essential mechanism to filter sensory input and to select only its most important components, allowing the capacity-limited cognitive structures of the brain to process them in detail. The saliency map model, originally developed to understand the process of selective atten",
+    "family": "other",
+    "source": "sweep7",
+    "note": ""
+  },
+  {
+    "id": "2405.15903",
+    "title": "UnitNorm: Rethinking Normalization for Transformers in Time Series",
+    "published": "2024-05-24",
+    "summary": "Normalization techniques are crucial for enhancing Transformer models' performance and stability in time series analysis tasks, yet traditional methods like batch and layer normalization often lead to issues such as token shift, attention shift, and sparse attention. We propose UnitNorm, a novel app",
+    "family": "other",
+    "source": "sweep9",
+    "note": ""
+  }
+]

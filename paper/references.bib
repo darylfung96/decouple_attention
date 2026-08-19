@@ -1,0 +1,135 @@
+% ===========================================================================
+% references.bib -- every entry verified against the arXiv API on
+% 2026-08-16 (title, authors, arXiv id). No entry is fabricated; entries
+% whose exact citation is still under verification are commented out below.
+% ===========================================================================
+
+@article{deepseekv4_2026,
+  title     = {DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence},
+  author    = {{DeepSeek-AI}},
+  journal   = {arXiv preprint arXiv:2606.19348},
+  year      = {2026},
+  note      = {Verified 2026-08-16 (arXiv API); CSA/HCA internals read in
+               depth 2026-08-16 (plan/dsv4\_csa\_read.md): CSA compresses
+               every m tokens into one entry (two-series overlapped
+               softmax) and selects top-k compressed entries via the
+               lightning indexer (Flash m=4/k=512, Pro m=4/k=1024; HCA
+               m'=128; window 128). Knobs exposed but never varied
+               independently -- no ablation exists in the report. C2 sweep
+               verdict 2026-08-16: KEEP (no counterexample found);
+               see plan/2026-08-16-c2-lit-sweep.md.}
+}
+
+@article{yuan2025nsa,
+  title   = {Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention},
+  author  = {Yuan, Jingyang and Gao, Huazuo and Dai, Damai and Luo, Junyu
+             and Zhao, Liang and Zhang, Zhengyan and Xie, Zhenda and
+             Wei, Y. X. and Wang, Lean and Xiao, Zhiping and Wang, Yuqing
+             and Ruan, Chong and Zhang, Ming and Liang, Wenfeng and
+             {others}},
+  journal = {arXiv preprint arXiv:2502.11089},
+  year    = {2025}
+}
+
+@article{roy2020routing,
+  title   = {Efficient Content-Based Sparse Attention with Routing Transformers},
+  author  = {Roy, Aurko and Saffar, Mohammad and Vaswani, Ashish and Grangier, David},
+  journal = {Transactions of the Association for Computational Linguistics},
+  volume  = {9},
+  pages   = {53--68},
+  year    = {2021},
+  note    = {arXiv:2003.05997}
+}
+
+@article{goldstein2025radlads,
+  title   = {RADLADS: Rapid Attention Distillation to Linear Attention Decoders at Scale},
+  author  = {Goldstein, Daniel and Alcaide, Eric and Lu, Janna and Cheah, Eugene},
+  journal = {arXiv preprint arXiv:2505.03005},
+  year    = {2025}
+}
+
+@article{deepseekv2_2024,
+  title   = {DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model},
+  author  = {{DeepSeek-AI} and Liu, Aixin and Feng, Bei and Wang, Bin and
+             Wang, Bingxuan and Liu, Bo and Zhao, Chenggang and Dengr, Chengqi
+             and Ruan, Chong and Dai, Damai and Guo, Daya and Yang, Dejian
+             and Chen, Deli and Ji, Dongjie and Li, Erhang and {others}},
+  journal = {arXiv preprint arXiv:2405.04434},
+  year    = {2024},
+  note    = {Source of Multi-head Latent Attention (MLA): low-rank KV
+             compression and shared query projection.}
+}
+
+@inproceedings{nie2023patchtst,
+  title     = {A Time Series is Worth 64 Words: Long-term Forecasting with Transformers},
+  author    = {Nie, Yuqi and Nguyen, Nam H. and Sinthong, Phanwadee and Kalagnanam, Jayant},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023},
+  note      = {arXiv:2211.14730}
+}
+
+@inproceedings{liu2024itransformer,
+  title     = {iTransformer: Inverted Transformers Are Effective for Time Series Forecasting},
+  author    = {Liu, Yong and Hu, Tengge and Zhang, Haoran and Wu, Haixu and
+               Wang, Shiyu and Ma, Lintao and Long, Mingsheng},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024},
+  note      = {arXiv:2310.06625}
+}
+
+@inproceedings{zeng2023dlinear,
+  title     = {Are Transformers Effective for Time Series Forecasting?},
+  author    = {Zeng, Ailing and Chen, Muxi and Zhang, Lei and Xu, Qiang},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  year      = {2023},
+  note      = {arXiv:2205.13504}
+}
+
+@inproceedings{zhou2021informer,
+  title     = {Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting},
+  author    = {Zhou, Haoyi and Zhang, Shanghang and Peng, Jieqi and Zhang, Shuai
+               and Li, Jianxin and Xiong, Hui and Zhang, Wancai},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  year      = {2021},
+  note      = {arXiv:2012.07436}
+}
+
+@inproceedings{wu2023timesnet,
+  title     = {TimesNet: Temporal 2D-Variation Modeling for General Time Series Analysis},
+  author    = {Wu, Haixu and Hu, Tengge and Liu, Yong and Zhou, Hang and
+               Wang, Jianmin and Long, Mingsheng},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023},
+  note      = {arXiv:2210.02186}
+}
+
+% C2 sweep (2026-08-16): closest works, added with the verified-contrast
+% discipline -- see plan/c2_sweep_log.md rows 27 and 26.
+@article{mao2026ssa,
+  title   = {Simplified Sparse Attention via Gist Tokens},
+  author  = {Mao, Yuzhen and Li, Michael Y. and Fox, Emily B.},
+  journal = {arXiv preprint arXiv:2604.20920},
+  year    = {2026},
+  note    = {Verified 2026-08-16 (arXiv API). C2 sweep: closest work --
+             gist-token compression + top-k chunk unfolding, but the
+             selection budget is derived from the chunk size
+             (k = floor(n\_kv/(L\_eff G L)) + 1, Eq. A.1), coupling the two
+             axes; RELATED, not a counterexample.}
+}
+
+@article{nawrot2025sparsefrontier,
+  title   = {The Sparse Frontier: Sparse Attention Trade-offs in Transformer LLMs},
+  author  = {Nawrot, Piotr and Li, Robert and Huang, Renjie and Ruder, Sebastian
+             and Marchisio, Kelly and Ponti, Edoardo M.},
+  journal = {arXiv preprint arXiv:2504.17768},
+  year    = {2025},
+  note    = {Verified 2026-08-16 (arXiv API). C2 sweep: single-axis study
+             sweeping the selection budget (sparsity 0--0.95) across six
+             training-free methods (7065 configs); no content-compression
+             knob; RELATED, not a counterexample.}
+}
+
+% NOTE: FAR and ModernTCN are intentionally NOT in this file -- their
+% citations are unverified (see plan/lit_audit.md and plan/paper_notes.md
+% section 6). BibTeX treats "%" as a comment only outside entries; do not
+% "comment out" entries with % lines, or BibTeX will still parse them.

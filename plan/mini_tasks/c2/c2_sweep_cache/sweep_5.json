@@ -1,0 +1,920 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2608.16585v1",
+    "title": "SQuad: Sub-Quadratic Attention Distillation for Efficient Video Generation",
+    "published": "2026-08-17",
+    "summary": "Video Diffusion Transformers (DiTs) spend most of their compute inside the Self-Attention operation, whose cost grows quadratically, $\\mathcal{O}(n^2)$, with the number of latent tokens $n$. For the task of video generation, the token count is large, so this term dominates runtime and memory, and th"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.15061v1",
+    "title": "Do Visual Grounding Decoders Need Feed-Forward Networks? A Controlled Study over Frozen Vision-Language Features",
+    "published": "2026-08-15",
+    "summary": "Do feed-forward networks (FFNs) in visual grounding decoders add essential computation once a pretrained vision-language model has already encoded image and language context? We compare a four-block attention-only decoder (A4), a matched four-block attention-plus-FFN decoder (S4), and an eight-block"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.12032v1",
+    "title": "LoSA: Near-Lossless Sparse Attention for Training-Free Video Diffusion Acceleration",
+    "published": "2026-08-12",
+    "summary": "Video diffusion transformers are costly to sample: every denoising step applies self-attention over a long 3D token sequence, a quadratic cost that dominates as resolution and duration grow. Sparse attention reduces this cost without retraining, but existing methods pursue aggressive sparsity, where"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.01676v1",
+    "title": "Understanding Sparse Attention Selectivity in Long-Context Foundation Models via Counterfactual Evaluation",
+    "published": "2026-08-03",
+    "summary": "Sparse attention is widely deployed in long-context serving stacks, yet no framework audits how discarding blocks changes the influence of specific content on model output. We first establish that the phenomenon is real and causal: Block Sparse Flash Attention (BSFA) route replay across four archite"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.01075v1",
+    "title": "Role-Decoupled Attention Residuals: Separating Matching and Content Retrieval Across Depth",
+    "published": "2026-08-02",
+    "summary": "Depth-routing residual architectures allow Transformer layers to retrieve earlier representations instead of inheriting only the immediately preceding state. Existing Block Attention Residuals, however, use a single content-dependent depth mixture to construct the inputs to queries, keys, and values"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.21553v1",
+    "title": "SANA-Video 2.0: Hybrid Linear Attention with Attention Residuals for Efficient Video Generation",
+    "published": "2026-07-23",
+    "summary": "We introduce SANA-Video 2.0, a hybrid video diffusion transformer instantiated at 5B and 14B scales under a unified architecture. Designed to generate high-quality video up to 720p on a single GPU, SANA-Video 2.0 matches full-softmax video DiTs in quality while retaining the favorable long-sequence "
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.14675v3",
+    "title": "An Intelligent-Cloud Edge Multimodal Interaction System for Robots",
+    "published": "2026-07-16",
+    "summary": "Robust human-robot interaction in complex environments requires accurate gesture perception, semantic scene understanding, and reliable task planning under limited onboard computing resources. This paper presents a cloud-edge multimodal interaction framework that integrates an enhanced YOLO-based ge"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.09052v1",
+    "title": "COBS: Cumulant Order Block Sparse Attention",
+    "published": "2026-07-10",
+    "summary": "Block sparse attention is a hardware friendly way to alleviate the key-value (KV) cache read bottleneck in large language models (LLMs). However, it is not prevalent among leading open-weight LLMs, which rely instead on dense attention or fine-grained selection, thereby motivating our analysis. We s"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.08171v1",
+    "title": "Attention-Based Segmentation of WMHs and Differentiation of Vascular vs. Demyelinating Lesions",
+    "published": "2026-07-09",
+    "summary": "White Matter Hyperintensities (WMHs) are commonly observed in brain Magnetic Resonance Imaging (MRI) scans. They are associated with various neurological conditions, including vascular and inflammatory demyelinating diseases. Despite differing in etiology, WMHs from these conditions often appear sim"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.16273v1",
+    "title": "ForensicNet: Lightweight Attention-Enhanced MobileNetV2 for Automated Face Identification",
+    "published": "2026-07-08",
+    "summary": "In forensic environments, automated identification of perpetrators is difficult due to pose changes, changes in light, occlusion, and lack of labeled data. This paper presents ForensicNet, a lightweight deep learning framework for forensic face recognition that enhances attention. The suggested mode"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.04478v1",
+    "title": "PulmoSight-XAI: An Explainable Multi-View Attention Ensemble with Gradient Boosting Meta-Learning for Multi-Label Chest X-Ray Classification",
+    "published": "2026-07-05",
+    "summary": "Automated chest X-ray classification remains challenging due to severe class imbalance, co-occurring pathologies, and the loss of localized features in conventional architectures. To address these, we propose an explainable hierarchical multi-view ensemble framework for the robust classification of "
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.03073v1",
+    "title": "Attention-Guided Efficientnet Architecture For Precise Criminal Identification in Surveillance Images",
+    "published": "2026-07-03",
+    "summary": "Criminal identification from surveillance imagery has become a critical research area in intelligent forensic surveillance systems due to the increasing deployment of CCTV cameras in public and private environments. However, surveillance-based face recognition remains highly challenging because of l"
+  },
+  {
+    "id": "http://arxiv.org/abs/2607.02508v1",
+    "title": "From SRA to Self-Flow: Data Augmentation or Self-Supervision?",
+    "published": "2026-07-02",
+    "summary": "Representation alignment has become an effective way to accelerate diffusion transformer training and improve generation quality. Recent self-alignment methods, such as SRA and Self-Flow, further remove the dependency on external pretrained encoders by constructing alignment within the diffusion mod"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.29850v1",
+    "title": "Efficient Visual Pointing for Embodied AI:Agent-Driven Data Synthesis, Cross-Block Attention, and Iterative Correction",
+    "published": "2026-06-29",
+    "summary": "Visual pointing maps a language instruction to pixel co ordinates, a core skill for embodied AI. We describe our PointArena 2026 solution, which achieves 77.2% overall accuracy and ranks second on the benchmark. The ap proach targets three failure modes. First, agent-driven syn thesis builds large s"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.26493v2",
+    "title": "Nemotron-Labs-TwoTower: Diffusion Language Modeling with Pretrained Autoregressive Context",
+    "published": "2026-06-25",
+    "summary": "Diffusion language models offer a promising alternative to autoregressive models due to their potential for parallel and iterative generation. However, existing approaches use a single network for both context representation and iterative denoising, forcing one model to serve both roles and limiting"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.25463v1",
+    "title": "Blasto-Net: An Explainable Multi-Task Learning for Blastocyst Segmentation, Grading, and Implantation Prediction",
+    "published": "2026-06-24",
+    "summary": "This study introduces Blasto-Net, a multi-task deep learning model for comprehensive blastocyst analysis. The proposed model performs three tasks simultaneously in a single forward pass: segmentation of the ZP, TE, and ICM compartments, morphological grading, and implantation outcome prediction. Acc"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.20438v1",
+    "title": "Interpretable Sperm Morphology Classification via Attention-Guided Deep Learning",
+    "published": "2026-06-18",
+    "summary": "Male infertility is a major cause of couple infertility, often linked to abnormal sperm morphology. While deep learning models offer automated analysis, most lack interpretability, limiting their clinical adoption. This study proposes an attention-guided deep learning framework for sperm morphology "
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.13168v1",
+    "title": "When Does Routing Become Interpretable? Causal Probes on Block Attention Residuals",
+    "published": "2026-06-11",
+    "summary": "Block Attention Residuals (Block AttnRes) by replace fixed additive residuals with a learned softmax over earlier depth-source representations, surfacing cross-layer routing as an inspectable tensor in the forward pass. This is a tempting interpretability target: information flow normally inferred i"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.13126v1",
+    "title": "MiniPIC: Flexible Position-Independent Caching in <100LOC",
+    "published": "2026-06-11",
+    "summary": "Retrieval-augmented and agentic workloads repeatedly prefill recurring predictable structured inputs (which we call \"spans\") such as documents and code files. Yet, prefix caching in engines such as vLLM cannot reuse their KV entries unless they share identical prefixes with another request, while Po"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.12958v1",
+    "title": "YOLO-AMC: An Improved YOLO Architecture with Attention Mechanisms for Building Crack Detection",
+    "published": "2026-06-11",
+    "summary": "Crack detection plays an important role in infrastructure inspection and Structural Health Monitoring (SHM). However, cracks typically appear as thin, low-contrast structures and are easily affected by background noise, posing challenges for existing object detection models. This study proposes an i"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.07980v1",
+    "title": "DeRes: Decoupling Residual Stability and Adaptivity for Scalable CTR Prediction",
+    "published": "2026-06-06",
+    "summary": "Transformer-based CTR models face a growing bottleneck at the residual connection: under Pre-Norm, early user-interest signals are diluted layer by layer; the identity skip cannot forget stale interests; and each layer sees only its immediate predecessor, losing long-range cross-layer dependencies. "
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.06536v1",
+    "title": "Attention-Guided Autoencoder Fusion for Insulator Defect Detection Using UAV Transmission-Line Imaging",
+    "published": "2026-06-03",
+    "summary": "Automated defect detection in high-voltage transmission-line insulators remains challenging due to severe class imbalance, large scale variation, and the small spatial extent of defect instances in Unmanned Aerial Vehicle (UAV) imagery. To address these challenges, this paper proposes AE-YOLO, an At"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.04302v1",
+    "title": "LazyAttention: Efficient Retrieval-Augmented Generation with Deferred Positional Encoding",
+    "published": "2026-06-03",
+    "summary": "Key-value (KV) caching accelerates inference of large language models (LLMs) by reusing past computations for generated tokens. Its importance becomes even greater in long-context applications such as retrieval-augmented generation (RAG) and in-context learning (ICL). However, conventional KV cachin"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.02672v1",
+    "title": "Heterogeneous Mapping for Analog In-Memory Computing Accelerators: A Unified Workflow",
+    "published": "2026-06-01",
+    "summary": "Analog In-Memory Computing (AIMC) accelerators execute matrix-vector multiplications directly within memory arrays, reducing data movement and improving DNN inference efficiency. Their limited effective precision motivates heterogeneous architectures that combine analog compute tiles with digital pr"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.02045v2",
+    "title": "Attention mechanisms and transfer learning for robust peach leaf damage classification under domain shift",
+    "published": "2026-06-01",
+    "summary": "Artificial intelligence provides a practical framework for crop damage assessment from imagery data, supporting early decision-making in agricultural management. In peach orchards, climate change increases abiotic stress and biotic pressures, including pests and diseases, which often produce visuall"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.02628v1",
+    "title": "Hallucination Is Linearly Decodable from Mid-Layer Hidden States in Quantized LLMs",
+    "published": "2026-05-30",
+    "summary": "We investigate whether open-source LLMs encode a linearly separable truthfulness signal in their hidden states, and at which network depth this signal is strongest. Across three $7$B--$8$B instruction-tuned models (Llama-3.1-8B, Mistral-7B, Qwen2.5-7B) loaded in $4$-bit NF4 quantization, we extract "
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.19703v1",
+    "title": "KIO-planner: Attention-Guided Single-Stage Motion Planning with Dual Mapping for UAV Navigation",
+    "published": "2026-05-19",
+    "summary": "Autonomous UAV flight in confined, wall-dense environments requires low-latency and reliable motion planning under strict safety constraints. Traditional optimization-based planners suffer from mapping latency and easily fall into local minima when navigating through dense structural obstacles. Mean"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.20268v1",
+    "title": "Chronicle: A Multimodal Foundation Model for Joint Language and Time Series Understanding",
+    "published": "2026-05-18",
+    "summary": "Real-world time series come with text: metadata, descriptions, news, reports. Yet time series foundation models process numerical sequences in isolation, and the multimodal text-and-time-series models that attempt to bridge the two all adapt a pretrained language model post hoc, inheriting represent"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.15921v1",
+    "title": "AdaEraser: Training-Free Object Removal via Adaptive Attention Suppression",
+    "published": "2026-05-15",
+    "summary": "Object removal aims to eliminate specified objects from images while plausibly inpainting the affected regions with background content. Current training-free methods typically block attention to object regions within self-attention layers during the image generation process, leveraging surrounding b"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.15913v4",
+    "title": "Towards Generalization of Block Attention via Automatic Segmentation and Block Distillation",
+    "published": "2026-05-15",
+    "summary": "Block attention, which processes the input as separate blocks that cannot attend to one another, offers significant potential to improve KV cache reuse in long-context scenarios such as Retrieval-Augmented Generation (RAG). However, its broader application is hindered by two key challenges: the diff"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.15684v1",
+    "title": "ElasticDiT: Efficient Diffusion Transformers via Elastic Architecture and Sparse Attention for High-Resolution Image Generation on Mobile Devices",
+    "published": "2026-05-15",
+    "summary": "The Diffusion Transformer (DiT) architecture is the state-of-the-art paradigm for high-fidelity image generation, underpinning models like Stable Diffusion-3 and FLUX.1. However, deploying these models on resource-constrained mobile devices entails prohibitive computational and memory overhead. Whil"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.15032v1",
+    "title": "Multi-Block Attention for Efficient Channel Estimation in IRS-Assisted mmWave MIMO",
+    "published": "2026-05-14",
+    "summary": "Intelligent Reflecting Surfaces (IRSs) are a promising technology for enhancing the spectral and energy efficiency of millimeter-wave (mmWave) multiple-input multiple-output (MIMO) systems. In these systems, accurate channel estimation remains challenging due to the passive nature of IRS elements an"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.08234v1",
+    "title": "When Does Value-Aware KV Eviction Help? A Fixed-Contract Diagnostic for Non-Monotone Cache Compression",
+    "published": "2026-05-07",
+    "summary": "Long-context LLM inference is bottlenecked by the memory and bandwidth cost of reading large KV caches during decoding. KV compression reduces this cost by keeping only part of the cache, but task accuracy alone does not identify why a selector succeeds or fails. A selector can fail at three steps: "
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.05394v1",
+    "title": "BARFI-Q: Quantum-Enhanced Block Attention Residual Fusion Framework for Multivariate Time-Series Forecasting in Atom Interferometry",
+    "published": "2026-05-06",
+    "summary": "Atom interferometry generates heterogeneous multivariate temporal streams governed by phase evolution, fringe dynamics, control variables, and auxiliary sensing measurements. Accurate forecasting of these signals is important for predictive monitoring, phase correction, and intelligent quantum sensi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.02328v1",
+    "title": "Improving Imbalanced Multi-Label Chest X-Ray Diagnosis via CBAM-Enhanced CNN Backbones",
+    "published": "2026-05-04",
+    "summary": "Chest radiography is a widely used imaging modality for thoracic disease diagnosis, yet its conventional interpretation remains time-consuming and heavily dependent on expert knowledge. While deep learning has improved diagnostic efficiency through automated feature extraction, challenges such as cl"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.27617v2",
+    "title": "Robust Lightweight Crack Classification for Real-Time UAV Bridge Inspection",
+    "published": "2026-04-30",
+    "summary": "With the widespread application of Unmanned Aerial Vehicles (UAVs) in bridge structural health monitoring, deep learning-based automatic crack detection has become a major research focus. However, practical UAV inspections still face four key challenges: weak crack features, degraded imaging conditi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.00886v1",
+    "title": "Selective Attention-Based Network for Robust Infrared Small Target Detection",
+    "published": "2026-04-27",
+    "summary": "Infrared small target detection (IRSTD) plays a pivotal role in a broad spectrum of mission-critical applications, including maritime surveillance, military search and rescue, early warning systems, and precision-guided strikes, all of which demand the precise identification of dim, sub-pixel target"
+  },
+  {
+    "id": "http://arxiv.org/abs/2605.00869v1",
+    "title": "Robust Cross-Domain WiFi Fall Detection via Physics-Driven Attention-Enhanced Transformers",
+    "published": "2026-04-23",
+    "summary": "Device-free fall detection utilizing WiFi Channel State Information (CSI) has emerged as a promising, privacy-preserving solution for elderly health monitoring in the Internet of Things (IoT) era. However, existing deep learning approaches suffer from severe performance degradation when deployed in "
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.22856v1",
+    "title": "Attention-Augmented YOLOv8 with Ghost Convolution for Real-Time Vehicle Detection in Intelligent Transportation Systems",
+    "published": "2026-04-22",
+    "summary": "Accurate vehicle detection is a critical component of autonomous driving, traffic surveillance, and intelligent transportation systems. This paper presents an enhanced YOLOv8n-based model that integrates the Ghost Module, Convolutional Block Attention Module (CBAM), and Deformable Convolutional Netw"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.16776v1",
+    "title": "SAVE: A Generalizable Framework for Multi-Condition Single-Cell Generation with Gene Block Attention",
+    "published": "2026-04-18",
+    "summary": "Modeling single-cell gene expression across diverse biological and technical conditions is crucial for characterizing cellular states and simulating unseen scenarios. Existing methods often treat genes as independent tokens, overlooking their high-level biological relationships and leading to poor p"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.13950v1",
+    "title": "Causal Drawbridges: Characterizing Gradient Blocking of Syntactic Islands in Transformer LMs",
+    "published": "2026-04-15",
+    "summary": "We show how causal interventions in Transformer models provide insights into English syntax by focusing on a long-standing challenge for syntactic theory: syntactic islands. Extraction from coordinated verb phrases is often degraded, yet acceptability varies gradiently with lexical content (e.g., \"I"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.12351v2",
+    "title": "Fundus Image-based Glaucoma Screening via Retinal Knowledge-Oriented Dynamic Multi-Level Feature Integration",
+    "published": "2026-04-14",
+    "summary": "While deep learning has advanced automated glaucoma screening via color fundus photography, existing purely data-driven models often overfit to confounding imaging artifacts and struggle to capture unpredictable pathological cues located beyond predefined anatomical boundaries. To address these limi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.12305v1",
+    "title": "CBAM-Enhanced DenseNet121 for Multi-Class Chest X-Ray Classification with Grad-CAM Explainability",
+    "published": "2026-04-14",
+    "summary": "Pneumonia remains a leading cause of childhood mortality worldwide, with a heavy burden in low-resource settings such as Bangladesh where radiologist availability is limited. Most existing deep learning approaches treat pneumonia detection as a binary problem, overlooking the clinically critical dis"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.04250v1",
+    "title": "CAWN: Continuous Acoustic Wave Networks for Autoregressive Language Modeling",
+    "published": "2026-04-05",
+    "summary": "Modern Large Language Models (LLMs) rely on Transformer self-attention, which scales quadratically with sequence length. Recent linear-time alternatives, like State Space Models (SSMs), often suffer from signal degradation over extended contexts. We introduce the Continuous Acoustic Wave Network (CA"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.02200v1",
+    "title": "Towards Position-Robust Talent Recommendation via Large Language Models",
+    "published": "2026-04-02",
+    "summary": "Talent recruitment is a critical, yet costly process for many industries, with high recruitment costs and long hiring cycles. Existing talent recommendation systems increasingly adopt large language models (LLMs) due to their remarkable language understanding capabilities. However, most prior approa"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.00754v2",
+    "title": "Stochastic Attention: Connectome-Inspired Randomized Routing for Expressive Linear-Time Attention",
+    "published": "2026-04-01",
+    "summary": "The whole-brain connectome of a fruit fly comprises over 130K neurons connected with a probability of merely 0.02%, yet achieves an average shortest path of only 4.4 hops. Despite being highly structured at the circuit level, the network's long-range connections are broadly distributed across brain "
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.14156v1",
+    "title": "Compressed-Sensing-Guided, Inference-Aware Structured Reduction for Large Language Models",
+    "published": "2026-03-22",
+    "summary": "Large language models deliver strong generative performance but at the cost of massive parameter counts, memory use, and decoding latency. Prior work has shown that pruning and structured sparsity can preserve accuracy under substantial compression, while prompt-compression methods reduce latency by"
+  },
+  {
+    "id": "http://arxiv.org/abs/2602.10079v1",
+    "title": "Can Image Splicing and Copy-Move Forgery Be Detected by the Same Model? Forensim: An Attention-Based State-Space Approach",
+    "published": "2026-02-10",
+    "summary": "We introduce Forensim, an attention-based state-space framework for image forgery detection that jointly localizes both manipulated (target) and source regions. Unlike traditional approaches that rely solely on artifact cues to detect spliced or forged areas, Forensim is designed to capture duplicat"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.13126v1",
+    "title": "A Streamlined Attention-Based Network for Descriptor Extraction",
+    "published": "2026-01-19",
+    "summary": "We introduce SANDesc, a Streamlined Attention-Based Network for Descriptor extraction that aims to improve on existing architectures for keypoint description. Our descriptor network learns to compute descriptors that improve matching without modifying the underlying keypoint detector. We employ a re"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.12895v1",
+    "title": "TwoHead-SwinFPN: A Unified DL Architecture for Synthetic Manipulation, Detection and Localization in Identity Documents",
+    "published": "2026-01-19",
+    "summary": "The proliferation of sophisticated generative AI models has significantly escalated the threat of synthetic manipulations in identity documents, particularly through face swapping and text inpainting attacks. This paper presents TwoHead-SwinFPN, a unified deep learning architecture that simultaneous"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.10854v1",
+    "title": "Effects of Different Attention Mechanisms Applied on 3D Models in Video Classification",
+    "published": "2026-01-15",
+    "summary": "Human action recognition has become an important research focus in computer vision due to the wide range of applications where it is used. 3D Resnet-based CNN models, particularly MC3, R3D, and R(2+1)D, have different convolutional filters to extract spatiotemporal features. This paper investigates "
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.05470v1",
+    "title": "ROAP: A Reading-Order and Attention-Prior Pipeline for Optimizing Layout Transformers in Key Information Extraction",
+    "published": "2026-01-09",
+    "summary": "The efficacy of Multimodal Transformers in visually-rich document understanding (VrDU) is critically constrained by two inherent limitations: the lack of explicit modeling for logical reading order and the interference of visual tokens that dilutes attention on textual semantics. To address these ch"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.02928v1",
+    "title": "HybridSolarNet: A Lightweight and Explainable EfficientNet-CBAM Architecture for Real-Time Solar Panel Fault Detection",
+    "published": "2026-01-06",
+    "summary": "Manual inspections for solar panel systems are a tedious, costly, and error-prone task, making it desirable for Unmanned Aerial Vehicle (UAV) based monitoring. Though deep learning models have excellent fault detection capabilities, almost all methods either are too large and heavy for edge computin"
+  },
+  {
+    "id": "http://arxiv.org/abs/2601.02091v2",
+    "title": "MCD-Net: A Lightweight Deep Learning Baseline for Optical-Only Moraine Segmentation",
+    "published": "2026-01-05",
+    "summary": "Glacial segmentation is essential for reconstructing past glacier dynamics and evaluating climate-driven landscape change. However, weak optical contrast and the limited availability of high-resolution DEMs hinder automated mapping. This study introduces the first large-scale optical-only moraine se"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.24463v1",
+    "title": "Spectral and Spatial Graph Learning for Multispectral Solar Image Compression",
+    "published": "2025-12-30",
+    "summary": "High-fidelity compression of multispectral solar imagery remains challenging for space missions, where limited bandwidth must be balanced against preserving fine spectral and spatial details. We present a learned image compression framework tailored to solar observations, leveraging two complementar"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.18046v1",
+    "title": "YolovN-CBi: A Lightweight and Efficient Architecture for Real-Time Detection of Small UAVs",
+    "published": "2025-12-19",
+    "summary": "Unmanned Aerial Vehicles, commonly known as, drones pose increasing risks in civilian and defense settings, demanding accurate and real-time drone detection systems. However, detecting drones is challenging because of their small size, rapid movement, and low visual contrast. A modified architecture"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.17864v2",
+    "title": "Interpretable Plant Leaf Disease Detection Using Attention-Enhanced CNN",
+    "published": "2025-12-19",
+    "summary": "Plant diseases pose a significant threat to global food security, necessitating accurate and interpretable disease detection methods. This study introduces an interpretable attention-guided Convolutional Neural Network (CNN), CBAM-VGG16, for plant leaf disease detection. By integrating Convolution B"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.15947v2",
+    "title": "MCR-VQGAN: A Scalable and Cost-Effective Tau PET Synthesis Approach for Alzheimer's Disease Imaging",
+    "published": "2025-12-17",
+    "summary": "Tau positron emission tomography (PET) is a critical diagnostic modality for Alzheimer's disease (AD), but its widespread clinical adoption is hindered by radiation exposure, limited availability, high clinical workload, and substantial financial costs. To address these limitations, we propose the M"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.12087v3",
+    "title": "BLASST: Dynamic BLocked Attention Sparsity via Softmax Thresholding",
+    "published": "2025-12-12",
+    "summary": "The growing demand for long-context inference capabilities in Large Language Models (LLMs) has intensified the computational and memory bottlenecks inherent to the self-attention mechanism. To address this challenge, we introduce BLASST, a drop-in, dynamic sparse attention mechanism that accelerates"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.05415v1",
+    "title": "Moving object detection from multi-depth images with an attention-enhanced CNN",
+    "published": "2025-12-05",
+    "summary": "One of the greatest challenges for detecting moving objects in the solar system from wide-field survey data is determining whether a signal indicates a true object or is due to some other source, like noise. Object verification has relied heavily on human eyes, which usually results in significant l"
+  },
+  {
+    "id": "http://arxiv.org/abs/2512.04521v1",
+    "title": "WiFi-based Cross-Domain Gesture Recognition Using Attention Mechanism",
+    "published": "2025-12-04",
+    "summary": "While fulfilling communication tasks, wireless signals can also be used to sense the environment. Among various types of sensing media, WiFi signals offer advantages such as widespread availability, low hardware cost, and strong robustness to environmental conditions like light, temperature, and hum"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.22539v1",
+    "title": "TransCoder: A Neural-Enhancement Framework for Channel Codes",
+    "published": "2025-11-27",
+    "summary": "Reliable communication over noisy channels requires the design of specialized error-correcting codes (ECCs) tailored to specific system requirements. Recently, neural network-based decoders have emerged as promising tools for enhancing ECC reliability, yet their high computational complexity prevent"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.12682v1",
+    "title": "Attention-Enhanced Convolutional Autoencoder and Structured Delay Embeddings for Weather Prediction",
+    "published": "2025-11-16",
+    "summary": "Weather prediction is a quintessential problem involving the forecasting of a complex, nonlinear, and chaotic high-dimensional dynamical system. This work introduces an efficient reduced-order modeling (ROM) framework for short-range weather prediction and investigates fundamental questions in dimen"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.12346v2",
+    "title": "CLAReSNet: When Convolution Meets Latent Attention for Hyperspectral Image Classification",
+    "published": "2025-11-15",
+    "summary": "Hyperspectral image (HSI) classification faces critical challenges, including high spectral dimensionality, complex spectral-spatial correlations, and limited training samples with severe class imbalance. While CNNs excel at local feature extraction and transformers capture long-range dependencies, "
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.11959v1",
+    "title": "Evaluation of Attention Mechanisms in U-Net Architectures for Semantic Segmentation of Brazilian Rock Art Petroglyphs",
+    "published": "2025-11-15",
+    "summary": "This study presents a comparative analysis of three U-Net-based architectures for semantic segmentation of rock art petroglyphs from Brazilian archaeological sites. The investigated architectures were: (1) BEGL-UNet with Border-Enhanced Gaussian Loss function; (2) Attention-Residual BEGL-UNet, incor"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.11571v2",
+    "title": "Optimizing Mixture of Block Attention",
+    "published": "2025-11-14",
+    "summary": "Mixture of Block Attention (MoBA) (Lu et al., 2025) is a promising building block for efficiently processing long contexts in LLMs by enabling queries to sparsely attend to a small subset of key-value blocks, drastically reducing computational cost. However, the design principles governing MoBA's pe"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.25522v5",
+    "title": "Comparative Study of UNet-based Architectures for Liver Tumor Segmentation in Multi-Phase Contrast-Enhanced Computed Tomography",
+    "published": "2025-10-29",
+    "summary": "Segmentation of liver structures in multi-phase contrast-enhanced computed tomography (CECT) plays a crucial role in computer-aided diagnosis and treatment planning. In this study, we investigate the performance of UNet-based architectures for liver tumor segmentation, evaluating ResNet, Transformer"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.25797v1",
+    "title": "Enhancing Underwater Object Detection through Spatio-Temporal Analysis and Spatial Attention Networks",
+    "published": "2025-10-29",
+    "summary": "This study examines the effectiveness of spatio-temporal modeling and the integration of spatial attention mechanisms in deep learning models for underwater object detection. Specifically, in the first phase, the performance of temporal-enhanced YOLOv5 variant T-YOLOv5 is evaluated, in comparison wi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.22743v1",
+    "title": "ConMatFormer: A Multi-attention and Transformer Integrated ConvNext based Deep Learning Model for Enhanced Diabetic Foot Ulcer Classification",
+    "published": "2025-10-26",
+    "summary": "Diabetic foot ulcer (DFU) detection is a clinically significant yet challenging task due to the scarcity and variability of publicly available datasets. To solve these problems, we propose ConMatFormer, a new hybrid deep learning architecture that combines ConvNeXt blocks, multiple attention mechani"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.22547v1",
+    "title": "Low-Light Image Enhancement Using Gamma Learning And Attention-Enabled Encoder-Decoder Networks",
+    "published": "2025-10-26",
+    "summary": "Images acquired in low-light environments present significant obstacles for computer vision systems and human perception, especially for applications requiring accurate object recognition and scene analysis. Such images typically manifest multiple quality issues: amplified noise, inadequate scene il"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.22142v1",
+    "title": "Attention Residual Fusion Network with Contrast for Source-free Domain Adaptation",
+    "published": "2025-10-25",
+    "summary": "Source-free domain adaptation (SFDA) involves training a model on source domain and then applying it to a related target domain without access to the source data and labels during adaptation. The complexity of scene information and lack of the source domain make SFDA a difficult task. Recent studies"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.21795v1",
+    "title": "Xihe: Scalable Zero-Shot Time Series Learner Via Hierarchical Interleaved Block Attention",
+    "published": "2025-10-20",
+    "summary": "The rapid advancement of time series foundation models (TSFMs) has been propelled by migrating architectures from language models. While existing TSFMs demonstrate impressive performance, their direct adoption of cross-domain architectures constrains effective capture of multiscale temporal dependen"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.16854v1",
+    "title": "ArmFormer: Lightweight Transformer Architecture for Real-Time Multi-Class Weapon Segmentation and Classification",
+    "published": "2025-10-19",
+    "summary": "The escalating threat of weapon-related violence necessitates automated detection systems capable of pixel-level precision for accurate threat assessment in real-time security applications. Traditional weapon detection approaches rely on object detection frameworks that provide only coarse bounding "
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.26484v1",
+    "title": "CBAM Integrated Attention Driven Model For Betel Leaf Diseases Classification With Explainable AI",
+    "published": "2025-09-30",
+    "summary": "Betel leaf is an important crop because of its economic advantages and widespread use. Its betel vines are susceptible to a number of illnesses that are commonly referred to as betel leaf disease. Plant diseases are the largest threat to the food supply's security, and they are challenging to identi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.22763v1",
+    "title": "UESA-Net: U-Shaped Embedded Multidirectional Shrinkage Attention Network for Ultrasound Nodule Segmentation",
+    "published": "2025-09-26",
+    "summary": "Background: Breast and thyroid cancers pose an increasing public-health burden. Ultrasound imaging is a cost-effective, real-time modality for lesion detection and segmentation, yet suffers from speckle noise, overlapping structures, and weak global-local feature interactions. Existing networks stru"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.17078v3",
+    "title": "Enhanced Detection of Tiny Objects in Aerial Images",
+    "published": "2025-09-21",
+    "summary": "While one-stage detectors like YOLOv8 offer fast training speed, they often under-perform on detecting small objects as a trade-off. This becomes even more critical when detecting tiny objects in aerial imagery due to low-resolution targets and cluttered backgrounds. To address this, we introduce fo"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.11232v1",
+    "title": "MIS-LSTM: Multichannel Image-Sequence LSTM for Sleep Quality and Stress Prediction",
+    "published": "2025-09-14",
+    "summary": "This paper presents MIS-LSTM, a hybrid framework that joins CNN encoders with an LSTM sequence model for sleep quality and stress prediction at the day level from multimodal lifelog data. Continuous sensor streams are first partitioned into N-hour blocks and rendered as multi-channel images, while s"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.09242v1",
+    "title": "CoAtNeXt:An Attention-Enhanced ConvNeXtV2-Transformer Hybrid Model for Gastric Tissue Classification",
+    "published": "2025-09-11",
+    "summary": "Background and objective Early diagnosis of gastric diseases is crucial to prevent fatal outcomes. Although histopathologic examination remains the diagnostic gold standard, it is performed entirely manually, making evaluations labor-intensive and prone to variability among pathologists. Critical fi"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.08961v1",
+    "title": "FoundationalECGNet: A Lightweight Foundational Model for ECG-based Multitask Cardiac Analysis",
+    "published": "2025-09-10",
+    "summary": "Cardiovascular diseases (CVDs) remain a leading cause of mortality worldwide, underscoring the importance of accurate and scalable diagnostic systems. Electrocardiogram (ECG) analysis is central to detecting cardiac abnormalities, yet challenges such as noise, class imbalance, and dataset heterogene"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.08228v1",
+    "title": "Sparse Transformer for Ultra-sparse Sampled Video Compressive Sensing",
+    "published": "2025-09-10",
+    "summary": "Digital cameras consume ~0.1 microjoule per pixel to capture and encode video, resulting in a power usage of ~20W for a 4K sensor operating at 30 fps. Imagining gigapixel cameras operating at 100-1000 fps, the current processing model is unsustainable. To address this, physical layer compressive mea"
+  },
+  {
+    "id": "http://arxiv.org/abs/2509.05343v1",
+    "title": "Systematic Integration of Attention Modules into CNNs for Accurate and Generalizable Medical Image Diagnosis",
+    "published": "2025-09-02",
+    "summary": "Deep learning has become a powerful tool for medical image analysis; however, conventional Convolutional Neural Networks (CNNs) often fail to capture the fine-grained and complex features critical for accurate diagnosis. To address this limitation, we systematically integrate attention mechanisms in"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.15379v1",
+    "title": "Bladder Cancer Diagnosis with Deep Learning: A Multi-Task Framework and Online Platform",
+    "published": "2025-08-21",
+    "summary": "Clinical cystoscopy, the current standard for bladder cancer diagnosis, suffers from significant reliance on physician expertise, leading to variability and subjectivity in diagnostic outcomes. There is an urgent need for objective, accurate, and efficient computational approaches to improve bladder"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.14349v1",
+    "title": "Deep Learning for Taxol Exposure Analysis: A New Cell Image Dataset and Attention-Based Baseline Model",
+    "published": "2025-08-20",
+    "summary": "Monitoring the effects of the chemotherapeutic agent Taxol at the cellular level is critical for both clinical evaluation and biomedical research. However, existing detection methods require specialized equipment, skilled personnel, and extensive sample preparation, making them expensive, labor-inte"
+  },
+  {
+    "id": "http://arxiv.org/abs/2508.11354v3",
+    "title": "FunduSegmenter: Leveraging the RETFound Foundation Model for Joint Optic Disc and Optic Cup Segmentation in Retinal Fundus Images",
+    "published": "2025-08-15",
+    "summary": "Purpose: This study introduces the first adaptation of RETFound for joint optic disc (OD) and optic cup (OC) segmentation. RETFound is a well-known foundation model developed for fundus camera and optical coherence tomography images, which has shown promising performance in disease diagnosis. Method"
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.23185v1",
+    "title": "Single Image Rain Streak Removal Using Harris Corner Loss and R-CBAM Network",
+    "published": "2025-07-31",
+    "summary": "The problem of single-image rain streak removal goes beyond simple noise suppression, requiring the simultaneous preservation of fine structural details and overall visual quality. In this study, we propose a novel image restoration network that effectively constrains the restoration process by intr"
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.20629v1",
+    "title": "DAMS:Dual-Branch Adaptive Multiscale Spatiotemporal Framework for Video Anomaly Detection",
+    "published": "2025-07-28",
+    "summary": "The goal of video anomaly detection is tantamount to performing spatio-temporal localization of abnormal events in the video. The multiscale temporal dependencies, visual-semantic heterogeneity, and the scarcity of labeled data exhibited by video anomalies collectively present a challenging research"
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.19296v1",
+    "title": "ABCD: Automatic Blood Cell Detection via Attention-Guided Improved YOLOX",
+    "published": "2025-07-25",
+    "summary": "Detection of blood cells in microscopic images has become a major focus of medical image analysis, playing a crucial role in gaining valuable insights into a patient's health. Manual blood cell checks for disease detection are known to be time-consuming, inefficient, and error-prone. To address thes"
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.14163v1",
+    "title": "UniPhyNet: A Unified Network For Multimodal Physiological Raw Signal Classification",
+    "published": "2025-07-08",
+    "summary": "We present UniPhyNet, a novel neural network architecture to classify cognitive load using multimodal physiological data -- specifically EEG, ECG and EDA signals -- without the explicit need for extracting hand-crafted features. UniPhyNet integrates multiscale parallel convolutional blocks and ResNe"
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.00511v2",
+    "title": "Medical Image Segmentation Using Advanced Unet: VMSE-Unet and VM-Unet CBAM+",
+    "published": "2025-07-01",
+    "summary": "In this paper, we present the VMSE U-Net and VM-Unet CBAM+ model, two cutting-edge deep learning architectures designed to enhance medical image segmentation. Our approach integrates Squeeze-and-Excitation (SE) and Convolutional Block Attention Module (CBAM) techniques into the traditional VM U-Net "
+  },
+  {
+    "id": "http://arxiv.org/abs/2506.23858v1",
+    "title": "VMoBA: Mixture-of-Block Attention for Video Diffusion Models",
+    "published": "2025-06-30",
+    "summary": "The quadratic complexity of full attention mechanisms poses a significant bottleneck for Video Diffusion Models (VDMs) aiming to generate long-duration, high-resolution videos. While various sparse attention methods have been proposed, many are designed as training-free inference accelerators or do "
+  },
+  {
+    "id": "http://arxiv.org/abs/2506.15562v2",
+    "title": "Automated MRI Tumor Segmentation using hybrid U-Net with Transformer and Efficient Attention",
+    "published": "2025-06-18",
+    "summary": "Cancer is an abnormal growth with potential to invade locally and metastasize to distant organs. Accurate auto-segmentation of the tumor and surrounding normal tissues is required for radiotherapy treatment plan optimization. Recent AI-based segmentation models are generally trained on large public "
+  },
+  {
+    "id": "http://arxiv.org/abs/2506.10683v1",
+    "title": "Enhancing Deepfake Detection using SE Block Attention with CNN",
+    "published": "2025-06-12",
+    "summary": "In the digital age, Deepfake present a formidable challenge by using advanced artificial intelligence to create highly convincing manipulated content, undermining information authenticity and security. These sophisticated fabrications surpass traditional detection methods in complexity and realism. "
+  },
+  {
+    "id": "http://arxiv.org/abs/2506.08534v1",
+    "title": "DCD: A Semantic Segmentation Model for Fetal Ultrasound Four-Chamber View",
+    "published": "2025-06-10",
+    "summary": "Accurate segmentation of anatomical structures in the apical four-chamber (A4C) view of fetal echocardiography is essential for early diagnosis and prenatal evaluation of congenital heart disease (CHD). However, precise segmentation remains challenging due to ultrasound artifacts, speckle noise, ana"
+  },
+  {
+    "id": "http://arxiv.org/abs/2506.07885v1",
+    "title": "CrosswalkNet: An Optimized Deep Learning Framework for Pedestrian Crosswalk Detection in Aerial Images with High-Performance Computing",
+    "published": "2025-06-09",
+    "summary": "With the increasing availability of aerial and satellite imagery, deep learning presents significant potential for transportation asset management, safety analysis, and urban planning. This study introduces CrosswalkNet, a robust and efficient deep learning framework designed to detect various types"
+  },
+  {
+    "id": "http://arxiv.org/abs/2506.07357v1",
+    "title": "CBAM-STN-TPS-YOLO: Enhancing Agricultural Object Detection through Spatially Adaptive Attention Mechanisms",
+    "published": "2025-06-09",
+    "summary": "Object detection is vital in precision agriculture for plant monitoring, disease detection, and yield estimation. However, models like YOLO struggle with occlusions, irregular structures, and background noise, reducing detection accuracy. While Spatial Transformer Networks (STNs) improve spatial inv"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.24544v4",
+    "title": "Cross-Attention Speculative Decoding",
+    "published": "2025-05-30",
+    "summary": "Speculative decoding (SD) is a widely adopted approach for accelerating inference in large language models (LLMs), particularly when the draft and target models are well aligned. However, state-of-the-art SD methods typically rely on tightly coupled, self-attention-based Transformer decoders, often "
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.17683v2",
+    "title": "Dual Attention Residual U-Net for Accurate Brain Ultrasound Segmentation in IVH Detection",
+    "published": "2025-05-23",
+    "summary": "Intraventricular hemorrhage (IVH) is a severe neurological complication among premature infants, necessitating early and accurate detection from brain ultrasound (US) images to improve clinical outcomes. While recent deep learning methods offer promise for computer-aided diagnosis, challenges remain"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.08699v2",
+    "title": "Granite-speech: open-source speech-aware LLMs with strong English ASR capabilities",
+    "published": "2025-05-13",
+    "summary": "Granite-speech LLMs are compact and efficient speech language models specifically designed for English ASR and automatic speech translation (AST). The models were trained by modality aligning the 2B and 8B parameter variants of granite-3.3-instruct to speech on publicly available open-source corpora"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.04199v1",
+    "title": "Enhanced SCanNet with CBAM and Dice Loss for Semantic Change Detection",
+    "published": "2025-05-07",
+    "summary": "Semantic Change Detection (SCD) in remote sensing imagery requires accurately identifying land-cover changes across multi-temporal image pairs. Despite substantial advancements, including the introduction of transformer-based architectures, current SCD models continue to struggle with challenges suc"
+  },
+  {
+    "id": "http://arxiv.org/abs/2505.02586v3",
+    "title": "RGBX-DiffusionDet: A Framework for Multi-Modal RGB-X Object Detection Using DiffusionDet",
+    "published": "2025-05-05",
+    "summary": "This work introduces RGBX-DiffusionDet, an object detection framework extending the DiffusionDet model to fuse the heterogeneous 2D data (X) with RGB imagery via an adaptive multimodal encoder. To enable cross-modal interaction, we design the dynamic channel reduction within a convolutional block at"
+  },
+  {
+    "id": "http://arxiv.org/abs/2504.18490v1",
+    "title": "An Improved ResNet50 Model for Predicting Pavement Condition Index (PCI) Directly from Pavement Images",
+    "published": "2025-04-25",
+    "summary": "Accurately predicting the Pavement Condition Index (PCI), a measure of roadway conditions, from pavement images is crucial for infrastructure maintenance. This study proposes an enhanced version of the Residual Network (ResNet50) architecture, integrated with a Convolutional Block Attention Module ("
+  },
+  {
+    "id": "http://arxiv.org/abs/2504.16922v1",
+    "title": "Generalized Neighborhood Attention: Multi-dimensional Sparse Attention at the Speed of Light",
+    "published": "2025-04-23",
+    "summary": "Many sparse attention mechanisms such as Neighborhood Attention have typically failed to consistently deliver speedup over the self attention baseline. This is largely due to the level of complexity in attention infrastructure, and the rapid evolution of AI hardware architecture. At the same time, m"
+  },
+  {
+    "id": "http://arxiv.org/abs/2504.15875v1",
+    "title": "Identifying eclipsing binary stars with TESS data based on a new hybrid deep learning model",
+    "published": "2025-04-22",
+    "summary": "Eclipsing binary systems (EBs), as foundational objects in stellar astrophysics, have garnered significant attention in recent years. These systems exhibit periodic decreases in light intensity when one star obscures the other from the observer's perspective, producing characteristic light curves (L"
+  },
+  {
+    "id": "http://arxiv.org/abs/2504.12204v1",
+    "title": "Towards Realistic Low-Light Image Enhancement via ISP Driven Data Modeling",
+    "published": "2025-04-16",
+    "summary": "Deep neural networks (DNNs) have recently become the leading method for low-light image enhancement (LLIE). However, despite significant progress, their outputs may still exhibit issues such as amplified noise, incorrect white balance, or unnatural enhancements when deployed in real world applicatio"
+  },
+  {
+    "id": "http://arxiv.org/abs/2504.08469v4",
+    "title": "Artifact detection and localization in single-channel mobile EEG for sleep research using deep learning and attention mechanisms",
+    "published": "2025-04-11",
+    "summary": "Current methods for detecting artifacts in sleep EEG range from threshold-based algorithms to machine learning approaches, yet applications remain limited for single-channel mobile EEG. We propose a convolutional neural network (CNN) model incorporating a convolutional block attention module (CNN-CB"
+  },
+  {
+    "id": "http://arxiv.org/abs/2504.00370v1",
+    "title": "Spatiotemporal Attention Learning Framework for Event-Driven Object Recognition",
+    "published": "2025-04-01",
+    "summary": "Event-based vision sensors, inspired by biological neural systems, asynchronously capture local pixel-level intensity changes as a sparse event stream containing position, polarity, and timestamp information. These neuromorphic sensors offer significant advantages in dynamic range, latency, and powe"
+  },
+  {
+    "id": "http://arxiv.org/abs/2503.22251v1",
+    "title": "Efficient Building Roof Type Classification: A Domain-Specific Self-Supervised Approach",
+    "published": "2025-03-28",
+    "summary": "Accurate classification of building roof types from aerial imagery is crucial for various remote sensing applications, including urban planning, disaster management, and infrastructure monitoring. However, this task is often hindered by the limited availability of labeled data for supervised learnin"
+  },
+  {
+    "id": "http://arxiv.org/abs/2503.17193v2",
+    "title": "MSCA-Net:Multi-Scale Context Aggregation Network for Infrared Small Target Detection",
+    "published": "2025-03-21",
+    "summary": "In complex environments, detecting tiny infrared targets has always been challenging because of the low contrast and high noise levels inherent in infrared images. These factors often lead to the loss of crucial details during feature extraction. Moreover, existing detection methods have limitations"
+  },
+  {
+    "id": "http://arxiv.org/abs/2503.08239v1",
+    "title": "EnergyFormer: Energy Attention with Fourier Embedding for Hyperspectral Image Classification",
+    "published": "2025-03-11",
+    "summary": "Hyperspectral imaging (HSI) provides rich spectral-spatial information across hundreds of contiguous bands, enabling precise material discrimination in applications such as environmental monitoring, agriculture, and urban analysis. However, the high dimensionality and spectral variability of HSI dat"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.13189v1",
+    "title": "MoBA: Mixture of Block Attention for Long-Context LLMs",
+    "published": "2025-02-18",
+    "summary": "Scaling the effective context length is essential for advancing large language models (LLMs) toward artificial general intelligence (AGI). However, the quadratic increase in computational complexity inherent in traditional attention mechanisms presents a prohibitive overhead. Existing approaches eit"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.09503v2",
+    "title": "AttentionSmithy: A Modular Framework for Rapid Transformer Development and Customization",
+    "published": "2025-02-13",
+    "summary": "Transformer architectures have transformed AI applications but remain complex to customize for domain experts lacking low-level implementation expertise. We introduce AttentionSmithy, a modular software package that simplifies transformer innovation by breaking down key components into reusable buil"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.09256v1",
+    "title": "DynSegNet:Dynamic Architecture Adjustment for Adversarial Learning in Segmenting Hemorrhagic Lesions from Fundus Images",
+    "published": "2025-02-13",
+    "summary": "The hemorrhagic lesion segmentation plays a critical role in ophthalmic diagnosis, directly influencing early disease detection, treatment planning, and therapeutic efficacy evaluation. However, the task faces significant challenges due to lesion morphological variability, indistinct boundaries, and"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.06220v1",
+    "title": "FunduSAM: A Specialized Deep Learning Model for Enhanced Optic Disc and Cup Segmentation in Fundus Images",
+    "published": "2025-02-10",
+    "summary": "The Segment Anything Model (SAM) has gained popularity as a versatile image segmentation method, thanks to its strong generalization capabilities across various domains. However, when applied to optic disc (OD) and optic cup (OC) segmentation tasks, SAM encounters challenges due to the complex struc"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.06127v1",
+    "title": "Improved YOLOv5s model for key components detection of power transmission lines",
+    "published": "2025-02-10",
+    "summary": "High-voltage transmission lines are located far from the road, resulting in inconvenient inspection work and rising maintenance costs. Intelligent inspection of power transmission lines has become increasingly important. However, subsequent intelligent inspection relies on accurately detecting vario"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.06119v1",
+    "title": "An Appearance Defect Detection Method for Cigarettes Based on C-CenterNet",
+    "published": "2025-02-10",
+    "summary": "Due to the poor adaptability of traditional methods in the cigarette detection task on the automatic cigarette production line, it is difficult to accurately identify whether a cigarette has defects and the types of defects; thus, a cigarette appearance defect detection method based on C-CenterNet i"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.03103v1",
+    "title": "Edge Attention Module for Object Classification",
+    "published": "2025-02-05",
+    "summary": "A novel ``edge attention-based Convolutional Neural Network (CNN)'' is proposed in this research for object classification task. With the advent of advanced computing technology, CNN models have achieved to remarkable success, particularly in computer vision applications. Nevertheless, the efficacy "
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.06818v4",
+    "title": "Rethinking the Global Knowledge of CLIP in Training-Free Open-Vocabulary Semantic Segmentation",
+    "published": "2025-02-05",
+    "summary": "Recent works modify CLIP to perform open-vocabulary semantic segmentation in a training-free manner (TF-OVSS). In vanilla CLIP, patch-wise image representations mainly encode homogeneous image-level properties, which hinders the application of CLIP to the dense prediction task. Previous TF-OVSS work"
+  },
+  {
+    "id": "http://arxiv.org/abs/2502.01311v1",
+    "title": "TFBS-Finder: Deep Learning-based Model with DNABERT and Convolutional Networks to Predict Transcription Factor Binding Sites",
+    "published": "2025-02-03",
+    "summary": "Transcription factors are proteins that regulate the expression of genes by binding to specific genomic regions known as Transcription Factor Binding Sites (TFBSs), typically located in the promoter regions of those genes. Accurate prediction of these binding sites is essential for understanding the"
+  },
+  {
+    "id": "http://arxiv.org/abs/2501.05991v1",
+    "title": "An Attention-Guided Deep Learning Approach for Classifying 39 Skin Lesion Types",
+    "published": "2025-01-10",
+    "summary": "The skin, as the largest organ of the human body, is vulnerable to a diverse array of conditions collectively known as skin lesions, which encompass various dermatoses. Diagnosing these lesions presents significant challenges for medical practitioners due to the subtle visual differences that are of"
+  },
+  {
+    "id": "http://arxiv.org/abs/2501.02080v1",
+    "title": "AI-Powered Cow Detection in Complex Farm Environments",
+    "published": "2025-01-03",
+    "summary": "Animal welfare has become a critical issue in contemporary society, emphasizing our ethical responsibilities toward animals, particularly within livestock farming. The advent of Artificial Intelligence (AI) technologies, specifically computer vision, offers an innovative approach to monitoring and e"
+  },
+  {
+    "id": "http://arxiv.org/abs/2412.08683v1",
+    "title": "Emotional Vietnamese Speech-Based Depression Diagnosis Using Dynamic Attention Mechanism",
+    "published": "2024-12-11",
+    "summary": "Major depressive disorder is a prevalent and serious mental health condition that negatively impacts your emotions, thoughts, actions, and overall perception of the world. It is complicated to determine whether a person is depressed due to the symptoms of depression not apparent. However, their voic"
+  },
+  {
+    "id": "http://arxiv.org/abs/2412.06227v2",
+    "title": "Attention-Enhanced Lightweight Hourglass Network for Human Pose Estimation",
+    "published": "2024-12-09",
+    "summary": "Pose estimation is a critical task in computer vision with a wide range of applications from activity monitoring to human-robot interaction. However,most of the existing methods are computationally expensive or have complex architecture. Here we propose a lightweight attention based pose estimation "
+  },
+  {
+    "id": "http://arxiv.org/abs/2412.05728v1",
+    "title": "Integrating YOLO11 and Convolution Block Attention Module for Multi-Season Segmentation of Tree Trunks and Branches in Commercial Apple Orchards",
+    "published": "2024-12-07",
+    "summary": "In this study, we developed a customized instance segmentation model by integrating the Convolutional Block Attention Module (CBAM) with the YOLO11 architecture. This model, trained on a mixed dataset of dormant and canopy season apple orchard images, aimed to enhance the segmentation of tree trunks"
+  },
+  {
+    "id": "http://arxiv.org/abs/2411.19005v1",
+    "title": "Locally-Focused Face Representation for Sketch-to-Image Generation Using Noise-Induced Refinement",
+    "published": "2024-11-28",
+    "summary": "This paper presents a novel deep-learning framework that significantly enhances the transformation of rudimentary face sketches into high-fidelity colour images. Employing a Convolutional Block Attention-based Auto-encoder Network (CA2N), our approach effectively captures and enhances critical facia"
+  },
+  {
+    "id": "http://arxiv.org/abs/2411.09469v1",
+    "title": "An Explainable Attention Model for Cervical Precancer Risk Classification using Colposcopic Images",
+    "published": "2024-11-14",
+    "summary": "Cervical cancer remains a major worldwide health issue, with early identification and risk assessment playing critical roles in effective preventive interventions. This paper presents the Cervix-AID-Net model for cervical precancer risk classification. The study designs and evaluates the proposed Ce"
+  },
+  {
+    "id": "http://arxiv.org/abs/2411.07708v1",
+    "title": "Emotion Classification of Children Expressions",
+    "published": "2024-11-12",
+    "summary": "This paper proposes a process for a classification model for the facial expressions. The proposed process would aid in specific categorisation of children's emotions from 2 emotions namely 'Happy' and 'Sad'. Since the existing emotion recognition systems algorithms primarily train on adult faces, th"
+  },
+  {
+    "id": "http://arxiv.org/abs/2410.22101v2",
+    "title": "Hyperspectral Imaging-Based Perception in Autonomous Driving Scenarios: Benchmarking Baseline Semantic Segmentation Models",
+    "published": "2024-10-29",
+    "summary": "Hyperspectral Imaging (HSI) is known for its advantages over traditional RGB imaging in remote sensing, agriculture, and medicine. Recently, it has gained attention for enhancing Advanced Driving Assistance Systems (ADAS) perception. Several HSI datasets such as HyKo, HSI-Drive, HSI-Road, and Hypers"
+  },
+  {
+    "id": "http://arxiv.org/abs/2410.21831v1",
+    "title": "Enhanced Survival Prediction in Head and Neck Cancer Using Convolutional Block Attention and Multimodal Data Fusion",
+    "published": "2024-10-29",
+    "summary": "Accurate survival prediction in head and neck cancer (HNC) is essential for guiding clinical decision-making and optimizing treatment strategies. Traditional models, such as Cox proportional hazards, have been widely used but are limited in their ability to handle complex multi-modal data. This pape"
+  },
+  {
+    "id": "http://arxiv.org/abs/2410.20231v3",
+    "title": "CAVE-Net: Classifying Abnormalities in Video Capsule Endoscopy",
+    "published": "2024-10-26",
+    "summary": "Accurate classification of medical images is critical for detecting abnormalities in the gastrointestinal tract, a domain where misclassification can significantly impact patient outcomes. We propose an ensemble-based approach to improve diagnostic accuracy in analyzing complex image datasets. Using"
+  },
+  {
+    "id": "http://arxiv.org/abs/2409.20113v2",
+    "title": "CBAM-SwinT-BL: Small Rail Surface Defect Detection Method Based on Swin Transformer with Block Level CBAM Enhancement",
+    "published": "2024-09-30",
+    "summary": "Under high-intensity rail operations, rail tracks endure considerable stresses resulting in various defects such as corrugation and spellings. Failure to effectively detect defects and provide maintenance in time would compromise service reliability and public safety. While advanced models have been"
+  },
+  {
+    "id": "http://arxiv.org/abs/2409.18826v1",
+    "title": "YOLOv8-ResCBAM: YOLOv8 Based on An Effective Attention Module for Pediatric Wrist Fracture Detection",
+    "published": "2024-09-27",
+    "summary": "Wrist trauma and even fractures occur frequently in daily life, particularly among children who account for a significant proportion of fracture cases. Before performing surgery, surgeons often request patients to undergo X-ray imaging first, and prepare for the surgery based on the analysis of the "
+  },
+  {
+    "id": "http://arxiv.org/abs/2409.13435v1",
+    "title": "PlainUSR: Chasing Faster ConvNet for Efficient Super-Resolution",
+    "published": "2024-09-20",
+    "summary": "Reducing latency is a roaring trend in recent super-resolution (SR) research. While recent progress exploits various convolutional blocks, attention modules, and backbones to unlock the full potentials of the convolutional neural network (ConvNet), achieving real-time performance remains a challenge"
+  },
+  {
+    "id": "http://arxiv.org/abs/2409.15355v5",
+    "title": "Block-Attention for Efficient Prefilling",
+    "published": "2024-09-14",
+    "summary": "We introduce Block-attention, an attention mechanism designed to address the increased inference latency and cost in Retrieval-Augmented Generation (RAG) scenarios. Traditional approaches often encode the entire context in an auto-regressive manner. Instead, Block-attention divides retrieved documen"
+  },
+  {
+    "id": "http://arxiv.org/abs/2409.15332v1",
+    "title": "A Lightweight GAN-Based Image Fusion Algorithm for Visible and Infrared Images",
+    "published": "2024-09-07",
+    "summary": "This paper presents a lightweight image fusion algorithm specifically designed for merging visible light and infrared images, with an emphasis on balancing performance and efficiency. The proposed method enhances the generator in a Generative Adversarial Network (GAN) by integrating the Convolutiona"
+  },
+  {
+    "id": "http://arxiv.org/abs/2408.09894v1",
+    "title": "Preoperative Rotator Cuff Tear Prediction from Shoulder Radiographs using a Convolutional Block Attention Module-Integrated Neural Network",
+    "published": "2024-08-19",
+    "summary": "Research question: We test whether a plane shoulder radiograph can be used together with deep learning methods to identify patients with rotator cuff tears as opposed to using an MRI in standard of care. Findings: By integrating convolutional block attention modules into a deep neural network, our m"
+  },
+  {
+    "id": "http://arxiv.org/abs/2408.05649v1",
+    "title": "Advancing Pavement Distress Detection in Developing Countries: A Novel Deep Learning Approach with Locally-Collected Datasets",
+    "published": "2024-08-10",
+    "summary": "Road infrastructure maintenance in developing countries faces unique challenges due to resource constraints and diverse environmental factors. This study addresses the critical need for efficient, accurate, and locally-relevant pavement distress detection methods in these regions. We present a novel"
+  },
+  {
+    "id": "http://arxiv.org/abs/2408.02692v1",
+    "title": "Attention is all you need for an improved CNN-based flash flood susceptibility modeling. The case of the ungauged Rheraya watershed, Morocco",
+    "published": "2024-08-03",
+    "summary": "Effective flood hazard management requires evaluating and predicting flash flood susceptibility. Convolutional neural networks (CNNs) are commonly used for this task but face issues like gradient explosion and overfitting. This study explores the use of an attention mechanism, specifically the convo"
+  },
+  {
+    "id": "http://arxiv.org/abs/2407.14464v1",
+    "title": "AttentNet: Fully Convolutional 3D Attention for Lung Nodule Detection",
+    "published": "2024-07-19",
+    "summary": "Motivated by the increasing popularity of attention mechanisms, we observe that popular convolutional (conv.) attention models like Squeeze-and-Excite (SE) and Convolutional Block Attention Module (CBAM) rely on expensive multi-layer perception (MLP) layers. These MLP layers significantly increase c"
+  },
+  {
+    "id": "http://arxiv.org/abs/2407.11573v1",
+    "title": "Probing the Efficacy of Federated Parameter-Efficient Fine-Tuning of Vision Transformers for Medical Image Classification",
+    "published": "2024-07-16",
+    "summary": "With the advent of large pre-trained transformer models, fine-tuning these models for various downstream tasks is a critical problem. Paucity of training data, the existence of data silos, and stringent privacy constraints exacerbate this fine-tuning problem in the medical imaging domain, creating a"
+  },
+  {
+    "id": "http://arxiv.org/abs/2407.15020v1",
+    "title": "Integrating Attentional Factors and Spacing in Logistic Knowledge Tracing Models to Explore the Impact of Training Sequences on Category Learning",
+    "published": "2024-06-22",
+    "summary": "In category learning, a growing body of literature has increasingly focused on exploring the impacts of interleaving in contrast to blocking. The sequential attention hypothesis posits that interleaving draws attention to the differences between categories while blocking directs attention toward sim"
+  },
+  {
+    "id": "http://arxiv.org/abs/2406.15113v1",
+    "title": "A Dual Attention-aided DenseNet-121 for Classification of Glaucoma from Fundus Images",
+    "published": "2024-06-21",
+    "summary": "Deep learning and computer vision methods are nowadays predominantly used in the field of ophthalmology. In this paper, we present an attention-aided DenseNet-121 for classifying normal and glaucomatous eyes from fundus images. It involves the convolutional block attention module to highlight releva"
+  },
+  {
+    "id": "http://arxiv.org/abs/2405.18968v1",
+    "title": "UniIF: Unified Molecule Inverse Folding",
+    "published": "2024-05-29",
+    "summary": "Molecule inverse folding has been a long-standing challenge in chemistry and biology, with the potential to revolutionize drug discovery and material science. Despite specified models have been proposed for different small- or macro-molecules, few have attempted to unify the learning process, result"
+  },
+  {
+    "id": "http://arxiv.org/abs/2405.17905v1",
+    "title": "Cycle-YOLO: A Efficient and Robust Framework for Pavement Damage Detection",
+    "published": "2024-05-28",
+    "summary": "With the development of modern society, traffic volume continues to increase in most countries worldwide, leading to an increase in the rate of pavement damage Therefore, the real-time and highly accurate pavement damage detection and maintenance have become the current need. In this paper, an enhan"
+  },
+  {
+    "id": "http://arxiv.org/abs/2405.04312v2",
+    "title": "Inf-DiT: Upsampling Any-Resolution Image with Memory-Efficient Diffusion Transformer",
+    "published": "2024-05-07",
+    "summary": "Diffusion models have shown remarkable performance in image generation in recent years. However, due to a quadratic increase in memory during generating ultra-high-resolution images (e.g. 4096*4096), the resolution of generated images is often limited to 1024*1024. In this work. we propose a unidire"
+  },
+  {
+    "id": "http://arxiv.org/abs/2405.03011v1",
+    "title": "AC-MAMBASEG: An adaptive convolution and Mamba-based architecture for enhanced skin lesion segmentation",
+    "published": "2024-05-05",
+    "summary": "Skin lesion segmentation is a critical task in computer-aided diagnosis systems for dermatological diseases. Accurate segmentation of skin lesions from medical images is essential for early detection, diagnosis, and treatment planning. In this paper, we propose a new model for skin lesion segmentati"
+  },
+  {
+    "id": "http://arxiv.org/abs/2404.14322v2",
+    "title": "A Novel Approach to Chest X-ray Lung Segmentation Using U-net and Modified Convolutional Block Attention Module",
+    "published": "2024-04-22",
+    "summary": "Lung segmentation in chest X-ray images is of paramount importance as it plays a crucial role in the diagnosis and treatment of various lung diseases. This paper presents a novel approach for lung segmentation in chest X-ray images by integrating U-net with attention mechanisms. The proposed method "
+  },
+  {
+    "id": "http://arxiv.org/abs/2404.02135v4",
+    "title": "Enhancing Ship Classification in Optical Satellite Imagery: Integrating Convolutional Block Attention Module with ResNet for Improved Performance",
+    "published": "2024-04-02",
+    "summary": "In this study, we present an advanced convolutional neural network (CNN) architecture for ship classification based on optical satellite imagery, which significantly enhances performance through the integration of a convolutional block attention module (CBAM) and additional architectural innovations"
+  },
+  {
+    "id": "http://arxiv.org/abs/2403.05451v3",
+    "title": "Attention-guided Feature Distillation for Semantic Segmentation",
+    "published": "2024-03-08",
+    "summary": "Deep learning models have achieved significant results across various computer vision tasks. However, due to the large number of parameters in these models, deploying them in real-time scenarios is a critical challenge, specifically in dense prediction tasks such as semantic segmentation. Knowledge "
+  },
+  {
+    "id": "http://arxiv.org/abs/2402.15815v1",
+    "title": "A Generative Machine Learning Model for Material Microstructure 3D Reconstruction and Performance Evaluation",
+    "published": "2024-02-24",
+    "summary": "The reconstruction of 3D microstructures from 2D slices is considered to hold significant value in predicting the spatial structure and physical properties of materials.The dimensional extension from 2D to 3D is viewed as a highly challenging inverse problem from the current technological perspectiv"
+  },
+  {
+    "id": "http://arxiv.org/abs/2402.09329v5",
+    "title": "YOLOv8-AM: YOLOv8 Based on Effective Attention Mechanisms for Pediatric Wrist Fracture Detection",
+    "published": "2024-02-14",
+    "summary": "Wrist trauma and even fractures occur frequently in daily life, particularly among children who account for a significant proportion of fracture cases. Before performing surgery, surgeons often request patients to undergo X-ray imaging first and prepare for it based on the analysis of the radiologis"
+  },
+  {
+    "id": "http://arxiv.org/abs/2401.08976v1",
+    "title": "ACT-GAN: Radio map construction based on generative adversarial networks with ACT blocks",
+    "published": "2024-01-17",
+    "summary": "The radio map, serving as a visual representation of electromagnetic spatial characteristics, plays a pivotal role in assessment of wireless communication networks and radio monitoring coverage. Addressing the issue of low accuracy existing in the current radio map construction, this paper presents "
+  },
+  {
+    "id": "http://arxiv.org/abs/2401.07329v1",
+    "title": "Attention-based UNet enabled Lightweight Image Semantic Communication System over Internet of Things",
+    "published": "2024-01-14",
+    "summary": "This paper studies the problem of the lightweight image semantic communication system that is deployed on Internet of Things (IoT) devices. In the considered system model, devices must use semantic communication techniques to support user behavior recognition in ultimate video service with high data"
+  },
+  {
+    "id": "http://arxiv.org/abs/2401.03719v1",
+    "title": "Enhancing Adaptive History Reserving by Spiking Convolutional Block Attention Module in Recurrent Neural Networks",
+    "published": "2024-01-08",
+    "summary": "Spiking neural networks (SNNs) serve as one type of efficient model to process spatio-temporal patterns in time series, such as the Address-Event Representation data collected from Dynamic Vision Sensor (DVS). Although convolutional SNNs have achieved remarkable performance on these AER datasets, be"
+  }
+]

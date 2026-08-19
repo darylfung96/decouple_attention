@@ -1,0 +1,744 @@
+total unique papers across sweeps: 742
+2026-08-17  arXiv:2608.16585  sweeps:[5]  SQuad: Sub-Quadratic Attention Distillation for Efficient Video Generation
+2026-08-16  arXiv:2608.15522  sweeps:[3]  Efficient Audio-Visual Generation via Synchrony-Aware Cross-Modal Sparse Attention
+2026-08-16  arXiv:2608.15459  sweeps:[3]  Not All Attention Is Equal: A Quantitative Survey of the EEI Trade-off
+2026-08-16  arXiv:2608.15943  sweeps:[7]  KV-Pipe: On the Relation Between KV Sharing and Pipeline Parallel Efficiency in LLMs
+2026-08-15  arXiv:2608.15061  sweeps:[5]  Do Visual Grounding Decoders Need Feed-Forward Networks? A Controlled Study over Frozen Vi
+2026-08-13  arXiv:2608.13546  sweeps:[3]  Alaya-EVOKE: From Linear-Scaling Supervision to Endless World
+2026-08-13  arXiv:2608.12780  sweeps:[3]  SCOPE: Subspace Clustering with Online Per-Head Top-K Estimation for Sparse Video Attentio
+2026-08-12  arXiv:2608.12032  sweeps:[3, 5]  LoSA: Near-Lossless Sparse Attention for Training-Free Video Diffusion Acceleration
+2026-08-12  arXiv:2608.11676  sweeps:[6]  XBridge: Entity-Grounded Latent Bridge for Heterogeneous LLM Communication
+2026-08-11  arXiv:2608.11173  sweeps:[3]  A Quantum Roadmap for Softmax Attention: Exact Born-Rule Analogs for Softmax Attention on 
+2026-08-11  arXiv:2608.10519  sweeps:[3]  SparSTAR: Sparse Attention for SpaceTime AutoRegressive Video Synthesis
+2026-08-11  arXiv:2608.10489  sweeps:[6]  When Vision Becomes Text: Visual Token Pruning via Cross-Modal Residual Guidance in VLMs
+2026-08-10  arXiv:2608.09227  sweeps:[6]  Omni2LoRA: Coherence-Preserving Parametric Memory for Efficient Omni Language Models
+2026-08-10  arXiv:2608.09176  sweeps:[6]  Not All Visual Tokens Are Equally Safe to Remove:Consequence-Sensitive Visual Token Compre
+2026-08-09  arXiv:2608.08873  sweeps:[3]  Sparse Attention to Emotion: Efficient Facial Emotion Recognition via Token Reduction
+2026-08-09  arXiv:2608.08553  sweeps:[3]  MotionCraft: Latent World Modeling with Sparse Attention for Visual Upscaling
+2026-08-09  arXiv:2608.08847  sweeps:[6]  Explicit Boundary Markers for Subword Vocabularies
+2026-08-09  arXiv:2608.08809  sweeps:[6]  Tevatron-Elastic: A Unified Abstraction for Training Elastic Retrievers and Rerankers
+2026-08-07  arXiv:2608.07009  sweeps:[3]  HiSparse: Scaling Sparse-Attention Decoding with Hierarchical KV Cache Management
+2026-08-07  arXiv:2608.06849  sweeps:[3]  Autonomy-of-Heads: Data-Free Sparse Attention from Frozen Query-Key Geometry
+2026-08-06  arXiv:2608.05780  sweeps:[3]  Evidence-Driven Dynamic Visual Selector for Efficient Long Video Understanding
+2026-08-06  arXiv:2608.06205  sweeps:[7]  CFGPNet: Cross-Attention-Based Fused Gradient Programmed Network Framework for Multispectr
+2026-08-05  arXiv:2608.04472  sweeps:[3]  EndoVLM: An Endoscopy Vision-Language Pre-training Model via Anatomy-Guided Sparsity and P
+2026-08-05  arXiv:2608.04405  sweeps:[3]  Training-Free Hashing-Based Attention via Binary Principal Components
+2026-08-05  arXiv:2608.04610  sweeps:[6]  HiSC: Hierarchical Spatial Clustering Token Compression for Efficient 3D Scene Understandi
+2026-08-05  arXiv:2608.04515  sweeps:[6]  CARVE: Cross-Slice Anisotropic Reallocation of Visual Evidence for Efficient 3D Medical Vo
+2026-08-04  arXiv:2608.03555  sweeps:[3]  Heterogeneous LLM Serving with General-Purpose Processing-Near-Memory for Retrieval-Based 
+2026-08-04  arXiv:2608.03335  sweeps:[3]  SPADE: An Input-Adaptive Sparse Attention Engine for Fast Video Diffusion Models Inference
+2026-08-04  arXiv:2608.03812  sweeps:[6]  OmniPack: Unified Token Compression for Efficient Omni-modal Large Language Models
+2026-08-03  arXiv:2608.01676  sweeps:[3, 5]  Understanding Sparse Attention Selectivity in Long-Context Foundation Models via Counterfa
+2026-08-03  arXiv:2608.01662  sweeps:[3]  LongCat Sparse Attention: Taming the Lightning via Streaming-aware Hierarchical Cross-Laye
+2026-08-03  arXiv:2608.01848  sweeps:[6]  Decoupling semantics from vision: A framework for faithful visual-text compression evaluat
+2026-08-03  arXiv:2608.01821  sweeps:[6]  DAVET: Denoising-Aware Visual Evidence Trajectory Allocation for Diffusion Vision-Language
+2026-08-03  arXiv:2608.01665  sweeps:[6]  Allocation Before Ranking: Decoupled Token Compression for OmniLLMs
+2026-08-03  arXiv:2608.01644  sweeps:[6]  CRAFT: Compression via Recursive Adaptive Fusion of Video Tokens for Vision-Language Model
+2026-08-02  arXiv:2608.01223  sweeps:[3]  Perspectives on Tsallis Statistics for Artificial Intelligence
+2026-08-02  arXiv:2608.01075  sweeps:[5]  Role-Decoupled Attention Residuals: Separating Matching and Content Retrieval Across Depth
+2026-08-02  arXiv:2608.01271  sweeps:[6]  Rethinking Video Token Compression with a Global Codebook: Learning Once, Compressing Ever
+2026-08-02  arXiv:2608.01185  sweeps:[6]  3DZip: Spatial-Aware Feature Diversity-Guided Token Compression for 3D Question Answering
+2026-08-02  arXiv:2608.01169  sweeps:[6]  Think in Sets for Streaming Video Token Compression
+2026-08-01  arXiv:2608.00368  sweeps:[6]  Agent-Native Task-Oriented Communication with Joint Token Compression Coding and Modulatio
+2026-07-31  arXiv:2608.00345  sweeps:[6]  ORCA: ORgan-Centroid Aggregation for Training-Free 3D CT Visual Token Compression
+2026-07-30  arXiv:2607.28699  sweeps:[2]  WitCert: Sound Runtime Risk Observability and Gating for KV-Cache Quantization
+2026-07-30  arXiv:2607.27692  sweeps:[3, 4]  Recall Before You Rank: Similarity-Guided Top-$K$ Reuse for Efficient Long-Context Attenti
+2026-07-30  arXiv:2607.27591  sweeps:[3]  Prox: Training-Free FFN Activation Sparsity via Approximate Intermediate-Channel Salience 
+2026-07-30  arXiv:2607.28418  sweeps:[7]  WIDE: Boosting Adaptive LLM Inference via Token-level Dynamic Width Pruning
+2026-07-29  arXiv:2607.26633  sweeps:[3]  NELSSA: A GPU-PNM Heterogeneous System for Mixed-Length LLM Serving via Length-based Reque
+2026-07-29  arXiv:2607.26554  sweeps:[6]  MedARC: Training-Free Adaptive Redundancy Compression of Visual Tokens for 3D Medical Visi
+2026-07-28  arXiv:2607.26037  sweeps:[3]  Wonder: Video World Model Done Better
+2026-07-28  arXiv:2607.25291  sweeps:[3]  CoSA: Accelerating Long-Context Inference via Proxy-Kernel Co-Designed Sparse Attention
+2026-07-28  arXiv:2607.25669  sweeps:[6]  OmniDelta: Skill-Driven Budget Allocation for Token Compression in OmniLLMs
+2026-07-27  arXiv:2607.24593  sweeps:[3]  PIVOT: Efficient Query-Group Indexing for Token-Level Sparse Attention
+2026-07-27  arXiv:2607.24027  sweeps:[3]  Sol-Attn: Accelerating Video Generation Inference via On-the-Fly Attention Sparsification
+2026-07-25  arXiv:2607.23054  sweeps:[2]  Through the Bottleneck: How Multi-head Latent Attention Separates Content from Position in
+2026-07-25  arXiv:2607.23193  sweeps:[6]  OmniScope: Modality-Decoupled Token Compression for Omnimodal Large Language Models
+2026-07-24  arXiv:2607.21927  sweeps:[3]  RIS-Kernel: A Model-Agnostic Architecture for Long-Context LLM Inference via Sparse Attent
+2026-07-24  arXiv:2607.22200  sweeps:[6]  LayoutLite: Token-Level Implicit Layout Analysis for Efficient Document OCR
+2026-07-23  arXiv:2607.21752  sweeps:[3]  Parameter-free Adaptive Sparse Attention via Compression-Based Content Selection
+2026-07-23  arXiv:2607.21553  sweeps:[3, 5]  SANA-Video 2.0: Hybrid Linear Attention with Attention Residuals for Efficient Video Gener
+2026-07-23  arXiv:2607.21231  sweeps:[6]  Progressive Cramming: Reliable Token Compression and What It Reveals
+2026-07-23  arXiv:2607.21179  sweeps:[6]  Out of Sight, Still in Mind: Token Compression for Omni-LLMs
+2026-07-23  arXiv:2607.20981  sweeps:[6]  Beyond Independent Optimization: Compression, MoE Routing, and Quantization Interactions i
+2026-07-22  arXiv:2607.20214  sweeps:[3]  ELSAA: Efficient Low-Rank and Sparse Attention Approximation for Training Transformers
+2026-07-21  arXiv:2607.22716  sweeps:[6]  Visual Token Compression Enhances Robustness of MLLMs
+2026-07-21  arXiv:2607.18921  sweeps:[7]  Circuit Claims Depend on What Is Extracted and How It Is Compared
+2026-07-20  arXiv:2607.18152  sweeps:[3]  jina-reranker-v3.5: An Efficient Listwise Reranker with Hybrid Attention and Self-Distilla
+2026-07-19  arXiv:2607.17151  sweeps:[7]  Strategic Gaze: Attention Allocation and Transition Patterns Across Functional Areas of In
+2026-07-17  arXiv:2607.16190  sweeps:[3]  FVAttn: Adaptive Sparse Attention with Runtime Load Balancing for Video Generation
+2026-07-17  arXiv:2607.15846  sweeps:[3]  DSTAR: Accelerating Diffusion Transformers via Spatial and Temporal Redundancy Reduction
+2026-07-17  arXiv:2607.15650  sweeps:[7]  DiTango: Cost-Effective Parallel Diffusion Generation with Selective Attention State Reuse
+2026-07-16  arXiv:2607.14675  sweeps:[5]  An Intelligent-Cloud Edge Multimodal Interaction System for Robots
+2026-07-16  arXiv:2607.14568  sweeps:[6]  A Modern Multimodal Assistant on a 6 GB 2011 GPU: Stage-Validated, All-GPU CUDA Inference 
+2026-07-15  arXiv:2607.13925  sweeps:[3]  Thresholded Cross-Attention for Reliable Intensity-Chromaticity Fusion in Low-Light Image 
+2026-07-15  arXiv:2607.13770  sweeps:[3]  Kaleido: Algorithm-Hardware Co-Design for Video Diffusion Transformers by Exploiting Laten
+2026-07-14  arXiv:2607.12293  sweeps:[3]  Adaptive Cross-Modal Fusion with Sparse Attention for Pedestrian Crossing Intention Predic
+2026-07-14  arXiv:2607.12756  sweeps:[6]  VisCo: Leveraging Large Language Models as Intrinsic Encoders for Visual Token Compression
+2026-07-13  arXiv:2607.11976  sweeps:[3]  LiteTopK: Exploiting the Curse of Dimensionality for a Fused Indexer-TopK Kernel in Long-C
+2026-07-13  arXiv:2607.11699  sweeps:[6]  Qwen-Music Technical Report
+2026-07-13  arXiv:2607.11326  sweeps:[6]  Prompt Generation Technical Report
+2026-07-11  arXiv:2607.10441  sweeps:[6]  Context by Distinct Information: An Auditable Dirichlet-Process Working Memory for Long, R
+2026-07-11  arXiv:2607.10120  sweeps:[6]  WeaveEarth: Structured Evidence Construction and Reasoning for Training-Free UHR Remote Se
+2026-07-10  arXiv:2607.09052  sweeps:[3, 5]  COBS: Cumulant Order Block Sparse Attention
+2026-07-10  arXiv:2607.09080  sweeps:[6]  GeoTrace: Geometry-Aware Trajectory Token Compression for Video Large Language Models
+2026-07-09  arXiv:2607.08171  sweeps:[5]  Attention-Based Segmentation of WMHs and Differentiation of Vascular vs. Demyelinating Les
+2026-07-08  arXiv:2607.07135  sweeps:[3]  Sparse Attention for Dense Open-Vocabulary Prediction in CLIP
+2026-07-08  arXiv:2607.16273  sweeps:[5]  ForensicNet: Lightweight Attention-Enhanced MobileNetV2 for Automated Face Identification
+2026-07-07  arXiv:2607.06601  sweeps:[2]  TriRoute: Unified Learned Routing for Joint Adaptive Attention, Experts, and KV-Cache Allo
+2026-07-07  arXiv:2607.05876  sweeps:[3]  Think Before You Grid-Search: Floor-First Triage for LLM Serving
+2026-07-07  arXiv:2607.06260  sweeps:[7]  Large language models create an uneven informational layer over cities
+2026-07-06  arXiv:2607.04605  sweeps:[6]  Do All Visual Tokens Matter Equally? Object-Evidence Preserving Token Merging for Vision-L
+2026-07-05  arXiv:2607.04478  sweeps:[5]  PulmoSight-XAI: An Explainable Multi-View Attention Ensemble with Gradient Boosting Meta-L
+2026-07-05  arXiv:2607.04112  sweeps:[7]  DynaVieW: Schema-Guided World Modeling for Understanding Hierarchical Visual Dynamics
+2026-07-04  arXiv:2607.07724  sweeps:[3]  Uncertainty-gated selection for block-sparse attention
+2026-07-03  arXiv:2607.03612  sweeps:[3]  SAF3R: Dynamic Sparse Attention for Feed-Forward 3D Reconstruction Transformers
+2026-07-03  arXiv:2607.03012  sweeps:[3]  HyperVAttention: Efficient Sparse Attention with Spatio-Temporal Clustering for Video Diff
+2026-07-03  arXiv:2607.02980  sweeps:[3]  Hierarchical Sparse Attention Done Right: Toward Infinite Context Modeling
+2026-07-03  arXiv:2607.03073  sweeps:[5]  Attention-Guided Efficientnet Architecture For Precise Criminal Identification in Surveill
+2026-07-03  arXiv:2607.03089  sweeps:[6]  STELLA: Efficient Sensor-to-LLM Translation for On-Device Human Activity Recognition
+2026-07-03  arXiv:2607.03050  sweeps:[6]  OmniFocus: Query-Guided Modality-Balanced Token Compression for Omni-Modal Large Language 
+2026-07-03  arXiv:2607.02922  sweeps:[6]  STAC: Selective Spatiotemporal Aggregation and Compression for Video Reasoning Segmentatio
+2026-07-02  arXiv:2607.02508  sweeps:[5]  From SRA to Self-Flow: Data Augmentation or Self-Supervision?
+2026-07-02  arXiv:2607.02237  sweeps:[6]  When Token Compression Breaks: Structural Pruning vs. Token Reduction for Robust ViT Segme
+2026-07-02  arXiv:2607.02343  sweeps:[7]  SelectTSL: Prompt-Guided Selective Target Sound Localization in Complex Scenarios
+2026-07-01  arXiv:2607.01538  sweeps:[3]  Can Language Models Actually Retrieve In-Context? Drowning in Documents at Million Token S
+2026-07-01  arXiv:2607.01420  sweeps:[7]  MultAttnAttrib: Training-Free Multimodal Attribution in Long Document Question Answering
+2026-06-30  arXiv:2606.31519  sweeps:[3]  RaBitQCache: Rotated Binary Quantization for KVCache in Long Context LLM Inference
+2026-06-29  arXiv:2606.30709  sweeps:[0, 1, 3]  Hierarchical Global Attention (HGA)
+2026-06-29  arXiv:2606.30389  sweeps:[3]  Predict, Reuse, and Repair: Accelerating Dynamic Sparse Attention for Long-Context LLM Dec
+2026-06-29  arXiv:2606.29844  sweeps:[3]  MATCH: Modulating Attention via In-Context Retrieval for Long-Context Transformers
+2026-06-29  arXiv:2606.29850  sweeps:[5]  Efficient Visual Pointing for Embodied AI:Agent-Driven Data Synthesis, Cross-Block Attenti
+2026-06-26  arXiv:2606.28560  sweeps:[3]  Depth-Staggered Fibonacci Spacing for Sparse Attention: Static Schedules Beat Learned Dila
+2026-06-25  arXiv:2606.26493  sweeps:[5]  Nemotron-Labs-TwoTower: Diffusion Language Modeling with Pretrained Autoregressive Context
+2026-06-24  arXiv:2606.25463  sweeps:[5]  Blasto-Net: An Explainable Multi-Task Learning for Blastocyst Segmentation, Grading, and I
+2026-06-24  arXiv:2606.25658  sweeps:[6]  Towards a Dynamic and Fixed-budget Memory Bank for Efficient Streaming Video Understanding
+2026-06-24  arXiv:2606.26348  sweeps:[7]  What We are Missing in Multimodal LLM Evaluation?
+2026-06-23  arXiv:2606.25136  sweeps:[3]  Memory Retrieval in Visuomotor Policies for Long-Horizon Robot Control
+2026-06-23  arXiv:2606.25040  sweeps:[3]  Chorus II: Cross-Request Sparsity Reuse for Efficient Image-to-Video Generation
+2026-06-23  arXiv:2606.25010  sweeps:[3]  Emergent Capabilities Arise Randomly from Learning Sparse Attention Patterns
+2026-06-23  arXiv:2606.24737  sweeps:[3]  VSANet: View-aware Sparse Attention Network for Light Field Image Denoising
+2026-06-23  arXiv:2606.24286  sweeps:[6]  AVOC: Enhancing Hour-Level Audio-Video Understanding in Omni-Modal LLMs via Retrieval-Insp
+2026-06-23  arXiv:2606.24667  sweeps:[7]  DREAM: Dense Retrieval Embeddings via Autoregressive Modeling
+2026-06-22  arXiv:2606.23019  sweeps:[3]  ScalingAttention: Discovering Intrinsic Sparse Attention Topology for Video Diffusion Tran
+2026-06-22  arXiv:2606.22984  sweeps:[3]  Scalable Physics-Inspired Transformers for Spin Glasses
+2026-06-22  arXiv:2606.22874  sweeps:[3]  SpotAttention: Plug-In Block-Sparse Routing for Pretrained Long-Context Transformers
+2026-06-21  arXiv:2606.23743  sweeps:[3]  Sol Video Inference Engine: Agent-Native Full-Stack Acceleration Framework for Efficient V
+2026-06-19  arXiv:2606.21633  sweeps:[3]  HERALD: High-Throughput Block Diffusion LLM Serving via CPU-GPU Cooperative KV Cache Retri
+2026-06-19  arXiv:2606.21501  sweeps:[6]  UniviewVLA: A Unified Multiview Vision-Language-Action Model with World Modeling
+2026-06-18  arXiv:2606.20005  sweeps:[3]  StreamKL: Fast and Memory-Efficient KL Divergence for Boosting Attention Distillation
+2026-06-18  arXiv:2606.19746  sweeps:[3]  SAC: Disaggregated KV Cache System for Sparse Attention LLMs with CXL
+2026-06-18  arXiv:2606.20438  sweeps:[5]  Interpretable Sperm Morphology Classification via Attention-Guided Deep Learning
+2026-06-17  arXiv:2606.18566  sweeps:[3]  Multi-Modal Hyper-Graph Fusion for Low-Light Crowd Counting
+2026-06-17  arXiv:2606.19150  sweeps:[7]  Complementary Attention Head Pruning for Efficient Transformers
+2026-06-16  arXiv:2606.18406  sweeps:[6]  CoreMem: Riemannian Retrieval and Fisher-Guided Distillation for Long-Term Memory in Dialo
+2026-06-15  arXiv:2606.16317  sweeps:[3]  Training-free sparse attention based on cumulative energy filtering
+2026-06-15  arXiv:2606.16353  sweeps:[6]  What Should a Streaming Video Model Remember?
+2026-06-15  arXiv:2606.16615  sweeps:[7]  SUP-MCRL: Subject-aware Unified Pseudo-feature Coded Multimodal Contrastive Representation
+2026-06-14  arXiv:2606.15641  sweeps:[6]  Distilling Examples into Task Instructions: Enhanced In-Context Learning for Real-World B2
+2026-06-12  arXiv:2606.14277  sweeps:[6]  One Layer's Trash is Another Layer's Treasure: Adaptive Layer-wise Visual Token Selection 
+2026-06-11  arXiv:2606.13839  sweeps:[0, 1, 3]  Explaining RhythmFormer: A Systematic XAI Analysis of Periodic Sparse Attention for Remote
+2026-06-11  arXiv:2606.13392  sweeps:[3]  MiniMax Sparse Attention
+2026-06-11  arXiv:2606.13168  sweeps:[5]  When Does Routing Become Interpretable? Causal Probes on Block Attention Residuals
+2026-06-11  arXiv:2606.13126  sweeps:[5]  MiniPIC: Flexible Position-Independent Caching in <100LOC
+2026-06-11  arXiv:2606.12958  sweeps:[5]  YOLO-AMC: An Improved YOLO Architecture with Attention Mechanisms for Building Crack Detec
+2026-06-11  arXiv:2606.13898  sweeps:[6]  HiLo-Token: Input-Adaptive High-Low Frequency Token Compression for Efficient Image Editin
+2026-06-11  arXiv:2606.13624  sweeps:[6]  Beyond Uniform Tokens: Adaptive Compression for Time Series Language Models
+2026-06-10  arXiv:2606.12203  sweeps:[6]  Adaptive Multi-Resolution Procedural Knowledge Compression for Large Language Models
+2026-06-10  arXiv:2606.11700  sweeps:[6]  CompRank: Efficient LLM Reranking via Token-Level Compression and Decoding-Free Scoring
+2026-06-09  arXiv:2606.10651  sweeps:[3]  Kwai Keye-VL-2.0 Technical Report
+2026-06-09  arXiv:2606.10423  sweeps:[7]  WebChallenger: A Reliable and Efficient Generalist Web Agent
+2026-06-08  arXiv:2606.09508  sweeps:[3]  From Rigid to Dynamic: Entropy-Guided Adaptive Inference for Long-Context LLMs
+2026-06-08  arXiv:2606.09079  sweeps:[3]  FlashMemory-DeepSeek-V4: Lightning Index Ultra-Long Context via Lookahead Sparse Attention
+2026-06-08  arXiv:2606.10046  sweeps:[7]  Inside the Latent Flow: Causal Deciphering of Attention Dynamics in Audio Separation Found
+2026-06-07  arXiv:2606.08446  sweeps:[3]  Sparrow: Sparse Rollout for Stable and Efficient Long-context RL of Large Language Models
+2026-06-06  arXiv:2606.07980  sweeps:[5]  DeRes: Decoupling Residual Stability and Adaptivity for Scalable CTR Prediction
+2026-06-05  arXiv:2606.07464  sweeps:[6]  Planning-aligned Token Compression for Long-Context Autonomous Driving
+2026-06-05  arXiv:2606.06891  sweeps:[6]  Stream3D-VLM: Online 3D Spatial Understanding with Incremental Geometry Priors
+2026-06-04  arXiv:2606.06467  sweeps:[3]  You Only Index Once: Cross-Layer Sparse Attention with Shared Routing
+2026-06-04  arXiv:2606.06453  sweeps:[3]  Vortex: Efficient and Programmable Sparse Attention Serving for AI Agents
+2026-06-04  arXiv:2606.06309  sweeps:[3]  RhymeFlow: Training-Free Acceleration for Video Generation with Asynchronous Denoising Flo
+2026-06-04  arXiv:2606.05917  sweeps:[6]  MemoryCard: Topic-Aware Multi-Modal Clue Compression for Long-Video Question Answering
+2026-06-04  arXiv:2606.06142  sweeps:[7]  Computation-Aware Event-to-Frame Reconstruction via Selective Attention
+2026-06-03  arXiv:2606.04511  sweeps:[3, 9]  SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference
+2026-06-03  arXiv:2606.06536  sweeps:[5]  Attention-Guided Autoencoder Fusion for Insulator Defect Detection Using UAV Transmission-
+2026-06-03  arXiv:2606.04302  sweeps:[5]  LazyAttention: Efficient Retrieval-Augmented Generation with Deferred Positional Encoding
+2026-06-03  arXiv:2606.04911  sweeps:[6]  BreastGPT: A Multimodal Large Language Model for the Full Spectrum of Breast Cancer Clinic
+2026-06-02  arXiv:2606.03928  sweeps:[3]  Value-Aware Stochastic KV Cache Eviction for Reasoning Models
+2026-06-02  arXiv:2606.03739  sweeps:[6]  Entropy Gate: Entropy Quenching for Near-Lossless Token Compression in LLM Pipelines
+2026-06-01  arXiv:2606.02672  sweeps:[5]  Heterogeneous Mapping for Analog In-Memory Computing Accelerators: A Unified Workflow
+2026-06-01  arXiv:2606.02045  sweeps:[5]  Attention mechanisms and transfer learning for robust peach leaf damage classification und
+2026-06-01  arXiv:2606.02522  sweeps:[6]  Moment-Video: Diagnosing Temporal Fidelity of Video MLLMs on Momentary Visual Events
+2026-06-01  arXiv:2606.02161  sweeps:[6]  InfoMerge: Information-aware Token Compression for Efficient Video Large Language Models
+2026-06-01  arXiv:2606.01934  sweeps:[6]  HMPO: Hybrid Median-length Policy Optimization for Chain-of-Thought Compression
+2026-06-01  arXiv:2606.01756  sweeps:[6]  EvoCut: Multi-Layer Evolution-Aware Visual Token Compression for Efficient Large Vision-La
+2026-05-31  arXiv:2606.01502  sweeps:[3]  Move the Query, Not the Cache: Characterizing Cross-Instance Latent Attention Redistributi
+2026-05-31  arXiv:2606.01099  sweeps:[6]  MiCU: End-to-End Smart Home Command Understanding with Large Language Model
+2026-05-30  arXiv:2606.02628  sweeps:[5]  Hallucination Is Linearly Decodable from Mid-Layer Hidden States in Quantized LLMs
+2026-05-30  arXiv:2606.00543  sweeps:[6]  ETC: Extreme Token Compression via Task-aware Visual Information Distillation in VLMs
+2026-05-29  arXiv:2605.31485  sweeps:[3]  Graphical einops: bridging tensor networks and computation graphs
+2026-05-29  arXiv:2605.31158  sweeps:[3]  Light Interaction: Training-Free Inference Acceleration for Interactive Video World Models
+2026-05-29  arXiv:2605.31057  sweeps:[3]  LVSA: Training-Free Sparse Attention for Long Video Diffusion
+2026-05-29  arXiv:2607.19358  sweeps:[3]  LISA: Linear-Indexed Sparse Attention for Efficient Long-Context Reasoning
+2026-05-28  arXiv:2605.30325  sweeps:[3]  Veda: Scalable Video Diffusion via Distilled Sparse Attention
+2026-05-28  arXiv:2605.30126  sweeps:[6]  PARCEL: Pool-Anchored Resampling with Conditioned Elastic Queries for Efficient Vision-Lan
+2026-05-28  arXiv:2605.30010  sweeps:[6]  EarlyTom: Early Token Compression Completes Fast Video Understanding
+2026-05-28  arXiv:2605.29657  sweeps:[6]  OccamToken: Efficient VLM Inference with Training-Free and Budget-Adaptive Token Pruning
+2026-05-27  arXiv:2605.28691  sweeps:[3]  OSP-Next: Efficient High-Quality Video Generation with Sparse Sequence Parallelism, HiF8 Q
+2026-05-26  arXiv:2605.27740  sweeps:[3]  UNIQUE: Universal Top-k Sparse Attention for Training-free Inference and Sparsity-aware Tr
+2026-05-25  arXiv:2608.14560  sweeps:[3]  Agentic Kernel Optimization: Generating State-of-the-Art GPU Kernels Without Hand-Written 
+2026-05-25  arXiv:2605.25979  sweeps:[6]  LLaVA-OneVision-2: Towards Next-Generation Perceptual Intelligence
+2026-05-25  arXiv:2605.25330  sweeps:[6]  How Reliable Are Semantic-ID Tokenizer Comparisons in Generative Recommendation?
+2026-05-24  arXiv:2605.25179  sweeps:[6]  Locality Matters for Training-Free Audio Token Compression in Audio-Language Models
+2026-05-23  arXiv:2605.24518  sweeps:[3]  Grammatically-Guided Sparse Attention for Efficient and Interpretable Transformers
+2026-05-22  arXiv:2605.23868  sweeps:[3]  Vision Transformers Need Better Token Interaction
+2026-05-22  arXiv:2605.23445  sweeps:[3]  DFSAttn: Dynamic Fine-grained Sparse Attention for Efficient Video Generation
+2026-05-22  arXiv:2605.23245  sweeps:[3]  SimInsert: Seamless Video Object Insertion via Regional Sparse Attention Fusion
+2026-05-22  arXiv:2605.23451  sweeps:[6]  Efficient One-Step Diffusion Restoration Model with Compact Token Compression and Linear A
+2026-05-21  arXiv:2605.22476  sweeps:[3]  Structured-Sparse Attention for Entity Tracking with Subquadratic Sequence Complexity
+2026-05-21  arXiv:2605.22269  sweeps:[6]  MuKV: Multi-Grained KV Cache Compression for Long Streaming Video Question-Answering
+2026-05-21  arXiv:2605.22158  sweeps:[6]  ST-SimDiff: Balancing Spatiotemporal Similarity and Difference for Efficient Video Underst
+2026-05-20  arXiv:2605.20813  sweeps:[3]  PulseCol: Periodically Refreshed Column-Sparse Attention for Accelerating Diffusion Langua
+2026-05-20  arXiv:2605.20670  sweeps:[3]  LT2: Linear-Time Looped Transformers
+2026-05-20  arXiv:2605.20683  sweeps:[6]  Layer-wise Token Compression for Efficient Document Reranking
+2026-05-19  arXiv:2605.19893  sweeps:[3]  SSV: Sparse Speculative Verification for Efficient LLM Inference
+2026-05-19  arXiv:2605.19726  sweeps:[3]  Efficient Long-Context Modeling in Diffusion Language Models via Block Approximate Sparse 
+2026-05-19  arXiv:2605.19703  sweeps:[5]  KIO-planner: Attention-Guided Single-Stage Motion Planning with Dual Mapping for UAV Navig
+2026-05-19  arXiv:2605.20448  sweeps:[6]  Do Vision-Language Models Understand 3D Scenes or Just Catalogue Objects?
+2026-05-19  arXiv:2605.19322  sweeps:[6]  DynaTok: Temporally Adaptive and Positional Bias-Aware Token Compression for Video-LLMs
+2026-05-19  arXiv:2605.19260  sweeps:[6]  AQuaUI: Visual Token Reduction for GUI Agents with Adaptive Quadtrees
+2026-05-18  arXiv:2605.20268  sweeps:[5]  Chronicle: A Multimodal Foundation Model for Joint Language and Time Series Understanding
+2026-05-18  arXiv:2605.18165  sweeps:[6]  Elastic-dLLM: Position Preserving Context Compression and Augmentation of Diffusion LLMs
+2026-05-18  arXiv:2605.18041  sweeps:[6]  OmniSelect: Dynamic Modality-Aware Token Compression for Efficient Omni-modal Large Langua
+2026-05-18  arXiv:2605.18013  sweeps:[6]  TinySAM 2: Extreme Memory Compression for Efficient Track Anything Model
+2026-05-18  arXiv:2605.17889  sweeps:[7]  CoX-MoE: Coalesced Expert Execution for High-Throughput MoE Inference with AMX-Enabled CPU
+2026-05-17  arXiv:2605.17633  sweeps:[3]  SparseSAM: Structured Sparsification of Activations in Segment Anything Models
+2026-05-17  arXiv:2605.23988  sweeps:[6]  TSFLora: Token-Compressed Split Fine-Tuning for Wireless Edge Networks
+2026-05-16  arXiv:2605.16928  sweeps:[3]  Full Attention Strikes Back: Transferring Full Attention into Sparse within Hundred Traini
+2026-05-16  arXiv:2605.16839  sweeps:[3]  CompactAttention: Accelerating Chunked Prefill with Block-Union KV Selection
+2026-05-16  arXiv:2605.16810  sweeps:[7]  Training-Free Occluded Text Rendering via Glyph Priors and Attention-Guided Semantic Blend
+2026-05-15  arXiv:2605.16579  sweeps:[3]  Attend Locally, Remember Linearly: Linear Attention as Cross-Frame Memory for Autoregressi
+2026-05-15  arXiv:2605.18865  sweeps:[3]  From Sparsity to Simplicity: Enabling Simpler Sequential Replacements via Sparse Attention
+2026-05-15  arXiv:2605.15684  sweeps:[3, 5]  ElasticDiT: Efficient Diffusion Transformers via Elastic Architecture and Sparse Attention
+2026-05-15  arXiv:2605.15508  sweeps:[3]  STS: Efficient Sparse Attention with Speculative Token Sparsity
+2026-05-15  arXiv:2605.15921  sweeps:[5]  AdaEraser: Training-Free Object Removal via Adaptive Attention Suppression
+2026-05-15  arXiv:2605.15913  sweeps:[5]  Towards Generalization of Block Attention via Automatic Segmentation and Block Distillatio
+2026-05-15  arXiv:2605.15621  sweeps:[6]  LRCP: Low-Rank Compressibility Guided Visual Token Pruning for Efficient LVLMs
+2026-05-14  arXiv:2605.14513  sweeps:[3]  HEART: Exploiting Head Heterogeneity in Sparse Attention for Video Diffusion
+2026-05-14  arXiv:2605.15032  sweeps:[5]  Multi-Block Attention for Efficient Channel Estimation in IRS-Assisted mmWave MIMO
+2026-05-14  arXiv:2605.14913  sweeps:[6]  Representative Attention For Vision Transformers
+2026-05-14  arXiv:2605.14458  sweeps:[6]  OmniDrop: Layer-wise Token Pruning for Omni-modal LLMs via Query-Guidance
+2026-05-14  arXiv:2605.16418  sweeps:[7]  Neural Visual Decoding via Cognitive guided Adaptive Blurring and Information Constrained 
+2026-05-13  arXiv:2605.15880  sweeps:[3]  FSCM: Frequency-Enhanced Spatial-Spectral Coupled Mamba for Infrared Hyperspectral Image C
+2026-05-13  arXiv:2605.13465  sweeps:[3]  Z-Order Transformer for Feed-Forward Gaussian Splatting
+2026-05-13  arXiv:2605.13391  sweeps:[6]  RS-Claw: Progressive Active Tool Exploration via Hierarchical Skill Trees for Remote Sensi
+2026-05-13  arXiv:2605.12938  sweeps:[7]  CRePE: Curved Ray Expectation Positional Encoding for Unified-Camera-Controlled Video Gene
+2026-05-12  arXiv:2605.11733  sweeps:[2]  Position: LLM Inference Should Be Evaluated as Energy-to-Token Production
+2026-05-12  arXiv:2605.12110  sweeps:[3]  AB-Sparse: Sparse Attention with Adaptive Block Size for Accurate and Efficient Long-Conte
+2026-05-12  arXiv:2605.11881  sweeps:[3]  Learning Subspace-Preserving Sparse Attention Graphs from Heterogeneous Multiview Data
+2026-05-12  arXiv:2605.12056  sweeps:[6]  OmniRefine: Alignment-Aware Cooperative Compression for Efficient Omnimodal Large Language
+2026-05-12  arXiv:2605.11803  sweeps:[6]  OTT-Vid: Optimal Transport Temporal Token Compression for Video Large Language Models
+2026-05-11  arXiv:2605.10875  sweeps:[3]  Compute Where it Counts: Self Optimizing Language Models
+2026-05-10  arXiv:2605.16366  sweeps:[6]  Fre-Res: Frequency-Residual Video Token Compression for Efficient Video MLLMs
+2026-05-09  arXiv:2605.08985  sweeps:[6]  LLaVA-UHD v4: What Makes Efficient Visual Encoding in MLLMs?
+2026-05-08  arXiv:2605.08453  sweeps:[3]  Sink vs. diagonal patterns as mechanisms for attention switch and oversmoothing prevention
+2026-05-08  arXiv:2605.08073  sweeps:[3]  EmambaIR: Efficient Visual State Space Model for Event-guided Image Reconstruction
+2026-05-08  arXiv:2605.07719  sweeps:[3]  An Efficient Hybrid Sparse Attention with CPU-GPU Parallelism for Long-Context Inference
+2026-05-08  arXiv:2605.07363  sweeps:[3]  MISA: Mixture of Indexer Sparse Attention for Long-Context LLM Inference
+2026-05-08  arXiv:2605.08329  sweeps:[6]  An Efficient Token Compression Framework for Visual Object Tracking
+2026-05-08  arXiv:2605.07863  sweeps:[6]  ADKO: Agentic Decentralized Knowledge Optimization
+2026-05-08  arXiv:2605.07355  sweeps:[6]  TTF: Temporal Token Fusion for Efficient Video-Language Model
+2026-05-08  arXiv:2605.07817  sweeps:[7]  GazeVLM: Active Vision via Internal Attention Control for Multimodal Reasoning
+2026-05-08  arXiv:2605.07443  sweeps:[7]  RcLLM: Accelerating Generative Recommendation via Beyond-Prefix KV Caching
+2026-05-07  arXiv:2605.06763  sweeps:[3]  Sparse Attention as a Range Searching Problem: Towards an Inference-Efficient Index for KV
+2026-05-07  arXiv:2605.06221  sweeps:[3]  UniPrefill: Universal Long-Context Prefill Acceleration via Block-wise Dynamic Sparsificat
+2026-05-07  arXiv:2605.08234  sweeps:[5]  When Does Value-Aware KV Eviction Help? A Fixed-Contract Diagnostic for Non-Monotone Cache
+2026-05-07  arXiv:2605.05899  sweeps:[6]  VisMMOE: Exploiting Visual-Expert Affinity for Efficient Visual-Language MoE Offloading
+2026-05-06  arXiv:2605.05330  sweeps:[3]  Graph Normalization: Fast Binarizing Dynamics for Differentiable MWIS
+2026-05-06  arXiv:2605.04569  sweeps:[3]  LIVEditor-14B: Lightning Unified Video Editing via In-Context Sparse Attention
+2026-05-06  arXiv:2605.05394  sweeps:[5]  BARFI-Q: Quantum-Enhanced Block Attention Residual Fusion Framework for Multivariate Time-
+2026-05-04  arXiv:2605.02568  sweeps:[3]  StreamIndex: Memory-Bounded Compressed Sparse Attention via Streaming Top-k
+2026-05-04  arXiv:2605.02184  sweeps:[3]  RAFNet: Region-Aware Fusion Network for Pansharpening
+2026-05-04  arXiv:2605.02328  sweeps:[5]  Improving Imbalanced Multi-Label Chest X-Ray Diagnosis via CBAM-Enhanced CNN Backbones
+2026-05-04  arXiv:2605.02378  sweeps:[6]  Enhancing Multimodal In-Context Learning via Inductive-Deductive Reasoning
+2026-05-03  arXiv:2605.01910  sweeps:[3]  Stochastic Sparse Attention for Memory-Bound Inference
+2026-05-03  arXiv:2605.01742  sweeps:[6]  Joint Architecture-Token-Bitwidth Multi-Axis Optimization of Vision Transformers for Semic
+2026-05-03  arXiv:2607.21599  sweeps:[7]  Decoupled Attention Fusion: Accelerating RAG with Efficient KV Cache Reuse
+2026-05-01  arXiv:2605.00320  sweeps:[3]  VitaLLM: A Versatile and Tiny Accelerator for Mixed-Precision LLM Inference on Edge Device
+2026-04-30  arXiv:2604.27326  sweeps:[3]  Spectral Dynamic Attention Network for Hyperspectral Image Super-Resolution
+2026-04-30  arXiv:2604.27617  sweeps:[5]  Robust Lightweight Crack Classification for Real-Time UAV Bridge Inspection
+2026-04-29  arXiv:2604.26837  sweeps:[3]  Unifying Sparse Attention with Hierarchical Memory for Scalable Long-Context LLM Serving
+2026-04-29  arXiv:2604.26848  sweeps:[7]  STARRY: Spatial-Temporal Action-Centric World Modeling for Robotic Manipulation
+2026-04-27  arXiv:2604.24820  sweeps:[3]  Salca: A Sparsity-Aware Hardware Accelerator for Efficient Long-Context Attention Decoding
+2026-04-27  arXiv:2605.00887  sweeps:[3]  SparseContrast: Dynamic Sparse Attention for Efficient and Accurate Contrastive Learning i
+2026-04-27  arXiv:2605.00886  sweeps:[5, 7]  Selective Attention-Based Network for Robust Infrared Small Target Detection
+2026-04-26  arXiv:2606.19348  sweeps:[2, 3]  DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence
+2026-04-26  arXiv:2604.23717  sweeps:[6]  HeadRouter: Dynamic Head-Weight Routing for Task-Adaptive Audio Token Pruning in Large Aud
+2026-04-25  arXiv:2604.23310  sweeps:[3]  RadTwin: Generalizable Wireless Digital Twin for Dynamic Environments
+2026-04-24  arXiv:2604.22575  sweeps:[3]  SpikingBrain2.0: Brain-Inspired Foundation Models for Efficient Long-Context and Cross-Pla
+2026-04-24  arXiv:2604.22312  sweeps:[3]  Guess-Verify-Refine: Data-Aware Top-K for Sparse-Attention Decoding on Blackwell via Tempo
+2026-04-23  arXiv:2604.21592  sweeps:[3]  Sculpt4D: Generating 4D Shapes via Sparse-Attention Diffusion Transformers
+2026-04-23  arXiv:2604.21221  sweeps:[3]  Sparse Forcing: Native Trainable Sparse Attention for Real-time Autoregressive Diffusion V
+2026-04-23  arXiv:2605.00869  sweeps:[5]  Robust Cross-Domain WiFi Fall Detection via Physics-Driven Attention-Enhanced Transformers
+2026-04-22  arXiv:2604.20470  sweeps:[3]  DynamicRad: Content-Adaptive Sparse Attention for Long Video Diffusion
+2026-04-22  arXiv:2604.20920  sweeps:[3]  Simplified Sparse Attention via Gist Tokens
+2026-04-22  arXiv:2604.22856  sweeps:[5]  Attention-Augmented YOLOv8 with Ghost Convolution for Real-Time Vehicle Detection in Intel
+2026-04-22  arXiv:2604.20267  sweeps:[6]  ATIR: Towards Audio-Text Interleaved Contextual Retrieval
+2026-04-21  arXiv:2604.19747  sweeps:[3]  AnyRecon: Arbitrary-View 3D Reconstruction with Video Diffusion Model
+2026-04-20  arXiv:2604.18348  sweeps:[3]  AdaCluster: Adaptive Query-Key Clustering for Sparse Attention in Video Generation
+2026-04-20  arXiv:2604.18137  sweeps:[3]  AQPIM: Breaking the PIM Capacity Wall for LLMs with In-Memory Activation Quantization
+2026-04-18  arXiv:2604.16776  sweeps:[5]  SAVE: A Generalizable Framework for Multi-Condition Single-Cell Generation with Gene Block
+2026-04-18  arXiv:2604.17087  sweeps:[6]  EvoComp: Learning Visual Token Compression for Multimodal Large Language Models via Semant
+2026-04-18  arXiv:2605.05222  sweeps:[7]  Adaptive Computation Depth via Learned Token Routing in Transformers
+2026-04-16  arXiv:2604.15180  sweeps:[3]  AdaSplash-2: Faster Differentiable Sparse Attention
+2026-04-16  arXiv:2604.14925  sweeps:[3]  Improving Sparse Autoencoder with Dynamic Attention
+2026-04-16  arXiv:2604.15153  sweeps:[6]  Compressing Sequences in the Latent Embedding Space: $K$-Token Merging for Large Language 
+2026-04-16  arXiv:2604.14563  sweeps:[6]  Revisiting Token Compression for Accelerating ViT-based Sparse Multi-View 3D Object Detect
+2026-04-16  arXiv:2604.15583  sweeps:[7]  SAGE: Selective Attention-Guided Extraction for Token-Efficient Document Indexing
+2026-04-15  arXiv:2604.13847  sweeps:[3]  SparseBalance: Load-Balanced Long Context Training with Dynamic Sparse Attention
+2026-04-15  arXiv:2606.00024  sweeps:[3]  ART: Attention Run-time Termination for Efficient Large Language Model Decoding
+2026-04-15  arXiv:2604.13950  sweeps:[5]  Causal Drawbridges: Characterizing Gradient Blocking of Syntactic Islands in Transformer L
+2026-04-15  arXiv:2604.14149  sweeps:[6]  One Token per Highly Selective Frame: Towards Extreme Compression for Long Video Understan
+2026-04-15  arXiv:2604.13565  sweeps:[6]  UHR-BAT: Budget-Aware Token Compression Vision-Language model for Ultra-High-Resolution Re
+2026-04-15  arXiv:2604.13432  sweeps:[6]  MaMe & MaRe: Matrix-Based Token Merging and Restoration for Efficient Visual Perception an
+2026-04-15  arXiv:2604.13731  sweeps:[7]  Doc-V*:Coarse-to-Fine Interactive Visual Reasoning for Multi-Page Document VQA
+2026-04-14  arXiv:2604.12798  sweeps:[3]  VFA: Relieving Vector Operations in Flash Attention with Global Maximum Pre-computation
+2026-04-14  arXiv:2604.12452  sweeps:[3]  Latent-Condensed Transformer for Efficient Long Context Modeling
+2026-04-14  arXiv:2604.22808  sweeps:[3]  FreqFormer: Hierarchical Frequency-Domain Attention with Adaptive Spectral Routing for Lon
+2026-04-14  arXiv:2604.12219  sweeps:[3]  Ride the Wave: Precision-Allocated Sparse Attention for Smooth Video Generation
+2026-04-14  arXiv:2604.12351  sweeps:[5]  Fundus Image-based Glaucoma Screening via Retinal Knowledge-Oriented Dynamic Multi-Level F
+2026-04-14  arXiv:2604.12305  sweeps:[5]  CBAM-Enhanced DenseNet121 for Multi-Class Chest X-Ray Classification with Grad-CAM Explain
+2026-04-13  arXiv:2604.12056  sweeps:[3]  LoSA: Locality Aware Sparse Attention for Block-Wise Diffusion Language Models
+2026-04-13  arXiv:2604.16485  sweeps:[3]  Saccade Attention Networks: Using Transfer Learning of Attention to Reduce Network Sizes
+2026-04-13  arXiv:2604.11122  sweeps:[6]  Semantic-Geometric Dual Compression: Training-Free Visual Token Reduction for Ultra-High-R
+2026-04-11  arXiv:2604.10103  sweeps:[3]  Long-Horizon Streaming Video Generation via Hybrid Attention with Decoupled Distillation
+2026-04-11  arXiv:2604.10181  sweeps:[7]  Learning to Attend to Depression-Related Patterns: An Adaptive Cross-Modal Gating Network 
+2026-04-10  arXiv:2604.09349  sweeps:[3]  Visually-Guided Policy Optimization for Multimodal Reasoning
+2026-04-10  arXiv:2604.09142  sweeps:[3]  Geometry Reinforced Efficient Attention Tuning Equipped with Normals for Robust Stereo Mat
+2026-04-10  arXiv:2604.08971  sweeps:[3]  Modality-Aware Zero-Shot Pruning and Sparse Attention for Efficient Multimodal Edge Infere
+2026-04-10  arXiv:2604.09442  sweeps:[6]  UIPress: Bringing Optical Token Compression to UI-to-Code Generation
+2026-04-10  arXiv:2604.08933  sweeps:[6]  IAT: Instance-As-Token Compression for Historical User Sequence Modeling in Industrial Rec
+2026-04-09  arXiv:2604.07815  sweeps:[3]  AsyncTLS: Efficient Generative LLM Inference with Asynchronous Two-level Sparse Attention
+2026-04-09  arXiv:2604.08412  sweeps:[7]  Selective Attention System (SAS): Device-Addressed Speech Detection for Real-Time On-Devic
+2026-04-09  arXiv:2604.08077  sweeps:[7]  AdaSpark: Adaptive Sparsity for Efficient Long-Video Understanding
+2026-04-08  arXiv:2604.07210  sweeps:[0, 1]  VersaVogue: Visual Expert Orchestration and Preference Alignment for Unified Fashion Synth
+2026-04-08  arXiv:2604.07394  sweeps:[3]  Flux Attention: Context-Aware Hybrid Attention for Efficient LLMs Inference
+2026-04-07  arXiv:2604.06473  sweeps:[2, 8]  MICA: Multivariate Infini Compressive Attention for Time Series Forecasting
+2026-04-07  arXiv:2604.05449  sweeps:[3]  Not All Agents Matter: From Global Attention Dilution to Risk-Prioritized Game Planning
+2026-04-06  arXiv:2604.05182  sweeps:[3]  LSRM: High-Fidelity Object-Centric Reconstruction via Scaled Context Windows
+2026-04-06  arXiv:2604.16429  sweeps:[3, 9]  (Sparse) Attention to the Details: Preserving Spectral Fidelity in ML-based Weather Foreca
+2026-04-05  arXiv:2604.04250  sweeps:[5]  CAWN: Continuous Acoustic Wave Networks for Autoregressive Language Modeling
+2026-04-03  arXiv:2604.03414  sweeps:[6]  KiToke: Kernel-based Interval-aware Token Compression for Video Large Language Models
+2026-04-02  arXiv:2604.02200  sweeps:[5]  Towards Position-Robust Talent Recommendation via Large Language Models
+2026-04-02  arXiv:2604.02492  sweeps:[6]  Token-Efficient Multimodal Reasoning via Image Prompt Packaging
+2026-04-01  arXiv:2604.00754  sweeps:[5]  Stochastic Attention: Connectome-Inspired Randomized Routing for Expressive Linear-Time At
+2026-03-31  arXiv:2603.29494  sweeps:[3]  VecAttention: Vector-wise Sparse Attention for Accelerating Long Context Inference
+2026-03-30  arXiv:2603.29002  sweeps:[3]  Understand and Accelerate Memory Processing Pipeline for Large Language Model Inference
+2026-03-30  arXiv:2603.28458  sweeps:[3]  HISA: Efficient Hierarchical Indexing for Fine-Grained Sparse Attention
+2026-03-30  arXiv:2604.08584  sweeps:[3]  CSAttention: Centroid-Scoring Attention for Accelerating LLM Inference
+2026-03-30  arXiv:2603.27960  sweeps:[6]  Towards Efficient Large Vision-Language Models: A Comprehensive Survey on Inference Strate
+2026-03-29  arXiv:2603.27650  sweeps:[6]  V-CAST: Video Curvature-Aware Spatio-Temporal Pruning for Efficient Video Large Language M
+2026-03-28  arXiv:2603.27138  sweeps:[3]  ScoutAttention: Efficient KV Cache Offloading via Layer-Ahead CPU Pre-computation for LLM 
+2026-03-27  arXiv:2604.06227  sweeps:[3, 9]  A Benchmark of Classical and Deep Learning Models for Agricultural Commodity Price Forecas
+2026-03-27  arXiv:2603.26365  sweeps:[6]  Dynamic Token Compression for Efficient Video Understanding through Reinforcement Learning
+2026-03-26  arXiv:2603.25209  sweeps:[3]  Free-Lunch Long Video Generation via Layer-Adaptive O.O.D Correction
+2026-03-26  arXiv:2603.25155  sweeps:[6]  Photon: Speedup Volume Understanding with Efficient Multimodal Large Language Models
+2026-03-24  arXiv:2603.22858  sweeps:[3]  The Coordinate System Problem in Persistent Structural Memory for Neural Architectures
+2026-03-24  arXiv:2603.23319  sweeps:[4]  WISTERIA: Weak Implicit Signal-based Temporal Relation Extraction with Attention
+2026-03-24  arXiv:2603.22911  sweeps:[6]  ForestPrune: High-ratio Visual Token Compression for Video Multimodal Large Language Model
+2026-03-23  arXiv:2603.21957  sweeps:[6]  Unified Spatiotemporal Token Compression for Video-LLMs at Ultra-Low Retention
+2026-03-22  arXiv:2603.20997  sweeps:[3, 7]  When Does Content-Based Routing Work? Representation Requirements for Selective Attention 
+2026-03-22  arXiv:2604.14156  sweeps:[5]  Compressed-Sensing-Guided, Inference-Aware Structured Reduction for Large Language Models
+2026-03-22  arXiv:2603.21232  sweeps:[6]  QMoP: Query Guided Mixture-of-Projector for Efficient Visual Token Compression
+2026-03-21  arXiv:2603.20586  sweeps:[0, 1]  MKA: Memory-Keyed Attention for Efficient Long-Context Reasoning
+2026-03-20  arXiv:2603.22323  sweeps:[3]  A Multi-Task Targeted Learning Framework for Lithium-Ion Battery State-of-Health and Remai
+2026-03-20  arXiv:2603.19634  sweeps:[7]  MetaCues: Enabling Critical Engagement with Generative AI for Information Seeking and Sens
+2026-03-19  arXiv:2603.18712  sweeps:[3, 9]  Accurate and Efficient Multi-Channel Time Series Forecasting via Sparse Attention Mechanis
+2026-03-19  arXiv:2603.18636  sweeps:[3]  Attention Sparsity is Input-Stable: Training-Free Sparse Attention for Video Generation vi
+2026-03-19  arXiv:2603.18572  sweeps:[3]  UEPS: Robust and Efficient MRI Reconstruction
+2026-03-19  arXiv:2603.18417  sweeps:[3]  Self-Tuning Sparse Attention: Multi-Fidelity Hyperparameter Optimization for Transformer A
+2026-03-19  arXiv:2603.18660  sweeps:[6]  Multimodal Model for Computational Pathology:Representation Learning and Image Compression
+2026-03-16  arXiv:2603.14892  sweeps:[6]  Balancing Saliency and Coverage: Semantic Prominence-Aware Budgeting for Visual Token Comp
+2026-03-16  arXiv:2603.15167  sweeps:[7]  Question-guided Visual Compression with Memory Feedback for Long-Term Video Understanding
+2026-03-15  arXiv:2603.14483  sweeps:[3]  Disentangling Dynamical Systems: Causal Representation Learning Meets Local Sparse Attenti
+2026-03-15  arXiv:2603.14224  sweeps:[3]  Self-Indexing KVCache: Predicting Sparse Attention from Compressed Keys
+2026-03-15  arXiv:2603.15685  sweeps:[6]  DASH: Dynamic Audio-Driven Semantic Chunking for Efficient Omnimodal Token Compression
+2026-03-13  arXiv:2603.13430  sweeps:[3]  Dynamic Sparse Attention: Access Patterns and Architecture
+2026-03-13  arXiv:2603.12793  sweeps:[6]  Cheers: Decoupling Patch Details from Semantic Representations Enables Unified Multimodal 
+2026-03-12  arXiv:2603.12201  sweeps:[3]  IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse
+2026-03-12  arXiv:2603.12240  sweeps:[6]  BiGain: Unified Token Compression for Joint Generation and Classification
+2026-03-12  arXiv:2603.12208  sweeps:[6]  ForensicZip: More Tokens are Better but Not Necessary in Forensic Vision-Language Models
+2026-03-12  arXiv:2603.11846  sweeps:[6]  ZeroSense:How Vision matters in Long Context Compression
+2026-03-11  arXiv:2603.10781  sweeps:[3]  Taking Shortcuts for Categorical VQA Using Super Neurons
+2026-03-11  arXiv:2603.11320  sweeps:[6]  UniCompress: Token Compression for Unified Vision-Language Understanding and Generation
+2026-03-11  arXiv:2603.13394  sweeps:[6]  Language-Guided Token Compression with Reinforcement Learning in Large Vision-Language Mod
+2026-03-11  arXiv:2603.10469  sweeps:[6]  DepthCache: Depth-Guided Training-Free Visual Token Merging for Vision-Language-Action Mod
+2026-03-10  arXiv:2603.09573  sweeps:[3]  More than the Sum: Panorama-Language Models for Adverse Omni-Scenes
+2026-03-10  arXiv:2603.09480  sweeps:[6]  Prune Redundancy, Preserve Essence: Vision Token Compression in VLMs via Synergistic Impor
+2026-03-10  arXiv:2603.09613  sweeps:[7]  A Saccade-inspired Approach to Image Classification using Vision Transformer Attention Map
+2026-03-09  arXiv:2603.08982  sweeps:[3]  SVG-EAR: Parameter-Free Linear Compensation for Sparse Video Generation via Error-aware Ro
+2026-03-07  arXiv:2603.13349  sweeps:[6]  MURE: Hierarchical Multi-Resolution Encoding via Vision-Language Models for Visual Documen
+2026-03-06  arXiv:2603.06274  sweeps:[3]  Stem: Rethinking Causal Information Flow in Sparse Attention
+2026-03-06  arXiv:2603.06199  sweeps:[3]  FlashPrefill: Instantaneous Pattern Discovery and Thresholding for Ultra-Fast Long-Context
+2026-03-06  arXiv:2603.23516  sweeps:[3]  MSA: Memory Sparse Attention for Efficient End-to-End Memory Model Scaling to 100M Tokens
+2026-03-05  arXiv:2603.05503  sweeps:[3]  Accelerating Text-to-Video Generation with Calibrated Sparse Attention
+2026-03-03  arXiv:2603.04460  sweeps:[3]  VSPrefill: Vertical-Slash Sparse Attention with Lightweight Indexing for Long-Context Pref
+2026-03-02  arXiv:2603.02096  sweeps:[6]  FluxMem: Adaptive Hierarchical Memory for Streaming Video Understanding
+2026-03-01  arXiv:2603.00980  sweeps:[3]  Beyond the Flat Sequence: Hierarchical and Preference-Aware Generative Recommendations
+2026-03-01  arXiv:2603.01143  sweeps:[6]  TC-SSA: Token Compression via Semantic Slot Aggregation for Gigapixel Pathology Reasoning
+2026-03-01  arXiv:2603.00975  sweeps:[7]  Forgetting is Competition: Rethinking Unlearning as Representation Interference in Diffusi
+2026-02-28  arXiv:2603.00578  sweeps:[6]  Draft-Thinking: Learning Efficient Reasoning in Long Chain-of-Thought LLMs
+2026-02-26  arXiv:2602.22575  sweeps:[3]  S2O: Early Stopping for Sparse Attention via Online Permutation
+2026-02-25  arXiv:2603.00155  sweeps:[6]  EfficientPosterGen: Semantic-aware Efficient Poster Generation via Token Compression and A
+2026-02-24  arXiv:2602.21009  sweeps:[0, 1]  HiSAC: Hierarchical Sparse Activation Compression for Ultra-long Sequence Modeling in Reco
+2026-02-24  arXiv:2602.20515  sweeps:[3]  FAST-Prefill: FPGA Accelerated Sparse Attention for Long Context LLM Prefill
+2026-02-23  arXiv:2602.19822  sweeps:[3]  Efficient endometrial carcinoma screening via cross-modal synthesis and gradient distillat
+2026-02-23  arXiv:2602.19870  sweeps:[6]  ApET: Approximation-Error Guided Token Compression for Efficient VLMs
+2026-02-22  arXiv:2602.19143  sweeps:[3]  Incremental Learning of Sparse Attention Patterns in Transformers
+2026-02-22  arXiv:2602.19248  sweeps:[6]  No Need For Real Anomaly: MLLM Empowered Zero-Shot Video Anomaly Detection
+2026-02-20  arXiv:2602.18109  sweeps:[3]  TempoNet: Slack-Quantized Transformer-Guided Reinforcement Scheduler for Adaptive Deadline
+2026-02-19  arXiv:2602.16986  sweeps:[3]  Bending the Scaling Law Curve in Large-Scale Recommendation Systems
+2026-02-18  arXiv:2602.16132  sweeps:[7]  CHAI: CacHe Attention Inference for text2video
+2026-02-17  arXiv:2602.15720  sweeps:[6]  ToaSt: Token Channel Selection and Structured Pruning for Efficient ViT
+2026-02-15  arXiv:2602.14209  sweeps:[3]  MAGE: All-[MASK] Block Already Knows Where to Look in Block Diffusion LLM
+2026-02-14  arXiv:2602.13804  sweeps:[3]  Attention in Constant Time: Vashista Sparse Attention for Long-Context Decoding with Expon
+2026-02-14  arXiv:2602.13581  sweeps:[3]  Climber-Pilot: A Non-Myopic Generative Recommendation Model Towards Better Instruction-Fol
+2026-02-14  arXiv:2602.13738  sweeps:[6]  OneLatent: Single-Token Compression for Visual Latent Reasoning
+2026-02-13  arXiv:2602.13524  sweeps:[3]  Singular Vectors of Attention Heads Align with Features
+2026-02-13  arXiv:2602.13515  sweeps:[3]  SpargeAttention2: Trainable Sparse Attention via Hybrid Top-k+Top-p Masking and Distillati
+2026-02-12  arXiv:2602.12271  sweeps:[3, 4]  MonarchRT: Efficient Attention for Real-Time Video Generation
+2026-02-12  arXiv:2602.12204  sweeps:[3]  Learning to Forget Attention: Memory Consolidation for Adaptive Compute Reduction
+2026-02-12  arXiv:2602.11761  sweeps:[3]  MiniCPM-SALA: Hybridizing Sparse and Linear Attention for Efficient Long-Context Modeling
+2026-02-12  arXiv:2602.11607  sweeps:[7]  Scene-Aware Memory Discrimination: Deciding Which Personal Knowledge Stays
+2026-02-11  arXiv:2603.02227  sweeps:[3]  Routing Absorption in Sparse Attention: Why Random Gates Are Hard to Beat
+2026-02-11  arXiv:2602.10811  sweeps:[3]  EST: Towards Efficient Scaling Laws in Click-Through Rate Prediction via Unified Modeling
+2026-02-10  arXiv:2602.10079  sweeps:[5]  Can Image Splicing and Copy-Move Forgery Be Detected by the Same Model? Forensim: An Atten
+2026-02-09  arXiv:2602.08722  sweeps:[3]  QUOKA: Query-Oriented KV Selection For Efficient LLM Prefill
+2026-02-09  arXiv:2602.08426  sweeps:[3]  Prism: Spectral-Aware Block-Sparse Attention
+2026-02-08  arXiv:2602.07854  sweeps:[3]  Geometry-Aware Rotary Position Embedding for Consistent Video World Model
+2026-02-07  arXiv:2602.21233  sweeps:[3]  AngelSlim: A more accessible, comprehensive, and efficient toolkit for large model compres
+2026-02-07  arXiv:2602.07397  sweeps:[3, 4]  Scout Before You Attend: Sketch-and-Walk Sparse Attention for Efficient LLM Inference
+2026-02-06  arXiv:2602.07223  sweeps:[3]  Vegas: Self-Speculative Decoding with Verification-Guided Sparse Attention
+2026-02-06  arXiv:2602.06437  sweeps:[7]  An attention economy model of co-evolution between content quality and audience selectivit
+2026-02-05  arXiv:2602.05275  sweeps:[6]  Magic-MM-Embedding: Towards Visual-Token-Efficient Universal Multimodal Embedding with MLL
+2026-02-05  arXiv:2602.05454  sweeps:[7]  Attention Retention for Continual Learning with Vision Transformers
+2026-02-04  arXiv:2602.04804  sweeps:[6]  OmniSIFT: Modality-Asymmetric Token Compression for Efficient Omni-modal Large Language Mo
+2026-02-04  arXiv:2602.04657  sweeps:[6]  TRIO: Token Reduction via Inference-Objective Guidance for Efficient Vision-Language Model
+2026-02-04  arXiv:2602.04912  sweeps:[6]  Atomic Information Flow: A Network Flow Model for Tool Attributions in RAG Systems
+2026-02-04  arXiv:2602.04428  sweeps:[7]  Fine-Grained Activation Steering: Steering Less, Achieving More
+2026-02-02  arXiv:2602.02133  sweeps:[0, 1]  A Theoretical Analysis of Why Masked Diffusion Models Mitigate the Reversal Curse
+2026-02-02  arXiv:2602.01649  sweeps:[6]  Contribution-aware Token Compression for Efficient Video Understanding via Reinforcement L
+2026-02-01  arXiv:2602.01219  sweeps:[4]  Mixture-of-Top-k Attention: Efficient Attention via Scalable Fast Weights
+2026-01-30  arXiv:2601.22766  sweeps:[4]  Sparse Attention as Compact Kernel Regression
+2026-01-30  arXiv:2601.22674  sweeps:[6]  VisionTrim: Unified Vision Token Compression for Training-Free MLLM Acceleration
+2026-01-29  arXiv:2601.22069  sweeps:[6]  VTC-R1: Vision-Text Compression for Efficient Long-Context Reasoning
+2026-01-29  arXiv:2601.21665  sweeps:[6]  AdaptBPE: From General Purpose to Specialized Tokenizers
+2026-01-29  arXiv:2601.21531  sweeps:[6]  On the Adversarial Robustness of Large Vision-Language Models under Visual Token Compressi
+2026-01-28  arXiv:2601.20267  sweeps:[7]  SATA: Sparsity-Aware Scheduling for Selective Token Attention
+2026-01-28  arXiv:2601.20646  sweeps:[9]  TGSBM: Transformer-Guided Stochastic Block Model for Link Prediction
+2026-01-21  arXiv:2601.14750  sweeps:[6]  Render-of-Thought: Rendering Textual Chain-of-Thought as Images for Visual Latent Reasonin
+2026-01-21  arXiv:2601.15097  sweeps:[7]  Neural Tracking of Sustained Attention, Attention Switching, and Natural Conversation in A
+2026-01-20  arXiv:2601.13879  sweeps:[6]  Chain-of-Thought Compression Should Not Be Blind: V-Skip for Efficient Multimodal Reasonin
+2026-01-20  arXiv:2601.13588  sweeps:[6]  TREX: Tokenizer Regression for Optimal Data Mixture
+2026-01-19  arXiv:2601.13126  sweeps:[5]  A Streamlined Attention-Based Network for Descriptor Extraction
+2026-01-19  arXiv:2601.12895  sweeps:[5]  TwoHead-SwinFPN: A Unified DL Architecture for Synthetic Manipulation, Detection and Local
+2026-01-19  arXiv:2601.12790  sweeps:[7]  FocusNav: Spatial Selective Attention with Waypoint Guidance for Humanoid Local Navigation
+2026-01-17  arXiv:2601.12042  sweeps:[6]  Less Is More -- Until It Breaks: Security Pitfalls of Vision Token Compression in Large Vi
+2026-01-15  arXiv:2601.10854  sweeps:[5]  Effects of Different Attention Mechanisms Applied on 3D Models in Video Classification
+2026-01-14  arXiv:2601.11631  sweeps:[6]  Compress to Focus: Efficient Coordinate Compression for Policy Optimization in Multi-Turn 
+2026-01-14  arXiv:2601.09039  sweeps:[6]  An Information-Theoretic Perspective on LLM Tokenizers
+2026-01-13  arXiv:2601.08285  sweeps:[7]  Training Under Attentional Competition Produces Persistent Biases in Visual Appearance
+2026-01-12  arXiv:2601.07396  sweeps:[9]  Forecast the Principal, Stabilize the Residual: Subspace-Aware Feature Caching for Efficie
+2026-01-09  arXiv:2601.05470  sweeps:[5]  ROAP: A Reading-Order and Attention-Prior Pipeline for Optimizing Layout Transformers in K
+2026-01-08  arXiv:2601.05083  sweeps:[6]  Driving on Registers
+2026-01-08  arXiv:2601.06199  sweeps:[6]  FastSLM: Hierarchical Temporal Abstraction for Efficient Long-Form Speech Adaptation
+2026-01-08  arXiv:2601.04519  sweeps:[6]  TokenSeg: Efficient 3D Medical Image Segmentation via Hierarchical Visual Token Compressio
+2026-01-07  arXiv:2601.04398  sweeps:[7]  Interpreting Transformers Through Attention Head Intervention
+2026-01-06  arXiv:2601.02928  sweeps:[5]  HybridSolarNet: A Lightweight and Explainable EfficientNet-CBAM Architecture for Real-Time
+2026-01-06  arXiv:2601.03400  sweeps:[7]  Eye-Q: A Multilingual Benchmark for Visual Word Puzzle Solving and Image-to-Phrase Reasoni
+2026-01-05  arXiv:2601.02091  sweeps:[5]  MCD-Net: A Lightweight Deep Learning Baseline for Optical-Only Moraine Segmentation
+2025-12-30  arXiv:2512.24463  sweeps:[5]  Spectral and Spatial Graph Learning for Multispectral Solar Image Compression
+2025-12-23  arXiv:2512.20014  sweeps:[7]  Bring My Cup! Personalizing Vision-Language-Action Models with Visual Attentive Prompting
+2025-12-22  arXiv:2512.22214  sweeps:[0, 1]  Signal-SGN++: Topology-Enhanced Time-Frequency Spiking Graph Network for Skeleton-Based Ac
+2025-12-22  arXiv:2512.19365  sweeps:[7]  Efficient Spike-driven Transformer for High-performance Drone-View Geo-Localization
+2025-12-21  arXiv:2512.18747  sweeps:[6]  IPCV: Information-Preserving Compression for MLLM Visual Encoders
+2025-12-20  arXiv:2512.18496  sweeps:[6]  Adaptive-VoCo: Complexity-Aware Visual Token Compression for Vision-Language Models
+2025-12-19  arXiv:2512.18046  sweeps:[5]  YolovN-CBi: A Lightweight and Efficient Architecture for Real-Time Detection of Small UAVs
+2025-12-19  arXiv:2512.17864  sweeps:[5]  Interpretable Plant Leaf Disease Detection Using Attention-Enhanced CNN
+2025-12-17  arXiv:2512.15947  sweeps:[5]  MCR-VQGAN: A Scalable and Cost-Effective Tau PET Synthesis Approach for Alzheimer's Diseas
+2025-12-17  arXiv:2512.15649  sweeps:[6]  VTCBench: Can Vision-Language Models Understand Long Context with Vision-Text Compression?
+2025-12-15  arXiv:2512.13525  sweeps:[7]  Janus: Disaggregating Attention and Experts for Scalable MoE Inference
+2025-12-13  arXiv:2512.12301  sweeps:[4, 9]  TwinFormer: A Dual-Level Transformer for Long-Sequence Time-Series Forecasting
+2025-12-12  arXiv:2512.12087  sweeps:[5]  BLASST: Dynamic BLocked Attention Sparsity via Softmax Thresholding
+2025-12-10  arXiv:2512.09927  sweeps:[6]  Token Expand-Merge: Training-Free Token Compression for Vision-Language-Action Models
+2025-12-09  arXiv:2512.09010  sweeps:[6]  Towards Lossless Ultimate Vision Token Compression for VLMs
+2025-12-09  arXiv:2512.08240  sweeps:[6]  Hybrid Token Compression for Vision-Language Models
+2025-12-08  arXiv:2512.07647  sweeps:[4]  A Mathematical Theory of Top-$k$ Sparse Attention via Total Variation Distance
+2025-12-08  arXiv:2512.07782  sweeps:[6]  GatedFWA: Linear Flash Windowed Attention with Gated Associative Memory
+2025-12-07  arXiv:2512.06866  sweeps:[6]  Less Is More, but Where? Dynamic Token Compression via LLM-Guided Keyframe Prior
+2025-12-05  arXiv:2512.05415  sweeps:[5]  Moving object detection from multi-depth images with an attention-enhanced CNN
+2025-12-05  arXiv:2512.05528  sweeps:[7]  Decoding Selective Auditory Attention to Musical Elements in Ecologically Valid Music List
+2025-12-04  arXiv:2512.04521  sweeps:[5]  WiFi-based Cross-Domain Gesture Recognition Using Attention Mechanism
+2025-12-03  arXiv:2512.03494  sweeps:[4]  A Preliminary Study on the Promises and Challenges of Native Top-$k$ Sparse Attention
+2025-12-03  arXiv:2512.03575  sweeps:[6]  UniComp: Rethinking Video Compression Through Informational Uniqueness
+2025-11-30  arXiv:2512.00891  sweeps:[6]  Accelerating Streaming Video Large Language Models via Hierarchical Token Compression
+2025-11-27  arXiv:2511.22539  sweeps:[5]  TransCoder: A Neural-Enhancement Framework for Channel Codes
+2025-11-26  arXiv:2511.21309  sweeps:[0, 1]  CaliTex: Geometry-Calibrated Attention for View-Coherent 3D Texture Generation
+2025-11-26  arXiv:2511.21150  sweeps:[6]  LLaVA-UHD v3: Progressive Visual Compression for Efficient Native-Resolution Encoding in M
+2025-11-26  arXiv:2511.20973  sweeps:[6]  Towards Audio Token Compression in Large Audio Language Models
+2025-11-25  arXiv:2511.19928  sweeps:[7]  Context-Aware Token Pruning and Discriminative Selective Attention for Transformer Trackin
+2025-11-24  arXiv:2511.18950  sweeps:[6]  Compressor-VLA: Instruction-Guided Visual Token Compression for Efficient Robotic Manipula
+2025-11-19  arXiv:2511.15580  sweeps:[6]  CompTrack: Information Bottleneck-Guided Low-Rank Dynamic Token Compression for Point Clou
+2025-11-19  arXiv:2511.15459  sweeps:[7]  Driving in Spikes: An Entropy-Guided Object Detector for Spike Cameras
+2025-11-18  arXiv:2511.14694  sweeps:[2]  Near-Lossless Model Compression Enables Longer Context Inference in DNA Large Language Mod
+2025-11-18  arXiv:2511.14510  sweeps:[4]  LiteCache: A Query Similarity-Driven, GPU-Centric KVCache Subsystem for Efficient LLM Infe
+2025-11-18  arXiv:2511.14582  sweeps:[6]  OmniZip: Audio-Guided Dynamic Token Compression for Fast Omnimodal Large Language Models
+2025-11-18  arXiv:2511.14405  sweeps:[6]  Jasper-Token-Compression-600M Technical Report
+2025-11-18  arXiv:2511.14169  sweeps:[6]  AdaTok: Adaptive Token Compression with Object-Aware Representations for Efficient Multimo
+2025-11-18  arXiv:2511.14143  sweeps:[6]  SMART: Shot-Aware Multimodal Video Moment Retrieval with Audio-Enhanced MLLM
+2025-11-18  arXiv:2511.14072  sweeps:[6]  CORE: Compact Object-centric REpresentations as a New Paradigm for Token Merging in LVLMs
+2025-11-16  arXiv:2511.12682  sweeps:[5]  Attention-Enhanced Convolutional Autoencoder and Structured Delay Embeddings for Weather P
+2025-11-15  arXiv:2511.12346  sweeps:[5]  CLAReSNet: When Convolution Meets Latent Attention for Hyperspectral Image Classification
+2025-11-15  arXiv:2511.11959  sweeps:[5]  Evaluation of Attention Mechanisms in U-Net Architectures for Semantic Segmentation of Bra
+2025-11-15  arXiv:2511.12371  sweeps:[6]  Reasoning Text-to-Video Retrieval via Digital Twin Video Representations and Large Languag
+2025-11-14  arXiv:2511.11571  sweeps:[5]  Optimizing Mixture of Block Attention
+2025-11-13  arXiv:2511.10552  sweeps:[6]  URaG: Unified Retrieval and Generation in Multimodal LLMs for Efficient Long Document Unde
+2025-11-10  arXiv:2511.07253  sweeps:[6]  Omni-AVSR: Towards Unified Multimodal Speech Recognition with Large Language Models
+2025-11-04  arXiv:2511.02650  sweeps:[6]  Can Visual Input Be Compressed? A Visual Token Compression Benchmark for Large Multimodal 
+2025-11-02  arXiv:2511.00819  sweeps:[7]  Optimizing Native Sparse Attention with Latent Attention and Local Global Alternating Stra
+2025-10-31  arXiv:2511.00141  sweeps:[6]  FLoC: Facility Location-Based Efficient Visual Token Compression for Long Video Understand
+2025-10-31  arXiv:2510.27366  sweeps:[9]  A Sensing Whole Brain Zebrafish Foundation Model for Neuron Dynamics and Behavior
+2025-10-29  arXiv:2510.25522  sweeps:[5]  Comparative Study of UNet-based Architectures for Liver Tumor Segmentation in Multi-Phase 
+2025-10-29  arXiv:2510.25797  sweeps:[5]  Enhancing Underwater Object Detection through Spatio-Temporal Analysis and Spatial Attenti
+2025-10-27  arXiv:2510.22936  sweeps:[6]  PPE: Positional Preservation Embedding for Token Compression in Multimodal Large Language 
+2025-10-26  arXiv:2510.22743  sweeps:[5]  ConMatFormer: A Multi-attention and Transformer Integrated ConvNext based Deep Learning Mo
+2025-10-26  arXiv:2510.22547  sweeps:[5]  Low-Light Image Enhancement Using Gamma Learning And Attention-Enabled Encoder-Decoder Net
+2025-10-25  arXiv:2510.22142  sweeps:[5]  Attention Residual Fusion Network with Contrast for Source-free Domain Adaptation
+2025-10-21  arXiv:2510.18269  sweeps:[6]  StreamingTOM: Streaming Token Compression for Efficient Video Understanding
+2025-10-20  arXiv:2510.21795  sweeps:[5]  Xihe: Scalable Zero-Shot Time Series Learner Via Hierarchical Interleaved Block Attention
+2025-10-20  arXiv:2510.17800  sweeps:[6]  Glyph: Scaling Context Windows via Visual-Text Compression
+2025-10-20  arXiv:2510.17771  sweeps:[7]  Seeing but Not Believing: Probing the Disconnect Between Visual Attention and Answer Corre
+2025-10-19  arXiv:2510.16854  sweeps:[5]  ArmFormer: Lightweight Transformer Architecture for Real-Time Multi-Class Weapon Segmentat
+2025-10-18  arXiv:2510.16598  sweeps:[6]  VisionSelector: End-to-End Learnable Visual Token Compression for Efficient Multimodal LLM
+2025-10-09  arXiv:2510.07915  sweeps:[6]  MARC: Memory-Augmented RL Token Compression for Efficient Video Understanding
+2025-10-08  arXiv:2510.07143  sweeps:[6]  Are We Using the Right Benchmark: An Evaluation Framework for Visual Token Compression Met
+2025-10-07  arXiv:2510.05881  sweeps:[7]  Segment-Factorized Full-Song Generation on Symbolic Piano Music
+2025-10-05  arXiv:2510.04136  sweeps:[6]  MoME: Mixture of Matryoshka Experts for Audio-Visual Speech Recognition
+2025-10-02  arXiv:2510.02295  sweeps:[6]  VideoNSA: Native Sparse Attention Scales Video Understanding
+2025-10-01  arXiv:2510.00515  sweeps:[6]  Efficient Multi-modal Large Language Models via Progressive Consistency Distillation
+2025-09-30  arXiv:2509.26484  sweeps:[5]  CBAM Integrated Attention Driven Model For Betel Leaf Diseases Classification With Explain
+2025-09-29  arXiv:2509.24871  sweeps:[6]  StreamForest: Efficient Online Video Understanding with Persistent Event Memory
+2025-09-26  arXiv:2509.22854  sweeps:[0, 1]  Train Once, Reuse Everywhere: Generalizable Implicit In-Context Learning by Routing Attent
+2025-09-26  arXiv:2509.22763  sweeps:[5]  UESA-Net: U-Shaped Embedded Multidirectional Shrinkage Attention Network for Ultrasound No
+2025-09-23  arXiv:2509.19244  sweeps:[6]  Lavida-O: Elastic Large Masked Diffusion Models for Unified Multimodal Understanding and G
+2025-09-23  arXiv:2509.19191  sweeps:[6]  Reading Images Like Texts: Sequential Image Understanding in Vision-Language Models
+2025-09-23  arXiv:2509.19281  sweeps:[8]  An Attention-Enhanced Φ-OTDR Event Recognition Framework for Edge-Based Distributed Acoust
+2025-09-22  arXiv:2509.17965  sweeps:[7]  Benchmarking Humans and Machines on Complex Multilingual Speech Understanding Tasks
+2025-09-21  arXiv:2509.17078  sweeps:[5]  Enhanced Detection of Tiny Objects in Aerial Images
+2025-09-19  arXiv:2509.15688  sweeps:[7]  Saccadic Vision for Fine-Grained Visual Classification
+2025-09-15  arXiv:2509.12159  sweeps:[6]  EfficientUICoder: A Bidirectional Token Compression Framework for Efficient MLLM-Based UI 
+2025-09-14  arXiv:2509.11232  sweeps:[5]  MIS-LSTM: Multichannel Image-Sequence LSTM for Sleep Quality and Stress Prediction
+2025-09-12  arXiv:2509.10423  sweeps:[7]  Mutual Information Tracks Policy Coherence in Reinforcement Learning
+2025-09-11  arXiv:2509.09242  sweeps:[5]  CoAtNeXt:An Attention-Enhanced ConvNeXtV2-Transformer Hybrid Model for Gastric Tissue Clas
+2025-09-11  arXiv:2509.09479  sweeps:[7]  Short-term cognitive fatigue of spatial selective attention after face-to-face conversatio
+2025-09-10  arXiv:2509.08961  sweeps:[5]  FoundationalECGNet: A Lightweight Foundational Model for ECG-based Multitask Cardiac Analy
+2025-09-10  arXiv:2509.08228  sweeps:[5]  Sparse Transformer for Ultra-sparse Sampled Video Compressive Sensing
+2025-09-02  arXiv:2509.05343  sweeps:[5]  Systematic Integration of Attention Modules into CNNs for Accurate and Generalizable Medic
+2025-09-01  arXiv:2509.01552  sweeps:[6]  Variation-aware Vision Token Dropping for Faster Large Vision-Language Models
+2025-09-01  arXiv:2509.01221  sweeps:[6]  DaMoC: Efficiently Selecting the Optimal Large Language Model for Fine-tuning Domain Tasks
+2025-09-01  arXiv:2509.01787  sweeps:[7]  AHAMask: Reliable Task Specification for Large Audio Language Models without Instructions
+2025-08-31  arXiv:2509.00969  sweeps:[6]  Seeing More, Saying More: Lightweight Language Experts are Dynamic Video Token Compressors
+2025-08-23  arXiv:2508.17150  sweeps:[7]  SACA: Selective Attention-Based Clustering Algorithm
+2025-08-21  arXiv:2508.15379  sweeps:[5]  Bladder Cancer Diagnosis with Deep Learning: A Multi-Task Framework and Online Platform
+2025-08-20  arXiv:2508.14349  sweeps:[5]  Deep Learning for Taxol Exposure Analysis: A New Cell Image Dataset and Attention-Based Ba
+2025-08-19  arXiv:2508.13460  sweeps:[6]  Revisiting MLLM Token Technology through the Lens of Classical Visual Coding
+2025-08-19  arXiv:2508.14923  sweeps:[7]  A Fully Spectral Neuro-Symbolic Reasoning Architecture with Graph Signal Processing as the
+2025-08-15  arXiv:2508.11354  sweeps:[5]  FunduSegmenter: Leveraging the RETFound Foundation Model for Joint Optic Disc and Optic Cu
+2025-08-14  arXiv:2508.10974  sweeps:[6]  Failures to Surface Harmful Contents in Video Large Language Models
+2025-08-14  arXiv:2508.10552  sweeps:[6]  When Language Overrules: Revealing Text Dominance in Multimodal Large Language Models
+2025-08-14  arXiv:2508.10824  sweeps:[7]  Memory-Augmented Transformers: A Systematic Review from Neuroscience Principles to Enhance
+2025-08-13  arXiv:2508.09857  sweeps:[6]  OneVAE: Joint Discrete and Continuous Optimization Helps Discrete Video VAE Train Better
+2025-08-13  arXiv:2508.09664  sweeps:[7]  Multimodal Fusion And Sparse Attention-based Alignment Model for Long Sequential Recommend
+2025-08-11  arXiv:2508.08183  sweeps:[7]  THAT: Token-wise High-frequency Augmentation Transformer for Hyperspectral Pansharpening
+2025-08-08  arXiv:2508.06621  sweeps:[6]  Train It and Forget It: Merge Lists are Unnecessary for BPE Inference in Language Models
+2025-08-08  arXiv:2508.06038  sweeps:[6]  Fourier Compressor: Frequency-Domain Visual Token Compression for Vision-Language Models
+2025-08-06  arXiv:2508.04058  sweeps:[2, 6]  TCSAFormer: Efficient Vision Transformer with Token Compression and Sparse Attention for M
+2025-08-05  arXiv:2508.03338  sweeps:[7]  CIVQLLIE: Causal Intervention with Vector Quantization for Low-Light Image Enhancement
+2025-08-04  arXiv:2508.02134  sweeps:[6]  Free-MoRef: Instantly Multiplexing Context Perception Capabilities of Video-MLLMs within S
+2025-08-03  arXiv:2508.01548  sweeps:[6]  A Glimpse to Compress: Dynamic Visual Token Pruning for Large Vision-Language Models
+2025-08-01  arXiv:2508.00367  sweeps:[6]  Representation Shift: Unifying Token Compression with FlashAttention
+2025-07-31  arXiv:2507.23185  sweeps:[5]  Single Image Rain Streak Removal Using Harris Corner Loss and R-CBAM Network
+2025-07-30  arXiv:2507.23091  sweeps:[7]  Moravec's Paradox: Towards an Auditory Turing Test
+2025-07-29  arXiv:2507.21857  sweeps:[7]  Unleashing the Power of Motion and Depth: A Selective Fusion Strategy for RGB-D Video Sali
+2025-07-28  arXiv:2507.20629  sweeps:[5]  DAMS:Dual-Branch Adaptive Multiscale Spatiotemporal Framework for Video Anomaly Detection
+2025-07-27  arXiv:2507.20198  sweeps:[6]  A Survey of Token Compression for Efficient Multimodal Large Language Models
+2025-07-25  arXiv:2507.19296  sweeps:[5]  ABCD: Automatic Blood Cell Detection via Attention-Guided Improved YOLOX
+2025-07-25  arXiv:2507.19213  sweeps:[7]  PRE-MAP: Personalized Reinforced Eye-tracking Multimodal LLM for High-Resolution Multi-Att
+2025-07-14  arXiv:2507.09885  sweeps:[4]  MCGA: Mixture of Codebooks Hyperspectral Reconstruction via Grayscale-Aware Attention
+2025-07-08  arXiv:2507.14163  sweeps:[5]  UniPhyNet: A Unified Network For Multimodal Physiological Raw Signal Classification
+2025-07-03  arXiv:2507.02488  sweeps:[7]  MedFormer: Hierarchical Medical Vision Transformer with Content-Aware Dual Sparse Selectio
+2025-07-02  arXiv:2507.01652  sweeps:[7]  Autoregressive Image Generation with Linear Complexity: A Spatial-Aware Decay Perspective
+2025-07-01  arXiv:2507.00511  sweeps:[5]  Medical Image Segmentation Using Advanced Unet: VMSE-Unet and VM-Unet CBAM+
+2025-06-30  arXiv:2507.02957  sweeps:[2]  CS-VLM: Compressed Sensing Attention for Efficient Vision-Language Representation Learning
+2025-06-30  arXiv:2506.23858  sweeps:[5]  VMoBA: Mixture-of-Block Attention for Video Diffusion Models
+2025-06-24  arXiv:2506.22487  sweeps:[7]  AGI Enabled Solutions For IoX Layers Bottlenecks In Cyber-Physical-Social-Thinking Space
+2025-06-23  arXiv:2506.18628  sweeps:[7]  AggTruth: Contextual Hallucination Detection using Aggregated Attention Scores in LLMs
+2025-06-23  arXiv:2506.18346  sweeps:[7]  BSMamba: Brightness and Semantic Modeling for Long-Range Interaction in Low-Light Image En
+2025-06-18  arXiv:2506.15562  sweeps:[5]  Automated MRI Tumor Segmentation using hybrid U-Net with Transformer and Efficient Attenti
+2025-06-17  arXiv:2506.14384  sweeps:[2]  GrFormer: A Novel Transformer on Grassmann Manifold for Infrared and Visible Image Fusion
+2025-06-12  arXiv:2506.11169  sweeps:[2]  Advances in Small-Footprint Keyword Spotting: A Comprehensive Review of Efficient Models a
+2025-06-12  arXiv:2506.10683  sweeps:[5]  Enhancing Deepfake Detection using SE Block Attention with CNN
+2025-06-12  arXiv:2506.10978  sweeps:[7]  Where and How to Perturb: On the Design of Perturbation Guidance in Diffusion and Flow Mod
+2025-06-10  arXiv:2506.08534  sweeps:[5]  DCD: A Semantic Segmentation Model for Fetal Ultrasound Four-Chamber View
+2025-06-09  arXiv:2506.07885  sweeps:[5]  CrosswalkNet: An Optimized Deep Learning Framework for Pedestrian Crosswalk Detection in A
+2025-06-09  arXiv:2506.07357  sweeps:[5]  CBAM-STN-TPS-YOLO: Enhancing Agricultural Object Detection through Spatially Adaptive Atte
+2025-06-04  arXiv:2506.03684  sweeps:[7]  DSSAU-Net:U-Shaped Hybrid Network for Pubic Symphysis and Fetal Head Segmentation
+2025-06-03  arXiv:2506.02572  sweeps:[4]  HATA: Trainable and Hardware-Efficient Hash-Aware Top-k Attention for Scalable Large Model
+2025-06-02  arXiv:2506.01781  sweeps:[7]  Enhancing Customer Service Chatbots with Context-Aware NLU through Selective Attention and
+2025-05-30  arXiv:2505.24792  sweeps:[0, 1]  Lightweight Relational Embedding in Task-Interpolated Few-Shot Networks for Enhanced Gastr
+2025-05-30  arXiv:2505.24544  sweeps:[5]  Cross-Attention Speculative Decoding
+2025-05-28  arXiv:2505.22087  sweeps:[7]  Cognitively-Inspired Emergent Communication via Knowledge Graphs for Assisting the Visuall
+2025-05-25  arXiv:2505.19155  sweeps:[4]  Sparse-to-Dense: A Free Lunch for Lossless Acceleration of Video Understanding in LLMs
+2025-05-24  arXiv:2505.21538  sweeps:[7]  Caption This, Reason That: VLMs Caught in the Middle
+2025-05-23  arXiv:2505.17683  sweeps:[5]  Dual Attention Residual U-Net for Accurate Brain Ultrasound Segmentation in IVH Detection
+2025-05-23  arXiv:2505.17834  sweeps:[7]  Hybrid Mamba-Transformer Decoder for Error-Correcting Codes
+2025-05-22  arXiv:2505.16950  sweeps:[4]  Bottlenecked Transformers: Periodic KV Cache Consolidation for Generalised Reasoning
+2025-05-22  arXiv:2505.16411  sweeps:[4]  Mitigating Hallucinations in Vision-Language Models through Image-Guided Head Suppression
+2025-05-22  arXiv:2505.16360  sweeps:[7]  Style Transfer with Diffusion Models for Synthetic-to-Real Domain Adaptation
+2025-05-20  arXiv:2505.14305  sweeps:[7]  JOLT-SQL: Joint Loss Tuning of Text-to-SQL with Confusion-aware Noisy Schema Sampling
+2025-05-14  arXiv:2505.09859  sweeps:[7]  Few-Shot Learning of Visual Compositional Concepts through Probabilistic Schema Induction
+2025-05-13  arXiv:2505.08699  sweeps:[5]  Granite-speech: open-source speech-aware LLMs with strong English ASR capabilities
+2025-05-13  arXiv:2505.08961  sweeps:[7]  Learning Informative Attention Weights for Person Re-Identification
+2025-05-09  arXiv:2505.05772  sweeps:[7]  Sparse Attention Remapping with Clustering for Efficient LLM Decoding on PIM
+2025-05-07  arXiv:2505.04199  sweeps:[5]  Enhanced SCanNet with CBAM and Dice Loss for Semantic Change Detection
+2025-05-05  arXiv:2505.02586  sweeps:[5]  RGBX-DiffusionDet: A Framework for Multi-Modal RGB-X Object Detection Using DiffusionDet
+2025-04-25  arXiv:2504.18490  sweeps:[5]  An Improved ResNet50 Model for Predicting Pavement Condition Index (PCI) Directly from Pav
+2025-04-23  arXiv:2504.16922  sweeps:[5]  Generalized Neighborhood Attention: Multi-dimensional Sparse Attention at the Speed of Lig
+2025-04-22  arXiv:2504.15875  sweeps:[5]  Identifying eclipsing binary stars with TESS data based on a new hybrid deep learning mode
+2025-04-16  arXiv:2504.12088  sweeps:[4]  AttentionDrop: A Novel Regularization Method for Transformer Models
+2025-04-16  arXiv:2504.12204  sweeps:[5]  Towards Realistic Low-Light Image Enhancement via ISP Driven Data Modeling
+2025-04-16  arXiv:2504.11793  sweeps:[7]  Selective Attention Federated Learning: Improving Privacy and Efficiency for Clinical Text
+2025-04-16  arXiv:2504.12262  sweeps:[9]  SCENT: Robust Spatiotemporal Learning for Continuous Scientific Data via Scalable Conditio
+2025-04-11  arXiv:2504.08469  sweeps:[5]  Artifact detection and localization in single-channel mobile EEG for sleep research using 
+2025-04-10  arXiv:2504.08166  sweeps:[7]  Learning Object Focused Attention
+2025-04-09  arXiv:2504.06634  sweeps:[7]  Crafting Query-Aware Selective Attention for Single Image Super-Resolution
+2025-04-06  arXiv:2504.04329  sweeps:[7]  Auditory steady-state response and gamma oscillations in an excitatory-inhibitory balanced
+2025-04-01  arXiv:2504.00370  sweeps:[5]  Spatiotemporal Attention Learning Framework for Event-Driven Object Recognition
+2025-03-30  arXiv:2503.23461  sweeps:[7]  Investigating Text Insulation and Attention Mechanisms for Complex Visual Text Generation
+2025-03-28  arXiv:2503.22251  sweeps:[5]  Efficient Building Roof Type Classification: A Domain-Specific Self-Supervised Approach
+2025-03-21  arXiv:2503.17193  sweeps:[5]  MSCA-Net:Multi-Scale Context Aggregation Network for Infrared Small Target Detection
+2025-03-20  arXiv:2503.16726  sweeps:[2]  EDiT: Efficient Diffusion Transformers with Linear Compressed Attention
+2025-03-17  arXiv:2503.12908  sweeps:[7]  HICD: Hallucination-Inducing via Attention Dispersion for Contrastive Decoding to Mitigate
+2025-03-11  arXiv:2503.08239  sweeps:[5]  EnergyFormer: Energy Attention with Fourier Embedding for Hyperspectral Image Classificati
+2025-02-28  arXiv:2502.21229  sweeps:[7]  A Method of Selective Attention for Reservoir Based Agents
+2025-02-20  arXiv:2502.14838  sweeps:[7]  Revealing and Mitigating Over-Attention in Knowledge Editing
+2025-02-20  arXiv:2502.14477  sweeps:[7]  Unshackling Context Length: An Efficient Selective Attention Approach through Query-Key Co
+2025-02-19  arXiv:2502.14051  sweeps:[4]  RocketKV: Accelerating Long-Context LLM Inference via Two-Stage KV Cache Compression
+2025-02-18  arXiv:2502.13189  sweeps:[5]  MoBA: Mixture of Block Attention for Long-Context LLMs
+2025-02-18  arXiv:2502.12574  sweeps:[7]  HeadInfer: Memory-Efficient LLM Inference by Head-wise Offloading
+2025-02-16  arXiv:2502.11001  sweeps:[0, 1]  CL-MFAP: A Contrastive Learning-Based Multimodal Foundation Model for Molecular Property P
+2025-02-16  arXiv:2502.11116  sweeps:[4]  Gumbel Reranking: Differentiable End-to-End Reranker Optimization
+2025-02-13  arXiv:2502.09503  sweeps:[5]  AttentionSmithy: A Modular Framework for Rapid Transformer Development and Customization
+2025-02-13  arXiv:2502.09256  sweeps:[5]  DynSegNet:Dynamic Architecture Adjustment for Adversarial Learning in Segmenting Hemorrhag
+2025-02-12  arXiv:2502.08363  sweeps:[4]  Top-Theta Attention: Sparsifying Transformers by Compensated Thresholding
+2025-02-10  arXiv:2502.06220  sweeps:[5]  FunduSAM: A Specialized Deep Learning Model for Enhanced Optic Disc and Cup Segmentation i
+2025-02-10  arXiv:2502.06127  sweeps:[5]  Improved YOLOv5s model for key components detection of power transmission lines
+2025-02-10  arXiv:2502.06119  sweeps:[5]  An Appearance Defect Detection Method for Cigarettes Based on C-CenterNet
+2025-02-10  arXiv:2502.06747  sweeps:[7]  Wandering around: A bioinspired approach to visual attention through object motion sensiti
+2025-02-05  arXiv:2502.03103  sweeps:[5]  Edge Attention Module for Object Classification
+2025-02-05  arXiv:2502.06818  sweeps:[5]  Rethinking the Global Knowledge of CLIP in Training-Free Open-Vocabulary Semantic Segmenta
+2025-02-05  arXiv:2502.02831  sweeps:[7]  How the Stroop Effect Arises from Optimal Response Times in Laterally Connected Self-Organ
+2025-02-03  arXiv:2502.01311  sweeps:[5]  TFBS-Finder: Deep Learning-based Model with DNABERT and Convolutional Networks to Predict 
+2025-01-28  arXiv:2501.17048  sweeps:[7]  Cortical Temporal Mismatch Compensation in Bimodal Cochlear Implant Users: Selective Atten
+2025-01-25  arXiv:2501.15270  sweeps:[7]  Inductive Biases for Zero-shot Systematic Generalization in Language-informed Reinforcemen
+2025-01-24  arXiv:2501.14577  sweeps:[4]  ZETA: Leveraging Z-order Curves for Efficient Top-k Attention
+2025-01-24  arXiv:2501.14183  sweeps:[9]  VarDrop: Enhancing Training Efficiency by Reducing Variate Redundancy in Periodic Time Ser
+2025-01-22  arXiv:2501.12732  sweeps:[7]  GRAMA: Adaptive Graph Autoregressive Moving Average Models
+2025-01-14  arXiv:2501.08468  sweeps:[7]  Selective Attention Merging for low resource tasks: A case study of Child ASR
+2025-01-12  arXiv:2501.06909  sweeps:[7]  Local Foreground Selection aware Attentive Feature Reconstruction for few-shot fine-graine
+2025-01-10  arXiv:2501.05991  sweeps:[5]  An Attention-Guided Deep Learning Approach for Classifying 39 Skin Lesion Types
+2025-01-09  arXiv:2501.05452  sweeps:[7]  ReFocus: Visual Editing as a Chain of Thought for Structured Image Understanding
+2025-01-03  arXiv:2501.02080  sweeps:[5]  AI-Powered Cow Detection in Complex Farm Environments
+2024-12-13  arXiv:2412.09907  sweeps:[7]  IQViC: In-context, Question Adaptive Vision Compressor for Long-term Video Understanding L
+2024-12-11  arXiv:2412.08683  sweeps:[5]  Emotional Vietnamese Speech-Based Depression Diagnosis Using Dynamic Attention Mechanism
+2024-12-09  arXiv:2412.06499  sweeps:[0, 1]  HYATT-Net is Grand: A Hybrid Attention Network for Performant Anatomical Landmark Detectio
+2024-12-09  arXiv:2412.06227  sweeps:[5]  Attention-Enhanced Lightweight Hourglass Network for Human Pose Estimation
+2024-12-09  arXiv:2412.06243  sweeps:[7]  U-Know-DiffPAN: An Uncertainty-aware Knowledge Distillation Diffusion Framework with Detai
+2024-12-07  arXiv:2412.05728  sweeps:[5]  Integrating YOLO11 and Convolution Block Attention Module for Multi-Season Segmentation of
+2024-11-28  arXiv:2411.19005  sweeps:[5]  Locally-Focused Face Representation for Sketch-to-Image Generation Using Noise-Induced Ref
+2024-11-25  arXiv:2411.16618  sweeps:[7]  StructFormer: Document Structure-based Masked Attention and its Impact on Language Model P
+2024-11-25  arXiv:2411.16437  sweeps:[7]  Privacy Protection in Personalized Diffusion Models via Targeted Cross-Attention Adversari
+2024-11-22  arXiv:2411.15034  sweeps:[0, 1]  HeadRouter: A Training-free Image Editing Framework for MM-DiTs by Adaptively Routing Atte
+2024-11-19  arXiv:2411.12892  sweeps:[7]  Selective Attention: Enhancing Transformer through Principled Context Control
+2024-11-14  arXiv:2411.09469  sweeps:[5]  An Explainable Attention Model for Cervical Precancer Risk Classification using Colposcopi
+2024-11-13  arXiv:2411.09007  sweeps:[7]  Scale Contrastive Learning with Selective Attentions for Blind Image Quality Assessment
+2024-11-12  arXiv:2411.07708  sweeps:[5]  Emotion Classification of Children Expressions
+2024-11-09  arXiv:2411.06171  sweeps:[7]  SEEKR: Selective Attention-Guided Knowledge Retention for Continual Learning of Large Lang
+2024-11-05  arXiv:2411.02941  sweeps:[2]  A Mamba Foundation Model for Time Series Forecasting
+2024-10-30  arXiv:2410.22649  sweeps:[0, 1]  WaveRoRA: Wavelet Rotary Route Attention for Multivariate Time Series Forecasting
+2024-10-29  arXiv:2410.22101  sweeps:[5]  Hyperspectral Imaging-Based Perception in Autonomous Driving Scenarios: Benchmarking Basel
+2024-10-29  arXiv:2410.21831  sweeps:[5]  Enhanced Survival Prediction in Head and Neck Cancer Using Convolutional Block Attention a
+2024-10-26  arXiv:2410.20231  sweeps:[5]  CAVE-Net: Classifying Abnormalities in Video Capsule Endoscopy
+2024-10-24  arXiv:2410.18572  sweeps:[7]  Taipan: Efficient and Expressive State Space Language Models with Selective Attention
+2024-10-17  arXiv:2410.13710  sweeps:[7]  Linear-Threshold Network Models for Describing and Analyzing Brain Dynamics
+2024-10-14  arXiv:2410.10352  sweeps:[0, 1]  Pubic Symphysis-Fetal Head Segmentation Network Using BiFormer Attention Mechanism and Mul
+2024-10-11  arXiv:2410.08582  sweeps:[0, 1]  DeBiFormer: Vision Transformer with Deformable Agent Bi-level Routing Attention
+2024-10-04  arXiv:2410.03805  sweeps:[8]  Local Attention Mechanism: Boosting the Transformer Architecture for Long-Sequence Time Se
+2024-10-04  arXiv:2410.03159  sweeps:[8]  WAVE: Weighted Autoregressive Varying Gate for Time Series Forecasting
+2024-10-03  arXiv:2410.02703  sweeps:[7]  Selective Attention Improves Transformer
+2024-10-02  arXiv:2410.01469  sweeps:[7]  TIGER: Time-frequency Interleaved Gain Extraction and Reconstruction for Efficient Speech 
+2024-10-02  arXiv:2410.01225  sweeps:[7]  Perceptual Piercing: Human Visual Cue-based Object Detection in Low Visibility Conditions
+2024-09-30  arXiv:2409.20113  sweeps:[5]  CBAM-SwinT-BL: Small Rail Surface Defect Detection Method Based on Swin Transformer with B
+2024-09-27  arXiv:2409.18826  sweeps:[5]  YOLOv8-ResCBAM: YOLOv8 Based on An Effective Attention Module for Pediatric Wrist Fracture
+2024-09-20  arXiv:2409.13435  sweeps:[5]  PlainUSR: Chasing Faster ConvNet for Efficient Super-Resolution
+2024-09-19  arXiv:2409.12562  sweeps:[7]  EEG-based Decoding of Selective Visual Attention in Superimposed Videos
+2024-09-14  arXiv:2409.15355  sweeps:[5]  Block-Attention for Efficient Prefilling
+2024-09-13  arXiv:2409.08840  sweeps:[7]  Directed-CP: Directed Collaborative Perception for Connected and Autonomous Vehicles via P
+2024-09-13  arXiv:2409.08710  sweeps:[7]  Using Ear-EEG to Decode Auditory Attention in Multiple-speaker Environment
+2024-09-07  arXiv:2409.15332  sweeps:[5]  A Lightweight GAN-Based Image Fusion Algorithm for Visible and Infrared Images
+2024-08-31  arXiv:2409.00345  sweeps:[7]  PS-StyleGAN: Illustrative Portrait Sketching using Attention-Based Style Adaptation
+2024-08-29  arXiv:2408.16232  sweeps:[7]  Enhancing Conditional Image Generation with Explainable Latent Space Manipulation
+2024-08-19  arXiv:2408.09894  sweeps:[5]  Preoperative Rotator Cuff Tear Prediction from Shoulder Radiographs using a Convolutional 
+2024-08-16  arXiv:2408.08709  sweeps:[7]  Multimodal Relational Triple Extraction with Query-based Entity Object Transformer
+2024-08-10  arXiv:2408.05649  sweeps:[5]  Advancing Pavement Distress Detection in Developing Countries: A Novel Deep Learning Appro
+2024-08-03  arXiv:2408.02692  sweeps:[5]  Attention is all you need for an improved CNN-based flash flood susceptibility modeling. T
+2024-08-02  arXiv:2408.01322  sweeps:[7]  A Robotics-Inspired Scanpath Model Reveals the Importance of Uncertainty and Semantic Obje
+2024-07-21  arXiv:2407.15176  sweeps:[4]  ReAttention: Training-Free Infinite Context with Finite Attention Scope
+2024-07-19  arXiv:2407.14464  sweeps:[5]  AttentNet: Fully Convolutional 3D Attention for Lung Nodule Detection
+2024-07-16  arXiv:2407.11573  sweeps:[5]  Probing the Efficacy of Federated Parameter-Efficient Fine-Tuning of Vision Transformers f
+2024-07-11  arXiv:2407.08334  sweeps:[2]  ADMM Based Semi-Structured Pattern Pruning Framework For Transformer
+2024-07-09  arXiv:2407.06677  sweeps:[7]  Mixture-of-Modules: Reinventing Transformers as Dynamic Assemblies of Modules
+2024-07-02  arXiv:2407.02328  sweeps:[4]  Efficient Sparse Attention needs Adaptive Token Release
+2024-06-28  arXiv:2406.19703  sweeps:[0, 1]  Vision Transformer with Key-select Routing Attention for Single Image Dehazing
+2024-06-22  arXiv:2407.15020  sweeps:[5]  Integrating Attentional Factors and Spacing in Logistic Knowledge Tracing Models to Explor
+2024-06-21  arXiv:2406.15113  sweeps:[5]  A Dual Attention-aided DenseNet-121 for Classification of Glaucoma from Fundus Images
+2024-06-18  arXiv:2406.12236  sweeps:[7]  Binaural Selective Attention Model for Target Speaker Extraction
+2024-06-13  arXiv:2406.08816  sweeps:[7]  ToSA: Token Selective Attention for Efficient Vision Transformers
+2024-06-10  arXiv:2406.05992  sweeps:[0, 1]  MHS-VM: Multi-Head Scanning in Parallel Subspaces for Vision Mamba
+2024-06-10  arXiv:2406.06486  sweeps:[8]  Continuum Attention for Neural Operators
+2024-05-29  arXiv:2405.18968  sweeps:[5]  UniIF: Unified Molecule Inverse Folding
+2024-05-28  arXiv:2405.17905  sweeps:[5]  Cycle-YOLO: A Efficient and Robust Framework for Pavement Damage Detection
+2024-05-25  arXiv:2405.16197  sweeps:[7]  A 7K Parameter Model for Underwater Image Enhancement based on Transmission Map Prior
+2024-05-24  arXiv:2405.15903  sweeps:[9]  UnitNorm: Rethinking Normalization for Transformers in Time Series
+2024-05-22  arXiv:2405.13646  sweeps:[9]  A Transformer variant for multi-step forecasting of water level and hydrometeorological se
+2024-05-19  arXiv:2405.11468  sweeps:[7]  Emphasizing Crucial Features for Efficient Image Restoration
+2024-05-07  arXiv:2405.04312  sweeps:[5]  Inf-DiT: Upsampling Any-Resolution Image with Memory-Efficient Diffusion Transformer
+2024-05-05  arXiv:2405.03011  sweeps:[5]  AC-MAMBASEG: An adaptive convolution and Mamba-based architecture for enhanced skin lesion
+2024-04-24  arXiv:2404.15721  sweeps:[7]  SPARO: Selective Attention for Robust and Compositional Transformer Encodings for Vision
+2024-04-22  arXiv:2404.14322  sweeps:[5]  A Novel Approach to Chest X-ray Lung Segmentation Using U-net and Modified Convolutional B
+2024-04-14  arXiv:2404.09336  sweeps:[7]  Self-Selected Attention Span for Accelerating Large Language Model Inference
+2024-04-02  arXiv:2404.02135  sweeps:[5]  Enhancing Ship Classification in Optical Satellite Imagery: Integrating Convolutional Bloc
+2024-03-29  arXiv:2403.20086  sweeps:[7]  Selective Attention-based Modulation for Continual Learning
+2024-03-26  arXiv:2403.17753  sweeps:[9]  CCDSReFormer: Traffic Flow Prediction with a Criss-Crossed Dual-Stream Enhanced Rectified 
+2024-03-13  arXiv:2403.08426  sweeps:[0, 1]  Language-Driven Visual Consensus for Zero-Shot Semantic Segmentation
+2024-03-08  arXiv:2403.05451  sweeps:[5]  Attention-guided Feature Distillation for Semantic Segmentation
+2024-02-24  arXiv:2402.15815  sweeps:[5]  A Generative Machine Learning Model for Material Microstructure 3D Reconstruction and Perf
+2024-02-22  arXiv:2402.14398  sweeps:[7]  Gradual Residuals Alignment: A Dual-Stream Framework for GAN Inversion and Image Attribute
+2024-02-14  arXiv:2402.09329  sweeps:[5]  YOLOv8-AM: YOLOv8 Based on Effective Attention Mechanisms for Pediatric Wrist Fracture Det
+2024-01-17  arXiv:2401.08976  sweeps:[5]  ACT-GAN: Radio map construction based on generative adversarial networks with ACT blocks
+2024-01-14  arXiv:2401.07329  sweeps:[5]  Attention-based UNet enabled Lightweight Image Semantic Communication System over Internet
+2024-01-10  arXiv:2401.05187  sweeps:[7]  Comparison of linear and nonlinear methods for decoding selective attention to speech from
+2024-01-10  arXiv:2401.05030  sweeps:[7]  An event-based implementation of saliency-based visual attention for rapid scene analysis
+2024-01-08  arXiv:2401.03719  sweeps:[5]  Enhancing Adaptive History Reserving by Spiking Convolutional Block Attention Module in Re
+2024-01-01  arXiv:2401.00722  sweeps:[0, 1]  BRAU-Net++: U-Shaped Hybrid CNN-Transformer Network for Medical Image Segmentation
+cache written to /Users/darylfung/Documents/Work/Nicosia/new_attention/plan/c2_sweep_cache/merged.json

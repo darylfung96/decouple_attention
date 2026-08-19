@@ -1,0 +1,502 @@
+[
+  {
+    "title": "DARS: An algorithm-hardware co-design framework for accelerating sparse attention via dynamic adaptive hierarchical Top-K pruning",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "CSACE-Net: Cross-Modal Semantic Attention Co-Enhancement for video captioning",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Autonomous driving chips",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "MARCH: Scaling Recurrent Memory with Content-Routed State Anchors",
+    "year": 2026,
+    "arxiv": "2608.12435"
+  },
+  {
+    "title": "HiSC: Hierarchical Spatial Clustering Token Compression for Efficient 3D Scene Understanding",
+    "year": 2026,
+    "arxiv": "2608.04610"
+  },
+  {
+    "title": "Mask-Based Priors Are More Persistent than Query-Key Initializations",
+    "year": 2026,
+    "arxiv": "2608.00418"
+  },
+  {
+    "title": "MSBR-KT: knowledge tracing via multifaceted structured-bias routing",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Sol-Attn: Accelerating Video Generation Inference via On-the-Fly Attention Sparsification",
+    "year": 2026,
+    "arxiv": "2607.24027"
+  },
+  {
+    "title": "Parameter-free Adaptive Sparse Attention via Compression-Based Content Selection",
+    "year": 2026,
+    "arxiv": "2607.21752"
+  },
+  {
+    "title": "Learning What Matters: Supervising Global Context Pruning with Causal Evidence Sets",
+    "year": 2026,
+    "arxiv": "2607.21692"
+  },
+  {
+    "title": "ELSAA: Efficient Low-Rank and Sparse Attention Approximation for Training Transformers",
+    "year": 2026,
+    "arxiv": "2607.20214"
+  },
+  {
+    "title": "AVQ-Attention: Adaptive Vector-Quantized Attention",
+    "year": 2026,
+    "arxiv": "2607.12789"
+  },
+  {
+    "title": "MobileWan: Closing the Quality Gap for Mobile Video Diffusion",
+    "year": 2026,
+    "arxiv": "2607.06173"
+  },
+  {
+    "title": "A Survey of Softmax Acceleration: From Algorithms and Function Realization to System and Hardware Optimization",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "CellTarNet: Robust Single-Cell Perturbation Prediction using Transformer Generative Model",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "LDS-Net: a lightweight detection network for real-time steel surface-defect detection",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Hierarchical Global Attention (HGA)",
+    "year": 2026,
+    "arxiv": "2606.30709"
+  },
+  {
+    "title": "Flexformer: Flexible Linear Transformer with Learnable Attention Kernel",
+    "year": 2026,
+    "arxiv": "2606.27748"
+  },
+  {
+    "title": "NeutronSparse: Coordinating Heterogeneous Engines for Sparse Matrix Multiplication on NPUs",
+    "year": 2026,
+    "arxiv": "2606.22482"
+  },
+  {
+    "title": "An expressivity analysis of hierarchical modelling in deep transformers via bounded-depth grammars",
+    "year": 2026,
+    "arxiv": "2606.17522"
+  },
+  {
+    "title": "ConSA: Controllable Sparsity in Hybrid Attention via Learnable Allocation",
+    "year": 2026,
+    "arxiv": "2606.18056"
+  },
+  {
+    "title": "BTHA: Block-Then-Hash Attention for Efficient Long Context",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Implementing automated task scheduling framework for fog network using adaptive actor critic deep reinforcement learning with sparse attention through multi-objective constraints",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Locality Does Not Imply Reachability: Boundary Repair in Block-Sparse Causal Attention",
+    "year": 2026,
+    "arxiv": "2606.02680"
+  },
+  {
+    "title": "Dual-visual dynamic decoding for multimodal machine translation",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "DSformer: Dynamic sparse transformer for efficient image restoration",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Reinforcement Learning for Memory Management in Language Model Agents",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "A textual-guided compact visual attention features for continuous sign language recognition",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Meta-Attention: Bayesian Per-Token Routing for Efficient Transformer Inference",
+    "year": 2026,
+    "arxiv": "2605.28384"
+  },
+  {
+    "title": "SPALM: A Sparsity-Pattern-Adaptive Library for Matrices",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Elastic Attention Cores for Scalable Vision Transformers",
+    "year": 2026,
+    "arxiv": "2605.12491"
+  },
+  {
+    "title": "Routers Learn the Geometry of Their Experts: Geometric Coupling in Sparse Mixture-of-Experts",
+    "year": 2026,
+    "arxiv": "2605.12476"
+  },
+  {
+    "title": "A blockchain-based secure data transmission framework in IoT using adaptive deep network with optimized cryptography mechanism",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "RAFNet: Region-Aware Fusion Network for Pansharpening",
+    "year": 2026,
+    "arxiv": "2605.02184"
+  },
+  {
+    "title": "APSDA: Adversarially Pruned Sparse Dynamic Attention for Robust Handwritten Text Recognition",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "TLDA: A lightweight and adaptive deep learning framework for accurate monthly runoff forecasting",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Cross-modal recipe retrieval via multi-granularity alignment",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Bio-inspired crowd navigation: Spatiotemporal graph and Neural Circuit Policy driven by DRL",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "DRSFormer: A transformer with ring-star topology for multivariate time series forecasting",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Caracal: Causal Architecture via Spectral Mixing",
+    "year": 2026,
+    "arxiv": "2605.00292"
+  },
+  {
+    "title": "Cross-Modal Semantic Alignment and Dynamic Routing Enhancement for Inspection and Supervision Scenarios",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "SAS: Sparse Attention Synthesizer for Efficient Language Model Inference",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "HubRouter: A Pluggable Sub-Quadratic Routing Primitive for Hybrid Sequence Models",
+    "year": 2026,
+    "arxiv": "2604.22442"
+  },
+  {
+    "title": "Enhancing continuous speech recognition with CapsNet and WaveRNN: a transfer learning approach",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "VFA: Relieving Vector Operations in Flash Attention with Global Maximum Pre-computation",
+    "year": 2026,
+    "arxiv": "2604.12798"
+  },
+  {
+    "title": "Heterogeneous Connectivity in Sparse Networks: Fan-in Profiles, Gradient Hierarchy, and Topological Equilibria",
+    "year": 2026,
+    "arxiv": "2604.10560"
+  },
+  {
+    "title": "k-Maximum Inner Product Attention for Graph Transformers and the Expressive Power of GraphGPS",
+    "year": 2026,
+    "arxiv": "2604.03815"
+  },
+  {
+    "title": "Towards Generalizable Meta-Deep Reinforcement Learning Algorithm for Multiobjective Traveling Salesman Problems",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Large Language Model as Token Compressor and Decompressor",
+    "year": 2026,
+    "arxiv": "2603.25340"
+  },
+  {
+    "title": "I/O Analysis is All You Need: An I/O Analysis for Long-Sequence Attention",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Mixture of Chapters: Scaling Learnt Memory in Transformers",
+    "year": 2026,
+    "arxiv": "2603.21096"
+  },
+  {
+    "title": "MKA: Memory-Keyed Attention for Efficient Long-Context Reasoning",
+    "year": 2026,
+    "arxiv": "2603.20586"
+  },
+  {
+    "title": "A transformer-based semantic segmentation framework for remote sensing images via spatial-channel cross decoding",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Scaling Attention via Feature Sparsity",
+    "year": 2026,
+    "arxiv": "2603.22300"
+  },
+  {
+    "title": "Why Attend to Everything? Focus is the Key",
+    "year": 2026,
+    "arxiv": "2604.03260"
+  },
+  {
+    "title": "Flash-KMeans: Fast and Memory-Efficient Exact K-Means",
+    "year": 2026,
+    "arxiv": "2603.09229"
+  },
+  {
+    "title": "Lost in Stories: Consistency Bugs in Long Story Generation by LLMs",
+    "year": 2026,
+    "arxiv": "2603.05890"
+  },
+  {
+    "title": "Meta-D: Metadata-Aware Architectures for Brain Tumor Analysis and Missing-Modality Segmentation",
+    "year": 2026,
+    "arxiv": "2603.04811"
+  },
+  {
+    "title": "The infrared\u2013visible multimodal detection algorithm for urban traffic and safety perception",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "HSCFA: Hierarchical sparse and collaborative fusion attention with large foundation models for diagnosing Alzheimer's disease",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "HiSAC: Hierarchical Sparse Activation Compression for Ultra-long Sequence Modeling in Recommenders",
+    "year": 2026,
+    "arxiv": "2602.21009"
+  },
+  {
+    "title": "Dual Sparse Long-Short Term Transformer for Video Shadow Detection",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "LWM-Temporal: Sparse Spatio-Temporal Attention for Wireless Channel Representation Learning",
+    "year": 2026,
+    "arxiv": "2603.10024"
+  },
+  {
+    "title": "TempoNet: Slack-Quantized Transformer-Guided Reinforcement Scheduler for Adaptive Deadline-Centric Real-Time Dispatchs",
+    "year": 2026,
+    "arxiv": "2602.18109"
+  },
+  {
+    "title": "CompilerKV: Risk-Adaptive KV Compression via Offline Experience Compilation",
+    "year": 2026,
+    "arxiv": "2602.08686"
+  },
+  {
+    "title": "DyTopo: Dynamic Topology Routing for Multi-Agent Reasoning via Semantic Matching",
+    "year": 2026,
+    "arxiv": "2602.06039"
+  },
+  {
+    "title": "Beyond the Utterance: An Empirical Study of Very Long Context Speech Recognition",
+    "year": 2026,
+    "arxiv": "2602.09044"
+  },
+  {
+    "title": "SLAY: Geometry-Aware Spherical Linearized Attention with Yat-Kernel",
+    "year": 2026,
+    "arxiv": "2602.04915"
+  },
+  {
+    "title": "HEAT: a heterogeneous entity-aware transformer for efficient and accurate cloze-style machine reading comprehension",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "EMFormer: Efficient Multi-Scale Transformer for Accumulative Context Weather Forecasting",
+    "year": 2026,
+    "arxiv": "2602.01194"
+  },
+  {
+    "title": "Multi-scale spatio-temporal-spectral sparse attention-based hierarchical graph convolutional network for seizure prediction",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "A global linear attention network for semantic segmentation of remote sensing images",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "A Physics-Informed Graph Attention Network with Sparse Temporal Block Selection for Aircraft Hydraulic System Fault Diagnosis",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Mixture-of-Top-k Attention: Efficient Attention via Scalable Fast Weights",
+    "year": 2026,
+    "arxiv": "2602.01219"
+  },
+  {
+    "title": "Sublinear Time Quantum Algorithm for Attention Approximation",
+    "year": 2026,
+    "arxiv": "2602.00874"
+  },
+  {
+    "title": "Memory Retrieval in Transformers: Insights from The Encoding Specificity Principle",
+    "year": 2026,
+    "arxiv": "2601.20282"
+  },
+  {
+    "title": "Deep Neural Networks as Iterated Function Systems and a Generalization Bound",
+    "year": 2026,
+    "arxiv": "2601.19958"
+  },
+  {
+    "title": "Superlinear Multi-Step Attention",
+    "year": 2026,
+    "arxiv": "2601.18401"
+  },
+  {
+    "title": "Unleashing the Potential of Sparse Attention on Long-term Behaviors for CTR Prediction",
+    "year": 2026,
+    "arxiv": "2601.17836"
+  },
+  {
+    "title": "Power-based Partial Attention: Bridging Linear-Complexity and Full Attention",
+    "year": 2026,
+    "arxiv": "2601.17334"
+  },
+  {
+    "title": "MambaFormer: Token-Level Guided Routing Mixture-of-Experts for Accurate and Efficient Clinical Assistance",
+    "year": 2026,
+    "arxiv": "2601.01260"
+  },
+  {
+    "title": "AI-Driven Channel State Information (CSI) Extrapolation for 6G: Current Situations, Challenges, and Future Research",
+    "year": 2026,
+    "arxiv": "2601.00159"
+  },
+  {
+    "title": "Trainable multi-channel front-ends for joint beamforming and speaker embedding extraction",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Causal Modeling-Based Multivariate KPIs Prediction for Parameter Adjustment in Cellular Networks",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "MambaOcc: Visual state space models for BEV-based occupancy prediction with local adaptive reordering",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "Balancing Detectability and Fluency in Neural Text Generation via Reinforcement-Guided Watermark Placement",
+    "year": 2026,
+    "arxiv": null
+  },
+  {
+    "title": "High-Precision Peanut Pod Detection Device Based on Dual-Route Attention Mechanism",
+    "year": 2025,
+    "arxiv": null
+  },
+  {
+    "title": "Trellis: Learning to Compress Key-Value Memory in Attention Models",
+    "year": 2025,
+    "arxiv": "2512.23852"
+  },
+  {
+    "title": "Machine Learning for Scheduling: A Paradigm Shift from Solver-Centric to Data-Centric Approaches",
+    "year": 2025,
+    "arxiv": "2512.22642"
+  },
+  {
+    "title": "Contextual priority attention enables linear time sequence modeling in transformers",
+    "year": 2025,
+    "arxiv": null
+  },
+  {
+    "title": "ParaMind: Parallelized Adaptive Memory Integration for Long-Context Large Language Models",
+    "year": 2025,
+    "arxiv": null
+  },
+  {
+    "title": "MRMamba: Multi-Resolution State-Space Modeling for Robust Multisensor Traffic Attack Detection in Wireless Sensor Networks",
+    "year": 2025,
+    "arxiv": null
+  },
+  {
+    "title": "Neuronal Attention Circuit (NAC) for Representation Learning",
+    "year": 2025,
+    "arxiv": "2512.10282"
+  },
+  {
+    "title": "ASFNOformer\u2014A Superior Frequency Domain Token Mixer in Spiking Transformer",
+    "year": 2025,
+    "arxiv": null
+  },
+  {
+    "title": "GatedFWA: Linear Flash Windowed Attention with Gated Associative Memory",
+    "year": 2025,
+    "arxiv": "2512.07782"
+  },
+  {
+    "title": "Block Sparse Flash Attention",
+    "year": 2025,
+    "arxiv": "2512.07011"
+  },
+  {
+    "title": "Transformer-Based Demand Forecasting and Inventory Optimization in Multi-Echelon Supply Chain Networks",
+    "year": 2025,
+    "arxiv": null
+  },
+  {
+    "title": "Optimising Time Series Forecasting Transformers to Linear Complexity",
+    "year": 2025,
+    "arxiv": null
+  },
+  {
+    "title": "Wavelet-Enhanced Transformer for Adaptive Multi-Period Time Series Forecasting",
+    "year": 2025,
+    "arxiv": null
+  },
+  {
+    "title": "In-Context Compositional Learning via Sparse Coding Transformer",
+    "year": 2025,
+    "arxiv": "2511.20194"
+  }
+]

@@ -1,0 +1,115 @@
+== Normal baseline sweep (CPU PyTorch, threads=8, seed=42) ==
+  model: NormalTimeSeriesModel (full causal attention, NormalAttention)
+  task: frozen direct-96, L=256, H=96, F=7, batch=32
+  aux: hidden=128 heads=4 head_dim=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler, no warm-up, fp32
+  seeds: [42, 123, 2024, 7, 99] (paired with Gate-2); run one per --full --seed N
+
+[full] cell=Normal seed=42, 10 epochs, full train split (shuffle=True), val each epoch, final test eval. Results -> /Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/baseline/baseline_normal_results.jsonl
+Downloading ETTh1 dataset...
+[full] train batches=316 val batches=98 test batches=98
+  cell Normal:
+      epoch  1/10  train_mse=0.724331  val_mse=0.805666
+      epoch  2/10  train_mse=0.449222  val_mse=0.659214
+      epoch  3/10  train_mse=0.378420  val_mse=0.690019
+      epoch  4/10  train_mse=0.358421  val_mse=0.786315
+      epoch  5/10  train_mse=0.343270  val_mse=0.761005
+      epoch  6/10  train_mse=0.328644  val_mse=0.871838
+      epoch  7/10  train_mse=0.314938  val_mse=0.910116
+      epoch  8/10  train_mse=0.303211  val_mse=0.896200
+      epoch  9/10  train_mse=0.293741  val_mse=0.955749
+      epoch 10/10  train_mse=0.286091  val_mse=0.965564
+      FINAL test_mse=1.260500 train_mse=0.286091 attn_params=102496 full_params=355200 (elapsed 527s)
+      appended: {"cell": "Normal", "seed": 42, "val_mse": 0.96556434, "test_mse": 1.26050025, "final_train_mse": 0.28609113, "attn_params": 102496, "full_params": 355200, "c_kv": null, "c_r": null, "completed_utc": "2026-08-14T05:18:20Z"}
+== Normal baseline sweep (CPU PyTorch, threads=8, seed=123) ==
+  model: NormalTimeSeriesModel (full causal attention, NormalAttention)
+  task: frozen direct-96, L=256, H=96, F=7, batch=32
+  aux: hidden=128 heads=4 head_dim=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler, no warm-up, fp32
+  seeds: [42, 123, 2024, 7, 99] (paired with Gate-2); run one per --full --seed N
+
+[full] cell=Normal seed=123, 10 epochs, full train split (shuffle=True), val each epoch, final test eval. Results -> /Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/baseline/baseline_normal_results.jsonl
+Downloading ETTh1 dataset...
+[full] train batches=316 val batches=98 test batches=98
+  cell Normal:
+      epoch  1/10  train_mse=0.720152  val_mse=0.790354
+      epoch  2/10  train_mse=0.459067  val_mse=0.661326
+      epoch  3/10  train_mse=0.380849  val_mse=0.676569
+      epoch  4/10  train_mse=0.359277  val_mse=0.660861
+      epoch  5/10  train_mse=0.345050  val_mse=0.705403
+      epoch  6/10  train_mse=0.331232  val_mse=0.759984
+      epoch  7/10  train_mse=0.317076  val_mse=0.759570
+      epoch  8/10  train_mse=0.305048  val_mse=0.817597
+      epoch  9/10  train_mse=0.295806  val_mse=0.765221
+      epoch 10/10  train_mse=0.287838  val_mse=0.872739
+      FINAL test_mse=1.058963 train_mse=0.287838 attn_params=102496 full_params=355200 (elapsed 495s)
+      appended: {"cell": "Normal", "seed": 123, "val_mse": 0.87273854, "test_mse": 1.05896328, "final_train_mse": 0.28783805, "attn_params": 102496, "full_params": 355200, "c_kv": null, "c_r": null, "completed_utc": "2026-08-14T05:26:37Z"}
+== Normal baseline sweep (CPU PyTorch, threads=8, seed=2024) ==
+  model: NormalTimeSeriesModel (full causal attention, NormalAttention)
+  task: frozen direct-96, L=256, H=96, F=7, batch=32
+  aux: hidden=128 heads=4 head_dim=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler, no warm-up, fp32
+  seeds: [42, 123, 2024, 7, 99] (paired with Gate-2); run one per --full --seed N
+
+[full] cell=Normal seed=2024, 10 epochs, full train split (shuffle=True), val each epoch, final test eval. Results -> /Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/baseline/baseline_normal_results.jsonl
+Downloading ETTh1 dataset...
+[full] train batches=316 val batches=98 test batches=98
+  cell Normal:
+      epoch  1/10  train_mse=0.717507  val_mse=0.785117
+      epoch  2/10  train_mse=0.455028  val_mse=0.635532
+      epoch  3/10  train_mse=0.377721  val_mse=0.633795
+      epoch  4/10  train_mse=0.356630  val_mse=0.731396
+      epoch  5/10  train_mse=0.342215  val_mse=0.714211
+      epoch  6/10  train_mse=0.327789  val_mse=0.680782
+      epoch  7/10  train_mse=0.315104  val_mse=0.708279
+      epoch  8/10  train_mse=0.303531  val_mse=0.737781
+      epoch  9/10  train_mse=0.294151  val_mse=0.750641
+      epoch 10/10  train_mse=0.287043  val_mse=0.817044
+      FINAL test_mse=1.102801 train_mse=0.287043 attn_params=102496 full_params=355200 (elapsed 456s)
+      appended: {"cell": "Normal", "seed": 2024, "val_mse": 0.81704395, "test_mse": 1.10280108, "final_train_mse": 0.28704267, "attn_params": 102496, "full_params": 355200, "c_kv": null, "c_r": null, "completed_utc": "2026-08-14T05:34:15Z"}
+== Normal baseline sweep (CPU PyTorch, threads=8, seed=7) ==
+  model: NormalTimeSeriesModel (full causal attention, NormalAttention)
+  task: frozen direct-96, L=256, H=96, F=7, batch=32
+  aux: hidden=128 heads=4 head_dim=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler, no warm-up, fp32
+  seeds: [42, 123, 2024, 7, 99] (paired with Gate-2); run one per --full --seed N
+
+[full] cell=Normal seed=7, 10 epochs, full train split (shuffle=True), val each epoch, final test eval. Results -> /Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/baseline/baseline_normal_results.jsonl
+Downloading ETTh1 dataset...
+[full] train batches=316 val batches=98 test batches=98
+  cell Normal:
+      epoch  1/10  train_mse=0.725847  val_mse=0.809183
+      epoch  2/10  train_mse=0.467747  val_mse=0.629878
+      epoch  3/10  train_mse=0.385786  val_mse=0.672273
+      epoch  4/10  train_mse=0.362931  val_mse=0.669129
+      epoch  5/10  train_mse=0.347206  val_mse=0.677085
+      epoch  6/10  train_mse=0.331877  val_mse=0.678726
+      epoch  7/10  train_mse=0.317621  val_mse=0.716444
+      epoch  8/10  train_mse=0.305311  val_mse=0.742713
+      epoch  9/10  train_mse=0.295669  val_mse=0.754394
+      epoch 10/10  train_mse=0.287351  val_mse=0.768752
+      FINAL test_mse=0.992215 train_mse=0.287351 attn_params=102496 full_params=355200 (elapsed 927s)
+      appended: {"cell": "Normal", "seed": 7, "val_mse": 0.76875181, "test_mse": 0.99221513, "final_train_mse": 0.28735094, "attn_params": 102496, "full_params": 355200, "c_kv": null, "c_r": null, "completed_utc": "2026-08-14T05:49:43Z"}
+== Normal baseline sweep (CPU PyTorch, threads=8, seed=99) ==
+  model: NormalTimeSeriesModel (full causal attention, NormalAttention)
+  task: frozen direct-96, L=256, H=96, F=7, batch=32
+  aux: hidden=128 heads=4 head_dim=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler, no warm-up, fp32
+  seeds: [42, 123, 2024, 7, 99] (paired with Gate-2); run one per --full --seed N
+
+[full] cell=Normal seed=99, 10 epochs, full train split (shuffle=True), val each epoch, final test eval. Results -> /Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/baseline/baseline_normal_results.jsonl
+Downloading ETTh1 dataset...
+[full] train batches=316 val batches=98 test batches=98
+  cell Normal:
+      epoch  1/10  train_mse=0.720880  val_mse=0.798538
+      epoch  2/10  train_mse=0.450944  val_mse=0.647040
+      epoch  3/10  train_mse=0.375178  val_mse=0.701044
+      epoch  4/10  train_mse=0.355742  val_mse=0.690100
+      epoch  5/10  train_mse=0.341088  val_mse=0.711906
+      epoch  6/10  train_mse=0.326350  val_mse=0.761981
+      epoch  7/10  train_mse=0.312402  val_mse=0.740222
+      epoch  8/10  train_mse=0.300960  val_mse=0.770892
+      epoch  9/10  train_mse=0.291775  val_mse=0.786952
+      epoch 10/10  train_mse=0.284386  val_mse=0.783996
+      FINAL test_mse=0.992324 train_mse=0.284386 attn_params=102496 full_params=355200 (elapsed 569s)
+      appended: {"cell": "Normal", "seed": 99, "val_mse": 0.78399559, "test_mse": 0.99232398, "final_train_mse": 0.28438554, "attn_params": 102496, "full_params": 355200, "c_kv": null, "c_r": null, "completed_utc": "2026-08-14T05:59:15Z"}

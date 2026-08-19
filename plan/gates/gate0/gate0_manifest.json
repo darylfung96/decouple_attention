@@ -1,0 +1,307 @@
+{
+  "manifest_version": 1,
+  "generated_utc": "2026-08-11T04:48:31Z",
+  "env": {
+    "python": "3.11.12",
+    "torch": "2.6.0",
+    "os": "macOS-14.6-arm64-arm-64bit",
+    "device": "cpu",
+    "fp_precision": "fp32",
+    "cuda_available": false
+  },
+  "protocol": {
+    "dataset": "ETTh1",
+    "lookback": 256,
+    "horizon": 96,
+    "split": "chronological 60/20/20",
+    "seed": 42,
+    "batch_size": 32,
+    "epochs": 10,
+    "optimizer": "AdamW",
+    "lr": 0.0001,
+    "weight_decay": 1e-05,
+    "clip_grad_norm": 10.0
+  },
+  "files": {
+    "PUBLICATION.md": "388fc2c77f1fcff0768ffecebcebd631817cac43b929a1d3fdce3808e5bfa5f0",
+    "RESULTS.md": "728350a03cedf7a1c87d4c9318d7824526c7f7bd20c033d39e7a6d19bd563c67",
+    "WRITEUP.md": "54b7cad87706b8609463eaa839b631a4ace1b88542f1d769f828fba72ea7c11a",
+    "attention.py": "fb4c0ceb89483a359d220d120aa5ae0884b1438619e195ee8a9cbb3fe77e806d",
+    "benchmark_alternating.py": "fcd15f57c33003fec065978ad4deaa89e8cdba78be8da7c6f4a73df7fdf8db46",
+    "benchmark_speed.py": "4ecee0124bf429dbd71eb7a3aafc6416f423d1a5dcacf79ea7f6444a5983c1cc",
+    "compare.py": "c000c6d52e43de2e58a2cb3ee13eb9727ff02b1721d4979c3368f915f7d675e3",
+    "dataset.py": "9045f75bc6f408a729de5f3831ccbbc047278a83afa0a31f823e9bb0b06962b5",
+    "expert_flat_attention.py": "484c468d1a1ea3a384a35e3cbd675c84592c9d1acfed7de8e8d6c55c5b97f422",
+    "expert_plus_plus_attention.py": "c50ee37d712c6bfb30ca45415ac446f2813b4f8631e9ebb5ef92af2cca4ffdb8",
+    "flat_plus_attention.py": "e86d08a435d85eac4aa7e86efb5a107ec76c77ad15ea1c5a7bb9f975d370ff7a",
+    "main.py": "de9f819411a31724b800bb86d6f909c84c4bae46e07bb376693216854b419d98",
+    "model.py": "6a13c14ee6b663305083845ce7261f92cbaa0dbd1bf3ac40f0a9f055ca713da7",
+    "modified_attention.py": "e008025b3ac4b1c3d22cd09b3a1bf56b11322f39aac9567aae7baed4bae079bc",
+    "normal_attention.py": "ce891becd68a7290ebca01b5db454953907b3d7ef13e674b926d9c7e4836435d",
+    "plan/gates/gate0/gate0_registry.json": "3409777d5d5a7dda4f3826ce06cab89ad8c955a574fd3db291873e3cf7a88ee3",
+    "surrogate_attention.py": "0fa1b083647c0e4ac871999b1a6dd0852c9fa3b7ee5d1c32c34b0a7841a87535",
+    "test_expert_plus_plus.py": "2bfb1e02b978b4ebe40b13fdec643c2b1b3966551607702451a8a8eb2ace7a8b",
+    "train_surrogate.py": "5c00ed489439a1c3ccdcd8f0a63038172642ff904e12484d687d075ab6bb2d65"
+  },
+  "models": {
+    "Normal": {
+      "run_id": "run-d2269525",
+      "registry_entry": {
+        "attention_params": 102496,
+        "full_model_params": 269415,
+        "compress_rate": 0,
+        "kv_blocks": 0,
+        "sliding_window": 0,
+        "index_tokens": 0,
+        "content_cols": 256,
+        "sink_cols": 0,
+        "softmax_cols": 256,
+        "config_hash": "d2269525b8e6682c183bc1555b9874c8a2a1f53bfc40a2165dec1add55aac9db",
+        "source": "model:NormalTimeSeriesModel"
+      },
+      "source_file": "model.py",
+      "file_sha256": "6a13c14ee6b663305083845ce7261f92cbaa0dbd1bf3ac40f0a9f055ca713da7",
+      "val_mse": 0.1083,
+      "test_mse": 0.1637,
+      "fwd_ms_alternating": 38.31,
+      "perf_spd": 241.0,
+      "provenance": {
+        "doc_source": "RESULTS.md",
+        "benchmark_protocol": "alternating head-to-head",
+        "run_epoch_budget": 10
+      }
+    },
+    "Flat": {
+      "run_id": "run-97a69c34",
+      "registry_entry": {
+        "attention_params": 144548,
+        "full_model_params": 311467,
+        "compress_rate": 4,
+        "kv_blocks": 64,
+        "sliding_window": 32,
+        "index_tokens": 64,
+        "content_cols": 96,
+        "sink_cols": 1,
+        "softmax_cols": 97,
+        "config_hash": "97a69c3453d2c06967378e74769bfc38afc9fb4a4ec92f6939a650165ceb25d5",
+        "source": "model:CSATimeSeriesModel"
+      },
+      "source_file": "model.py",
+      "file_sha256": "6a13c14ee6b663305083845ce7261f92cbaa0dbd1bf3ac40f0a9f055ca713da7",
+      "val_mse": 0.1085,
+      "test_mse": 0.1617,
+      "fwd_ms_alternating": 29.66,
+      "perf_spd": 310.7,
+      "provenance": {
+        "doc_source": "RESULTS.md",
+        "benchmark_protocol": "alternating head-to-head",
+        "run_epoch_budget": 10
+      }
+    },
+    "Modified": {
+      "run_id": "run-97a69c34",
+      "registry_entry": {
+        "attention_params": 144552,
+        "full_model_params": 311471,
+        "compress_rate": 4,
+        "kv_blocks": 128,
+        "sliding_window": 32,
+        "index_tokens": 64,
+        "content_cols": 160,
+        "sink_cols": 1,
+        "softmax_cols": 161,
+        "config_hash": "97a69c3453d2c06967378e74769bfc38afc9fb4a4ec92f6939a650165ceb25d5",
+        "source": "model:ModifiedCSATimeSeriesModel"
+      },
+      "source_file": "model.py",
+      "file_sha256": "6a13c14ee6b663305083845ce7261f92cbaa0dbd1bf3ac40f0a9f055ca713da7",
+      "val_mse": 0.1088,
+      "test_mse": 0.1624,
+      "fwd_ms_alternating": 52.19,
+      "perf_spd": 176.1,
+      "provenance": {
+        "doc_source": "RESULTS.md",
+        "benchmark_protocol": "alternating head-to-head",
+        "run_epoch_budget": 10
+      }
+    },
+    "FlatPlus": {
+      "run_id": "run-97a69c34",
+      "registry_entry": {
+        "attention_params": 152492,
+        "full_model_params": 319411,
+        "compress_rate": 4,
+        "kv_blocks": 64,
+        "sliding_window": 32,
+        "index_tokens": 64,
+        "content_cols": 96,
+        "sink_cols": 1,
+        "softmax_cols": 97,
+        "config_hash": "97a69c3453d2c06967378e74769bfc38afc9fb4a4ec92f6939a650165ceb25d5",
+        "source": "model:FlatPlusTimeSeriesModel"
+      },
+      "source_file": "model.py",
+      "file_sha256": "6a13c14ee6b663305083845ce7261f92cbaa0dbd1bf3ac40f0a9f055ca713da7",
+      "val_mse": 0.1098,
+      "test_mse": 0.1635,
+      "fwd_ms_alternating": 39.44,
+      "perf_spd": 230.9,
+      "provenance": {
+        "doc_source": "RESULTS.md",
+        "benchmark_protocol": "alternating head-to-head",
+        "run_epoch_budget": 10
+      }
+    },
+    "ExpertFlat": {
+      "run_id": "run-3f046ecf",
+      "registry_entry": {
+        "attention_params": 145060,
+        "full_model_params": 311979,
+        "compress_rate": 8,
+        "kv_blocks": 32,
+        "sliding_window": 32,
+        "index_tokens": 32,
+        "content_cols": 64,
+        "sink_cols": 1,
+        "softmax_cols": 65,
+        "config_hash": "3f046ecfbb12a7de43a2f71d53cd72c60d58806870f7ac05dfe2ae883a62913d",
+        "source": "model:ExpertFlatTimeSeriesModel"
+      },
+      "source_file": "model.py",
+      "file_sha256": "6a13c14ee6b663305083845ce7261f92cbaa0dbd1bf3ac40f0a9f055ca713da7",
+      "val_mse": 0.1102,
+      "test_mse": 0.1645,
+      "fwd_ms_alternating": 28.88,
+      "perf_spd": 314.3,
+      "provenance": {
+        "doc_source": "RESULTS.md",
+        "benchmark_protocol": "alternating head-to-head",
+        "run_epoch_budget": 10
+      }
+    },
+    "ExpertPlusPlus": {
+      "run_id": "run-a0eb62c8",
+      "registry_entry": {
+        "attention_params": 95652,
+        "full_model_params": 262571,
+        "compress_rate": 8,
+        "kv_blocks": 32,
+        "sliding_window": 16,
+        "index_tokens": 64,
+        "content_cols": 48,
+        "sink_cols": 1,
+        "softmax_cols": 49,
+        "config_hash": "a0eb62c862b550459cba5b58a6cbd7e2cce9cf1050762cd55f28188b91d063e5",
+        "source": "model:ExpertPlusPlusTimeSeriesModel"
+      },
+      "source_file": "model.py",
+      "file_sha256": "6a13c14ee6b663305083845ce7261f92cbaa0dbd1bf3ac40f0a9f055ca713da7",
+      "val_mse": 0.1099,
+      "test_mse": 0.1654,
+      "fwd_ms_alternating": 22.42,
+      "perf_spd": 405.9,
+      "provenance": {
+        "doc_source": "RESULTS.md",
+        "benchmark_protocol": "alternating head-to-head",
+        "run_epoch_budget": 10
+      }
+    },
+    "Stacked": {
+      "run_id": null,
+      "registry_entry": {
+        "source": "LEGACY_NO_CURRENT_SOURCE",
+        "attention_params": null,
+        "full_model_params": null,
+        "compress_rate": null,
+        "kv_blocks": null,
+        "sliding_window": null,
+        "index_tokens": null,
+        "content_cols": null,
+        "sink_cols": null,
+        "softmax_cols": null,
+        "config_hash": null
+      },
+      "source_file": null,
+      "file_sha256": null,
+      "val_mse": 0.1116,
+      "test_mse": 0.1665,
+      "fwd_ms_alternating": 34.31,
+      "perf_spd": 261.2,
+      "provenance": {
+        "doc_source": "RESULTS.md",
+        "benchmark_protocol": "alternating head-to-head",
+        "run_epoch_budget": 10,
+        "reproducible": false,
+        "note": "no runnable source in repo"
+      }
+    }
+  },
+  "surrogate": {
+    "teacher": "ExpertPlusPlus",
+    "default_args": {
+      "epochs": 5,
+      "finetune_epochs": 1,
+      "distill_lambda": 0.5,
+      "teacher": "expertplusplus",
+      "surrogate": "mlp",
+      "window": 32,
+      "n_global": 8,
+      "expansion": 4,
+      "layers": 1,
+      "batch_size": 32,
+      "lr": 0.0001,
+      "seed": 42
+    },
+    "teacher_val_origin": "recorded-run snapshot (runtime-printed; not re-derivable)",
+    "teacher_run": {
+      "val_mse": 0.1264,
+      "test_mse": 0.1868
+    },
+    "v1_mlp": {
+      "val": 0.1424,
+      "test": 0.1958
+    },
+    "v2_windowed": {
+      "val": 0.1269,
+      "test": 0.1817,
+      "params": 16936
+    }
+  },
+  "known_gaps": [
+    {
+      "item": "Stacked model has no runnable source",
+      "detail": "gate0_registry.json marks Stacked source as LEGACY_NO_CURRENT_SOURCE; no Stacked class exists in model.py or compare.py (only a speed-harness wrapper, ModifiedStackedCSAAttention, inside benchmark_speed.py, which cannot reproduce val/test). val 0.1116 / test 0.1665 / fwd 34.31 ms are legacy run results.",
+      "recommended_fix": "Re-implement Stacked under the current model.py/compare.py API and re-run, or retire the row from the docs."
+    },
+    {
+      "item": "Surrogate teacher val/test not code-reproducible",
+      "detail": "train_surrogate.py prints teacher val/test MSE at runtime (val(teacher) per Phase-1 epoch, final val_teacher/test_teacher) and does not persist runs. The recorded snapshot teacher val 0.1264 / test 0.1868 cannot be re-derived from code alone.",
+      "recommended_fix": "Persist per-run logs (e.g., JSONL) from train_surrogate.py and commit them; add a seed-pinned reproducibility check."
+    },
+    {
+      "item": "Early sequential-benchmark exclusion policy not machine-encoded",
+      "detail": "RESULTS.md/WRITEUP.md exclude benchmark_speed.py single-run numbers measured under CPU contention (e.g., EPP 57.49 vs 27.61 ms across runs; Flat 45.31 -> 34.01 -> 31.61 ms; Flat 273 ms at load average 19). The exclusion criteria live only in prose, not in code.",
+      "recommended_fix": "Capture load average and per-run stats in benchmark_speed.py; apply automated outlier/sanity filters; log raw runs."
+    },
+    {
+      "item": "compare.py does not print an exact param ledger",
+      "detail": "Attention/full param counts in the docs come from plan/gates/gate0/gen_registry.py, not from compare.py run output, so a fresh run cannot verify the registry numbers end-to-end.",
+      "recommended_fix": "Add an exact per-model param ledger print (attention and full) to compare.py."
+    },
+    {
+      "item": "No git history",
+      "detail": "Repo is not a git repository; the manifest records per-file sha256 only, with no commit-level provenance.",
+      "recommended_fix": "git init on the next milestone and replace/augment file hashes with commit hashes."
+    },
+    {
+      "item": "Registry config_hash is not model-unique",
+      "detail": "Flat, Modified and FlatPlus share the same config_hash (97a69c34...) in gate0_registry.json despite different architectures, so run ids derived from config_hash collide across those models.",
+      "recommended_fix": "Hash over the full model config including class identity in gen_registry.py."
+    },
+    {
+      "item": "Normal forward-time provenance differs across docs",
+      "detail": "RESULTS.md final-table footnote labels all rows 'alternating head-to-head', but WRITEUP.md 1/7.4 records Normal's 38.31 ms as a single sequential run (*). Manifest keeps the RESULTS.md value (38.31) as doc_source.",
+      "recommended_fix": "Mark per-row timing provenance (head-to-head vs sequential) in RESULTS.md."
+    }
+  ]
+}

@@ -1,0 +1,356 @@
+=== SWEEP SEED 42 START 2026-08-12T18:30:43Z ===
+== Gate 2 factorial harness (CPU PyTorch, threads=8, seed=42) ==
+  cell c_kv  c_r q_lora_rank o_lora_rank attn_params full_params delta_pct
+--------------------------------------------------------------------------
+(4,4)     4    4          64          64       95396      348100    0.268%
+(8,4)     8    4          64          64       95652      348356    0.000%  <- target (champion)
+(4,8)     4    8          64          64       95652      348356    0.000%
+(8,8)     8    8          64          64       95908      348612    0.268%
+--------------------------------------------------------------------------
+  target: attn=95652 full=348356 (cell (8, 4) at q=64, o=64; full-model tolerance check)
+  (4,4) |Δ|/target = 0.268% <= 0.5%  [OK]
+  (8,4) |Δ|/target = 0.000% <= 0.5%  [OK]
+  (4,8) |Δ|/target = 0.000% <= 0.5%  [OK]
+  (8,8) |Δ|/target = 0.268% <= 0.5%  [OK]
+
+[full] seed=42, 10 epochs, full train split (shuffle=True), val each epoch, final test eval. Results -> /Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/gate2/gate2_results.jsonl
+Downloading ETTh1 dataset...
+[full] train batches=316 val batches=98 test batches=98
+  cell (4,4):
+      epoch  1/10  train_mse=0.720019  val_mse=0.784568
+      epoch  2/10  train_mse=0.429548  val_mse=0.689930
+      epoch  3/10  train_mse=0.372368  val_mse=0.662742
+      epoch  4/10  train_mse=0.352430  val_mse=0.689501
+      epoch  5/10  train_mse=0.337025  val_mse=0.698598
+      epoch  6/10  train_mse=0.321998  val_mse=0.744254
+      epoch  7/10  train_mse=0.310476  val_mse=0.691695
+      epoch  8/10  train_mse=0.301994  val_mse=0.719188
+      epoch  9/10  train_mse=0.294870  val_mse=0.707934
+      epoch 10/10  train_mse=0.287979  val_mse=0.703250
+      FINAL test_mse=0.970741 train_mse=0.287979 attn_params=95396 full_params=348100 (elapsed 9065s)
+      appended: {"cell": [4, 4], "seed": 42, "val_mse": 0.70324961, "test_mse": 0.9707411, "final_train_mse": 0.28797866, "attn_params": 95396, "full_params": 348100, "c_kv": 4, "c_r": 4, "completed_utc": "2026-08-12T21:01:54Z"}
+  cell (8,4):
+      epoch  1/10  train_mse=0.721374  val_mse=0.766129
+      epoch  2/10  train_mse=0.432790  val_mse=0.639774
+      epoch  3/10  train_mse=0.372753  val_mse=0.608102
+      epoch  4/10  train_mse=0.352832  val_mse=0.587222
+      epoch  5/10  train_mse=0.337166  val_mse=0.605996
+      epoch  6/10  train_mse=0.322506  val_mse=0.616630
+      epoch  7/10  train_mse=0.310777  val_mse=0.550974
+      epoch  8/10  train_mse=0.302450  val_mse=0.569091
+      epoch  9/10  train_mse=0.294734  val_mse=0.556691
+      epoch 10/10  train_mse=0.288006  val_mse=0.554764
+      FINAL test_mse=0.749199 train_mse=0.288006 attn_params=95652 full_params=348356 (elapsed 11741s)
+      appended: {"cell": [8, 4], "seed": 42, "val_mse": 0.5547639, "test_mse": 0.74919878, "final_train_mse": 0.28800553, "attn_params": 95652, "full_params": 348356, "c_kv": 8, "c_r": 4, "completed_utc": "2026-08-13T00:17:35Z"}
+  cell (4,8):
+      epoch  1/10  train_mse=0.721494  val_mse=0.774650
+      epoch  2/10  train_mse=0.429695  val_mse=0.662462
+      epoch  3/10  train_mse=0.374885  val_mse=0.660886
+      epoch  4/10  train_mse=0.357180  val_mse=0.674208
+      epoch  5/10  train_mse=0.342819  val_mse=0.693580
+      epoch  6/10  train_mse=0.328960  val_mse=0.723075
+      epoch  7/10  train_mse=0.318845  val_mse=0.709818
+      epoch  8/10  train_mse=0.311021  val_mse=0.747569
+      epoch  9/10  train_mse=0.304285  val_mse=0.750890
+      epoch 10/10  train_mse=0.298853  val_mse=0.755156
+      FINAL test_mse=0.945594 train_mse=0.298853 attn_params=95652 full_params=348356 (elapsed 17343s)
+      appended: {"cell": [4, 8], "seed": 42, "val_mse": 0.75515576, "test_mse": 0.94559449, "final_train_mse": 0.29885279, "attn_params": 95652, "full_params": 348356, "c_kv": 4, "c_r": 8, "completed_utc": "2026-08-13T05:06:37Z"}
+  cell (8,8):
+      epoch  1/10  train_mse=0.718709  val_mse=0.780903
+      epoch  2/10  train_mse=0.424078  val_mse=0.695724
+      epoch  3/10  train_mse=0.367710  val_mse=0.657762
+      epoch  4/10  train_mse=0.346801  val_mse=0.666817
+      epoch  5/10  train_mse=0.330039  val_mse=0.706270
+      epoch  6/10  train_mse=0.316176  val_mse=0.735945
+      epoch  7/10  train_mse=0.305581  val_mse=0.670907
+      epoch  8/10  train_mse=0.297004  val_mse=0.706113
+      epoch  9/10  train_mse=0.290056  val_mse=0.694621
+      epoch 10/10  train_mse=0.283075  val_mse=0.666341
+      FINAL test_mse=0.935568 train_mse=0.283075 attn_params=95908 full_params=348612 (elapsed 35224s)
+      appended: {"cell": [8, 8], "seed": 42, "val_mse": 0.66634132, "test_mse": 0.93556825, "final_train_mse": 0.28307465, "attn_params": 95908, "full_params": 348612, "c_kv": 8, "c_r": 8, "completed_utc": "2026-08-13T14:53:41Z"}
+=== SWEEP SEED 42 DONE 2026-08-13T14:53:42Z ===
+=== SWEEP SEED 123 START 2026-08-13T14:53:42Z ===
+== Gate 2 factorial harness (CPU PyTorch, threads=8, seed=123) ==
+  cell c_kv  c_r q_lora_rank o_lora_rank attn_params full_params delta_pct
+--------------------------------------------------------------------------
+(4,4)     4    4          64          64       95396      348100    0.268%
+(8,4)     8    4          64          64       95652      348356    0.000%  <- target (champion)
+(4,8)     4    8          64          64       95652      348356    0.000%
+(8,8)     8    8          64          64       95908      348612    0.268%
+--------------------------------------------------------------------------
+  target: attn=95652 full=348356 (cell (8, 4) at q=64, o=64; full-model tolerance check)
+  (4,4) |Δ|/target = 0.268% <= 0.5%  [OK]
+  (8,4) |Δ|/target = 0.000% <= 0.5%  [OK]
+  (4,8) |Δ|/target = 0.000% <= 0.5%  [OK]
+  (8,8) |Δ|/target = 0.268% <= 0.5%  [OK]
+
+[full] seed=123, 10 epochs, full train split (shuffle=True), val each epoch, final test eval. Results -> /Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/gate2/gate2_results.jsonl
+Downloading ETTh1 dataset...
+[full] train batches=316 val batches=98 test batches=98
+  cell (4,4):
+      epoch  1/10  train_mse=0.721040  val_mse=0.752814
+      epoch  2/10  train_mse=0.433406  val_mse=0.677939
+      epoch  3/10  train_mse=0.378256  val_mse=0.647895
+      epoch  4/10  train_mse=0.356975  val_mse=0.650671
+      epoch  5/10  train_mse=0.341271  val_mse=0.639362
+      epoch  6/10  train_mse=0.327526  val_mse=0.662512
+      epoch  7/10  train_mse=0.316984  val_mse=0.621059
+      epoch  8/10  train_mse=0.308153  val_mse=0.663818
+      epoch  9/10  train_mse=0.301264  val_mse=0.634607
+      epoch 10/10  train_mse=0.294883  val_mse=0.689265
+      FINAL test_mse=0.947532 train_mse=0.294883 attn_params=95396 full_params=348100 (elapsed 8203s)
+      appended: {"cell": [4, 4], "seed": 123, "val_mse": 0.68926456, "test_mse": 0.94753228, "final_train_mse": 0.2948834, "attn_params": 95396, "full_params": 348100, "c_kv": 4, "c_r": 4, "completed_utc": "2026-08-13T17:10:29Z"}
+  cell (8,4):
+      epoch  1/10  train_mse=0.720751  val_mse=0.741921
+      epoch  2/10  train_mse=0.430942  val_mse=0.655164
+      epoch  3/10  train_mse=0.376704  val_mse=0.617173
+      epoch  4/10  train_mse=0.357219  val_mse=0.616843
+      epoch  5/10  train_mse=0.341857  val_mse=0.632287
+      epoch  6/10  train_mse=0.327219  val_mse=0.681107
+      epoch  7/10  train_mse=0.316616  val_mse=0.633064
+      epoch  8/10  train_mse=0.306940  val_mse=0.676952
+      epoch  9/10  train_mse=0.299486  val_mse=0.601424
+      epoch 10/10  train_mse=0.292100  val_mse=0.635250
+      FINAL test_mse=0.786360 train_mse=0.292100 attn_params=95652 full_params=348356 (elapsed 486s)
+      appended: {"cell": [8, 4], "seed": 123, "val_mse": 0.63524958, "test_mse": 0.78635977, "final_train_mse": 0.29209979, "attn_params": 95652, "full_params": 348356, "c_kv": 8, "c_r": 4, "completed_utc": "2026-08-13T17:18:35Z"}
+  cell (4,8):
+      epoch  1/10  train_mse=0.721907  val_mse=0.734452
+      epoch  2/10  train_mse=0.434671  val_mse=0.669507
+      epoch  3/10  train_mse=0.377871  val_mse=0.664163
+      epoch  4/10  train_mse=0.357876  val_mse=0.653955
+      epoch  5/10  train_mse=0.342850  val_mse=0.673382
+      epoch  6/10  train_mse=0.329309  val_mse=0.702292
+      epoch  7/10  train_mse=0.320031  val_mse=0.669909
+      epoch  8/10  train_mse=0.312337  val_mse=0.695816
+      epoch  9/10  train_mse=0.305990  val_mse=0.688559
+      epoch 10/10  train_mse=0.300199  val_mse=0.763116
+      FINAL test_mse=0.945800 train_mse=0.300199 attn_params=95652 full_params=348356 (elapsed 452s)
+      appended: {"cell": [4, 8], "seed": 123, "val_mse": 0.76311576, "test_mse": 0.9458004, "final_train_mse": 0.30019851, "attn_params": 95652, "full_params": 348356, "c_kv": 4, "c_r": 8, "completed_utc": "2026-08-13T17:26:07Z"}
+  cell (8,8):
+      epoch  1/10  train_mse=0.721201  val_mse=0.748740
+      epoch  2/10  train_mse=0.431391  val_mse=0.673516
+      epoch  3/10  train_mse=0.373953  val_mse=0.635249
+      epoch  4/10  train_mse=0.352503  val_mse=0.605044
+      epoch  5/10  train_mse=0.337113  val_mse=0.624081
+      epoch  6/10  train_mse=0.322607  val_mse=0.620399
+      epoch  7/10  train_mse=0.311433  val_mse=0.589072
+      epoch  8/10  train_mse=0.301544  val_mse=0.620860
+      epoch  9/10  train_mse=0.293709  val_mse=0.577041
+      epoch 10/10  train_mse=0.286794  val_mse=0.634555
+      FINAL test_mse=0.888853 train_mse=0.286794 attn_params=95908 full_params=348612 (elapsed 475s)
+      appended: {"cell": [8, 8], "seed": 123, "val_mse": 0.63455486, "test_mse": 0.88885323, "final_train_mse": 0.28679391, "attn_params": 95908, "full_params": 348612, "c_kv": 8, "c_r": 8, "completed_utc": "2026-08-13T17:34:02Z"}
+=== SWEEP SEED 123 DONE 2026-08-13T17:34:03Z ===
+=== SWEEP SEED 2024 START 2026-08-13T17:34:03Z ===
+== Gate 2 factorial harness (CPU PyTorch, threads=8, seed=2024) ==
+  cell c_kv  c_r q_lora_rank o_lora_rank attn_params full_params delta_pct
+--------------------------------------------------------------------------
+(4,4)     4    4          64          64       95396      348100    0.268%
+(8,4)     8    4          64          64       95652      348356    0.000%  <- target (champion)
+(4,8)     4    8          64          64       95652      348356    0.000%
+(8,8)     8    8          64          64       95908      348612    0.268%
+--------------------------------------------------------------------------
+  target: attn=95652 full=348356 (cell (8, 4) at q=64, o=64; full-model tolerance check)
+  (4,4) |Δ|/target = 0.268% <= 0.5%  [OK]
+  (8,4) |Δ|/target = 0.000% <= 0.5%  [OK]
+  (4,8) |Δ|/target = 0.000% <= 0.5%  [OK]
+  (8,8) |Δ|/target = 0.268% <= 0.5%  [OK]
+
+[full] seed=2024, 10 epochs, full train split (shuffle=True), val each epoch, final test eval. Results -> /Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/gate2/gate2_results.jsonl
+Downloading ETTh1 dataset...
+[full] train batches=316 val batches=98 test batches=98
+  cell (4,4):
+      epoch  1/10  train_mse=0.723047  val_mse=0.750182
+      epoch  2/10  train_mse=0.434441  val_mse=0.629738
+      epoch  3/10  train_mse=0.375170  val_mse=0.646130
+      epoch  4/10  train_mse=0.356423  val_mse=0.626624
+      epoch  5/10  train_mse=0.342830  val_mse=0.636662
+      epoch  6/10  train_mse=0.330237  val_mse=0.598365
+      epoch  7/10  train_mse=0.318134  val_mse=0.622809
+      epoch  8/10  train_mse=0.307647  val_mse=0.568843
+      epoch  9/10  train_mse=0.299922  val_mse=0.564129
+      epoch 10/10  train_mse=0.293347  val_mse=0.561542
+      FINAL test_mse=0.859999 train_mse=0.293347 attn_params=95396 full_params=348100 (elapsed 447s)
+      appended: {"cell": [4, 4], "seed": 2024, "val_mse": 0.5615419, "test_mse": 0.85999889, "final_train_mse": 0.29334723, "attn_params": 95396, "full_params": 348100, "c_kv": 4, "c_r": 4, "completed_utc": "2026-08-13T17:41:32Z"}
+  cell (8,4):
+      epoch  1/10  train_mse=0.720841  val_mse=0.730310
+      epoch  2/10  train_mse=0.432749  val_mse=0.595378
+      epoch  3/10  train_mse=0.376318  val_mse=0.549725
+      epoch  4/10  train_mse=0.357196  val_mse=0.585232
+      epoch  5/10  train_mse=0.342858  val_mse=0.560216
+      epoch  6/10  train_mse=0.329536  val_mse=0.550367
+      epoch  7/10  train_mse=0.317252  val_mse=0.590210
+      epoch  8/10  train_mse=0.306483  val_mse=0.556035
+      epoch  9/10  train_mse=0.298138  val_mse=0.571310
+      epoch 10/10  train_mse=0.291309  val_mse=0.572598
+      FINAL test_mse=0.828110 train_mse=0.291309 attn_params=95652 full_params=348356 (elapsed 459s)
+      appended: {"cell": [8, 4], "seed": 2024, "val_mse": 0.57259762, "test_mse": 0.82810964, "final_train_mse": 0.2913095, "attn_params": 95652, "full_params": 348356, "c_kv": 8, "c_r": 4, "completed_utc": "2026-08-13T17:49:11Z"}
+  cell (4,8):
+      epoch  1/10  train_mse=0.720955  val_mse=0.748841
+      epoch  2/10  train_mse=0.427375  val_mse=0.633518
+      epoch  3/10  train_mse=0.376183  val_mse=0.629667
+      epoch  4/10  train_mse=0.359308  val_mse=0.647695
+      epoch  5/10  train_mse=0.345923  val_mse=0.653691
+      epoch  6/10  train_mse=0.333342  val_mse=0.637189
+      epoch  7/10  train_mse=0.321307  val_mse=0.669556
+      epoch  8/10  train_mse=0.311841  val_mse=0.639952
+      epoch  9/10  train_mse=0.304483  val_mse=0.614040
+      epoch 10/10  train_mse=0.298215  val_mse=0.636242
+      FINAL test_mse=0.913371 train_mse=0.298215 attn_params=95652 full_params=348356 (elapsed 773s)
+      appended: {"cell": [4, 8], "seed": 2024, "val_mse": 0.63624237, "test_mse": 0.9133715, "final_train_mse": 0.29821471, "attn_params": 95652, "full_params": 348356, "c_kv": 4, "c_r": 8, "completed_utc": "2026-08-13T18:02:05Z"}
+  cell (8,8):
+      epoch  1/10  train_mse=0.720178  val_mse=0.783193
+      epoch  2/10  train_mse=0.424970  val_mse=0.656056
+      epoch  3/10  train_mse=0.371414  val_mse=0.607239
+      epoch  4/10  train_mse=0.352606  val_mse=0.623130
+      epoch  5/10  train_mse=0.337879  val_mse=0.636811
+      epoch  6/10  train_mse=0.324640  val_mse=0.604508
+      epoch  7/10  train_mse=0.312174  val_mse=0.658433
+      epoch  8/10  train_mse=0.302431  val_mse=0.610261
+      epoch  9/10  train_mse=0.294217  val_mse=0.601661
+      epoch 10/10  train_mse=0.286965  val_mse=0.606218
+      FINAL test_mse=0.947792 train_mse=0.286965 attn_params=95908 full_params=348612 (elapsed 443s)
+      appended: {"cell": [8, 8], "seed": 2024, "val_mse": 0.60621777, "test_mse": 0.94779152, "final_train_mse": 0.2869648, "attn_params": 95908, "full_params": 348612, "c_kv": 8, "c_r": 8, "completed_utc": "2026-08-13T18:09:27Z"}
+=== SWEEP SEED 2024 DONE 2026-08-13T18:09:28Z ===
+=== SWEEP SEED 7 START 2026-08-13T18:09:28Z ===
+== Gate 2 factorial harness (CPU PyTorch, threads=8, seed=7) ==
+  cell c_kv  c_r q_lora_rank o_lora_rank attn_params full_params delta_pct
+--------------------------------------------------------------------------
+(4,4)     4    4          64          64       95396      348100    0.268%
+(8,4)     8    4          64          64       95652      348356    0.000%  <- target (champion)
+(4,8)     4    8          64          64       95652      348356    0.000%
+(8,8)     8    8          64          64       95908      348612    0.268%
+--------------------------------------------------------------------------
+  target: attn=95652 full=348356 (cell (8, 4) at q=64, o=64; full-model tolerance check)
+  (4,4) |Δ|/target = 0.268% <= 0.5%  [OK]
+  (8,4) |Δ|/target = 0.000% <= 0.5%  [OK]
+  (4,8) |Δ|/target = 0.000% <= 0.5%  [OK]
+  (8,8) |Δ|/target = 0.268% <= 0.5%  [OK]
+
+[full] seed=7, 10 epochs, full train split (shuffle=True), val each epoch, final test eval. Results -> /Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/gate2/gate2_results.jsonl
+Downloading ETTh1 dataset...
+[full] train batches=316 val batches=98 test batches=98
+  cell (4,4):
+      epoch  1/10  train_mse=0.732412  val_mse=0.766916
+      epoch  2/10  train_mse=0.436239  val_mse=0.645345
+      epoch  3/10  train_mse=0.376560  val_mse=0.617097
+      epoch  4/10  train_mse=0.356425  val_mse=0.616629
+      epoch  5/10  train_mse=0.339871  val_mse=0.590137
+      epoch  6/10  train_mse=0.325087  val_mse=0.607386
+      epoch  7/10  train_mse=0.312853  val_mse=0.578516
+      epoch  8/10  train_mse=0.303668  val_mse=0.599729
+      epoch  9/10  train_mse=0.295610  val_mse=0.677946
+      epoch 10/10  train_mse=0.288971  val_mse=0.594209
+      FINAL test_mse=0.920166 train_mse=0.288971 attn_params=95396 full_params=348100 (elapsed 455s)
+      appended: {"cell": [4, 4], "seed": 7, "val_mse": 0.5942087, "test_mse": 0.92016576, "final_train_mse": 0.28897142, "attn_params": 95396, "full_params": 348100, "c_kv": 4, "c_r": 4, "completed_utc": "2026-08-13T18:17:05Z"}
+  cell (8,4):
+      epoch  1/10  train_mse=0.729095  val_mse=0.728820
+      epoch  2/10  train_mse=0.434968  val_mse=0.553344
+      epoch  3/10  train_mse=0.374206  val_mse=0.547070
+      epoch  4/10  train_mse=0.353096  val_mse=0.537783
+      epoch  5/10  train_mse=0.335873  val_mse=0.542368
+      epoch  6/10  train_mse=0.319984  val_mse=0.559438
+      epoch  7/10  train_mse=0.308549  val_mse=0.544569
+      epoch  8/10  train_mse=0.300413  val_mse=0.558993
+      epoch  9/10  train_mse=0.292861  val_mse=0.555101
+      epoch 10/10  train_mse=0.286181  val_mse=0.521185
+      FINAL test_mse=0.759247 train_mse=0.286181 attn_params=95652 full_params=348356 (elapsed 2213s)
+      appended: {"cell": [8, 4], "seed": 7, "val_mse": 0.52118509, "test_mse": 0.75924653, "final_train_mse": 0.28618142, "attn_params": 95652, "full_params": 348356, "c_kv": 8, "c_r": 4, "completed_utc": "2026-08-13T18:53:58Z"}
+  cell (4,8):
+      epoch  1/10  train_mse=0.729912  val_mse=0.763886
+      epoch  2/10  train_mse=0.440609  val_mse=0.615747
+      epoch  3/10  train_mse=0.382096  val_mse=0.596139
+      epoch  4/10  train_mse=0.363300  val_mse=0.597816
+      epoch  5/10  train_mse=0.348133  val_mse=0.566463
+      epoch  6/10  train_mse=0.333169  val_mse=0.599417
+      epoch  7/10  train_mse=0.321836  val_mse=0.580551
+      epoch  8/10  train_mse=0.313553  val_mse=0.551954
+      epoch  9/10  train_mse=0.305444  val_mse=0.653758
+      epoch 10/10  train_mse=0.299039  val_mse=0.557574
+      FINAL test_mse=0.769616 train_mse=0.299039 attn_params=95652 full_params=348356 (elapsed 1437s)
+      appended: {"cell": [4, 8], "seed": 7, "val_mse": 0.55757445, "test_mse": 0.76961638, "final_train_mse": 0.29903922, "attn_params": 95652, "full_params": 348356, "c_kv": 4, "c_r": 8, "completed_utc": "2026-08-13T19:17:56Z"}
+  cell (8,8):
+      epoch  1/10  train_mse=0.730431  val_mse=0.781399
+      epoch  2/10  train_mse=0.434057  val_mse=0.635144
+      epoch  3/10  train_mse=0.371503  val_mse=0.629295
+      epoch  4/10  train_mse=0.350907  val_mse=0.636531
+      epoch  5/10  train_mse=0.334801  val_mse=0.615941
+      epoch  6/10  train_mse=0.319609  val_mse=0.632839
+      epoch  7/10  train_mse=0.307437  val_mse=0.601054
+      epoch  8/10  train_mse=0.298419  val_mse=0.601681
+      epoch  9/10  train_mse=0.290111  val_mse=0.679953
+      epoch 10/10  train_mse=0.283042  val_mse=0.591710
+      FINAL test_mse=0.875574 train_mse=0.283042 attn_params=95908 full_params=348612 (elapsed 344s)
+      appended: {"cell": [8, 8], "seed": 7, "val_mse": 0.59170955, "test_mse": 0.87557367, "final_train_mse": 0.28304197, "attn_params": 95908, "full_params": 348612, "c_kv": 8, "c_r": 8, "completed_utc": "2026-08-13T19:23:40Z"}
+=== SWEEP SEED 7 DONE 2026-08-13T19:23:41Z ===
+=== SWEEP SEED 99 START 2026-08-13T19:23:41Z ===
+== Gate 2 factorial harness (CPU PyTorch, threads=8, seed=99) ==
+  cell c_kv  c_r q_lora_rank o_lora_rank attn_params full_params delta_pct
+--------------------------------------------------------------------------
+(4,4)     4    4          64          64       95396      348100    0.268%
+(8,4)     8    4          64          64       95652      348356    0.000%  <- target (champion)
+(4,8)     4    8          64          64       95652      348356    0.000%
+(8,8)     8    8          64          64       95908      348612    0.268%
+--------------------------------------------------------------------------
+  target: attn=95652 full=348356 (cell (8, 4) at q=64, o=64; full-model tolerance check)
+  (4,4) |Δ|/target = 0.268% <= 0.5%  [OK]
+  (8,4) |Δ|/target = 0.000% <= 0.5%  [OK]
+  (4,8) |Δ|/target = 0.000% <= 0.5%  [OK]
+  (8,8) |Δ|/target = 0.268% <= 0.5%  [OK]
+
+[full] seed=99, 10 epochs, full train split (shuffle=True), val each epoch, final test eval. Results -> /Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/gate2/gate2_results.jsonl
+Downloading ETTh1 dataset...
+[full] train batches=316 val batches=98 test batches=98
+  cell (4,4):
+      epoch  1/10  train_mse=0.724304  val_mse=0.755455
+      epoch  2/10  train_mse=0.437305  val_mse=0.651606
+      epoch  3/10  train_mse=0.374485  val_mse=0.623011
+      epoch  4/10  train_mse=0.353507  val_mse=0.658118
+      epoch  5/10  train_mse=0.338223  val_mse=0.621632
+      epoch  6/10  train_mse=0.324152  val_mse=0.664903
+      epoch  7/10  train_mse=0.312536  val_mse=0.656981
+      epoch  8/10  train_mse=0.303263  val_mse=0.619618
+      epoch  9/10  train_mse=0.295827  val_mse=0.671882
+      epoch 10/10  train_mse=0.288877  val_mse=0.617592
+      FINAL test_mse=0.841186 train_mse=0.288877 attn_params=95396 full_params=348100 (elapsed 389s)
+      appended: {"cell": [4, 4], "seed": 99, "val_mse": 0.61759192, "test_mse": 0.84118555, "final_train_mse": 0.28887663, "attn_params": 95396, "full_params": 348100, "c_kv": 4, "c_r": 4, "completed_utc": "2026-08-13T19:30:12Z"}
+  cell (8,4):
+      epoch  1/10  train_mse=0.723772  val_mse=0.744221
+      epoch  2/10  train_mse=0.445148  val_mse=0.634640
+      epoch  3/10  train_mse=0.374043  val_mse=0.580239
+      epoch  4/10  train_mse=0.351556  val_mse=0.596794
+      epoch  5/10  train_mse=0.335072  val_mse=0.584289
+      epoch  6/10  train_mse=0.319689  val_mse=0.658038
+      epoch  7/10  train_mse=0.307789  val_mse=0.694292
+      epoch  8/10  train_mse=0.297289  val_mse=0.662586
+      epoch  9/10  train_mse=0.289129  val_mse=0.721488
+      epoch 10/10  train_mse=0.282243  val_mse=0.699705
+      FINAL test_mse=0.870967 train_mse=0.282243 attn_params=95652 full_params=348356 (elapsed 2048s)
+      appended: {"cell": [8, 4], "seed": 99, "val_mse": 0.69970468, "test_mse": 0.87096688, "final_train_mse": 0.28224283, "attn_params": 95652, "full_params": 348356, "c_kv": 8, "c_r": 4, "completed_utc": "2026-08-13T20:04:20Z"}
+  cell (4,8):
+      epoch  1/10  train_mse=0.723445  val_mse=0.748586
+      epoch  2/10  train_mse=0.432807  val_mse=0.656234
+      epoch  3/10  train_mse=0.373969  val_mse=0.631247
+      epoch  4/10  train_mse=0.355221  val_mse=0.689270
+      epoch  5/10  train_mse=0.340194  val_mse=0.643903
+      epoch  6/10  train_mse=0.326566  val_mse=0.711201
+      epoch  7/10  train_mse=0.316278  val_mse=0.748188
+      epoch  8/10  train_mse=0.307975  val_mse=0.688234
+      epoch  9/10  train_mse=0.301179  val_mse=0.777702
+      epoch 10/10  train_mse=0.295363  val_mse=0.716674
+      FINAL test_mse=0.923801 train_mse=0.295363 attn_params=95652 full_params=348356 (elapsed 345s)
+      appended: {"cell": [4, 8], "seed": 99, "val_mse": 0.71667366, "test_mse": 0.92380142, "final_train_mse": 0.29536334, "attn_params": 95652, "full_params": 348356, "c_kv": 4, "c_r": 8, "completed_utc": "2026-08-13T20:10:05Z"}
+  cell (8,8):
+      epoch  1/10  train_mse=0.723328  val_mse=0.760344
+      epoch  2/10  train_mse=0.431941  val_mse=0.638775
+      epoch  3/10  train_mse=0.365674  val_mse=0.598379
+      epoch  4/10  train_mse=0.345843  val_mse=0.622886
+      epoch  5/10  train_mse=0.330174  val_mse=0.628554
+      epoch  6/10  train_mse=0.315976  val_mse=0.703114
+      epoch  7/10  train_mse=0.304841  val_mse=0.715935
+      epoch  8/10  train_mse=0.295910  val_mse=0.686811
+      epoch  9/10  train_mse=0.288410  val_mse=0.724513
+      epoch 10/10  train_mse=0.282076  val_mse=0.684939
+      FINAL test_mse=0.931927 train_mse=0.282076 attn_params=95908 full_params=348612 (elapsed 365s)
+      appended: {"cell": [8, 8], "seed": 99, "val_mse": 0.68493912, "test_mse": 0.93192733, "final_train_mse": 0.28207554, "attn_params": 95908, "full_params": 348612, "c_kv": 8, "c_r": 8, "completed_utc": "2026-08-13T20:16:10Z"}
+=== SWEEP SEED 99 DONE 2026-08-13T20:16:10Z ===
+SWEEP_DONE 2026-08-13T20:16:10Z

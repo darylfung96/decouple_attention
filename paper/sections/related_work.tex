@@ -1,0 +1,57 @@
+\section{Related Work}
+\label{sec:related}
+
+\subsection{Routed and compressed attention}
+The general idea of content-based routing goes back to the Routing
+Transformer \citep{roy2020routing}, which clusters tokens with online
+$k$-means and restricts attention to tokens in the same cluster. Native
+Sparse Attention (NSA) \citep{yuan2025nsa} combines coarse-grained token
+compression with fine-grained token selection, making it the closest
+conceptual cousin of the family studied here. DeepSeek-V4's hybrid
+attention \citep{deepseekv4_2026} pairs a Compressed Sparse Attention (CSA)
+stage with a Heavily Compressed Attention (HCA) stage for million-token
+contexts, reporting $27\%$ of single-token inference FLOPs and $10\%$ of KV
+cache versus DeepSeek-V3.2; we adopt the working name ``Dual-Rate Routed
+Attention'' (DRRA) for our family in part to avoid colliding with that label.
+The low-rank KV bottleneck and shared-query projection used in our
+configurations descend from Multi-head Latent Attention (MLA)
+\citep{deepseekv2_2024}. Attention distillation toward cheaper inference
+architectures \citep{goldstein2025radlads} overlaps a secondary, separable
+thread of this project (Appendix~\ref{sec:appendix-surrogate}) rather than
+the routing/compression core studied here.
+
+Crucially for our claim (b), none of these works, to our knowledge,
+\emph{systematically varies the content-compression rate and the routing
+resolution independently and reports their separate main effects} on a
+fixed task. The closest are Simplified Sparse Attention
+\citep{mao2026ssa}, which compresses context into gist tokens and
+selectively unfolds top-$k$ chunks but derives $k$ from the chunk size to
+hold the total budget constant (Eq.~A.1), coupling the two axes; and The
+Sparse Frontier \citep{nawrot2025sparsefrontier}, which sweeps selection
+budgets across six methods with no content-compression knob.
+DeepSeek-V4 \citep{deepseekv4_2026} and NSA \citep{yuan2025nsa} expose
+both mechanisms as fixed hyperparameters without varying them
+independently. We confirmed this on a systematic sweep of the 2024--2026
+routing/compression-attention literature (August 2026).
+
+\subsection{Efficient and accurate time-series forecasting}
+Long-horizon forecasting architectures include the ProbSparse-attention
+Informer \citep{zhou2021informer}, patching-based PatchTST
+\citep{nie2023patchtst}, the inverted iTransformer \citep{liu2024itransformer},
+linear baselines \citep{zeng2023dlinear}, and 2D-variation modeling with
+TimesNet \citep{wu2023timesnet}. These are the natural external baselines
+for this line of work; none has been run under our frozen protocol yet
+\todo{Gate 3: run PatchTST / iTransformer / DLinear / Informer (and a linear
+and an SSM baseline) under the frozen protocol; collect their citations with
+the runs (plan/next\_step.md \S 7)}. Our contribution is orthogonal: we do
+not propose a new forecasting architecture but study one design axis of the
+attention module that any of these models could use.
+
+\subsection{Positioning summary}
+This paper sits in the intersection of efficient attention and
+time-series forecasting, as a \emph{controlled design study}: it measures
+how two configurable axes of a fixed attention family trade off accuracy
+and efficiency on one frozen task, and it does so with the reproducibility
+discipline (pre-registered factorial, paired seeds, parameter
+equalization, frozen task spec) that makes the trade-off structure
+measurable rather than anecdotal.
