@@ -321,6 +321,16 @@ def run_smoke(dataset_name, variant, seed, threads):
 
 
 def run_full(dataset_name, variant, seed, threads):
+    # Declared omission (2026-09-01, user decision): traffic PatchTST costs
+    # ~13 h/seed on CPU (862-channel channel-independence) — ~65 h for 5 seeds,
+    # ~5x the rest of the remaining sweep, for the least essential anchor cell.
+    # Skipped with an explicit reason so the audit can report it as declared,
+    # not missing. Traffic DLinear (cheap) is unaffected.
+    if dataset_name == "traffic" and variant == "PatchTST":
+        print(f"[gate6] DECLARED OMISSION: {dataset_name}/{variant} seed={seed} "
+              f"skipped — 862-channel channel-independence PatchTST exceeds the "
+              f"single-machine CPU budget (~13 h/seed); see README gate6 notes", flush=True)
+        return 0
     print_config(dataset_name, variant, threads)
     path = results_path(dataset_name)
     done = load_completed(path)

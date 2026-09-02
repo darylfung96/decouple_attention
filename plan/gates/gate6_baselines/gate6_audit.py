@@ -63,15 +63,20 @@ def gate3_means():
 g3 = gate3_means()
 
 # ---------- audit ----------
+# Declared omission (2026-09-01, user decision): traffic/PatchTST ~13 h/seed on
+# CPU (862-ch channel-independence) — reported as declared, not missing.
+DECLARED_OMISSIONS = {("traffic", "PatchTST")}
 rows, missing = [], []
 for (ds, var), seeds in sorted(runs.items()):
-    if sorted(seeds) != SEEDS:
+    if sorted(seeds) != SEEDS and (ds, var) not in DECLARED_OMISSIONS:
         missing.append(f"{ds}/{var}: seeds {sorted(seeds)} != {SEEDS}")
     for s, r in seeds.items():
         if not (np.isfinite(r["val_mse"]) and r["val_mse"] > 0 and
                 np.isfinite(r["test_mse"]) and r["test_mse"] > 0):
             bad.append(f"non-finite/nonpositive: {ds}/{var} seed {s}")
 
+# completeness: every dataset with any gate6 data must have both variants at
+# 5 seeds, EXCEPT declared omissions
 n_expected = len({d for d, _ in runs}) * 2 * 5
 n_actual = sum(len(v) for v in runs.values())
 print(f"gate6 runs: {n_actual} records across {len({d for d, _ in runs})} datasets")
