@@ -67,16 +67,32 @@ g3 = gate3_means()
 # CPU (862-ch channel-independence) — reported as declared, not missing.
 DECLARED_OMISSIONS = {("traffic", "PatchTST")}
 rows, missing = [], []
+SEEDS_SET = sorted(SEEDS)
 for (ds, var), seeds in sorted(runs.items()):
-    if sorted(seeds) != SEEDS and (ds, var) not in DECLARED_OMISSIONS:
-        missing.append(f"{ds}/{var}: seeds {sorted(seeds)} != {SEEDS}")
+    if sorted(seeds) != SEEDS_SET and (ds, var) not in DECLARED_OMISSIONS:
+        missing.append(f"{ds}/{var}: seeds {sorted(seeds)} != {SEEDS_SET}")
     for s, r in seeds.items():
         if not (np.isfinite(r["val_mse"]) and r["val_mse"] > 0 and
                 np.isfinite(r["test_mse"]) and r["test_mse"] > 0):
             bad.append(f"non-finite/nonpositive: {ds}/{var} seed {s}")
 
-# completeness: every dataset with any gate6 data must have both variants at
-# 5 seeds, EXCEPT declared omissions
+# completeness: every expected dataset must have both variants at 5 seeds,
+# EXCEPT declared omissions (and except datasets the sweep has not reached yet)
+EXPECTED_DATASETS = ["etth1", "etth2", "ettm1", "ettm2", "exchange", "solar",
+                     "syn_changepoints", "syn_delayedcopy", "syn_sinusoids",
+                     "traffic", "weather"]   # 11 + declared-omitted traffic PatchTST
+for ds in EXPECTED_DATASETS:
+    for var in ("DLinear", "PatchTST"):
+        if (ds, var) in DECLARED_OMISSIONS:
+            if (ds, var) not in runs:
+                print(f"declared omission: {ds}/{var} (862-channel PatchTST; CPU budget) — "
+                      f"must be stated in the paper's reference-points section")
+            continue
+        got = sorted(runs.get((ds, var), {}))
+        if got and got != SEEDS_SET:
+            missing.append(f"{ds}/{var}: seeds {got} != {SEEDS_SET}")
+        if not got:
+            print(f"pending (sweep not there yet): {ds}/{var}")
 n_expected = len({d for d, _ in runs}) * 2 * 5
 n_actual = sum(len(v) for v in runs.values())
 print(f"gate6 runs: {n_actual} records across {len({d for d, _ in runs})} datasets")
