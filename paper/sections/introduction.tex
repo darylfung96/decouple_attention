@@ -14,6 +14,26 @@ efficient-attention designs for large language models
 routing \citep{roy2020routing}, low-rank KV compression
 \citep{deepseekv2_2024}---are individually well known.
 
+The efficiency stakes are concrete. In large-scale ML, arithmetic work is
+now the dominant driver of the energy and carbon cost of training and
+inference \citep{strubell2019energy,patterson2021carbon,schwartz2020green,wu2022sustainable},
+and energy is, to a first order, proportional to that work. Dense attention
+sits on the steepest part of this curve: its dominant term is quadratic in
+the lookback, so each doubling of $L$ quadruples the attention-layer
+arithmetic---and, at a fixed hardware generation, the energy per window---
+until a routing or compression remedy is applied. Long-horizon forecasting
+turns this from an abstraction into an operating constraint: its
+deployments (grid and building energy management, traffic control,
+financial risk systems) are served continuously at sustained query volume,
+often on power-constrained edge hardware, so per-forecast energy is a real
+cost rather than an afterthought. For this family, efficiency is therefore
+not a ``nice to have'': it is the difference between a forecasting system
+that can and one that cannot be deployed at the volumes real applications
+demand. The design question this paper measures---\emph{which compression
+axis buys efficiency, and which axis, when coarsened, is the accuracy we
+silently give away}---is thus also an energy question, and its answer
+determines how cheaply accurate long-horizon forecasting can be run.
+
 What is not well studied is the \emph{design space} of this family: how the
 two independent compression axes interact. We identify two axes:
 \begin{itemize}
@@ -40,12 +60,16 @@ mechanism: every building block we use is a configuration of known ideas
         \emph{auxiliary-identical} contract (identical window, top-$k$, heads,
         hidden size, optimizer, schedule) with attention-parameter
         equalization to within $0.3\%$, across five paired seeds
-        (Section~\ref{sec:experiments}).
+        (Section~\ref{sec:experiments}); the three-way comparison (full
+        attention vs.\ the equal-rate and champion cells) extends to twelve
+        datasets (Section~\ref{sec:rq3}).
   \item[(b)] \textbf{A decoupled-rate finding (directional).} Coarsening the
         router deteriorates accuracy ($+0.046$ validation MSE for
         $c_R{:}4{:}1 \to 8{:}1$), while coarsening KV compression is
-        mildly beneficial ($-0.043$). The best cell $(c_{KV}{=}8, c_R{=}4)$
-        reduces the attention matrix 5.3$\times$ relative to full attention
+        mildly beneficial ($-0.043$). The best cell, the dual-rate corner
+        $(c_{KV}{=}8, c_R{=}4)$ (\emph{DRRA},
+        Section~\ref{sec:method}), reduces the attention matrix 5.3$\times$
+        relative to full attention
         at equal parameters. We report these as directional observations:
         effect sizes are smaller than the within-cell seed standard
         deviation, and no significance test has been run.
@@ -53,7 +77,8 @@ mechanism: every building block we use is a configuration of known ideas
         surprising---and wiring-verified---baseline result: all compressed
         configurations beat full causal attention on the frozen task
         ($-18.5\%$ to $-29.1\%$ validation MSE), with explicit limitations
-        (single dataset, CPU-scale models, descriptive statistics).
+        (CPU-scale models, descriptive statistics; across twelve datasets the
+        advantage is signal-dependent, Section~\ref{sec:rq3}).
   \item[(d)] \textbf{Reproducibility artifacts.} A frozen task specification,
         machine-readable results manifests, a verified parameter registry,
         causality-verification suites, and a codebase in which every reported
@@ -66,5 +91,6 @@ baselines are run yet), does not claim statistical equivalence or
 significance (descriptive statistics only, five seeds), and does not report
 wall-clock speedups: the pre-freeze latency figures from earlier stages of
 this project are superseded and are deliberately \emph{not} used here.
-Measured latency, FLOPs, and hardware transfer are
+Forward-pass latency on the development machine is measured and reported in
+Table~\ref{tab:speed}; FLOPs accounting and hardware transfer remain
 planned follow-up work (Section~\ref{sec:discussion}).

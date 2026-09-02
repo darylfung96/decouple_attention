@@ -1,0 +1,317 @@
+{
+  "batches": {
+    "1": {
+      "DRRA": {
+        "delta_mean_vs_normal_pct": 30.76,
+        "mean_ci95_ms": [
+          3.03,
+          3.537
+        ],
+        "mean_ms_per_batch": 3.289,
+        "ms_per_seq": 3.2891,
+        "p90_ms_per_batch": 3.718,
+        "p99_ms_per_batch": 4.159,
+        "throughput_seqs_per_s": 304.0
+      },
+      "Flat": {
+        "delta_mean_vs_normal_pct": 31.83,
+        "mean_ci95_ms": [
+          3.057,
+          3.553
+        ],
+        "mean_ms_per_batch": 3.316,
+        "ms_per_seq": 3.3158,
+        "p90_ms_per_batch": 3.871,
+        "p99_ms_per_batch": 3.951,
+        "throughput_seqs_per_s": 301.6
+      },
+      "Normal": {
+        "delta_mean_vs_normal_pct": 0.0,
+        "mean_ci95_ms": [
+          2.308,
+          2.745
+        ],
+        "mean_ms_per_batch": 2.515,
+        "ms_per_seq": 2.5153,
+        "p90_ms_per_batch": 2.972,
+        "p99_ms_per_batch": 3.532,
+        "throughput_seqs_per_s": 397.6
+      }
+    },
+    "100": {
+      "DRRA": {
+        "delta_mean_vs_normal_pct": -5.12,
+        "mean_ci95_ms": [
+          180.481,
+          213.141
+        ],
+        "mean_ms_per_batch": 193.597,
+        "ms_per_seq": 1.936,
+        "p90_ms_per_batch": 210.878,
+        "p99_ms_per_batch": 296.191,
+        "throughput_seqs_per_s": 516.5
+      },
+      "Flat": {
+        "delta_mean_vs_normal_pct": -0.14,
+        "mean_ci95_ms": [
+          196.996,
+          211.629
+        ],
+        "mean_ms_per_batch": 203.751,
+        "ms_per_seq": 2.0375,
+        "p90_ms_per_batch": 226.71,
+        "p99_ms_per_batch": 234.095,
+        "throughput_seqs_per_s": 490.8
+      },
+      "Normal": {
+        "delta_mean_vs_normal_pct": 0.0,
+        "mean_ci95_ms": [
+          198.285,
+          210.593
+        ],
+        "mean_ms_per_batch": 204.043,
+        "ms_per_seq": 2.0404,
+        "p90_ms_per_batch": 219.549,
+        "p99_ms_per_batch": 232.666,
+        "throughput_seqs_per_s": 490.1
+      }
+    },
+    "128": {
+      "DRRA": {
+        "delta_mean_vs_normal_pct": -10.53,
+        "mean_ci95_ms": [
+          244.431,
+          280.225
+        ],
+        "mean_ms_per_batch": 260.85,
+        "ms_per_seq": 2.0379,
+        "p90_ms_per_batch": 294.81,
+        "p99_ms_per_batch": 356.425,
+        "throughput_seqs_per_s": 490.7
+      },
+      "Flat": {
+        "delta_mean_vs_normal_pct": -5.11,
+        "mean_ci95_ms": [
+          263.307,
+          291.638
+        ],
+        "mean_ms_per_batch": 276.661,
+        "ms_per_seq": 2.1614,
+        "p90_ms_per_batch": 305.077,
+        "p99_ms_per_batch": 345.351,
+        "throughput_seqs_per_s": 462.7
+      },
+      "Normal": {
+        "delta_mean_vs_normal_pct": 0.0,
+        "mean_ci95_ms": [
+          270.006,
+          316.314
+        ],
+        "mean_ms_per_batch": 291.557,
+        "ms_per_seq": 2.2778,
+        "p90_ms_per_batch": 359.579,
+        "p99_ms_per_batch": 400.449,
+        "throughput_seqs_per_s": 439.0
+      }
+    },
+    "16": {
+      "DRRA": {
+        "delta_mean_vs_normal_pct": -0.15,
+        "mean_ci95_ms": [
+          41.835,
+          46.934
+        ],
+        "mean_ms_per_batch": 44.255,
+        "ms_per_seq": 2.766,
+        "p90_ms_per_batch": 50.917,
+        "p99_ms_per_batch": 55.461,
+        "throughput_seqs_per_s": 361.5
+      },
+      "Flat": {
+        "delta_mean_vs_normal_pct": 7.72,
+        "mean_ci95_ms": [
+          44.959,
+          51.081
+        ],
+        "mean_ms_per_batch": 47.743,
+        "ms_per_seq": 2.9839,
+        "p90_ms_per_batch": 53.638,
+        "p99_ms_per_batch": 63.014,
+        "throughput_seqs_per_s": 335.1
+      },
+      "Normal": {
+        "delta_mean_vs_normal_pct": 0.0,
+        "mean_ci95_ms": [
+          41.259,
+          49.229
+        ],
+        "mean_ms_per_batch": 44.32,
+        "ms_per_seq": 2.77,
+        "p90_ms_per_batch": 47.053,
+        "p99_ms_per_batch": 69.62,
+        "throughput_seqs_per_s": 361.0
+      }
+    },
+    "256": {
+      "DRRA": {
+        "delta_mean_vs_normal_pct": -21.13,
+        "mean_ci95_ms": [
+          561.029,
+          1289.629
+        ],
+        "mean_ms_per_batch": 892.405,
+        "ms_per_seq": 3.486,
+        "p90_ms_per_batch": 1799.043,
+        "p99_ms_per_batch": 2552.81,
+        "throughput_seqs_per_s": 286.9
+      },
+      "Flat": {
+        "delta_mean_vs_normal_pct": 3.52,
+        "mean_ci95_ms": [
+          635.875,
+          1908.88
+        ],
+        "mean_ms_per_batch": 1171.402,
+        "ms_per_seq": 4.5758,
+        "p90_ms_per_batch": 2180.954,
+        "p99_ms_per_batch": 5051.528,
+        "throughput_seqs_per_s": 218.5
+      },
+      "Normal": {
+        "delta_mean_vs_normal_pct": 0.0,
+        "mean_ci95_ms": [
+          731.091,
+          1583.471
+        ],
+        "mean_ms_per_batch": 1131.536,
+        "ms_per_seq": 4.4201,
+        "p90_ms_per_batch": 2588.484,
+        "p99_ms_per_batch": 2753.34,
+        "throughput_seqs_per_s": 226.2
+      }
+    },
+    "32": {
+      "DRRA": {
+        "delta_mean_vs_normal_pct": 0.16,
+        "mean_ci95_ms": [
+          80.977,
+          93.127
+        ],
+        "mean_ms_per_batch": 86.269,
+        "ms_per_seq": 2.6959,
+        "p90_ms_per_batch": 99.199,
+        "p99_ms_per_batch": 118.06,
+        "throughput_seqs_per_s": 370.9
+      },
+      "Flat": {
+        "delta_mean_vs_normal_pct": 2.05,
+        "mean_ci95_ms": [
+          84.169,
+          92.123
+        ],
+        "mean_ms_per_batch": 87.895,
+        "ms_per_seq": 2.7467,
+        "p90_ms_per_batch": 96.113,
+        "p99_ms_per_batch": 105.037,
+        "throughput_seqs_per_s": 364.1
+      },
+      "Normal": {
+        "delta_mean_vs_normal_pct": 0.0,
+        "mean_ci95_ms": [
+          82.461,
+          90.187
+        ],
+        "mean_ms_per_batch": 86.129,
+        "ms_per_seq": 2.6915,
+        "p90_ms_per_batch": 98.945,
+        "p99_ms_per_batch": 100.512,
+        "throughput_seqs_per_s": 371.5
+      }
+    },
+    "64": {
+      "DRRA": {
+        "delta_mean_vs_normal_pct": -6.11,
+        "mean_ci95_ms": [
+          150.227,
+          184.856
+        ],
+        "mean_ms_per_batch": 167.288,
+        "ms_per_seq": 2.6139,
+        "p90_ms_per_batch": 211.138,
+        "p99_ms_per_batch": 232.674,
+        "throughput_seqs_per_s": 382.6
+      },
+      "Flat": {
+        "delta_mean_vs_normal_pct": 0.44,
+        "mean_ci95_ms": [
+          160.921,
+          198.733
+        ],
+        "mean_ms_per_batch": 178.962,
+        "ms_per_seq": 2.7963,
+        "p90_ms_per_batch": 236.216,
+        "p99_ms_per_batch": 259.458,
+        "throughput_seqs_per_s": 357.6
+      },
+      "Normal": {
+        "delta_mean_vs_normal_pct": 0.0,
+        "mean_ci95_ms": [
+          161.594,
+          195.579
+        ],
+        "mean_ms_per_batch": 178.176,
+        "ms_per_seq": 2.784,
+        "p90_ms_per_batch": 221.326,
+        "p99_ms_per_batch": 245.743,
+        "throughput_seqs_per_s": 359.2
+      }
+    },
+    "8": {
+      "DRRA": {
+        "delta_mean_vs_normal_pct": -1.76,
+        "mean_ci95_ms": [
+          21.143,
+          22.875
+        ],
+        "mean_ms_per_batch": 22.031,
+        "ms_per_seq": 2.7538,
+        "p90_ms_per_batch": 24.176,
+        "p99_ms_per_batch": 24.699,
+        "throughput_seqs_per_s": 363.1
+      },
+      "Flat": {
+        "delta_mean_vs_normal_pct": 3.93,
+        "mean_ci95_ms": [
+          22.587,
+          23.977
+        ],
+        "mean_ms_per_batch": 23.308,
+        "ms_per_seq": 2.9134,
+        "p90_ms_per_batch": 24.748,
+        "p99_ms_per_batch": 25.689,
+        "throughput_seqs_per_s": 343.2
+      },
+      "Normal": {
+        "delta_mean_vs_normal_pct": 0.0,
+        "mean_ci95_ms": [
+          21.535,
+          23.382
+        ],
+        "mean_ms_per_batch": 22.426,
+        "ms_per_seq": 2.8032,
+        "p90_ms_per_batch": 24.99,
+        "p99_ms_per_batch": 26.318,
+        "throughput_seqs_per_s": 356.7
+      }
+    }
+  },
+  "machine": {
+    "torch": "2.6.0"
+  },
+  "task": {
+    "F": 7,
+    "H": 96,
+    "L": 256,
+    "threads": 8
+  }
+}

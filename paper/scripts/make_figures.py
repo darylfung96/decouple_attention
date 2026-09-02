@@ -5,6 +5,7 @@ Reads:
   plan/gates/gate2/gate2_results.jsonl        (20 factorial runs)
   plan/gates/baseline/baseline_normal_results.jsonl  (5 Normal baseline runs)
   plan/gates/gate2/gate2_learning_curves.png  (copied, not regenerated)
+  plan/gates/gate3/results/*.jsonl            (180 cross-dataset runs)
 
 Writes into ../figures/:
   fig1_factorial_val.{pdf,png}   factorial cell means + std + seed points
@@ -12,6 +13,7 @@ Writes into ../figures/:
   fig3_per_seed.{pdf,png}        per-seed parallel coordinates
   fig4_learning_curves.png       copy of the audited learning-curve plot
   fig5_architecture.{pdf,png}    architecture schematic
+  fig6_dataset_coverage.{pdf,png}  per-dataset Delta-val vs Normal (Gate 3)
 
 Every number in the paper's figures is derived here from the audited JSONL
 manifests (source of truth), and the script prints verification lines
@@ -44,6 +46,7 @@ FIG_DIR = PAPER_DIR / "figures"
 GATE2_JSONL = PLAN_DIR / "gates" / "gate2" / "gate2_results.jsonl"
 NORMAL_JSONL = PLAN_DIR / "gates" / "baseline" / "baseline_normal_results.jsonl"
 LEARNING_CURVES = PLAN_DIR / "gates" / "gate2" / "gate2_learning_curves.png"
+GATE3_DIR = PLAN_DIR / "gates" / "gate3" / "results"
 
 # ---------------------------------------------------------------------------
 # Style
@@ -217,42 +220,7 @@ fig.savefig(FIG_DIR / "fig2_main_effects.png")
 plt.close(fig)
 
 # ---------------------------------------------------------------------------
-# Figure 3: per-seed parallel coordinates
-# ---------------------------------------------------------------------------
-fig, ax = plt.subplots(figsize=(6.5, 2.9))
-configs = ["Normal", "(4,4)", "(8,4)", "(4,8)", "(8,8)"]
-seed_color = [C["blue"], C["orange"], C["green"], C["red"], C["purple"]]
-seeds = [42, 123, 2024, 7, 99]
-normal_by_seed = {r["seed"]: r["val_mse"] for r in normal}
-series = {s: [normal_by_seed[s]] for s in seeds}
-for cell in CELLS:
-    for r in by_cell[cell]:
-        series[r["seed"]].append(r["val_mse"])
-xpos = np.arange(len(configs))
-for k, s in enumerate(seeds):
-    ax.plot(xpos, series[s], marker="o", markersize=3.5, linewidth=1.1,
-            color=seed_color[k], label=f"seed {s}", alpha=0.9)
-ax.set_xticks(xpos)
-ax.set_xticklabels(configs)
-ax.set_ylabel("Validation MSE (standardized)")
-ax.legend(loc="upper right", ncol=5, frameon=False, fontsize=7.5)
-ax.set_ylim(0.45, 1.1)
-fig.tight_layout()
-fig.savefig(FIG_DIR / "fig3_per_seed.pdf")
-fig.savefig(FIG_DIR / "fig3_per_seed.png")
-plt.close(fig)
-
-# ---------------------------------------------------------------------------
-# Figure 4: learning curves (copied from the audited artifact)
-# ---------------------------------------------------------------------------
-if LEARNING_CURVES.exists():
-    shutil.copy(LEARNING_CURVES, FIG_DIR / "fig4_learning_curves.png")
-    print("fig4_learning_curves.png copied from plan/gates/gate2/gate2_learning_curves.png")
-else:
-    print("WARNING: plan/gates/gate2/gate2_learning_curves.png not found; fig4 skipped")
-
-# ---------------------------------------------------------------------------
-# Figure 5: architecture schematic (matplotlib drawing, no data)
+# Figure 4 (formerly 5): architecture schematic (matplotlib drawing, no data)
 # ---------------------------------------------------------------------------
 fig, ax = plt.subplots(figsize=(6.5, 2.9))
 ax.set_xlim(0, 10)
@@ -277,7 +245,7 @@ def arrow(x1, y1, x2, y2, color="#555555", lw=1.1):
 # main spine: input -> block -> attention -> O -> horizon head
 box(0.2, 2.6, 1.7, 0.9, "Input\n$[B, 256, 7]$", HILITE)
 box(2.6, 2.6, 1.9, 0.9, "Shared block\ninput proj + pos\n(hidden 128)", BRANCH)
-box(7.3, 2.6, 2.5, 0.9, "Dense masked attention\n32 KV blocks + 16 win\n+ sink = 48 cols", HILITE)
+box(7.3, 2.6, 2.5, 0.9, "Dense masked attention\n32 KV blocks + 16 win\n(+1 sink) = 48+1 cols", HILITE)
 box(7.3, 0.7, 2.5, 0.9, "Horizon head\n$[B, 96, 7]$", BRANCH)
 
 # compressors
@@ -299,5 +267,188 @@ fig.tight_layout()
 fig.savefig(FIG_DIR / "fig5_architecture.pdf")
 fig.savefig(FIG_DIR / "fig5_architecture.png")
 plt.close(fig)
+
+# ---------------------------------------------------------------------------
+# Figure 6: cross-dataset coverage (Gate 3) — Delta-val vs Normal per dataset
+# ---------------------------------------------------------------------------
+DATASET_ORDER = ["etth1", "etth2", "ettm1", "ettm2", "electricity", "traffic",
+                 "weather", "exchange", "solar",
+                 "syn_sinusoids", "syn_changepoints", "syn_delayedcopy"]
+SEEDS = [42, 123, 2024, 7, 99]
+VARIANTS = ["Normal", "Flat", "DRRA"]
+
+gate3 = {}
+for ds in DATASET_ORDER:
+    rows = load_jsonl(GATE3_DIR / f"{ds}.jsonl")
+    gate3[ds] = {(r["variant"], r["seed"]): r["val_mse"] for r in rows}
+
+
+def g3_mean(variant):
+    return np.array([np.mean([gate3[ds][(variant, s)] for s in SEEDS])
+                     for ds in DATASET_ORDER], dtype=float)
+
+
+normal_mean = g3_mean("Normal")
+flat_delta = (g3_mean("Flat") / normal_mean - 1.0) * 100.0
+drra_delta = (g3_mean("DRRA") / normal_mean - 1.0) * 100.0
+n_flat_wins = int(np.sum(flat_delta < 0))
+n_drra_wins = int(np.sum(drra_delta < 0))
+print(f"cross-dataset: DRRA beats Normal on mean val {n_drra_wins}/12, "
+      f"Flat {n_flat_wins}/12   [expect 8/12, 7/12]")
+
+fig, ax = plt.subplots(figsize=(6.5, 2.9))
+x = np.arange(len(DATASET_ORDER))
+w = 0.38
+ax.bar(x - w / 2, flat_delta, width=w, color=C["orange"], alpha=0.85, label="CSA $(4,4)$")
+ax.bar(x + w / 2, drra_delta, width=w, color=C["blue"], alpha=0.85, label="DRRA $(8,4)$")
+ax.axhline(0.0, color="black", linewidth=0.8)
+labels = ["ETTh1", "ETTh2", "ETTm1", "ETTm2", "Elec", "Traffic", "Weather",
+          "Exchange", "Solar", "syn-sin", "syn-cp", "syn-dc"]
+ax.set_xticks(x)
+ax.set_xticklabels(labels, rotation=40, ha="right", fontsize=7.5)
+ax.set_ylabel(r"$\Delta$val vs.\ Normal (\%)")
+ax.set_ylim(-52, 12)
+ax.legend(loc="lower left", frameon=False, fontsize=7.5)
+fig.tight_layout()
+fig.savefig(FIG_DIR / "fig6_dataset_coverage.pdf")
+fig.savefig(FIG_DIR / "fig6_dataset_coverage.png")
+plt.close(fig)
+
+# ---------------------------------------------------------------------------
+# Figure 5: batch-size scaling of forward latency (Gate 3 companion)
+# Single panel: mean ms per sequence vs batch size.
+# ---------------------------------------------------------------------------
+LATENCY_SCALE = PLAN_DIR / "gates" / "gate3" / "gate3_latency_scale.json"
+if LATENCY_SCALE.exists():
+    import json as _json
+    scale = _json.load(open(LATENCY_SCALE))
+    Bs = sorted(int(k) for k in scale["batches"])
+    fig, ax = plt.subplots(figsize=(6.5, 2.7))
+    style = {"Normal": C["red"], "Flat": C["orange"], "DRRA": C["blue"]}
+    for variant, color in style.items():
+        seq = [scale["batches"][str(B)][variant]["ms_per_seq"] for B in Bs]
+        ax.plot(Bs, seq, marker="o", markersize=3.5, linewidth=1.1, color=color,
+                label={"Flat": "CSA $(4,4)$", "DRRA": "DRRA $(8,4)$",
+                          "Normal": "Normal"}[variant])
+    ax.set_xscale("log")
+    ax.set_xticks(Bs)
+    ax.set_xticklabels([str(B) for B in Bs], fontsize=7.5)
+    ax.set_xlabel("Batch size (windows per forward pass)")
+    ax.set_ylabel("Mean latency (ms per sequence)")
+    ax.legend(frameon=False, fontsize=8)
+    fig.tight_layout()
+    fig.savefig(FIG_DIR / "fig7_latency_scale.pdf")
+    fig.savefig(FIG_DIR / "fig7_latency_scale.png")
+    plt.close(fig)
+    b1 = scale["batches"]["1"]
+    b256 = scale["batches"]["256"]
+    print(f"latency scaling: at B=1, DRRA "
+          f"{b1['DRRA']['delta_mean_vs_normal_pct']:+.1f}% vs Normal; at B=256, "
+          f"DRRA {b256['DRRA']['delta_mean_vs_normal_pct']:+.1f}% (mean "
+          f"{b256['DRRA']['mean_ms_per_batch']:.0f} vs "
+          f"{b256['Normal']['mean_ms_per_batch']:.0f} ms/batch)")
+else:
+    print("WARNING: gate3_latency_scale.json not found; fig7 skipped")
+
+
+# ---------------------------------------------------------------------------
+# Figure 5: sequence-length scaling of forward latency (Gate 5)
+# ---------------------------------------------------------------------------
+GATE5_RESULTS = PLAN_DIR / "gates" / "gate5" / "gate5_results.json"
+if GATE5_RESULTS.exists():
+    import json as _json
+    g5 = _json.load(open(GATE5_RESULTS))
+    for B in ("1", "32"):
+        if B not in g5.get("l_scale", {}):
+            continue
+        lat = g5["l_scale"][B]["latency"]
+        Ls = sorted(int(k) for k in lat
+                       if all(v in lat[k] for v in ("Normal", "Flat", "DRRA")))
+        fig, ax = plt.subplots(figsize=(6.5, 2.6))
+        style = {"Normal": C["red"], "Flat": C["orange"], "DRRA": C["blue"]}
+        for variant, color in style.items():
+            ms = [lat[str(L)][variant]["mean_ms_per_batch"] for L in Ls]
+            ax.plot(Ls, ms, marker="o", markersize=3.5, linewidth=1.1,
+                    color=color,
+                    label={"Flat": "CSA $(4,4)$", "DRRA": "DRRA $(8,4)$",
+                           "Normal": "Normal"}[variant])
+        ax.set_xscale("log")
+        ax.set_yscale("log")
+        ax.set_xticks(Ls)
+        ax.set_xticklabels([str(L) for L in Ls], fontsize=7.5)
+        ax.set_xlabel("Sequence length $L$ (lookback)")
+        ax.set_ylabel("Mean latency (ms per batch)")
+        slope = g5["l_scale"][B]["loglog_slope"]
+        ax.set_title(f"batch {B}; log-log slopes (L$\\geq$512): " +
+                     ", ".join(f"{v} {s:.2f}" for v, s in slope.items()),
+                     fontsize=7.5)
+        ax.legend(frameon=False, fontsize=8)
+        fig.tight_layout()
+        suffix = "" if B == "32" else f"_b{B}"
+        fig.savefig(FIG_DIR / f"fig8_lscale{suffix}.pdf")
+        fig.savefig(FIG_DIR / f"fig8_lscale{suffix}.png")
+        plt.close(fig)
+        sl = g5["l_scale"][B]["loglog_slope"]
+        print(f"l-scale B={B}: slopes " +
+              "  ".join(f"{v} {sl[v]:.2f}" for v in sl) +
+              "   [expect ~2: router is O(L^2/c_R)]")
+else:
+    print("WARNING: gate5_results.json not found; fig8 skipped")
+
+
+# ---------------------------------------------------------------------------
+# Figure 6: performance (ETTh1 mean test loss) vs speed (mean latency);
+# up/right = better; axes zoomed to the measured range; means only (no CIs)
+# ---------------------------------------------------------------------------
+GATE3_RES = REPO_DIR / "plan" / "gates" / "gate3" / "results"
+LAT_JSON = PLAN_DIR / "gates" / "gate3" / "gate3_latency.json"
+LAT_SCALE = PLAN_DIR / "gates" / "gate3" / "gate3_latency_scale.json"
+if GATE3_RES.exists() and LAT_JSON.exists() and LAT_SCALE.exists():
+    import json as _json
+    SEEDS = [42, 123, 2024, 7, 99]
+
+    # Loss on ETTh1 only: the frozen-task benchmark dataset, whose
+    # standardized scale is shared by all three models (per-dataset losses
+    # across the suite are NOT comparable and are deliberately not averaged).
+    rows = [json.loads(l) for l in open(GATE3_RES / "etth1.jsonl")]
+    loss = {v: float(np.mean([r["test_mse"] for r in rows
+                              if r["variant"] == v and r["seed"] in SEEDS]))
+            for v in ("Normal", "Flat", "DRRA")}
+
+    lat = _json.load(open(LAT_JSON))["models"]
+    scale = _json.load(open(LAT_SCALE))["batches"]
+    lat32 = {v: lat[v]["mean_ms"] for v in lat}
+    lat256 = {v: scale["256"][v]["mean_ms_per_batch"] for v in lat}
+
+    style = {"Normal": C["red"], "Flat": C["orange"], "DRRA": C["blue"]}
+    labels = {"Normal": "Normal", "Flat": "CSA $(4,4)$", "DRRA": "DRRA $(8,4)$"}
+    ylim = (min(loss.values()) - 0.03, max(loss.values()) + 0.03)
+    fig, axes = plt.subplots(1, 2, figsize=(6.5, 3.2))
+    for ax, (B, xs, xlim) in zip(
+            axes, (("32", lat32, (46.5, 55.5)),
+                   ("256", lat256, (800.0, 1220.0)))):
+        for v in ("Normal", "Flat", "DRRA"):
+            ax.scatter(xs[v], loss[v], s=70, color=style[v], zorder=3)
+            ax.annotate(labels[v], (xs[v], loss[v]),
+                        textcoords="offset points", xytext=(8, -6), fontsize=8)
+        ax.axhline(loss["Normal"], color="#999999", linewidth=0.6,
+                   linestyle="--")
+        ax.set_xlabel("Speed — mean forward latency (ms)" +
+                      ("" if B == "32" else "  @ batch 256"))
+        ax.set_ylabel("Performance — mean test loss on ETTh1")
+        ax.set_title("batch %s" % B, fontsize=8)
+        ax.set_xlim(*xlim)
+        ax.set_ylim(*ylim)
+        # Neither axis inverted: lower loss = down, lower latency = left
+        # (best model = lower-left)
+    fig.tight_layout()
+    fig.savefig(FIG_DIR / "fig9_perf_speed.pdf")
+    fig.savefig(FIG_DIR / "fig9_perf_speed.png")
+    plt.close(fig)
+    print("perf-speed: ETTh1 test-loss", {v: round(x, 4) for v, x in loss.items()},
+          "| lat32", {v: round(x, 2) for v, x in lat32.items()},
+          "| lat256", {v: round(x, 1) for v, x in lat256.items()})
+else:
+    print("WARNING: gate3 results/latency JSONs not found; fig9 skipped")
 
 print("All figures written to", FIG_DIR)

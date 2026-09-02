@@ -4,10 +4,10 @@
 \subsection{The decoupling insight (directional)}
 The cleanest reading of the factorial is that the two axes play different
 roles: \emph{routing granularity carries accuracy; KV content density only
-buys efficiency}. The control logic is internal to the design: the $(8,4)$
+buys efficiency}. The control logic is internal to the design: the DRRA $(8,4)$
 cell (coarse content, fine router) matches or beats the equal-rate cells
 with half the attention columns, while the $(4,8)$ cell (fine content,
-coarse router) is the worst cell despite having the same columns as $(4,4)$.
+coarse router) is the worst cell despite having the same columns as CSA $(4,4)$.
 The per-seed consistency (7/10 in the same direction for each effect) and
 the effect-size-to-seed-noise comparison (both effects ${\sim}0.04$ vs.\
 within-cell std ${\sim}0.065$) mean we currently report this as a
@@ -21,31 +21,64 @@ outcome, and we explicitly do not claim one. Candidate (unverified)
 explanations include: compression acting as an inductive-bias regularizer;
 the block structure effectively smoothing the attention field over
 multi-step correlations; and the fixed 10-epoch budget interacting with
-optimization landscape differences. Each is testable, and the
-pre-registered hypothesis program in the project plan is designed to
-separate them \todo{H1--H5 status per plan/paper\_notes.md \S 5; mechanistic
-analyses are pending}.
+optimization landscape differences. The cross-dataset pattern
+(Section~\ref{sec:rq3}) is broadly consistent with the regularization
+reading---compression helps most where adjacent timesteps are most
+redundant (ETT family, solar, electricity) and slightly hurts on tasks
+requiring exact in-window recall (the synthetic probes)---but it remains
+descriptive evidence, not a verified mechanism. The pre-registered
+hypothesis program (H1 is defined in Section~\ref{sec:rq1}) is designed to
+separate the candidates, and its current status is:
+\textbf{H1} (coarsening the router deteriorates accuracy more than
+coarsening KV compression) directionally supported in the factorial;
+\textbf{H2} (the dual-rate champion Pareto-dominates the equal-rate
+cells---the KV coarsening buys efficiency at no accuracy cost---at
+comparable or lower latency), whose latency leg is supported by the systems
+measurements and whose accuracy leg is directional (8/12 datasets);
+\textbf{H3} (dense masked attention wins in small-work regimes but loses in
+large-work regimes), whose crossover shape is observed on a single machine;
+\textbf{H4} (the compression advantage depends on signal properties such as
+smoothness and redundancy), consistent with the cross-dataset pattern; and
+\textbf{H5} (a distilled surrogate can replace attention at inference
+without an accuracy loss), which is out of scope for this paper---deferred
+to a separate publication (Appendix~\ref{sec:appendix-surrogate}). The
+mechanistic analyses that
+would separate the explanations (routing recall, lag localisation) remain
+future work.
 
 \subsection{Limitations}
 \label{sec:limitations}
 \begin{itemize}
-  \item \textbf{Single dataset.} All results are on ETTh1 (7 features, the
-        smallest of the ETT family) at CPU-scale model sizes. No
-        cross-dataset or cross-scale generalization claim is made.
-        \todo{Gate 3: ETTh2/ETTm1/ETTm2, Electricity, Traffic, Weather,
-        Exchange; horizons $\{96, 192, 336, 720\}$}.
-  \item \textbf{Descriptive statistics.} Five paired seeds; no significance
-        tests, confidence intervals beyond the reported std, or equivalence
-        tests. ``Best on mean'' and ``directional'' are used advisedly.
+  \item \textbf{Dataset breadth, not universality.} The full factorial is
+        single-dataset (ETTh1); the three-way comparison spans twelve
+        datasets, where the compressed advantage is signal-dependent
+        (Section~\ref{sec:rq3}): wins on the ETT family, solar, and
+        electricity; small losses on the synthetic probes, exchange-rate
+        validation, and weather test error. No cross-scale claim is made
+        (CPU-scale models only), and horizons beyond $H{=}96$ with lookbacks
+        beyond $L{=}256$ are not yet evaluated.
+  \item \textbf{Descriptive statistics.} Five paired seeds; per-dataset
+        paired tests cannot reach significance at this sample size
+        (two-sided floor $p = 0.0625$) and nothing survives Holm correction
+        (Section~\ref{sec:stats}); ``best on mean'' and ``directional'' are
+        used advisedly. No equivalence tests are run because no equivalence
+        claims are made.
   \item \textbf{No external baselines.} Comparisons are internal to the
         family plus the full-attention same-backbone baseline; PatchTST,
         iTransformer, DLinear, Informer, and linear/SSM baselines under the
-        same protocol are pending \todo{Gate 3 baselines}.
-  \item \textbf{No latency or hardware results} for the frozen protocol;
-        complexity claims are structural only \todo{Gate 5}.
+        same protocol are pending (Appendix roadmap item~3).
+  \item \textbf{Single-machine systems measurements.} Forward latency
+        (batch and lookback scaling), MACs, memory, and training time are
+        measured on the development machine (Table~\ref{tab:speed},
+        Figure~\ref{fig:latency-scale} and~\ref{fig:lscale}). Cross-hardware
+        results (Linux x86, GPU) and depth/width ablations are conscious
+        scope exclusions, deferred to future work.
   \item \textbf{Non-IID samples.} Stride-1 windows overlap heavily; samples
-        are not independent, which standard significance tests would
-        assume \todo{Gate 4: block bootstrap / HAC-robust tests}.
+        are not independent, which standard per-window significance tests
+        would assume. Our paired tests are at the seed level (five
+        independent runs), where the overlap does not invalidate them;
+        block-bootstrap or HAC-robust corrections are deferred until
+        per-window statistics are used (Section~\ref{sec:stats}).
   \item \textbf{Fixed budget, single checkpoint policy.} 10 epochs,
         epoch-10 weights; no early stopping or best-validation selection.
   \item \textbf{CPU-only, fp32, small models.} Dense-with-masking

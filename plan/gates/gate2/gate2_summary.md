@@ -1,5 +1,7 @@
 # Gate 2 Factorial Summary
 
+> **Interpretation (why (8,4) won, mechanism reading, c_R=16 discussion): `plan/gates/gate2/gate2_interpretation.md`** — living doc; update when Gate 3 / Gate 4 results land.
+
 2x2 factorial sweep over (c_KV, c_R) ∈ {(4,4), (8,4), (4,8), (8,8)} × 5 seeds {42, 123, 2024, 7, 99} = 20 runs. Direct 96-step long-horizon forecasting, pooled MSE in standardized units. Lower is better.
 
 ## Data integrity

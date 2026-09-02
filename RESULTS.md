@@ -228,3 +228,26 @@ Note: main-model Params = attention params, full model in parentheses (verified 
 Both compressed variants beat Normal on val in 5/5 seeds (per-seed); DRRA vs CSA: DRRA larger per-seed advantage in 3/5 seeds (42, 123, 7), CSA at 2024, 99.
 
 **Caveats** (from `plan/gates/baseline/baseline_normal_summary.md`): single dataset ETTh1 at CPU-scale, small model — no cross-dataset generalization claim; params NOT equalized across rows — Normal 355,200 / (4,4) 348,100 / (8,4) 348,356 full; no significance test run — descriptive only; NormalAttention wiring sanity re-verification completed 2026-08-14 (bit-identical to naive causal reference; see plan/gates/baseline/normal_sanity_check.md + plan/gates/baseline/check_normal_wiring.py).
+
+---
+
+## Dataset Coverage (Gate 3)
+
+12 datasets × 3 variants (Normal / Flat=(4,4) / DRRA=(8,4)) × 5 paired seeds {42,123,2024,7,99} under the frozen direct-96 task (L=256, H=96, train-only z-score, pooled MSE, standardized units). Models as rows, datasets as columns; bold = best per dataset column (val rows among val rows, test rows among test rows). Descriptive statistics only; significance tests are Gate 4. Full per-seed tables + integrity audit: `plan/gates/gate3/gate3_summary.md`.
+
+| Model | ETTh1 | ETTh2 | ETTm1 | ETTm2 | Electricity | Traffic | Weather | Exchange | Solar | syn-sinusoids | syn-changepts | syn-delayedcopy |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Normal val | 0.8416 ± 0.0799 | 1.9187 ± 0.6246 | 0.4285 ± 0.0187 | 1.5618 ± 0.6006 | 0.4047 ± 0.0310 | 0.5994 ± 0.0090 | 0.4460 ± 0.0121 | **2.9800 ± 0.1417** | 0.1899 ± 0.0054 | **0.1227 ± 0.0008** | **5.9456 ± 0.0706** | **0.2888 ± 0.0001** |
+| Flat val | 0.6332 ± 0.0611 | **1.3624 ± 0.3341** | 0.3965 ± 0.0110 | 0.9964 ± 0.0753 | **0.3798 ± 0.0097** | **0.5838 ± 0.0097** | 0.4469 ± 0.0094 | 3.1166 ± 0.2802 | **0.1721 ± 0.0052** | 0.1264 ± 0.0008 | 5.9677 ± 0.0844 | 0.2894 ± 0.0002 |
+| DRRA val | **0.5967 ± 0.0710** | 1.8080 ± 0.6832 | **0.3832 ± 0.0236** | **0.8053 ± 0.1929** | 0.3808 ± 0.0130 | 0.5874 ± 0.0098 | **0.4424 ± 0.0063** | 3.2350 ± 0.5234 | 0.1722 ± 0.0110 | 0.1264 ± 0.0015 | 6.0013 ± 0.0848 | 0.2894 ± 0.0003 |
+| Δval (4,4) vs Normal | -24.77% | -28.99% | -7.46% | -36.20% | -6.17% | -2.61% | +0.20% | +4.58% | -9.35% | +3.04% | +0.37% | +0.20% |
+| Δval (8,4) vs Normal | -29.10% | -5.77% | -10.58% | -48.44% | -5.92% | -2.01% | -0.80% | +8.56% | -9.29% | +3.05% | +0.94% | +0.21% |
+| Normal test | 1.0814 ± 0.1106 | 0.4783 ± 0.1128 | 0.6853 ± 0.0401 | 0.3114 ± 0.0634 | 0.4048 ± 0.0098 | 0.8287 ± 0.0076 | **0.1683 ± 0.0038** | 2.1510 ± 0.0674 | 0.2160 ± 0.0048 | **0.1239 ± 0.0007** | **11.9788 ± 0.1556** | **0.3005 ± 0.0001** |
+| Flat test | 0.9079 ± 0.0557 | **0.3607 ± 0.0872** | 0.6112 ± 0.0123 | 0.2969 ± 0.0452 | **0.3813 ± 0.0098** | 0.8119 ± 0.0073 | 0.1923 ± 0.0054 | 2.0490 ± 0.1050 | 0.2199 ± 0.0088 | 0.1276 ± 0.0008 | 12.0199 ± 0.1009 | 0.3011 ± 0.0002 |
+| DRRA test | **0.7988 ± 0.0506** | 0.3900 ± 0.0991 | **0.6002 ± 0.0382** | **0.2591 ± 0.0103** | 0.3887 ± 0.0095 | **0.8074 ± 0.0111** | 0.1783 ± 0.0035 | **1.9900 ± 0.1273** | **0.1951 ± 0.0121** | 0.1277 ± 0.0014 | 12.0560 ± 0.1162 | 0.3011 ± 0.0002 |
+| Δtest (4,4) vs Normal | -16.04% | -24.59% | -10.81% | -4.65% | -5.81% | -2.04% | +14.21% | -4.74% | +1.82% | +2.95% | +0.34% | +0.19% |
+| Δtest (8,4) vs Normal | -26.13% | -18.46% | -12.41% | -16.78% | -3.98% | -2.57% | +5.89% | -7.48% | -9.65% | +3.01% | +0.64% | +0.19% |
+
+**Cross-dataset:** DRRA (8,4) beats Normal on mean val in **8/12** datasets; Flat (4,4) in **7/12**; complete row sets **12/12**.
+
+*Caveats: standardized units; params not re-equalized across variants (~2% attn-param spread); threads=8 sequential; 10-epoch fixed budget; ETTh1 rows are new runs of the frozen task (bit-identical to the baseline gate's Normal rows and Gate-2 cells).*

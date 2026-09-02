@@ -1,0 +1,27 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.venv-gate6/
+*.egg-info/
+
+# Gate-6 scratch (raw logs stay; large intermediates excluded)
+plan/gates/gate6_baselines/__pycache__/
+
+# Large raw data caches are re-downloadable via gate3_datasets.py
+# (sha256 manifest in plan/gates/gate3/data/data_manifest.json)
+plan/gates/gate3/data/raw_*
+plan/gates/gate3/data/*.csv
+
+# Build intermediates
+paper/tectonic
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz

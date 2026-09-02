@@ -1,25 +1,31 @@
 \begin{abstract}
 Long-horizon time-series forecasting with Transformers is dominated by the
 cost of quadratic attention over long lookback windows. Compressed-and-indexed
-attention---mechanisms that compress the key/value (KV) stream and route each
-query to a small set of compressed blocks---promises to reduce this cost, but
-its design space is rarely studied systematically. We treat this family as a
-two-axis design problem: the KV compression rate $c_{KV}$ and the routing
-resolution $c_R$. On the ETTh1 dataset under a frozen direct-96-step
-forecasting protocol, we evaluate all four combinations of
-$c_{KV}, c_R \in \{4{:}1, 8{:}1\}$ in a controlled, parameter-equalized $2
-\times 2$ factorial design with five paired seeds. We report three findings.
-First, \emph{every} compressed configuration outperforms full causal
-attention on validation MSE ($-18.5\%$ to $-29.1\%$, and in 20/20 paired
-seed comparisons) at an equal or slightly smaller parameter count; a
-bit-exact wiring audit confirms the full-attention baseline is correctly
-implemented. Second, coarsening the router ($c_R$: $4{:}1 \rightarrow 8{:}1$)
+attention---compressing the key/value (KV) stream and routing each query to a
+few compressed blocks---reduces this cost, but its design space is rarely
+studied systematically. We treat the family as a two-axis design problem: the
+KV compression rate $c_{KV}$ and the routing resolution $c_R$. Under a frozen
+direct-96-step forecasting protocol with five paired seeds, we run a
+parameter-equalized $2\times2$ factorial on ETTh1 and a three-way
+comparison---full attention, the equal-rate CSA configuration $(4,4)$ (the
+design point of DeepSeek-V4's Compressed Sparse Attention), and the dual-rate
+champion DRRA $(8,4)$---across twelve datasets spanning the ETT family, large
+multivariate series, different dynamics, and mechanistic synthetic probes. We
+report four findings. First, on ETTh1 \emph{every} compressed configuration
+outperforms full causal attention on validation MSE ($-18.5\%$ to $-29.1\%$,
+in 20/20 paired seed comparisons) at an equal or slightly smaller parameter
+count; a bit-exact wiring audit confirms the baseline is correctly
+implemented. Second, coarsening the router ($c_R{:}4{:}1 \to 8{:}1$)
 systematically deteriorates accuracy ($+0.046$ validation MSE), while
-coarsening KV compression ($c_{KV}$: $4{:}1 \rightarrow 8{:}1$) is mildly
-beneficial ($-0.043$): directional evidence that routing granularity, not KV
-content density, carries accuracy. Third, the best cell $(c_{KV}{=}8, c_R{=}4)$
-reduces the attention matrix to 48 columns versus 256 for full attention
-(5.3$\times$) at a matching parameter count. All statistics are descriptive
-(five seeds; no significance tests); multi-dataset, significance, and
-latency evaluations are ongoing work.
+coarsening KV compression is mildly beneficial ($-0.043$): directional
+evidence that routing granularity, not KV content density, carries accuracy.
+Third, the best cell DRRA $(8,4)$ reduces the attention matrix to 48 columns
+versus 256 (5.3$\times$) at a matching parameter count. Fourth, the advantage
+is \emph{signal-dependent}: 8/12 datasets (DRRA) and 7/12 (CSA), concentrated
+on smooth, redundant real-world series, with slight losses on the synthetic
+exact-recall probes. All statistics are descriptive (five seeds; per-dataset
+paired tests cannot reach significance---two-sided floor $p=0.0625$---and
+cross-dataset sign tests are not significant); significance testing at higher
+power is ongoing work, and latency is reported for the development machine
+only.
 \end{abstract}

@@ -1,0 +1,53 @@
+{
+  "machine": {
+    "chip": "Apple M2",
+    "cores": "8",
+    "cpu": "arm",
+    "mem_bytes": "17179869184",
+    "platform": "macOS-14.6-arm64-arm-64bit",
+    "python": "3.11.12",
+    "threads": 8,
+    "torch": "2.6.0"
+  },
+  "models": {
+    "DRRA": {
+      "delta_mean_vs_normal_pct": -6.1,
+      "mean_ci95_ms": [
+        47.2199,
+        51.7175
+      ],
+      "mean_ms": 49.2895,
+      "p90_ms": 56.4808,
+      "p99_ms": 65.8664,
+      "passes_per_round": 30,
+      "rounds": 25,
+      "throughput_batches_per_s": 20.29
+    },
+    "Flat": {
+      "delta_mean_vs_normal_pct": -0.67,
+      "mean_ci95_ms": [
+        49.2443,
+        55.3504
+      ],
+      "mean_ms": 52.1412,
+      "p90_ms": 63.4939,
+      "p99_ms": 71.5225,
+      "passes_per_round": 30,
+      "rounds": 25,
+      "throughput_batches_per_s": 19.18
+    },
+    "Normal": {
+      "delta_mean_vs_normal_pct": 0.0,
+      "mean_ci95_ms": [
+        50.4485,
+        54.6771
+      ],
+      "mean_ms": 52.4905,
+      "p90_ms": 59.3587,
+      "p99_ms": 64.9641,
+      "passes_per_round": 30,
+      "rounds": 25,
+      "throughput_batches_per_s": 19.05
+    }
+  }
+}

@@ -3,24 +3,34 @@
 
 \subsection{Task and evaluation protocol (frozen)}
 \label{sec:task}
-All experiments use a single frozen task specification
-\todo{cite plan/gate1\_task.md}. The dataset is ETTh1 (Electricity
-Transformer Temperature, hourly; 7 features), split chronologically
-$60\%/20\%/20\%$ into train/validation/test with stride-1 sliding windows of
-length $L{=}256$ that never span a split boundary. Normalization is a
-per-feature z-score whose statistics are fit on the \emph{train} split only
-and applied to all splits (the earlier practice of fitting over the full
-series was a future-statistics leak and is fixed). The task is
-\emph{direct} 96-step forecasting: in one forward pass the model maps
-$x \in \mathbb{R}^{B \times 256 \times 7}$ to $\hat{y} \in \mathbb{R}^{B
-\times 96 \times 7}$, and the loss is the pooled MSE over all
-$(B, 96, 7)$ elements, reported in standardized units (lower is better).
+All experiments use a single frozen task specification---stated in full in
+this section and frozen before any post-Gate-1 run---applied to twelve
+datasets: the ETT family
+(ETTh1, ETTh2, ETTm1, ETTm2; 7 features, hourly and 15-minute)
+\citep{zhou2021informer}, the large multivariate sets Electricity (321
+channels), Traffic (862), and Weather (21) and the Exchange rates (8,
+daily), as benchmarked by \citet{wu2021autoformer} and redistributed by the
+Time-Series Library \citep{wu2023timesnet}, Solar-Energy (137, 10-minute)
+\citep{lai2018lstnet}, and three mechanistic synthetic families (controlled
+sinusoids,
+change points, and a delayed-copy task; 7 channels each) generated
+deterministically from fixed seeds (Appendix~\ref{sec:appendix-roadmap}).
+Each dataset is split chronologically $60\%/20\%/20\%$ into
+train/validation/test with stride-1 sliding windows of length $L{=}256$ that
+never span a split boundary. Normalization is a per-feature z-score whose
+statistics are fit on the \emph{train} split only and applied to all splits
+(the earlier practice of fitting over the full series was a future-statistics
+leak and is fixed); channels with zero training variance are normalized with
+unit scale. The task is \emph{direct} 96-step forecasting: in one forward
+pass the model maps $x \in \mathbb{R}^{B \times 256 \times F}$ to
+$\hat{y} \in \mathbb{R}^{B \times 96 \times F}$ ($F$ features per dataset),
+and the loss is the pooled MSE over all $(B, 96, F)$ elements, reported in
+standardized units (lower is better).
 No autoregressive decoding and no teacher forcing is used. Causality is
 enforced by construction and verified empirically: a future-invariance and
-exact-zero-future-gradient suite passes for every variant.
-\todo{note: windows overlap by 255/256 positions and are therefore not
-independent samples; this is a declared limitation, see
-Section~\ref{sec:limitations}.}
+exact-zero-future-gradient suite passes for every variant. Windows overlap
+by 255/256 positions and are therefore not independent samples; this is a
+declared limitation (Section~\ref{sec:limitations}).
 
 Training is identical for every configuration: AdamW ($\mathrm{lr}{=}10^{-4}$,
 weight decay $10^{-5}$), gradient clipping at norm 10, batch size 32, a
@@ -35,7 +45,7 @@ systematically, so the budget does not bias cell comparisons.
 \label{sec:family}
 All configurations share one minimal Transformer block (hidden size 128,
 4 heads, head dimension 32) with a horizon head
-$\mathrm{Linear}(128 \rightarrow 96 \cdot 7)$ applied to the last hidden
+$\mathrm{Linear}(128 \rightarrow 96 \cdot F)$ applied to the last hidden
 state:
 \begin{equation}
 x = \mathrm{input\_proj}(u) + \mathrm{pos\_embedding}, \qquad
@@ -49,10 +59,24 @@ RoPE applied to the last 8 of 32 dimensions, and a grouped O projection.
 A full causal attention variant (\emph{Normal}) with no compression serves
 as the task-appropriate baseline.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\linewidth]{figures/fig5_architecture.pdf}
+\caption{Architecture of the compressed-and-indexed family (champion DRRA
+$(8,4)$ drawn). One shared Transformer block whose only varying component is
+the attention module: a KV compressor ($c_{KV}{=}8$: 256 positions $\to$ 32
+blocks), a routing indexer ($c_R{=}4$: 64 index tokens) scored by the shared
+query with top-$k{=}16$ selection, and dense masked attention over the fixed
+column set (32 KV blocks + 16 window + 1 sink $= 49$ columns; Normal attends
+to all 256). The horizon head maps the last hidden state to the 96-step
+forecast.}
+\label{fig:arch}
+\end{figure}
+
 \subsection{The compressed-and-indexed attention family}
 \label{sec:family-mech}
-Each compressed configuration consists of three components, all inherited
-verbatim from the reference implementation:
+Each compressed configuration (Figure~\ref{fig:arch}) consists of three
+components, all inherited verbatim from the reference implementation:
 
 \textbf{Two-series compressor.} The $L$ positions are projected to double
 width and gated by a per-dimension softmax over $2m$ slots, so that every
@@ -83,7 +107,25 @@ implementation, and it keeps the softmax exact.
 The two axes are the KV compression rate $c_{KV} = m$ and the routing
 resolution $c_R = m_{idx}$. We evaluate the $2 \times 2$ factorial over
 $c_{KV}, c_R \in \{4{:}1, 8{:}1\}$, i.e.\ cells $(4,4)$, $(8,4)$, $(4,8)$,
-$(8,8)$. Table~\ref{tab:configs} lists the resulting geometry and
+$(8,8)$. The two corners that also appear in the cross-dataset study are
+referred to by name throughout:
+\begin{itemize}
+  \item \textbf{CSA} --- the equal-rate corner $(4,4)$, in which both axes
+        sit at $4{:}1$. We adopt the \emph{name} of DeepSeek-V4's Compressed
+        Sparse Attention \citep{deepseekv4_2026}, whose design point this
+        cell matches: KV compression at rate $m{=}4$ (the same value used
+        in DeepSeek-V4-Flash/Pro), routing/selection over entries at the
+        same $4{:}1$ granularity, and a local sliding-window branch. The
+        name marks the configuration, not an equivalence claim: we evaluate
+        our own implementation at $L{=}256$ scale (selection budget
+        $k{=}16$, window 16, versus their $k{\in}\{512, 1024\}$, window
+        128), not DeepSeek-V4's mechanism (Section~\ref{sec:related}).
+  \item \textbf{DRRA (Dual-Rate Routed Attention)} --- the dual-rate corner
+        $(8,4)$ (coarse content, fine routing), which gives the family its
+        working name and is the paper's champion configuration.
+\end{itemize}
+The remaining corners $(4,8)$ and $(8,8)$ appear only in the factorial.
+Table~\ref{tab:configs} lists the resulting geometry and
 parameter counts.
 
 \begin{table}[t]
@@ -93,7 +135,7 @@ parameter counts.
 and full model). All compressed cells share the auxiliary contract
 (window 16, top-$k$ 16, 4 heads, head dimension 32, hidden 128, shared-Q,
 $q$/$o$ ranks 64) and differ only in $(c_{KV}, c_R)$; the low-rank
-bottlenecks are equalized to within $0.27\%$ of the $(8,4)$ reference.
+bottlenecks are equalized to within $0.27\%$ of the DRRA $(8,4)$ reference.
 \emph{Softmax cols} $= C + W + 1$ sink. Normal attends to all 256 columns
 with no sink.}
 \label{tab:configs}
@@ -102,13 +144,27 @@ with no sink.}
 Config & $c_{KV}$ & $c_R$ & KV blocks $C$ & Index tokens $M$ & Softmax cols & Params (attn / full) \\
 \midrule
 Normal & --- & --- & --- & --- & 256 & 102{,}496 / 355{,}200 \\
-$(4,4)$ & 4 & 4 & 64 & 64 & 80 + 1 & 95{,}396 / 348{,}100 \\
-$(8,4)$ & 8 & 4 & 32 & 64 & 48 + 1 & 95{,}652 / 348{,}356 \\
+CSA $(4,4)$ & 4 & 4 & 64 & 64 & 80 + 1 & 95{,}396 / 348{,}100 \\
+DRRA $(8,4)$ & 8 & 4 & 32 & 64 & 48 + 1 & 95{,}652 / 348{,}356 \\
 $(4,8)$ & 4 & 8 & 64 & 32 & 80 + 1 & 95{,}652 / 348{,}356 \\
 $(8,8)$ & 8 & 8 & 32 & 32 & 48 + 1 & 95{,}908 / 348{,}612 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\textbf{Reading the table.} Normal is the uncompressed reference: it
+attends to all 256 columns and carries 102{,}496 attention parameters.
+Every compressed cell shares the identical auxiliary contract (window 16,
+top-$k$ 16, 4 heads, hidden 128, shared-Q, ranks 64) and differs only in
+the two rates. $c_{KV}{=}8$ halves the number of KV blocks (32 vs.\ 64) and
+thereby the softmax columns ($48{+}1$ vs.\ $80{+}1$, i.e.\ 5.3$\times$
+fewer than Normal); $c_R$ sets how many routing candidates the router
+selects from (64 for $c_R{=}4$, 32 for $c_R{=}8$) without changing the
+attention cost. All compressed cells carry slightly \emph{fewer} attention
+parameters than Normal ($-6.7\%$ to $-6.9\%$; the low-rank $q$/$o$
+bottlenecks replace dense projections), and full-model counts are
+${\sim}2\%$ below Normal's. The champion DRRA $(8,4)$ therefore combines the
+smallest attention geometry with the fine-router candidate count.
 
 \textbf{Parameter equalization.} The factorial is pre-registered with an
 auxiliary-identical contract: all cells share window, top-$k$, heads, hidden
@@ -123,9 +179,16 @@ $\le 0.074\%$), well inside the pre-registered $0.5\%$ tolerance.
 
 \textbf{Complexity.} Attention cost per query is proportional to the number
 of softmax columns: 256 for Normal, 80 for $c_{KV}{=}4$ cells, and 48 for
-$c_{KV}{=}8$ cells (5.3$\times$ fewer than Normal). Routing cost is
-$O(L \cdot M)$; with $c_R{=}4$, $M{=}64$ index tokens, identical to the
-$c_R{=}4$ cells regardless of $c_{KV}$. These are structural complexity
-facts; measured wall-clock latency is deferred to follow-up hardware
-benchmarking \todo{Gate 5: latency (p50/p90/p99, bootstrap CIs), FLOPs and
-memory accounting, cross-hardware (Apple Silicon + x86 CPU, GPU)}.
+$c_{KV}{=}8$ cells (5.3$\times$ fewer than Normal), giving
+$O(L \cdot \mathrm{cols} \cdot d)$ per sequence for the score/value
+computation. The router, however, compares every query against
+$M = L/c_R$ index tokens, $O(L \cdot M) = O(L^2/c_R)$: the total
+attention-path cost is therefore \emph{quadratic in $L$ with a reduced
+constant} ($1/c_R$ on the routing term), \emph{not} subquadratic. Routing
+cost is identical for the two $c_R{=}4$ cells regardless of $c_{KV}$. These
+are structural facts; measured mean latency, batch scaling, and empirical
+log-log slopes are reported in Section~\ref{sec:efficiency}
+(Tables~\ref{tab:speed}, Figure~\ref{fig:latency-scale}); FLOPs and memory
+accounting are reported there as well. Cross-hardware transfer and
+depth/width ablations are conscious scope exclusions of this study
+(single machine; single-block architecture), left to future work.

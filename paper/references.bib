@@ -133,3 +133,91 @@
 % citations are unverified (see plan/lit_audit.md and plan/paper_notes.md
 % section 6). BibTeX treats "%" as a comment only outside entries; do not
 % "comment out" entries with % lines, or BibTeX will still parse them.
+
+% ===========================================================================
+% Energy/carbon motivation -- added 2026-08-31 for the efficiency->energy
+% motivation in Section intro. Every entry verified against the arXiv API
+% on 2026-08-31 (title, authors, arXiv id, publish date); CACM entry also
+% verified via Crossref (10.1145/3381831); ACL entry via the ACL Anthology
+% (P19-1355). No entry is fabricated.
+% ===========================================================================
+
+@inproceedings{strubell2019energy,
+  title     = {Energy and Policy Considerations for Deep Learning in {NLP}},
+  author    = {Strubell, Emma and Ganesh, Ananya and McCallum, Andrew},
+  booktitle = {Proceedings of the 57th Annual Meeting of the Association for
+               Computational Linguistics},
+  address   = {Florence, Italy},
+  pages     = {3645--3650},
+  year      = {2019},
+  note      = {arXiv:1906.02243; DOI 10.18653/v1/P19-1355. Verified
+               2026-08-31 (arXiv API + ACL Anthology): title, authors,
+               published 2019-06-05.}
+}
+
+@article{patterson2021carbon,
+  title   = {Carbon Emissions and Large Neural Network Training},
+  author  = {Patterson, David and Gonzalez, Joseph and Le, Quoc and
+             Liang, Chen and Munguia, Lluis-Miquel and Rothchild, Daniel
+             and So, David and Texier, Maud and Dean, Jeff},
+  journal = {arXiv preprint arXiv:2104.10350},
+  year    = {2021},
+  note    = {Verified 2026-08-31 (arXiv API): title, author list,
+             published 2021-04-21.}
+}
+
+@article{schwartz2020green,
+  title   = {Green {AI}},
+  author  = {Schwartz, Roy and Dodge, Jesse and Smith, Noah A. and
+             Etzioni, Oren},
+  journal = {Communications of the ACM},
+  volume  = {63},
+  number  = {12},
+  pages   = {54--63},
+  year    = {2020},
+  note    = {arXiv:1907.10597; DOI 10.1145/3381831. Verified 2026-08-31
+             (arXiv API + Crossref): title, authors, published 2019-07-22.}
+}
+
+@inproceedings{wu2022sustainable,
+  title     = {Sustainable {AI}: Environmental Implications, Challenges and
+               Opportunities},
+  author    = {Wu, Carole-Jean and Raghavendra, Ramya and Gupta, Udit and
+               Acun, Bilge and Ardalani, Newsha and Maeng, Kiwan and Chang,
+               Gloria and Behram, Fiona Aga and Huang, James and Bai, Charles
+               and Gschwind, Michael and Gupta, Anurag and Ott, Myle and
+               Melnikov, Anastasia and Candido, Salvatore and Brooks, David
+               and Chauhan, Geeta and Lee, Benjamin and Lee, Hsien-Hsin S.
+               and Akyildiz, Bugra and Balandat, Maximilian and Spisak, Joe
+               and Jain, Ravi and Rabbat, Mike and Hazelwood, Kim},
+  booktitle = {Proceedings of Machine Learning and Systems (MLSys)},
+  year      = {2022},
+  note      = {arXiv:2111.00364. Verified 2026-08-31 (arXiv API): title,
+               author list, published 2021-10-30.}
+}
+
+@inproceedings{lai2018lstnet,
+  title     = {Modeling Long- and Short-Term Temporal Patterns with Deep Neural
+               Networks},
+  author    = {Lai, Guokun and Chang, Wei-Cheng and Yang, Yiming and Liu,
+               Hanxiao},
+  booktitle = {The 41st International ACM SIGIR Conference on Research \& Development in Information Retrieval (SIGIR)},
+  pages     = {95--104},
+  year      = {2018},
+  note      = {LSTNet; source of the solar-energy and exchange-rate datasets.
+               Verified 2026-09-01: arXiv API (arXiv:1703.07015, title/author
+               list/published 2017-03-21) + Crossref (DOI 10.1145/3209978.3210006,
+               SIGIR 2018, pages 95--104).}
+}
+
+@inproceedings{wu2021autoformer,
+  title     = {Autoformer: Decomposition Transformers with Auto-Correlation for
+               Long-Term Series Forecasting},
+  author    = {Wu, Haixu and Xu, Jiehui and Wang, Jianmin and Long, Mingsheng},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2021},
+  note      = {Source of the electricity/traffic/weather benchmark CSVs (as
+               redistributed by the Time-Series Library). Verified 2026-09-01
+               (arXiv API): arXiv:2106.13008, title/author list, published
+               2021-06-24.}
+}

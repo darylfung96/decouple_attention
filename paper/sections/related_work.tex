@@ -12,7 +12,10 @@ attention \citep{deepseekv4_2026} pairs a Compressed Sparse Attention (CSA)
 stage with a Heavily Compressed Attention (HCA) stage for million-token
 contexts, reporting $27\%$ of single-token inference FLOPs and $10\%$ of KV
 cache versus DeepSeek-V3.2; we adopt the working name ``Dual-Rate Routed
-Attention'' (DRRA) for our family in part to avoid colliding with that label.
+Attention'' (DRRA) for our family in part to avoid colliding with that
+label, and refer to the equal-rate configuration point that matches
+CSA's rate settings as ``CSA'', following DeepSeek's terminology
+(Section~\ref{sec:method}).
 The low-rank KV bottleneck and shared-query projection used in our
 configurations descend from Multi-head Latent Attention (MLA)
 \citep{deepseekv2_2024}. Attention distillation toward cheaper inference
@@ -40,10 +43,9 @@ Informer \citep{zhou2021informer}, patching-based PatchTST
 \citep{nie2023patchtst}, the inverted iTransformer \citep{liu2024itransformer},
 linear baselines \citep{zeng2023dlinear}, and 2D-variation modeling with
 TimesNet \citep{wu2023timesnet}. These are the natural external baselines
-for this line of work; none has been run under our frozen protocol yet
-\todo{Gate 3: run PatchTST / iTransformer / DLinear / Informer (and a linear
-and an SSM baseline) under the frozen protocol; collect their citations with
-the runs (plan/next\_step.md \S 7)}. Our contribution is orthogonal: we do
+for this line of work; none has been run under our frozen protocol yet (they
+are itemized as pending work in the appendix roadmap,
+Appendix~\ref{sec:appendix-roadmap}). Our contribution is orthogonal: we do
 not propose a new forecasting architecture but study one design axis of the
 attention module that any of these models could use.
 

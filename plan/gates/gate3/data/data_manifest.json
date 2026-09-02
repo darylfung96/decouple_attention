@@ -1,0 +1,86 @@
+{
+  "electricity": {
+    "features": 321,
+    "raw_file": "raw_electricity",
+    "rows": 26304,
+    "sha256": "7e45845d54c5219bad0ae6bc1b5316cf8ff9cead5d33fa998a5a51c2e4a497ad",
+    "source": "https://huggingface.co/datasets/thuml/Time-Series-Library/resolve/main/electricity/electricity.csv"
+  },
+  "etth1": {
+    "features": 7,
+    "raw_file": "raw_etth1",
+    "rows": 17420,
+    "sha256": "f18de3ad269cef59bb07b5438d79bb3042d3be49bdeecf01c1cd6d29695ee066",
+    "source": "https://raw.githubusercontent.com/zhouhaoyi/ETDataset/main/ETT-small/ETTh1.csv"
+  },
+  "etth2": {
+    "features": 7,
+    "raw_file": "raw_etth2",
+    "rows": 17420,
+    "sha256": "a3dc2c597b9218c7ce1cd55eb77b283fd459a1d09d753063f944967dd6b9218b",
+    "source": "https://raw.githubusercontent.com/zhouhaoyi/ETDataset/main/ETT-small/ETTh2.csv"
+  },
+  "ettm1": {
+    "features": 7,
+    "raw_file": "raw_ettm1",
+    "rows": 69680,
+    "sha256": "6ce1759b1a18e3328421d5d75fadcb316c449fcd7cec32820c8dafda71986c9e",
+    "source": "https://raw.githubusercontent.com/zhouhaoyi/ETDataset/main/ETT-small/ETTm1.csv"
+  },
+  "ettm2": {
+    "features": 7,
+    "raw_file": "raw_ettm2",
+    "rows": 69680,
+    "sha256": "db973ca252c6410a30d0469b13d696cf919648d0f3fd588c60f03fdbdbadd1fd",
+    "source": "https://raw.githubusercontent.com/zhouhaoyi/ETDataset/main/ETT-small/ETTm2.csv"
+  },
+  "exchange": {
+    "features": 8,
+    "raw_file": "raw_exchange",
+    "rows": 7588,
+    "sha256": "48b4d9d3d508f5104162e85b9a6042e3557fde11aa9f2944eba8c0d0efc89842",
+    "source": "https://huggingface.co/datasets/thuml/Time-Series-Library/resolve/main/exchange_rate/exchange_rate.csv"
+  },
+  "solar": {
+    "features": 137,
+    "raw_file": "raw_solar",
+    "rows": 52560,
+    "sha256": "1ae9329c3e1032acbb8dd080bfc397c44507006812a715d2788f172820489a1c",
+    "source": "https://raw.githubusercontent.com/laiguokun/multivariate-time-series-data/master/solar-energy/solar_AL.txt.gz"
+  },
+  "syn_changepoints": {
+    "features": 7,
+    "raw_file": "raw_syn_changepoints",
+    "rows": 20000,
+    "sha256": "a7bf7e605befe3044c500cf354b7820247b614e5b18fda78d066127c198056e5",
+    "source": "file:///Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/gate3/data/syn_changepoints.csv"
+  },
+  "syn_delayedcopy": {
+    "features": 7,
+    "raw_file": "raw_syn_delayedcopy",
+    "rows": 20000,
+    "sha256": "250c300d06f486ddf5a8e5a902ae018f22022527ceee884f2987cdd104685675",
+    "source": "file:///Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/gate3/data/syn_delayedcopy.csv"
+  },
+  "syn_sinusoids": {
+    "features": 7,
+    "raw_file": "raw_syn_sinusoids",
+    "rows": 20000,
+    "sha256": "f2ef143d3e050e9fa4db80f4cbfc3b130e5749526549accc83e8fdd17e5f944d",
+    "source": "file:///Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/gate3/data/syn_sinusoids.csv"
+  },
+  "traffic": {
+    "features": 862,
+    "raw_file": "raw_traffic",
+    "rows": 17544,
+    "sha256": "cb06463d56fa17d87f47027cd9389ceae82a69eddee51cdb61480e120dab0b16",
+    "source": "https://huggingface.co/datasets/thuml/Time-Series-Library/resolve/main/traffic/traffic.csv"
+  },
+  "weather": {
+    "features": 21,
+    "raw_file": "raw_weather",
+    "rows": 52696,
+    "sha256": "34ee981d07313e51da2a50bb600072c8ae4a69cb4b0651f4cb93a069d7a2ba63",
+    "source": "https://huggingface.co/datasets/thuml/Time-Series-Library/resolve/main/weather/weather.csv"
+  }
+}

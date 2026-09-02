@@ -25,10 +25,10 @@ student ($2.18\times$ faster, ${\sim}0.4\%$ gap to its teacher at a
 teacher). These numbers predate the frozen task and are not apples-to-apples
 with the results in Section~\ref{sec:experiments}; the surrogate line is
 kept in this paper only to acknowledge the overlap with attention
-distillation work \citep{goldstein2025radlads} and is intended for a
-separate publication \todo{decide retention: align distillation epochs to
-the main protocol and add an equal-budget small-transformer control
-(PUBLICATION.md \S 3.5 item 9)}.
+distillation work \citep{goldstein2025radlads}. \textbf{Retention decision
+(2026-08-27):} the surrogate is \emph{not} part of this paper's claims; the
+equal-budget small-transformer control and distillation-epoch alignment are
+deferred, with the surrogate line, to a separate publication.
 
 \section{Reproducibility}
 \label{sec:appendix-repro}
@@ -42,10 +42,16 @@ checks; the Normal baseline is bit-identical to a naive causal reference),
 and a sanity-test suite covering shapes, gradients, parameter counts, and
 tiny-task fitting. Reported means and deltas are computed from the audited
 manifests; the figure-generation scripts in this paper's source tree read
-the same manifests, so every figure is regenerable.
-\todo{freeze-clean package before submission: environment lockfile, data
-hashes, automated table regeneration, unit tests as CI (plan/next\_step.md
-\S 16)}.
+the same manifests, so every figure is regenerable. The freeze-clean
+package: environment lockfile (plan/environment-lock.txt), dataset SHA-256
+hashes (plan/gates/gate3/data/data\_manifest.json), automated
+figure/table regeneration (paper/scripts/make\_figures.py,
+plan/gates/gate3/gate3\_summary.py), and runnable test suites (causality,
+gradient masks, wiring audit, data integrity) are all in the repository.
+The source tree is under git with a freeze baseline (commit recorded in
+\texttt{plan/paper-notes} changelog); the remaining reproducibility steps
+at release time are a tagged archive with a DOI (e.g., Zenodo) and the
+official venue style swap.
 
 \section{Roadmap}
 \label{sec:appendix-roadmap}
@@ -55,19 +61,30 @@ hashes, automated table regeneration, unit tests as CI (plan/next\_step.md
         ROPE for any equivalence statement; paired Wilcoxon/Friedman with
         Holm correction; block bootstrap or HAC-robust tests for temporal
         dependence.
-  \item \textbf{Datasets (Gate 3):} ETT family (ETTh2, ETTm1, ETTm2), large
-        multivariate (Electricity, Traffic, Weather), different dynamics
-        (Exchange, Solar-Energy, PEMS), plus a mechanistic synthetic; H and
-        L sweeps.
-  \item \textbf{Baselines:} PatchTST, iTransformer, DLinear, Informer,
-        TimesNet, plus a linear and an SSM baseline under the identical
-        frozen protocol.
-  \item \textbf{Hardware/latency (Gate 5):} p50/p90/p99 with bootstrap CIs,
-        throughput, FLOPs and memory accounting, scaling sweeps
-        ($L \in \{128, \dots, 4096\}$), and cross-hardware transfer
-        (Apple Silicon, x86 CPU, GPU).
-  \item \textbf{Literature re-audit:} fresh 2024--2026 sweep of
-        routing/compression-attention and TS-efficiency work before locking
-        the title; resolve the outstanding citation-verification items
-        flagged in the related-work section.
+  \item \textbf{Datasets: DONE (Gate 3, 2026-08-25).} The suite now covers
+        the ETT family (ETTh1, ETTh2, ETTm1, ETTm2), large multivariate
+        (Electricity, Traffic, Weather), different dynamics (Exchange,
+        Solar-Energy), and three mechanistic synthetic families (sinusoids,
+        change points, delayed-copy), all under the frozen protocol with 5
+        paired seeds (180 runs; audited summary in plan/gates/gate3/
+        gate3\_summary.md). Remaining: horizon ($H \in \{192, 336, 720\}$)
+        and lookback ($L \in \{512, 720, 1024\}$) sweeps.
+  \item \textbf{Baselines: PARTIAL (Gate 6, 2026-09-01).} DLinear
+        \citep{zeng2023dlinear} and PatchTST \citep{nie2023patchtst} are
+        being run under the identical frozen protocol (12 datasets, 5
+        paired seeds; results manifests in the repository). Remaining:
+        iTransformer, Informer, TimesNet, and an SSM baseline.
+  \item \textbf{Hardware/latency: DONE on the development machine
+        (Gate 5, 2026-08-27).} Mean/p90/p99 forward latency with bootstrap
+        CIs, throughput, analytic MACs, peak-memory accounting, training
+        time, and batch/lookback scaling sweeps (batch 1--256,
+        $L \in \{128, \dots, 4096\}$); see Section~\ref{sec:efficiency}.
+        Remaining as future work: cross-hardware transfer (x86 CPU, GPU)
+        and depth/width ablations --- conscious scope exclusions of this
+        study.
+  \item \textbf{Literature re-audit:} the 2026-08-16 sweep of the
+        2024--2026 routing/compression-attention literature found no
+        counterexample to the \emph{to our knowledge} claim
+        (Section~\ref{sec:related}); a fresh sweep before locking the
+        title remains good practice.
 \end{enumerate}

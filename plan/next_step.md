@@ -70,13 +70,15 @@ This is the **critical go/no-go test** for the central hypothesis:
 
 ### 6. **Expand Dataset Coverage** (Gate 3)
 Minimum for journal submission:
-- [ ] **ETT family**: ETTh1, ETTh2, ETTm1, ETTm2
-- [ ] **Large multivariate**: Electricity, Traffic, Weather
-- [ ] **Different dynamics**: Exchange, Solar-Energy, or PEMS
-- [ ] **Mechanistic synthetic**: Controlled sinusoids, change points, delayed-copy tasks
+- [x] **ETT family**: ETTh1, ETTh2, ETTm1, ETTm2
+- [x] **Large multivariate**: Electricity, Traffic, Weather
+- [x] **Different dynamics**: Exchange, Solar-Energy, or PEMS
+- [x] **Mechanistic synthetic**: Controlled sinusoids, change points, delayed-copy tasks
 
 Horizons: H ∈ {96, 192, 336, 720}
 Lookbacks: L ∈ {96, 256, 512, 720, 1024}
+
+> ✅ **Gate 3 — Dataset coverage DONE (2026-08-25).** Artifacts: `plan/gates/gate3/gate3_design.md` (pre-registered), `plan/gates/gate3/gate3_datasets.py` + `gate3_data_test.py` (data layer; raw caches + `data/data_manifest.json` SHA-256 provenance), `plan/gates/gate3/gate3_synthetic.py` (3 mechanistic families: sinusoids / change points / delayed-copy), `plan/gates/gate3/gate3_harness.py` (dataset-parameterized harness, frozen direct-96 protocol), `plan/gates/gate3/results/*.jsonl` (12 datasets × 3 variants × 5 seeds = 180 runs), `plan/gates/gate3/gate3_summary.md` (E-audited, 12/12 PASS), `plan/gates/gate3/gate3_changes.md`. Headline: **DRRA (8,4) beats Normal on mean val in 8/12 datasets (Flat 7/12), and beats Flat on mean val in 5/12** — the Gate-2 champion advantage generalizes to the ETT family, solar, and electricity, but is NOT uniform: both compressed variants lose on all 3 synthetic families (exact-offset/known-period probes) and on exchange-val / weather-test, consistent with a signal-dependent effect (H4 direction) rather than a universal win. Caveats: descriptive statistics only (significance tests are Gate 4); params not re-equalized across variants (~2% spread, same stance as the baseline gate); threads=8 sequential; standardized units; ETTh1 rows bit-identical to the baseline gate's Normal rows and Gate-2 cells (pipeline fidelity). NOTE: the H∈{192,336,720} / L∈{512,720,1024} grid is deferred to a follow-on task.
 
 ### 7. **Add Strong Baselines**
 - [ ] **Same-backbone attention**:
@@ -98,16 +100,21 @@ Lookbacks: L ∈ {96, 256, 512, 720, 1024}
 ## 📊 STATISTICAL RIGOR
 
 ### 8. **Implement Proper Statistics** (Gate 4)
-- [ ] Run **5-10 paired seeds** for headline comparisons
-- [ ] Report mean, standard deviation, 95% confidence intervals, individual seed points
+- [x] Run **5-10 paired seeds** for headline comparisons (5 done across all 12 datasets; +5 on headline cells = optional strengthening, deferred)
+- [x] Report mean, standard deviation, 95% confidence intervals, individual seed points (means/std/seed points in every summary; bootstrap 95% CIs on the cross-dataset mean Δval added)
 - [ ] Fit mixed-effects model:
   ```
   MSE = β₀ + β₁ log₂(c_KV) + β₂ log₂(c_R) + β₃ log₂(c_KV)log₂(c_R) + random effects
   ```
   - Main claim requires β₂ > β₁ in relevant operating region
+  - **Deferred (2026-08-25 scope decision):** the 2×2 factorial exists only on ETTh1 (n=5 seeds); a mixed-effects fit adds little over the reported main effects until more cells×seeds exist.
 - [ ] For equivalence claims: Predeclare margin and use **TOST** or Bayesian ROPE
-- [ ] For multi-dataset comparisons: Use paired Wilcoxon/Friedman with Holm correction
+  - **Dropped (2026-08-25):** the paper makes no equivalence claims ("no formal equivalence" is a non-claim), so TOST/ROPE has nothing to test.
+- [x] For multi-dataset comparisons: Use paired Wilcoxon/Friedman with Holm correction (per-dataset exact paired Wilcoxon on all 180 runs + Holm across 36 tests; Friedman unnecessary for 3 groups)
 - [ ] Respect temporal dependence: block bootstrap or HAC-robust tests
+  - **Deferred with justification:** analysis is at the SEED level (5 independent paired runs), so stride-1 window overlap does not invalidate the paired tests; HAC/block bootstrap would matter only for per-window statistics.
+
+> ✅ **Gate 4 — minimal statistical pass DONE (2026-08-25; analysis-only, no new training).** Artifacts: `plan/gates/gate4/gate4_stats.py` + `gate4_stats.json` + `gate4_stats.md` (computed from the existing 180 Gate-3 runs). Results: per-dataset exact paired Wilcoxon (DRRA vs Normal / Flat vs Normal / DRRA vs Flat, val MSE) — **nothing survives Holm correction**, and with n=5 the two-sided floor is p=0.0625 (closest raw: etth1, solar; the synthetic probes are significant in the WRONG direction); cross-dataset sign tests — DRRA vs Normal 8/12 (p=0.39), Flat 7/12 (p=0.77); bootstrap 95% CI on the mean per-dataset Δval vs Normal excludes 0 for both (Flat −8.9% [−16.8, −2.2]; DRRA −8.3% [−17.5, −0.8]). Conclusion unchanged: the paper's "directional, descriptive" framing is the only defensible claim at n=5; reporting these tests pre-empts reviewer recomputation. Deferred (with written justification, see §8 items): mixed-effects model, HAC/block bootstrap, TOST/ROPE (no equivalence claims). Optional strengthening: +5 seeds on headline cells (~8 h compute) to make per-dataset significance reachable (floor p=0.002 at n=10).
 
 ### 9. **Pre-register Testable Hypotheses**
 - [ ] H1: Routing sensitivity — increasing c_R causes larger MSE deterioration than c_KV
@@ -131,30 +138,34 @@ Lookbacks: L ∈ {96, 256, 512, 720, 1024}
   - Peak resident memory, activation memory
   - Theoretical FLOPs/MACs
   - Training time and time-to-quality
-- [ ] Scaling sweeps:
-  - Sequence length: 128 → 4096+
-  - Batch sizes: 1, 8, 32
-  - Model depth and width
-- [ ] **Cross-hardware**: At least Apple Silicon + Linux x86 CPU (ideally GPU)
-- [ ] Stage-level profiling: compression, routing/index construction, score calc, masking/softmax, aggregation, output projection
+- [x] Scaling sweeps:
+  - Sequence length: 128 → 4096 (batch 1 and 32; L=4096/B=32 skipped — ~8 GB score tensor, documented)
+  - Batch sizes: 1, 8, 32 (extended: 1…256)
+  - Model depth and width — deferred (separate ablation)
+- [ ] **Cross-hardware**: At least Apple Silicon + Linux x86 CPU (ideally GPU) — **not available on this setup** (single M2 machine; scripts portable, needs user-provided hardware)
+- [x] Stage-level profiling: top-CPU-ops attribution at L=256/B=32 (Normal: bmm+softmax dominate = the dense attention; (8,4): flatter profile)
+
+> ✅ **Gate 5 — dev-machine systems benchmarking DONE (2026-08-27; partial: cross-hardware + depth/width out of scope).** Artifacts: `plan/gates/gate5/gate5_bench.py` + `gate5_results.json` + `gate5_summary.md` (+ companions `plan/gates/gate3/gate3_latency*.py/json`). Headline: (8,4) needs 22% fewer forward MACs (59.6M vs 76.9M per sequence), has the lowest mean latency from batch 8 / L ≥ 512 onward (−21% at B=256; −49% at L=2048/B=32; −63% at B=1/L=4096), and the fastest training median (459 s vs Normal 474 s / (4,4) 511 s); empirical log-log slopes 1.40 (8,4) / 1.42 (4,4) / 1.72 (Normal) — **all cells asymptotically quadratic (router O(L²/c_R)); no subquadratic claim**. Batch-32/L=4096 full attention needs ~8 GB of scores → skipped on 16 GB (memory wall, documented). Paper: Efficiency subsection extended (L-scaling + Figure + compute/memory accounting), Complexity paragraph rewritten (quadratic-in-L statement), Gate-5 TODOs reduced to cross-hardware + depth/width.
 
 ### 11. **Establish True Computational Complexity**
-- [ ] Derive explicit complexity for routing and retrieval
-- [ ] If O(S²/c_KV) with constant-factor reduction → state clearly
-- [ ] Only claim subquadratic if candidate budget is sublinear AND routing avoids O(S×M_R) dense comparison
-- [ ] Report empirical log-log scaling slopes
+- [x] Derive explicit complexity for routing and retrieval (routing O(L·M)=O(L²/c_R); attention O(L·cols·d); stated in `paper/sections/method.tex` Complexity paragraph)
+- [x] If O(S²/c_KV) with constant-factor reduction → state clearly (stated: quadratic-in-L with reduced constant; NOT subquadratic — method.tex + RQ3/efficiency text)
+- [x] Only claim subquadratic if candidate budget is sublinear AND routing avoids O(S×M_R) dense comparison → **claim not made** (routing IS O(S×M_R) dense: explicitly disclaimed)
+- [x] Report empirical log-log scaling slopes (batch 1: 1.24/1.32/1.69; batch 32: 1.40/1.42/1.72 for (8,4)/(4,4)/Normal — `gate5_results.json`)
 
 ---
 
 ## 🔬 MECHANISTIC DEPTH
 
 ### 12. **Add Explanatory Analyses** (would elevate paper quality)
-- [ ] **Routing recall**: Compare selected candidates with full-attention high-mass positions
-- [ ] **Lag localisation**: Measure distance between selected and true causal lag on synthetic tasks
-- [ ] **Content distortion**: Report compressed KV reconstruction error, block variance, spectral energy retention
-- [ ] **Event-conditioned error**: Stratify error around peaks, change points, transients
-- [ ] **Attention entropy**: Report route stability and diversity
-- [ ] **Mediation analysis**: Test if c_R effect on error is mediated by routing recall
+- [ ] **Routing recall**: Compare selected candidates with full-attention high-mass positions — **deferred** (needs attention-module instrumentation; checkpoints now exist in `plan/gates/gate12/checkpoints/`)
+- [x] **Lag localisation**: per-channel error by lag on the synthetic delayed-copy task — DONE (all models solve the copy: copy-channel MSE 0.0007 Normal / 0.0013–0.0026 compressed vs noise floor ≈1.05; Normal ~2× more precise; mild lag gradient for compressed cells)
+- [ ] **Content distortion**: Report compressed KV reconstruction error, block variance, spectral energy retention — **deferred** (needs module instrumentation)
+- [x] **Event-conditioned error**: Stratify error around peaks, change points, transients — DONE for change points (per-window MSE by distance-from-change: (8,4) lowest in every bucket; bucket gradient confounded by generator drift — documented)
+- [ ] **Attention entropy**: Report route stability and diversity — **deferred** (needs module instrumentation)
+- [ ] **Mediation analysis**: Test if c_R effect on error is mediated by routing recall — **deferred** (depends on routing-recall instrumentation)
+
+> ✅ **Gate 12 — mechanistic probes DONE (2026-08-28; partial — three of six analyses; the rest need attention-module instrumentation, checkpoints now saved).** Artifacts: `plan/gates/gate12/gate12_mechanistic.py` + `gate12_results.json` + `gate12_summary.md` + `checkpoints/`. Findings: (1) all three models essentially solve the delayed-copy exact-offset task (copy MSE 0.0007–0.0026 vs noise floor ≈1.05; Normal ~2× more precise; mild lag gradient for compressed cells); (2) (8,4) lowest error in every change-point distance bucket; (3) compression advantage correlates with signal smoothness in H4's predicted direction (r = −0.29/−0.35, p ≈ 0.3, n=12). Paper: RQ2 mechanistic-probe paragraph replaces the H4 TODO. NOTE: an earlier per-channel computation was ×96 inflated (missing horizon division) — caught by a pooled-MSE consistency check, corrected, and documented in `gate12_changes.md`.
 
 ### 13. **Error Decomposition Framework**
 - [ ] Introduce oracle-routed compressed output
@@ -196,18 +207,19 @@ Lookbacks: L ∈ {96, 256, 512, 720, 1024}
 ## 📦 REPRODUCIBILITY
 
 ### 16. **Prepare Reproducibility Package** (Gate 6)
-- [ ] Machine-generated run manifest with:
-  - run_id, timestamp, git commit, config hash
-  - Dataset version/checksum, split indices
-  - Model: c_KV, c_R, W, K, indexer, param count
-  - Training: seed, schedule, epochs
-  - Accuracy: validation/test MSE
-  - Efficiency: raw timings, memory, FLOPs
-  - Diagnostics: routing recall, content distortion
-- [ ] Automated table regeneration from manifest
-- [ ] Unit tests: causality masks, bias initialisation, param counts, softmax equivalence
-- [ ] Environment lockfile, data hashes
-- [ ] Command to reproduce headline table
+- [x] Machine-generated run manifest with:
+  - run_id, timestamp, git commit → **no git repo: file SHA-256 instead (Gate-0 note); timestamps + config in every JSONL row**
+  - Dataset version/checksum, split indices → `plan/gates/gate3/data/data_manifest.json` (SHA-256 per dataset) + deterministic split rule
+  - Model: c_KV, c_R, W, K, indexer, param count → every JSONL row + `gate0_registry.json`
+  - Training: seed, schedule, epochs → JSONL rows + `plan/benchmark_protocol.md`
+  - Accuracy: validation/test MSE → JSONL rows
+  - Efficiency: raw timings, memory, FLOPs → `plan/gates/gate5/gate5_results.json` (+ latency JSONs)
+  - Diagnostics: routing recall, content distortion → **partial** (Gate 12: lag-resolved per-channel error + change-point stratification done; router-internal recall/entropy deferred — needs module instrumentation)
+- [x] Automated table regeneration from manifest → `paper/scripts/make_figures.py` (all figures) + `plan/gates/gate3/gate3_summary.py` (coverage tables/report)
+- [x] Unit tests: causality masks, bias initialisation, param counts, softmax equivalence → `plan/gates/gate1/gate1_causality.py` + `gate1_gradmask.py`, `plan/gates/gate3/gate3_data_test.py`, `plan/gates/baseline/check_normal_wiring.py` + sanity suite
+- [x] Environment lockfile, data hashes → `plan/environment-lock.txt` (739 pins) + `gate3/data/data_manifest.json`
+- [x] Command to reproduce headline table → documented in `plan/gates/gate3/gate3_plan.md` + `paper/README.md`
+- [ ] CI wiring — **N/A**: repository is not under version control; suites are runnable via documented commands
 
 ---
 

@@ -10,10 +10,32 @@ forecasting, all compressed configurations outperformed full causal
 attention ($-18.5\%$ to $-29.1\%$ validation MSE; 20/20 paired seed
 comparisons; wiring-audited baseline), and the factorial separates the two
 axes directionally: coarser routing deteriorates accuracy while coarser KV
-compression is mildly beneficial, with the champion cell $(8,4)$ cutting
-the attention matrix 5.3$\times$ at equal parameters. We deliberately stop
-short of significance, generalization, or latency claims. The immediate
+compression is mildly beneficial, with the champion cell DRRA $(8,4)$ cutting
+the attention matrix 5.3$\times$ at equal parameters. Replicating the
+three-way comparison across twelve datasets shows the advantage is
+\emph{signal-dependent}, not universal: the champion beats full attention on
+mean validation MSE in 8/12 datasets (CSA $(4,4)$ in 7/12), with
+the wins concentrated on the ETT family, solar, and electricity, and slight
+losses on the mechanistic synthetic probes, exchange-rate validation, and
+weather test error. We deliberately stop short of significance,
+generalization, or latency claims: the cross-dataset pattern is descriptive
+and characterized by dataset, not asserted as a design law.
+
+These results also carry a deployment-facing reading. The champion's
+structural savings---$5.3\times$ fewer attention columns and $22\%$ fewer
+forward MACs than full attention at equal or fewer parameters---mean that
+per-forecast arithmetic work is roughly a fifth smaller on the frozen task,
+and energy tracks arithmetic to a first order
+\citep{patterson2021carbon,wu2022sustainable}; on hardware where the
+attention term dominates, the gap only widens as the lookback grows
+(Figure~\ref{fig:lscale}). We do not claim that translation here: the
+measured latency advantage is directional and single-machine, and
+cross-hardware transfer remains open. But the efficiency gradient this
+paper maps is the one that matters operationally: content density can be
+coarsened without directionally costing accuracy on the smooth, redundant
+series that dominate production forecasting (Section~\ref{sec:rq3}).
+
+The immediate
 roadmap is statistical testing with temporal-dependence-aware methods,
-multi-dataset replication, external baselines, and hardware latency
-benchmarking; each is itemized in the appendix roadmap
-(Appendix~\ref{sec:appendix-roadmap}).
+external baselines, and hardware latency benchmarking; each is itemized in
+the appendix roadmap (Appendix~\ref{sec:appendix-roadmap}).

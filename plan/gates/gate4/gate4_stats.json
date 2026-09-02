@@ -1,0 +1,332 @@
+{
+  "bootstrap_mean_dval": {
+    "DRRA": {
+      "ci95_pct": [
+        -17.505,
+        -0.826
+      ],
+      "mean_dval_pct": -8.263
+    },
+    "Flat": {
+      "ci95_pct": [
+        -16.786,
+        -2.173
+      ],
+      "mean_dval_pct": -8.929
+    }
+  },
+  "cross_dataset": {
+    "DRRA_vs_Normal_test": {
+      "n": 12,
+      "p": 0.3876953125,
+      "wins": 8
+    },
+    "DRRA_vs_Normal_val": {
+      "n": 12,
+      "p": 0.3876953125,
+      "wins": 8
+    },
+    "Flat_vs_Normal_test": {
+      "n": 12,
+      "p": 0.7744140625,
+      "wins": 7
+    },
+    "Flat_vs_Normal_val": {
+      "n": 12,
+      "p": 0.7744140625,
+      "wins": 7
+    }
+  },
+  "n_seed_floor_min_p": 0.0625,
+  "per_dataset_wilcoxon": [
+    {
+      "a": "DRRA",
+      "b": "Normal",
+      "dataset": "etth1",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.0625
+    },
+    {
+      "a": "Flat",
+      "b": "Normal",
+      "dataset": "etth1",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.0625
+    },
+    {
+      "a": "DRRA",
+      "b": "Flat",
+      "dataset": "etth1",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.625
+    },
+    {
+      "a": "DRRA",
+      "b": "Normal",
+      "dataset": "etth2",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.625
+    },
+    {
+      "a": "Flat",
+      "b": "Normal",
+      "dataset": "etth2",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.1875
+    },
+    {
+      "a": "DRRA",
+      "b": "Flat",
+      "dataset": "etth2",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.3125
+    },
+    {
+      "a": "DRRA",
+      "b": "Normal",
+      "dataset": "ettm1",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.125
+    },
+    {
+      "a": "Flat",
+      "b": "Normal",
+      "dataset": "ettm1",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.0625
+    },
+    {
+      "a": "DRRA",
+      "b": "Flat",
+      "dataset": "ettm1",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.3125
+    },
+    {
+      "a": "DRRA",
+      "b": "Normal",
+      "dataset": "ettm2",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.125
+    },
+    {
+      "a": "Flat",
+      "b": "Normal",
+      "dataset": "ettm2",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.1875
+    },
+    {
+      "a": "DRRA",
+      "b": "Flat",
+      "dataset": "ettm2",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.125
+    },
+    {
+      "a": "DRRA",
+      "b": "Normal",
+      "dataset": "electricity",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.1875
+    },
+    {
+      "a": "Flat",
+      "b": "Normal",
+      "dataset": "electricity",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.0625
+    },
+    {
+      "a": "DRRA",
+      "b": "Flat",
+      "dataset": "electricity",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.625
+    },
+    {
+      "a": "DRRA",
+      "b": "Normal",
+      "dataset": "traffic",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.125
+    },
+    {
+      "a": "Flat",
+      "b": "Normal",
+      "dataset": "traffic",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.125
+    },
+    {
+      "a": "DRRA",
+      "b": "Flat",
+      "dataset": "traffic",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.625
+    },
+    {
+      "a": "DRRA",
+      "b": "Normal",
+      "dataset": "weather",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.625
+    },
+    {
+      "a": "Flat",
+      "b": "Normal",
+      "dataset": "weather",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.625
+    },
+    {
+      "a": "DRRA",
+      "b": "Flat",
+      "dataset": "weather",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.3125
+    },
+    {
+      "a": "DRRA",
+      "b": "Normal",
+      "dataset": "exchange",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.4375
+    },
+    {
+      "a": "Flat",
+      "b": "Normal",
+      "dataset": "exchange",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.4375
+    },
+    {
+      "a": "DRRA",
+      "b": "Flat",
+      "dataset": "exchange",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.8125
+    },
+    {
+      "a": "DRRA",
+      "b": "Normal",
+      "dataset": "solar",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.0625
+    },
+    {
+      "a": "Flat",
+      "b": "Normal",
+      "dataset": "solar",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.0625
+    },
+    {
+      "a": "DRRA",
+      "b": "Flat",
+      "dataset": "solar",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 1.0
+    },
+    {
+      "a": "DRRA",
+      "b": "Normal",
+      "dataset": "syn_sinusoids",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.0625
+    },
+    {
+      "a": "Flat",
+      "b": "Normal",
+      "dataset": "syn_sinusoids",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.0625
+    },
+    {
+      "a": "DRRA",
+      "b": "Flat",
+      "dataset": "syn_sinusoids",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 1.0
+    },
+    {
+      "a": "DRRA",
+      "b": "Normal",
+      "dataset": "syn_changepoints",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.1875
+    },
+    {
+      "a": "Flat",
+      "b": "Normal",
+      "dataset": "syn_changepoints",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.3125
+    },
+    {
+      "a": "DRRA",
+      "b": "Flat",
+      "dataset": "syn_changepoints",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.3125
+    },
+    {
+      "a": "DRRA",
+      "b": "Normal",
+      "dataset": "syn_delayedcopy",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.0625
+    },
+    {
+      "a": "Flat",
+      "b": "Normal",
+      "dataset": "syn_delayedcopy",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.0625
+    },
+    {
+      "a": "DRRA",
+      "b": "Flat",
+      "dataset": "syn_delayedcopy",
+      "holm_sig_005": false,
+      "p_holm": 1.0,
+      "p_raw": 0.8125
+    }
+  ],
+  "tests_total": 36
+}
