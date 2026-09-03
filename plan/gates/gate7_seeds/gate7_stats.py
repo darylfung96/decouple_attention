@@ -30,9 +30,20 @@ GATE2 = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "gate2",
 cells = defaultdict(dict)          # cell_name -> seed -> val
 for line in open(GATE2):
     r = json.loads(line)
-    name = "Normal" if r["cell"] is None else f"({r['cell'][0]},{r['cell'][1]})"
+    if r["cell"] is None:
+        continue                      # factorial file holds compressed cells only
+    name = f"({r['cell'][0]},{r['cell'][1]})"
     name = {"(4,4)": "CSA(4,4)", "(8,4)": "DRRA(8,4)"}.get(name, name)
     cells[name][r["seed"]] = r["val_mse"]
+# Normal's 5 original seeds live in the baseline-gate manifest (cell is a
+# string there); its ETTh1 rows are bit-identical to gate3's Normal rows
+# (pipeline-fidelity audit, README "Number provenance").
+BASELINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "baseline",
+                        "baseline_normal_results.jsonl")
+for line in open(BASELINE):
+    r = json.loads(line)
+    if r["cell"] == "Normal":
+        cells["Normal"][r["seed"]] = r["val_mse"]
 for line in open(GATE7):
     r = json.loads(line)
     cells[r["cell_name"]][r["seed"]] = r["val_mse"]
@@ -44,12 +55,17 @@ if sizes != {25}:
           f"partial (gate7 may still be running; this script is idempotent)")
 
 order = ["Normal", "CSA(4,4)", "DRRA(8,4)", "(4,8)", "(8,8)"]
-seeds = sorted(set.intersection(*[set(v) for v in cells.values()]))
-print(f"paired seeds usable: n={len(seeds)}\n")
+present = [c for c in order if cells.get(c)]
+if not present:
+    raise SystemExit("no gate7 data yet")
+seeds = sorted(set.intersection(*[set(cells[c]) for c in present]))
+missing_cells = [c for c in order if c not in present]
+print(f"paired seeds usable: n={len(seeds)} across {len(present)} cells"
+      + (f" (missing cells: {missing_cells})" if missing_cells else "") + "\n")
 
-means = {c: np.mean([cells[c][s] for s in seeds]) for c in order}
-stds = {c: np.std([cells[c][s] for s in seeds], ddof=1) for c in order}
-for c in order:
+means = {c: np.mean([cells[c][s] for s in seeds]) for c in present}
+stds = {c: np.std([cells[c][s] for s in seeds], ddof=1) for c in present}
+for c in present:
     print(f"{c:9s} {means[c]:.4f} ± {stds[c]:.4f}")
 
 # main effects per seed (paired)
@@ -64,13 +80,13 @@ print(f"main effect c_R  (4->8): {np.mean(eff_r):+.4f}  "
 
 print("\npaired Wilcoxon (two-sided) on validation MSE:")
 raw = []
-contrasts = [
+contrasts = [c for c in [
     ("DRRA vs CSA", ["DRRA(8,4)"], ["CSA(4,4)"]),
     ("DRRA vs Normal", ["DRRA(8,4)"], ["Normal"]),
     ("CSA vs Normal", ["CSA(4,4)"], ["Normal"]),
     ("(4,8) vs Normal", ["(4,8)"], ["Normal"]),
     ("(8,8) vs Normal", ["(8,8)"], ["Normal"]),
-]
+] if all(b in present for b in c[1] + c[2])]
 pvals = {}
 for name, a_cells, b_cells in contrasts:
     a = np.mean([cells[c][s] for c in a_cells], axis=0) if len(a_cells) > 1 else \
