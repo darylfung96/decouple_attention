@@ -321,15 +321,20 @@ def run_smoke(dataset_name, variant, seed, threads):
 
 
 def run_full(dataset_name, variant, seed, threads):
-    # Declared omission (2026-09-01, user decision): traffic PatchTST costs
-    # ~13 h/seed on CPU (862-channel channel-independence) — ~65 h for 5 seeds,
-    # ~5x the rest of the remaining sweep, for the least essential anchor cell.
-    # Skipped with an explicit reason so the audit can report it as declared,
-    # not missing. Traffic DLinear (cheap) is unaffected.
-    if dataset_name == "traffic" and variant == "PatchTST":
+    # Declared omissions (2026-09-01/03, user decisions):
+    #  - traffic/PatchTST: 862-ch channel-independence ≈ 13 h/seed CPU
+    #  - electricity/PatchTST: 321-ch ≈ 8 h/seed CPU
+    #  - weather/PatchTST: 21-ch ≈ 3 h/seed (harmless but same confounded
+    #    anchor; PatchTST cut entirely 2026-09-03 — adds no message beyond
+    #    DLinear's, and DeepSeek-V4's own evaluation is internal-only)
+    # Skipped with an explicit reason so the audit reports them as declared,
+    # not missing. All DLinear runs are unaffected.
+    if variant == "PatchTST" and dataset_name in ("solar", "electricity",
+                                                   "weather", "traffic"):
         print(f"[gate6] DECLARED OMISSION: {dataset_name}/{variant} seed={seed} "
-              f"skipped — 862-channel channel-independence PatchTST exceeds the "
-              f"single-machine CPU budget (~13 h/seed); see README gate6 notes", flush=True)
+              f"skipped — PatchTST anchor cut (user decision 2026-09-03; heavy "
+              f"CPU tail, no message beyond DLinear); see README gate6 notes",
+              flush=True)
         return 0
     print_config(dataset_name, variant, threads)
     path = results_path(dataset_name)

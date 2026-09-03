@@ -63,9 +63,11 @@ def gate3_means():
 g3 = gate3_means()
 
 # ---------- audit ----------
-# Declared omission (2026-09-01, user decision): traffic/PatchTST ~13 h/seed on
-# CPU (862-ch channel-independence) — reported as declared, not missing.
-DECLARED_OMISSIONS = {("traffic", "PatchTST")}
+# Declared omissions (user decisions 2026-09-01/03): all heavy PatchTST cells
+# (862/321/137/21-ch channel-independence CPU tails) — PatchTST anchor cut;
+# reported as declared, not missing. DLinear runs unaffected.
+DECLARED_OMISSIONS = {(ds, "PatchTST") for ds in
+                      ("traffic", "electricity", "solar", "weather")}
 rows, missing = [], []
 SEEDS_SET = sorted(SEEDS)
 for (ds, var), seeds in sorted(runs.items()):
