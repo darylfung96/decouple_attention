@@ -36,9 +36,14 @@ Training is identical for every configuration: AdamW ($\mathrm{lr}{=}10^{-4}$,
 weight decay $10^{-5}$), gradient clipping at norm 10, batch size 32, a
 fixed budget of 10 epochs, float32 on CPU (Apple Silicon, 8 threads), and
 deterministic seeding with the same seed used for data loading and model
-initialization. The fixed 10-epoch budget is justified by learning-curve
-analysis: all cells are in a plateau regime after epoch 4 and the mean
-last-3-epoch drift across all 20 runs is $+0.0009$; no cell keeps improving
+initialization. The factorial is run at $n{=}25$ paired seeds: the five
+pre-registered seeds $\{42, 123, 2024, 7, 99\}$ and a 20-seed power
+extension (seeds 1--21 excluding the pre-registered set) run under the
+byte-identical protocol and merged post hoc (Section~\ref{sec:rq1}). The
+fixed 10-epoch budget is justified by learning-curve
+analysis on the pre-registered-seed runs: all cells are in a plateau regime
+after epoch 4 and the mean last-3-epoch drift across those 20 runs is
+$+0.0009$; no cell keeps improving
 systematically, so the budget does not bias cell comparisons.
 
 \subsection{Model family}

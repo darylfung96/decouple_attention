@@ -1,10 +1,13 @@
 # Paper — Dual-Rate Routed Attention for Efficient Long-Horizon Time-Series Forecasting
 
 Workshop-length draft (NeurIPS-style layout) of the DRRA two-axis design
-study. **Status: full draft; Gates 2–5 complete (factorial, 12-dataset
-coverage, minimal statistics, dev-machine systems); Gate 6 external
-baselines (DLinear, PatchTST under the frozen protocol) in progress —
-all statistics remain descriptive (5 seeds).**
+study. **Status: complete draft.** Gates 2–5 (factorial, 12-dataset
+coverage, minimal statistics, dev-machine systems) done; **Gate 7 DONE**
+(factorial extended to 25 paired seeds: compressed>full attention is
+Holm-significant, p_adj ≈ 7e-5; H1 decoupling supported, p = 0.0032);
+**Gate 6 DONE** (external reference points: DLinear ×12 datasets, PatchTST
+×8, frozen protocol; anchors-not-peers framing). Learning-curve figure
+(fig4) retained from the pre-registered-seed runs.
 
 ## Project layout
 
@@ -48,18 +51,19 @@ changes.
 
 | Paper number | Source of truth |
 |---|---|
-| Cell means/stds/trains (Table 1), main effects, per-seed consistency, 3-way table (Table 2), params (Table 3) | `plan/gates/gate2/gate2_summary.md`, `plan/gates/baseline/baseline_normal_summary.md`, `plan/gates/gate2/gate2_design.md`, `plan/gates/gate0/gate0_registry.json` (audited) |
-| Figure data (all figures) | `plan/gates/gate2/gate2_results.jsonl` + `plan/gates/baseline/baseline_normal_results.jsonl`, recomputed by `scripts/make_figures.py` — the script prints verification lines against the audited summaries |
-| Learning curves (fig 4) | `plan/gates/gate2/gate2_learning_curves.png` (copied) |
+| Factorial cell means/stds/trains (Table 1), main effects, per-seed consistency, 25-seed stats (Section stats), RQ2 deltas (Table 2) | `plan/gates/gate2/gate2_results.jsonl` + `plan/gates/gate7_seeds/results/gate7.jsonl` + `plan/gates/baseline/baseline_normal_results.jsonl` (25-seed merge, audited) |
+| Cross-dataset table (tab:coverage), Figure data (fig6/7/8/9) | `plan/gates/gate3/results/*.jsonl` + latency JSONs, recomputed by `scripts/make_figures.py` — the script prints verification lines against the audited summaries |
+| External reference points (tab:refpoints) | `plan/gates/gate6_baselines/results/*.jsonl` (DLinear ×12, PatchTST ×8, 5 paired seeds; audited by `gate6_audit.py`; facts in `gate6_facts.json`) |
 | Protocol details (window 16, top-k 16, ranks 64/64, AdamW, seeds) | `plan/gates/gate2/gate2_design.md` §2, `plan/benchmark_protocol.md` |
 
 Derived numbers used in the abstract/intro that are **not** in the audited
 summaries verbatim (computed from the audited JSONL manifests, verified by
 the figure script's printout):
-- all 4 cells beat Normal in 20/20 paired seed comparisons (docs only
-  formalized 5/5 for (4,4) and (8,4));
-- validation-delta range −18.5% (4,8) to −29.1% (8,4);
-- test-delta range −15.3% (8,8) to −26.1% (8,4).
+- all 4 compressed cells beat Normal in 96/100 paired seed comparisons
+  (24/25 per cell);
+- mean validation deltas −16.63% (4,8) to −26.22% (8,4); per-seed range
+  −48.3% to +9.9%;
+- test-delta range −13.30% (4,4) to −21.89% (8,4).
 
 ## Honesty checklist (mirrors plan/paper_notes.md §3)
 

@@ -59,26 +59,31 @@ mechanism: every building block we use is a configuration of known ideas
         frozen task---ETTh1, direct 96-step forecasting---under an
         \emph{auxiliary-identical} contract (identical window, top-$k$, heads,
         hidden size, optimizer, schedule) with attention-parameter
-        equalization to within $0.3\%$, across five paired seeds
+        equalization to within $0.3\%$, across 25 paired seeds
         (Section~\ref{sec:experiments}); the three-way comparison (full
         attention vs.\ the equal-rate and champion cells) extends to twelve
         datasets (Section~\ref{sec:rq3}).
-  \item[(b)] \textbf{A decoupled-rate finding (directional).} Coarsening the
-        router deteriorates accuracy ($+0.046$ validation MSE for
+  \item[(b)] \textbf{A decoupled-rate finding.} Coarsening the
+        router deteriorates accuracy ($+0.029$ validation MSE for
         $c_R{:}4{:}1 \to 8{:}1$), while coarsening KV compression is
-        mildly beneficial ($-0.043$). The best cell, the dual-rate corner
+        mildly beneficial ($-0.052$). The pre-registered decoupling
+        hypothesis---the routing effect exceeds the KV effect on per-seed
+        paired differences---is supported at $n{=}25$ (Wilcoxon
+        $p = 0.0032$). The best cell, the dual-rate corner
         $(c_{KV}{=}8, c_R{=}4)$ (\emph{DRRA},
         Section~\ref{sec:method}), reduces the attention matrix 5.3$\times$
         relative to full attention
-        at equal parameters. We report these as directional observations:
-        effect sizes are smaller than the within-cell seed standard
-        deviation, and no significance test has been run.
+        at equal parameters; its edge over the equal-rate cell is
+        directional ($p = 0.093$), not significant.
   \item[(c)] \textbf{An honest efficiency/accuracy characterization.} A
-        surprising---and wiring-verified---baseline result: all compressed
+        surprising---and wiring-verified---baseline result: compressed
         configurations beat full causal attention on the frozen task
-        ($-18.5\%$ to $-29.1\%$ validation MSE), with explicit limitations
-        (CPU-scale models, descriptive statistics; across twelve datasets the
-        advantage is signal-dependent, Section~\ref{sec:rq3}).
+        (mean deltas $-16.6\%$ to $-26.2\%$; Holm-adjusted
+        $p \approx 7\times10^{-5}$ at $n{=}25$), with explicit limitations
+        (CPU-scale models; across twelve datasets the
+        advantage is signal-dependent, Section~\ref{sec:rq3}; external
+        architectures are reference points, not peers,
+        Section~\ref{sec:refpoints}).
   \item[(d)] \textbf{Reproducibility artifacts.} A frozen task specification,
         machine-readable results manifests, a verified parameter registry,
         causality-verification suites, and a codebase in which every reported
@@ -86,10 +91,11 @@ mechanism: every building block we use is a configuration of known ideas
 \end{enumerate}
 
 \textbf{Scope and non-claims.} This work does not claim a novel attention
-mechanism, does not claim state-of-the-art forecasting accuracy (no external
-baselines are run yet), does not claim statistical equivalence or
-significance (descriptive statistics only, five seeds), and does not report
-wall-clock speedups: the pre-freeze latency figures from earlier stages of
+mechanism, does not claim state-of-the-art forecasting accuracy (the
+external architectures we ran are reference points for calibrating absolute
+error levels, not peer methods; Section~\ref{sec:refpoints}),
+does not claim statistical equivalence, and does not report wall-clock
+speedups: the pre-freeze latency figures from earlier stages of
 this project are superseded and are deliberately \emph{not} used here.
 Forward-pass latency on the development machine is measured and reported in
 Table~\ref{tab:speed}; FLOPs accounting and hardware transfer remain

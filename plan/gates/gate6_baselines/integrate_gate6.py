@@ -51,7 +51,7 @@ PRETTY = dict(etth1="ETTh1", etth2="ETTh2", ettm1="ETTm1", ettm2="ETTm2",
               syn_sinusoids="sSin", syn_changepoints="sCP", syn_delayedcopy="sDC")
 REAL_WORLD = ["etth1", "etth2", "ettm1", "ettm2", "electricity", "traffic",
               "weather", "exchange", "solar"]
-OMITTED = {("traffic", "PatchTST")}
+OMITTED = {(ds, "PatchTST") for ds in ("traffic", "electricity", "solar", "weather")}
 
 
 def load_gate6():
@@ -159,13 +159,19 @@ def main():
                     f"{PAPER_COVERAGE['Normal'][ds]:.4f} & "
                     f"{PAPER_COVERAGE['Flat'][ds]:.4f} & "
                     f"{PAPER_COVERAGE['DRRA'][ds]:.4f} \\\\")
-    body = "\n".join(rows)
+    body = "\n".join(["% GATE6_TABLE_BEGIN (auto-generated; idempotent)"] + rows +
+                      ["% GATE6_TABLE_END"])
     snip = open(SNIPPET).read()
-    marker = "% TABLE_BODY"
-    assert marker in snip
-    snip = snip.replace(marker, body, 1)
-    # drop the stray continuation line after the marker, if present
-    snip = snip.replace("% bit-identical to tab:coverage; anchor columns from gate6 audit)\n", "")
+    if "% TABLE_BODY" in snip:
+        snip = snip.replace("% TABLE_BODY", body, 1)
+        # drop the stale continuation comment line after the old marker
+        snip = snip.replace("% bit-identical to tab:coverage; anchor columns from gate6 audit)\n", "")
+    elif "% GATE6_TABLE_BEGIN" in snip and "% GATE6_TABLE_END" in snip:
+        import re as _re
+        snip = _re.sub(r"% GATE6_TABLE_BEGIN.*?% GATE6_TABLE_END", body,
+                       snip, count=1, flags=_re.S)
+    else:
+        sys.exit("snippet has neither TABLE_BODY marker nor generated region")
     with open(SNIPPET, "w") as f:
         f.write(snip)
     print(f"table body written: {len(rows)} rows -> {SNIPPET}")

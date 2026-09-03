@@ -63,10 +63,13 @@ future work.
         (Section~\ref{sec:stats}); ``best on mean'' and ``directional'' are
         used advisedly. No equivalence tests are run because no equivalence
         claims are made.
-  \item \textbf{No external baselines.} Comparisons are internal to the
-        family plus the full-attention same-backbone baseline; PatchTST,
-        iTransformer, DLinear, Informer, and linear/SSM baselines under the
-        same protocol are pending (Appendix roadmap item~3).
+  \item \textbf{External architectures as reference points only.} DLinear
+        and PatchTST were run under the frozen protocol to calibrate absolute
+        error levels (Section~\ref{sec:refpoints}); they are not peer methods
+        (different architectures, and DLinear has no attention), so no
+        competitiveness claim is made. Efficiency-oriented peers (Informer's
+        ProbSparse, iTransformer, TimesNet, SSM baselines) remain pending
+        (Appendix roadmap item~3).
   \item \textbf{Single-machine systems measurements.} Forward latency
         (batch and lookback scaling), MACs, memory, and training time are
         measured on the development machine (Table~\ref{tab:speed},

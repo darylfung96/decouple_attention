@@ -44,6 +44,7 @@ PLAN_DIR = REPO_DIR / "plan"
 FIG_DIR = PAPER_DIR / "figures"
 
 GATE2_JSONL = PLAN_DIR / "gates" / "gate2" / "gate2_results.jsonl"
+GATE7_JSONL = PLAN_DIR / "gates" / "gate7_seeds" / "results" / "gate7.jsonl"
 NORMAL_JSONL = PLAN_DIR / "gates" / "baseline" / "baseline_normal_results.jsonl"
 LEARNING_CURVES = PLAN_DIR / "gates" / "gate2" / "gate2_learning_curves.png"
 GATE3_DIR = PLAN_DIR / "gates" / "gate3" / "results"
@@ -90,79 +91,90 @@ def fmt(v: float) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Data
+# Data — 25 paired seeds: the 5 pre-registered (gate2 + baseline manifests)
+# plus the 20-seed power extension (gate7, byte-identical protocol)
 # ---------------------------------------------------------------------------
 gate2 = load_jsonl(GATE2_JSONL)
+gate7 = load_jsonl(GATE7_JSONL)
 normal = load_jsonl(NORMAL_JSONL)
 
-by_cell: dict[tuple[int, int], list[dict]] = {cell: [] for cell in CELLS}
+by_seed: dict[tuple[int, int], dict[int, dict]] = {cell: {} for cell in CELLS}
 for row in gate2:
-    by_cell[(row["c_kv"], row["c_r"])].append(row)
+    by_seed[(row["c_kv"], row["c_r"])][row["seed"]] = row
+for row in gate7:
+    if row["cell"] is not None:
+        by_seed[tuple(row["cell"])][row["seed"]] = row
+normal_by_seed: dict[int, dict] = {r["seed"]: r for r in normal}
+for row in gate7:
+    if row["cell"] is None:
+        normal_by_seed[row["seed"]] = row
 
 val_means = {}
 val_stds = {}
 test_means = {}
 train_means = {}
 for cell in CELLS:
-    vals = np.array([r["val_mse"] for r in by_cell[cell]], dtype=float)
-    tests = np.array([r["test_mse"] for r in by_cell[cell]], dtype=float)
-    trains = np.array([r["final_train_mse"] for r in by_cell[cell]], dtype=float)
+    seeds = sorted(by_seed[cell])
+    assert len(seeds) == 25, f"cell {cell}: expected 25 seeds, got {len(seeds)}"
+    vals = np.array([by_seed[cell][s]["val_mse"] for s in seeds], dtype=float)
+    tests = np.array([by_seed[cell][s]["test_mse"] for s in seeds], dtype=float)
+    trains = np.array([by_seed[cell][s]["final_train_mse"] for s in seeds], dtype=float)
     val_means[cell] = vals.mean()
     val_stds[cell] = vals.std(ddof=1)
     test_means[cell] = tests.mean()
     train_means[cell] = trains.mean()
 
-normal_vals = np.array([r["val_mse"] for r in normal], dtype=float)
-normal_tests = np.array([r["test_mse"] for r in normal], dtype=float)
+normal_seeds = sorted(normal_by_seed)
+assert len(normal_seeds) == 25, f"Normal: expected 25 seeds, got {len(normal_seeds)}"
+normal_vals = np.array([normal_by_seed[s]["val_mse"] for s in normal_seeds], dtype=float)
+normal_tests = np.array([normal_by_seed[s]["test_mse"] for s in normal_seeds], dtype=float)
 normal_val_mean = normal_vals.mean()
 normal_val_std = normal_vals.std(ddof=1)
 normal_test_mean = normal_tests.mean()
 
 # --- verification against audited summaries -------------------------------
-print("== verification vs audited summaries ==")
+print("== verification vs audited summaries (n=25: gate2+baseline + gate7) ==")
 print(f"Normal   val {fmt(normal_val_mean)} ± {fmt(normal_val_std)}  test {fmt(normal_test_mean)}"
-      f"   [expect 0.8416 ± 0.0799 / 1.0814]")
+      f"   [expect 0.8389 ± 0.0814 / 1.0804]")
+_expect = {(4, 4): 0.6575, (8, 4): 0.6190, (4, 8): 0.6994, (8, 8): 0.6347}
 for cell in CELLS:
     print(f"cell {cell}: val {fmt(val_means[cell])} ± {fmt(val_stds[cell])}  "
           f"test {fmt(test_means[cell])}  train {fmt(train_means[cell])}"
-          f"   [expect {fmt(val_means[cell])} matches gate2_summary.md]")
+          f"   [expect val {_expect[cell]}]")
 
 # main effects
 c_kv_effect = (val_means[(8, 4)] + val_means[(8, 8)]) / 2 - (val_means[(4, 4)] + val_means[(4, 8)]) / 2
 c_r_effect = (val_means[(4, 8)] + val_means[(8, 8)]) / 2 - (val_means[(4, 4)] + val_means[(8, 4)]) / 2
-print(f"main effect c_KV = {c_kv_effect:+.4f}   [expect -0.0427]")
-print(f"main effect c_R  = {c_r_effect:+.4f}   [expect +0.0463]")
+print(f"main effect c_KV = {c_kv_effect:+.4f}   [expect -0.0516]")
+print(f"main effect c_R  = {c_r_effect:+.4f}   [expect +0.0288]")
 
-# per-seed consistency of effects (as in gate2_summary.md)
+# per-seed consistency of effects (paired by seed, n=25)
 n_kv_improves = 0
-for seed_row in range(5):
+for s in normal_seeds:
     for cr in (4, 8):
-        v4 = by_cell[(4, cr)][seed_row]["val_mse"]
-        v8 = by_cell[(8, cr)][seed_row]["val_mse"]
-        if v8 < v4:
+        if by_seed[(8, cr)][s]["val_mse"] < by_seed[(4, cr)][s]["val_mse"]:
             n_kv_improves += 1
 n_r_worsens = 0
-for seed_row in range(5):
+for s in normal_seeds:
     for ckv in (4, 8):
-        v4 = by_cell[(ckv, 4)][seed_row]["val_mse"]
-        v8 = by_cell[(ckv, 8)][seed_row]["val_mse"]
-        if v8 > v4:
+        if by_seed[(ckv, 8)][s]["val_mse"] > by_seed[(ckv, 4)][s]["val_mse"]:
             n_r_worsens += 1
-print(f"per-seed consistency: c_KV improves {n_kv_improves}/10, c_R worsens {n_r_worsens}/10"
-      f"   [expect 7/10, 7/10]")
+print(f"per-seed consistency: c_KV improves {n_kv_improves}/50, c_R worsens {n_r_worsens}/50"
+      f"   [expect 38/50, 34/50]")
 
-# deltas vs Normal (mean and per-seed, all 20 runs)
+# deltas vs Normal (mean and per-seed, all 100 compressed runs + Normal)
 print("-- deltas vs Normal --")
-normal_by_seed = {r["seed"]: r["val_mse"] for r in normal}
 for cell in CELLS:
     d = (val_means[cell] - normal_val_mean) / normal_val_mean * 100
     dt = (test_means[cell] - normal_test_mean) / normal_test_mean * 100
-    wins = sum(1 for r in by_cell[cell] if r["val_mse"] < normal_by_seed[r["seed"]])
-    print(f"cell {cell}: dval {d:+.2f}%  dtest {dt:+.2f}%  seeds beating Normal {wins}/5")
+    wins = sum(1 for s in normal_seeds
+               if by_seed[cell][s]["val_mse"] < normal_by_seed[s]["val_mse"])
+    print(f"cell {cell}: dval {d:+.2f}%  dtest {dt:+.2f}%  seeds beating Normal {wins}/25")
 all_wins = sum(
-    1 for cell in CELLS for r in by_cell[cell] if r["val_mse"] < normal_by_seed[r["seed"]]
+    1 for cell in CELLS for s in normal_seeds
+    if by_seed[cell][s]["val_mse"] < normal_by_seed[s]["val_mse"]
 )
-print(f"total paired wins vs Normal: {all_wins}/20")
+print(f"total paired wins vs Normal: {all_wins}/100")
 
 # ---------------------------------------------------------------------------
 # Figure 1: factorial cell means
@@ -175,7 +187,7 @@ for i, cell in enumerate(CELLS):
     ax.bar(i, val_means[cell], yerr=val_stds[cell], width=0.6,
            color=colors[i], alpha=0.85, capsize=4,
            label=f"({cell[0]},{cell[1]})")
-    seeds = [r["val_mse"] for r in by_cell[cell]]
+    seeds = [by_seed[cell][s]["val_mse"] for s in sorted(by_seed[cell])]
     jitter = np.linspace(-0.18, 0.18, len(seeds))
     ax.scatter(i + jitter, seeds, s=14, color="black", zorder=3,
                edgecolor="white", linewidth=0.4)
@@ -187,7 +199,7 @@ ax.text(3.52, normal_val_mean + 0.012, f"Normal {fmt(normal_val_mean)}",
 ax.set_xticks(x)
 ax.set_xticklabels(labels)
 ax.set_ylabel("Validation MSE (standardized)")
-ax.set_ylim(0.45, 0.95)
+ax.set_ylim(0.45, 1.0)
 ax.legend(loc="upper left", ncol=1, frameon=False, fontsize=7.5)
 fig.tight_layout()
 fig.savefig(FIG_DIR / "fig1_factorial_val.pdf")

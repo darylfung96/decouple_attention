@@ -1,0 +1,10 @@
+{
+  "claim_a_dlinear_etth1": {
+    "dl_val": 0.352050418,
+    "dl_test": 0.437322308,
+    "fam_min_val": 0.596700174,
+    "fam_min_test": 0.79877632,
+    "holds": true
+  },
+  "realworld_anchor_wins": "8/9"
+}

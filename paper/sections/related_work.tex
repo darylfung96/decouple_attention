@@ -42,10 +42,11 @@ Long-horizon forecasting architectures include the ProbSparse-attention
 Informer \citep{zhou2021informer}, patching-based PatchTST
 \citep{nie2023patchtst}, the inverted iTransformer \citep{liu2024itransformer},
 linear baselines \citep{zeng2023dlinear}, and 2D-variation modeling with
-TimesNet \citep{wu2023timesnet}. These are the natural external baselines
-for this line of work; none has been run under our frozen protocol yet (they
-are itemized as pending work in the appendix roadmap,
-Appendix~\ref{sec:appendix-roadmap}). Our contribution is orthogonal: we do
+TimesNet \citep{wu2023timesnet}. Two of them, DLinear
+\citep{zeng2023dlinear} and PatchTST \citep{nie2023patchtst}, have been run
+under our frozen protocol as external reference points (not peer methods;
+Section~\ref{sec:refpoints}); the rest are itemized as pending work in the
+appendix roadmap, Appendix~\ref{sec:appendix-roadmap}. Our contribution is orthogonal: we do
 not propose a new forecasting architecture but study one design axis of the
 attention module that any of these models could use.
 
