@@ -122,8 +122,8 @@ referred to by name throughout:
 \begin{itemize}
   \item \textbf{CSA} --- the equal-rate corner $(4,4)$, in which both axes
         sit at $4{:}1$. We adopt the \emph{name} of DeepSeek-V4's Compressed
-        Sparse Attention \citep{deepseekv4_2026}, whose design point this
-        cell matches: KV compression at rate $m{=}4$ (the same value used
+        Sparse Attention \citep{deepseekv4_2026}, whose rate design point
+        this cell matches: KV compression at rate $m{=}4$ (the same value used
         in DeepSeek-V4-Flash/Pro), routing/selection over entries at the
         same $4{:}1$ granularity, and a local sliding-window branch. The
         name marks the configuration, not an equivalence claim: we evaluate
