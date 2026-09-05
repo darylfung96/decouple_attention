@@ -66,7 +66,7 @@ as the task-appropriate baseline.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.98\linewidth]{figures/fig5_architecture.pdf}
+\includegraphics[width=0.72\linewidth]{figures/fig5_architecture.pdf}
 \caption{Architecture of the compressed-and-indexed family (champion DRRA
 $(8,4)$ drawn). One shared Transformer block whose only varying component is
 the attention module: a KV compressor ($c_{KV}{=}8$: 256 positions $\to$ 32
@@ -145,17 +145,19 @@ parameter counts.
 and full model). All compressed cells share the auxiliary contract
 (window 16, top-$k$ 16, 4 heads, head dimension 32, hidden 128, shared-Q,
 $q$/$o$ ranks 64) and differ only in $(c_{KV}, c_R)$; the low-rank
-bottlenecks are equalized to within $0.27\%$ of the DRRA $(8,4)$ reference.
-\emph{Softmax cols} $= C + W + 1$ sink. Normal attends to all 256 columns
-with no sink.}
+bottlenecks are equalized to within $0.27\%$ of the DRRA reference (the
+$(8,4)$ corner; named cells: CSA $=(4,4)$, DRRA $=(8,4)$, defined in
+Section~\ref{sec:factorial}; their results are in
+Table~\ref{tab:factorial}). \emph{Softmax cols} $= C + W + 1$ sink. Normal
+attends to all 256 columns with no sink.}
 \label{tab:configs}
 \begin{tabular}{lcccccc}
 \toprule
 Config & $c_{KV}$ & $c_R$ & KV blocks $C$ & Index tokens $M$ & Softmax cols & Params (attn / full) \\
 \midrule
 Normal & --- & --- & --- & --- & 256 & 102{,}496 / 355{,}200 \\
-CSA $(4,4)$ & 4 & 4 & 64 & 64 & 80 + 1 & 95{,}396 / 348{,}100 \\
-DRRA $(8,4)$ & 8 & 4 & 32 & 64 & 48 + 1 & 95{,}652 / 348{,}356 \\
+CSA & 4 & 4 & 64 & 64 & 80 + 1 & 95{,}396 / 348{,}100 \\
+DRRA & 8 & 4 & 32 & 64 & 48 + 1 & 95{,}652 / 348{,}356 \\
 $(4,8)$ & 4 & 8 & 64 & 32 & 80 + 1 & 95{,}652 / 348{,}356 \\
 $(8,8)$ & 8 & 8 & 32 & 32 & 48 + 1 & 95{,}908 / 348{,}612 \\
 \bottomrule
