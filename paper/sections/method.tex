@@ -135,6 +135,30 @@ referred to by name throughout:
         working name and is the paper's champion configuration.
 \end{itemize}
 The remaining corners $(4,8)$ and $(8,8)$ appear only in the factorial.
+
+\textbf{Why only $\{4,8\}^2$?} The grid is the pre-registered design (frozen
+before any run), and a $2\times2$ factorial is the minimal design that
+identifies both main effects and their interaction --- exactly the three
+fixed effects of the deferred mixed-effects model. Grid extension was a
+deliberate exclusion, for three reasons. First, the natural next points are
+degenerate rather than informative: at $c_R{=}16$ the indexer stream has
+only $L/16 = 16$ tokens, so the top-$k{=}16$ router selects \emph{all} of
+them and routing collapses to attend-to-everything --- a $(\cdot,16)$ cell
+would measure the no-routing endpoint, not finer routing (measuring the
+latter would require raising $k$ as well, breaking the auxiliary-identical
+contract that pairs all cells). Symmetrically, at $c_{KV}{=}16$ the KV
+blocks ($16$) no longer outnumber the sliding window ($16$), so the column
+composition changes what is being measured. Second, the two levels bracket
+a $2\times$ range around the operating region of interest (the CSA corner
+$(4,4)$ matches DeepSeek-V4's $m{=}4$), and both effect signs are
+established within the bracket; behavior outside it is extrapolation, which
+we explicitly do not claim. Third, budget: each additional cell costs 25
+paired runs ($\approx 6$ h CPU at the measured per-run cost of the seed
+extension), and the $2\times2$ spends that budget on replication ---
+statistical power for the pre-registered contrasts --- rather than on extra
+cells. Adding off-grid cells (e.g.\ the $(\cdot,16)$ endpoint ablation,
+roughly 1--2 h for 5 paired seeds) is straightforward in the harness and is
+itemized as future work.
 Table~\ref{tab:configs} lists the resulting geometry and
 parameter counts.
 
