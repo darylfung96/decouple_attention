@@ -70,8 +70,8 @@ as the task-appropriate baseline.
 \caption{Architecture of the compressed-and-indexed family (champion DRRA
 $(8,4)$ drawn). One shared Transformer block whose only varying component is
 the attention module: a KV compressor ($c_{KV}{=}8$: 256 positions $\to$ 32
-blocks), a routing indexer ($c_R{=}4$: 64 index tokens) scored by the shared
-query with top-$k{=}16$ selection, and dense masked attention over the fixed
+blocks), a routing indexer ($c_R{=}4$: 64 index tokens) with top-$k{=}16
+$selection, and dense masked attention over the fixed
 column set (32 KV blocks + 16 window + 1 sink $= 49$ columns; Normal attends
 to all 256). The horizon head maps the last hidden state to the 96-step
 forecast.}
@@ -91,10 +91,15 @@ $m$, this yields $C = L/m$ KV blocks covering $[mj, mj + m - 1]$. The
 same compressor, with its own parameters, produces the $M = L / m_{idx}$
 routing index tokens.
 
-\textbf{Router.} Each query scores all $M$ index tokens
-($\mathrm{ReLU}(q \cdot \mathrm{idx}^\top)/\sqrt{d}$, head-mixed by a
+\textbf{Router (scorer + top-$k$ selector).} Each query scores all $M$ index
+tokens ($\mathrm{ReLU}(q \cdot \mathrm{idx}^\top)/\sqrt{d}$, head-mixed by a
 learned weight), masks tokens that lie in the future, and selects the
-top-$k$ ($k{=}16$). In all compressed configurations the router reuses the
+top-$k$ ($k{=}16$). We use ``router'' for the scorer-plus-selector
+combination; DeepSeek-V4 \citep{deepseekv4_2026} calls the analogous scorer
+the \emph{Lightning Indexer} and the selection step the \emph{top-$k$
+selector} (their paper uses neither ``router'' nor a standalone indexer
+module feeding the selector --- the indexer scores the KV entries, which the
+selector then subsamples). In all compressed configurations the router reuses the
 main query (shared-Q), valid because the query head dimension equals the
 index head dimension; this removes one projection and one RoPE application.
 

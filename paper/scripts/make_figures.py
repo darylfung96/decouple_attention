@@ -263,7 +263,7 @@ box(7.3, 0.7, 2.5, 0.9, "Horizon head\n$[B, 96, 7]$", BRANCH)
 # compressors
 box(2.6, 4.7, 1.9, 0.8, "KV compressor\n$c_{KV}=8$: 32 blocks", BRANCH)
 box(5.0, 4.7, 1.9, 0.8, "Indexer\n$c_R=4$: 64 tokens", BRANCH)
-box(5.0, 2.6, 1.6, 0.9, "Router\nshared-Q,\ntop-$k$=16", BRANCH)
+box(5.0, 2.6, 1.6, 0.9, "Router (scorer\n+ top-$k$ sel.),\nshared-Q, $k$=16", BRANCH)
 
 arrow(1.9, 3.05, 2.6, 3.05)
 arrow(3.55, 4.7, 3.55, 3.5)

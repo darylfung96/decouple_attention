@@ -34,7 +34,15 @@ Sparse Frontier \citep{nawrot2025sparsefrontier}, which sweeps selection
 budgets across six methods with no content-compression knob.
 DeepSeek-V4 \citep{deepseekv4_2026} and NSA \citep{yuan2025nsa} expose
 both mechanisms as fixed hyperparameters without varying them
-independently. We confirmed this on a systematic sweep of the 2024--2026
+independently. Two structural differences are worth naming. First,
+terminology: DeepSeek-V4 has no ``router'' --- its \emph{Lightning Indexer}
+scores compressed KV entries and a \emph{top-$k$ selector} subsamples them
+(Section~\ref{sec:family-mech} adopts the generic term ``router'' for this
+scorer-plus-selector pair). Second, in CSA the indexer's key stream is
+compressed with the \emph{same} operation and rate $m$ as the KV entries,
+so the scoring granularity is tied to the KV compression rate; in our
+family the indexer stream has its own rate $c_R$, which is precisely the
+axis the factorial varies. We confirmed this on a systematic sweep of the 2024--2026
 routing/compression-attention literature (August 2026).
 
 \subsection{Efficient and accurate time-series forecasting}
