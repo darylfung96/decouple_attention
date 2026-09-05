@@ -232,11 +232,16 @@ fig.savefig(FIG_DIR / "fig2_main_effects.png")
 plt.close(fig)
 
 # ---------------------------------------------------------------------------
-# Figure 4 (formerly 5): architecture schematic (matplotlib drawing, no data)
+# Figure 4 (formerly 5): architecture schematic (matplotlib drawing, no data).
+# Topology note (verified against attention.py forward() and DSV4 §2.3.1):
+# the KV compressor and the indexer are PARALLEL branches consuming the same
+# hidden states; the router scores index tokens and top-k-selects among KV
+# blocks; dense masked attention consumes both branches. Earlier version drew
+# a linear chain (compressor → indexer → router) — corrected 2026-09-03.
 # ---------------------------------------------------------------------------
-fig, ax = plt.subplots(figsize=(6.5, 2.9))
-ax.set_xlim(0, 10)
-ax.set_ylim(0, 6)
+fig, ax = plt.subplots(figsize=(6.9, 3.1))
+ax.set_xlim(0, 11.2)
+ax.set_ylim(0, 6.2)
 ax.axis("off")
 
 BOX = dict(boxstyle="round,pad=0.35", facecolor="#f2f2f2", edgecolor="#555555", linewidth=1.0)
@@ -254,26 +259,31 @@ def arrow(x1, y1, x2, y2, color="#555555", lw=1.1):
                 arrowprops=dict(arrowstyle="-|>", color=color, lw=lw))
 
 
-# main spine: input -> block -> attention -> O -> horizon head
-box(0.2, 2.6, 1.7, 0.9, "Input\n$[B, 256, 7]$", HILITE)
-box(2.6, 2.6, 1.9, 0.9, "Shared block\ninput proj + pos\n(hidden 128)", BRANCH)
-box(7.3, 2.6, 2.5, 0.9, "Dense masked attention\n32 KV blocks + 16 win\n(+1 sink) = 48+1 cols", HILITE)
-box(7.3, 0.7, 2.5, 0.9, "Horizon head\n$[B, 96, 7]$", BRANCH)
+# main spine: input -> block -> attention -> horizon head
+box(0.1, 2.3, 1.55, 0.95, "Input\n$[B, 256, 7]$", HILITE)
+box(1.95, 2.3, 1.8, 0.95, "Shared block\ninput proj + pos\n(hidden 128)", BRANCH)
+box(9.15, 2.3, 1.95, 1.45, "Dense masked\nattention\n32 KV + 16 win\n+1 sink = 48+1", HILITE)
+box(9.15, 0.45, 1.95, 0.9, "Horizon head\n$[B, 96, 7]$", BRANCH)
 
-# compressors
-box(2.6, 4.7, 1.9, 0.8, "KV compressor\n$c_{KV}=8$: 32 blocks", BRANCH)
-box(5.0, 4.7, 1.9, 0.8, "Indexer\n$c_R=4$: 64 tokens", BRANCH)
-box(5.0, 2.6, 1.6, 0.9, "Router (scorer\n+ top-$k$ sel.),\nshared-Q, $k$=16", BRANCH)
+# two PARALLEL branches off the shared block (both read the same hidden states)
+box(4.35, 4.65, 2.6, 0.9, "KV compressor   (branch 1)\n$c_{KV}{=}8$ → 32 KV blocks", BRANCH)
+box(4.35, 3.35, 2.6, 0.9, "Indexer   (branch 2)\n$c_R{=}4$ → 64 index tokens", BRANCH)
+box(7.25, 3.35, 1.7, 0.9, "Router\nscorer + top-$k$\n($k{=}16$, shared-Q)", BRANCH)
 
-arrow(1.9, 3.05, 2.6, 3.05)
-arrow(3.55, 4.7, 3.55, 3.5)
-arrow(5.95, 4.7, 5.95, 3.5)
-arrow(6.6, 3.05, 7.3, 3.05)
-arrow(8.55, 2.6, 8.55, 1.6)
-arrow(4.6, 2.6, 5.0, 2.6)
+ax.text(3.62, 4.45, "same hidden\nstates →\nparallel", fontsize=6.6,
+        color="#666666", ha="center", va="center", style="italic")
+arrow(1.65, 2.77, 1.95, 2.77)
+arrow(3.75, 3.05, 4.35, 4.85)          # shared block -> KV compressor
+arrow(3.75, 2.77, 4.35, 3.8)           # shared block -> indexer
+arrow(6.95, 3.8, 7.25, 3.8)            # indexer -> router
+arrow(6.95, 5.1, 9.7, 3.8)             # KV blocks -> attention
+ax.text(8.15, 4.85, "32 KV blocks", fontsize=7, color="#555555", ha="center")
+arrow(8.95, 3.8, 9.15, 3.55)           # router selection -> attention
+ax.text(8.62, 4.18, "top-$k$ selection", fontsize=6.8, color="#555555", ha="center")
+arrow(10.12, 2.3, 10.12, 1.35)         # attention -> horizon head
 
 # alternative Normal path note
-ax.text(5.0, 1.0, "Normal: full causal attention, 256 cols, no compression\n(same shared block; baseline)",
+ax.text(4.6, 1.05, "Normal: full causal attention, 256 cols, no compression\n(same shared block; baseline)",
         ha="center", fontsize=7.5, style="italic", color="#666666")
 fig.tight_layout()
 fig.savefig(FIG_DIR / "fig5_architecture.pdf")
