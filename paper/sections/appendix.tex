@@ -35,7 +35,7 @@ deferred, with the surrogate line, to a separate publication.
 Every number in this paper traces to a repository artifact: the frozen task
 specification (the sole authority on task definition), the pre-registered
 factorial design, the run harness and its machine-readable results manifests
-(125 factorial/baseline runs at $n{=}25$ + 180 cross-dataset runs + Gate-6
+(125 factorial/baseline runs at $n{=}25$ + 180 cross-dataset runs + external
 reference-point runs, JSONL), a verified
 per-module parameter registry, causality-verification and wiring-audit
 suites (all variants pass future-invariance and exact-zero-future-gradient
@@ -44,36 +44,34 @@ and a sanity-test suite covering shapes, gradients, parameter counts, and
 tiny-task fitting. Reported means and deltas are computed from the audited
 manifests; the figure-generation scripts in this paper's source tree read
 the same manifests, so every figure is regenerable. The freeze-clean
-package: environment lockfile (plan/environment-lock.txt), dataset SHA-256
-hashes (plan/gates/gate3/data/data\_manifest.json), automated
-figure/table regeneration (paper/scripts/make\_figures.py,
-plan/gates/gate3/gate3\_summary.py), and runnable test suites (causality,
-gradient masks, wiring audit, data integrity) are all in the repository.
+package --- environment lockfile, dataset SHA-256 manifests, automated
+figure/table regeneration scripts, and runnable test suites (causality,
+gradient masks, wiring audit, data integrity) --- is all in the repository.
 The source tree is under git with a freeze baseline (commit recorded in
-\texttt{plan/paper-notes} changelog); the remaining reproducibility steps
+the project changelog); the remaining reproducibility steps
 at release time are a tagged archive with a DOI (e.g., Zenodo) and the
 official venue style swap.
 
 \section{Roadmap}
 \label{sec:appendix-roadmap}
 \begin{enumerate}
-  \item \textbf{Statistics (Gate 4 + Gate 7):} DONE at the factorial level
-        (Gate 7, 2026-09-03): $n{=}25$ paired seeds; paired Wilcoxon with
+  \item \textbf{Statistics: DONE at the factorial level.}
+        $n{=}25$ paired seeds; paired Wilcoxon with
         Holm correction over cell-vs-Normal contrasts
         (Section~\ref{sec:stats}); per-seed main-effect contrast for H1.
         Deferred with justification: mixed-effects model (needs more rate
         levels), HAC/block bootstrap (seed-level analyses), TOST/ROPE (no
         equivalence claims); temporal-dependence-aware statistics for the
         cross-dataset suite remain future work.
-  \item \textbf{Datasets: DONE (Gate 3, 2026-08-25).} The suite now covers
+  \item \textbf{Datasets: DONE.} The suite now covers
         the ETT family (ETTh1, ETTh2, ETTm1, ETTm2), large multivariate
         (Electricity, Traffic, Weather), different dynamics (Exchange,
         Solar-Energy), and three mechanistic synthetic families (sinusoids,
         change points, delayed-copy), all under the frozen protocol with 5
-        paired seeds (180 runs; audited summary in plan/gates/gate3/
-        gate3\_summary.md). Remaining: horizon ($H \in \{192, 336, 720\}$)
+        paired seeds (180 runs; per-seed tables in the released results
+        manifests). Remaining: horizon ($H \in \{192, 336, 720\}$)
         and lookback ($L \in \{512, 720, 1024\}$) sweeps.
-  \item \textbf{Baselines: reference points (Gate 6, 2026-09-01/03).}
+  \item \textbf{Baselines: reference points DONE.}
         DLinear \citep{zeng2023dlinear} and PatchTST \citep{nie2023patchtst}
         under the identical frozen protocol as external reference points,
         not peer methods (Section~\ref{sec:refpoints}): DLinear on all
@@ -82,8 +80,8 @@ official venue style swap.
         (declared omissions on solar/electricity/traffic/weather).
         Remaining as future work: iTransformer, Informer, TimesNet, and an
         SSM baseline.
-  \item \textbf{Hardware/latency: DONE on the development machine
-        (Gate 5, 2026-08-27).} Mean/p90/p99 forward latency with bootstrap
+  \item \textbf{Hardware/latency: DONE on the development machine.}
+        Mean/p90/p99 forward latency with bootstrap
         CIs, throughput, analytic MACs, peak-memory accounting, training
         time, and batch/lookback scaling sweeps (batch 1--256,
         $L \in \{128, \dots, 4096\}$); see Section~\ref{sec:efficiency}.

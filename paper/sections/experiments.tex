@@ -138,7 +138,8 @@ stands. We also note the direction is surprising in the other sense:
 compression acting as a task-appropriate inductive bias (see
 Section~\ref{sec:discussion}) is a plausible but \emph{unverified}
 explanation \emph{that three mechanistic probes now support descriptively}
-(plan/gates/gate12/gate12\_summary.md): (i) on the delayed-copy dataset
+(models retrained with per-run checkpoints under the same frozen protocol;
+seed 42): (i) on the delayed-copy dataset
 (five channels periodic with in-window lags 96--256, plus two noise
 channels), \emph{all three} models learn the exact-offset copy ---
 per-channel copy MSE $0.0007$ (Normal) and $0.0013$--$0.0026$ (compressed
@@ -162,8 +163,7 @@ the three-way comparison (Normal vs.\ CSA $(4,4)$ vs.\ DRRA $(8,4)$) on eleven
 further datasets---three more ETT members, three large multivariate sets,
 two different-dynamics sets, and three mechanistic synthetic families---under
 the identical frozen protocol with the same five paired seeds (180 runs in
-total; per-seed tables and the integrity audit in
-plan/gates/gate3/gate3\_summary.md). Table~\ref{tab:coverage} and
+total; per-seed tables in the released results manifests). Table~\ref{tab:coverage} and
 Figure~\ref{fig:coverage} summarize validation MSE by dataset. The ETTh1
 column reflects the suite's five-seed run; the factorial
 (Table~\ref{tab:factorial}) reports the same configuration at 25 seeds, and
@@ -210,8 +210,7 @@ Section~\ref{sec:rq2}).
 pooled MSE in standardized units, lower is better). Models as rows,
 datasets as columns; bold: best mean per dataset column. Column
 abbreviations: Elec=Electricity, Traf=Traffic, Wea=Weather, Exc=Exchange,
-Sol=Solar-Energy, sSin=syn-sinusoids, sCP=syn-changepts, sDC=syn-delayedcopy.
-Full per-seed tables and integrity audit: plan/gates/gate3/gate3\_summary.md.}
+Sol=Solar-Energy, sSin=syn-sinusoids, sCP=syn-changepts, sDC=syn-delayedcopy.}
 \label{tab:coverage}
 \setlength{\tabcolsep}{4pt}
 \resizebox{\linewidth}{!}{%
@@ -321,8 +320,8 @@ sDC & 0.4078 & \textbf{0.3419} & 0.2888 & 0.2894 & 0.2894 \\
 \label{sec:stats}
 Statistical status is reported separately for the two levels of the study.
 
-\textbf{Factorial (ETTh1, $n{=}25$ paired seeds; analysis log in
-plan/gates/gate7\_seeds/).} At 25 paired seeds, paired Wilcoxon signed-rank
+\textbf{Factorial (ETTh1, $n{=}25$ paired seeds; full analysis log released
+with the source).} At 25 paired seeds, paired Wilcoxon signed-rank
 tests on validation MSE are powered: \emph{every} compressed cell beats
 full attention, and the result survives Holm correction across the five
 pre-registered cell-vs-Normal contrasts (adjusted $p = 6.9\times10^{-5}$
@@ -336,7 +335,7 @@ byte-identical protocol; the seed list was fixed in the extension's design
 before any extension run, and the merge was planned at that time.
 
 \textbf{Cross-dataset suite ($n{=}5$ paired seeds per dataset; analysis log
-in plan/gates/gate4/gate4\_stats.md).} Per-dataset, the three comparisons
+released with the source).} Per-dataset, the three comparisons
 (DRRA vs.\ Normal, CSA $(4,4)$ vs.\ Normal, DRRA vs.\ CSA) were tested with
 exact paired Wilcoxon signed-rank tests; \emph{nothing survives Holm
 correction across the 36 tests}, and with $n{=}5$ the two-sided floor is
@@ -378,7 +377,8 @@ $1.6$--$1.8$ ms/seq at $L{=}256$; the $L{\ge}512$ region of the scaling
 panel is where attention, not fixed overhead, dominates per-batch time).
 
 \textbf{Compute and memory accounting.} Analytic forward MACs per sequence
-(L=256, dominant terms; formulas in plan/gates/gate5/gate5\_bench.py):
+(L=256, dominant terms; closed-form accounting in the released benchmark
+scripts):
 Normal $76.9$M, CSA $(4,4)$ $61.7$M, DRRA $(8,4)$ $59.6$M --- the champion needs
 $22\%$ fewer MACs than Normal. Two honest caveats: the wrapper MLP
 ($33.9$M) is the largest single block for \emph{every} model, so attention
@@ -404,8 +404,7 @@ mean over per-round medians). All cells are asymptotically quadratic
 (routing term $O(L^2/c_R)$); the compressed cells have smaller constants
 and lower empirical slopes ($1.40$/$1.42$ vs.\ $1.72$ for Normal at batch
 32), and batch-32/$L{=}4096$ full attention exceeds practical memory (see
-text). Measurement log: plan/gates/gate5/gate5\_bench.py +
-gate5\_results.json.}
+text). All measurement and regeneration logs are released with the source.}
 \label{fig:lscale}
 \end{figure}
 
@@ -500,8 +499,7 @@ over the five paired seeds; lower is better); x-axis = mean forward
 latency (lower is faster, i.e.\ the left side); left: batch 32, right:
 batch 256. DRRA $(8,4)$ is lower-left at both operating points --- the best
 combined performance--speed choice --- with the separation growing at
-batch 256. Measurement logs: plan/gates/gate3/gate3\_latency*.json +
-gate3\_results/*.jsonl.}
+batch 256. Measurement logs released with the source.}
 \label{fig:perf-speed}
 \end{figure}
 
@@ -513,8 +511,7 @@ frozen protocol (development machine, fp32, 8 threads; mean over per-round
 medians, 15 rounds $\times$ 15 passes per model per batch size). At batch
 size 1 the fixed overheads of the compressor/indexer dominate and Normal is
 fastest; from batch 64 onward DRRA $(8,4)$ is clearly fastest, with the gap
-widening to $-21\%$ at batch 256. Measurement log:
-plan/gates/gate3/gate3\_latency\_scale.py + gate3\_latency\_scale.json.}
+widening to $-21\%$ at batch 256. Measurement log released with the source.}
 \label{fig:latency-scale}
 \end{figure}
 
@@ -528,8 +525,8 @@ input windows} ($L{=}256$, $H{=}96$, $F{=}7$); per-sequence latency at this
 batch size is mean$/32$ (${\approx}1.5$ ms/seq for DRRA $(8,4)$). Alternating
 head-to-head protocol (25 rounds $\times$ 30 passes, warm-up excluded);
 mean over per-round medians (95\% percentile bootstrap CI in brackets), with
-p90/p99 tails; throughput from the mean pass time. Measurement log:
-plan/gates/gate3/gate3\_latency.py + gate3\_latency.json.}
+p90/p99 tails; throughput from the mean pass time. Measurement log released
+with the source.}
 \label{tab:speed}
 \begin{tabular}{lccccc}
 \toprule

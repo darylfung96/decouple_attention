@@ -9,15 +9,13 @@
   author    = {{DeepSeek-AI}},
   journal   = {arXiv preprint arXiv:2606.19348},
   year      = {2026},
-  note      = {Verified 2026-08-16 (arXiv API); CSA/HCA internals read in
-               depth 2026-08-16 (plan/dsv4\_csa\_read.md): CSA compresses
+  note      = {Verified 2026-08-16 (arXiv API). CSA compresses
                every m tokens into one entry (two-series overlapped
                softmax) and selects top-k compressed entries via the
                lightning indexer (Flash m=4/k=512, Pro m=4/k=1024; HCA
-               m'=128; window 128). Knobs exposed but never varied
-               independently -- no ablation exists in the report. C2 sweep
-               verdict 2026-08-16: KEEP (no counterexample found);
-               see plan/2026-08-16-c2-lit-sweep.md.}
+               m'=128; window 128). The compression and indexer rates are
+               exposed as fixed hyperparameters and are never varied
+               independently -- no ablation exists in the report.}
 }
 
 @article{yuan2025nsa,
