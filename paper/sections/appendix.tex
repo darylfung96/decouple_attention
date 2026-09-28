@@ -36,7 +36,12 @@ per-module parameter registry, causality-verification and wiring-audit
 suites (all variants pass future-invariance and exact-zero-future-gradient
 checks; the Normal baseline is bit-identical to a naive causal reference),
 and a sanity-test suite covering shapes, gradients, parameter counts, and
-tiny-task fitting. Reported means and deltas are computed from the audited
+tiny-task fitting (including a per-cell index-to-block mapping regression test).
+Stage-0 audits ship as machine-readable logs alongside the manifests: last-query
+equivalence, the router gradient audit, canonical last-query latency with paired
+deltas, the index-to-block mapping audit (with the pre-fix misrouting finding and
+the Gate-15 re-run of the affected cells), and the unrounded 25-seed factorial
+recomputation. Reported means and deltas are computed from the audited
 manifests; the figure-generation scripts in this paper's source tree read
 the same manifests, so every figure is regenerable. The freeze-clean
 package --- environment lockfile, dataset SHA-256 manifests, automated

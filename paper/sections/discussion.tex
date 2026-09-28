@@ -87,6 +87,11 @@ future work.
         per-window statistics are used (Section~\ref{sec:stats}).
   \item \textbf{Fixed budget, single checkpoint policy.} 10 epochs,
         epoch-10 weights; no early stopping or best-validation selection.
+  \item \textbf{Single-block backbone retained.} The study keeps the minimal
+        one-block backbone deliberately (the backbone, not the attention module,
+        is the accuracy bottleneck at this scale, Section~\ref{sec:refpoints});
+        forecast cost is reported both ways (full-layer and forecast-required,
+        Section~\ref{sec:efficiency}), and a multilayer backbone remains future work.
   \item \textbf{CPU-only, fp32, small models.} Dense-with-masking
         implementation choices are CPU-oriented and may not transfer to
         GPU-flash-attention regimes.

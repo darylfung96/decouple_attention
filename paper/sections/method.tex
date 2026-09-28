@@ -112,6 +112,27 @@ exactly equal to the sparse top-$k$ selection, with no approximation. On
 CPU this formulation is several times faster than per-query gather in our
 implementation, and it keeps the softmax exact.
 
+\textbf{Index-to-block mapping (per cell).} The router selects top-$k{=}16$ index
+tokens; each token $t$ covers $[4t, 4t{+}3]$ at $c_R{=}4$ ($[8t, 8t{+}7]$ at $c_R{=}8$)
+and must be translated to KV-block ids before the dense masked attention:
+\begin{itemize}
+  \item $(8,4)$: two fine tokens per coarse block --- block $j = t \sslash 2$,
+        covering $[8j, 8j{+}7]$ (at most two of the 16 selections collide per block).
+  \item Equal-rate cells $(4,4)$, $(8,8)$: token $t$ \emph{is} block $t$ (identity).
+  \item $(4,8)$: one coarse token fans out to two fine blocks $(2t, 2t{+}1)$,
+        doubling the per-query selection to 32 block slots.
+\end{itemize}
+A selected block is read only when its entire span ends at or before the query
+($\mathrm{block\_end} \le q$); otherwise --- and for tokens masked as future or
+out of range --- it maps to a sentinel id that \_attend drops, so no query reads
+future positions. Causality holds through the overlapping compressor as well: each
+compressed block mixes only its own and the previous window (receptive field
+$[m(j{-}1), mj{+}m{-}1]$), i.e.\ strictly backward, so the block-end guard is
+sufficient. Any other $(c_{KV}, c_R)$ geometry raises instead of guessing a mapping.
+\emph{Historical note:} before 2026-09-28 the implementation applied $t \sslash 2$
+unconditionally, misrouting every cell but $(8,4)$; the audit, fix, and re-run of the
+affected cells ship in the released gate-13/15 logs.
+
 \subsection{The two design axes and the factorial}
 \label{sec:factorial}
 The two axes are the KV compression rate $c_{KV} = m$ and the routing
