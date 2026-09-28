@@ -12,9 +12,7 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 
 ## QUEUED (unblocked, text-only, do after DOING frees up)
 
-- B1-1 algorithm box — fixed mapping rules now known; document correct rules + one-line historical-bug note (`B1_operator_spec.md`).
-- A-3 backbone decision — default (i) keep single-block + report both costs; log in `plan/paper_notes.md` + `discussion.tex`.
-- A-4 complexity/repro text — list gate13/14/15 artifacts in appendix repro; complexity already carries both-costs language.
+- (empty — B1-1/A-3/A-4 completed 2026-09-28; next text work is the v2 number pass after Gate15 + Q-2)
 
 ## BLOCKED (with reason + dependency)
 
@@ -35,6 +33,7 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 ## Session log (newest first)
 
 - 2026-09-28: Q-3=(b) reviewed (essential-code-review) → fixed mapping → verified (8,4)-identical + tests pass → Gate15 launched (factorial 75 in flight; suite-Flat 60 queued). Q-2 still open.
+- 2026-09-28: B1-1/A-3/A-4 DONE (algorithm box + single-block decision + repro artifacts; committed f1cf38d). A-file COMPLETE. Remaining: Gate15 monitor, Q-2, v2 number pass.
 - 2026-09-28: Stage-1 text batch DONE (00/C/D/G/I). B1-5 RED found during B1-1 prep (mapping bug) — halted B1-1/A-3/A-4, decided Q-3 after report.
 - 2026-09-28: A-2 DONE + B1-2 DONE (canonical 25×30 uv/torch2.6.0); two audit-script bugs fixed (A2-1/A2-2). Repo `.venv` REMOVED; always-uv rule in memory.
 - 2026-09-28: A-1 GREEN + B2-1 RED (indexer grads exactly 0). First runs used homebrew python3.13/torch2.12.1; canonicalized to uv env after.
