@@ -17,6 +17,8 @@ Status legend: `[x]` DONE · `[~]` PARTIAL · `[ ]` TODO · `[!]` BLOCKING
 5. **Max 2 DOING:** move anything else back to TODO. Blocked items stay in BLOCKED with reason + dependency ID.
 6. **IDs are stable:** `00`, `A`, `B1`, `B2`, `C`, `D`, `E`, `F`, `G`, `H`, `I`, `J`. Never rename; sub-tasks append `-N` (e.g. `A-1`).
 7. **No silent scope growth:** new work gets a new sub-ID + acceptance line, never an untracked checkbox edit elsewhere.
+8. **Manuscript hygiene:** no internal names in `paper/` — no Gate-N, Stage-N, `plan/` paths, Q-N, or tracking shorthands. Use the paper's convention (`released with the source`). Check before every paper commit:
+   `grep -rni "gate-1[0-9]\\|stage-[01]\\|plan/\\|pre-publication\\|Q-[0-9]" paper/sections/ paper/main.tex` → must be empty.
 
 ## Dashboard
 
