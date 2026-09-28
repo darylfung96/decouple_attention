@@ -1,0 +1,17 @@
+# D — Decoupling vs compression (DRRA vs equal-rate)
+
+Status: PARTIAL (D-1/D-2/D-4 DONE 2026-09-28; D-3 blocked on B2-2 + runs) | Updated: 2026-09-28 | Evidence: `plan/gates/gate14_c1/c1_recompute.json` (counts) + tex diffs | Depends: D-3 needs B2-2 decision
+
+Reviewer ask: key = dual-rate vs equal-rate, not vs Normal. p=0.093 ns; 4 lower / 6 higher / 2 tied; ETTh2 +32.7% vs equal-rate. Foreground losses; "champion" → "DRRA (8,4)" / "best-mean ETTh1 config". Replicate 4-cell on contrasting datasets > more ETTh1 seeds. Contribution may be task-dependent.
+
+## Tasks
+
+- [x] **D-1.** DONE 2026-09-28 — `grep -rni champion` → 1 hit = bounded definition (`method.tex:135`); all other uses → DRRA $(8,4)$ / best-mean ETTh1 cell. Verified from 25-seed raw: best-of-four DRRA 13 (not 17) vs beats-CSA 17; CSA head-to-head ahead in 8 (no ties). Paper corrected (RQ2 + stats).
+- [x] **D-2.** DONE 2026-09-28 — DRRA-vs-CSA val + test promoted: val −0.0385 p=0.096 (17/25, best-of-four 13/25); test −0.0928 [−0.129,−0.057] p<1e-4 (20/25, best-of-four 16/25) as secondary unadjusted contrast.
+- [ ] **D-3.** NEW 4-cell × 3 datasets (ETTh2/ETTm2 + Electricity/Traffic + Exchange), 5 seeds, pre-registered, param-equalized. 60 runs. Effort: L (~14–18h CPU). BLOCKED on B2-2 decision.
+- [x] **D-4.** DONE 2026-09-28 — task-dependent framing consistent across abstract/intro/discussion/conclusion (signal-dependent + sweep + §5.1 rewrite).
+
+## Log
+
+- 2026-09-28: Created from review §D; header added.
+- 2026-09-28: D-1/D-2/D-4 DONE. D-3 BLOCKED on B2-2. Note: ETTh2 +32.7% vs equal-rate foregrounding rides with D-3 (needs multi-dataset 4-cell); current suite Table coverage unchanged.

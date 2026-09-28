@@ -96,23 +96,47 @@ class ExpertPlusPlusAttention(BaseCSAAttention):
         return pos, scale
 
     def _postprocess_topk(self, top_k_indices, index_scores, n_idx, S, device):
-        """Map 4:1 index tokens onto 8:1 KV blocks with future-safety.
+        """Map index tokens onto KV blocks, dispatched on cell geometry.
 
-        Block j (positions [8j, 8j+7]) == index tokens {2j, 2j+1}. A token in
-        [0, n_idx) maps to block t // 2. A block is only safe to read when its
-        ENTIRE span is in the past (8j+7 <= q), otherwise it leaks future
-        positions — mask it via the n_idx sentinel (dropped by _attend).
+        - (8,4): two fine index tokens per coarse KV block: block = t // 2.
+        - equal-rate (ck == ci): token t IS block t (identity).
+        - (4,8): one coarse token fans out to two fine blocks (2t, 2t+1).
+        Any other geometry raises instead of silently misrouting (a prior
+        version applied t // 2 unconditionally, which is wrong for every
+        cell but (8,4)). A block is only safe to read when its ENTIRE span
+        is in the past (block_end <= q) --- mask it via the n_kv sentinel
+        (dropped by _attend). Caller sentinels (token == n_idx) stay n_kv.
         """
-        n_kv = S // self.compress_rate
-        # Preserve the n_idx sentinel (invalid/future tokens) as n_kv.
+        ck, ci = self.compress_rate, self.index_compress_rate
+        n_kv = S // ck
+        # Preserve caller sentinels as n_kv (never unmask below).
         sentinel = top_k_indices >= n_idx
-        # sentinel maps to 63 → clamp to 31 → then masked below
-        blocks = top_k_indices.clamp(0, n_idx - 1) // 2          # [B,S,top_k]
-        block_end = (blocks * self.compress_rate + (self.compress_rate - 1))  # 8j+7
+        t = top_k_indices.clamp(0, n_idx - 1)
         q_pos = torch.arange(S, device=device).view(1, -1, 1)
-        safe = block_end <= q_pos
-        kv_blocks = torch.where(safe, blocks, n_kv)              # sentinel n_kv
-        kv_blocks = torch.where(sentinel, n_kv, kv_blocks)       # never unmask a sentinel
+        if ck == 8 and ci == 4:
+            blocks = t // 2                                          # [B,S,top_k]
+            block_end = blocks * ck + (ck - 1)                        # 8j+7
+            safe = block_end <= q_pos
+            kv_blocks = torch.where(safe, blocks, n_kv)
+            kv_blocks = torch.where(sentinel, n_kv, kv_blocks)
+        elif ck == ci:
+            blocks = t                                               # identity
+            block_end = blocks * ck + (ck - 1)
+            safe = block_end <= q_pos
+            kv_blocks = torch.where(safe, blocks, n_kv)
+            kv_blocks = torch.where(sentinel, n_kv, kv_blocks)
+        elif ck == 4 and ci == 8:
+            # One coarse token covers two fine blocks: select both.
+            blocks = torch.cat([t * 2, t * 2 + 1], dim=-1)           # [B,S,2*top_k]
+            block_end = blocks * ck + (ck - 1)
+            safe = block_end <= q_pos                                # broadcasts [1,S,1]
+            kv_blocks = torch.where(safe, blocks, n_kv)
+            kv_blocks = torch.where(sentinel.repeat_interleave(2, dim=-1),
+                                      n_kv, kv_blocks)
+        else:
+            raise ValueError(
+                f"unsupported index->KV geometry (compress_rate={ck}, "
+                f"index_compress_rate={ci}); refusing to guess a mapping")
         return kv_blocks, n_kv
 
     # Dense `_attend` is inherited from BaseCSAAttention (window + all 32 KV

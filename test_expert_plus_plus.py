@@ -102,6 +102,45 @@ print(f"[3] tiny fit loss — Flat={l_flat:.4f}, ExpertPlusPlus={l_epp:.4f}, "
 print("    ✓ trainable" if l_flat < 0.5 and l_epp < 0.5 else "    ⚠ check fit")
 print("    ✓ fine router ≥ coarse router" if l_epp <= l_coarse + 1e-3 else "    ⚠ fine router lost")
 
+# 5. Per-cell mapping regression (B1-5: t//2 was unconditional pre-fix).
+#    For EVERY factorial geometry, valid tokens must reach every KV block
+#    (full range), and no selected block may extend into the future.
+for _ck, _ci, _nk in [(4, 4, 64), (8, 4, 32), (4, 8, 64), (8, 8, 32)]:
+    _m = ExpertPlusPlusAttention(hidden_size=128, num_heads=4, head_dim=32,
+                                 q_lora_rank=64, compress_rate=_ck,
+                                 index_compress_rate=_ci, index_topk=16,
+                                 sliding_window=16, o_lora_rank=64).eval()
+    _S, _nidx = 256, 256 // _ci
+    _toks = torch.arange(_nidx).unsqueeze(0).unsqueeze(0).expand(1, _S, _nidx)
+    _tk = _toks[:, :, :16].clone()  # top-16 candidate tokens
+    with torch.no_grad():
+        _kb, _rnk = _m._postprocess_topk(_tk, None, _nidx, _S, 'cpu')
+    assert _rnk == _nk, (_ck, _ci, _rnk)
+    _exp = _S // _ck
+    if (_ck, _ci) == (4, 8):
+        assert tuple(_kb.shape) == (1, _S, 32), _kb.shape  # fan-out doubles
+        assert bool((_kb[0, 255, :16] == _tk[0, 255, :] * 2).all())
+        assert bool((_kb[0, 255, 16:] == _tk[0, 255, :] * 2 + 1).all())
+    elif _ck == _ci:
+        assert bool((_kb[0, 255, :] == _tk[0, 255, :]).all()), (_ck, _ci)  # identity
+    else:
+        assert bool((_kb[0, 255, :] == _tk[0, 255, :] // 2).all()), (_ck, _ci)
+    _ends = _kb * _ck + (_ck - 1)
+    _q = torch.arange(_S).view(1, -1, 1)
+    assert (((_ends <= _q) | (_kb == _nk))).all(), f"future leak at {(_ck, _ci)}"
+print("    \u2713 per-cell mapping (identity/t//2/fan-out) + future-safety OK")
+try:
+    _bad = ExpertPlusPlusAttention(hidden_size=128, num_heads=4, head_dim=32,
+                                   q_lora_rank=64, compress_rate=16,
+                                   index_compress_rate=4, index_topk=16,
+                                   sliding_window=16, o_lora_rank=64).eval()
+    with torch.no_grad():
+        _bad._postprocess_topk(torch.zeros(1, 256, 16, dtype=torch.long),
+                               None, 16, 256, 'cpu')
+    raise AssertionError("unsupported geometry did not raise")
+except ValueError:
+    print("    \u2713 unsupported geometry raises OK")
+
 # 4. Param counts
 from benchmark_speed import count_params, FlatWrapper, ExpertPlusPlusWrapper
 print(f"[4] params — Flat={count_params(FlatWrapper())/1e6:.3f}M, "

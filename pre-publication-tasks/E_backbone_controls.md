@@ -1,0 +1,16 @@
+# E — Relevance beyond weak backbone
+
+Status: PARTIAL | Updated: 2026-09-28 | Evidence: Gate-6 DONE (`gate6_baselines/results/`, `Tab:refpoints`); backbone + controls missing | Depends: E-2 needs B2
+
+Reviewer ask: gaps not marginal (ETTh1 0.3521 vs 0.5967; Exchange 0.3000 vs 3.2350; syn-changepts 0.0622 vs 6.0013). Survive in ≥1 credible temporal-attention backbone (else fixed). Controls: compression w/o routing, local-only, fixed/random at matched budget. Match dense baseline — wiring audit ≠ isolation.
+
+## Tasks
+
+- [ ] **E-1.** Keep Gate-6 (verify `gate6_facts.json` vs reviewer Table-5; keep no-competitiveness language). Verify-only. Effort: S. Status: DONE-verify.
+- [ ] **E-2.** NEW backbone transfer: ONE credible temporal-attention backbone; c_KV × c_R cells, else fixed; 5 seeds ETTh1 + 1 contrast; audited. Effort: L.
+- [ ] **E-3.** Diagnostic controls at matched budget: all-blocks, window-only, fixed/random. Effort: M (≥3×5×2 runs).
+- [ ] **E-4.** Baseline equalization note: list structural confounds beyond rates with ledger; or equalize.
+
+## Log
+
+- 2026-09-28: Created from review §E; header added.

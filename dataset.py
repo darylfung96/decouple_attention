@@ -22,7 +22,8 @@ class ETTForecastDataset(Dataset):
 
     def __getitem__(self, idx):
         # Frozen task (plan/gates/gate1/gate1_task.md §1-3): input window + disjoint next-H
-        # window. Windows never overlap and never span a split boundary.
+        # window. Windows are stride-1 (they overlap heavily by design) and never span
+        # a split boundary.
         x = self.data[idx : idx + self.lookback]                              # [L, F]
         y = self.data[idx + self.lookback : idx + self.lookback + self.horizon]  # [H, F]
         return x, y

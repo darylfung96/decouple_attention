@@ -1,0 +1,45 @@
+{
+  "rows": [
+    {
+      "cell": "(4,4)",
+      "n_kv": 64,
+      "n_idx": 64,
+      "max_selected": 62,
+      "min_selected": 0,
+      "sentinel_frac": 0.12890625,
+      "expected": "0..63 identity needed",
+      "verdict": "CORRECT"
+    },
+    {
+      "cell": "(8,4)",
+      "n_kv": 32,
+      "n_idx": 64,
+      "max_selected": 30,
+      "min_selected": 0,
+      "sentinel_frac": 0.1474609375,
+      "expected": "0..31 (t//2 correct)",
+      "verdict": "CORRECT"
+    },
+    {
+      "cell": "(4,8)",
+      "n_kv": 64,
+      "n_idx": 32,
+      "max_selected": 63,
+      "min_selected": 0,
+      "sentinel_frac": 0.32421875,
+      "expected": "1-token-to-2-blocks fan-out needed",
+      "verdict": "CORRECT"
+    },
+    {
+      "cell": "(8,8)",
+      "n_kv": 32,
+      "n_idx": 32,
+      "max_selected": 31,
+      "min_selected": 0,
+      "sentinel_frac": 0.26171875,
+      "expected": "0..31 identity needed",
+      "verdict": "CORRECT"
+    }
+  ],
+  "scope": "HISTORICAL BUG (fixed 2026-09-28): gate2 (5 seeds) + gate7 (20 seeds) + gate3 suite Flat built compressed cells via EPPTimeSeriesModel with unconditional t//2; only (8,4) was correct. Post-fix audit: all four geometries map correctly."
+}
