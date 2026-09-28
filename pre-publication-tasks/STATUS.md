@@ -20,6 +20,7 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 
 - B2-3/B2-4 (need Q-2 decision) · D-3 60-run factorial (needs Q-2 AND gate15 v2) · E-2/E-3, F-3, H-1/H-2 (Stage-2 runs; need Q-2 + venue steer in J).
 - Paper RQ1/H1/D-2 number updates (need gate15 v2 analysis — current tex numbers are as-run under the old mapping; flagged, not silently kept).
+- v2 refresh execution (plan: `plan/gates/gate15_rerun/v2_refresh_plan.md` — A-1…A-4 outputs, B-1…B-18 paper/figure updates, C figs, D no-change list, E decision checkpoint; runs after Gate15 completes + Q-2).
 
 ## DONE (with evidence — link artifact, not prose)
 
