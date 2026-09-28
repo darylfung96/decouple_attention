@@ -67,7 +67,7 @@ as the task-appropriate baseline.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.72\linewidth]{figures/fig5_architecture.pdf}
-\caption{Architecture of the compressed-and-indexed family (champion DRRA
+\caption{Architecture of the compressed-and-indexed family (DRRA
 $(8,4)$ drawn). One shared Transformer block whose only varying component is
 the attention module: a KV compressor ($c_{KV}{=}8$: 256 positions $\to$ 32
 blocks), a routing indexer ($c_R{=}4$: 64 index tokens) with top-$k{=}16
@@ -132,7 +132,9 @@ referred to by name throughout:
         128), not DeepSeek-V4's mechanism (Section~\ref{sec:related}).
   \item \textbf{DRRA (Dual-Rate Routed Attention)} --- the dual-rate corner
         $(8,4)$ (coarse content, fine routing), which gives the family its
-        working name and is the paper's champion configuration.
+        working name. We use ``champion'' for this cell strictly as shorthand for
+        ``best-mean ETTh1 configuration'' (its edge over CSA $(4,4)$ is directional,
+        exact Wilcoxon $p = 0.096$); everywhere else we name the cell explicitly.
 \end{itemize}
 The remaining corners $(4,8)$ and $(8,8)$ appear only in the factorial.
 
@@ -193,13 +195,14 @@ attends to all 256 columns and carries 102{,}496 attention parameters.
 Every compressed cell shares the identical auxiliary contract (window 16,
 top-$k$ 16, 4 heads, hidden 128, shared-Q, ranks 64) and differs only in
 the two rates. $c_{KV}{=}8$ halves the number of KV blocks (32 vs.\ 64) and
-thereby the softmax columns ($48{+}1$ vs.\ $80{+}1$, i.e.\ 5.3$\times$
+thereby the softmax columns ($48{+}1$ vs.\ $80{+}1$; 256/49 complete columns,
+i.e.\ 5.22$\times$
 fewer than Normal); $c_R$ sets how many routing candidates the router
 selects from (64 for $c_R{=}4$, 32 for $c_R{=}8$) without changing the
 attention cost. All compressed cells carry slightly \emph{fewer} attention
 parameters than Normal ($-6.7\%$ to $-6.9\%$; the low-rank $q$/$o$
 bottlenecks replace dense projections), and full-model counts are
-${\sim}2\%$ below Normal's. The champion DRRA $(8,4)$ therefore combines the
+${\sim}2\%$ below Normal's. The DRRA $(8,4)$ cell therefore combines the
 smallest attention geometry with the fine-router candidate count.
 
 \textbf{Parameter equalization.} The factorial is pre-registered with an
@@ -208,14 +211,14 @@ size, optimizer, and schedule, and differ only in $(c_{KV}, c_R)$--the cell
 definition. Because the position-bias terms of the two compressors grow with
 their rates, attention-parameter counts differ slightly between cells; the
 only free compute-quality knobs not part of the cell definition (the
-low-rank $q$ and $o$ bottlenecks) are fixed at the champion ranks
+low-rank $q$ and $o$ bottlenecks) are fixed at the DRRA $(8,4)$ ranks
 $(64, 64)$, which is the lattice minimum for \emph{every} cell. The largest
 remaining attention-parameter delta is $0.268\%$ (full-model delta
 $\le 0.074\%$), well inside the pre-registered $0.5\%$ tolerance.
 
 \textbf{Complexity.} Attention cost per query is proportional to the number
 of softmax columns: 256 for Normal, 80 for $c_{KV}{=}4$ cells, and 48 for
-$c_{KV}{=}8$ cells (5.3$\times$ fewer than Normal), giving
+$c_{KV}{=}8$ cells (5.22$\times$ fewer complete columns than Normal), giving
 $O(L \cdot \mathrm{cols} \cdot d)$ per sequence for the score/value
 computation. The router, however, compares every query against
 $M = L/c_R$ index tokens, $O(L \cdot M) = O(L^2/c_R)$: the total

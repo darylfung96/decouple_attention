@@ -3,17 +3,20 @@
 
 \subsection{The decoupling insight (directional)}
 The cleanest reading of the factorial is that the two axes play different
-roles: \emph{routing granularity carries accuracy; KV content density only
-buys efficiency}. The control logic is internal to the design: the DRRA $(8,4)$
-cell (coarse content, fine router) matches or beats the equal-rate cells
-with half the attention columns, while the $(4,8)$ cell (fine content,
-coarse router) is the worst cell despite having the same columns as CSA $(4,4)$.
-The per-seed consistency (7/10 in the same direction for each effect) and
-the effect-size-to-seed-noise comparison (both effects ${\sim}0.04$ vs.\
-within-cell std ${\sim}0.065$) mean we currently report this as a
-\emph{directional} finding; significance testing and a multi-dataset
-confirmation are the immediate next steps before this can be stated as a
-general design principle.
+roles on ETTh1: \emph{routing granularity carries accuracy; KV content density
+is mildly beneficial to accuracy and buys efficiency}. The control logic is
+internal to the design: the DRRA $(8,4)$ cell (coarse content, fine router) matches
+or beats the equal-rate cells with roughly three-fifths the attention columns
+(49 vs.\ 81 complete columns), while the $(4,8)$ cell (fine content, coarse
+router) is the worst cell despite having the same columns as CSA $(4,4)$.
+The per-seed consistency (19/25 in the same direction for each effect), the
+pre-registered H1 contrast (exact Wilcoxon $p = 0.0023$), and the non-significant
+interaction ($p = 0.31$) establish this as a \emph{statistically supported sign
+structure on ETTh1}; the effect sizes remain modest relative to seed noise (both
+effects ${\sim}0.03$--$0.05$ vs.\ within-cell std ${\sim}0.07$), the DRRA-vs.-CSA
+edge itself is directional ($p = 0.096$), and multi-dataset confirmation of the
+full factorial is still future work before this can be stated as a general design
+principle.
 
 \subsection{Why might compression help on this task?}
 We do not have a verified explanation for the compressed $>$ full-attention
@@ -31,10 +34,10 @@ hypothesis program (H1 is defined in Section~\ref{sec:rq1}) is designed to
 separate the candidates, and its current status is:
 \textbf{H1} (coarsening the router deteriorates accuracy more than
 coarsening KV compression) directionally supported in the factorial;
-\textbf{H2} (the dual-rate champion Pareto-dominates the equal-rate
-cells---the KV coarsening buys efficiency at no accuracy cost---at
-comparable or lower latency), whose latency leg is supported by the systems
-measurements and whose accuracy leg is directional (8/12 datasets);
+\textbf{H2} (the dual-rate corner matches or beats the equal-rate cells while
+using fewer attention columns), whose latency leg is supported directionally by the
+systems measurements and whose accuracy leg is directional (best-mean ETTh1 cell,
+DRRA-vs.-CSA $p = 0.096$; 8/12 datasets);
 \textbf{H3} (dense masked attention wins in small-work regimes but loses in
 large-work regimes), whose crossover shape is observed on a single machine;
 \textbf{H4} (the compression advantage depends on signal properties such as
@@ -69,7 +72,7 @@ future work.
         (different architectures, and DLinear has no attention), so no
         competitiveness claim is made. Efficiency-oriented peers (Informer's
         ProbSparse, iTransformer, TimesNet, SSM baselines) remain pending
-        (Appendix roadmap item~3).
+        (Appendix future-work item~3).
   \item \textbf{Single-machine systems measurements.} Forward latency
         (batch and lookback scaling), MACs, memory, and training time are
         measured on the development machine (Table~\ref{tab:speed},

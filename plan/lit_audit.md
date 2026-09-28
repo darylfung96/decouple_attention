@@ -29,6 +29,11 @@
 3. **Compression Rate × Routing Resolution: Mapping the Accuracy–Efficiency Trade-off of Routed Attention on ETTh1** (empirical-map lead)
 4. **Decoupling Content Compression from Routing Granularity in Time-Series Attention: A Controlled 2×2 Design Study** (finding-led; foregrounds contribution (b))
 
+**Decision 2026-09-28 (Stage-1 revision):** locked to reviewer-preferred
+**Decoupling Compression and Routing in Attention for Time-Series Forecasting**
+(design-study framing; `paper/main.tex`). Candidates 1–4 above superseded; memorable
+shorthand *Compress Coarsely, Route Finely* reserved pending multi-dataset proof of (8,4).
+
 **Decision rule:** prefer 2 or 3 if reviewers should see "study, not mechanism"; fall back to 1 if the venue wants method-name recognition. Final choice at the pre-submission re-audit.
 
 ## 4. Pre-submission checklist (remaining)

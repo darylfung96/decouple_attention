@@ -61,21 +61,21 @@ mechanism: every building block we use is a configuration of known ideas
         hidden size, optimizer, schedule) with attention-parameter
         equalization to within $0.3\%$, across 25 paired seeds
         (Section~\ref{sec:experiments}); the three-way comparison (full
-        attention vs.\ the equal-rate and champion cells) extends to twelve
+        attention vs.\ the equal-rate and dual-rate cells) extends to twelve
         datasets (Section~\ref{sec:rq3}).
   \item[(b)] \textbf{A decoupled-rate finding.} Coarsening the
         router deteriorates accuracy ($+0.029$ validation MSE for
         $c_R{:}4{:}1 \to 8{:}1$), while coarsening KV compression is
         mildly beneficial ($-0.052$). The pre-registered decoupling
         hypothesis---the routing effect exceeds the KV effect on per-seed
-        paired differences---is supported at $n{=}25$ (Wilcoxon
-        $p = 0.0032$). The best cell, the dual-rate corner
+        paired differences---is supported at $n{=}25$ (exact Wilcoxon
+        $p = 0.0023$). The best-mean ETTh1 cell, the dual-rate corner
         $(c_{KV}{=}8, c_R{=}4)$ (\emph{DRRA},
-        Section~\ref{sec:method}), reduces the attention matrix 5.3$\times$
+        Section~\ref{sec:method}), reduces the attention matrix 5.22$\times$
         relative to full attention
         at equal parameters; its edge over the equal-rate cell is
-        directional ($p = 0.093$), not significant.
-  \item[(c)] \textbf{An honest efficiency/accuracy characterization.} A
+        directional (exact Wilcoxon $p = 0.096$), not significant.
+  \item[(c)] \textbf{A measured efficiency/accuracy characterization.} A
         surprising---and wiring-verified---baseline result: compressed
         configurations beat full causal attention on the frozen task
         (mean deltas $-16.6\%$ to $-26.2\%$; Holm-adjusted
@@ -94,9 +94,10 @@ mechanism: every building block we use is a configuration of known ideas
 mechanism, does not claim state-of-the-art forecasting accuracy (the
 external architectures we ran are reference points for calibrating absolute
 error levels, not peer methods; Section~\ref{sec:refpoints}),
-does not claim statistical equivalence, and does not report wall-clock
-speedups: the pre-freeze latency figures from earlier stages of
-this project are superseded and are deliberately \emph{not} used here.
-Forward-pass latency on the development machine is measured and reported in
-Table~\ref{tab:speed}; FLOPs accounting and hardware transfer remain
-planned follow-up work (Section~\ref{sec:discussion}).
+and does not claim statistical equivalence. Wall-clock latency \emph{is}
+reported---as development-machine measurements with a directional-only stance
+(Table~\ref{tab:speed}, with paired and forecast-required companions in
+Section~\ref{sec:efficiency}); cross-hardware transfer remains future work.
+Analytic MACs are likewise reported with explicit caveats (the wrapper MLP
+dominates; MACs are not energy). Pre-freeze latency figures from earlier stages
+of this project are superseded and are deliberately \emph{not} used here.

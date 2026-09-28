@@ -16,19 +16,14 @@ secondary to the paper's core claim.
 
 \section{Surrogate attention (separate line of work)}
 \label{sec:appendix-surrogate}
-A separate pipeline distills the attention block's output into a cheap
-student that replaces attention at inference: a per-token MLP student
-($5.3\times$ faster, $+31\%$ validation MSE---per-token functions cannot
-replicate cross-token routing) and a windowed-plus-global-prototypes
-student ($2.18\times$ faster, ${\sim}0.4\%$ gap to its teacher at a
-5+1-epoch distillation schedule, ${\sim}82\%$ fewer parameters than the
-teacher). These numbers predate the frozen task and are not apples-to-apples
-with the results in Section~\ref{sec:experiments}; the surrogate line is
-kept in this paper only to acknowledge the overlap with attention
-distillation work \citep{goldstein2025radlads}. \textbf{Retention decision
-(2026-08-27):} the surrogate is \emph{not} part of this paper's claims; the
-equal-budget small-transformer control and distillation-epoch alignment are
-deferred, with the surrogate line, to a separate publication.
+Distilling the attention block into a cheap inference-time student is a separate
+line of work, deferred to a separate publication: it is \emph{not} part of this
+paper's claims, and none of its numbers are apples-to-apples with the frozen-task
+results in Section~\ref{sec:experiments} (they predate the frozen protocol). This
+pointer exists only to acknowledge the overlap with attention-distillation work
+\citep{goldstein2025radlads} and to record the retention decision: the surrogate
+line, including the equal-budget small-transformer control and
+distillation-epoch alignment, lives outside this manuscript.
 
 \section{Reproducibility}
 \label{sec:appendix-repro}
@@ -52,18 +47,20 @@ the project changelog); the remaining reproducibility steps
 at release time are a tagged archive with a DOI (e.g., Zenodo) and the
 official venue style swap.
 
-\section{Roadmap}
+\section{Future work}
 \label{sec:appendix-roadmap}
+Scope completed in this study versus open follow-ups, by axis:
 \begin{enumerate}
-  \item \textbf{Statistics: DONE at the factorial level.}
+  \item \textbf{Statistics.} Factorial-level inference is complete:
         $n{=}25$ paired seeds; paired Wilcoxon with
         Holm correction over cell-vs-Normal contrasts
         (Section~\ref{sec:stats}); per-seed main-effect contrast for H1.
-        Deferred with justification: mixed-effects model (needs more rate
-        levels), HAC/block bootstrap (seed-level analyses), TOST/ROPE (no
+        Deferred with justification: mixed-effects model (the $2\times2$ already
+        identifies the three fixed effects; deferred as a robustness re-expression),
+        HAC/block bootstrap (seed-level analyses), TOST/ROPE (no
         equivalence claims); temporal-dependence-aware statistics for the
         cross-dataset suite remain future work.
-  \item \textbf{Datasets: DONE.} The suite now covers
+  \item \textbf{Datasets.} The suite covers
         the ETT family (ETTh1, ETTh2, ETTm1, ETTm2), large multivariate
         (Electricity, Traffic, Weather), different dynamics (Exchange,
         Solar-Energy), and three mechanistic synthetic families (sinusoids,
@@ -71,8 +68,7 @@ official venue style swap.
         paired seeds (180 runs; per-seed tables in the released results
         manifests). Remaining: horizon ($H \in \{192, 336, 720\}$)
         and lookback ($L \in \{512, 720, 1024\}$) sweeps.
-  \item \textbf{Baselines: reference points DONE.}
-        DLinear \citep{zeng2023dlinear} and PatchTST \citep{nie2023patchtst}
+  \item \textbf{Baselines.} DLinear \citep{zeng2023dlinear} and PatchTST \citep{nie2023patchtst}
         under the identical frozen protocol as external reference points,
         not peer methods (Section~\ref{sec:refpoints}): DLinear on all
         twelve datasets; PatchTST on the eight datasets where its
@@ -80,7 +76,7 @@ official venue style swap.
         (declared omissions on solar/electricity/traffic/weather).
         Remaining as future work: iTransformer, Informer, TimesNet, and an
         SSM baseline.
-  \item \textbf{Hardware/latency: DONE on the development machine.}
+  \item \textbf{Hardware/latency.} Development-machine measurement is complete:
         Mean/p90/p99 forward latency with bootstrap
         CIs, throughput, analytic MACs, peak-memory accounting, training
         time, and batch/lookback scaling sweeps (batch 1--256,

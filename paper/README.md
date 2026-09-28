@@ -1,4 +1,4 @@
-# Paper — Dual-Rate Routed Attention for Efficient Long-Horizon Time-Series Forecasting
+# Paper — Decoupling Compression and Routing in Attention for Time-Series Forecasting
 
 Workshop-length draft (NeurIPS-style layout) of the DRRA two-axis design
 study. **Status: complete draft.** Gates 2–5 (factorial, 12-dataset

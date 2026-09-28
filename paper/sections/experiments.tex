@@ -19,7 +19,7 @@ epoch-10 weights; no best-validation checkpoint selection is used.
 \subsection{RQ1: the $2\times2$ factorial}
 \label{sec:rq1}
 Table~\ref{tab:factorial} and Figure~\ref{fig:factorial} summarize
-validation MSE by cell over 25 paired seeds. The champion cell is DRRA
+validation MSE by cell over 25 paired seeds. The best-mean cell is DRRA
 $(8,4)$ (mean validation $0.6190 \pm 0.0827$; mean test $0.8440$), matching
 the corner that combines aggressive KV compression with fine routing. The
 worst compressed cell is $(4,8)$ ($0.6994 \pm 0.0710$), which combines mild
@@ -52,7 +52,7 @@ $(8,8)$ & $0.6347 \pm 0.0670$ & 0.9184 & 0.2840 & 17 / 25 \\
 \centering
 \includegraphics[width=0.92\linewidth]{figures/fig1_factorial_val.pdf}
 \caption{Validation MSE by factorial cell (mean $\pm$ std over 25 paired
-seeds; individual seed points shown). Lower is better. The champion corner
+seeds; individual seed points shown). Lower is better. The DRRA corner
 $(c_{KV}{=}8, c_R{=}4)$ combines coarse KV compression with fine routing;
 the dashed line marks the full-attention baseline (0.8389).}
 \label{fig:factorial}
@@ -60,28 +60,34 @@ the dashed line marks the full-attention baseline (0.8389).}
 
 \textbf{Main effects.} Averaging over the opposite axis (Figure
 \ref{fig:main-effects}): coarsening KV compression from $4{:}1$ to $8{:}1$
-\emph{lowers} validation MSE by $-0.0516$ (mildly beneficial), while
+\emph{lowers} validation MSE by $-0.0516$ (95\% CI $[-0.081, -0.022]$; mildly beneficial), while
 coarsening routing resolution from $4{:}1$ to $8{:}1$ \emph{raises} it by
-$+0.0288$ (deterioration). Both signs are consistent in 19 of 25
-seed-column comparisons each.
+$+0.0288$ (95\% CI $[+0.006, +0.052]$; deterioration). Both signs are consistent in 19 of 25
+seed-column comparisons each. The interaction (does coarsening one axis change the
+other's effect?) is $-0.0262$ (95\% CI $[-0.071, +0.019]$, Wilcoxon $p = 0.31$):
+not significant, so the two axes act approximately additively on this task.
 
 \textbf{Pre-registered hypothesis H1} asked whether coarsening the router
 deteriorates performance \emph{more} than coarsening KV compression. At
 $n{=}25$ paired seeds the strict form is \emph{supported}: on per-seed
-main-effect differences the routing effect exceeds the KV effect by $+0.080$
-on average (paired Wilcoxon $p = 0.0032$; paired $t$-test $p = 0.0013$).
-The per-seed contrast is the decisive form of the test because it pairs all
-four $(c_{KV}, c_R)$ observations within a seed. Both individual effects
-remain modest relative to seed noise (${\sim}0.03$--$0.05$ vs.\ mean
+main-effect differences the routing effect exceeds the KV effect by $+0.0804$ on
+average (exact paired Wilcoxon $p = 0.0023$; paired $t$-test $p = 0.0013$;
+full recomputation from unrounded seeds in the released analysis log). This
+per-seed contrast is one of four reported estimates (the two main effects, the
+interaction, and the direct DRRA-vs.-equal-rate difference below)---it pairs all
+four $(c_{KV}, c_R)$ observations within a seed, and it is algebraically identical
+to the off-diagonal difference $y_{4,8} - y_{8,4}$, so the off-diagonal alone carries
+no independent information. Both individual effects remain modest relative to seed noise (${\sim}0.03$--$0.05$ vs.\ mean
 within-cell std $0.071$, per-cell range $0.067$--$0.083$; sign consistency
 19/25 per effect), so we report the decoupling as a \emph{statistically
 established sign structure} whose mechanism-level reading is still
 interpretation (Section~\ref{sec:discussion}; the mixed-effects model
 $\mathrm{MSE} = \beta_0 + \beta_1 \log_2 c_{KV} + \beta_2 \log_2 c_R +
-\beta_3 \log_2 c_{KV}\log_2 c_R + \text{random effects}$ remains deferred
-until more rate levels exist). Per-seed trajectories show the
+\beta_3 \log_2 c_{KV}\log_2 c_R + \text{random effects}$ is deferred as a robustness re-expression (the $2\times2$ with seed blocking already
+identifies all three fixed effects; more rate levels would add shape, not
+identification)). Per-seed trajectories show the
 ordering across cells is not unanimous for every seed---another reason the
-champion claim is stated as ``best on mean,'' not ``best for every seed.''
+best-mean claim is stated as ``best on mean,'' not ``best for every seed.''
 
 \begin{figure}[t]
 \centering
@@ -90,7 +96,7 @@ champion claim is stated as ``best on mean,'' not ``best for every seed.''
 $c_{KV}$ $4{:}1 \rightarrow 8{:}1$ ($-0.0516$, mildly beneficial) and
 $c_R$ $4{:}1 \rightarrow 8{:}1$ ($+0.0288$, deteriorates). Dashed lines:
 $\pm$ mean within-cell seed std ($0.071$); the per-seed paired contrast
-(routing effect $>$ KV effect) is significant at $p = 0.0032$.}
+(routing effect $>$ KV effect) is significant (exact $p = 0.0023$).}
 \label{fig:main-effects}
 \end{figure}
 
@@ -98,13 +104,14 @@ $\pm$ mean within-cell seed std ($0.071$); the per-seed paired contrast
 \label{sec:rq2}
 Table~\ref{tab:baseline} compares full causal attention (Normal, 256
 columns, no compression) with the two cells that anchor the family's
-design corners, CSA $(4,4)$ and the champion DRRA $(8,4)$.
+design corners, CSA $(4,4)$ and DRRA $(8,4)$.
 Every compressed cell beats Normal on mean validation
 and mean test MSE, and \emph{96 of the 100 paired seed comparisons}
 favor the compressed configuration (per-seed validation deltas span
 $-48.3\%$ to $+9.9\%$ across cells; mean deltas $-16.6\%$ to $-26.2\%$).
-The DRRA $(8,4)$ cell is the best factorial cell in 17 of 25 seeds, with
-CSA $(4,4)$ ahead in 8.
+DRRA $(8,4)$ beats CSA $(4,4)$ head-to-head in 17 of 25 seeds (CSA ahead in 8);
+it is the best of all four cells in 13 of 25 (CSA 5, $(8,8)$ 6, $(4,8)$ 1;
+25-seed recomputation in the released analysis log).
 
 \begin{table}[t]
 \centering
@@ -183,7 +190,7 @@ datasets, but \emph{columns are not comparable to each other}: every
 dataset is standardized with its own train-only statistics, so MSE values
 only have meaning within a column. The final $\Delta$val row is
 scale-free (a ratio per dataset) and is therefore the row to compare across
-columns; it also carries the honest exceptions---positive entries on
+columns; it also carries the notable exceptions---positive entries on
 Exchange ($+8.6\%$) and on all three synthetic families ($+0.2\%$ to
 $+3.1\%$).
 
@@ -273,11 +280,14 @@ ETT family, exchange, and the synthetic probes); on the wide datasets
 (solar 137, electricity 321, traffic 862 channels) it is a \emph{declared
 omission} (${\sim}3$--$13$\,h per seed on CPU), not a missing result.
 
-The probes also bound the anchors' advantage from the other side: on the
-mechanistic synthetic families the ordering \emph{inverts}, and both
+The probes also bound the anchors' advantage from the other side: on two of the
+three mechanistic synthetic families---delayed-copy and known-period sinusoids---the
+ordering \emph{inverts}, and both
 anchors fall behind even full attention (delayed-copy: Normal $0.289$ vs.\
 DLinear $0.408$ and PatchTST $0.342$; known-period sinusoids: Normal
-$0.123$ vs.\ DLinear $0.251$). Tasks requiring exact in-window content
+$0.123$ vs.\ DLinear $0.251$). The change-point family is excluded from this reading:
+there the anchors are far better than every family member (Normal $5.9456$ vs.\
+DLinear $0.0622$, PatchTST $0.0489$), so no inversion holds there. Tasks requiring exact in-window content
 recall are exactly where attention helps relative to linear or patched
 architectures---consistent with the compression-as-inductive-bias reading
 of Section~\ref{sec:rq3}, and worth further study.
@@ -326,10 +336,14 @@ tests on validation MSE are powered: \emph{every} compressed cell beats
 full attention, and the result survives Holm correction across the five
 pre-registered cell-vs-Normal contrasts (adjusted $p = 6.9\times10^{-5}$
 for all four cells). The pre-registered H1 contrast (per-seed routing
-effect minus KV effect) is likewise significant (Wilcoxon $p = 0.0032$).
-The champion's edge over the equal-rate cell is \emph{not} significant
-(DRRA vs.\ CSA: $p = 0.093$), so ``best on mean'' remains the strongest
-champion claim. The $n{=}25$ set is a post hoc merge of the five
+effect minus KV effect) is likewise significant (exact Wilcoxon $p = 0.0023$).
+The best-mean ETTh1 cell's edge over the equal-rate cell is \emph{not} significant
+on validation (DRRA vs.\ CSA: exact Wilcoxon $p = 0.096$; 17/25 head-to-head; best of all
+four cells in 13/25), so ``best on mean'' remains the strongest validation claim.
+On \emph{test} MSE the same contrast is stronger and significant (mean $-0.0928$,
+95\% CI $[-0.129, -0.057]$, exact Wilcoxon $p < 10^{-4}$; 20/25 head-to-head; best of
+four in 16/25)---a secondary, unadjusted contrast reported alongside the pre-registered
+validation analysis. The $n{=}25$ set is a post hoc merge of the five
 pre-registered seeds with a 20-seed power extension run under the
 byte-identical protocol; the seed list was fixed in the extension's design
 before any extension run, and the merge was planned at that time.
@@ -339,9 +353,11 @@ released with the source).} Per-dataset, the three comparisons
 (DRRA vs.\ Normal, CSA $(4,4)$ vs.\ Normal, DRRA vs.\ CSA) were tested with
 exact paired Wilcoxon signed-rank tests; \emph{nothing survives Holm
 correction across the 36 tests}, and with $n{=}5$ the two-sided floor is
-$p = 0.0625$, so no per-dataset effect can reach $p < 0.05$ (the closest
-raw values are etth1 and solar at $0.0625$ in favor of DRRA $(8,4)$; the
-synthetic probes are significant in the opposite direction). Across
+$p = 0.0625$, so no per-dataset effect can reach two-sided $p < 0.05$ (the closest
+raw values are etth1 and solar at $0.0625$ in favor of DRRA $(8,4)$). The two exact-recall
+probes reach significance against compression one-sided (exact $p = 0.03125$: all five
+seeds favor full attention on syn-sinusoids and syn-delayedcopy); syn-changepoints is not
+significant in either direction. Across
 datasets, paired sign tests on the 12 dataset means are not significant:
 8/12 ($p = 0.39$) for DRRA $(8,4)$ and 7/12 ($p = 0.77$) for CSA $(4,4)$.
 The strongest scale-free aggregate statement is the bootstrap 95\% CI on
@@ -358,20 +374,23 @@ tests), and TOST/ROPE (the paper makes no equivalence claims).
 
 \textbf{Sequence-length scaling and complexity.}
 Figure~\ref{fig:lscale} sweeps the lookback $L \in \{128, \dots, 4096\}$ at
-batch 1 and 32. At batch 32 the champion's advantage over Normal grows from
+batch 1 and 32. At batch 32 DRRA $(8,4)$'s advantage over Normal grows from
 $-32\%$ at $L{=}512$ to $-56\%$ at $L{=}2048$ ($869$ vs.\ $1984$ ms/batch, a
 $2.3\times$ speedup), and at batch 1/$L{=}4096$ it reaches $-63\%$ ($86$ vs.\
 $235$ ms)---while at $L \le 256$ and batch 1 Normal is fastest (fixed overheads
 again). The
-empirical log-log slopes ($L \ge 512$) are $1.40$ (champion), $1.42$
+empirical log-log slopes ($L \ge 512$) are $1.40$ (DRRA $(8,4)$), $1.42$
 (CSA $(4,4)$), and $1.72$ (Normal) at batch 32: consistent with the complexity
 analysis of Section~\ref{sec:factorial}---the routing term
 $O(L^2/c_R)$ keeps every cell asymptotically quadratic, with a reduced
 constant for the compressed cells, and Normal approaches the quadratic
 slope fastest. We therefore do \emph{not} claim subquadratic scaling. At
 the extreme, batch-32/$L{=}4096$ full attention requires a ${\sim}8$ GB
-score tensor and was skipped on the 16 GB machine---the practical memory
-wall of dense attention that compressed attention avoids. All models
+score tensor and was skipped on the 16 GB machine. That ${\sim}8$ GB wall is a
+property of our materializing implementation, not of dense attention as such:
+fused kernels (e.g.\ FlashAttention \citep{dao2022flashattention}) avoid
+materializing the score tensor and move the wall elsewhere---so the memory
+advantage reported here is implementation-relative, and GPU transfer may erase it. All models
 process the frozen task in under $2$ ms per sequence at batch 32 (mean
 $1.6$--$1.8$ ms/seq at $L{=}256$; the $L{\ge}512$ region of the scaling
 panel is where attention, not fixed overhead, dominates per-batch time).
@@ -379,12 +398,16 @@ panel is where attention, not fixed overhead, dominates per-batch time).
 \textbf{Compute and memory accounting.} Analytic forward MACs per sequence
 (L=256, dominant terms; closed-form accounting in the released benchmark
 scripts):
-Normal $76.9$M, CSA $(4,4)$ $61.7$M, DRRA $(8,4)$ $59.6$M --- the champion needs
-$22\%$ fewer MACs than Normal. Two honest caveats: the wrapper MLP
+Normal $76.9$M, CSA $(4,4)$ $61.7$M, DRRA $(8,4)$ $59.6$M --- DRRA $(8,4)$ needs
+$22\%$ fewer MACs than Normal. Two caveats: the wrapper MLP
 ($33.9$M) is the largest single block for \emph{every} model, so attention
 is not the dominant compute at this scale; and measured latency differences
 ($-6\%$) are smaller than the MAC difference ($-22\%$) because dense-masked
 CPU GEMMs are efficient relative to the extra compressor/indexer work.
+And MACs are not energy: arithmetic counts omit memory traffic and
+hardware-specific efficiency, so the $22\%$ MAC gap is a work statement, not an
+energy claim (the deployment reading in Section~\ref{sec:conclusion} is explicitly
+conditional on hardware where attention dominates).
 Peak resident memory during a batch-32 forward burst grows by
 ${\sim}0.3$ GB (process watermark; parameter memory is only ${\sim}1.4$ MB
 per model), and at batch-32/$L{=}4096$ the full-attention score tensor
@@ -394,7 +417,7 @@ Normal $474$ s, CSA $(4,4)$ $511$ s, DRRA $(8,4)$ $459$ s --- one DRRA run
 ($1417$ s) overlapped a machine-sleep window and is excluded from the
 median. All latency/compute measurements are single-machine (Apple M2,
 fp32, 8 threads); cross-hardware transfer (Linux x86, GPU) and model
-depth/width sweeps remain future work (Appendix roadmap item~4).
+depth/width sweeps remain future work (Appendix future-work item~4).
 
 \begin{figure}[t]
 \centering
@@ -410,8 +433,8 @@ text). All measurement and regeneration logs are released with the source.}
 
 \subsection{Efficiency}
 \label{sec:efficiency}
-Table~\ref{tab:configs} gives the structural efficiency story: the
-champion attends to 48 columns per query (5.3$\times$ fewer than Normal)
+Table~\ref{tab:configs} gives the structural efficiency story: DRRA $(8,4)$
+attends to 48 columns per query (5.22$\times$ fewer complete columns than Normal)
 at 95{,}652 attention parameters---\emph{fewer} than Normal's 102{,}496---and
 a full-model count 2.0\% below Normal's. Routing cost is identical for the
 two $c_R{=}4$ cells regardless of $c_{KV}$, which is the deliberate
@@ -422,17 +445,28 @@ Table~\ref{tab:speed} reports wall-clock forward-pass latency measured
 alternating head-to-head protocol (all three models timed in rotation within
 each round, so each round shares the same thermal/contention window; 25
 rounds of 30 passes after warm-up; mean over per-round medians with 95\%
-percentile bootstrap CIs, plus p90/p99 tails). The champion has the lowest
+percentile bootstrap CIs, plus p90/p99 tails). DRRA $(8,4)$ has the lowest
 mean latency ($49.3$ ms vs.\ $52.5$ ms for Normal, $-6.1\%$; CSA $(4,4)$
 $-0.7\%$), and the ordering $(8,4) < (4,4) <$ Normal replicated across a
 second run, but the 95\% CIs overlap and the level shifts by
 ${\sim}6$--$9\%$ between runs (thermal and contention effects), so we report
-the latency comparison as \emph{directional} only. Notably, the structural
-5.3$\times$ column reduction does not translate into proportional wall-clock
+the latency comparison as \emph{directional} only. Paired within-round analysis tightens
+this without changing the stance: in a 25-round round-robin rerun under the frozen protocol
+(released audit log), DRRA $(8,4)$ beats Normal by $-9.0 \pm 1.7$ ms per paired round
+and CSA $(4,4)$ by $-5.2 \pm 0.9$ ms (95\% CIs exclude zero \emph{in that run}); absolute
+levels still drift across runs, so directional-only stands. A last-query audit reframes
+the comparison further: the forecast uses only the last position (Section~\ref{sec:task}),
+and recomputing latency for that forecast-required path (bit-exact to ${\sim}5\times10^{-7}$)
+gives Normal $2.6$--$3.9$ ms, CSA $(4,4)$ $6.2$--$9.5$ ms, DRRA $(8,4)$ $5.8$--$8.6$ ms per
+batch-32 pass---ranges span two runs showing the same level drift. Under last-query accounting
+the dense baseline's last-query path is the fastest, because it pays no
+compressor/indexer work: Table~\ref{tab:speed} compares full-layer costs, both costs are
+reported, and efficiency claims are stated against the last-query baseline. Notably, the structural
+5.22$\times$ column reduction does not translate into proportional wall-clock
 gains at this scale: dense-masked CPU GEMMs are efficient and the
 compressor/indexer add overhead. These are single-machine CPU measurements
 (fp32, 8 threads); cross-hardware transfer (Linux x86, GPU) remains
-follow-up work (Appendix roadmap item~4).
+follow-up work (Appendix future-work item~4).
 The pilot-era speed figures from earlier stages of this project remain
 superseded and are not used here.
 
@@ -453,14 +487,14 @@ batch.
 
 \textbf{Synthesis: is the dual-rate design better?} Each table speaks to one
 axis of ``better.'' Table~\ref{tab:configs} establishes the \emph{structural}
-side: DRRA $(8,4)$ needs 48 attention columns (5.3$\times$ fewer than Normal),
+side: DRRA $(8,4)$ needs 48 attention columns (5.22$\times$ fewer complete columns than Normal),
 slightly fewer parameters than Normal, and the same fine-routing candidate
 count as the equal-rate cells. Tables~\ref{tab:factorial}--\ref{tab:coverage}
-establish the \emph{accuracy} side: the champion beats Normal on mean
+establish the \emph{accuracy} side: DRRA $(8,4)$ beats Normal on mean
 validation MSE in 8/12 datasets and has the best factorial cell on ETTh1,
 with effects that are directional and, on the synthetic probes and some
 datasets, reversed. Table~\ref{tab:speed} and Figure~\ref{fig:latency-scale}
-establish the \emph{measured-latency} side: the champion has the lowest mean
+establish the \emph{measured-latency} side: DRRA $(8,4)$ has the lowest mean
 latency at batch sizes $\ge 64$ (to $-21\%$ at 256) but is not statistically
 separated from Normal at batch 32, and is slower at batch 1. Read together,
 the evidence favors DRRA $(8,4)$ on every axis---geometry, parameters, accuracy
@@ -485,7 +519,7 @@ the lower-left: \textbf{DRRA $(8,4)$} has the lowest mean test loss on ETTh1
 ($0.799$ vs.\ $0.908$ for CSA $(4,4)$ and $1.081$ for Normal) and the lowest
 latency at both operating points ($49.3$ vs.\ $52.1$/$52.5$ ms at batch 32;
 $892$ vs.\ $1171$/$1132$ ms at batch 256). CSA $(4,4)$ sits between the two on
-both axes; Normal is upper-right (worst on both axes). Two honest readings:
+both axes; Normal is upper-right (worst on both axes). Two readings:
 at the frozen batch 32 the latency gap is a few milliseconds (within noise
 at this scale), while at batch 256 DRRA $(8,4)$ is ${\sim}21\%$ faster; both
 panels remain descriptive (five seeds per dataset, no significance tests,

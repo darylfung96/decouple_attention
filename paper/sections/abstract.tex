@@ -9,7 +9,7 @@ direct-96-step forecasting protocol with twenty-five paired seeds, we run a
 parameter-equalized $2\times2$ factorial on ETTh1 and a three-way
 comparison---full attention, the equal-rate CSA configuration $(4,4)$ (the
 design point of DeepSeek-V4's Compressed Sparse Attention), and the dual-rate
-champion DRRA $(8,4)$---across twelve datasets spanning the ETT family, large
+corner DRRA $(8,4)$---across twelve datasets spanning the ETT family, large
 multivariate series, different dynamics, and mechanistic synthetic probes. We
 report four findings. First, on ETTh1 \emph{every} compressed configuration
 outperforms full causal attention on validation MSE (mean deltas $-16.6\%$
@@ -19,10 +19,11 @@ count; a bit-exact wiring audit confirms the baseline is correctly
 implemented. Second, coarsening the router ($c_R{:}4{:}1 \to 8{:}1$)
 systematically deteriorates accuracy ($+0.029$ validation MSE), while
 coarsening KV compression is mildly beneficial ($-0.052$): the pre-registered
-decoupling hypothesis is supported (per-seed paired contrast $p = 0.0032$)---
-routing granularity, not KV content density, carries accuracy.
-Third, the best cell DRRA $(8,4)$ reduces the attention matrix to 48 columns
-versus 256 (5.3$\times$) at a matching parameter count. Fourth, the advantage
+decoupling hypothesis is supported on ETTh1 (per-seed paired contrast, exact Wilcoxon $p = 0.0023$)---
+routing granularity carries accuracy there, while KV content density is mildly beneficial.
+Third, the best-mean ETTh1 cell DRRA $(8,4)$ reduces the attention matrix to 48 (+1 sink)
+columns
+versus 256 (5.22$\times$) at a matching parameter count. Fourth, the advantage
 is \emph{signal-dependent}: 8/12 datasets (DRRA) and 7/12 (CSA), concentrated
 on smooth, redundant real-world series, with slight losses on the synthetic
 exact-recall probes. The factorial conclusions are statistically established
