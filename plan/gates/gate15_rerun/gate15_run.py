@@ -32,10 +32,11 @@ import torch
 import torch.nn as nn  # noqa: F401
 
 from plan.gates.gate2.gate2_factorial import (
-    EPPTimeSeriesModel, train_and_eval, make_loaders as g2_loaders,
-    evaluate as g2_evaluate, count_attn_params, count_full_params,
+    EPPTimeSeriesModel, make_loaders as g2_loaders,
+    count_attn_params, count_full_params,
     EPOCHS, LR, WEIGHT_DECAY, CLIP, NUM_FEATURES,
 )
+from gate3_harness import train_and_eval, evaluate as g3_evaluate
 import gate3_datasets as g3
 from dataset import ETTForecastDataset
 from torch.utils.data import DataLoader
