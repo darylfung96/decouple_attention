@@ -7,7 +7,8 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 
 ## DOING (max 2 at a time)
 
-- [ ] Gate15 re-run in flight: factorial 75 (`plan/gates/gate15_rerun/gate15_run.log`, pid 23972, 7/75 at last check) — monitor + resume if dies; then suite-Flat 60 via `--suite-flat`.
+- [ ] Gate15: factorial 75/75 DONE 2026-09-29 (`results/factorial.jsonl`); suite-Flat 60 IN FLIGHT (`gate15_suite.log`, pid 67690) — monitor + resume if dies.
+- [ ] v2 factorial peek (PRELIMINARY): CSA 0.6148 / DRRA 0.6190 / C48 0.6810 / C88 0.6128; H1 +0.062 p=0.0074 (survives); DRRA−CSA +0.0042 p=0.62 (dead even). Full v2 + paper pass after suite + Q-2.
 - [ ] Q-2 / B2-2 router decision: disclose-fixed vs redesign (`B2_router_learning.md`) — NEEDS MANAGER INPUT (blocks Stage-2 text pass + D-3).
 
 ## QUEUED (unblocked, text-only, do after DOING frees up)
