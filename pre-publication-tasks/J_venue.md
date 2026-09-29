@@ -22,8 +22,9 @@ Reviewer bottom line (agree): keep project; audit compute + learning before expa
 
 - [ ] **Q-1.** E-2 backbone: acceptable "credible temporal-attention backbone"? Who funds GPU/CPU for wide sets (solar/electricity/traffic PatchTST ~3–13h/seed CPU)?
 - [ ] **Q-2.** Router scope (B2-2a disclose vs 2b redesign + re-train)?
-- [ ] **Q-3.** Venue ambition (full vs bounded)? Sets D-3/F-3/H scope.
-- [ ] **Q-4.** Surrogate fate (I-7): separate paper now vs appendix?
+- [ ] **Q-3.** Venue ambition (full vs bounded)? Sets D-3/F-3/H scope. Decided at J-1, after P0.
+- [x] **Q-4.** Surrogate fate — DECIDED 2026-09-28: separate paper (I-7 done, appendix pointer).
+- [x] **Q-5.** Mapping validity — DECIDED 2026-09-28: option (b) fix + Gate15 re-run (B1-5).
 
 ## Log
 

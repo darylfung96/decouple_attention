@@ -24,7 +24,7 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 ## DONE (with evidence — link artifact, not prose)
 
 - [x] Stage-1 text batch: 00-1 title, C-1…C-5, D-1/D-2/D-4, G-1…G-4, I-1…I-9. Evidence: `plan/gates/gate14_c1/c1_recompute.json/md` + paper tex diffs (git-committed).
-- [x] B1-5 mapping audit + fix (Q-3=(b)): `t//2` unconditional → geometry dispatch; (8,4) bitwise-identical 0.0 vs snapshot; regression test §5 passes. Evidence: `plan/gates/gate13_p0_audits/mapping_audit.json/md`, `expert_plus_plus_attention.py`, `test_expert_plus_plus.py`.
+- [x] B1-5 mapping audit + fix (Q-5=(b)): `t//2` unconditional → geometry dispatch; (8,4) bitwise-identical 0.0 vs snapshot; regression test §5 passes. Evidence: `plan/gates/gate13_p0_audits/mapping_audit.json/md`, `expert_plus_plus_attention.py`, `test_expert_plus_plus.py`.
 - [x] A-1 last-query equivalence — EQUIVALENT (maxdiff 0.00e+00). Evidence: `plan/gates/gate13_p0_audits/last_query_audit.json/md` + `design.md`.
 - [x] A-2 canonical latency — gate PASS (~5e-7); paired + forecast-required deltas; dense-last fastest. Evidence: `plan/gates/gate13_p0_audits/last_query_latency.json/md` + `a2_b12_design.md`.
 - [x] B1-2 unique blocks — effective ≈47/27 vs dense 96/48. Evidence: same `last_query_latency.json/md`.
@@ -33,9 +33,9 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 
 ## Session log (newest first)
 
-- 2026-09-28: Q-3=(b) reviewed (essential-code-review) → fixed mapping → verified (8,4)-identical + tests pass → Gate15 launched (factorial 75 in flight; suite-Flat 60 queued). Q-2 still open.
+- 2026-09-28: Q-5=(b) reviewed (essential-code-review) → fixed mapping → verified (8,4)-identical + tests pass → Gate15 launched (factorial 75 in flight; suite-Flat 60 queued). Q-2 still open.
 - 2026-09-28: B1-1/A-3/A-4 DONE (algorithm box + single-block decision + repro artifacts; committed f1cf38d). A-file COMPLETE. Remaining: Gate15 monitor, Q-2, v2 number pass.
-- 2026-09-28: Stage-1 text batch DONE (00/C/D/G/I). B1-5 RED found during B1-1 prep (mapping bug) — halted B1-1/A-3/A-4, decided Q-3 after report.
+- 2026-09-28: Stage-1 text batch DONE (00/C/D/G/I). B1-5 RED found during B1-1 prep (mapping bug) — halted B1-1/A-3/A-4, decided Q-5 after report.
 - 2026-09-28: A-2 DONE + B1-2 DONE (canonical 25×30 uv/torch2.6.0); two audit-script bugs fixed (A2-1/A2-2). Repo `.venv` REMOVED; always-uv rule in memory.
 - 2026-09-28: A-1 GREEN + B2-1 RED (indexer grads exactly 0). First runs used homebrew python3.13/torch2.12.1; canonicalized to uv env after.
 - 2026-09-28: Restructured to single-source `pre-publication-tasks/`; pointer set; headers/logs added.

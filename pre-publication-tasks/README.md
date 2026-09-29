@@ -45,7 +45,7 @@ Status legend: `[x]` DONE · `[~]` PARTIAL · `[ ]` TODO · `[!]` BLOCKING
 - **Stage 2 — targeted runs (needs Q-2 + Gate15 v2):** B1-3 control, D-3-cell factorial, E-controls, F-H/L, H-probes (+ gate12 Flat-probe reruns).
 - **Stage 3 — venue-dependent:** E-backbone, H-sweep, repo release, J-lock.
 
-Open decisions: **Q-2** router (disclose-fixed vs redesign) · **Q-3** DONE = option (b) fix+rerun.
+Open decisions: **Q-2** router (disclose-fixed vs redesign) · **Q-5** DONE = option (b) fix+rerun.
 
 ## Provenance (read these, don't re-derive)
 
