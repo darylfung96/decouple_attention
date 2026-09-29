@@ -1,7 +1,7 @@
 # STATUS — where we left off (edit this every session)
 
-Updated: 2026-09-28 (option-b fix verified; Gate15 re-run in flight)
-Current stage: **Gate15 re-run (option b) + Q-2 open**
+Updated: 2026-09-29 (Q-2 closed; Gate15 suite in flight)
+Current stage: **Gate15 suite-Flat running; v2 + paper pass next**
 Source review: https://chatgpt.com/s/t_6ab8df73ca3c81919e3cc733a559fd0a
 Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv, any project.
 
@@ -9,7 +9,7 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 
 - [ ] Gate15: factorial 75/75 DONE 2026-09-29 (`results/factorial.jsonl`); suite-Flat 60 IN FLIGHT (`gate15_suite.log`, pid 67690) — monitor + resume if dies.
 - [ ] v2 factorial peek (PRELIMINARY): CSA 0.6148 / DRRA 0.6190 / C48 0.6810 / C88 0.6128; H1 +0.062 p=0.0074 (survives); DRRA−CSA +0.0042 p=0.62 (dead even). Full v2 + paper pass after suite + Q-2.
-- [ ] Q-2 / B2-2 router decision: disclose-fixed vs redesign (`B2_router_learning.md`) — NEEDS MANAGER INPUT (blocks Stage-2 text pass + D-3).
+- [x] Q-2 / B2-2 CLOSED 2026-09-29 — decision (a) disclose-fixed; method note + limitations bullet committed (`3ba8157`); B-file COMPLETE.
 
 ## QUEUED (unblocked, text-only, do after DOING frees up)
 
