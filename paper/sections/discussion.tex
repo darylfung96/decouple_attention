@@ -87,6 +87,11 @@ future work.
         per-window statistics are used (Section~\ref{sec:stats}).
   \item \textbf{Fixed budget, single checkpoint policy.} 10 epochs,
         epoch-10 weights; no early stopping or best-validation selection.
+  \item \textbf{Fixed routing.} The hard top-$k$ selector gives the indexer no
+        task-loss gradient (grad audit: all indexer-exclusive norms exactly zero,
+        both variants), so routing is fixed at initialization; granularity effects
+        are architectural, and learning-to-route (aux loss, relaxation, STE) is
+        deferred future work.
   \item \textbf{Single-block backbone retained.} The study keeps the minimal
         one-block backbone deliberately (the backbone, not the attention module,
         is the accuracy bottleneck at this scale, Section~\ref{sec:refpoints});

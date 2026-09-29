@@ -93,7 +93,7 @@ routing index tokens.
 
 \textbf{Router (scorer + top-$k$ selector).} Each query scores all $M$ index
 tokens ($\mathrm{ReLU}(q \cdot \mathrm{idx}^\top)/\sqrt{d}$, head-mixed by a
-learned weight), masks tokens that lie in the future, and selects the
+weight that is fixed in practice — see the trainability note below), masks tokens that lie in the future, and selects the
 top-$k$ ($k{=}16$). We use ``router'' for the scorer-plus-selector
 combination; DeepSeek-V4 \citep{deepseekv4_2026} calls the analogous scorer
 the \emph{Lightning Indexer} and the selection step the \emph{top-$k$
@@ -102,6 +102,11 @@ module feeding the selector --- the indexer scores the KV entries, which the
 selector then subsamples). In all compressed configurations the router reuses the
 main query (shared-Q), valid because the query head dimension equals the
 index head dimension; this removes one projection and one RoPE application.
+The hard top-$k$ selection is non-differentiable, so the indexer parameters
+(including CSA's dedicated $\mathrm{idx\_q\_proj}$) receive zero task-loss
+gradient: routing is fixed at initialization, and ``routing granularity'' effects in
+this paper are selection-architecture effects, not learned routing (gradient audit
+in the released logs; learning-to-route is deferred future work).
 
 \textbf{Dense masked attention over the sparse selection.} Instead of
 gathering the selected blocks, attention is computed densely over a fixed
