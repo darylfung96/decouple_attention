@@ -42,9 +42,13 @@ from dataset import ETTForecastDataset
 from torch.utils.data import DataLoader
 
 PROVENANCE = "gate15/uv-torch2.6.0/fixed-mapping"
+PROVENANCE_D3 = "gate16/uv-torch2.6.0/fixed-mapping"
 RESULTS_DIR = os.path.join(HERE, "results")
 FACT_PATH = os.path.join(RESULTS_DIR, "factorial.jsonl")
 SUITE_DIR = os.path.join(RESULTS_DIR, "suite_flat")
+D3_DIR = os.path.join(os.path.dirname(HERE), "gate16_d3", "results")
+D3_DATASETS = ["etth2", "electricity", "exchange"]
+D3_CELLS = [(4, 4), (8, 4), (4, 8), (8, 8)]
 
 FACTORIAL_CELLS = [(4, 4), (4, 8), (8, 8)]  # broken cells only; (8,4)+Normal kept
 FACTORIAL_SEEDS = [42, 123, 2024, 7, 99, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12,
@@ -141,6 +145,46 @@ def suite_loaders(dataset_name, seed):
             DataLoader(mk(te), batch_size=32, shuffle=False))
 
 
+def run_d3(threads):
+    """Gate16 D-3: 4 cells x {ETTh2, Electricity, Exchange} x 5 seeds = 60 runs."""
+    torch.set_num_threads(threads)
+    total_plan = []
+    for ds in D3_DATASETS:
+        path = os.path.join(D3_DIR, f"{ds}.jsonl")
+        done = load_completed(path, lambda r: (tuple(r["cell"]), int(r["seed"])))
+        for ck, cr in D3_CELLS:
+            for s in SUITE_SEEDS:
+                if ((ck, cr), s) not in done:
+                    total_plan.append((ds, (ck, cr), s))
+    print(f"=== Gate16 D-3: {len(total_plan)} pending (4 cells x 3 ds x 5 seeds) ===",
+          flush=True)
+    for i, (ds, (ckv, c_r), seed) in enumerate(total_plan, 1):
+        F = g3.DATASETS[ds][3]
+        print(f"--- [{i}/{len(total_plan)}] {ds} ({ckv},{c_r}) seed={seed} START "
+              f"{datetime.datetime.now(datetime.timezone.utc).strftime('%FT%TZ')} ---",
+              flush=True)
+        t0 = time.time()
+        train_loader, val_loader, test_loader = suite_loaders(ds, seed)
+        torch.manual_seed(seed)
+        model = EPPTimeSeriesModel(F, ckv, c_r, q_lora_rank=64, o_lora_rank=64)
+        final_train, final_val, test_mse = train_and_eval(
+            model, train_loader, val_loader, test_loader, epochs=EPOCHS)
+        rec = {"dataset": ds, "cell": [ckv, c_r], "seed": seed,
+               "val_mse": round(final_val, 8), "test_mse": round(test_mse, 8),
+               "final_train_mse": round(final_train, 8),
+               "attn_params": count_attn_params(model),
+               "full_params": count_full_params(model),
+               "provenance": PROVENANCE_D3,
+               "completed_utc": datetime.datetime.now(datetime.timezone.utc)
+                                .strftime("%Y-%m-%dT%H:%M:%SZ"),
+               "elapsed_s": round(time.time() - t0, 1)}
+        append(os.path.join(D3_DIR, f"{ds}.jsonl"), rec)
+        print(f"      FINAL val={final_val:.6f} test={test_mse:.6f} "
+              f"({rec['elapsed_s']}s)", flush=True)
+    print("=== Gate16 D-3 complete ===", flush=True)
+    return 0
+
+
 def run_suite_flat(threads):
     torch.set_num_threads(threads)
     total_plan = []
@@ -185,12 +229,15 @@ def main():
     mode.add_argument("--dry-run", action="store_true")
     mode.add_argument("--factorial", action="store_true")
     mode.add_argument("--suite-flat", action="store_true")
+    mode.add_argument("--d3", action="store_true")
     p.add_argument("--threads", type=int, default=8)
     args = p.parse_args()
     if args.dry_run:
         return dry_run()
     if args.factorial:
         return run_factorial(args.threads)
+    if args.d3:
+        return run_d3(args.threads)
     return run_suite_flat(args.threads)
 
 
