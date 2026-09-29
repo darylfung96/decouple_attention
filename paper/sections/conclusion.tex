@@ -7,18 +7,17 @@ varying the KV compression rate $c_{KV}$ and the routing resolution $c_R$
 independently under a frozen task, an auxiliary-identical contract, and
 parameter equalization, across 25 paired seeds. On ETTh1 direct-96
 forecasting, every compressed configuration outperformed full causal
-attention (mean validation deltas $-16.6\%$ to $-26.2\%$; 96/100 paired
-seed comparisons; Holm-adjusted $p \approx 7\times10^{-5}$;
+attention (mean validation deltas $-18.0\%$ to $-26.3\%$; 95/100 paired
+seed comparisons; Holm-adjusted $p \le 3.3\times10^{-6}$;
 wiring-audited baseline), and the factorial separates the two axes:
 coarser routing deteriorates accuracy while coarser KV compression is
 mildly beneficial, with the pre-registered decoupling hypothesis supported
-on per-seed paired contrasts (exact Wilcoxon $p = 0.0023$) and the best-mean ETTh1 cell DRRA
-$(8,4)$ cutting the attention matrix 5.22$\times$ (256 vs.\ 49 complete columns) at equal parameters (its
-edge over the equal-rate cell remains directional, exact Wilcoxon $p = 0.096$).
+on per-seed paired contrasts (exact Wilcoxon $p = 0.0074$); DRRA
+$(8,4)$ cuts the attention matrix 5.22$\times$ (256 vs.\ 49 complete columns) at equal parameters (its
+edge over the equal-rate cell is not significant on validation, exact Wilcoxon $p = 0.62$).
 Replicating the three-way comparison across twelve datasets shows the
-advantage is \emph{signal-dependent}, not universal: DRRA $(8,4)$ beats
-full attention on mean validation MSE in 8/12 datasets (CSA $(4,4)$ in
-7/12), with the wins concentrated on the ETT family, solar, and
+advantage is \emph{signal-dependent}, not universal: DRRA $(8,4)$ and Flat $(4,4)$ beat
+full attention on mean validation MSE in 8/12 datasets each, with the wins concentrated on the ETT family, solar, and
 electricity, and slight losses on the mechanistic synthetic probes,
 exchange-rate validation, and weather test error. We deliberately stop
 short of generalization or latency claims: the factorial conclusions are

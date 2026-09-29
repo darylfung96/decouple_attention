@@ -19,13 +19,12 @@ epoch-10 weights; no best-validation checkpoint selection is used.
 \subsection{RQ1: the $2\times2$ factorial}
 \label{sec:rq1}
 Table~\ref{tab:factorial} and Figure~\ref{fig:factorial} summarize
-validation MSE by cell over 25 paired seeds. The best-mean cell is DRRA
-$(8,4)$ (mean validation $0.6190 \pm 0.0827$; mean test $0.8440$), matching
-the corner that combines aggressive KV compression with fine routing. The
-worst compressed cell is $(4,8)$ ($0.6994 \pm 0.0710$), which combines mild
-KV compression with coarse routing. Every compressed cell beats the
-full-attention baseline on mean validation and mean test MSE; per-seed,
-24 of 25 paired comparisons favor each compressed cell (96/100 in total).
+validation MSE by cell over 25 paired seeds. No single cell dominates: the best
+means are $(8,8)$ ($0.6128 \pm 0.0660$), CSA $(4,4)$ ($0.6148 \pm 0.0704$), and
+DRRA $(8,4)$ ($0.6190 \pm 0.0827$)---all within seed noise of each other---while
+$(4,8)$ is the worst compressed cell ($0.6810 \pm 0.0570$). Every compressed cell
+beats the full-attention baseline on mean validation and mean test MSE; per-seed,
+22--25 of 25 paired comparisons favor each compressed cell (95/100 in total).
 
 \begin{table}[t]
 \centering
@@ -40,10 +39,10 @@ value.}
 Cell & Val mean $\pm$ std & Test mean & Train mean & Beats CSA \\
 \midrule
 Normal & $0.8389 \pm 0.0814$ & 1.0804 & 0.2864 & 1 / 25 \\
-CSA $(4,4)$ & $0.6575 \pm 0.0686$ & 0.9368 & 0.2918 & --- \\
-DRRA $(8,4)$ & $\mathbf{0.6190} \pm 0.0827$ & $\mathbf{0.8440}$ & 0.2876 & 17 / 25 \\
-$(4,8)$ & $0.6994 \pm 0.0710$ & 0.9243 & 0.2991 & 5 / 25 \\
-$(8,8)$ & $0.6347 \pm 0.0670$ & 0.9184 & 0.2840 & 17 / 25 \\
+CSA $(4,4)$ & $0.6148 \pm 0.0704$ & 0.8771 & 0.2941 & --- \\
+DRRA $(8,4)$ & $0.6190 \pm 0.0827$ & $\mathbf{0.8440}$ & 0.2876 & 16 / 25 \\
+$(4,8)$ & $0.6810 \pm 0.0570$ & 0.9496 & 0.2863 & 6 / 25 \\
+$(8,8)$ & $0.6128 \pm 0.0660$ & 0.8505 & 0.2837 & 12 / 25 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -60,43 +59,47 @@ the dashed line marks the full-attention baseline (0.8389).}
 
 \textbf{Main effects.} Averaging over the opposite axis (Figure
 \ref{fig:main-effects}): coarsening KV compression from $4{:}1$ to $8{:}1$
-\emph{lowers} validation MSE by $-0.0516$ (95\% CI $[-0.081, -0.022]$; mildly beneficial), while
+\emph{lowers} validation MSE by $-0.0320$ (95\% CI $[-0.062, -0.002]$; mildly beneficial),
+while
 coarsening routing resolution from $4{:}1$ to $8{:}1$ \emph{raises} it by
-$+0.0288$ (95\% CI $[+0.006, +0.052]$; deterioration). Both signs are consistent in 19 of 25
-seed-column comparisons each. The interaction (does coarsening one axis change the
-other's effect?) is $-0.0262$ (95\% CI $[-0.071, +0.019]$, Wilcoxon $p = 0.31$):
-not significant, so the two axes act approximately additively on this task.
+$+0.0300$ (95\% CI $[+0.001, +0.059]$; deterioration; Wilcoxon $p = 0.059$,
+paired $t$ $p = 0.043$). Signs are consistent in 20 of 25 (KV) and 16 of 25
+(routing) seed-column comparisons. Unlike the as-run analysis, the interaction is
+significant: $-0.0724$ (95\% CI $[-0.129, -0.016]$, Wilcoxon $p = 0.014$)---coarsening
+KV compression helps more when routing is fine, so the two axes are \emph{not}
+additive, and main effects must be read together with the interaction.
 
 \textbf{Pre-registered hypothesis H1} asked whether coarsening the router
 deteriorates performance \emph{more} than coarsening KV compression. At
 $n{=}25$ paired seeds the strict form is \emph{supported}: on per-seed
-main-effect differences the routing effect exceeds the KV effect by $+0.0804$ on
-average (exact paired Wilcoxon $p = 0.0023$; paired $t$-test $p = 0.0013$;
+main-effect differences the routing effect exceeds the KV effect by $+0.0620$ on
+average (exact paired Wilcoxon $p = 0.0074$; paired $t$-test $p = 0.0107$;
 full recomputation from unrounded seeds in the released analysis log). This
 per-seed contrast is one of four reported estimates (the two main effects, the
 interaction, and the direct DRRA-vs.-equal-rate difference below)---it pairs all
 four $(c_{KV}, c_R)$ observations within a seed, and it is algebraically identical
 to the off-diagonal difference $y_{4,8} - y_{8,4}$, so the off-diagonal alone carries
-no independent information. Both individual effects remain modest relative to seed noise (${\sim}0.03$--$0.05$ vs.\ mean
-within-cell std $0.071$, per-cell range $0.067$--$0.083$; sign consistency
-19/25 per effect), so we report the decoupling as a \emph{statistically
-established sign structure} whose mechanism-level reading is still
+no independent information. Both individual effects remain modest relative to seed noise (${\sim}0.03$ vs.\ mean
+within-cell std $0.070$, per-cell range $0.057$--$0.083$; sign consistency
+20/25 (KV) and 16/25 (routing)), and --- with a significant interaction and no single
+best cell --- we report the decoupling as a \emph{statistically supported sign structure
+with non-additive axes} whose mechanism-level reading is still
 interpretation (Section~\ref{sec:discussion}; the mixed-effects model
 $\mathrm{MSE} = \beta_0 + \beta_1 \log_2 c_{KV} + \beta_2 \log_2 c_R +
 \beta_3 \log_2 c_{KV}\log_2 c_R + \text{random effects}$ is deferred as a robustness re-expression (the $2\times2$ with seed blocking already
 identifies all three fixed effects; more rate levels would add shape, not
 identification)). Per-seed trajectories show the
-ordering across cells is not unanimous for every seed---another reason the
-best-mean claim is stated as ``best on mean,'' not ``best for every seed.''
+ordering across cells is not unanimous for every seed---with the top three cells tied
+within noise, there is no ``best'' cell to claim at all.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.92\linewidth]{figures/fig2_main_effects.pdf}
 \caption{Main effects on validation MSE (25 paired seeds):
-$c_{KV}$ $4{:}1 \rightarrow 8{:}1$ ($-0.0516$, mildly beneficial) and
-$c_R$ $4{:}1 \rightarrow 8{:}1$ ($+0.0288$, deteriorates). Dashed lines:
+$c_{KV}$ $4{:}1 \rightarrow 8{:}1$ ($-0.0320$, mildly beneficial) and
+$c_R$ $4{:}1 \rightarrow 8{:}1$ ($+0.0300$, deteriorates). Dashed lines:
 $\pm$ mean within-cell seed std ($0.071$); the per-seed paired contrast
-(routing effect $>$ KV effect) is significant (exact $p = 0.0023$).}
+(routing effect $>$ KV effect) is significant (exact $p = 0.0074$).}
 \label{fig:main-effects}
 \end{figure}
 
@@ -106,12 +109,12 @@ Table~\ref{tab:baseline} compares full causal attention (Normal, 256
 columns, no compression) with the two cells that anchor the family's
 design corners, CSA $(4,4)$ and DRRA $(8,4)$.
 Every compressed cell beats Normal on mean validation
-and mean test MSE, and \emph{96 of the 100 paired seed comparisons}
+and mean test MSE, and \emph{95 of the 100 paired seed comparisons}
 favor the compressed configuration (per-seed validation deltas span
-$-48.3\%$ to $+9.9\%$ across cells; mean deltas $-16.6\%$ to $-26.2\%$).
-DRRA $(8,4)$ beats CSA $(4,4)$ head-to-head in 17 of 25 seeds (CSA ahead in 8);
-it is the best of all four cells in 13 of 25 (CSA 5, $(8,8)$ 6, $(4,8)$ 1;
-25-seed recomputation in the released analysis log).
+$-48.3\%$ to $+9.9\%$ across cells; mean deltas $-18.0\%$ to $-26.3\%$).
+DRRA $(8,4)$ beats CSA $(4,4)$ head-to-head in 16 of 25 seeds on validation (CSA ahead in 9),
+and no cell is best of all four in more than 8 (DRRA 7, $(8,8)$ 8, CSA 8, $(4,8)$ 2;
+merged post-fix analysis in the released logs).
 
 \begin{table}[t]
 \centering
@@ -126,7 +129,7 @@ carries $\sim$2\% more full-model parameters.}
 Config & Val mean $\pm$ std & Test mean & $\Delta$val vs.\ Normal & $\Delta$test vs.\ Normal & Seeds beating Normal \\
 \midrule
 Normal & $0.8389 \pm 0.0814$ & 1.0804 & --- & --- & --- \\
-CSA $(4,4)$ & $0.6575 \pm 0.0686$ & 0.9368 & $-21.63\%$ & $-13.30\%$ & 24 / 25 \\
+CSA $(4,4)$ & $0.6148 \pm 0.0704$ & 0.8771 & $-26.72\%$ & $-18.82\%$ & 24 / 25 \\
 DRRA $(8,4)$ & $\mathbf{0.6190} \pm 0.0827$ & $\mathbf{0.8440}$ & $-26.22\%$ & $-21.89\%$ & 24 / 25 \\
 \bottomrule
 \end{tabular}
@@ -195,12 +198,12 @@ Exchange ($+8.6\%$) and on all three synthetic families ($+0.2\%$ to
 $+3.1\%$).
 
 The compressed configurations beat full attention on mean validation MSE in
-8/12 datasets (DRRA $(8,4)$) and 7/12 (CSA $(4,4)$), but the advantage is
+8/12 datasets each (DRRA $(8,4)$ and Flat $(4,4)$), but the advantage is
 \emph{signal-dependent} rather than universal. The largest wins are on the
 ETT family (up to $-48.4\%$ on ETTm2) and on solar-energy; both compressed
-variants \emph{lose} on all three synthetic families ($+0.2\%$ to $+3.1\%$)
+variants \emph{lose} on all three synthetic families ($+0.2\%$ to $+4.0\%$)
 and on exchange-rate validation, and their test error is worse on weather
-($+5.9\%$ and $+14.2\%$). This pattern is consistent with the
+(Flat $+11.2\%$, DRRA $+14.2\%$). This pattern is consistent with the
 compression-as-inductive-bias reading: pooling adjacent timesteps is nearly
 lossless on smooth, temporally redundant real-world series, while tasks
 requiring exact in-window content recall (the delayed-copy probe,
@@ -226,8 +229,8 @@ Sol=Solar-Energy, sSin=syn-sinusoids, sCP=syn-changepts, sDC=syn-delayedcopy.}
 Model & ETTh1 & ETTh2 & ETTm1 & ETTm2 & Elec & Traf & Wea & Exc & Sol & sSin & sCP & sDC \\
 \midrule
 Normal    & 0.8416 & 1.9187 & 0.4285 & 1.5618 & 0.4047 & 0.5994 & 0.4460 & $\mathbf{2.9800}$ & 0.1899 & $\mathbf{0.1227}$ & $\mathbf{5.9456}$ & $\mathbf{0.2888}$ \\
-CSA $(4,4)$   & 0.6332 & $\mathbf{1.3624}$ & 0.3965 & 0.9964 & $\mathbf{0.3798}$ & $\mathbf{0.5838}$ & 0.4469 & 3.1166 & $\mathbf{0.1721}$ & 0.1264 & 5.9677 & 0.2894 \\
-DRRA $(8,4)$   & $\mathbf{0.5967}$ & 1.8080 & $\mathbf{0.3832}$ & $\mathbf{0.8053}$ & 0.3808 & 0.5874 & $\mathbf{0.4424}$ & 3.2350 & 0.1722 & 0.1264 & 6.0013 & 0.2894 \\
+CSA $(4,4)$   & $\mathbf{0.5909}$ & $\mathbf{1.7817}$ & 0.4121 & 0.9326 & $\mathbf{0.3775}$ & 0.5907 & 0.4448 & 3.1364 & $\mathbf{0.1693}$ & 0.1276 & 5.9733 & 0.2894 \\
+DRRA $(8,4)$   & 0.5967 & 1.8080 & $\mathbf{0.3832}$ & $\mathbf{0.8053}$ & 0.3808 & $\mathbf{0.5874}$ & $\mathbf{0.4424}$ & 3.2350 & 0.1722 & 0.1264 & 6.0013 & 0.2894 \\
 $\Delta$val DRRA $(8,4)$ vs Normal & $-29.1\%$ & $-5.8\%$ & $-10.6\%$ & $-48.4\%$ & $-5.9\%$ & $-2.0\%$ & $-0.8\%$ & $+8.6\%$ & $-9.3\%$ & $+3.1\%$ & $+0.9\%$ & $+0.2\%$ \\
 \bottomrule
 \end{tabular}}
@@ -310,17 +313,17 @@ row.}
 \toprule
 Dataset & DLinear & PatchTST & Normal & CSA $(4,4)$ & DRRA $(8,4)$ \\
 \midrule
-ETTh1 & \textbf{0.3521} & 0.3603 & 0.8416 & 0.6332 & 0.5967 \\
-ETTh2 & 0.2753 & \textbf{0.2653} & 1.9187 & 1.3624 & 1.8080 \\
-ETTm1 & 0.2568 & \textbf{0.2517} & 0.4285 & 0.3965 & 0.3832 \\
-ETTm2 & 0.1594 & \textbf{0.1553} & 1.5618 & 0.9964 & 0.8053 \\
-Electricity & \textbf{0.1514} & --- & 0.4047 & 0.3798 & 0.3808 \\
-Traffic & \textbf{0.3499} & --- & 0.5994 & 0.5838 & 0.5874 \\
-Weather & \textbf{0.4575} & --- & 0.4460 & 0.4469 & 0.4424 \\
-Exchange & 0.3000 & \textbf{0.2063} & 2.9800 & 3.1166 & 3.2350 \\
-Solar & \textbf{0.1617} & --- & 0.1899 & 0.1721 & 0.1722 \\
-sSin & 0.2509 & \textbf{0.1969} & 0.1227 & 0.1264 & 0.1264 \\
-sCP & 0.0622 & \textbf{0.0489} & 5.9456 & 5.9677 & 6.0013 \\
+ETTh1 & \textbf{0.3521} & 0.3603 & 0.8416 & 0.5909 & 0.5967 \\
+ETTh2 & 0.2753 & \textbf{0.2653} & 1.9187 & 1.7817 & 1.8080 \\
+ETTm1 & 0.2568 & \textbf{0.2517} & 0.4285 & 0.4121 & 0.3832 \\
+ETTm2 & 0.1594 & \textbf{0.1553} & 1.5618 & 0.9326 & 0.8053 \\
+Electricity & \textbf{0.1514} & --- & 0.4047 & 0.3775 & 0.3808 \\
+Traffic & \textbf{0.3499} & --- & 0.5994 & 0.5907 & 0.5874 \\
+Weather & \textbf{0.4575} & --- & 0.4460 & 0.4448 & 0.4424 \\
+Exchange & 0.3000 & \textbf{0.2063} & 2.9800 & 3.1364 & 3.2350 \\
+Solar & \textbf{0.1617} & --- & 0.1899 & 0.1693 & 0.1722 \\
+sSin & 0.2509 & \textbf{0.1969} & 0.1227 & 0.1276 & 0.1264 \\
+sCP & 0.0622 & \textbf{0.0489} & 5.9456 & 5.9733 & 6.0013 \\
 sDC & 0.4078 & \textbf{0.3419} & 0.2888 & 0.2894 & 0.2894 \\
 \bottomrule
 \end{tabular}}
@@ -334,18 +337,19 @@ Statistical status is reported separately for the two levels of the study.
 with the source).} At 25 paired seeds, paired Wilcoxon signed-rank
 tests on validation MSE are powered: \emph{every} compressed cell beats
 full attention, and the result survives Holm correction across the five
-pre-registered cell-vs-Normal contrasts (adjusted $p = 6.9\times10^{-5}$
+pre-registered cell-vs-Normal contrasts (Holm-adjusted $p \le 3.3\times10^{-6}$
 for all four cells). The pre-registered H1 contrast (per-seed routing
-effect minus KV effect) is likewise significant (exact Wilcoxon $p = 0.0023$).
-The best-mean ETTh1 cell's edge over the equal-rate cell is \emph{not} significant
-on validation (DRRA vs.\ CSA: exact Wilcoxon $p = 0.096$; 17/25 head-to-head; best of all
-four cells in 13/25), so ``best on mean'' remains the strongest validation claim.
-On \emph{test} MSE the same contrast is stronger and significant (mean $-0.0928$,
-95\% CI $[-0.129, -0.057]$, exact Wilcoxon $p < 10^{-4}$; 20/25 head-to-head; best of
-four in 16/25)---a secondary, unadjusted contrast reported alongside the pre-registered
-validation analysis. The $n{=}25$ set is a post hoc merge of the five
+effect minus KV effect) is likewise significant (exact Wilcoxon $p = 0.0074$;
+paired $t$ $p = 0.0107$). The DRRA-vs.-equal-rate edge is \emph{not} significant
+on validation (DRRA vs.\ CSA: exact Wilcoxon $p = 0.62$; 16/25 head-to-head; no cell
+best of all four in more than 8 of 25), and ``best on mean'' is no longer claimed at all.
+On \emph{test} MSE the same contrast favors DRRA (mean $-0.0331$,
+95\% CI $[-0.070, +0.004]$, exact Wilcoxon $p = 0.032$; 17/25 head-to-head; best of
+four in 12/25 for DRRA)---a secondary, unadjusted contrast reported alongside the
+pre-registered validation analysis. The $n{=}25$ set is a post hoc merge of the five
 pre-registered seeds with a 20-seed power extension run under the
-byte-identical protocol; the seed list was fixed in the extension's design
+byte-identical protocol (plus the corrected-mapping re-runs of three cells under the
+same protocol); the seed list was fixed in the extension's design
 before any extension run, and the merge was planned at that time.
 
 \textbf{Cross-dataset suite ($n{=}5$ paired seeds per dataset; analysis log
@@ -359,10 +363,10 @@ probes reach significance against compression one-sided (exact $p = 0.03125$: al
 seeds favor full attention on syn-sinusoids and syn-delayedcopy); syn-changepoints is not
 significant in either direction. Across
 datasets, paired sign tests on the 12 dataset means are not significant:
-8/12 ($p = 0.39$) for DRRA $(8,4)$ and 7/12 ($p = 0.77$) for CSA $(4,4)$.
+8/12 ($p = 0.39$) for DRRA $(8,4)$ and 8/12 ($p = 0.39$) for Flat $(4,4)$.
 The strongest scale-free aggregate statement is the bootstrap 95\% CI on
 the mean of the per-dataset $\Delta$val vs.\ Normal, which excludes zero
-for both variants (CSA $(4,4)$: $-8.9\%$ $[-16.8, -2.2]$; DRRA $(8,4)$:
+for both variants (Flat $(4,4)$: $-7.5\%$ $[-15.8, -0.9]$; DRRA $(8,4)$:
 $-8.3\%$ $[-17.5, -0.8]$). The cross-dataset pattern is therefore
 directionally consistent but not statistically established per dataset:
 the ETTh1 factorial, not the suite, is where significance is established.
@@ -491,8 +495,8 @@ side: DRRA $(8,4)$ needs 48 attention columns (5.22$\times$ fewer complete colum
 slightly fewer parameters than Normal, and the same fine-routing candidate
 count as the equal-rate cells. Tables~\ref{tab:factorial}--\ref{tab:coverage}
 establish the \emph{accuracy} side: DRRA $(8,4)$ beats Normal on mean
-validation MSE in 8/12 datasets and has the best factorial cell on ETTh1,
-with effects that are directional and, on the synthetic probes and some
+validation MSE in 8/12 datasets, and the top three factorial cells on ETTh1 sit
+within seed noise of each other (no single best cell), with effects that are directional and, on the synthetic probes and some
 datasets, reversed. Table~\ref{tab:speed} and Figure~\ref{fig:latency-scale}
 establish the \emph{measured-latency} side: DRRA $(8,4)$ has the lowest mean
 latency at batch sizes $\ge 64$ (to $-21\%$ at 256) but is not statistically
@@ -516,7 +520,7 @@ batch 32 (left) and at batch 256 (right). Both axes are zoomed to the
 measured range so the differences are visible; points are the five-seed
 means, with no error bars shown. The best model in this view is the one in
 the lower-left: \textbf{DRRA $(8,4)$} has the lowest mean test loss on ETTh1
-($0.799$ vs.\ $0.908$ for CSA $(4,4)$ and $1.081$ for Normal) and the lowest
+($0.799$ vs.\ $0.883$ for CSA $(4,4)$ and $1.081$ for Normal) and the lowest
 latency at both operating points ($49.3$ vs.\ $52.1$/$52.5$ ms at batch 32;
 $892$ vs.\ $1171$/$1132$ ms at batch 256). CSA $(4,4)$ sits between the two on
 both axes; Normal is upper-right (worst on both axes). Two readings:

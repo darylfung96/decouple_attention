@@ -33,6 +33,8 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 
 ## Session log (newest first)
 
+- 2026-09-29: Suite 60/60 COMPLETE → v2 analysis + full paper number refresh (B-1…B-18, fig1/2/6/9 `--v2`) committed. Story: top-three tie, H1 p=0.0074, DRRA−CSA p=0.62, Flat/DRRA 4/12 best-means each.
+
 - 2026-09-28: Q-5=(b) reviewed (essential-code-review) → fixed mapping → verified (8,4)-identical + tests pass → Gate15 launched (factorial 75 in flight; suite-Flat 60 queued). Q-2 still open.
 - 2026-09-28: B1-1/A-3/A-4 DONE (algorithm box + single-block decision + repro artifacts; committed f1cf38d). A-file COMPLETE. Remaining: Gate15 monitor, Q-2, v2 number pass.
 - 2026-09-28: Stage-1 text batch DONE (00/C/D/G/I). B1-5 RED found during B1-1 prep (mapping bug) — halted B1-1/A-3/A-4, decided Q-5 after report.

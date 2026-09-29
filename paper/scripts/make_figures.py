@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import json
 import shutil
+import sys
 from pathlib import Path
 
 import matplotlib
@@ -48,6 +49,14 @@ GATE7_JSONL = PLAN_DIR / "gates" / "gate7_seeds" / "results" / "gate7.jsonl"
 NORMAL_JSONL = PLAN_DIR / "gates" / "baseline" / "baseline_normal_results.jsonl"
 LEARNING_CURVES = PLAN_DIR / "gates" / "gate2" / "gate2_learning_curves.png"
 GATE3_DIR = PLAN_DIR / "gates" / "gate3" / "results"
+
+# v2 mode (post-mapping-fix): `python make_figures.py --v2` substitutes the
+# Gate15 re-run rows for the three fixed cells and the suite-Flat column.
+# Old manifests are never modified; v2 reads them plus gate15 results.
+V2 = "--v2" in sys.argv
+G15F_JSONL = PLAN_DIR / "gates" / "gate15_rerun" / "results" / "factorial.jsonl"
+G15S_DIR = PLAN_DIR / "gates" / "gate15_rerun" / "results" / "suite_flat"
+V2_FIXED_CELLS = [(4, 4), (4, 8), (8, 8)]
 
 # ---------------------------------------------------------------------------
 # Style
@@ -109,6 +118,16 @@ for row in gate7:
     if row["cell"] is None:
         normal_by_seed[row["seed"]] = row
 
+if V2:
+    # Substitute fixed-mapping re-runs for the three broken cells.
+    g15 = load_jsonl(G15F_JSONL)
+    for cell in V2_FIXED_CELLS:
+        by_seed[cell] = {}
+    for row in g15:
+        by_seed[(row["c_kv"], row["c_r"])][row["seed"]] = row
+    print(f"v2 mode: substituted {len(g15)} Gate15 rows "
+          f"for cells {V2_FIXED_CELLS} (kept (8,4)+Normal)")
+
 val_means = {}
 val_stds = {}
 test_means = {}
@@ -137,6 +156,8 @@ print("== verification vs audited summaries (n=25: gate2+baseline + gate7) ==")
 print(f"Normal   val {fmt(normal_val_mean)} ± {fmt(normal_val_std)}  test {fmt(normal_test_mean)}"
       f"   [expect 0.8389 ± 0.0814 / 1.0804]")
 _expect = {(4, 4): 0.6575, (8, 4): 0.6190, (4, 8): 0.6994, (8, 8): 0.6347}
+if V2:
+    _expect = {(4, 4): 0.6148, (8, 4): 0.6190, (4, 8): 0.6810, (8, 8): 0.6128}
 for cell in CELLS:
     print(f"cell {cell}: val {fmt(val_means[cell])} ± {fmt(val_stds[cell])}  "
           f"test {fmt(test_means[cell])}  train {fmt(train_means[cell])}"
@@ -145,8 +166,8 @@ for cell in CELLS:
 # main effects
 c_kv_effect = (val_means[(8, 4)] + val_means[(8, 8)]) / 2 - (val_means[(4, 4)] + val_means[(4, 8)]) / 2
 c_r_effect = (val_means[(4, 8)] + val_means[(8, 8)]) / 2 - (val_means[(4, 4)] + val_means[(8, 4)]) / 2
-print(f"main effect c_KV = {c_kv_effect:+.4f}   [expect -0.0516]")
-print(f"main effect c_R  = {c_r_effect:+.4f}   [expect +0.0288]")
+print(f"main effect c_KV = {c_kv_effect:+.4f}   [expect {'-0.0320' if V2 else '-0.0516'}]")
+print(f"main effect c_R  = {c_r_effect:+.4f}   [expect {'+0.0300' if V2 else '+0.0288'}]")
 
 # per-seed consistency of effects (paired by seed, n=25)
 n_kv_improves = 0
@@ -160,7 +181,7 @@ for s in normal_seeds:
         if by_seed[(ckv, 8)][s]["val_mse"] > by_seed[(ckv, 4)][s]["val_mse"]:
             n_r_worsens += 1
 print(f"per-seed consistency: c_KV improves {n_kv_improves}/50, c_R worsens {n_r_worsens}/50"
-      f"   [expect 38/50, 34/50]")
+      f"   [expect {'37/50, 31/50' if V2 else '38/50, 34/50'}]")
 
 # deltas vs Normal (mean and per-seed, all 100 compressed runs + Normal)
 print("-- deltas vs Normal --")
@@ -337,6 +358,14 @@ gate3 = {}
 for ds in DATASET_ORDER:
     rows = load_jsonl(GATE3_DIR / f"{ds}.jsonl")
     gate3[ds] = {(r["variant"], r["seed"]): r["val_mse"] for r in rows}
+if V2:
+    # Overlay fixed-mapping suite-Flat rows (variant recorded as Flat-fix).
+    n_over = 0
+    for ds in DATASET_ORDER:
+        for r in load_jsonl(G15S_DIR / f"{ds}.jsonl"):
+            gate3[ds][("Flat", r["seed"])] = r["val_mse"]
+            n_over += 1
+    print(f"v2 mode: overlaid {n_over} Gate15 suite-Flat rows")
 
 
 def g3_mean(variant):
@@ -350,7 +379,7 @@ drra_delta = (g3_mean("DRRA") / normal_mean - 1.0) * 100.0
 n_flat_wins = int(np.sum(flat_delta < 0))
 n_drra_wins = int(np.sum(drra_delta < 0))
 print(f"cross-dataset: DRRA beats Normal on mean val {n_drra_wins}/12, "
-      f"Flat {n_flat_wins}/12   [expect 8/12, 7/12]")
+      f"Flat {n_flat_wins}/12   [expect 8/12, {'8/12' if V2 else '7/12'}]")
 
 fig, ax = plt.subplots(figsize=(6.5, 2.9))
 x = np.arange(len(DATASET_ORDER))
@@ -470,6 +499,11 @@ if GATE3_RES.exists() and LAT_JSON.exists() and LAT_SCALE.exists():
     loss = {v: float(np.mean([r["test_mse"] for r in rows
                               if r["variant"] == v and r["seed"] in SEEDS]))
             for v in ("Normal", "Flat", "DRRA")}
+    if V2:
+        # Fixed-mapping Flat test mean (same 5 seeds, corrected code).
+        g15rows = [json.loads(l) for l in open(G15S_DIR / "etth1.jsonl")]
+        loss["Flat"] = float(np.mean([r["test_mse"] for r in g15rows]))
+        print(f"v2 mode: fig9 Flat test-loss overridden to {loss['Flat']:.4f}")
 
     lat = _json.load(open(LAT_JSON))["models"]
     scale = _json.load(open(LAT_SCALE))["batches"]

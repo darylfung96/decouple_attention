@@ -9,12 +9,13 @@ internal to the design: the DRRA $(8,4)$ cell (coarse content, fine router) matc
 or beats the equal-rate cells with roughly three-fifths the attention columns
 (49 vs.\ 81 complete columns), while the $(4,8)$ cell (fine content, coarse
 router) is the worst cell despite having the same columns as CSA $(4,4)$.
-The per-seed consistency (19/25 in the same direction for each effect), the
-pre-registered H1 contrast (exact Wilcoxon $p = 0.0023$), and the non-significant
-interaction ($p = 0.31$) establish this as a \emph{statistically supported sign
-structure on ETTh1}; the effect sizes remain modest relative to seed noise (both
-effects ${\sim}0.03$--$0.05$ vs.\ within-cell std ${\sim}0.07$), the DRRA-vs.-CSA
-edge itself is directional ($p = 0.096$), and multi-dataset confirmation of the
+The per-seed consistency (20/25 for KV, 16/25 for routing), the
+pre-registered H1 contrast (exact Wilcoxon $p = 0.0074$), and the significant
+interaction ($p = 0.014$; the axes are not additive) establish this as a \emph{statistically
+supported sign structure with non-additive axes on ETTh1}; the effect sizes remain
+modest relative to seed noise (both effects ${\sim}0.03$ vs.\ within-cell std
+${\sim}0.070$), no cell is best on validation (top three tied within noise; DRRA-vs.-CSA
+$p = 0.62$), and multi-dataset confirmation of the
 full factorial is still future work before this can be stated as a general design
 principle.
 
@@ -34,10 +35,11 @@ hypothesis program (H1 is defined in Section~\ref{sec:rq1}) is designed to
 separate the candidates, and its current status is:
 \textbf{H1} (coarsening the router deteriorates accuracy more than
 coarsening KV compression) directionally supported in the factorial;
-\textbf{H2} (the dual-rate corner matches or beats the equal-rate cells while
+\textbf{H2} (the dual-rate corner matches the equal-rate cells on accuracy while
 using fewer attention columns), whose latency leg is supported directionally by the
-systems measurements and whose accuracy leg is directional (best-mean ETTh1 cell,
-DRRA-vs.-CSA $p = 0.096$; 8/12 datasets);
+systems measurements and whose accuracy leg is a tie on validation (no cell best;
+DRRA-vs.-CSA $p = 0.62$) with DRRA ahead on test (secondary contrast, $p = 0.032$) and 8/12 suite datasets
+beating Normal on mean;
 \textbf{H3} (dense masked attention wins in small-work regimes but loses in
 large-work regimes), whose crossover shape is observed on a single machine;
 \textbf{H4} (the compression advantage depends on signal properties such as

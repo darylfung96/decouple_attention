@@ -64,17 +64,17 @@ mechanism: every building block we use is a configuration of known ideas
         attention vs.\ the equal-rate and dual-rate cells) extends to twelve
         datasets (Section~\ref{sec:rq3}).
   \item[(b)] \textbf{A decoupled-rate finding.} Coarsening the
-        router deteriorates accuracy ($+0.029$ validation MSE for
+        router deteriorates accuracy ($+0.030$ validation MSE for
         $c_R{:}4{:}1 \to 8{:}1$), while coarsening KV compression is
-        mildly beneficial ($-0.052$). The pre-registered decoupling
+        mildly beneficial ($-0.032$). The pre-registered decoupling
         hypothesis---the routing effect exceeds the KV effect on per-seed
         paired differences---is supported at $n{=}25$ (exact Wilcoxon
-        $p = 0.0023$). The best-mean ETTh1 cell, the dual-rate corner
+        $p = 0.0074$). The dual-rate corner
         $(c_{KV}{=}8, c_R{=}4)$ (\emph{DRRA},
         Section~\ref{sec:method}), reduces the attention matrix 5.22$\times$
         relative to full attention
         at equal parameters; its edge over the equal-rate cell is
-        directional (exact Wilcoxon $p = 0.096$), not significant.
+        not significant on validation (exact Wilcoxon $p = 0.62$).
   \item[(c)] \textbf{A measured efficiency/accuracy characterization.} A
         surprising---and wiring-verified---baseline result: compressed
         configurations beat full causal attention on the frozen task
