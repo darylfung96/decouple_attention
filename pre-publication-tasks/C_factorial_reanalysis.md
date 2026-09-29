@@ -18,3 +18,4 @@ Current state: `experiments.tex RQ1` reports KV −0.0516 / routing +0.0288 + H1
 
 - 2026-09-28: Created from review §C; header added.
 - 2026-09-28: C-1…C-5 DONE. Note: paper's 0.0032/0.093 came from Wilcoxon approx (`gate7_stats.py:97,124`); exact values 0.0023/0.096 now quoted with method. Same conclusions.
+- 2026-09-29: v2 refresh (Gate15): KV −0.0320 p=0.0096 / RT +0.0300 p=0.059 / interaction −0.0724 p=0.014 (now significant) / H1 +0.0620 p=0.0074 / DRRA−CSA +0.0042 p=0.62. Paper + fig1/2 updated; old as-run values superseded (kept in git history + `gate14_c1/`).

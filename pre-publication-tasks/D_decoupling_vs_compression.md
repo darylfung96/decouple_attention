@@ -16,3 +16,4 @@ Reviewer ask: key = dual-rate vs equal-rate, not vs Normal. p=0.093 ns; 4 lower 
 
 - 2026-09-28: Created from review §D; header added.
 - 2026-09-28: D-1/D-2/D-4 DONE. D-3 BLOCKED on B2-2. Note: ETTh2 +32.7% vs equal-rate foregrounding rides with D-3 (needs multi-dataset 4-cell); current suite Table coverage unchanged.
+- 2026-09-29: v2 refresh: no single best cell (best-of-four 7/8/8/2 val); DRRA−CSA val p=0.62, test −0.0331 p=0.032 (secondary); suite Flat/DRRA 4/12 best-means each. Paper + fig6/9 updated. D-3/D-5 still queued.
