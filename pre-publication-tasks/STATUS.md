@@ -7,19 +7,17 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 
 ## DOING (max 2 at a time)
 
-- [ ] Gate15: factorial 75/75 DONE 2026-09-29 (`results/factorial.jsonl`); suite-Flat 60 IN FLIGHT (`gate15_suite.log`, pid 67690) — monitor + resume if dies.
-- [ ] v2 factorial peek (PRELIMINARY): CSA 0.6148 / DRRA 0.6190 / C48 0.6810 / C88 0.6128; H1 +0.062 p=0.0074 (survives); DRRA−CSA +0.0042 p=0.62 (dead even). Full v2 + paper pass after suite + Q-2.
-- [x] Q-2 / B2-2 CLOSED 2026-09-29 — decision (a) disclose-fixed; method note + limitations bullet committed (`3ba8157`); B-file COMPLETE.
+- [ ] Gate16 D-3 in flight: 4 cells x {ETTh2, Electricity, Exchange} x 5 seeds = 60 runs (`plan/gates/gate16_d3/gate16_run.log`, pid 79776) — monitor + resume if dies; analyze on 60/60.
+- [ ] Q-1 + D-5 answers from manager (only human-held items left).
 
 ## QUEUED (unblocked, text-only, do after DOING frees up)
 
-- (empty — B1-1/A-3/A-4 completed 2026-09-28; next text work is the v2 number pass after Gate15 + Q-2)
+- (empty — v2 paper refresh committed; next text work is the D-3 analysis write-up on 60/60)
 
 ## BLOCKED (with reason + dependency)
 
-- B2-3/B2-4 (need Q-2 decision) · D-3 60-run factorial (needs Q-2 AND gate15 v2) · E-2/E-3, F-3, H-1/H-2 (Stage-2 runs; need Q-2 + venue steer in J).
-- Paper RQ1/H1/D-2 number updates (need gate15 v2 analysis — current tex numbers are as-run under the old mapping; flagged, not silently kept).
-- v2 refresh execution (plan: `plan/gates/gate15_rerun/v2_refresh_plan.md` — A-1…A-4 outputs, B-1…B-18 paper/figure updates, C figs, D no-change list, E decision checkpoint; runs after Gate15 completes + Q-2).
+- E-2/E-3, F-3, H-1/H-2 (Stage-2 runs; need Q-1 + venue steer in J).
+- Paper v2 numbers are IN (`cb2bae5`); Q-2/Q-5 closed; B2/B1-1/A/C/G/I complete.
 
 ## DONE (with evidence — link artifact, not prose)
 
