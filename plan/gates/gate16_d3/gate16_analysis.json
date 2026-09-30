@@ -1,0 +1,70 @@
+{
+  "provenance": "gate16 D-3: 4 cells x ETTh2/Electricity/Exchange x 5 seeds, fixed mapping",
+  "etth2": {
+    "means": {
+      "CSA": 1.7817,
+      "DRRA": 1.808,
+      "C48": 1.6863,
+      "C88": 1.9884
+    },
+    "DRRA_minus_CSA": {
+      "mean": 0.0263,
+      "wilcoxon_p": 1.0,
+      "W/L": "2/3"
+    },
+    "best_of_four": {
+      "DRRA": 1,
+      "C88": 2,
+      "CSA": 2
+    },
+    "KV": 0.1642,
+    "RT": 0.0425,
+    "H1": -0.1217,
+    "H1_p": 0.625
+  },
+  "electricity": {
+    "means": {
+      "CSA": 0.3775,
+      "DRRA": 0.3808,
+      "C48": 0.3865,
+      "C88": 0.3804
+    },
+    "DRRA_minus_CSA": {
+      "mean": 0.0032,
+      "wilcoxon_p": 0.625,
+      "W/L": "2/3"
+    },
+    "best_of_four": {
+      "DRRA": 2,
+      "CSA": 2,
+      "C88": 1
+    },
+    "KV": -0.0014,
+    "RT": 0.0043,
+    "H1": 0.0058,
+    "H1_p": 0.0625
+  },
+  "exchange": {
+    "means": {
+      "CSA": 3.1364,
+      "DRRA": 3.235,
+      "C48": 3.0904,
+      "C88": 3.0881
+    },
+    "DRRA_minus_CSA": {
+      "mean": 0.0986,
+      "wilcoxon_p": 0.8125,
+      "W/L": "3/2"
+    },
+    "best_of_four": {
+      "CSA": 1,
+      "C48": 1,
+      "C88": 1,
+      "DRRA": 2
+    },
+    "KV": 0.0482,
+    "RT": -0.0964,
+    "H1": -0.1446,
+    "H1_p": 0.8125
+  }
+}

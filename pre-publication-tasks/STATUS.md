@@ -7,7 +7,6 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 
 ## DOING (max 2 at a time)
 
-- [ ] Gate16 D-3 in flight: 4 cells x {ETTh2, Electricity, Exchange} x 5 seeds = 60 runs (`plan/gates/gate16_d3/gate16_run.log`, pid 79776) — monitor + resume if dies; analyze on 60/60.
 - [ ] Q-1 + D-5 answers from manager (only human-held items left).
 
 ## QUEUED (unblocked, text-only, do after DOING frees up)
@@ -30,6 +29,8 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 - (prior gates live in `plan/gates/` — see `README.md` Provenance)
 
 ## Session log (newest first)
+
+- 2026-09-30: D-3 60/60 COMPLETE + analyzed (H1 not replicated off-ETTh1) + RQ1 paragraph written. Only Q-1/D-5 human-held; Stage-2 awaits Q-1.
 
 - 2026-09-29: Suite 60/60 COMPLETE → v2 analysis + full paper number refresh (B-1…B-18, fig1/2/6/9 `--v2`) committed. Story: top-three tie, H1 p=0.0074, DRRA−CSA p=0.62, Flat/DRRA 4/12 best-means each.
 
