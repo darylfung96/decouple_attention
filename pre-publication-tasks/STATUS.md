@@ -7,7 +7,8 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 
 ## DOING (max 2 at a time)
 
-- [ ] Q-1 + D-5 answers from manager (only human-held items left).
+- [ ] Q-1 (partially answered: PatchTST approved + E-2 done) — remaining: approve ~30-50h Stage-2 compute.
+- [ ] D-5 (16,4) approval from manager.
 
 ## QUEUED (unblocked, text-only, do after DOING frees up)
 
@@ -29,6 +30,8 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 - (prior gates live in `plan/gates/` — see `README.md` Provenance)
 
 ## Session log (newest first)
+
+- 2026-09-30: Gate17 E-2 40/40 COMPLETE + analyzed (all tied within noise; backbone-relative reading) + paper bullet. Committed.
 
 - 2026-09-30: D-3 60/60 COMPLETE + analyzed (H1 not replicated off-ETTh1) + RQ1 paragraph written. Only Q-1/D-5 human-held; Stage-2 awaits Q-1.
 

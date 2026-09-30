@@ -110,8 +110,12 @@ decoupling is an ETTh1 finding and the paper says so. One extra
   <h3>E — Backbone relevance</h3>
   <p><strong>What changed:</strong> The reference runs against published models are verified and
   correctly framed as calibration, not competition.</p>
-  <p><strong>Left:</strong> the transfer experiment to a stronger backbone and the diagnostic
-  controls need a compute decision first.</p>
+  <p><strong>Update 2026-09-30 (transfer done):</strong> the four cells were grafted onto the
+  published PatchTST backbone (40 runs). All four tied within noise on both datasets
+  (effects around 0.003, ten times smaller than on our backbone), so the rate effects are
+  backbone-relative — visible where attention is the bottleneck, washed out where the backbone
+  dominates. Absolute levels match published PatchTST, so the transplant is sane.</p>
+  <p><strong>Left:</strong> the diagnostic controls need a compute decision first.</p>
 </div>
 
 <div class="card">
