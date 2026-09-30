@@ -99,6 +99,11 @@ future work.
         is the accuracy bottleneck at this scale, Section~\ref{sec:refpoints});
         forecast cost is reported both ways (full-layer and forecast-required,
         Section~\ref{sec:efficiency}), and a multilayer backbone remains future work.
+        A transfer run grafting the four cells onto the published PatchTST backbone
+        (ETTh1/ETTh2, five seeds each) finds all four cells tied within noise
+        (effects ${\sim}0.003$, an order of magnitude below the minimal backbone),
+        so the rate effects are backbone-relative: visible where attention is the
+        bottleneck, washed out where the backbone dominates.
   \item \textbf{CPU-only, fp32, small models.} Dense-with-masking
         implementation choices are CPU-oriented and may not transfer to
         GPU-flash-attention regimes.

@@ -1,0 +1,43 @@
+{
+  "provenance": "gate17 E-2: PatchTST backbone + cell attention, 4 cells x ETTh1/ETTh2 x 5 seeds",
+  "etth1": {
+    "means": {
+      "CSA": 0.373,
+      "DRRA": 0.3705,
+      "C48": 0.3745,
+      "C88": 0.3704
+    },
+    "KV": -0.0033,
+    "RT": 0.0007,
+    "H1": 0.004,
+    "H1_p": 0.125,
+    "DRRA_minus_CSA": {
+      "mean": -0.0025,
+      "W/L": "3/2"
+    },
+    "best_of_four": {
+      "CSA": 2,
+      "C88": 3
+    }
+  },
+  "etth2": {
+    "means": {
+      "CSA": 0.2559,
+      "DRRA": 0.2613,
+      "C48": 0.2614,
+      "C88": 0.2613
+    },
+    "KV": 0.0027,
+    "RT": 0.0028,
+    "H1": 0.0001,
+    "H1_p": 0.8125,
+    "DRRA_minus_CSA": {
+      "mean": 0.0054,
+      "W/L": "0/5"
+    },
+    "best_of_four": {
+      "CSA": 4,
+      "C48": 1
+    }
+  }
+}
