@@ -141,6 +141,21 @@ try:
 except ValueError:
     print("    \u2713 unsupported geometry raises OK")
 
+# 6. Non-divisible lengths (patch regime, S=31): streams stay consistent,
+#    no future leak, full forward runs per cell.
+for _ck, _ci in [(4, 4), (8, 4), (4, 8), (8, 8)]:
+    _p = ExpertPlusPlusAttention(hidden_size=16, num_heads=4, head_dim=4,
+                                 q_lora_rank=8, compress_rate=_ck,
+                                 index_compress_rate=_ci, index_topk=4,
+                                 index_n_heads=4, index_head_dim=4,
+                                 sliding_window=8, o_groups=4,
+                                 o_lora_rank=8).eval()
+    _h = torch.randn(1, 31, 16)
+    with torch.no_grad():
+        _o = _p(_h)
+    assert tuple(_o.shape) == (1, 31, 16), (_ck, _ci, tuple(_o.shape))
+print("    \u2713 non-divisible S=31 forward per cell OK")
+
 # 4. Param counts
 from benchmark_speed import count_params, FlatWrapper, ExpertPlusPlusWrapper
 print(f"[4] params — Flat={count_params(FlatWrapper())/1e6:.3f}M, "

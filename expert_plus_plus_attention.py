@@ -74,12 +74,21 @@ class ExpertPlusPlusAttention(BaseCSAAttention):
         )
 
     def _compress_idx(self, hidden_states, n_win, usable):
-        """4:1 index compression — the FINE routing granularity that keeps accuracy."""
-        n_idx = usable // self.index_compress_rate
+        """4:1 index compression — the FINE routing granularity that keeps accuracy.
+
+        The index stream is truncated to a multiple of the index rate
+        (usable_idx <= usable): required when usable is not divisible by the
+        index rate (patch regime); identical to usable whenever it is divisible
+        (all frozen-task runs). Uncovered tail patches stay reachable via the
+        sliding window.
+        """
+        m_idx = self.index_compress_rate
+        usable_idx = (usable // m_idx) * m_idx
+        n_idx = usable_idx // m_idx
         return self._flat_two_series_compress(
-            hidden_states, n_idx, usable,
+            hidden_states, n_idx, usable_idx,
             self.idx_kv_proj, self.idx_gate_proj, self.idx_position_bias,
-            self.idx_norm, self.index_head_dim, m=self.index_compress_rate
+            self.idx_norm, self.index_head_dim, m=m_idx
         )
 
     # ── Routing ──────────────────────────────────────────────────────────────
@@ -88,9 +97,16 @@ class ExpertPlusPlusAttention(BaseCSAAttention):
         return q
 
     def _build_idx_positions(self, S, device):
-        """Index tokens live at 4:1 granularity (64 tokens), independent of KV rate."""
+        """Index tokens live at 4:1 granularity (64 tokens), independent of KV rate.
+
+        Count derives from usable (not S): the compressed index stream covers
+        usable = (S // compress_rate) * compress_rate positions, so the token
+        count is usable // index_compress_rate. Identical to S // m whenever S
+        is divisible (all frozen-task runs); required when it is not (patch regime).
+        """
         m = self.index_compress_rate
-        n_idx = S // m
+        usable = (S // self.compress_rate) * self.compress_rate
+        n_idx = usable // m
         pos = torch.arange(n_idx, device=device) * m
         scale = torch.full((n_idx,), m, device=device)
         return pos, scale
