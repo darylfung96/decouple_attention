@@ -105,7 +105,7 @@ print("    ✓ fine router ≥ coarse router" if l_epp <= l_coarse + 1e-3 else "
 # 5. Per-cell mapping regression (B1-5: t//2 was unconditional pre-fix).
 #    For EVERY factorial geometry, valid tokens must reach every KV block
 #    (full range), and no selected block may extend into the future.
-for _ck, _ci, _nk in [(4, 4, 64), (8, 4, 32), (4, 8, 64), (8, 8, 32)]:
+for _ck, _ci, _nk in [(4, 4, 64), (8, 4, 32), (4, 8, 64), (8, 8, 32), (16, 4, 16)]:
     _m = ExpertPlusPlusAttention(hidden_size=128, num_heads=4, head_dim=32,
                                  q_lora_rank=64, compress_rate=_ck,
                                  index_compress_rate=_ci, index_topk=16,
@@ -123,6 +123,8 @@ for _ck, _ci, _nk in [(4, 4, 64), (8, 4, 32), (4, 8, 64), (8, 8, 32)]:
         assert bool((_kb[0, 255, 16:] == _tk[0, 255, :] * 2 + 1).all())
     elif _ck == _ci:
         assert bool((_kb[0, 255, :] == _tk[0, 255, :]).all()), (_ck, _ci)  # identity
+    elif (_ck, _ci) == (16, 4):
+        assert bool((_kb[0, 255, :] == _tk[0, 255, :] // 4).all()), (_ck, _ci)
     else:
         assert bool((_kb[0, 255, :] == _tk[0, 255, :] // 2).all()), (_ck, _ci)
     _ends = _kb * _ck + (_ck - 1)

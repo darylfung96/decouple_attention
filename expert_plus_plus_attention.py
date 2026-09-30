@@ -117,6 +117,7 @@ class ExpertPlusPlusAttention(BaseCSAAttention):
         - (8,4): two fine index tokens per coarse KV block: block = t // 2.
         - equal-rate (ck == ci): token t IS block t (identity).
         - (4,8): one coarse token fans out to two fine blocks (2t, 2t+1).
+        - other divisible many-to-one geometries (e.g. (16,4)): block = t // per.
         Any other geometry raises instead of silently misrouting (a prior
         version applied t // 2 unconditionally, which is wrong for every
         cell but (8,4)). A block is only safe to read when its ENTIRE span
@@ -130,6 +131,7 @@ class ExpertPlusPlusAttention(BaseCSAAttention):
         t = top_k_indices.clamp(0, n_idx - 1)
         q_pos = torch.arange(S, device=device).view(1, -1, 1)
         if ck == 8 and ci == 4:
+            # Canonical dual-rate cell: bit-exact legacy path (do not restructure).
             blocks = t // 2                                          # [B,S,top_k]
             block_end = blocks * ck + (ck - 1)                        # 8j+7
             safe = block_end <= q_pos
@@ -149,6 +151,15 @@ class ExpertPlusPlusAttention(BaseCSAAttention):
             kv_blocks = torch.where(safe, blocks, n_kv)
             kv_blocks = torch.where(sentinel.repeat_interleave(2, dim=-1),
                                       n_kv, kv_blocks)
+        elif n_idx > n_kv and n_idx % n_kv == 0:
+            # General many-to-one (e.g. (16,4): four fine tokens per block).
+            # New geometries only: existing cells keep their bit-exact paths above.
+            per = n_idx // n_kv
+            blocks = t // per
+            block_end = blocks * ck + (ck - 1)
+            safe = block_end <= q_pos
+            kv_blocks = torch.where(safe, blocks, n_kv)
+            kv_blocks = torch.where(sentinel, n_kv, kv_blocks)
         else:
             raise ValueError(
                 f"unsupported index->KV geometry (compress_rate={ck}, "

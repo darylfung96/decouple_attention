@@ -8,7 +8,7 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 ## DOING (max 2 at a time)
 
 - [ ] Q-1 (partially answered: PatchTST approved + E-2 done) — remaining: approve ~30-50h Stage-2 compute.
-- [ ] D-5 (16,4) approval from manager.
+- [ ] D-5 (16,4) approved + running (25 seeds, `gate18_d5/gate18_run.log`) — analyze on 25/25.
 
 ## QUEUED (unblocked, text-only, do after DOING frees up)
 
@@ -30,6 +30,8 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 - (prior gates live in `plan/gates/` — see `README.md` Provenance)
 
 ## Session log (newest first)
+
+- 2026-09-30: D-5 APPROVED + LAUNCHED as Gate18 (generalized mapping branch, (8,4)-identical, regression extended, ranks kept +0.535% disclosed). 25 seeds ETTh1.
 
 - 2026-09-30: Gate17 E-2 40/40 COMPLETE + analyzed (all tied within noise; backbone-relative reading) + paper bullet. Committed.
 
