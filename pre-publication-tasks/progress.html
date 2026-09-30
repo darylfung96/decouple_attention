@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pre-publication progress — Dual-Rate Attention study</title>
+<style>
+  body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; color: #222; line-height: 1.55; }
+  h1 { font-size: 1.6rem; border-bottom: 3px solid #222; padding-bottom: .4rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  .meta { color: #555; font-size: .9rem; }
+  .card { border: 1px solid #ccc; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; }
+  .badge { display: inline-block; font-size: .78rem; font-weight: bold; border-radius: 20px; padding: .15rem .7rem; margin-bottom: .5rem; }
+  .done { background: #dff0d8; color: #2d6a2d; }
+  .partial { background: #fcf3d7; color: #8a6d1b; }
+  .todo { background: #eee; color: #555; }
+  .blocked { background: #f8d7da; color: #8f2b32; }
+  .running { background: #d9e8fb; color: #1d4f91; }
+  .card h3 { margin: .2rem 0 .5rem 0; font-size: 1.05rem; }
+  .card p { margin: .45rem 0; }
+  .nums { background: #f7f7f7; border-left: 4px solid #888; padding: .5rem .8rem; font-size: .92rem; }
+  footer { margin-top: 2.5rem; color: #777; font-size: .85rem; border-top: 1px solid #ccc; padding-top: .6rem; }
+</style>
+</head>
+<body>
+<h1>Pre-publication progress</h1>
+<p class="meta">Study: decoupling compression and routing in attention for time-series forecasting.
+Generated 2026-09-29. Source of truth: <code>pre-publication-tasks/</code> in the repo.
+Review verdict being addressed: strong central idea, do not submit yet, reframe as a design study.</p>
+
+<h2>Overall story</h2>
+<p>Three rounds of work are finished. First, audits proved the forecast uses only the last
+history position and that the router receives zero learning signal. Second, a mapping bug was
+found that sent three of four test cells to the wrong history blocks; it was fixed, the correct
+cell was proven bit-identical before and after, and all 135 affected runs were redone. Third, the
+manuscript was updated throughout with corrected numbers and redrawn figures. The corrected headline:
+the three correctly routed cells tie within noise, the routing-matters finding survives, and there is
+no single winning cell. A 60-run replication on three new datasets is in flight.</p>
+
+<div class="card">
+  <span class="badge done">DONE</span>
+  <h3>00 — Title</h3>
+  <p><strong>What changed:</strong> The title is locked as <em>Decoupling Compression and Routing
+  in Attention for Time-Series Forecasting</em>, which frames the paper as a design study rather
+  than a new invention, exactly as the review recommended.</p>
+  <p><strong>Results:</strong> Abstract and introduction already read as a study with no promise of
+  a universal win. Nothing remains unless future results force a rethink.</p>
+</div>
+
+<div class="card">
+  <span class="badge done">DONE</span>
+  <h3>A — Forecasting compute audit</h3>
+  <p><strong>What changed:</strong> Hook tests proved earlier attention outputs are completely unused
+  (differences exactly 0.00), a last-query-only forward path was built and verified bit-exact to
+  about 5e-7, and canonical timing now reports both full-layer and forecast-only costs.</p>
+  <div class="nums">Forecast-only latency per batch of 32: plain baseline 2.6–3.9 ms,
+  compressed cells 5.8–9.5 ms. Honest finding: the plain baseline's forecast path is the fastest.</div>
+</div>
+
+<div class="card">
+  <span class="badge partial">MOSTLY DONE — re-run finished, one control queued</span>
+  <h3>B1 — Operator specification</h3>
+  <p><strong>What changed:</strong> While documenting the routing map, the audit found the code sent
+  three of four cells to the wrong history blocks. The mapping was fixed per geometry, the correct
+  cell was verified bit-identical (difference 0.0), a regression test was added, and all affected
+  runs were redone. The paper now contains the full algorithm box.</p>
+  <div class="nums">Corrected validation errors: (4,4) 0.6148, (8,4) 0.6190, (4,8) 0.6810,
+  (8,8) 0.6128, full attention 0.8389. Realized unique blocks per query: about 14 of 64 (equal-rate),
+  about 10 of 32 (dual-rate).</div>
+  <p><strong>Left:</strong> one matched-budget control experiment.</p>
+</div>
+
+<div class="card">
+  <span class="badge done">DONE</span>
+  <h3>B2 — Router learning signal</h3>
+  <p><strong>What changed:</strong> A one-step gradient audit measured every parameter and found all
+  router settings get exactly zero gradient, because the hard top-k cutoff cannot carry a learning
+  signal. The paper now states openly that routing is frozen at startup, in both the methods and
+  the limitations.</p>
+  <div class="nums">Indexer gradients: 0.000e+00 in both configurations. Compressor and shared
+  settings: all nonzero, learning normally.</div>
+</div>
+
+<div class="card">
+  <span class="badge done">DONE</span>
+  <h3>C — Factorial re-analysis</h3>
+  <p><strong>What changed:</strong> Every statistic was recomputed from the raw seeds with confidence
+  intervals and exact tests, including the interaction between the two axes, and everything was
+  recomputed again after the re-run.</p>
+  <div class="nums">Coarser compression: −0.032 (mildly helpful). Coarser routing: +0.030 (harmful).
+  Interaction: −0.072, significant. Headline contrast: +0.062, p = 0.0074 — the finding survives.</div>
+</div>
+
+<div class="card">
+  <span class="badge running">IN PROGRESS — replication running</span>
+  <h3>D — Decoupling claim</h3>
+  <p><strong>What changed:</strong> Promotional language was removed, a miscounted "best cell in 17
+  of 25" claim was corrected (17 was head-to-head wins; best-of-all-four is now an honest three-way
+  tie), and test-side results were promoted.</p>
+  <div class="nums">Dual-rate vs equal-rate on validation: +0.0042, p = 0.62 (dead even — the old
+  edge was the mapping bug). On test: −0.033, p = 0.032 (secondary result).</div>
+  <p><strong>Left:</strong> the 60-run replication on three new datasets is running; one extra
+  extreme-compression test awaits approval.</p>
+</div>
+
+<div class="card">
+  <span class="badge todo">QUEUED</span>
+  <h3>E — Backbone relevance</h3>
+  <p><strong>What changed:</strong> The reference runs against published models are verified and
+  correctly framed as calibration, not competition.</p>
+  <p><strong>Left:</strong> the transfer experiment to a stronger backbone and the diagnostic
+  controls need a compute decision first.</p>
+</div>
+
+<div class="card">
+  <span class="badge todo">QUEUED</span>
+  <h3>F — Validation standards</h3>
+  <p><strong>What changed:</strong> Nothing yet — this is planned work.</p>
+  <p><strong>Left:</strong> test-first headlines, longer horizons and lookbacks, and a chronology
+  appendix of how the 25 seeds accumulated.</p>
+</div>
+
+<div class="card">
+  <span class="badge done">DONE</span>
+  <h3>G — Efficiency numbers</h3>
+  <p><strong>What changed:</strong> The speedup ratio was corrected to 5.22 (256 versus 49 complete
+  columns), paired round-by-round timing was added, the memory wall was qualified as
+  implementation-specific with a proper citation, and arithmetic counts are no longer confused
+  with energy.</p>
+</div>
+
+<div class="card">
+  <span class="badge todo">QUEUED</span>
+  <h3>H — Mechanism proof</h3>
+  <p><strong>What changed:</strong> Nothing yet — it needs the control experiments first.</p>
+  <p><strong>Left:</strong> isolation probes, a controlled sweep figure, error bars on the coverage
+  chart, and a releasable code package.</p>
+</div>
+
+<div class="card">
+  <span class="badge done">DONE</span>
+  <h3>I — Editorial cleanup</h3>
+  <p><strong>What changed:</strong> All nine contradictions were fixed, the surrogate work was moved
+  to a separate paper, and the roadmap became a future-work list. The manuscript carries no
+  internal phase names.</p>
+</div>
+
+<div class="card">
+  <span class="badge todo">LAST</span>
+  <h3>J — Venue choice</h3>
+  <p><strong>What changed:</strong> Nothing yet — this decision comes last, once all results are final.</p>
+</div>
+
+<h2>Open decisions</h2>
+<p><strong>Q-1 (backbone + compute):</strong> which backbone counts as credible, and who funds roughly
+30–50 CPU hours. <strong>D-5 (extra test cell):</strong> approve or skip the extreme-compression probe.
+Q-2 (router disclosure), Q-4 (surrogate paper), and Q-5 (mapping fix) are decided.</p>
+
+<footer>Single file, no dependencies. Regenerate or edit by hand when statuses change;
+the repo's <code>STATUS.md</code> remains the source of truth.</footer>
+</body>
+</html>
