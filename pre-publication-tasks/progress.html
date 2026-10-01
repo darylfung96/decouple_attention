@@ -5,19 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pre-publication progress — Dual-Rate Attention study</title>
 <style>
-  body { font-family: Georgia, serif; max-width: 860px; margin: 2rem auto; padding: 0 1.2rem; color: #222; line-height: 1.55; }
+  body { font-family: Georgia, serif; max-width: 880px; margin: 2rem auto; padding: 0 1.2rem; color: #222; line-height: 1.55; }
   h1 { font-size: 1.6rem; border-bottom: 3px solid #222; padding-bottom: .4rem; }
   h2 { font-size: 1.15rem; margin-top: 2rem; }
   .meta { color: #555; font-size: .9rem; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: .92rem; }
+  th, td { border: 1px solid #bbb; padding: .45rem .6rem; text-align: left; vertical-align: top; }
+  th { background: #f0f0f0; }
   .card { border: 1px solid #ccc; border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; }
   .badge { display: inline-block; font-size: .78rem; font-weight: bold; border-radius: 20px; padding: .15rem .7rem; margin-bottom: .5rem; }
   .done { background: #dff0d8; color: #2d6a2d; }
   .partial { background: #fcf3d7; color: #8a6d1b; }
   .todo { background: #eee; color: #555; }
-  .blocked { background: #f8d7da; color: #8f2b32; }
   .running { background: #d9e8fb; color: #1d4f91; }
   .card h3 { margin: .2rem 0 .5rem 0; font-size: 1.05rem; }
-  .card p { margin: .45rem 0; }
+  .card p, .card li { margin: .45rem 0; }
+  .card ul { padding-left: 1.3rem; }
   .nums { background: #f7f7f7; border-left: 4px solid #888; padding: .5rem .8rem; font-size: .92rem; }
   footer { margin-top: 2.5rem; color: #777; font-size: .85rem; border-top: 1px solid #ccc; padding-top: .6rem; }
 </style>
@@ -25,144 +28,158 @@
 <body>
 <h1>Pre-publication progress</h1>
 <p class="meta">Study: decoupling compression and routing in attention for time-series forecasting.
-Generated 2026-09-29. Source of truth: <code>pre-publication-tasks/</code> in the repo.
+Updated 2026-10-01 (Gate19 at 15/25). Source of truth: <code>pre-publication-tasks/</code> in the repo.
 Review verdict being addressed: strong central idea, do not submit yet, reframe as a design study.</p>
 
-<h2>Overall story</h2>
-<p>Three rounds of work are finished. First, audits proved the forecast uses only the last
-history position and that the router receives zero learning signal. Second, a mapping bug was
-found that sent three of four test cells to the wrong history blocks; it was fixed, the correct
-cell was proven bit-identical before and after, and all 135 affected runs were redone. Third, the
-manuscript was updated throughout with corrected numbers and redrawn figures. The corrected headline:
-the three correctly routed cells tie within noise, the routing-matters finding survives, and there is
-no single winning cell. A 60-run replication on three new datasets is in flight.</p>
+<h2>Status at a glance</h2>
+<table>
+  <tr><th>Task</th><th>Status</th><th>Headline</th></tr>
+  <tr><td>00 Title</td><td>DONE</td><td>Title locked as a design study</td></tr>
+  <tr><td>A Compute audit</td><td>DONE</td><td>Both cost columns reported; dense-last is fastest</td></tr>
+  <tr><td>B1 Operator spec</td><td>DONE except one queued control</td><td>Mapping bug fixed, all cells re-run, algorithm box written</td></tr>
+  <tr><td>B2 Router learning</td><td>DONE</td><td>Router gradient is zero; disclosed in paper</td></tr>
+  <tr><td>C Factorial stats</td><td>DONE</td><td>Full recompute with CIs, interaction, exact tests — twice</td></tr>
+  <tr><td>D Decoupling claim</td><td>NEARLY DONE</td><td>Honest three-way tie; (32,4) probe running at 15/25</td></tr>
+  <tr><td>E Backbone</td><td>PARTIAL</td><td>Transfer done (tied); controls need compute approval</td></tr>
+  <tr><td>F Validation standards</td><td>QUEUED</td><td>Test-first headlines, longer horizons, chronology</td></tr>
+  <tr><td>G Efficiency</td><td>DONE</td><td>5.22× fix, paired timing, memory/energy qualified</td></tr>
+  <tr><td>H Mechanism proof</td><td>QUEUED</td><td>Needs the control runs first</td></tr>
+  <tr><td>I Editorial</td><td>DONE</td><td>All 9 contradictions fixed, history removed</td></tr>
+  <tr><td>J Venue</td><td>LAST</td><td>Decided after everything else</td></tr>
+</table>
+
+<h2>Detail per task</h2>
 
 <div class="card">
-  <span class="badge done">DONE</span>
+  <span class="badge done">DONE (2026-09-28)</span>
   <h3>00 — Title</h3>
   <p><strong>What changed:</strong> The title is locked as <em>Decoupling Compression and Routing
-  in Attention for Time-Series Forecasting</em>, which frames the paper as a design study rather
-  than a new invention, exactly as the review recommended.</p>
-  <p><strong>Results:</strong> Abstract and introduction already read as a study with no promise of
-  a universal win. Nothing remains unless future results force a rethink.</p>
+  in Attention for Time-Series Forecasting</em>, which is the reviewer's preferred option. It frames
+  the paper as a design study rather than a new invention.</p>
+  <p><strong>Results:</strong> The abstract and introduction already read as a study with no promise
+  of a universal win. Nothing remains unless future results force a rethink.</p>
 </div>
 
 <div class="card">
-  <span class="badge done">DONE</span>
+  <span class="badge done">DONE (A-1…A-4, 2026-09-28)</span>
   <h3>A — Forecasting compute audit</h3>
-  <p><strong>What changed:</strong> Hook tests proved earlier attention outputs are completely unused
-  (differences exactly 0.00), a last-query-only forward path was built and verified bit-exact to
-  about 5e-7, and canonical timing now reports both full-layer and forecast-only costs.</p>
-  <div class="nums">Forecast-only latency per batch of 32: plain baseline 2.6–3.9 ms,
-  compressed cells 5.8–9.5 ms. Honest finding: the plain baseline's forecast path is the fastest.</div>
+  <p><strong>What changed:</strong> Hook tests proved the earlier attention outputs are completely
+  unused (differences exactly 0.00 across 3 configs and 3 seeds). A last-query-only forward path was
+  built and verified bit-exact to about 5e-7, with two script bugs found and fixed along the way
+  (normalization ordering, timing closure). The backbone decision was recorded as keep-single-block,
+  and the appendix now lists all audit artifacts.</p>
+  <div class="nums">Canonical timing (batch of 32): full-layer Normal 47.7 / compressed 47.4 and 40.8 ms;
+  forecast-only Normal 2.6–3.9 ms vs compressed 5.8–9.5 ms. Honest finding: the plain baseline's
+  forecast path is the fastest because it pays no compressor work. Both costs are reported.</div>
 </div>
 
 <div class="card">
-  <span class="badge partial">MOSTLY DONE — re-run finished, one control queued</span>
+  <span class="badge partial">MOSTLY DONE — one control queued</span>
   <h3>B1 — Operator specification</h3>
   <p><strong>What changed:</strong> While documenting the routing map, the audit found the code sent
-  three of four cells to the wrong history blocks. The mapping was fixed per geometry, the correct
-  cell was verified bit-identical (difference 0.0), a regression test was added, and all affected
-  runs were redone. The paper now contains the full algorithm box.</p>
+  three of four test cells to the wrong history blocks (only the (8,4) cell was correct). The mapping
+  was fixed per geometry, the correct cell was verified bit-identical (difference 0.0) so its old
+  runs stay valid, a regression test was added, and all 135 affected runs were redone. The paper now
+  contains the full algorithm box: per-cell rules, sentinel handling, future-safety, and the
+  historical note.</p>
   <div class="nums">Corrected validation errors: (4,4) 0.6148, (8,4) 0.6190, (4,8) 0.6810,
-  (8,8) 0.6128, full attention 0.8389. Realized unique blocks per query: about 14 of 64 (equal-rate),
-  about 10 of 32 (dual-rate).</div>
-  <p><strong>Left:</strong> one matched-budget control experiment.</p>
+  (8,8) 0.6128, full attention 0.8389. Realized unique blocks per query: about 14 of 64
+  (equal-rate) and about 10 of 32 (dual-rate), versus 96/48 dense-masked columns.</div>
+  <p><strong>Left:</strong> one matched-budget control experiment (B1-3).</p>
 </div>
 
 <div class="card">
-  <span class="badge done">DONE</span>
+  <span class="badge done">DONE (Q-2 closed 2026-09-29)</span>
   <h3>B2 — Router learning signal</h3>
   <p><strong>What changed:</strong> A one-step gradient audit measured every parameter and found all
-  router settings get exactly zero gradient, because the hard top-k cutoff cannot carry a learning
-  signal. The paper now states openly that routing is frozen at startup, in both the methods and
-  the limitations.</p>
-  <div class="nums">Indexer gradients: 0.000e+00 in both configurations. Compressor and shared
-  settings: all nonzero, learning normally.</div>
+  router settings get exactly 0.000e+00 gradient in both configurations, because the hard top-k
+  cutoff cannot carry a learning signal. Everything else (compressor, shared projections, early
+  layers) learns normally. The decision was to disclose rather than redesign, and the paper now
+  states in both methods and limitations that routing is frozen at startup.</p>
 </div>
 
 <div class="card">
-  <span class="badge done">DONE</span>
+  <span class="badge done">DONE (plus v2 refresh 2026-09-29)</span>
   <h3>C — Factorial re-analysis</h3>
-  <p><strong>What changed:</strong> Every statistic was recomputed from the raw seeds with confidence
-  intervals and exact tests, including the interaction between the two axes, and everything was
-  recomputed again after the re-run.</p>
-  <div class="nums">Coarser compression: −0.032 (mildly helpful). Coarser routing: +0.030 (harmful).
-  Interaction: −0.072, significant. Headline contrast: +0.062, p = 0.0074 — the finding survives.</div>
+  <p><strong>What changed:</strong> Every statistic was recomputed from the raw unrounded seeds with
+  confidence intervals and exact tests, then recomputed again after the re-run. The interaction
+  between the two axes turned out significant (it was not before the fix), and the old p-values
+  were traced to an approximate test and replaced with exact ones.</p>
+  <div class="nums">Corrected values: coarser compression −0.032 (mildly helpful), coarser routing
+  +0.030 (harmful), interaction −0.072 (p = 0.014), headline contrast +0.062 (p = 0.0074).
+  The finding survives the fix, weaker but significant.</div>
 </div>
 
 <div class="card">
-  <span class="badge running">IN PROGRESS — replication running</span>
+  <span class="badge running">NEARLY DONE — (32,4) probe at 15/25</span>
   <h3>D — Decoupling claim</h3>
-  <p><strong>What changed:</strong> Promotional language was removed, a miscounted "best cell in 17
-  of 25" claim was corrected (17 was head-to-head wins; best-of-all-four is now an honest three-way
-  tie), and test-side results were promoted.</p>
-  <div class="nums">Dual-rate vs equal-rate on validation: +0.0042, p = 0.62 (dead even — the old
-  edge was the mapping bug). On test: −0.033, p = 0.032 (secondary result).</div>
-  <p><strong>Left:</strong> the 60-run replication finished 2026-09-30: the headline contrast
-does not replicate off ETTh1 (sign flips on ETTh2 and Exchange; tie on Electricity), so the
-decoupling is an ETTh1 finding and the paper says so. One extra
-  extreme-compression test awaits approval.</p>
+  <p><strong>What changed:</strong> Promotional language was removed. A miscounted "best cell in 17
+  of 25" claim was corrected (17 was head-to-head wins; best-of-all-four is now an honest 7/8/8/2
+  three-way tie). Test-side results were promoted, then honestly shrunk by the fix. The 60-run
+  replication on three new datasets finished: the headline contrast does not replicate off ETTh1,
+  so the paper calls the decoupling an ETTh1 finding. The (16,4) probe finished best-mean at 0.5810.</p>
+  <div class="nums">Dual-rate vs equal-rate on validation: +0.0042, p = 0.62 (dead even — the old edge
+  was the mapping bug). On test: −0.033, p = 0.032 (secondary result).</div>
+  <p><strong>Left:</strong> the (32,4) probe answers "why stop at 16" with data; 4 KV blocks is the
+  stated floor so no further cells are planned.</p>
 </div>
 
 <div class="card">
-  <span class="badge todo">QUEUED</span>
+  <span class="badge partial">PARTIAL — controls need compute approval</span>
   <h3>E — Backbone relevance</h3>
   <p><strong>What changed:</strong> The reference runs against published models are verified and
-  correctly framed as calibration, not competition.</p>
-  <p><strong>Update 2026-09-30 (transfer done):</strong> the four cells were grafted onto the
-  published PatchTST backbone (40 runs). All four tied within noise on both datasets
-  (effects around 0.003, ten times smaller than on our backbone), so the rate effects are
-  backbone-relative — visible where attention is the bottleneck, washed out where the backbone
-  dominates. Absolute levels match published PatchTST, so the transplant is sane.</p>
-  <p><strong>Left:</strong> the diagnostic controls need a compute decision first.</p>
+  correctly framed as calibration, not competition. Then all four cells were grafted onto the
+  published PatchTST backbone (40 runs): every cell tied within noise on both datasets, with
+  effects around 0.003 — ten times smaller than on our backbone. Absolute levels match published
+  PatchTST, so the transplant was built right.</p>
+  <p><strong>Reading:</strong> the rate effects are backbone-relative — visible where attention is
+  the bottleneck, washed out where a strong backbone dominates. Inconclusive, not negative.</p>
+  <p><strong>Left:</strong> the diagnostic controls need the Stage-2 compute approval.</p>
 </div>
 
 <div class="card">
   <span class="badge todo">QUEUED</span>
   <h3>F — Validation standards</h3>
-  <p><strong>What changed:</strong> Nothing yet — this is planned work.</p>
-  <p><strong>Left:</strong> test-first headlines, longer horizons and lookbacks, and a chronology
-  appendix of how the 25 seeds accumulated.</p>
+  <p><strong>What changed:</strong> Nothing yet — this is planned work (test-first headlines,
+  mean-absolute-error columns, longer horizons and lookbacks, and a chronology appendix of how
+  the 25 seeds accumulated).</p>
 </div>
 
 <div class="card">
-  <span class="badge done">DONE</span>
+  <span class="badge done">DONE (2026-09-28)</span>
   <h3>G — Efficiency numbers</h3>
   <p><strong>What changed:</strong> The speedup ratio was corrected to 5.22 (256 versus 49 complete
-  columns), paired round-by-round timing was added, the memory wall was qualified as
-  implementation-specific with a proper citation, and arithmetic counts are no longer confused
-  with energy.</p>
+  columns) in nine places, paired round-by-round timing was added (dual-rate beats full attention by
+  9.0 ± 1.7 ms per paired round), the batch-1 exception is disclosed, the 8 GB memory wall was
+  qualified as implementation-specific with a proper citation, and arithmetic counts are no longer
+  confused with energy.</p>
 </div>
 
 <div class="card">
   <span class="badge todo">QUEUED</span>
   <h3>H — Mechanism proof</h3>
-  <p><strong>What changed:</strong> Nothing yet — it needs the control experiments first.</p>
-  <p><strong>Left:</strong> isolation probes, a controlled sweep figure, error bars on the coverage
-  chart, and a releasable code package.</p>
+  <p><strong>What changed:</strong> Nothing yet — it needs the control experiments first (isolation
+  probes, a controlled sweep figure, error bars on the coverage chart, and a releasable package).</p>
 </div>
 
 <div class="card">
-  <span class="badge done">DONE</span>
+  <span class="badge done">DONE (2026-09-28)</span>
   <h3>I — Editorial cleanup</h3>
-  <p><strong>What changed:</strong> All nine contradictions were fixed, the surrogate work was moved
-  to a separate paper, and the roadmap became a future-work list. The manuscript carries no
-  internal phase names.</p>
+  <p><strong>What changed:</strong> All nine contradictions were fixed (stale win counts, exact
+  one-sided tests for the synthetic probes, scope paragraph reconciled). The surrogate work moved
+  to a separate paper, the roadmap became a future-work list, repeated honesty disclaimers were
+  cut to one, and a standing rule now bans internal phase names from the manuscript.</p>
 </div>
 
 <div class="card">
   <span class="badge todo">LAST</span>
   <h3>J — Venue choice</h3>
-  <p><strong>What changed:</strong> Nothing yet — this decision comes last, once all results are final.</p>
+  <p><strong>What changed:</strong> Nothing yet — this decision comes last, once all results are
+  final. Open sub-decisions: Q-1 (backbone + compute), Q-3 (venue ambition). Decided: Q-2 (disclose
+  router), Q-4 (surrogate separate paper), Q-5 (mapping fix + re-run).</p>
 </div>
 
-<h2>Open decisions</h2>
-<p><strong>Q-1 (backbone + compute):</strong> which backbone counts as credible, and who funds roughly
-30–50 CPU hours. <strong>D-5 (extra test cell):</strong> approve or skip the extreme-compression probe.
-Q-2 (router disclosure), Q-4 (surrogate paper), and Q-5 (mapping fix) are decided.</p>
-
-<footer>Single file, no dependencies. Regenerate or edit by hand when statuses change;
-the repo's <code>STATUS.md</code> remains the source of truth.</footer>
+<footer>Single file, no dependencies. The repo's <code>STATUS.md</code> remains the source of truth;
+this page is refreshed from it. 17+ git commits back every claim above.</footer>
 </body>
 </html>
