@@ -19,3 +19,4 @@ Reviewer ask: key = dual-rate vs equal-rate, not vs Normal. p=0.093 ns; 4 lower 
 - 2026-09-29: v2 refresh: no single best cell (best-of-four 7/8/8/2 val); DRRA−CSA val p=0.62, test −0.0331 p=0.032 (secondary); suite Flat/DRRA 4/12 best-means each. Paper + fig6/9 updated. D-3/D-5 still queued.
 - 2026-09-29: D-3 LAUNCHED as Gate16 (design `gate16_d3/gate16_design.md`; 4 cells x ETTh2/Electricity/Exchange x 5 seeds = 60 runs, pid 79776). Q-2+v2 blockers cleared.
 - 2026-10-01: D-5 DONE (broke the band on the good side). D-file COMPLETE except D-3-style follow-ups (none planned).
+- 2026-10-01: D-5 extension Gate19 (32,4) launched (25 seeds; answers 'why stop at 16'; floor stated at 4 blocks). One false start (wrong provenance strings) killed pre-record, relaunched clean.

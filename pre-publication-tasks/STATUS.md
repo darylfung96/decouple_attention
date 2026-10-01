@@ -31,6 +31,8 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 
 ## Session log (newest first)
 
+- 2026-10-01: Gate19 (32,4) launched (25 seeds). Deterministic restart confirmed (same epoch-1 values).
+
 - 2026-10-01: Gate18 D-5 25/25 COMPLETE + paper updated. Remaining human items: Q-1 compute, J-1 venue.
 
 - 2026-09-30: D-5 APPROVED + LAUNCHED as Gate18 (generalized mapping branch, (8,4)-identical, regression extended, ranks kept +0.535% disclosed). 25 seeds ETTh1.
