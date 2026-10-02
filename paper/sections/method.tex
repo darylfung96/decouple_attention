@@ -70,7 +70,7 @@ as the task-appropriate baseline.
 \caption{Architecture of the compressed-and-indexed family (DRRA
 $(8,4)$ drawn). One shared Transformer block whose only varying component is
 the attention module: a KV compressor ($c_{KV}{=}8$: 256 positions $\to$ 32
-blocks), a routing indexer ($c_R{=}4$: 64 index tokens) with top-$k{=}16
+blocks), a routing indexer ($c_R{=}4$: 64 index tokens) with top-$k{=}16$
 selection, and dense masked attention over the fixed
 column set (32 KV blocks + 16 window + 1 sink $= 49$ columns; Normal attends
 to all 256). The horizon head maps the last hidden state to the 96-step
