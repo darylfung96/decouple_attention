@@ -54,7 +54,7 @@ mechanism: every building block we use is a configuration of known ideas
 \citep{yuan2025nsa,deepseekv4_2026} are acknowledged rather than elided
 (Section~\ref{sec:related}). Our contributions are:
 \begin{enumerate}
-  \item[(a)] \textbf{A controlled $2\times2$ factorial design.} All four
+  \item[(a)] \textbf{A controlled factorial design with exploratory extensions.} All four
         combinations of $c_{KV}, c_R \in \{4{:}1, 8{:}1\}$ are evaluated on a
         frozen task---ETTh1, direct 96-step forecasting---under an
         \emph{auxiliary-identical} contract (identical window, top-$k$, heads,
@@ -62,7 +62,9 @@ mechanism: every building block we use is a configuration of known ideas
         equalization to within $0.3\%$, across 25 paired seeds
         (Section~\ref{sec:experiments}); the three-way comparison (full
         attention vs.\ the equal-rate and dual-rate cells) extends to twelve
-        datasets (Section~\ref{sec:rq3}).
+        datasets (Section~\ref{sec:rq3}), and two deeper-ratio probes, $(16,4)$ and
+        $(32,4)$, are reported separately as exploratory (Section~\ref{sec:rq1},
+        Appendix~\ref{sec:appendix-exploratory}).
   \item[(b)] \textbf{A decoupled-rate finding.} Coarsening the
         router deteriorates accuracy ($+0.030$ validation MSE for
         $c_R{:}4{:}1 \to 8{:}1$), while coarsening KV compression is
