@@ -8,11 +8,14 @@ frozen protocol of Section~\ref{sec:task}. The five pre-registered seeds
 $\{42, 123, 2024, 7, 99\}$ were run first (audited manifest with
 parameter-equalization and training-match checks); a 20-seed power extension
 (seeds 1--21 excluding the pre-registered set) was run later under the
-byte-identical protocol and merged post hoc. Data-integrity checks on the
+byte-identical protocol and merged post hoc. Three cells ($(4,4)$, $(4,8)$, $(8,8)$)
+were subsequently re-run under a corrected index-to-block mapping (the original applied
+one mapping rule to all geometries; Section~\ref{sec:family-mech}) and merged by seed,
+replacing their rows; the $(8,4)$ and Normal rows are untouched originals. Data-integrity checks on the
 merged manifest confirm: (i) parameter equalization within tolerance
 (max attention delta $0.268\%$, max full-model delta $0.074\%$);
 (ii) matched training across all runs (final training MSE span
-$0.2780$--$0.3029$); and (iii) all 125 runs present, 25 seeds in every
+$0.2756$--$0.3029$); and (iii) all 125 runs present, 25 seeds in every
 cell, no duplicates. Reported validation and test metrics come from the
 epoch-10 weights; no best-validation checkpoint selection is used.
 
@@ -68,7 +71,7 @@ while
 coarsening routing resolution from $4{:}1$ to $8{:}1$ \emph{raises} it by
 $+0.0300$ (95\% CI $[+0.001, +0.059]$; deterioration; Wilcoxon $p = 0.059$,
 paired $t$ $p = 0.043$). Signs are consistent in 20 of 25 (KV) and 16 of 25
-(routing) seed-column comparisons. Unlike the as-run analysis, the interaction is
+(routing) seed-column comparisons. The interaction is
 significant: $-0.0724$ (95\% CI $[-0.129, -0.016]$, Wilcoxon $p = 0.014$)---coarsening
 KV compression helps more when routing is fine, so the two axes are \emph{not}
 additive, and main effects must be read together with the interaction.
@@ -102,7 +105,7 @@ within noise, there is no ``best'' cell to claim at all.
 \caption{Main effects on validation MSE (25 paired seeds):
 $c_{KV}$ $4{:}1 \rightarrow 8{:}1$ ($-0.0320$, mildly beneficial) and
 $c_R$ $4{:}1 \rightarrow 8{:}1$ ($+0.0300$, deteriorates). Dashed lines:
-$\pm$ mean within-cell seed std ($0.071$); the per-seed paired contrast
+$\pm$ mean within-cell seed std ($0.069$); the per-seed paired contrast
 (routing effect $>$ KV effect) is significant (exact $p = 0.0074$).}
 \label{fig:main-effects}
 \end{figure}
@@ -143,7 +146,7 @@ favor the compressed configuration (per-seed validation deltas span
 $-48.3\%$ to $+9.9\%$ across cells; mean deltas $-18.0\%$ to $-26.3\%$).
 DRRA $(8,4)$ beats CSA $(4,4)$ head-to-head in 16 of 25 seeds on validation (CSA ahead in 9),
 and no cell is best of all four in more than 8 (DRRA 7, $(8,8)$ 8, CSA 8, $(4,8)$ 2;
-merged post-fix analysis in the released logs).
+merged corrected-mapping analysis in the released logs).
 
 \begin{table}[t]
 \centering
@@ -158,14 +161,14 @@ carries $\sim$2\% more full-model parameters.}
 Config & Val mean $\pm$ std & Test mean & $\Delta$val vs.\ Normal & $\Delta$test vs.\ Normal & Seeds beating Normal \\
 \midrule
 Normal & $0.8389 \pm 0.0814$ & 1.0804 & --- & --- & --- \\
-CSA $(4,4)$ & $0.6148 \pm 0.0704$ & 0.8771 & $-26.72\%$ & $-18.82\%$ & 24 / 25 \\
-DRRA $(8,4)$ & $\mathbf{0.6190} \pm 0.0827$ & $\mathbf{0.8440}$ & $-26.22\%$ & $-21.89\%$ & 24 / 25 \\
+CSA $(4,4)$ & $\mathbf{0.6148} \pm 0.0704$ & 0.8771 & $-26.72\%$ & $-18.82\%$ & 24 / 25 \\
+DRRA $(8,4)$ & $0.6190 \pm 0.0827$ & $\mathbf{0.8440}$ & $-26.22\%$ & $-21.89\%$ & 24 / 25 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \textbf{Wiring verification.} Because the compressed variants beating an
-unmodified baseline by ${\sim}25$--$29\%$ is a surprising direction, we
+unmodified baseline by ${\sim}18$--$26\%$ is a surprising direction, we
 audited the Normal attention implementation before reporting it: a
 from-scratch naive reference (true causal masking, $1/\sqrt{d}$ scaling,
 independent RoPE reimplementation) matches the module output
@@ -178,7 +181,8 @@ compression acting as a task-appropriate inductive bias (see
 Section~\ref{sec:discussion}) is a plausible but \emph{unverified}
 explanation \emph{that three mechanistic probes now support descriptively}
 (models retrained with per-run checkpoints under the same frozen protocol;
-seed 42): (i) on the delayed-copy dataset
+seed 42; probes (i)--(ii) predate the mapping correction and are being re-run,
+so their numbers are as-run historical values): (i) on the delayed-copy dataset
 (five channels periodic with in-window lags 96--256, plus two noise
 channels), \emph{all three} models learn the exact-offset copy ---
 per-channel copy MSE $0.0007$ (Normal) and $0.0013$--$0.0026$ (compressed
@@ -190,7 +194,7 @@ in \emph{every} distance-from-change bucket (the across-bucket gradient is
 confounded by the generator's random-walk drift and should not be
 over-read); and (iii) across the twelve datasets, the compression
 advantage correlates with signal smoothness in the predicted direction
-(Pearson $r = -0.29$ for DRRA $(8,4)$, $-0.35$ for CSA $(4,4)$ against lag-1
+(Pearson $r = -0.29$ for DRRA $(8,4)$, $-0.31$ for Flat $(4,4)$ against lag-1
 autocorrelation; $p \approx 0.3$) --- smoother series favor compression
 more. These probes are descriptive ($n{=}1$ seed for (i)--(ii), $n{=}12$
 for (iii)) and do not establish the mechanism.

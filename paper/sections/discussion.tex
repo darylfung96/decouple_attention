@@ -35,7 +35,9 @@ descriptive evidence, not a verified mechanism. The pre-registered
 hypothesis program (H1 is defined in Section~\ref{sec:rq1}) is designed to
 separate the candidates, and its current status is:
 \textbf{H1} (coarsening the router deteriorates accuracy more than
-coarsening KV compression) directionally supported in the factorial;
+coarsening KV compression) supported on ETTh1 (exact Wilcoxon $p = 0.0074$) but not
+replicated on the three cross-dataset factorial replications (all non-significant,
+signs mixed);
 \textbf{H2} (the dual-rate corner matches the equal-rate cells on accuracy while
 using fewer attention columns), whose latency leg is supported directionally by the
 systems measurements and whose accuracy leg is a tie on validation (no cell best;
@@ -55,8 +57,9 @@ future work.
 \subsection{Limitations}
 \label{sec:limitations}
 \begin{itemize}
-  \item \textbf{Dataset breadth, not universality.} The full factorial is
-        single-dataset (ETTh1); the three-way comparison spans twelve
+  \item \textbf{Dataset breadth, not universality.} The full 25-seed factorial is
+        single-dataset (ETTh1); a five-seed replication on three contrasting datasets did
+        not reproduce its sign structure (Section~\ref{sec:rq1}). The three-way comparison spans twelve
         datasets, where the compressed advantage is signal-dependent
         (Section~\ref{sec:rq3}): wins on the ETT family, solar, and
         electricity; small losses on the synthetic probes, exchange-rate
