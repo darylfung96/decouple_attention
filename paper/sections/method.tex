@@ -71,7 +71,7 @@ as the task-appropriate baseline.
 $(8,4)$ drawn). One shared Transformer block whose only varying component is
 the attention module: a KV compressor ($c_{KV}{=}8$: 256 positions $\to$ 32
 blocks), a routing indexer ($c_R{=}4$: 64 index tokens) with top-$k{=}16
-$selection, and dense masked attention over the fixed
+selection, and dense masked attention over the fixed
 column set (32 KV blocks + 16 window + 1 sink $= 49$ columns; Normal attends
 to all 256). The horizon head maps the last hidden state to the 96-step
 forecast.}
@@ -126,6 +126,8 @@ and must be translated to KV-block ids before the dense masked attention:
   \item Equal-rate cells $(4,4)$, $(8,8)$: token $t$ \emph{is} block $t$ (identity).
   \item $(4,8)$: one coarse token fans out to two fine blocks $(2t, 2t{+}1)$,
         doubling the per-query selection to 32 block slots.
+  \item Deeper ratios ($(16,4)$, $(32,4)$): $p$ fine tokens per coarse block --- block
+        $j = t \sslash p$ with $p = 4, 8$ (the general many-to-one rule).
 \end{itemize}
 A selected block is read only when its entire span ends at or before the query
 ($\mathrm{block\_end} \le q$); otherwise --- and for tokens masked as future or
@@ -133,7 +135,8 @@ out of range --- it maps to a sentinel id that \_attend drops, so no query reads
 future positions. Causality holds through the overlapping compressor as well: each
 compressed block mixes only its own and the previous window (receptive field
 $[m(j{-}1), mj{+}m{-}1]$), i.e.\ strictly backward, so the block-end guard is
-sufficient. Any other $(c_{KV}, c_R)$ geometry raises instead of guessing a mapping.
+sufficient. Any other $(c_{KV}, c_R)$ geometry raises instead of guessing a mapping
+(the general rule above covers every tested cell).
 \emph{Historical note:} before 2026-09-28 the implementation applied $t \sslash 2$
 unconditionally, misrouting every cell but $(8,4)$; the audit, fix, and re-run of the
 affected cells are logged in the source release.
@@ -180,8 +183,10 @@ blocks ($16$) no longer outnumber the sliding window ($16$), so the column
 composition changes what is being measured. Second, the two levels bracket
 a $2\times$ range around the operating region of interest (the CSA corner
 $(4,4)$ matches DeepSeek-V4's $m{=}4$), and both effect signs are
-established within the bracket; behavior outside it is extrapolation, which
-we explicitly do not claim. Third, budget: each additional cell costs 25
+established within the bracket. Behavior outside the bracket was extrapolation
+at pre-registration time; two deeper ratios, $(16,4)$ and $(32,4)$, were run later as
+exploratory probes (same protocol) and are reported separately from the confirmatory
+factorial (Section~\ref{sec:rq1}, Appendix~\ref{sec:appendix-exploratory}). Third, budget: each additional cell costs 25
 paired runs ($\approx 6$ h CPU at the measured per-run cost of the seed
 extension), and the $2\times2$ spends that budget on replication ---
 statistical power for the pre-registered contrasts --- rather than on extra
@@ -201,7 +206,8 @@ $q$/$o$ ranks 64) and differ only in $(c_{KV}, c_R)$; the low-rank
 bottlenecks are equalized to within $0.27\%$ of the DRRA reference (the
 $(8,4)$ corner; named cells: CSA $=(4,4)$, DRRA $=(8,4)$, defined in
 Section~\ref{sec:factorial}; their results are in
-Table~\ref{tab:factorial}). \emph{Softmax cols} $= C + W + 1$ sink. Normal
+Table~\ref{tab:factorial}). Starred rows are post-hoc exploratory probes, excluded from
+all confirmatory contrasts. \emph{Softmax cols} $= C + W + 1$ sink. Normal
 attends to all 256 columns with no sink.}
 \label{tab:configs}
 \begin{tabular}{lcccccc}
@@ -213,6 +219,8 @@ CSA & 4 & 4 & 64 & 64 & 80 + 1 & 95{,}396 / 348{,}100 \\
 DRRA & 8 & 4 & 32 & 64 & 48 + 1 & 95{,}652 / 348{,}356 \\
 $(4,8)$ & 4 & 8 & 64 & 32 & 80 + 1 & 95{,}652 / 348{,}356 \\
 $(8,8)$ & 8 & 8 & 32 & 32 & 48 + 1 & 95{,}908 / 348{,}612 \\
+$(16,4)^*$ & 16 & 4 & 16 & 64 & 32 + 1 & 96{,}164 / 348{,}868 \\
+$(32,4)^*$ & 32 & 4 & 8 & 64 & 16 + 1 & 97{,}188 / 349{,}892 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -229,8 +237,8 @@ selects from (64 for $c_R{=}4$, 32 for $c_R{=}8$) without changing the
 attention cost. All compressed cells carry slightly \emph{fewer} attention
 parameters than Normal ($-6.7\%$ to $-6.9\%$; the low-rank $q$/$o$
 bottlenecks replace dense projections), and full-model counts are
-${\sim}2\%$ below Normal's. The DRRA $(8,4)$ cell therefore combines the
-smallest attention geometry with the fine-router candidate count.
+${\sim}2\%$ below Normal's. The DRRA $(8,4)$ cell therefore combines the smallest attention geometry among the
+factorial cells with the fine-router candidate count.
 
 \textbf{Parameter equalization.} The factorial is pre-registered with an
 auxiliary-identical contract: all cells share window, top-$k$, heads, hidden
@@ -239,13 +247,15 @@ definition. Because the position-bias terms of the two compressors grow with
 their rates, attention-parameter counts differ slightly between cells; the
 only free compute-quality knobs not part of the cell definition (the
 low-rank $q$ and $o$ bottlenecks) are fixed at the DRRA $(8,4)$ ranks
-$(64, 64)$, which is the lattice minimum for \emph{every} cell. The largest
-remaining attention-parameter delta is $0.268\%$ (full-model delta
-$\le 0.074\%$), well inside the pre-registered $0.5\%$ tolerance.
+$(64, 64)$, which is the lattice minimum for \emph{every} factorial cell. The largest
+remaining attention-parameter delta among the four factorial cells is $0.268\%$ (full-model delta
+$\le 0.074\%$), well inside the pre-registered $0.5\%$ tolerance; the exploratory cells
+keep the same ranks with disclosed deltas ($+0.54\%$, $+1.6\%$).
 
 \textbf{Complexity.} Attention cost per query is proportional to the number
-of softmax columns: 256 for Normal, 80 for $c_{KV}{=}4$ cells, and 48 for
-$c_{KV}{=}8$ cells (5.22$\times$ fewer complete columns than Normal), giving
+of softmax columns: 256 for Normal, 80 for $c_{KV}{=}4$ cells, 48 for
+$c_{KV}{=}8$ cells (5.22$\times$ fewer complete columns than Normal), and 32/16 for the
+exploratory $(16,4)$/$(32,4)$ cells, giving
 $O(L \cdot \mathrm{cols} \cdot d)$ per sequence for the score/value
 computation. The router, however, compares every query against
 $M = L/c_R$ index tokens, $O(L \cdot M) = O(L^2/c_R)$: the total
