@@ -31,6 +31,8 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 
 ## Session log (newest first)
 
+- 2026-10-01: Gate19 (32,4) 25/25 COMPLETE (val 0.6122, in-band — flat out to 32:1) + cell-speed audit (FULL 1.18–1.22x vs Normal; LAST Normal fastest) + paper sentences. Committed.
+
 - 2026-10-01: Gate19 (32,4) launched (25 seeds). Deterministic restart confirmed (same epoch-1 values).
 
 - 2026-10-01: Gate18 D-5 25/25 COMPLETE + paper updated. Remaining human items: Q-1 compute, J-1 venue.

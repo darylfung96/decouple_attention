@@ -1,0 +1,71 @@
+{
+  "gate": [
+    {
+      "config": "Normal",
+      "maxdiff": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "config": "DRRA_8_4",
+      "maxdiff": 7.152557373046875e-07,
+      "pass": true
+    },
+    {
+      "config": "EPP_16_4",
+      "maxdiff": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "config": "EPP_32_4",
+      "maxdiff": 7.152557373046875e-07,
+      "pass": true
+    }
+  ],
+  "cols_per_query": {
+    "Normal": 256,
+    "DRRA_8_4": 48,
+    "EPP_16_4": 32,
+    "EPP_32_4": 16
+  },
+  "latency": {
+    "Normal_FULL": {
+      "mean_ms": 45.58891667192802,
+      "stdev_ms": 3.1701879211193407
+    },
+    "Normal_LAST": {
+      "mean_ms": 3.475788163021207,
+      "stdev_ms": 0.5213818559551828
+    },
+    "DRRA_8_4_FULL": {
+      "mean_ms": 38.63195128117999,
+      "stdev_ms": 3.098768654264931
+    },
+    "DRRA_8_4_LAST": {
+      "mean_ms": 7.525818556391945,
+      "stdev_ms": 0.7212087567073115
+    },
+    "EPP_16_4_FULL": {
+      "mean_ms": 37.285083777581654,
+      "stdev_ms": 2.5331611187025462
+    },
+    "EPP_16_4_LAST": {
+      "mean_ms": 8.259502053726465,
+      "stdev_ms": 4.766995194563196
+    },
+    "EPP_32_4_FULL": {
+      "mean_ms": 37.36472200214242,
+      "stdev_ms": 7.765312030011904
+    },
+    "EPP_32_4_LAST": {
+      "mean_ms": 7.608192220175018,
+      "stdev_ms": 1.272976421585902
+    },
+    "speedup_FULL_DRRA_8_4_vs_Normal": 1.18,
+    "speedup_FULL_EPP_16_4_vs_Normal": 1.223,
+    "speedup_FULL_EPP_32_4_vs_Normal": 1.22
+  },
+  "env": {
+    "python": "3.11.12",
+    "torch": "2.6.0"
+  }
+}
