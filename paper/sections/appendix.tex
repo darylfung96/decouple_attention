@@ -35,6 +35,29 @@ together with the factorial cells, marked with an asterisk. $(16,4)$ reaches the
 $0.8586$): the KV-rate profile stays flat-to-beneficial out to 32:1 on ETTh1, and
 4 KV blocks is the sensible floor where this study stops.
 
+The same four cells were also grafted onto the published PatchTST backbone
+(ETTh1/ETTh2, five seeds each) as a transfer test. Table~\ref{tab:transfer} shows
+all four tied within noise on both datasets --- the rate effects are
+backbone-relative, visible where attention is the bottleneck and washed out where a
+strong backbone dominates.
+
+\begin{table}[t]
+\centering
+\small
+\caption{PatchTST-backbone transfer: validation MSE means over five seeds. All four
+cells tie within noise on both datasets (effects $\sim$0.003, an order of magnitude
+below the minimal backbone).}
+\label{tab:transfer}
+\begin{tabular}{lcccc}
+\toprule
+Dataset & CSA $(4,4)$ & DRRA $(8,4)$ & $(4,8)$ & $(8,8)$ \\
+\midrule
+ETTh1 & 0.3730 & 0.3705 & 0.3745 & 0.3704 \\
+ETTh2 & 0.2559 & 0.2613 & 0.2614 & 0.2613 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.92\linewidth]{figures/fig10_exploratory.pdf}
