@@ -21,6 +21,8 @@ systematically deteriorates accuracy ($+0.030$ validation MSE), while
 coarsening KV compression is mildly beneficial ($-0.032$): the pre-registered
 decoupling hypothesis is supported on ETTh1 (per-seed paired contrast, exact Wilcoxon $p = 0.0074$)---
 routing granularity carries accuracy there, while KV content density is mildly beneficial.
+Routing here is fixed at initialization (the hard top-$k$ selector gives the indexer no task
+gradient), so this is a selection-architecture effect, not learned routing.
 Third, the dual-rate corner DRRA $(8,4)$ reduces the attention matrix to 48 (+1 sink)
 columns
 versus 256 (5.22$\times$) at a matching parameter count. Fourth, the advantage
