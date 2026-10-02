@@ -31,6 +31,8 @@ Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv,
 
 ## Session log (newest first)
 
+- 2026-09-30: D-3 60/60 + analyzed + RQ1 paragraph committed. Left: Q-1 compute, D-5 (if approved), Stage-2, J-1.
+
 - 2026-10-01: Gate19 (32,4) 25/25 COMPLETE (val 0.6122, in-band — flat out to 32:1) + cell-speed audit (FULL 1.18–1.22x vs Normal; LAST Normal fastest) + paper sentences. Committed.
 
 - 2026-10-01: Gate19 (32,4) launched (25 seeds). Deterministic restart confirmed (same epoch-1 values).
