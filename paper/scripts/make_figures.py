@@ -215,8 +215,29 @@ for i, cell in enumerate(CELLS):
     ax.text(i, val_means[cell] + val_stds[cell] + 0.012, fmt(val_means[cell]),
             ha="center", fontsize=8)
 ax.axhline(normal_val_mean, color="black", linestyle="--", linewidth=0.9)
-ax.text(3.52, normal_val_mean + 0.012, f"Normal {fmt(normal_val_mean)}",
-        ha="right", fontsize=8)
+if not V2:
+    ax.text(3.52, normal_val_mean + 0.012, f"Normal {fmt(normal_val_mean)}",
+            ha="right", fontsize=8)
+if V2:
+    # Exploratory cells as starred side bars (never part of confirmatory stats).
+    import json as _json2
+    _exp = {"(16,4)*": "gate18_d5", "(32,4)*": "gate19_324"}
+    for j, (lab, gate) in enumerate(_exp.items()):
+        _rows = [_json2.loads(l) for l in
+                 open(PLAN_DIR / "gates" / gate / "results" / "etth1.jsonl")]
+        _vals = np.array([r["val_mse"] for r in _rows], dtype=float)
+        _i = len(CELLS) + j
+        ax.bar(_i, _vals.mean(), yerr=_vals.std(ddof=1), width=0.6,
+               color="gray", alpha=0.55, capsize=4, label=lab)
+        _jit = np.linspace(-0.18, 0.18, len(_vals))
+        ax.scatter(_i + _jit, _vals, s=14, color="black", zorder=3,
+                   edgecolor="white", linewidth=0.4)
+        ax.text(_i, _vals.mean() + _vals.std(ddof=1) + 0.012,
+                fmt(_vals.mean()), ha="center", fontsize=8)
+    x = np.arange(len(CELLS) + 2)
+    labels = labels + ["$(16,4)$*", "$(32,4)$*"]
+    ax.text(5.52, normal_val_mean + 0.012, f"Normal {fmt(normal_val_mean)}",
+            ha="right", fontsize=8)
 ax.set_xticks(x)
 ax.set_xticklabels(labels)
 ax.set_ylabel("Validation MSE (standardized)")

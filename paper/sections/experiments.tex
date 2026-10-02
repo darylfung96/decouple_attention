@@ -32,7 +32,8 @@ beats the full-attention baseline on mean validation and mean test MSE; per-seed
 \caption{Factorial results (25 paired seeds, frozen direct-96 protocol;
 pooled MSE in standardized units, lower is better). ``Beats CSA'' counts
 seeds where the cell's validation MSE is better than the same seed's CSA $(4,4)$
-value.}
+value. Starred rows are post-hoc exploratory probes, excluded from all confirmatory
+contrasts (Section~\ref{sec:rq1}).}
 \label{tab:factorial}
 \begin{tabular}{lcccc}
 \toprule
@@ -43,6 +44,8 @@ CSA $(4,4)$ & $0.6148 \pm 0.0704$ & 0.8771 & 0.2941 & --- \\
 DRRA $(8,4)$ & $0.6190 \pm 0.0827$ & $\mathbf{0.8440}$ & 0.2876 & 16 / 25 \\
 $(4,8)$ & $0.6810 \pm 0.0570$ & 0.9496 & 0.2863 & 6 / 25 \\
 $(8,8)$ & $0.6128 \pm 0.0660$ & 0.8505 & 0.2837 & 12 / 25 \\
+$(16,4)^*$ & $0.5810 \pm 0.0751$ & 0.8100 & 0.2793 & 16 / 25 \\
+$(32,4)^*$ & $0.6122 \pm 0.0652$ & 0.8586 & 0.2702 & 14 / 25 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -53,7 +56,8 @@ $(8,8)$ & $0.6128 \pm 0.0660$ & 0.8505 & 0.2837 & 12 / 25 \\
 \caption{Validation MSE by factorial cell (mean $\pm$ std over 25 paired
 seeds; individual seed points shown). Lower is better. The DRRA corner
 $(c_{KV}{=}8, c_R{=}4)$ combines coarse KV compression with fine routing;
-the dashed line marks the full-attention baseline (0.8389).}
+the dashed line marks the full-attention baseline (0.8389). Starred bars are
+post-hoc exploratory probes, excluded from all confirmatory contrasts.}
 \label{fig:factorial}
 \end{figure}
 
