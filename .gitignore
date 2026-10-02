@@ -25,3 +25,6 @@ paper/tectonic
 *.log
 *.out
 *.synctex.gz
+
+# Overleaf upload bundle (rebuilt on demand)
+paper-for-overleaf.zip
