@@ -231,13 +231,13 @@ Exchange ($+8.6\%$) and on all three synthetic families ($+0.2\%$ to
 $+3.1\%$).
 
 The compressed configurations beat full attention on mean validation MSE in
-8/12 datasets each (DRRA $(8,4)$ and Flat $(4,4)$), but the advantage is
+8/12 datasets each (DRRA $(8,4)$ and CSA $(4,4)$), but the advantage is
 \emph{signal-dependent} rather than universal. Best-mean columns split evenly:
-4 datasets each for Flat, DRRA, and full attention. The largest wins are on the
+4 datasets each for CSA, DRRA, and full attention. The largest wins are on the
 ETT family (up to $-48.4\%$ on ETTm2) and on solar-energy; both compressed
 variants \emph{lose} on all three synthetic families ($+0.2\%$ to $+4.0\%$)
 and on exchange-rate validation, and their test error is worse on weather
-(Flat $+11.2\%$, DRRA $+14.2\%$). This pattern is consistent with the
+(CSA $+11.2\%$, DRRA $+14.2\%$). This pattern is consistent with the
 compression-as-inductive-bias reading: pooling adjacent timesteps is nearly
 lossless on smooth, temporally redundant real-world series, while tasks
 requiring exact in-window content recall (the delayed-copy probe,
@@ -397,10 +397,10 @@ probes reach significance against compression one-sided (exact $p = 0.03125$: al
 seeds favor full attention on syn-sinusoids and syn-delayedcopy); syn-changepoints is not
 significant in either direction. Across
 datasets, paired sign tests on the 12 dataset means are not significant:
-8/12 ($p = 0.39$) for DRRA $(8,4)$ and 8/12 ($p = 0.39$) for Flat $(4,4)$.
+8/12 ($p = 0.39$) for DRRA $(8,4)$ and 8/12 ($p = 0.39$) for CSA $(4,4)$.
 The strongest scale-free aggregate statement is the bootstrap 95\% CI on
 the mean of the per-dataset $\Delta$val vs.\ Normal, which excludes zero
-for both variants (Flat $(4,4)$: $-7.5\%$ $[-15.8, -0.9]$; DRRA $(8,4)$:
+for both variants (CSA $(4,4)$: $-7.5\%$ $[-15.8, -0.9]$; DRRA $(8,4)$:
 $-8.3\%$ $[-17.5, -0.8]$). The cross-dataset pattern is therefore
 directionally consistent but not statistically established per dataset:
 the ETTh1 factorial, not the suite, is where significance is established.
