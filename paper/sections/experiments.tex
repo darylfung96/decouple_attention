@@ -488,7 +488,11 @@ gives Normal $2.6$--$3.9$ ms, CSA $(4,4)$ $6.2$--$9.5$ ms, DRRA $(8,4)$ $5.8$--$
 batch-32 pass---ranges span two runs showing the same level drift. Under last-query accounting
 the dense baseline's last-query path is the fastest, because it pays no
 compressor/indexer work: Table~\ref{tab:speed} compares full-layer costs, both costs are
-reported, and efficiency claims are stated against the last-query baseline. Notably, the structural
+reported, and efficiency claims are stated against the last-query baseline. The exploratory
+cells were timed the same way: full-layer $(16,4)$ and $(32,4)$ run at $1.22\times$ Normal
+(37.3--37.4 ms vs.\ 45.6 ms), barely ahead of $(8,4)$ at $1.18\times$ --- wall-clock plateaus
+past $(16,4)$ because compressor work and dense masking dominate the shrinking column
+count, so further compression buys accuracy-neutrality, not speed. Notably, the structural
 5.22$\times$ column reduction does not translate into proportional wall-clock
 gains at this scale: dense-masked CPU GEMMs are efficient and the
 compressor/indexer add overhead. These are single-machine CPU measurements
