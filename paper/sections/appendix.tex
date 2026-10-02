@@ -25,6 +25,25 @@ pointer exists only to acknowledge the overlap with attention-distillation work
 line, including the equal-budget small-transformer control and
 distillation-epoch alignment, lives outside this manuscript.
 
+\section{Exploratory rate sweep}
+\label{sec:appendix-exploratory}
+Two post-hoc cells, $(16,4)$ and $(32,4)$ (25 ETTh1 seeds each, same protocol),
+probe how far KV compression goes while routing stays fine. They are kept out of the
+confirmatory tables and figures by design; Figure~\ref{fig:exploratory} shows them
+together with the factorial cells, marked with an asterisk. $(16,4)$ reaches the best mean
+($0.5810$ validation, $0.8100$ test) and $(32,4)$ lands inside the top group ($0.6122$ /
+$0.8586$): the KV-rate profile stays flat-to-beneficial out to 32:1 on ETTh1, and
+4 KV blocks is the sensible floor where this study stops.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/fig10_exploratory.pdf}
+\caption{ETTh1 validation (blue) and test (orange) means $\pm$ std over 25 seeds for all
+cells. Starred cells are post-hoc exploratory probes, excluded from the confirmatory
+tables; the dashed line marks full attention (validation 0.8389).}
+\label{fig:exploratory}
+\end{figure}
+
 \section{Reproducibility}
 \label{sec:appendix-repro}
 Every number in this paper traces to a repository artifact: the frozen task
