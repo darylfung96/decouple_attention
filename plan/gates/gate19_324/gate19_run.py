@@ -39,7 +39,7 @@ def main():
         torch.manual_seed(seed)
         model = EPPTimeSeriesModel(NUM_FEATURES, 32, 4, q_lora_rank=64, o_lora_rank=64)
         ft, fv, te_mse = train_and_eval(model, tr, va, te, epochs=EPOCHS)
-        rec = {"cell": [16, 4], "seed": seed, "val_mse": round(fv, 8),
+        rec = {"cell": [32, 4], "seed": seed, "val_mse": round(fv, 8),
                "test_mse": round(te_mse, 8), "final_train_mse": round(ft, 8),
                "attn_params": count_attn_params(model),
                "full_params": count_full_params(model),

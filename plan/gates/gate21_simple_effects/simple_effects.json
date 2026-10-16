@@ -1,0 +1,86 @@
+{
+ "provenance": "gate21/uv-torch2.6.0/read-only",
+ "n_seeds": 25,
+ "source": "plan/gates/gate15_rerun/results/factorial.jsonl + kept gate2/gate7/baseline rows",
+ "conditional_effects": {
+  "kv_at_cr4": {
+   "label": "c_KV 4->8 at c_R=4",
+   "mean": 0.0042,
+   "ci95": [
+    -0.0437,
+    0.0521
+   ],
+   "wilcoxon_p": 0.615,
+   "n": 25,
+   "sign_consistent": 9
+  },
+  "kv_at_cr8": {
+   "label": "c_KV 4->8 at c_R=8",
+   "mean": -0.0682,
+   "ci95": [
+    -0.1009,
+    -0.0355
+   ],
+   "wilcoxon_p": 0.0001,
+   "n": 25,
+   "sign_consistent": 21
+  },
+  "cr_at_ckv4": {
+   "label": "c_R 4->8 at c_KV=4",
+   "mean": 0.0662,
+   "ci95": [
+    0.0265,
+    0.1059
+   ],
+   "wilcoxon_p": 0.002,
+   "n": 25,
+   "sign_consistent": 19
+  },
+  "cr_at_ckv8": {
+   "label": "c_R 4->8 at c_KV=8",
+   "mean": -0.0062,
+   "ci95": [
+    -0.0475,
+    0.035
+   ],
+   "wilcoxon_p": 1.0,
+   "n": 25,
+   "sign_consistent": 13
+  }
+ },
+ "cross_checks": {
+  "kv_main_mean": -0.032,
+  "cr_main_mean": 0.03,
+  "interaction_mean": -0.0724,
+  "kv_main_est": {
+   "mean": -0.032,
+   "ci95": [
+    -0.0618,
+    -0.0023
+   ],
+   "wilcoxon_p": 0.0096,
+   "n": 25,
+   "sign_consistent": 20
+  },
+  "cr_main_est": {
+   "mean": 0.03,
+   "ci95": [
+    0.001,
+    0.0589
+   ],
+   "wilcoxon_p": 0.0588,
+   "n": 25,
+   "sign_consistent": 16
+  },
+  "interaction_est": {
+   "mean": -0.0724,
+   "ci95": [
+    -0.1289,
+    -0.0158
+   ],
+   "wilcoxon_p": 0.0136,
+   "n": 25,
+   "sign_consistent": 17
+  }
+ }
+}
