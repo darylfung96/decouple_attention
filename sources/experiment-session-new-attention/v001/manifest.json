@@ -1,0 +1,306 @@
+{
+ "source": "/Users/darylfung/Documents/Work/Nicosia/new_attention/experiment-session-new-attention.md",
+ "snapshot": "source/experiment-session-new-attention.md",
+ "snapshot_sha256": "80d79a8e441348b5b062819a3ffa8cf0dbca7733ff091a70f98ab0f1a4fe596a",
+ "kind": "text",
+ "bytes": 527174,
+ "units": {
+  "lines": 5996
+ },
+ "created": "2026-10-16T07:24:33-0500",
+ "version": "v001",
+ "prev": null,
+ "chunk_chars": 24000,
+ "chunks": [
+  {
+   "id": "c001",
+   "file": "chunks/c001.md",
+   "range": "L1-234",
+   "chars": 20493,
+   "tokens_est": 5123,
+   "sha256": "d85ac1b86c216a5a3c94076a188db55fecb4f205af88b3e650a93ad3a0c0bbc2",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c002",
+   "file": "chunks/c002.md",
+   "range": "L235-556",
+   "chars": 22746,
+   "tokens_est": 5686,
+   "sha256": "c187ede630bdfc9a244783b3003851ed96dfa3c7642f0f4ecca4ab225e835079",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c003",
+   "file": "chunks/c003.md",
+   "range": "L557-841",
+   "chars": 22746,
+   "tokens_est": 5686,
+   "sha256": "852c570bceea600422a5b6c11370684fc6436b1d1a156b80cc20383c57646afd",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c004",
+   "file": "chunks/c004.md",
+   "range": "L842-1182",
+   "chars": 23712,
+   "tokens_est": 5928,
+   "sha256": "87562f3b7c393a884b27636c397118abace1f5194916e5cd0551e3ef05e93daa",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c005",
+   "file": "chunks/c005.md",
+   "range": "L1183-1395",
+   "chars": 23826,
+   "tokens_est": 5956,
+   "sha256": "e8413e1423a5f26e7b31068a7365e905285db01f64c870fb4487664fd26ce60e",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c006",
+   "file": "chunks/c006.md",
+   "range": "L1396-1640",
+   "chars": 13762,
+   "tokens_est": 3440,
+   "sha256": "9d7dbc8a503beec7ca8676772c343d6ca547ba992610db0630513e16933d63c3",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c007",
+   "file": "chunks/c007.md",
+   "range": "L1641-1830",
+   "chars": 20416,
+   "tokens_est": 5104,
+   "sha256": "9c893ff8ac0d84e5ca2087110b77cf00f7a7a687e1494fadef9c67679eb1af84",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c008",
+   "file": "chunks/c008.md",
+   "range": "L1831-2036",
+   "chars": 19547,
+   "tokens_est": 4886,
+   "sha256": "edd20b8cfe4361b9d7bd3c252149c8ba8294d026283680810353fb43a76b2d9e",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c009",
+   "file": "chunks/c009.md",
+   "range": "L2037-2301",
+   "chars": 16720,
+   "tokens_est": 4180,
+   "sha256": "d114cbd5491e9ce304599432a168ba6af205a5594148013a8633817f791931f2",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c010",
+   "file": "chunks/c010.md",
+   "range": "L2302-2456",
+   "chars": 20746,
+   "tokens_est": 5186,
+   "sha256": "4d63a0ea29883e5dc92e5c788ded23c925b8fec89a7fa58b6b0582a4440d91b2",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c011",
+   "file": "chunks/c011.md",
+   "range": "L2457-2665",
+   "chars": 21034,
+   "tokens_est": 5258,
+   "sha256": "888cb7a5c714c4891e2b4e37fba16a5555fa311b49c3980b750ee64568c39ce8",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c012",
+   "file": "chunks/c012.md",
+   "range": "L2666-2870",
+   "chars": 18390,
+   "tokens_est": 4597,
+   "sha256": "ab6f94c1c05df80feddf9a59efccfc750818c2ed6bd811b2defe4684e80d7a98",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c013",
+   "file": "chunks/c013.md",
+   "range": "L2871-3251",
+   "chars": 23857,
+   "tokens_est": 5964,
+   "sha256": "896de6584ad2a633d7920442a89c7bdb96c05211c55762df6fda6e2e54607f15",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c014",
+   "file": "chunks/c014.md",
+   "range": "L3252-3271",
+   "chars": 1869,
+   "tokens_est": 467,
+   "sha256": "9db9c31110562e5f27164483e3dce9d5e032c3747ac0c55066c934089767f56d",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c015",
+   "file": "chunks/c015.md",
+   "range": "L3272-3574",
+   "chars": 23061,
+   "tokens_est": 5765,
+   "sha256": "ac8887696ca6da92cda9b0fed2b25402c63b9433cc3ca75dde149be659be83c4",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c016",
+   "file": "chunks/c016.md",
+   "range": "L3575-3925",
+   "chars": 21770,
+   "tokens_est": 5442,
+   "sha256": "7ff62e80e72dd3f30e9e8127bf04f31244ded6f50e1de4a27bbd3ad665ececc1",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c017",
+   "file": "chunks/c017.md",
+   "range": "L3926-4142",
+   "chars": 23749,
+   "tokens_est": 5937,
+   "sha256": "296926857dbbe0800eb8d1e48da320aa9b5b8e534cdbe670120812ddcc7b122f",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c018",
+   "file": "chunks/c018.md",
+   "range": "L4143-4197",
+   "chars": 6063,
+   "tokens_est": 1515,
+   "sha256": "4319299dc0551c897b96f448a716862eeac555db65280c2723f924922cfa51b8",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c019",
+   "file": "chunks/c019.md",
+   "range": "L4198-4416",
+   "chars": 23970,
+   "tokens_est": 5992,
+   "sha256": "fd349f9b04efddfce9448b26e6010f95cd1fcd75de54f2cdb7b1dd578ec71948",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c020",
+   "file": "chunks/c020.md",
+   "range": "L4417-4422",
+   "chars": 384,
+   "tokens_est": 96,
+   "sha256": "c0cc47b52094c2bd6c119a6b71af1c9296d13749d532338fb668b2ddcbe6293e",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c021",
+   "file": "chunks/c021.md",
+   "range": "L4423-4615",
+   "chars": 23355,
+   "tokens_est": 5838,
+   "sha256": "02a09cfca0bafc94aad243f9aa5c208f9bf12b439032cb0b5948e2bc326b4c16",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c022",
+   "file": "chunks/c022.md",
+   "range": "L4616-4629",
+   "chars": 2301,
+   "tokens_est": 575,
+   "sha256": "ed3a34985131a49aed1527e1a1d8b1f03128df0b63cb43f2729baaa2b06f8e92",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c023",
+   "file": "chunks/c023.md",
+   "range": "L4630-4914",
+   "chars": 22948,
+   "tokens_est": 5737,
+   "sha256": "bf7fe160594f62291b78ec6a9e63afe7606c39b048ff5324f83467a7d1216fb3",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c024",
+   "file": "chunks/c024.md",
+   "range": "L4915-5155",
+   "chars": 21165,
+   "tokens_est": 5291,
+   "sha256": "1e090228d1d3c0c1a2ade2438b3e5da30bbe8ee152bdbe50bcd50e052aef0a0e",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c025",
+   "file": "chunks/c025.md",
+   "range": "L5156-5358",
+   "chars": 13227,
+   "tokens_est": 3306,
+   "sha256": "1660b084f1d0f6af60bcaf120c6fcd7e954a24f08892929540d5f2e49ab321ae",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c026",
+   "file": "chunks/c026.md",
+   "range": "L5359-5497",
+   "chars": 16633,
+   "tokens_est": 4158,
+   "sha256": "45fd95f6190a915894e225ba4063704cbf8b459e53d42227e253e35fc0b098b1",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c027",
+   "file": "chunks/c027.md",
+   "range": "L5498-5652",
+   "chars": 17908,
+   "tokens_est": 4477,
+   "sha256": "5661a145875f00ce196cffed4cb6b9ceb95a3a4956525c88bc5642277f590acd",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c028",
+   "file": "chunks/c028.md",
+   "range": "L5653-5844",
+   "chars": 22699,
+   "tokens_est": 5674,
+   "sha256": "44ac4a3fe4bc2feafc03caa68d82ffaaab79556b9197816ce8a2325a0bc3d152",
+   "digest": null,
+   "carried_from": null
+  },
+  {
+   "id": "c029",
+   "file": "chunks/c029.md",
+   "range": "L5845-5996",
+   "chars": 11719,
+   "tokens_est": 2929,
+   "sha256": "f31b25a57de6f8f395773606d2a901f2228b56c04fdb03f8a633398fbf1a0270",
+   "digest": null,
+   "carried_from": null
+  }
+ ]
+}

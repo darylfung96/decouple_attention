@@ -28,3 +28,8 @@ paper/tectonic
 
 # Overleaf upload bundle (rebuilt on demand)
 paper-for-overleaf.zip
+
+# Long-source intake: chunks are regenerable and snapshots duplicate tracked
+# originals, so both stay out of git; manifests (and digests, when earned) are tracked.
+sources/**/source/
+sources/**/chunks/

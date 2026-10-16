@@ -1,0 +1,625 @@
+PAGES: 12
+===== PAGE 1 =====
+Compressed-and-indexed attention | Technical review and revision plan
+1
+TECHNICAL REVIEW / TEAM DISCUSSION / 16 OCTOBER 2026
+Technical review and
+Q1 publication plan
+Decoupling Compression and Routing in Attention for Time-Series Forecasting
+Recommended primary target: Neurocomputing. Strengthen the paper as an explanatory, controlled
+study of when compression and routing are useful, rather than promote DRRA (8,4) as a generally
+superior configuration.
+The draft contains a useful factorial study and substantial reported audit work. Its present vulnerability is not
+editorial quality: several comparisons do not yet isolate the proposed explanation, and the practical efficiency
+claim is undermined by the manuscript’s own last-query measurements. The priorities below address those
+issues before expanding the benchmark suite. (Manuscript, pp. 5–8, 14 and 24.)
+Journal
+Verified ranking basis
+Recommended role
+Neurocomputing
+2025 SCImago/SJR:
+best quartile Q1
+Primary target for a rigorous design study with
+meaningful forecasting and systems evidence.
+Neural Networks
+2025 SCImago/SJR:
+best quartile Q1
+Stretch target after a stronger mechanism-level
+contribution and convincing transfer.
+Information Sciences
+2025 SCImago/SJR:
+best quartile Q1
+Alternative for a broadly useful compression/selection
+analysis and validated decision framework.
+Ranking sources: SCImago (n.d.-c), SCImago (n.d.-b) and SCImago (n.d.-a). Journal positioning is my assessment of fit, not an
+acceptance prediction.
+What a stronger submission should establish
+Validity: correct the interaction interpretation, match projection architecture, audit the selected information
+budget, and separate untrained indexer parameters from changing route decisions. Practical relevance: use
+the computation actually required for forecasting and demonstrate nondegenerate routing in a competent
+temporal backbone. Reusable insight: explain where compression helps, where routing adds value, and
+where simpler alternatives suffice.
+Ranking and review scope
+Here, Q1 means the 2025 SCImago/SJR best quartile, based on Scopus data. It is not a claim about a
+particular CiteScore category percentile or a JCR quartile. Direct Scopus source-detail pages were
+inaccessible; a category-specific CiteScore requirement must therefore be checked through the team’s
+institutional access before submission. (SCImago, n.d.-d) (Elsevier, n.d.-a)
+Basis: the supplied 27-page NewTransformer.pdf. Page references identify that draft. Numerical differences below are
+recalculated from printed tables; code, checkpoints and raw manifests have not been inspected or executed.
+Implementation-dependent concerns are explicitly conditional. Priorities are recommended evidence standards, not formal
+journal rules.
+
+===== PAGE 2 =====
+Compressed-and-indexed attention | Technical review and revision plan
+2
+TEAM REVIEW  •  Q1 JOURNAL SUBMISSION
+16 OCTOBER 2026
+P0 / CORRECTIONS REQUIRED BEFORE NEW HEADLINE RESULTS
+1. Correct the statistical interpretation and baseline
+attribution
+R1. Interpret the interaction using simple effects
+Section 4.2 says coarsening KV compression helps more when routing is fine. Table 2 shows the reverse.
+Using its validation means, the changes below follow directly; negative values indicate lower MSE.
+(Manuscript, p. 7, Table 2 and §4.2.)
+Change
+Fixed condition
+Δ validation MSE
+Reading of the mean
+cKV: 4 to 8
+Fine routing: cR = 4
++0.0042
+Very small deterioration
+cKV: 4 to 8
+Coarse routing: cR = 8
+−0.0682
+Improvement
+cR: 4 to 8
+Fine content: cKV = 4
++0.0662
+Deterioration
+cR: 4 to 8
+Coarse content: cKV = 8
+−0.0062
+Very small improvement
+The interaction is principally associated with the poor (4,8) cell, not a demonstrated universal benefit of fine
+routing. At cKV = 8, the finer router does not improve the mean validation error. Recompute paired
+confidence intervals for these simple effects from the unrounded seed data; these printed-mean calculations
+do not establish their significance.
+Required revision: make an interaction plot the main factorial figure, report the conditional effects, and
+revise the abstract, §5.1 and conclusion accordingly. H1 is algebraically the off-diagonal comparison y4,8 −
+y8,4; it is not independent confirmation of two general mechanisms. The cross-dataset reversals should help
+define the research question, rather than appear only as limitations. (Manuscript, p. 8, §4.2.)
+R2. Separate attention savings from projection savings
+The dense baseline has a rank-128 output projection; the compressed cells use rank 64. Table 9 assigns these
+projections 20.97M and 10.49M MACs respectively. Consequently: (Manuscript, p. 24, Table 9.)
+Reported total saving = 76.86 − 59.63 = 17.23M MACs
+Projection difference = 20.97 − 10.49 = 10.48M MACs
+Projection share of the saving = 10.48 / 17.23 ≈ 61%
+Replacing only the baseline projection cost gives 66.38M MACs, reducing the accounting advantage to
+approximately 10.2%, not 22%. This is an accounting sensitivity calculation, not a prediction of retrained
+accuracy or measured latency; the remaining operation counts still require audit.
+Required experiment: add a mechanism-matched dense baseline with the same projection ranks,
+normalization, positional treatment and compatible sink treatment. Retain the original Normal model as an
+as-run reference. A separately tuned, equal-budget dense model is also useful for deployment comparison.
+Do not conflate parameter matching with architectural matching, or reference-output agreement with
+comparison fairness.
+Submission condition: every headline improvement must state whether it is attributable to
+compression/routing, changed projections, a different prediction head, or an implementation choice.
+
+===== PAGE 3 =====
+Compressed-and-indexed attention | Technical review and revision plan
+3
+TEAM REVIEW  •  Q1 JOURNAL SUBMISSION
+16 OCTOBER 2026
+P0 / IDENTIFICATION AND IMPLEMENTATION AUDITS
+2. Isolate routing resolution and verify what actually
+changes
+R3. Fixed top-k is not a fixed information budget
+At k = 16, one selected routing token in (4,8) expands to two KV blocks, whereas selections in (8,4) can
+collide on the same KV block. The draft also reports approximately 14 unique selected blocks for the
+equal-rate reference versus 10 for the dual-rate cell. Thus, the original factorial compares complete
+configurations; it does not isolate routing resolution independently of realized coverage. (Manuscript, pp.
+5–6, §§3.3–3.4.)
+Required experiment: retain the fixed-k factorial, then add comparisons that fix the number of unique, valid
+KV blocks after mapping and deduplication, at each fixed cKV. Specify how index scores are aggregated to
+block scores and how the selector fills the budget. Apply identical causality rules and handle early queries
+with too few eligible blocks explicitly.
+Log candidate count, eligible count, unique selections, duplicate rate, selected fraction, lag distribution and
+the union of raw-time receptive fields. The compressor overlaps adjacent windows, so block count times cKV
+is not an exact measure of unique temporal coverage. For comparisons across cKV, add a separate
+coverage-matched sensitivity analysis rather than claim that all budgets can be matched simultaneously.
+R4. An untrained indexer is not necessarily a fixed route
+The router reuses queries and hidden representations produced by trainable components. Even if
+indexer-exclusive parameters receive no direct task-loss gradient, the selected blocks can change as those
+inputs change. The repeated phrase “routing is fixed at initialization” is therefore not established by the
+reported gradient audit. (Manuscript, p. 5, §3.3; p. 26, Table 10.)
+Required audit: track route overlap and entropy on fixed probe inputs at initialization and across epochs.
+Save parameter snapshots and distinguish a missing gradient from a zero gradient; check actual optimizer
+updates. Separate backbone, indexer and data-loader random seeds. Compare the present indexer with a
+genuinely fixed mask and with one explicitly trained selector.
+A teacher-guided block-importance loss is a practical learned-routing control, but report its extra training
+cost and test-time requirements. DeepSeek-V4 explicitly includes an indexer warm-up stage, so its training
+regime is not interchangeable with the manuscript’s untrained-indexer setting. (DeepSeek-AI, 2026)
+R5. Rebuild the evidential chain after the mapping correction
+Some mechanism probes are retained from checkpoints predating the mapping correction. They cannot
+substantiate the corrected method’s mechanism. Regenerate those results and their figures from a single
+versioned implementation, or remove them from the evidential argument while retaining their development
+history in the archive. (Manuscript, p. 9, §4.3.)
+Extend the reported future-invariance suite to indexer scores, block boundaries, ties, padding and every
+tested rate pair. Zero future gradients alone cannot exclude future dependence through a hard discrete
+selector. The existing perturbation-based checks are valuable; the revised report should state their coverage
+and preserve the passing logs, rather than assume a failure.
+
+===== PAGE 4 =====
+Compressed-and-indexed attention | Technical review and revision plan
+4
+TEAM REVIEW  •  Q1 JOURNAL SUBMISSION
+16 OCTOBER 2026
+P0 / COMPUTATIONAL VALIDITY AND BACKBONE TRANSFER
+3. Use the forecast-required path and nondegenerate
+routing
+R6. Make optimized forecasting cost the primary comparison
+Equation 1 uses the final hidden state of a single block. The manuscript’s last-query audit reports Normal at
+2.6–3.9 ms versus DRRA at 5.8–8.6 ms per batch-32 pass. That comparison reverses the full-layer efficiency
+ranking. It must lead the efficiency results and the accuracy–latency frontier. (Manuscript, pp. 4 and 14, §§3.2
+and 4.7.)
+For the stated one-block, pointwise-readout architecture, the last query can attend to all historical keys
+without calculating all query outputs. Its attention-core cost is linear in L for fixed width. Verify forecast and
+parameter-gradient equivalence before using this pruned graph for training; stochastic operations must be
+handled consistently. Do not generalize the simplification to deeper architectures without tracing their
+dependencies.
+Required revision: report FULL operator timings separately from forecast-required timings, optimize every
+comparator legitimately, and replace Figure 6 with the deployment-relevant frontier. Full-layer savings may
+remain useful in an architecture whose head needs all temporal outputs, but cannot support the current
+per-forecast efficiency headline.
+R7. Check whether the PatchTST experiment actually routes
+With lookback 256, patch length 16 and stride 8, PatchTST has 31 tokens before optional end padding,
+approximately 32 with common padding. Compression at cR = 4 or 8 then gives only about eight or four
+routing candidates. If k = 16 is retained and the module acts along the patch axis, all available candidates are
+selected: routing resolution is not meaningfully tested. (Manuscript, p. 10, §4.5; p. 23, Table 8.) (Nie et al.,
+2023)
+This is an implementation-dependent hypothesis, not a confirmed bug. Report the actual tensor axis, patch
+padding, candidate count, k and selected fraction. At L = 1024 the same patching yields only about 128
+tokens, so cR = 8 with k = 16 may still select everything. Use a smaller budget, such as k = 4 or 8, or a
+sufficiently longer token sequence, and verify active selection in every cell.
+Do not interpret small transfer effects as evidence that a strong backbone washes out routing until saturation
+is excluded. Include the original dense PatchTST backbone and the no-routing compressed backbone in both
+accuracy and speed comparisons.
+R8. Reconcile the remaining accounting before extrapolation
+Table 1 lists 17 softmax columns for (32,4), but its stated C + W + 1 gives 256/32 + 16 + 1 = 25. Check
+whether the table is wrong or W changed. Also expose the number hI and dimension dI of scoring heads: the
+dot-product routing term is generally hI × dI × NQ × (L/cR), where NQ is the number of evaluated queries.
+Equation 2 assumes a particular head arrangement that requires tensor-shape verification. (Manuscript, pp. 6,
+15 and 24.)
+Recompute every affected total and scaling curve after these audits. Matching one script to another script using the same
+assumptions is not an independent validation of the assumptions.
+
+===== PAGE 5 =====
+Compressed-and-indexed attention | Technical review and revision plan
+5
+TEAM REVIEW  •  Q1 JOURNAL SUBMISSION
+16 OCTOBER 2026
+P1 / EXPERIMENTS WITH THE HIGHEST DIAGNOSTIC VALUE
+4. Establish whether the router is needed at all
+The current dense-masked implementation computes over every compressed column even when most are
+masked. Removing routing therefore need not widen the attention core; it removes the indexer and selector.
+This makes all-block compressed attention the decisive missing control. (Manuscript, p. 5, §3.3; p. 26,
+Appendix F.)
+Control
+Question answered
+Essential matching/reporting
+Projection-matched dense
+Do gains survive removal of the
+projection confound?
+Match ranks, width, normalization and
+readout; disclose sink and positional
+differences.
+All-block compressed, no
+router
+Is compression alone sufficient?
+Test cKV = 4 and 8; preserve the compressor,
+local branch and head.
+Window-only / no historical
+branch
+Does forecasting need the
+compressed history?
+Keep the same backbone and prediction head;
+report the local-window size.
+Random, recent and evenly
+spaced block selection
+Does content-based selection
+outperform inexpensive alternatives?
+Match unique valid blocks and compare
+lag/coverage distributions.
+Mean or filtered pooling
+Is the learned overlapping
+compressor better than simple
+smoothing?
+Match output block count; separate filter
+width from routing resolution.
+Trained indexer
+Does learning block importance
+change the factorial result?
+Report training loss, optimization budget,
+added parameters and inference overhead.
+Original dense forecasting
+backbone
+Is the modified model useful beyond
+the minimal testbed?
+Use a competent temporal-token architecture
+and include its unmodified version.
+Run the controls in a diagnostic sequence
+First test projection-matched dense, all-block compression and the four factorial cells on ETTh1 and a
+contrasting dataset. Then use window-only and inexpensive selection rules to determine whether remote
+content and content-dependent selection contribute. Only after that should the learned-indexer and broader
+transfer experiments be expanded.
+Use the same fixed training protocol for this mechanism track, but verify convergence and include a budget
+sensitivity check. Separately retrain ablations and perform checkpoint-level interventions: replacing a trained
+router only at evaluation measures sensitivity to removal, whereas retraining without it measures whether
+the remaining architecture can adapt.
+Decision rule for the team: if all-block compressed attention matches or improves accuracy and
+optimized latency, do not preserve the router merely to preserve the name DRRA. A
+well-characterized finding that routing is unnecessary in a defined regime can be the stronger
+contribution.
+A credible submission need not win every dataset. It should resolve a question that the controls could
+genuinely answer against the preferred design, and show that the answer remains informative outside the
+original single-block setting.
+
+===== PAGE 6 =====
+Compressed-and-indexed attention | Technical review and revision plan
+6
+TEAM REVIEW  •  Q1 JOURNAL SUBMISSION
+16 OCTOBER 2026
+P1 / GENERALIZATION AND FAIR FORECASTING COMPARISONS
+5. Expand along dimensions that can change the
+conclusion
+Two evaluation tracks are necessary
+Mechanism track: hold the temporal backbone, normalization, prediction head and optimization recipe fixed
+while changing compression, routing and budget controls. Practical forecasting track: compare complete
+systems using validation-selected settings and equal, disclosed tuning budgets. An identical optimizer for
+unlike architectures is a useful control, but is not sufficient evidence of a fair best-achievable comparison.
+DLinear and PatchTST should appear on the actual error–latency–memory frontier, not only as calibration
+rows. Table 5 reports ETTh2 MSE of 1.8080 for DRRA versus 0.2753 for DLinear; on the change-point
+generator the values are 6.0013 and 0.0622. These gaps make backbone competence a central issue. Include
+persistence and, where a defensible period is known, seasonal persistence. (Manuscript, p. 12, Table 5.) (Zeng
+et al., 2023)
+Dimension
+Recommended core revision
+Reason
+Datasets
+Start with ETTh1, ETTh2, Electricity and Exchange; use
+remaining datasets as broader validation.
+These already show different factorial
+behavior in the draft.
+Forecast horizon
+H = 96, 336 and 720 on a planned subset.
+Tests whether rate effects depend on
+forecast distance.
+Lookback
+L = 256 and 1024 for raw temporal tokens; choose
+patch settings by their actual token count.
+Tests accuracy and computational cost
+at the same longer context.
+Backbone
+Minimal model plus one competent multilayer
+temporal/patch backbone.
+Tests whether the conclusions survive a
+more relevant architecture.
+Replication
+Pilot with paired seeds; predefine the confirmatory
+seed count and temporal holdouts before running.
+Avoids expanding runs until a desired
+significance threshold appears.
+Do not run every diagnostic control over the entire Cartesian product. Use the focused controls to identify
+the explanation, then test the four factorial cells and decisive comparators on the planned generalization
+matrix. The original 12-dataset suite can provide breadth once implementation and protocol inconsistencies
+are resolved.
+Keep token axes and data protocols explicit
+iTransformer is useful as an external forecaster, but its attention operates over variate tokens. A direct
+module replacement would therefore test compression of variables, not the same temporal-compression
+hypothesis. Use it as a system comparator unless a separate hypothesis is stated. (Liu et al., 2024)
+For literature comparability, add a clearly separated standard-benchmark protocol alongside the frozen
+60/20/20 split. Within each track, all methods must use identical forecast origins, target channels,
+information availability and train-only scaling. Preserve a fresh temporal holdout: previously inspected test
+periods cannot become unseen merely by renaming the endpoint. TFB offers a useful reference for
+consistent, diverse evaluation. (Qiu et al., 2024)
+
+===== PAGE 7 =====
+Compressed-and-indexed attention | Technical review and revision plan
+7
+TEAM REVIEW  •  Q1 JOURNAL SUBMISSION
+16 OCTOBER 2026
+P1 / P2 / FROM CONFIGURATION COMPARISONS TO EXPLANATION
+6. Build a mechanism-level contribution that others can
+reuse
+Replace suggestive correlations with controlled signal tests
+The reported lag-1-autocorrelation association, r approximately −0.3 with p approximately 0.3, is descriptive
+rather than an established explanation. The periodic delayed-copy generator also allows periodic structure to
+substitute for arbitrary-content retrieval. (Manuscript, pp. 9–10, §4.3.)
+Synthetic family
+Vary independently
+Measure beyond pooled MSE
+Smooth latent signal plus noise
+Signal bandwidth, observation noise and
+compression rate; specify whether the target is
+noisy or latent.
+Predictive-signal distortion, noise
+attenuation and per-horizon
+error.
+Random-content delayed recall
+Fresh episodes, in-window lag and event
+alignment; provide an observable lag cue when
+necessary.
+Recall error on recoverable
+channels and selected-block
+coverage of the target.
+Localized predictive events
+Event width, lag and block-boundary alignment;
+avoid targets that require unobserved random
+content.
+Event localization, amplitude
+error and sensitivity to
+compression.
+These tests distinguish redundancy of the observed series from preservation of the information needed for
+forecasting. A nonlinear, gated, overlapping compressor should not be called a low-pass filter without
+measurement; compare it with a specified linear filter and record its empirical response.
+A useful analytical starting point
+For a checkpoint-level comparison with matched representations, let ofull denote uncompressed attention,
+oall attention to all compressed blocks, and oroute routed compressed attention. The triangle inequality gives:
+||ofull − oroute|| ≤ ||ofull − oall|| + ||oall − oroute||
+With fixed compressed logits and values, suppose routing discards attention mass τ from the all-block
+distribution, the retained set is nonempty, and every value norm is bounded by Vmax. Renormalization then
+gives:
+||oall − oroute|| ≤ 2Vmaxτ
+To see this, write the all-block output as (1 − τ)μkept + τμremoved; its difference from μkept is τ(μremoved −
+μkept). Keep local and sink contributions in the accounting. This is an elementary proposed diagnostic, not a
+novelty claim or a guarantee of forecast accuracy.
+Required evidence: measure compression discrepancy and discarded mass, then test whether they predict
+the observed rate effects. Also measure forecast changes under targeted interventions, because an
+attention-output bound alone does not establish predictive importance. For a more ambitious Neural
+Networks submission, develop and validate a genuinely informative analysis beyond this elementary
+decomposition.
+Potential reusable result: a held-out-validated selection guide connecting signal structure, token
+geometry and realized computational budget to when compression alone or compression plus routing
+is preferable.
+
+===== PAGE 8 =====
+Compressed-and-indexed attention | Technical review and revision plan
+8
+TEAM REVIEW  •  Q1 JOURNAL SUBMISSION
+16 OCTOBER 2026
+P1 / RELIABLE INFERENCE, PERFORMANCE AND REPRODUCTION
+7. Strengthen the statistics and systems evidence
+Separate three sources of uncertainty
+Training randomness: preserve paired-seed analyses for the fixed dataset. Temporal uncertainty: evaluate
+rolling forecast origins or independent time blocks and retain per-origin losses. Dataset variation: report
+conditional effects by dataset and avoid counting every seed or related ETT series as an independent domain.
+These answer different questions; one large seed count does not replace the others. (Demšar, 2006, for
+across-dataset comparison principles)
+For per-origin inference, use a paired moving-block or other dependence-aware resampling scheme with
+block-length sensitivity; do not bootstrap overlapping windows as independent observations. Report test
+MSE and MAE, uncertainty for the interaction and simple effects, and the multiplicity family for primary
+contrasts. State whether each interval concerns a paired mean, median or another estimand: a
+mean-difference interval and a signed-rank test need not agree.
+A nonsignificant difference is not evidence of preserved accuracy. To claim that a cheaper configuration
+retains performance, predefine a defensible non-inferiority margin and estimate whether the data support it.
+Do not select a convenient margin after seeing the results. Preserve the original five-seed analysis, its
+extension and the new confirmation as distinguishable stages. (Manuscript, pp. 7–8 and 11–12, §§4.1–4.6.)
+Benchmark optimized implementations, not only operation counts
+Use the existing Apple CPU measurements as one platform and add a representative GPU or a clearly
+justified second deployment platform. Compare against the strongest valid dense implementation, including
+fused attention where compatible. FlashAttention demonstrates why reduced memory traffic and arithmetic
+counts must be distinguished. (Dao et al., 2022)
+Measure forecast-required latency at batch 1 and a realistic batched setting, throughput, peak allocated
+memory, forward-plus-backward time and end-to-end training time. Report dtype, kernel, compilation mode,
+thread count, synchronization, warm-up, device and software versions. Alternate timed configurations within
+rounds and report paired uncertainty; include compression, index scoring, top-k, masks, transfers and the
+prediction head in the timed path.
+The current implementation pays the full compressed attention width despite sparse masks. Report this
+explicitly and profile where time is spent. A GPU sparse kernel is valuable only if a measured bottleneck
+justifies developing it; do not require bespoke kernel work merely to enlarge the paper.
+Treat energy as a measurement question
+Move the present arithmetic-to-energy projections to a qualified appendix, or replace them with sustained,
+instrumented measurements. For joules per forecast, state whether the boundary is device-only or
+whole-system, report idle treatment, integrate power over a timed workload, and quantify measurement
+resolution. MAC reductions alone establish neither the size nor the sign of an energy improvement.
+(Manuscript, §§4.8 and Appendix D.)
+Release a tagged code archive, dataset hashes, configuration files, raw paired results, profiler traces,
+corrected tests and one-command table/figure regeneration. Distinguish the draft’s claims that artifacts exist
+from an independently verified release; archive the exact version used for submission.
+
+===== PAGE 9 =====
+Compressed-and-indexed attention | Technical review and revision plan
+9
+TEAM REVIEW  •  Q1 JOURNAL SUBMISSION
+16 OCTOBER 2026
+POSITIONING / NOVELTY, FIGURES AND CITEABLE OUTPUTS
+8. Reframe the manuscript around a useful conditional
+finding
+Recommended title and contribution
+When Does Compressed Attention Help Time-Series Forecasting?
+Separating Compression, Routing, and Computational Cost
+Keep the two-axis design study as the paper’s identity. The revised contribution should be an explanation
+supported by controlled comparisons and meaningful execution costs, not a claim to have invented the
+component mechanisms. Replace repeated defensive scope statements with a compact limitations section
+and explicit boundaries in each claim.
+Update the closest-work comparison substantively
+MoBA: it varies block granularity while adjusting top-k to maintain constant sparsity. Discuss how your
+independently compressed content stream differs, and why realized-budget controls matter. (Lu et al., 2025)
+Native Sparse Attention: it distinguishes compression and selection blocks and maps importance between
+different geometries; do not claim that separating these granularities is itself unprecedented. (Yuan et al.,
+2025)
+The Sparse Frontier: its revised analysis emphasizes task- and execution-stage-dependent trade-offs. Your
+opportunity is a forecasting-specific explanatory study, not simply another sparse-attention leaderboard.
+(Nawrot et al., 2026) Identify the (4,4) cell as an equal-rate configuration, not a full DeepSeek reproduction;
+state training, window, score and implementation differences explicitly.
+Replace the principal figures, not merely their captions
+Proposed figure
+Scientific purpose
+1. Execution geometry
+Token axes, candidate/selected blocks, and FULL versus forecast-required
+paths.
+2. Interaction effects
+Paired conditional effects and uncertainty across datasets, not just ETTh1
+main effects.
+3. Matched controls
+Residual benefits after matching projections, coverage and training conditions.
+4. Mechanistic map
+Controlled signal properties, attention diagnostics, and validated successes
+and failures.
+5. Accuracy–resource frontier
+Dense, compression-only, routed and external models; uncertainty and actual
+execution costs.
+The principal results should follow that same logic: identification, mechanism, generalization and practical
+value. Move development history, stale experiments, unrelated surrogate work and purely extrapolated
+energy calculations out of the central narrative. Do not remove negative results that remain scientifically
+informative after correction.
+For reuse and citation potential: release the controls and synthetic tests as a documented benchmark.
+Validate a selection guide on held-out cases and report its regret relative to the best tested configuration,
+including failures.
+
+===== PAGE 10 =====
+Compressed-and-indexed attention | Technical review and revision plan
+10
+TEAM REVIEW  •  Q1 JOURNAL SUBMISSION
+16 OCTOBER 2026
+TEAM DELIVERY PLAN / PRIORITIES AND SUBMISSION GATES
+9. Execute in stages and let the results determine the final
+claim
+ Stage / suggested lead
+Required work
+Completion evidence
+A. Validity
+Methods +
+implementation
+R1–R8: conditional effects, matched projection,
+routing budget, parameter/route audit, corrected
+provenance, last-query graph, patch geometry and
+counts.
+Versioned audit report; corrected
+tables; no unresolved
+headline-confounding issue.
+B. Explanation
+Modelling + analysis
+Decisive ablations, signal-controlled probes and
+checkpoint interventions.
+Evidence distinguishing
+compression, selection and
+local-history effects.
+C. Relevance
+Benchmark + systems
+Competent backbone; horizon/lookback extension;
+external systems; temporal validation; optimized
+multi-platform timing.
+Held-out
+accuracy–latency–memory
+frontiers and clearly delimited
+regimes.
+D. Submission
+Lead authors
+Revise claims and figures; archive code/data;
+complete journal-metric and source checks.
+Traceable manuscript, supplement
+and reproducibility package for the
+chosen venue.
+Minimum package I recommend for Neurocomputing
+Resolve all P0 issues; include projection-matched dense and compression-only controls; demonstrate active
+routing in a competent backbone; add targeted multi-horizon/longer-lookback and temporal validation; and
+make the main computational claims survive optimized forecast-required accounting. A trained-router
+control and the mechanistic tests should support the explanation rather than remain general future-work
+promises.
+The submission should establish at least one meaningful, reproducible conclusion: a genuine routed
+advantage in a defined regime; a useful compression-only trade-off; or an explanatory boundary showing
+when routing is unnecessary or harmful. Uniform superiority is not a requirement of this recommendation.
+Unresolved confounds cannot be compensated for by more datasets or more cautious wording.
+What would justify choosing Neural Networks instead?
+Choose the stretch target when the revision delivers a stronger mechanism-level result or predictive theory,
+validates it across competent backbones, and demonstrates that it is not explained by projection rank,
+budget, saturation or optimization artifacts. A larger benchmark table alone would not change my target
+recommendation. Information Sciences becomes attractive if the principal output is a generalizable
+compression/selection framework rather than an architecture-specific case study.
+Claims to remove unless the new evidence supports them
+Do not retain “fine routing carries accuracy” as a general rule; “fixed routing” based only on gradient norms;
+the 22% whole-model MAC saving as an attention-only benefit; “accuracy preserved” based on a
+nonsignificant test; “backbone washes out effects” without a saturation audit; or deployment/energy
+superiority inferred from full-layer arithmetic. Each should be replaced by the specific comparison and
+operating conditions actually established.
+The staged plan is a research recommendation, not an assurance of Q1 acceptance or future citation counts. Journal-specific
+formatting and submission policies should be checked at submission; the scope of this review is technical strengthening.
+
+===== PAGE 11 =====
+Compressed-and-indexed attention | Technical review and revision plan
+11
+TEAM REVIEW  •  Q1 JOURNAL SUBMISSION
+16 OCTOBER 2026
+REFERENCES / PRIMARY METHODS AND EVALUATION SOURCES
+10. Technical references
+Author–year citations in the report link to these entries. Titles and source labels below are clickable. For updated preprints, the
+version date used for this review is stated.
+ Decoupling compression and routing in attention for time-series forecasting. (n.d.). [Unpublished first draft supplied as
+ NewTransformer.pdf, 27 pp.]. Author identities were not specified in the supplied draft.
+Dao, T., Fu, D. Y., Ermon, S., Rudra, A., & Ré, C. (2022). FlashAttention: Fast and memory-efficient exact attention with
+ IO-awareness. Advances in Neural Information Processing Systems, 35. Paper.
+DeepSeek-AI. (2026). DeepSeek-V4: Towards highly efficient million-token context intelligence [Preprint]. arXiv.
+ doi:10.48550/arXiv.2606.19348.
+Demšar, J. (2006). Statistical comparisons of classifiers over multiple data sets. Journal of Machine Learning Research, 7, 1–30.
+ Article.
+Liu, Y., Hu, T., Zhang, H., Wu, H., Wang, S., Ma, L., & Long, M. (2024). iTransformer: Inverted transformers are effective for time
+ series forecasting. International Conference on Learning Representations. Paper.
+Lu, E., Jiang, Z., Liu, J., Du, Y., Jiang, T., Hong, C., Liu, S., He, W., Yuan, E., Wang, Y., Huang, Z., Yuan, H., Xu, S., Xu, X., Lai, G.,
+ Chen, Y., Zheng, H., Yan, J., Su, J., ... Qiu, J. (2025). MoBA: Mixture of block attention for long-context LLMs [Preprint]. arXiv.
+doi:10.48550/arXiv.2502.13189.
+Nawrot, P., Li, R., Huang, R., Ruder, S., Marchisio, K., & Ponti, E. M. (2026). The sparse frontier: Sparse attention trade-offs in
+ transformer LLMs (Version 3) [Preprint]. arXiv. Original version published in 2025; version reviewed revised June 22,
+2026. doi:10.48550/arXiv.2504.17768.
+Nie, Y., Nguyen, N. H., Sinthong, P., & Kalagnanam, J. (2023). A time series is worth 64 words: Long-term forecasting with
+ transformers. International Conference on Learning Representations. Paper.
+Qiu, X., Hu, J., Zhou, L., Wu, X., Du, J., Zhang, B., Guo, C., Zhou, A., Jensen, C. S., Sheng, Z., & Yang, B. (2024). TFB: Towards
+ comprehensive and fair benchmarking of time series forecasting methods [Preprint]. arXiv. Version reviewed: v4, revised
+August 18, 2025. doi:10.48550/arXiv.2403.20150.
+Yuan, J., Gao, H., Dai, D., Luo, J., Zhao, L., Zhang, Z., Xie, Z., Wei, Y. X., Wang, L., Xiao, Z., Wang, Y., Ruan, C., Zhang, M.,
+ Liang, W., & Zeng, W. (2025). Native sparse attention: Hardware-aligned and natively trainable sparse attention [Preprint].
+arXiv. doi:10.48550/arXiv.2502.11089.
+Zeng, A., Chen, M., Zhang, L., & Xu, Q. (2023). Are transformers effective for time series forecasting? Proceedings of the AAAI
+ Conference on Artificial Intelligence. Paper.
+
+===== PAGE 12 =====
+Compressed-and-indexed attention | Technical review and revision plan
+12
+TEAM REVIEW  •  Q1 JOURNAL SUBMISSION
+16 OCTOBER 2026
+REFERENCES / JOURNAL SELECTION AND RANKING VERIFICATION
+11. Journal evidence and final bibliometric check
+The Q1 labels below use the latest completed SCImago edition identified during this review: 2025. Ranking
+records were checked on 16 October 2026. Official search-indexed SCImago profiles reported the
+best-quartile status; direct page retrieval was restricted. No category-specific Scopus CiteScore percentile is
+presented as independently verified.
+ Elsevier. (n.d.-a). What is CiteScore? Scopus Support Center. Retrieved October 16, 2026. Scopus metric definitions.
+ 
+Elsevier. (n.d.-b). Information Sciences [Journal homepage and aims and scope]. Retrieved October 16, 2026. Journal website.
+ 
+Elsevier. (n.d.-c). Neural Networks [Journal homepage and author information]. Retrieved October 16, 2026. Journal website.
+ 
+Elsevier. (n.d.-d). Neurocomputing [Journal homepage and aims and scope]. Retrieved October 16, 2026. Journal website.
+ 
+SCImago. (n.d.-a). Information Sciences [2025 SJR profile; best quartile Q1; source ID 15134]. SCImago Journal & Country
+ Rank. Retrieved October 16, 2026. Ranking record.
+SCImago. (n.d.-b). Neural Networks [2025 SJR profile; best quartile Q1; source ID 24804]. SCImago Journal & Country Rank.
+ Retrieved October 16, 2026. Ranking record.
+SCImago. (n.d.-c). Neurocomputing [2025 SJR profile; best quartile Q1; source ID 24807]. SCImago Journal & Country Rank.
+ Retrieved October 16, 2026. Ranking record.
+SCImago. (n.d.-d). About us. SCImago Journal & Country Rank. Retrieved October 16, 2026. Data and ranking basis.
+ 
+Why Neurocomputing is the recommended target
+Its published scope includes neurocomputing theory, practice and applications; the revised paper can
+connect all three through controlled module analysis, a measured implementation and forecasting validation.
+Information Sciences emphasizes original research in information and intelligent systems, while Neural
+Networks provides an appropriate stretch audience for a deeper neural-learning contribution. These scope
+statements support relevance; the prioritization remains a judgment about this particular manuscript.
+(Elsevier, n.d.-d) (Elsevier, n.d.-b) (Elsevier, n.d.-c)
+Record before submission
+Archive the journal title and ISSN, current Scopus coverage, required subject category, ranking system,
+ranking year and category quartile/percentile. Confirm whether the institution accepts SJR best quartile or
+specifically requires CiteScore Q1 in a named category. Recheck at submission because the relevant ranking
+year and institutional rules may differ from those used for this report.
+

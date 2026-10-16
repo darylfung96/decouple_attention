@@ -43,6 +43,7 @@ Review verdict being addressed: strong central idea, do not submit yet, reframe 
   <tr><td>E Backbone</td><td>PARTIAL</td><td>Transfer done (tied); controls need compute approval</td></tr>
   <tr><td>F Validation standards</td><td>QUEUED</td><td>Test-first headlines, longer horizons, chronology</td></tr>
   <tr><td>G Efficiency</td><td>DONE</td><td>5.22× fix, paired timing, memory/energy qualified</td></tr>
+  <tr><td>K Scaling + energy</td><td>DONE</td><td>General forecast to 128k tokens; coefficient-free projection</td></tr>
   <tr><td>H Mechanism proof</td><td>QUEUED</td><td>Needs the control runs first</td></tr>
   <tr><td>I Editorial</td><td>DONE</td><td>All 9 contradictions fixed, history removed</td></tr>
   <tr><td>J Venue</td><td>LAST</td><td>Decided after everything else</td></tr>
@@ -154,6 +155,39 @@ Review verdict being addressed: strong central idea, do not submit yet, reframe 
   qualified as implementation-specific with a proper citation, and arithmetic counts are no longer
   confused with energy.</p>
 </div>
+
+<div class="card">
+  <span class="badge done">DONE (2026-10-09)</span>
+  <h3>K — Scaling forecast + energy projection</h3>
+  <p><strong>What changed:</strong> Added the manager-requested general diagram and analysis to the main
+  paper: a four-panel structural scaling forecast up to 128k-token contexts (Sec. 4.8, fig12), a compact
+  attention-path savings table, and a coefficient-free energy-projection model with full derivation, sensitivity,
+  and audit in Appendix D. No new runs: the figure script asserts exact equality with the released component
+  accounts before drawing.</p>
+  <p><strong>Results:</strong> Attention-path savings saturate at 62.5% / 75.0% / 81.2% / 84.4% for the
+  (4,4) / (8,4) / (16,4) / (32,4) cells as context grows; at 32k tokens DRRA saves 74.7% of attention-path work
+  and 42.7–72.9% of whole-layer work for d=4096…128 backbones. Latency validation: Spearman ρ = 1.000
+  (batch 32); paired work-vs-time savings r = 0.96. The projection is model-based, not a measurement.
+  <em>Corrected 2026-10-16:</em> a tensor-shape audit of the executed router raised the router's
+  arithmetic fourfold (one head → all heads of the shared query), so the frozen-task saving is 30.9%
+  rather than 40.2% and the (8,4) asymptote is 75.0% rather than 84.4%. Whole-model MAC saving is 20.4%
+  (7.8% when the projection ranks are matched).</p>
+</div>
+
+<div class="card">
+  <span class="badge done">DONE (2026-10-16)</span>
+  <h3>L — Q1-review triage (manager's Information Sciences email + PDF)</h3>
+  <p><strong>What changed:</strong> Every item in the review was checked against the current draft.
+  Three were already fixed there (last-query reframing, the H1 off-diagonal disclosure, the stale-checkpoint
+  disclosure); three were wording/scope defects (the interaction sentence said &quot;routing fine&quot; where the
+  numbers say the fit is &quot;routing coarse&quot;; &quot;routing fixed at initialization&quot; overstated a gradient
+  audit; the PatchTST transfer never said that its 31 tokens leave the coarse-router cells selecting every
+  candidate); two were real numerical defects, now fixed: the router MAC term and the (32,4) softmax-column
+  cell. Figure 2 is now an interaction plot with a main-effects panel. Full table:
+  <code>pre-publication-tasks/L_q1_review_triage.md</code>.
+  <p><strong>Deferred (venue decision):</strong> the review's new-run program — all-block-compressed and
+  projection-matched controls, budget-matched selection, horizon/lookback grid, GPU timing, MEAformer/PMformer
+  comparators — is 30-50 CPU hours plus external-baseline engineering. The bounded paper does not depend on it.</p>
 
 <div class="card">
   <span class="badge todo">QUEUED</span>
