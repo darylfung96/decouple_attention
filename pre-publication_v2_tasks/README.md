@@ -66,7 +66,7 @@ experiment is missing · `TODO` = not started.
 | ID | Task | Status | Verdict | Cost | Why it matters |
 |---|---|---|---|---|---|
 | R1 | Interaction effects: conditional reading + interaction figure + per-seed intervals | `DONE` | KEEP-closed | 0 (done) | Removes the misreading that fine routing is generally better; the figure and the intervals now carry the conditional result. |
-| R2 | Mechanism-matched dense baseline (same projection ranks) | `PARTIAL` | **KEEP** | 3–4 h | The 20.4% MAC headline is two-thirds projection rank; only a matched retrain can say how much is the attention design. |
+| R2 | Mechanism-matched dense baseline (same projection ranks) | `IN FLIGHT` | **KEEP** | running (25 seeds, ~4 h) | `gate27_r2matched/`: design frozen, dry-run + smoke pass, 25-seed run launched; analysis.py frozen with it. |
 | R3 | Realized information budget: match unique valid blocks across cells | `PARTIAL` | **BORDERLINE** | 10–15 h + D2 | Fixed top-k changes how much history each cell actually reads, so the KV main effect is currently a configuration effect. Buy only if D1 aims high. |
 | R4 | Route stability: does the selected set drift during training? | `DONE` | KEEP-closed | 0 (done) | Measured: sets drift (Jaccard 0.83) while the routed amount is flat (≈10/32, entropy 3.13); the caveat is now a number. |
 | R5 | Evidential chain: regenerate pre-fix probes; extend causality coverage | `DONE` | KEEP-closed | 0 (done) | Probes regenerated ((4,4) moved; (8,4)/Normal bit-identical); causality suite passes at all six rate pairs; §4.3 + appendix updated. |

@@ -63,3 +63,16 @@ frontier figure, and every efficiency claim in the abstract, §4.6 and the concl
 ## Log
 
 - 2026-10-16: created. Disclosure done; retrain not started.
+- 2026-10-16: **Phase 3 in flight.** Design frozen pre-run (`plan/gates/gate27_r2matched/design.md`:
+  one variable = attn `o_lora_rank` 128 → 64, everything else copied from `model.NormalTimeSeriesModel`;
+  expected params 61,536 / 314,240, Δ = 40,960 all in the O path). `run.py --dry-run` asserts the single
+  variable and the equalization contract (all four compressed cells at o=64); `--smoke` trains both
+  variants once on bounded subsets. Full run launched 2026-10-16T18:34Z: 25 paired seeds →
+  `results/normal_r64.jsonl` (new manifest only; ~4 h). `analysis.py` frozen with the run: paired
+  intervals for `Normal_r64 − Normal`, `cell − Normal_r64` (primary), `cell − Normal` (reference), the
+  predeclared KEEP/NARROW decision per cell, and the MAC self-check (20.4% / 7.8%).
+  First seed (42) validated at 18:58Z: val 0.7610 / test 0.9988 — the matched baseline is far stronger
+  than the as-run Normal (val 0.9656 / test 1.2605 on the same seed) at equal train MSE (~0.29), i.e. the
+  rank-128 projection was overfitting; this is exactly the outcome the predeclared rule was written for.
+  Cost reality: ~24 min/seed under concurrent machine load (the old 8 min/seed figure assumed an idle
+  machine), so the 25-seed run is ~8–10 h; it appends per seed and is idempotent across restarts.
