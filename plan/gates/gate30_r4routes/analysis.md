@@ -1,0 +1,25 @@
+# Gate 30 — R4 route-stability analysis
+
+Single-seed descriptive probe: (8,4) cell, ETTh1, frozen protocol, seed 42; the
+selected KV-block set per query position is snapshotted on the fixed first
+validation batch after every epoch. Metric and rule frozen in `design.md`.
+
+## Result
+
+| Epoch pair | Mean Jaccard | Fraction unchanged | Positions |
+|---|---|---|---|
+| 1 vs 10 | 0.8312 | 0.3676 | 8192 |
+| 1 vs 6 | 0.8563 | 0.3893 | 8192 |
+| 6 vs 10 | 0.9106 | 0.4865 | 8192 |
+
+Val MSE by epoch: {"1": 0.781574, "2": 0.614625, "3": 0.62581, "4": 0.611728, "5": 0.623813, "6": 0.588604, "7": 0.593432, "8": 0.593125, "9": 0.597368, "10": 0.584458}.
+Mean selected-set size by epoch: {"1": 9.993, "2": 10.023, "3": 10.024, "4": 10.023, "5": 10.017, "6": 10.031, "7": 10.028, "8": 10.032, "9": 10.035, "10": 10.027}.
+Route-score entropy (mean over positions) by epoch: {"1": 3.1347, "2": 3.1332, "3": 3.1318, "4": 3.1313, "5": 3.1309, "6": 3.1309, "7": 3.1315, "8": 3.1322, "9": 3.1327, "10": 3.1334}.
+Mean finite candidates per position by epoch: {"1": 31.75, "2": 31.75, "3": 31.75, "4": 31.75, "5": 31.75, "6": 31.75, "7": 31.75, "8": 31.75, "9": 31.75, "10": 31.75}.
+
+**Predeclared rule applied:** mean Jaccard epoch 1 vs 10 = 0.8312 -> drift present (< 0.9): report the measured drift.
+
+## Scope
+
+One seed, one cell, one fixed validation batch (see design.md); descriptive, no
+significance claim. The trained-indexer half of R4 (D3) stays parked.
