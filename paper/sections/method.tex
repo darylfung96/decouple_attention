@@ -67,12 +67,16 @@ as the task-appropriate baseline.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.72\linewidth]{figures/fig5_architecture.pdf}
-\caption{Architecture of the compressed-and-indexed family (DRRA
-$(8,4)$ drawn). One shared Transformer block whose only varying component is
+\caption{Architecture of the compressed-and-indexed family (the
+$(c_{KV}, c_R) = (8,4)$ cell drawn; $c_{KV}$ = KV-cache compression rate,
+positions per stored block; $c_R$ = routing resolution, positions per index
+token). One shared Transformer block whose only varying component is
 the attention module: a KV compressor ($c_{KV}{=}8$: 256 positions $\to$ 32
 blocks), a routing indexer ($c_R{=}4$: 64 index tokens) with top-$k{=}16$
-selection, and dense masked attention over the fixed
-column set (32 KV blocks + 16 window + 1 sink $= 49$ columns; Normal attends
+selection (the router keeps the 16 best-scoring index tokens per query),
+and dense masked attention over the fixed
+column set (32 KV blocks + 16-token sliding window + 1 always-visible sink
+column $= 49$ columns; Normal = full attention, attends
 to all 256). The horizon head maps the last hidden state to the 96-step
 forecast.}
 \label{fig:arch}
@@ -93,7 +97,7 @@ routing index tokens.
 
 \textbf{Router (scorer + top-$k$ selector).} Each query scores all $M$ index
 tokens ($\mathrm{ReLU}(q \cdot \mathrm{idx}^\top)/\sqrt{d}$, head-mixed by a
-weight that is fixed in practice — see the trainability note below), masks tokens that lie in the future, and selects the
+weight that is fixed in practice --- see the trainability note below), masks tokens that lie in the future, and selects the
 top-$k$ ($k{=}16$). We use ``router'' for the scorer-plus-selector
 combination; DeepSeek-V4 \citep{deepseekv4_2026} calls the analogous scorer
 the \emph{Lightning Indexer} and the selection step the \emph{top-$k$
@@ -104,9 +108,17 @@ main query (shared-Q), valid because the query head dimension equals the
 index head dimension; this removes one projection and one RoPE application.
 The hard top-$k$ selection is non-differentiable, so the indexer parameters
 (including CSA's dedicated $\mathrm{idx\_q\_proj}$) receive zero task-loss
-gradient: routing is fixed at initialization, and ``routing granularity'' effects in
-this paper are selection-architecture effects, not learned routing (gradient audit
-in the released logs; learning-to-route is deferred future work).
+gradient: no learning signal reaches the selector, and ``routing granularity'' effects in
+this paper are selection-architecture effects, not learned routing. The released audit
+logs both a zero gradient norm and a zero optimizer update delta for every
+indexer-exclusive parameter, so those parameters are tracked by the optimizer rather
+than absent from the graph. The audit
+establishes gradient isolation, not literal route constancy---index scores are
+computed from features produced by trainable upstream components, so the selected
+set can change as those features drift over training. A route-overlap probe across
+epochs measures that drift rather than assuming it away (Section~\ref{sec:rq2});
+a trained selector remains deferred future work (both audit limits are in the
+released logs).
 
 \textbf{Dense masked attention over the sparse selection.} Instead of
 gathering the selected blocks, attention is computed densely over a fixed
@@ -186,7 +198,7 @@ $(4,4)$ matches DeepSeek-V4's $m{=}4$), and both effect signs are
 established within the bracket. Behavior outside the bracket was extrapolation
 at pre-registration time; two deeper ratios, $(16,4)$ and $(32,4)$, were run later as
 exploratory probes (same protocol) and are reported separately from the confirmatory
-factorial (Section~\ref{sec:rq1}, Appendix~\ref{sec:appendix-exploratory}). Third, budget: each additional cell costs 25
+factorial (Section~\ref{sec:rq1}, Appendix~\ref{sec:appendix-exploratory}). The grid remains valid as the confirmatory design: the probes stay exploratory and never enter the confirmatory contrasts. Third, budget: each additional cell costs 25
 paired runs ($\approx 6$ h CPU at the measured per-run cost of the seed
 extension), and the $2\times2$ spends that budget on replication ---
 statistical power for the pre-registered contrasts --- rather than on extra
@@ -201,13 +213,17 @@ parameter counts.
 \small
 \caption{Configuration geometry and parameters (measured; attention module
 and full model). All compressed cells share the auxiliary contract
-(window 16, top-$k$ 16, 4 heads, head dimension 32, hidden 128, shared-Q,
-$q$/$o$ ranks 64) and differ only in $(c_{KV}, c_R)$; the low-rank
-bottlenecks are equalized to within $0.27\%$ of the DRRA reference (the
-$(8,4)$ corner; named cells: CSA $=(4,4)$, DRRA $=(8,4)$, defined in
-Section~\ref{sec:factorial}; their results are in
-Table~\ref{tab:factorial}). Starred rows are post-hoc exploratory probes, excluded from
-all confirmatory contrasts. \emph{Softmax cols} $= C + W + 1$ sink. Normal
+(window 16 = tokens visible to every query, top-$k$ 16 = best-scoring index
+tokens routed per query, 4 heads, head dimension 32, hidden 128, shared-Q
+= one query projection shared by router and attention,
+$q$/$o$ ranks 64 = low-rank bottleneck dimensions) and differ only in
+$(c_{KV}, c_R)$ = (KV-cache compression rate, routing resolution, in
+positions per stored block and per index token); the low-rank
+bottlenecks are equalized to within $0.27\%$ of the $(8,4)$ reference;
+results for all cells are in Table~\ref{tab:factorial}. Starred rows are post-hoc exploratory probes, excluded from
+all confirmatory contrasts. Columns: $C$ = KV blocks, $M$ = index tokens,
+\emph{softmax cols} $= C + W + 1$ = KV blocks $+$ 16-token window $+$
+always-visible sink column. Normal
 attends to all 256 columns with no sink.}
 \label{tab:configs}
 \begin{tabular}{lcccccc}
@@ -215,12 +231,12 @@ attends to all 256 columns with no sink.}
 Config & $c_{KV}$ & $c_R$ & KV blocks $C$ & Index tokens $M$ & Softmax cols & Params (attn / full) \\
 \midrule
 Normal & --- & --- & --- & --- & 256 & 102{,}496 / 355{,}200 \\
-CSA & 4 & 4 & 64 & 64 & 80 + 1 & 95{,}396 / 348{,}100 \\
-DRRA & 8 & 4 & 32 & 64 & 48 + 1 & 95{,}652 / 348{,}356 \\
+$(4,4)$ & 4 & 4 & 64 & 64 & 80 + 1 & 95{,}396 / 348{,}100 \\
+$(8,4)$ & 8 & 4 & 32 & 64 & 48 + 1 & 95{,}652 / 348{,}356 \\
 $(4,8)$ & 4 & 8 & 64 & 32 & 80 + 1 & 95{,}652 / 348{,}356 \\
 $(8,8)$ & 8 & 8 & 32 & 32 & 48 + 1 & 95{,}908 / 348{,}612 \\
 $(16,4)^*$ & 16 & 4 & 16 & 64 & 32 + 1 & 96{,}164 / 348{,}868 \\
-$(32,4)^*$ & 32 & 4 & 8 & 64 & 16 + 1 & 97{,}188 / 349{,}892 \\
+$(32,4)^*$ & 32 & 4 & 8 & 64 & 24 + 1 & 97{,}188 / 349{,}892 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -238,7 +254,7 @@ attention cost. All compressed cells carry slightly \emph{fewer} attention
 parameters than Normal ($-6.7\%$ to $-6.9\%$; the low-rank $q$/$o$
 bottlenecks replace dense projections), and full-model counts are
 ${\sim}2\%$ below Normal's. The DRRA $(8,4)$ cell therefore combines the smallest attention geometry among the
-factorial cells with the fine-router candidate count.
+factorial cells with the fine-router candidate count. Realized routing is sparser than the dense-masked budget (about 14 of 64 unique blocks for equal-rate cells, about 10 of 32 for the dual-rate cell; compute still pays the dense-masked width).
 
 \textbf{Parameter equalization.} The factorial is pre-registered with an
 auxiliary-identical contract: all cells share window, top-$k$, heads, hidden

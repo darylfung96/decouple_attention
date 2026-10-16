@@ -45,6 +45,28 @@ family the indexer stream has its own rate $c_R$, which is precisely the
 axis the factorial varies. We confirmed this on a systematic sweep of the 2024--2026
 routing/compression-attention literature (August 2026).
 
+Mixture-of-block attention (MoBA) \citep{lu2025moba} is the closest
+selection-only relative: it partitions the raw KV cache into blocks and
+routes each query to the top-$k$ blocks through a gating function, so block
+size sets the selection granularity and $k$ the realized budget. The
+contrast sharpens both axes of our design. First, MoBA's content stream is
+the uncompressed cache --- the only granularity knob is the block size, and
+it is the same knob as the selection unit; our family instead compresses
+the content stream at rate $c_{KV}$ (KV-cache compression) and scores a
+separately compressed index stream at rate $c_R$ (routing resolution),
+which is what lets the two axes vary independently. Second, holding the
+top-$k$ count fixed while $c_R$ changes --- our operating protocol ---
+changes how many valid blocks each query actually reads, whereas MoBA
+reports block size and $k$ jointly and discusses holding the attended
+budget roughly constant across granularities; the realized-coverage
+caveat in Section~\ref{sec:rq2} states the consequence for our fixed-$k$
+comparison, with a budget-matched control deferred rather than assumed
+away (Appendix~\ref{sec:appendix-roadmap}). Third, MoBA trains
+its selection pathway end to end, so its query and key streams adapt to
+the routing they induce, while our indexer is parameter-free and receives
+no task gradient (Section~\ref{sec:rq2} measures what that implies for
+route stability in practice).
+
 \subsection{Efficient and accurate time-series forecasting}
 Long-horizon forecasting architectures include the ProbSparse-attention
 Informer \citep{zhou2021informer}, patching-based PatchTST

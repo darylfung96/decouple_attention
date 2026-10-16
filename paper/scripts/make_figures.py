@@ -100,6 +100,362 @@ def fmt(v: float) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Shared analytic model (frozen geometry), used by Figures 12 and 13. Each
+# formula is verified for exact equality against the audited component MAC
+# accounts at L=256 inside the figure functions; no new runs are performed.
+# ---------------------------------------------------------------------------
+H, DH, D = 4, 32, 128          # heads, head dim, hidden size (frozen)
+W, F, HOR = 16, 7, 96          # window, features, horizon (frozen)
+
+
+def attn_normal(L):
+    return 2 * H * L * L * DH
+
+
+def attn_cell(L, ckv):
+    return 2 * H * L * (L // ckv + W + 1) * DH
+
+
+def router_term(L, cr):
+    """As executed: every head scores every index token.
+
+    The routing query is the main multi-head query ([B, H, S, d_head]) and the
+    index stream is [B, 1, n_idx, d_head], so the score matmul is
+    [B, H, S, d_head] @ [B, 1, d_head, n_idx]: H * d_head = d MACs per
+    (query, index-token) pair. Tensor shapes verified in
+    plan/gates/gate20_accounting/router_accounting_audit.py (Q1 review R8);
+    the earlier charge of d_head per pair (one head) is superseded.
+    """
+    return L * (L // cr) * H * DH
+
+
+def compress_term(L):
+    return 2 * L * D * 64 + 2 * L * D * DH
+
+
+def rest_exact(L, o_rank):
+    wrapper = L * F * D + 2 * L * D * (4 * D) + D * (HOR * F)
+    q_lora = L * D * 64 + L * 64 * (H * DH)
+    kv = L * D * DH
+    o_proj = L * (H * DH // 4) * (4 * o_rank) + L * (4 * o_rank) * D
+    return wrapper + q_lora + kv + o_proj
+
+
+def path_normal(L):
+    return attn_normal(L)
+
+
+def path_cell(L, ckv, cr):
+    return attn_cell(L, ckv) + router_term(L, cr) + compress_term(L)
+
+
+def s_attn(L, ckv, cr):
+    return 1.0 - path_cell(L, ckv, cr) / path_normal(L)
+
+
+def s_net(L, d, ckv, cr):
+    """Whole-layer projection at width d: dense vs compressed attention
+    plus 12 d^2 non-attention MACs per token (q/k/v/o 4 d^2, MLP 8 d^2);
+    the family's fixed compressor (rank 64) and indexer (32-dim) are held."""
+    a_n = 2 * d * L
+    a_c = 2 * d * (L // ckv + W + 1) + d * (L // cr) + 2 * d * (64 + DH)
+    return (a_n - a_c) / (a_n + 12 * d * d)
+
+
+# ---------------------------------------------------------------------------
+# Figure 12: structural scaling forecast + energy projection (analytic).
+# Standalone:  python scripts/make_figures.py --scaling
+#
+# The figure extends the measured operating point (L=256) to 128k-token
+# contexts using the audited component accounting only; it performs no new
+# runs. Every analytic term below is checked for EXACT equality against the
+# audited per-component MAC accounts at L=256 (the assertion below), and the
+# measured latency ratios are used solely as directional anchors.
+# ---------------------------------------------------------------------------
+SCALING = "--scaling" in sys.argv
+
+
+def make_fig12():
+
+    # --- verification against the audited component accounts (exact) --------
+    # exact anchors are the gate20-corrected accounts (gate5's router row
+    # charged one head per comparison; see gate20 accounting audit); gate5 is
+    # still the source of the measured latency sweep used below
+    g5 = json.load(open(PLAN_DIR / "gates" / "gate5" / "gate5_results.json"))
+    g20 = json.load(open(PLAN_DIR / "gates" / "gate20_accounting" /
+                         "router_accounting_audit.json"))
+    audited_totals = {k: v["total"] for k, v in g20["components_L256"].items()}
+    checks = {
+        "Normal": (path_normal(256) + rest_exact(256, 128), "Normal"),
+        "CSA": (path_cell(256, 4, 4) + rest_exact(256, 64), "CSA"),
+        "DRRA": (path_cell(256, 8, 4) + rest_exact(256, 64), "DRRA"),
+    }
+    for label, (calc, key) in checks.items():
+        audited = audited_totals[key]
+        assert calc == audited, f"fig12 {label}: analytic {calc} != audited {audited}"
+        print(f"fig12 verify {label}: analytic total {calc / 1e6:.2f} M MACs/seq "
+              f"== audited {audited / 1e6:.2f} M/seq (exact)")
+
+    cells = [(4, 4), (8, 4), (16, 4), (32, 4)]
+    cell_colors = {(4, 4): C["orange"], (8, 4): C["blue"],
+                   (16, 4): C["green"], (32, 4): C["purple"]}
+    cell_labels = {(4, 4): "(4,4)", (8, 4): "(8,4)",
+                   (16, 4): "(16,4)", (32, 4): "(32,4)"}
+    anchors = [(4096, "4k"), (8192, "8k"), (32768, "32k"), (131072, "128k")]
+    Ls = np.geomspace(256, 131072, 400)
+
+    fig, axes = plt.subplots(2, 2, figsize=(6.9, 4.9))
+
+    def anchor_lines(ax):
+        for a, t in anchors:
+            ax.axvline(a, color="#bbbbbb", linewidth=0.6, linestyle=":", zorder=0)
+            ax.text(a, 0.985, t, transform=ax.get_xaxis_transform(),
+                    ha="center", va="top", fontsize=6.3, color="#888888")
+
+    # (a) tokens per query -------------------------------------------------
+    ax = axes[0, 0]
+    ax.plot(Ls, Ls, color=C["red"], lw=1.2, label="Normal (dense)")
+    for cell in cells:
+        ax.plot(Ls, Ls / cell[0] + W + 1, color=cell_colors[cell], lw=1.1,
+                label=cell_labels[cell])
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+    ax.set_xlabel("Context length $L$ (tokens)")
+    ax.set_ylabel("Softmax columns per query")
+    ax.legend(frameon=False, fontsize=6.6, loc="upper left", handlelength=1.3)
+    anchor_lines(ax)
+
+    # (b) attention-path work savings vs L ----------------------------------
+    ax = axes[0, 1]
+    ref = np.array([path_normal(L) for L in Ls], dtype=float)
+    for cell in cells:
+        ckv, cr = cell
+        curve = np.array([1.0 - path_cell(L, ckv, cr) / ref[i]
+                          for i, L in enumerate(Ls)])
+        ax.plot(Ls, 100 * curve, color=cell_colors[cell], lw=1.2,
+                label=cell_labels[cell])
+        asym = 100 * (1.0 - (1.0 / ckv + 1.0 / (2 * cr)))
+        ax.axhline(asym, color=cell_colors[cell], lw=0.7, ls="--", alpha=0.65)
+    ax.set_xscale("log")
+    ax.set_xlabel("Context length $L$ (tokens)")
+    ax.set_ylabel("Attention-path work saved (%)")
+    ax.set_ylim(0, 100)
+    ax.legend(frameon=False, fontsize=6.6, loc="lower right", handlelength=1.3)
+    anchor_lines(ax)
+
+    # (c) whole-layer savings by width + measured anchors -------------------
+    ax = axes[1, 0]
+    from matplotlib.lines import Line2D
+
+    widths = [128, 512, 1024, 4096]
+    wcolors = [C["red"], C["orange"], C["green"], C["blue"]]
+    cell_styles = ((8, 4, "-", 1.2, "(8,4)"),
+                   (16, 4, (0, (4, 2)), 0.9, "(16,4)"),
+                   (32, 4, (0, (1.5, 1.5)), 0.9, "(32,4)"))
+    for d, col in zip(widths, wcolors):
+        for ckv, cr, ls, lw, _ in cell_styles:
+            ax.plot(Ls, 100 * np.array([s_net(L, d, ckv, cr) for L in Ls]),
+                    color=col, lw=lw, ls=ls)
+    for B, mk in (("32", "D"), ("1", "s")):
+        lat = g5["l_scale"][B]["latency"]
+        xs, ys = [], []
+        for Lstr, md in lat.items():
+            if "Normal" in md and "DRRA" in md:
+                sav = 100 * (1 - md["DRRA"]["mean_ms_per_batch"]
+                             / md["Normal"]["mean_ms_per_batch"])
+                if sav >= 0:
+                    xs.append(int(Lstr))
+                    ys.append(sav)
+        ax.plot(xs, ys, linestyle="none", marker=mk, ms=3.8, mfc="none",
+                mec="black", mew=0.8)
+    leg_w = ax.legend(handles=[Line2D([], [], color=c, lw=1.2, label=f"$d$={d}")
+                              for d, c in zip(widths, wcolors)],
+                      frameon=False, fontsize=6.6, loc="upper left",
+                      handlelength=1.3)
+    ax.add_artist(leg_w)
+    ax.legend(handles=[
+        Line2D([], [], color="#333333", lw=1.2, ls="-", label="(8,4)"),
+        Line2D([], [], color="#333333", lw=0.9, ls=(0, (4, 2)), label="(16,4)"),
+        Line2D([], [], color="#333333", lw=0.9, ls=(0, (1.5, 1.5)), label="(32,4)")],
+        frameon=False, fontsize=6.4, loc="lower right", handlelength=1.3)
+    ax.set_xscale("log")
+    ax.set_xlabel("Context length $L$ (tokens)")
+    ax.set_ylabel("Whole-layer work saved (%)")
+    ax.set_ylim(0, 100)
+    anchor_lines(ax)
+
+    # (d) asymptotic savings map over the design plane ----------------------
+    ax = axes[1, 1]
+    ckvs = [2, 4, 8, 16, 32, 64]
+    crs = [2, 4, 8]
+    grid = np.array([[100 * (1 - (1.0 / ckv + 1.0 / (2 * cr)))
+                      for ckv in ckvs] for cr in crs])
+    im = ax.imshow(grid, cmap="viridis", origin="lower", aspect="auto",
+                   vmin=40, vmax=100)
+    ax.set_xticks(range(len(ckvs)))
+    ax.set_xticklabels([str(c) for c in ckvs])
+    ax.set_yticks(range(len(crs)))
+    ax.set_yticklabels([str(c) for c in crs])
+    ax.set_xlabel("KV compression rate $c_{KV}$")
+    ax.set_ylabel("Routing resolution $c_R$")
+    for i in range(len(crs)):
+        for j in range(len(ckvs)):
+            v = grid[i, j]
+            ax.text(j, i, f"{v:.0f}", ha="center", va="center", fontsize=6.5,
+                    color="white" if v < 78 else "black")
+    tested = {(4, 4), (8, 4), (4, 8), (8, 8), (16, 4), (32, 4)}
+    for ckv, cr in tested:
+        ax.plot(ckvs.index(ckv), crs.index(cr), marker="s", ms=8.5,
+                mfc="none", mec="white", mew=1.1)
+    cb = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.03)
+    cb.set_label("% saved (limit)", fontsize=7)
+    cb.ax.tick_params(labelsize=6.5)
+
+    fig.tight_layout()
+    fig.savefig(FIG_DIR / "fig12_scaling_forecast.pdf")
+    fig.savefig(FIG_DIR / "fig12_scaling_forecast.png")
+    plt.close(fig)
+
+    # --- printed forecast table (source for the paper's numbers) -----------
+    print("fig12: attention-path savings vs Normal (%)")
+    print("    L      " + "  ".join(f"({ckv},{cr})" for ckv, cr in cells))
+    for L in (256, 1024, 4096, 8192, 32768, 131072):
+        print(f"  {L:>6}  " + "  ".join(
+            f"{100 * s_attn(L, ckv, cr):>7.1f}" for ckv, cr in cells))
+    print("  asymptote  " + "  ".join(
+        f"{100 * (1 - (1.0 / ckv + 1.0 / (2 * cr))):>7.1f}"
+        for ckv, cr in cells))
+    print("fig12: whole-layer savings at L=32768 (%)")
+    for d in widths:
+        print(f"  d={d:>5}: DRRA {100 * s_net(32768, d, 8, 4):>5.1f}   "
+              f"(32,4) {100 * s_net(32768, d, 32, 4):>5.1f}")
+    print("fig12: whole-layer savings, study backbone (d=128, DRRA)")
+    for L in (2048, 4096, 32768):
+        print(f"  L={L:>6}: {100 * s_net(L, 128, 8, 4):>5.1f}")
+    print("fig12: sensitivity at L=32768 (DRRA (8,4))")
+    core = attn_cell(32768, 8)
+    aux = router_term(32768, 4) + compress_term(32768)
+    ref32 = path_normal(32768)
+    for lam in (0.5, 1.0, 2.0):
+        print(f"  auxiliary weight x{lam}: "
+              f"{100 * (1 - (core + lam * aux) / ref32):.1f}% saved")
+    for h in (1,):
+        print(f"  single-head indexer analogue: asymptote "
+              f"{100 * (1 - (1 / 8 + 1 / (2 * h * 4))):.1f}% saved")
+
+    # directional validation against the measured latency ratios
+    def _rank(x):
+        order = np.argsort(x)
+        r = np.empty(len(x), dtype=float)
+        r[order] = np.arange(1, len(x) + 1)
+        return r
+
+    def _spearman(a, b):
+        return float(np.corrcoef(_rank(np.asarray(a, float)),
+                                 _rank(np.asarray(b, float)))[0, 1])
+
+    def _pearson(a, b):
+        return float(np.corrcoef(np.asarray(a, float),
+                                 np.asarray(b, float))[0, 1])
+
+    for B in ("1", "32"):
+        lat = g5["l_scale"][B]["latency"]
+        pts = []
+        for Lstr, md in lat.items():
+            if all(v in md for v in ("Normal", "Flat", "DRRA")):
+                L = int(Lstr)
+                pts.append((L, "Normal", path_normal(L)))
+                pts.append((L, "Flat", path_cell(L, 4, 4)))
+                pts.append((L, "DRRA", path_cell(L, 8, 4)))
+        t = [lat[str(L)][v]["mean_ms_per_batch"] for L, v, _ in pts]
+        w = [pc for _, _, pc in pts]
+        print(f"fig12 validate batch {B}: n={len(pts)}  "
+              f"Spearman(latency, attention-path work) = {_spearman(t, w):.3f}")
+    for B in ("1", "32"):
+        lat = g5["l_scale"][B]["latency"]
+        wr, tr = [], []
+        for Lstr, md in lat.items():
+            if "Normal" in md and "DRRA" in md:
+                L = int(Lstr)
+                wr.append(path_cell(L, 8, 4) / path_normal(L))
+                tr.append(md["DRRA"]["mean_ms_per_batch"]
+                          / md["Normal"]["mean_ms_per_batch"])
+        print(f"fig12 validate batch {B}: paired DRRA/Normal work-vs-time "
+              f"ratio Pearson r = {_pearson(wr, tr):.3f} (n={len(wr)})")
+
+
+def make_fig13():
+    L = 2048
+    # same exact anchors as Figure 12: the gate20-corrected accounts
+    g20 = json.load(open(PLAN_DIR / "gates" / "gate20_accounting" /
+                         "router_accounting_audit.json"))
+    audited_totals = {k: v["total"] for k, v in g20["components_L256"].items()}
+    checks = {
+        "Normal": (path_normal(256) + rest_exact(256, 128), "Normal"),
+        "CSA": (path_cell(256, 4, 4) + rest_exact(256, 64), "CSA"),
+        "DRRA": (path_cell(256, 8, 4) + rest_exact(256, 64), "DRRA"),
+    }
+    for label, (calc, key) in checks.items():
+        audited = audited_totals[key]
+        assert calc == audited, f"fig13 {label}: analytic {calc} != audited {audited}"
+
+    dense = path_normal(L) / L + 12 * D * D          # per-token
+    configs = [("Normal", None), ("(4,4)", (4, 4)), ("(8,4)", (8, 4))]
+    core, aux, floor = [], [], []
+    for _, cell in configs:
+        if cell is None:
+            c, a = float(path_normal(L)) / L, 0.0
+        else:
+            c = float(attn_cell(L, cell[0])) / L
+            a = float(router_term(L, cell[1]) + compress_term(L)) / L
+        core.append(100.0 * c / dense)
+        aux.append(100.0 * a / dense)
+        floor.append(100.0 * 12 * D * D / dense)
+
+    fig, ax = plt.subplots(figsize=(3.5, 2.9))
+    x = np.arange(len(configs))
+    bw = 0.52
+    ax.bar(x, core, bw, color=C["blue"], label="Attention core")
+    ax.bar(x, aux, bw, bottom=core, color="#A8C4E0", label="Router + compressor")
+    bottoms = np.array(core) + np.array(aux)
+    ax.bar(x, floor, bw, bottom=bottoms, color="#D9D9D9", label="Projections + MLP")
+    for xi, ((name, cell), c, a, f) in enumerate(zip(configs, core, aux, floor)):
+        for val, bottom, ink in ((c, 0.0, "white"), (a, c, "#333333"),
+                                 (f, c + a, "#333333")):
+            if val >= 5.0:
+                ax.text(xi, bottom + val / 2, f"{val:.1f}", ha="center",
+                        va="center", fontsize=6.7, color=ink)
+        total = c + a + f
+        saved = 0.0 if cell is None else 100 * s_net(L, D, cell[0], cell[1])
+        tag = "dense" if total > 99.5 else f"{saved:.1f}% saved"
+        ax.text(xi, total + 1.5, tag, ha="center", va="bottom", fontsize=7)
+    ax.set_xticks(x)
+    ax.set_xticklabels([name for name, _ in configs], fontsize=8)
+    ax.set_ylabel("Per-token work (% of dense)")
+    ax.set_ylim(0, 114)
+    ax.legend(frameon=False, fontsize=6.6, loc="upper right", handlelength=1.0,
+              borderaxespad=0.4)
+    fig.tight_layout()
+    fig.savefig(FIG_DIR / "fig13_energy_composition.pdf", bbox_inches="tight")
+    fig.savefig(FIG_DIR / "fig13_energy_composition.png", bbox_inches="tight")
+    plt.close(fig)
+
+    # printed checks (source for the caption's numbers)
+    print(f"fig13: per-token work at L={L} (% of dense)")
+    for (name, cell), c, a, f in zip(configs, core, aux, floor):
+        att = 0.0 if cell is None else 100 * s_attn(L, cell[0], cell[1])
+        print(f"  {name:>10}: core {c:5.1f}  aux {a:4.1f}  fixed {f:5.1f}  "
+              f"total {c + a + f:5.1f}  saved {100 - (c + a + f):5.1f}  "
+              f"attention-path saved {att:5.1f}")
+
+
+if SCALING:
+    make_fig12()
+    make_fig13()
+    raise SystemExit(0)
+
+
+# ---------------------------------------------------------------------------
 # Data — 25 paired seeds: the 5 pre-registered (gate2 + baseline manifests)
 # plus the 20-seed power extension (gate7, byte-identical protocol)
 # ---------------------------------------------------------------------------
@@ -212,12 +568,12 @@ for i, cell in enumerate(CELLS):
     jitter = np.linspace(-0.18, 0.18, len(seeds))
     ax.scatter(i + jitter, seeds, s=14, color="black", zorder=3,
                edgecolor="white", linewidth=0.4)
-    ax.text(i, val_means[cell] + val_stds[cell] + 0.012, fmt(val_means[cell]),
-            ha="center", fontsize=8)
+    _top = max(val_means[cell] + val_stds[cell], max(seeds))
+    _lab = _top + 0.015
+    if _top < normal_val_mean and _lab + 0.045 > normal_val_mean - 0.01:
+        _lab = normal_val_mean + 0.05
+    ax.text(i, _lab, fmt(val_means[cell]), ha="center", va="bottom", fontsize=8)
 ax.axhline(normal_val_mean, color="black", linestyle="--", linewidth=0.9)
-if not V2:
-    ax.text(3.52, normal_val_mean + 0.012, f"Normal {fmt(normal_val_mean)}",
-            ha="right", fontsize=8)
 if V2:
     # Exploratory cells as starred side bars (never part of confirmatory stats).
     import json as _json2
@@ -232,42 +588,60 @@ if V2:
         _jit = np.linspace(-0.18, 0.18, len(_vals))
         ax.scatter(_i + _jit, _vals, s=14, color="black", zorder=3,
                    edgecolor="white", linewidth=0.4)
-        ax.text(_i, _vals.mean() + _vals.std(ddof=1) + 0.012,
-                fmt(_vals.mean()), ha="center", fontsize=8)
+        _top = max(_vals.mean() + _vals.std(ddof=1), _vals.max())
+        _lab = _top + 0.015
+        if _top < normal_val_mean and _lab + 0.045 > normal_val_mean - 0.01:
+            _lab = normal_val_mean + 0.05
+        ax.text(_i, _lab, fmt(_vals.mean()), ha="center", va="bottom", fontsize=8)
     x = np.arange(len(CELLS) + 2)
     labels = labels + ["$(16,4)$*", "$(32,4)$*"]
-    ax.text(5.52, normal_val_mean + 0.012, f"Normal {fmt(normal_val_mean)}",
-            ha="right", fontsize=8)
 ax.set_xticks(x)
 ax.set_xticklabels(labels)
 ax.set_ylabel("Validation MSE (standardized)")
-ax.set_ylim(0.45, 1.0)
-ax.legend(loc="upper left", ncol=1, frameon=False, fontsize=7.5)
+ax.set_ylim(0.45, 1.18)
+ax.legend(loc="upper left", ncol=2, frameon=False, fontsize=7.5,
+          borderaxespad=0.3)
 fig.tight_layout()
 fig.savefig(FIG_DIR / "fig1_factorial_val.pdf")
 fig.savefig(FIG_DIR / "fig1_factorial_val.png")
 plt.close(fig)
 
 # ---------------------------------------------------------------------------
-# Figure 2: main effects
+# Figure 2: interaction (conditional effects) + main effects
 # ---------------------------------------------------------------------------
-fig, ax = plt.subplots(figsize=(6.5, 2.5))
+fig, axes = plt.subplots(1, 2, figsize=(6.5, 2.8),
+                         gridspec_kw={"width_ratios": [1.0, 0.95]})
+ax = axes[0]
+for cr, col, mk in ((4, C["blue"], "o"), (8, C["red"], "s")):
+    ys = [val_means[(4, cr)], val_means[(8, cr)]]
+    es = [val_stds[(4, cr)], val_stds[(8, cr)]]
+    ax.errorbar([0, 1], ys, yerr=es, color=col, marker=mk, capsize=3,
+                lw=1.3, ms=4.5,
+                label=rf"Routing $c_R$: {'fine' if cr == 4 else 'coarse'} ({cr}:1)")
+ax.set_xticks([0, 1])
+ax.set_xticklabels(["4:1", "8:1"])
+ax.set_xlabel(r"KV-cache compression $c_{KV}$ (fine $\rightarrow$ coarse)")
+ax.set_ylabel("Validation MSE (lower is better)")
+ax.set_ylim(0.50, 0.80)
+ax.set_xlim(-0.18, 1.18)
+ax.set_title("Error for each compression setting", fontsize=8.5)
+ax.legend(frameon=False, fontsize=7.5, loc="upper right")
+
+ax = axes[1]
 effects = [c_kv_effect, c_r_effect]
-names = [r"$c_{KV}$: $4{:}1 \rightarrow 8{:}1$", r"$c_R$: $4{:}1 \rightarrow 8{:}1$"]
+names = ["KV cache\n4:1 \u2192 8:1", "Routing\n4:1 \u2192 8:1"]
 bar_colors = [C["green"], C["red"]]
-for i, (e, n, c) in enumerate(zip(effects, names, bar_colors)):
+for i, (e, c) in enumerate(zip(effects, bar_colors)):
     ax.bar(i, e, width=0.5, color=c, alpha=0.85)
-    ax.text(i, e + (0.004 if e > 0 else -0.012), f"{e:+.4f}", ha="center", fontsize=9)
-seed_std = np.mean([val_stds[c] for c in CELLS])
+    _lab = f"{e:+.4f}" + ("  (worse)" if e > 0 else "  (better)")
+    ax.text(i, e + (0.006 if e > 0 else -0.014), _lab, ha="center",
+            va="bottom" if e > 0 else "top", fontsize=8)
 ax.axhline(0.0, color="black", linewidth=0.8)
-for s in (seed_std, -seed_std):
-    ax.axhline(s, color="gray", linestyle=":", linewidth=1.0)
-ax.text(1.45, seed_std, f"$\\pm$ mean within-cell seed std ({seed_std:.4f})",
-        ha="right", va="bottom", fontsize=8, color="gray")
 ax.set_xticks([0, 1])
 ax.set_xticklabels(names)
 ax.set_ylabel("Change in validation MSE")
-ax.set_ylim(-0.09, 0.09)
+ax.set_ylim(-0.06, 0.06)
+ax.set_title("Average effect of each setting", fontsize=8.5)
 fig.tight_layout()
 fig.savefig(FIG_DIR / "fig2_main_effects.pdf")
 fig.savefig(FIG_DIR / "fig2_main_effects.png")
@@ -405,14 +779,14 @@ print(f"cross-dataset: DRRA beats Normal on mean val {n_drra_wins}/12, "
 fig, ax = plt.subplots(figsize=(6.5, 2.9))
 x = np.arange(len(DATASET_ORDER))
 w = 0.38
-ax.bar(x - w / 2, flat_delta, width=w, color=C["orange"], alpha=0.85, label="CSA $(4,4)$")
-ax.bar(x + w / 2, drra_delta, width=w, color=C["blue"], alpha=0.85, label="DRRA $(8,4)$")
+ax.bar(x - w / 2, flat_delta, width=w, color=C["orange"], alpha=0.85, label="$(4,4)$")
+ax.bar(x + w / 2, drra_delta, width=w, color=C["blue"], alpha=0.85, label="$(8,4)$")
 ax.axhline(0.0, color="black", linewidth=0.8)
 labels = ["ETTh1", "ETTh2", "ETTm1", "ETTm2", "Elec", "Traffic", "Weather",
           "Exchange", "Solar", "syn-sin", "syn-cp", "syn-dc"]
 ax.set_xticks(x)
 ax.set_xticklabels(labels, rotation=40, ha="right", fontsize=7.5)
-ax.set_ylabel(r"$\Delta$val vs.\ Normal (\%)")
+ax.set_ylabel(r"$\Delta$val vs. Normal (%)")
 ax.set_ylim(-52, 12)
 ax.legend(loc="lower left", frameon=False, fontsize=7.5)
 fig.tight_layout()
@@ -434,7 +808,7 @@ if LATENCY_SCALE.exists():
     for variant, color in style.items():
         seq = [scale["batches"][str(B)][variant]["ms_per_seq"] for B in Bs]
         ax.plot(Bs, seq, marker="o", markersize=3.5, linewidth=1.1, color=color,
-                label={"Flat": "CSA $(4,4)$", "DRRA": "DRRA $(8,4)$",
+                label={"Flat": "$(4,4)$", "DRRA": "$(8,4)$",
                           "Normal": "Normal"}[variant])
     ax.set_xscale("log")
     ax.set_xticks(Bs)
@@ -476,7 +850,7 @@ if GATE5_RESULTS.exists():
             ms = [lat[str(L)][variant]["mean_ms_per_batch"] for L in Ls]
             ax.plot(Ls, ms, marker="o", markersize=3.5, linewidth=1.1,
                     color=color,
-                    label={"Flat": "CSA $(4,4)$", "DRRA": "DRRA $(8,4)$",
+                    label={"Flat": "$(4,4)$", "DRRA": "$(8,4)$",
                            "Normal": "Normal"}[variant])
         ax.set_xscale("log")
         ax.set_yscale("log")
@@ -485,8 +859,10 @@ if GATE5_RESULTS.exists():
         ax.set_xlabel("Sequence length $L$ (lookback)")
         ax.set_ylabel("Mean latency (ms per batch)")
         slope = g5["l_scale"][B]["loglog_slope"]
+        _vname = {"Normal": "Normal", "Flat": "(4,4)", "DRRA": "(8,4)"}
         ax.set_title(f"batch {B}; log-log slopes (L$\\geq$512): " +
-                     ", ".join(f"{v} {s:.2f}" for v, s in slope.items()),
+                     ", ".join(f"{_vname.get(v, v)} {s:.2f}"
+                               for v, s in slope.items()),
                      fontsize=7.5)
         ax.legend(frameon=False, fontsize=8)
         fig.tight_layout()
@@ -503,13 +879,16 @@ else:
 
 
 # ---------------------------------------------------------------------------
-# Figure 6: performance (ETTh1 mean test loss) vs speed (mean latency);
-# up/right = better; axes zoomed to the measured range; means only (no CIs)
+# Figure 6: performance (ETTh1 mean test loss) vs FORECAST-REQUIRED speed
+# (last-query latency, released gate13 audit) as the primary panel, with the
+# full-layer frontier as a separately labelled comparison (same audited run);
+# lower-left = best; axes zoomed to the measured range; means only (no CIs)
 # ---------------------------------------------------------------------------
 GATE3_RES = REPO_DIR / "plan" / "gates" / "gate3" / "results"
 LAT_JSON = PLAN_DIR / "gates" / "gate3" / "gate3_latency.json"
 LAT_SCALE = PLAN_DIR / "gates" / "gate3" / "gate3_latency_scale.json"
-if GATE3_RES.exists() and LAT_JSON.exists() and LAT_SCALE.exists():
+LQ_JSON = PLAN_DIR / "gates" / "gate13_p0_audits" / "last_query_latency.json"
+if GATE3_RES.exists() and LQ_JSON.exists():
     import json as _json
     SEEDS = [42, 123, 2024, 7, 99]
 
@@ -526,28 +905,38 @@ if GATE3_RES.exists() and LAT_JSON.exists() and LAT_SCALE.exists():
         loss["Flat"] = float(np.mean([r["test_mse"] for r in g15rows]))
         print(f"v2 mode: fig9 Flat test-loss overridden to {loss['Flat']:.4f}")
 
-    lat = _json.load(open(LAT_JSON))["models"]
-    scale = _json.load(open(LAT_SCALE))["batches"]
-    lat32 = {v: lat[v]["mean_ms"] for v in lat}
-    lat256 = {v: scale["256"][v]["mean_ms_per_batch"] for v in lat}
+    # Forecast-required (last query) and full-layer latencies from ONE audited
+    # run (25 rounds x 30 passes round-robin, batch 32, released gate13 log),
+    # so the two panels are internally consistent; the batch-256 full-layer
+    # numbers live in Table~\ref{tab:speed}.
+    lq = _json.load(open(LQ_JSON))["latency"]
+    last32 = {"Normal": lq["Normal_LAST"]["mean_ms"],
+              "Flat": lq["CSA_4_4_LAST"]["mean_ms"],
+              "DRRA": lq["DRRA_8_4_LAST"]["mean_ms"]}
+    full32 = {"Normal": lq["Normal_FULL"]["mean_ms"],
+              "Flat": lq["CSA_4_4_FULL"]["mean_ms"],
+              "DRRA": lq["DRRA_8_4_FULL"]["mean_ms"]}
 
     style = {"Normal": C["red"], "Flat": C["orange"], "DRRA": C["blue"]}
-    labels = {"Normal": "Normal", "Flat": "CSA $(4,4)$", "DRRA": "DRRA $(8,4)$"}
+    labels = {"Normal": "Normal", "Flat": "$(4,4)$", "DRRA": "$(8,4)$"}
     ylim = (min(loss.values()) - 0.03, max(loss.values()) + 0.03)
+    panels = (
+        ("Forecast-required (last query), batch 32", last32, (1.0, 8.0),
+         "Speed — mean forecast-required latency (ms)"),
+        ("Full layer, batch 32", full32, (29.0, 43.0),
+         "Speed — mean forward latency (ms)"),
+    )
     fig, axes = plt.subplots(1, 2, figsize=(6.5, 3.2))
-    for ax, (B, xs, xlim) in zip(
-            axes, (("32", lat32, (46.5, 55.5)),
-                   ("256", lat256, (800.0, 1220.0)))):
+    for ax, (title, xs, xlim, xlabel) in zip(axes, panels):
         for v in ("Normal", "Flat", "DRRA"):
             ax.scatter(xs[v], loss[v], s=70, color=style[v], zorder=3)
             ax.annotate(labels[v], (xs[v], loss[v]),
                         textcoords="offset points", xytext=(8, -6), fontsize=8)
         ax.axhline(loss["Normal"], color="#999999", linewidth=0.6,
                    linestyle="--")
-        ax.set_xlabel("Speed — mean forward latency (ms)" +
-                      ("" if B == "32" else "  @ batch 256"))
+        ax.set_xlabel(xlabel)
         ax.set_ylabel("Performance — mean test loss on ETTh1")
-        ax.set_title("batch %s" % B, fontsize=8)
+        ax.set_title(title, fontsize=8)
         ax.set_xlim(*xlim)
         ax.set_ylim(*ylim)
         # Neither axis inverted: lower loss = down, lower latency = left
@@ -557,9 +946,12 @@ if GATE3_RES.exists() and LAT_JSON.exists() and LAT_SCALE.exists():
     fig.savefig(FIG_DIR / "fig9_perf_speed.png")
     plt.close(fig)
     print("perf-speed: ETTh1 test-loss", {v: round(x, 4) for v, x in loss.items()},
-          "| lat32", {v: round(x, 2) for v, x in lat32.items()},
-          "| lat256", {v: round(x, 1) for v, x in lat256.items()})
+          "| LAST32", {v: round(x, 2) for v, x in last32.items()},
+          "| FULL32", {v: round(x, 2) for v, x in full32.items()})
 else:
-    print("WARNING: gate3 results/latency JSONs not found; fig9 skipped")
+    print("WARNING: gate13 last-query audit JSON not found; fig9 skipped")
+
+make_fig12()
+make_fig13()
 
 print("All figures written to", FIG_DIR)

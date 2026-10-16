@@ -32,7 +32,11 @@ that can and one that cannot be deployed at the volumes real applications
 demand. The design question this paper measures---\emph{which compression
 axis buys efficiency, and which axis, when coarsened, is the accuracy we
 silently give away}---is thus also an energy question, and its answer
-determines how cheaply accurate long-horizon forecasting can be run.
+determines how cheaply accurate long-horizon forecasting can be run. We
+return to that question quantitatively in Section~\ref{sec:forecast},
+where the audited component accounting is used to forecast attention work
+at contexts up to $2^{17}$ tokens and to project energy savings under
+explicit first-order assumptions.
 
 What is not well studied is the \emph{design space} of this family: how the
 two independent compression axes interact. We identify two axes:
@@ -68,11 +72,15 @@ mechanism: every building block we use is a configuration of known ideas
   \item[(b)] \textbf{A decoupled-rate finding.} Coarsening the
         router deteriorates accuracy ($+0.030$ validation MSE for
         $c_R{:}4{:}1 \to 8{:}1$), while coarsening KV compression is
-        mildly beneficial ($-0.032$). The pre-registered decoupling
+        mildly beneficial ($-0.032$); the deterioration is concentrated in the
+        $(4,8)$ cell (fine content, coarse router), so the finding is stated
+        conditionally rather than as a general rule about routing.
+        The pre-registered decoupling
         hypothesis---the routing effect exceeds the KV effect on per-seed
         paired differences---is supported at $n{=}25$ (exact Wilcoxon
-        $p = 0.0074$). Routing here is fixed at initialization (hard top-$k$ gives the
-        indexer no task gradient), so the effect is architectural, not learned. The dual-rate corner
+        $p = 0.0074$). The indexer receives no task gradient (hard top-$k$ is
+        non-differentiable), so the effect is architectural, not learned; route
+        membership still follows the drift of upstream features. The dual-rate corner
         $(c_{KV}{=}8, c_R{=}4)$ (\emph{DRRA},
         Section~\ref{sec:method}), reduces the attention matrix 5.22$\times$
         relative to full attention
@@ -81,7 +89,7 @@ mechanism: every building block we use is a configuration of known ideas
   \item[(c)] \textbf{A measured efficiency/accuracy characterization.} A
         surprising---and wiring-verified---baseline result: compressed
         configurations beat full causal attention on the frozen task
-        (mean deltas $-18.0\%$ to $-26.3\%$; Holm-adjusted
+        (mean deltas $-18.8\%$ to $-27.0\%$; Holm-adjusted
         $p \le 3.3\times10^{-6}$ at $n{=}25$), with explicit limitations
         (CPU-scale models; across twelve datasets the
         advantage is signal-dependent, Section~\ref{sec:rq3}; external

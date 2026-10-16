@@ -18,6 +18,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{amsfonts}
+\usepackage{stmaryrd}
 \usepackage{microtype}
 \usepackage{xcolor}
 \usepackage{url}
@@ -77,9 +78,11 @@ energy cost of attention at deployment scale (Section~\ref{sec:intro}):
 by mapping which compression axis can be coarsened without accuracy loss,
 it points toward cheaper long-horizon forecasting on power-constrained
 hardware. That motivation is quantitative but indirect---the paper reports
-single-machine latency and arithmetic counts, not energy measurements, and
-makes no claim about specific production systems. All findings are scoped
-to the frozen task and CPU scale (Section~\ref{sec:limitations}).
+single-machine latency and arithmetic counts, together with a first-order
+projection of the energy consequences of the measured work reductions
+under stated assumptions, rather than energy measurements, and it makes
+no claim about specific production systems. All findings are scoped to the
+frozen task and CPU scale (Section~\ref{sec:limitations}).
 
 \bibliographystyle{plainnat}
 \bibliography{references}

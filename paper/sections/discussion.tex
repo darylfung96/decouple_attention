@@ -3,22 +3,25 @@
 
 \subsection{The decoupling insight (directional)}
 The cleanest reading of the factorial is that the two axes play different
-roles on ETTh1: \emph{routing granularity carries accuracy; KV content density
-is mildly beneficial to accuracy and buys efficiency}. The control logic is
+roles on ETTh1, and that the roles are conditional: \emph{coarse routing costs
+accuracy where the KV content is fine (the $(4,8)$ cell), while coarser KV
+content is mildly beneficial to accuracy and buys efficiency}. The control logic is
 internal to the design: the DRRA $(8,4)$ cell (coarse content, fine router) matches
 or beats the equal-rate cells with roughly three-fifths the attention columns
 (49 vs.\ 81 complete columns), while the $(4,8)$ cell (fine content, coarse
-router) is the worst cell despite having the same columns as CSA $(4,4)$.
+router) is the worst cell despite having the same columns as CSA $(4,4)$ --- and
+at $c_{KV}{=}8$ the finer router adds nothing on the mean ($(8,8)$ $0.6128$ vs.\
+DRRA $0.6190$).
 The per-seed consistency (20/25 for KV, 16/25 for routing), the
 pre-registered H1 contrast (exact Wilcoxon $p = 0.0074$), and the significant
 interaction ($p = 0.014$; the axes are not additive) establish this as a \emph{statistically
-supported sign structure with non-additive axes on ETTh1}; the effect sizes remain
+supported sign structure with non-additive axes on ETTh1}, whose interaction is carried by the
+experiment's worst cell rather than by a general benefit of fine routing; the effect sizes remain
 modest relative to seed noise (both effects ${\sim}0.03$ vs.\ within-cell std
 ${\sim}0.070$), no cell is best on validation (top three tied within noise; DRRA-vs.-CSA
 $p = 0.62$), and multi-dataset confirmation of the
 full factorial is still future work before this can be stated as a general design
-principle. An exploratory $(16,4)$ probe (best mean $0.5810$, ahead of Normal 25/25)
-suggests the KV-rate profile stays flat-to-beneficial out to 16:1 on ETTh1.
+principle. An exploratory (16,4) probe (best mean 0.5810, ahead of Normal 25/25) and a further (32,4) probe (0.6122, inside the top group) suggest the KV-rate profile stays flat-to-beneficial out to 32:1 on ETTh1, with 4 KV blocks as the sensible floor.
 
 \subsection{Why might compression help on this task?}
 We do not have a verified explanation for the compressed $>$ full-attention
@@ -37,7 +40,7 @@ separate the candidates, and its current status is:
 \textbf{H1} (coarsening the router deteriorates accuracy more than
 coarsening KV compression) supported on ETTh1 (exact Wilcoxon $p = 0.0074$) but not
 replicated on the three cross-dataset factorial replications (all non-significant,
-signs mixed);
+signs mixed; the indexer receives no task gradient, so granularity effects are architectural);
 \textbf{H2} (the dual-rate corner matches the equal-rate cells on accuracy while
 using fewer attention columns), whose latency leg is supported directionally by the
 systems measurements and whose accuracy leg is a tie on validation (no cell best;
@@ -70,7 +73,7 @@ future work.
         paired tests cannot reach significance at this sample size
         (two-sided floor $p = 0.0625$) and nothing survives Holm correction
         (Section~\ref{sec:stats}); ``best on mean'' and ``directional'' are
-        used advisedly. No equivalence tests are run because no equivalence
+        used advisedly. Figures show means only; per-seed tables are in the released manifests. No equivalence tests are run because no equivalence
         claims are made.
   \item \textbf{External architectures as reference points only.} DLinear
         and PatchTST were run under the frozen protocol to calibrate absolute
@@ -84,7 +87,10 @@ future work.
         measured on the development machine (Table~\ref{tab:speed},
         Figure~\ref{fig:latency-scale} and~\ref{fig:lscale}). Cross-hardware
         results (Linux x86, GPU) and depth/width ablations are conscious
-        scope exclusions, deferred to future work.
+        scope exclusions, deferred to future work. The energy projections
+        in Section~\ref{sec:forecast} are derived from these counts under
+        a stated first-order model; they are not energy measurements, and
+        their validation against measured latency is directional.
   \item \textbf{Non-IID samples.} Stride-1 windows overlap heavily; samples
         are not independent, which standard per-window significance tests
         would assume. Our paired tests are at the seed level (five
@@ -93,10 +99,14 @@ future work.
         per-window statistics are used (Section~\ref{sec:stats}).
   \item \textbf{Fixed budget, single checkpoint policy.} 10 epochs,
         epoch-10 weights; no early stopping or best-validation selection.
-  \item \textbf{Fixed routing.} The hard top-$k$ selector gives the indexer no
-        task-loss gradient (grad audit: all indexer-exclusive norms exactly zero,
-        both variants), so routing is fixed at initialization; granularity effects
-        are architectural, and learning-to-route (aux loss, relaxation, STE) is
+  \item \textbf{Non-learned routing.} The hard top-$k$ selector gives the indexer no
+        task-loss gradient (gradient audit: all indexer-exclusive norms exactly zero,
+        both variants), so no learning signal reaches the selector and granularity
+        effects are architectural. The audit establishes gradient isolation, not
+        literal route constancy: index scores are computed from features produced by
+        trainable upstream components, so the selected set can still change as those
+        features drift over training. Route-overlap probes on fixed inputs across
+        epochs and an explicitly trained selector (aux loss, relaxation, STE) are
         deferred future work.
   \item \textbf{Single-block backbone retained.} The study keeps the minimal
         one-block backbone deliberately (the backbone, not the attention module,
@@ -105,9 +115,11 @@ future work.
         Section~\ref{sec:efficiency}), and a multilayer backbone remains future work.
         A transfer run grafting the four cells onto the published PatchTST backbone
         (ETTh1/ETTh2, five seeds each) finds all four cells tied within noise
-        (effects ${\sim}0.003$, an order of magnitude below the minimal backbone),
-        so the rate effects are backbone-relative: visible where attention is the
-        bottleneck, washed out where the backbone dominates.
+        (effects ${\sim}0.003$, an order of magnitude below the minimal backbone).
+        That transfer tokenizes the series into 31 patches, so the coarse-router
+        cells can select every candidate index token; the tie therefore bounds the
+        transfer test from below rather than showing that routing effects vanish on
+        stronger backbones (Appendix~\ref{sec:appendix-exploratory}).
   \item \textbf{CPU-only, fp32, small models.} Dense-with-masking
         implementation choices are CPU-oriented and may not transfer to
         GPU-flash-attention regimes.

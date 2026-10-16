@@ -2,9 +2,9 @@
 
 Workshop-length draft (NeurIPS-style layout) of the DRRA two-axis design
 study. **Status: complete draft.** Gates 2–5 (factorial, 12-dataset
-coverage, minimal statistics, dev-machine systems) done; **Gate 7 DONE**
-(factorial extended to 25 paired seeds: compressed>full attention is
-Holm-significant, p_adj ≈ 7e-5; H1 decoupling supported, p = 0.0032);
+coverage, minimal statistics, dev-machine systems) done; **Gate15 v2 DONE**
+(factorial 75 re-runs under fixed mapping + suite-Flat 60, merged to 25 paired seeds: compressed>full attention is
+Holm-significant, p <= 3.3e-6; H1 decoupling supported, exact p = 0.0074, interaction p = 0.014);
 **Gate 6 DONE** (external reference points: DLinear ×12 datasets, PatchTST
 ×8, frozen protocol; anchors-not-peers framing). Learning-curve figure
 (fig4) retained from the pre-registered-seed runs.
@@ -55,15 +55,16 @@ changes.
 | Cross-dataset table (tab:coverage), Figure data (fig6/7/8/9) | `plan/gates/gate3/results/*.jsonl` + latency JSONs, recomputed by `scripts/make_figures.py` — the script prints verification lines against the audited summaries |
 | External reference points (tab:refpoints) | `plan/gates/gate6_baselines/results/*.jsonl` (DLinear ×12, PatchTST ×8, 5 paired seeds; audited by `gate6_audit.py`; facts in `gate6_facts.json`) |
 | Protocol details (window 16, top-k 16, ranks 64/64, AdamW, seeds) | `plan/gates/gate2/gate2_design.md` §2, `plan/benchmark_protocol.md` |
+| Scaling forecast + energy projection (§4.8, App. D, `fig12_scaling_forecast`) | `paper/scripts/make_figures.py --scaling` reads `plan/gates/gate5/gate5_results.json`; asserts exact equality with the released per-component MAC accounts at L=256; prints the anchor/sensitivity tables used in the text |
 
 Derived numbers used in the abstract/intro that are **not** in the audited
 summaries verbatim (computed from the audited JSONL manifests, verified by
 the figure script's printout):
-- all 4 compressed cells beat Normal in 96/100 paired seed comparisons
-  (24/25 per cell);
-- mean validation deltas −16.63% (4,8) to −26.22% (8,4); per-seed range
+- all 4 compressed cells beat Normal in 95/100 paired seed comparisons
+  (CSA 24, DRRA 24, C48 22, C88 25);
+- mean validation deltas -18.8% (4,8) to -27.0% (8,8); per-seed range
   −48.3% to +9.9%;
-- test-delta range −13.30% (4,4) to −21.89% (8,4).
+- test-delta range -18.82% (4,4) to -21.89% (8,4); v2 sources: `plan/gates/gate15_rerun/gate15_analysis.json`, `gate16_d3`, `gate17_e2` (+`gate17_speed`), `gate18_d5`, `gate19_324`.
 
 ## Honesty checklist (mirrors plan/paper_notes.md §3)
 
@@ -77,6 +78,12 @@ excluded. The pre-freeze speed/latency figures were removed from the
 pre-paper drafts (`RESULTS.md`, `WRITEUP.md`, `PUBLICATION.md`) on
 2026-08-18 (`plan/paper_notes.md` §4); original measurements live only in
 `experiment-session-new-attention.md`.
+
+The scaling/energy material (§4.8, App. D) is a **model-based projection
+from arithmetic counts, never a measurement**: the headline saving is
+coefficient-free under a uniform work-proportional energy model; write
+"projected", not "measured energy"; no joules; the latency validation is
+directional and single-machine.
 
 ## TODO inventory (before submission)
 
@@ -116,6 +123,15 @@ marker. Summary:
 ```bash
 cd paper
 python3 scripts/make_figures.py    # needs matplotlib + numpy
+```
+
+The scaling forecast is standalone (it reads the audited systems JSON and
+asserts exact equality with the released component accounts at L=256
+before drawing):
+
+```bash
+cd paper
+python3 scripts/make_figures.py --scaling
 ```
 
 Outputs PDF+PNG into `figures/`. The script cross-checks every derived

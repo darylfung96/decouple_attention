@@ -7,12 +7,13 @@ varying the KV compression rate $c_{KV}$ and the routing resolution $c_R$
 independently under a frozen task, an auxiliary-identical contract, and
 parameter equalization, across 25 paired seeds. On ETTh1 direct-96
 forecasting, every compressed configuration outperformed full causal
-attention (mean validation deltas $-18.0\%$ to $-26.3\%$; 95/100 paired
+attention (mean validation deltas $-18.8\%$ to $-27.0\%$; 95/100 paired
 seed comparisons; Holm-adjusted $p \le 3.3\times10^{-6}$;
 wiring-audited baseline), and the factorial separates the two axes:
 coarser routing deteriorates accuracy while coarser KV compression is
 mildly beneficial, with the pre-registered decoupling hypothesis supported
-on per-seed paired contrasts (exact Wilcoxon $p = 0.0074$); DRRA
+on per-seed paired contrasts (exact Wilcoxon $p = 0.0074$) and its interaction
+localized to the $(4,8)$ cell (Section~\ref{sec:rq1}); DRRA
 $(8,4)$ cuts the attention matrix 5.22$\times$ (256 vs.\ 49 complete columns) at equal parameters (its
 edge over the equal-rate cell is not significant on validation, exact Wilcoxon $p = 0.62$).
 Replicating the three-way comparison across twelve datasets shows the
@@ -22,11 +23,13 @@ electricity, and slight losses on the mechanistic synthetic probes,
 exchange-rate validation, and weather test error. We deliberately stop
 short of generalization or latency claims: the factorial conclusions are
 established on one task, the cross-dataset pattern is descriptive and
-dataset-characterized, not asserted as a design law.
+dataset-characterized, not asserted as a design law. The full four-cell replication on three contrasting datasets did not reproduce the ETTh1 sign structure, exploratory (16,4) and (32,4) probes stay flat-to-beneficial out to 32:1 outside the confirmatory tables, and a PatchTST-backbone transfer ties all four cells within noise, so rate effects are backbone-relative (that transfer's 31-token tokenization leaves the coarse-router cells selecting every candidate, so it bounds the claim from below). The indexer receives no task gradient, so granularity effects are architectural.
 
 These results also carry a deployment-facing reading. DRRA $(8,4)$'s
-structural savings---$5.22\times$ fewer attention columns and $22\%$ fewer
-forward MACs than full attention at equal or fewer parameters---mean that
+structural savings---$5.22\times$ fewer attention columns and $20\%$ fewer
+forward MACs than full attention at equal or fewer parameters (projection-matched,
+$7.8\%$; the dense baseline's rank-128 output projection accounts for two-thirds of the
+whole-model gap)---mean that
 per-forecast arithmetic work is roughly a fifth smaller on the frozen task at
 batched operating points (at batch 1 the dense baseline remains fastest,
 Section~\ref{sec:efficiency}, so this reading does not extend to single-window
@@ -40,11 +43,30 @@ at sustained query volume, so per-forecast arithmetic savings compound with
 volume rather than accruing once; and because the saving is architectural,
 it is inherited by any deployment that adopts the same design point,
 independent of software stack. We do not claim that translation here: the
-measured latency advantage is directional and single-machine, and
+measured latency advantage is directional and single-machine (both the
+full-layer and the forecast-required paths are reported,
+Figure~\ref{fig:perf-speed}), and
 cross-hardware transfer remains open. But the efficiency gradient this
 paper maps is the one that matters operationally: content density can be
 coarsened without directionally costing accuracy on the smooth, redundant
 series that dominate production forecasting (Section~\ref{sec:rq3}).
+
+The scaling forecast in Figure~\ref{fig:scaling-forecast} extends this
+reading beyond the measured range. Under the audited component accounting,
+DRRA $(8,4)$ removes $74.7\%$ of attention-path work at a $32$k-token
+context---rising to a $42.7$--$72.9\%$ reduction of whole-layer work at
+widths from $4096$ down to $128$---and the closed form
+$S_\infty = 1 - (1/c_{KV} + 1/(2 c_R))$ shows why the two axes are not
+interchangeable: at DRRA's settings the asymptote splits evenly between retained
+KV columns ($12.5$ points) and index scoring ($12.5$ points), so a further step
+on \emph{either} axis ($c_{KV}\,8{\to}16$ or $c_R\,4{\to}8$) buys the same $6.2$
+points. That is the work-saving form of the decoupling result: the two axes are
+equally powerful levers on cost, but only coarsening KV is (mildly) free in
+accuracy on this task, so the decoupled corner takes the free lever and keeps the
+costly one fine. The projection is deliberately coefficient-free---it is a ratio of
+arithmetic counts---and it is a forecast, not a measurement: realized
+energy savings will be smaller wherever memory traffic or fixed costs
+dominate, as the batch-1 measurements already show.
 
 The immediate
 roadmap is temporal-dependence-aware statistics for the cross-dataset

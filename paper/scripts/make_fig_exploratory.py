@@ -21,9 +21,9 @@ R19 = [json.loads(l) for l in open(REPO / "plan/gates/gate19_324/results/etth1.j
 plt.rcParams.update({"font.family": "serif", "font.size": 9, "axes.labelsize": 9.5,
                      "axes.titlesize": 9.5, "figure.dpi": 300,
                      "axes.spines.top": False, "axes.spines.right": False})
-order = [("CSA (4,4)", A["cell_means_val"]["CSA"]["mean"], A["cell_means_val"]["CSA"]["std"],
+order = [("(4,4)", A["cell_means_val"]["CSA"]["mean"], A["cell_means_val"]["CSA"]["std"],
           A["cell_means_test"]["CSA"]),
-         ("DRRA (8,4)", A["cell_means_val"]["DRRA"]["mean"], A["cell_means_val"]["DRRA"]["std"],
+         ("(8,4)", A["cell_means_val"]["DRRA"]["mean"], A["cell_means_val"]["DRRA"]["std"],
           A["cell_means_test"]["DRRA"]),
          ("(4,8)", A["cell_means_val"]["C48"]["mean"], A["cell_means_val"]["C48"]["std"],
           A["cell_means_test"]["C48"]),
@@ -45,12 +45,12 @@ ax.bar(x - w / 2, [o[1] for o in order], width=w, yerr=[o[2] for o in order],
 ax.bar(x + w / 2, [o[3] for o in order], width=w, color="#DD8452", alpha=0.85,
        label="Test")
 ax.axhline(normal_val, color="black", linestyle="--", linewidth=0.9)
-ax.text(len(order) - 0.4, normal_val + 0.015, "Normal val 0.8389", ha="right", fontsize=8)
 ax.set_xticks(x)
 ax.set_xticklabels(labels, fontsize=8)
 ax.set_ylabel("MSE (standardized)")
-ax.legend(frameon=False, fontsize=8)
-fig.tight_layout()
+ax.legend(frameon=False, fontsize=8, ncol=2, loc="lower left",
+          bbox_to_anchor=(0.0, 1.01), borderaxespad=0.0)
+fig.tight_layout(rect=(0, 0, 1, 0.90))
 fig.savefig(FIG / "fig10_exploratory.pdf")
 fig.savefig(FIG / "fig10_exploratory.png")
 plt.close(fig)
