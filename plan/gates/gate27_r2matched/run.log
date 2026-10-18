@@ -1,0 +1,351 @@
+=== Gate27 Normal_r64: 25 pending of 25 seeds (already done: []) ===
+--- [1/25] seed=42 START 2026-10-16T18:34:36Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.735212  val_mse=0.809941
+      epoch  2/10  train_mse=0.475015  val_mse=0.706687
+      epoch  3/10  train_mse=0.392022  val_mse=0.657820
+      epoch  4/10  train_mse=0.364420  val_mse=0.672070
+      epoch  5/10  train_mse=0.349186  val_mse=0.696237
+      epoch  6/10  train_mse=0.336373  val_mse=0.737214
+      epoch  7/10  train_mse=0.324211  val_mse=0.728340
+      epoch  8/10  train_mse=0.312416  val_mse=0.735173
+      epoch  9/10  train_mse=0.302215  val_mse=0.756672
+      epoch 10/10  train_mse=0.294039  val_mse=0.760981
+      FINAL val_mse=0.760981 test_mse=0.998821 train_mse=0.294039 (elapsed 1418s)
+      appended: {"cell_name": "Normal_r64", "seed": 42, "val_mse": 0.76098129, "test_mse": 0.99882054, "final_train_mse": 0.29403921, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T18:58:14Z"}
+--- [2/25] seed=123 START 2026-10-16T18:58:14Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.728211  val_mse=0.781538
+      epoch  2/10  train_mse=0.475974  val_mse=0.669387
+      epoch  3/10  train_mse=0.397753  val_mse=0.633396
+      epoch  4/10  train_mse=0.365283  val_mse=0.673396
+      epoch  5/10  train_mse=0.350750  val_mse=0.689026
+      epoch  6/10  train_mse=0.338925  val_mse=0.699556
+      epoch  7/10  train_mse=0.326700  val_mse=0.727856
+      epoch  8/10  train_mse=0.314951  val_mse=0.727461
+      epoch  9/10  train_mse=0.305051  val_mse=0.751222
+      epoch 10/10  train_mse=0.296924  val_mse=0.719075
+      FINAL val_mse=0.719075 test_mse=0.961530 train_mse=0.296924 (elapsed 790s)
+      appended: {"cell_name": "Normal_r64", "seed": 123, "val_mse": 0.71907521, "test_mse": 0.96152999, "final_train_mse": 0.29692388, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T19:11:24Z"}
+--- [3/25] seed=2024 START 2026-10-16T19:11:24Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.729387  val_mse=0.797260
+      epoch  2/10  train_mse=0.471308  val_mse=0.640989
+      epoch  3/10  train_mse=0.391141  val_mse=0.650021
+      epoch  4/10  train_mse=0.365798  val_mse=0.646647
+      epoch  5/10  train_mse=0.351529  val_mse=0.659607
+      epoch  6/10  train_mse=0.339309  val_mse=0.643008
+      epoch  7/10  train_mse=0.326969  val_mse=0.674819
+      epoch  8/10  train_mse=0.315390  val_mse=0.658698
+      epoch  9/10  train_mse=0.305410  val_mse=0.720386
+      epoch 10/10  train_mse=0.297656  val_mse=0.729573
+      FINAL val_mse=0.729573 test_mse=0.945725 train_mse=0.297656 (elapsed 912s)
+      appended: {"cell_name": "Normal_r64", "seed": 2024, "val_mse": 0.72957322, "test_mse": 0.94572484, "final_train_mse": 0.29765643, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T19:26:36Z"}
+--- [4/25] seed=7 START 2026-10-16T19:26:36Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.743706  val_mse=0.830038
+      epoch  2/10  train_mse=0.488752  val_mse=0.703879
+      epoch  3/10  train_mse=0.406353  val_mse=0.690098
+      epoch  4/10  train_mse=0.369283  val_mse=0.712498
+      epoch  5/10  train_mse=0.354118  val_mse=0.770344
+      epoch  6/10  train_mse=0.341438  val_mse=0.756314
+      epoch  7/10  train_mse=0.330058  val_mse=0.829260
+      epoch  8/10  train_mse=0.318587  val_mse=0.777241
+      epoch  9/10  train_mse=0.308601  val_mse=0.816757
+      epoch 10/10  train_mse=0.300653  val_mse=0.876098
+      FINAL val_mse=0.876098 test_mse=1.138988 train_mse=0.300653 (elapsed 991s)
+      appended: {"cell_name": "Normal_r64", "seed": 7, "val_mse": 0.87609775, "test_mse": 1.13898765, "final_train_mse": 0.30065269, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T19:43:08Z"}
+--- [5/25] seed=99 START 2026-10-16T19:43:08Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.736077  val_mse=0.809278
+      epoch  2/10  train_mse=0.475858  val_mse=0.714515
+      epoch  3/10  train_mse=0.393750  val_mse=0.680288
+      epoch  4/10  train_mse=0.363571  val_mse=0.667403
+      epoch  5/10  train_mse=0.350505  val_mse=0.702670
+      epoch  6/10  train_mse=0.339056  val_mse=0.756919
+      epoch  7/10  train_mse=0.328025  val_mse=0.738278
+      epoch  8/10  train_mse=0.316398  val_mse=0.753783
+      epoch  9/10  train_mse=0.306470  val_mse=0.808040
+      epoch 10/10  train_mse=0.298443  val_mse=0.828094
+      FINAL val_mse=0.828094 test_mse=1.080649 train_mse=0.298443 (elapsed 581s)
+      appended: {"cell_name": "Normal_r64", "seed": 99, "val_mse": 0.8280939, "test_mse": 1.08064896, "final_train_mse": 0.29844266, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T19:52:49Z"}
+--- [6/25] seed=1 START 2026-10-16T19:52:49Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.737368  val_mse=0.837148
+      epoch  2/10  train_mse=0.480688  val_mse=0.680041
+      epoch  3/10  train_mse=0.396820  val_mse=0.618275
+      epoch  4/10  train_mse=0.365363  val_mse=0.616985
+      epoch  5/10  train_mse=0.351433  val_mse=0.617115
+      epoch  6/10  train_mse=0.339780  val_mse=0.654272
+      epoch  7/10  train_mse=0.329010  val_mse=0.653542
+      epoch  8/10  train_mse=0.317946  val_mse=0.641230
+      epoch  9/10  train_mse=0.308975  val_mse=0.683035
+      epoch 10/10  train_mse=0.301972  val_mse=0.689305
+      FINAL val_mse=0.689305 test_mse=0.870485 train_mse=0.301972 (elapsed 506s)
+      appended: {"cell_name": "Normal_r64", "seed": 1, "val_mse": 0.6893048, "test_mse": 0.8704853, "final_train_mse": 0.30197234, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T20:01:15Z"}
+--- [7/25] seed=2 START 2026-10-16T20:01:15Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.736912  val_mse=0.820238
+      epoch  2/10  train_mse=0.489597  val_mse=0.689366
+      epoch  3/10  train_mse=0.406658  val_mse=0.642794
+      epoch  4/10  train_mse=0.371221  val_mse=0.671936
+      epoch  5/10  train_mse=0.356754  val_mse=0.687313
+      epoch  6/10  train_mse=0.344065  val_mse=0.694094
+      epoch  7/10  train_mse=0.332013  val_mse=0.725718
+      epoch  8/10  train_mse=0.320467  val_mse=0.739131
+      epoch  9/10  train_mse=0.310075  val_mse=0.778623
+      epoch 10/10  train_mse=0.301522  val_mse=0.743310
+      FINAL val_mse=0.743310 test_mse=0.894969 train_mse=0.301522 (elapsed 529s)
+      appended: {"cell_name": "Normal_r64", "seed": 2, "val_mse": 0.74330974, "test_mse": 0.89496901, "final_train_mse": 0.30152179, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T20:10:04Z"}
+--- [8/25] seed=3 START 2026-10-16T20:10:04Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.731119  val_mse=0.824420
+      epoch  2/10  train_mse=0.480556  val_mse=0.678123
+      epoch  3/10  train_mse=0.396206  val_mse=0.612835
+      epoch  4/10  train_mse=0.364950  val_mse=0.657416
+      epoch  5/10  train_mse=0.349624  val_mse=0.750118
+      epoch  6/10  train_mse=0.336268  val_mse=0.720714
+      epoch  7/10  train_mse=0.322408  val_mse=0.802603
+      epoch  8/10  train_mse=0.310392  val_mse=0.801598
+      epoch  9/10  train_mse=0.300447  val_mse=0.768816
+      epoch 10/10  train_mse=0.292178  val_mse=0.726791
+      FINAL val_mse=0.726791 test_mse=1.040420 train_mse=0.292178 (elapsed 456s)
+      appended: {"cell_name": "Normal_r64", "seed": 3, "val_mse": 0.72679137, "test_mse": 1.04041971, "final_train_mse": 0.29217836, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T20:17:40Z"}
+--- [9/25] seed=4 START 2026-10-16T20:17:40Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.740408  val_mse=0.820201
+      epoch  2/10  train_mse=0.480506  val_mse=0.662219
+      epoch  3/10  train_mse=0.395214  val_mse=0.621134
+      epoch  4/10  train_mse=0.366652  val_mse=0.699833
+      epoch  5/10  train_mse=0.353174  val_mse=0.707529
+      epoch  6/10  train_mse=0.341956  val_mse=0.753249
+      epoch  7/10  train_mse=0.330544  val_mse=0.758488
+      epoch  8/10  train_mse=0.319522  val_mse=0.826923
+      epoch  9/10  train_mse=0.309066  val_mse=0.828788
+      epoch 10/10  train_mse=0.300764  val_mse=0.819424
+      FINAL val_mse=0.819424 test_mse=1.083887 train_mse=0.300764 (elapsed 473s)
+      appended: {"cell_name": "Normal_r64", "seed": 4, "val_mse": 0.81942378, "test_mse": 1.08388677, "final_train_mse": 0.30076441, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T20:25:34Z"}
+--- [10/25] seed=5 START 2026-10-16T20:25:34Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.740052  val_mse=0.813293
+      epoch  2/10  train_mse=0.486644  val_mse=0.770633
+      epoch  3/10  train_mse=0.417615  val_mse=0.703099
+      epoch  4/10  train_mse=0.367545  val_mse=0.777230
+      epoch  5/10  train_mse=0.350730  val_mse=0.790697
+      epoch  6/10  train_mse=0.337654  val_mse=0.857668
+      epoch  7/10  train_mse=0.325563  val_mse=0.893660
+      epoch  8/10  train_mse=0.314417  val_mse=0.980895
+      epoch  9/10  train_mse=0.304682  val_mse=0.887442
+      epoch 10/10  train_mse=0.296774  val_mse=0.882520
+      FINAL val_mse=0.882520 test_mse=1.181061 train_mse=0.296774 (elapsed 576s)
+      appended: {"cell_name": "Normal_r64", "seed": 5, "val_mse": 0.88251965, "test_mse": 1.18106079, "final_train_mse": 0.29677355, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T20:35:10Z"}
+--- [11/25] seed=6 START 2026-10-16T20:35:10Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.739861  val_mse=0.826573
+      epoch  2/10  train_mse=0.477464  val_mse=0.656194
+      epoch  3/10  train_mse=0.394450  val_mse=0.638539
+      epoch  4/10  train_mse=0.366297  val_mse=0.643360
+      epoch  5/10  train_mse=0.352238  val_mse=0.703029
+      epoch  6/10  train_mse=0.339606  val_mse=0.668653
+      epoch  7/10  train_mse=0.326615  val_mse=0.732723
+      epoch  8/10  train_mse=0.315236  val_mse=0.758339
+      epoch  9/10  train_mse=0.305243  val_mse=0.769526
+      epoch 10/10  train_mse=0.297100  val_mse=0.731341
+      FINAL val_mse=0.731341 test_mse=0.902859 train_mse=0.297100 (elapsed 584s)
+      appended: {"cell_name": "Normal_r64", "seed": 6, "val_mse": 0.73134148, "test_mse": 0.90285923, "final_train_mse": 0.29710032, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T20:44:54Z"}
+--- [12/25] seed=8 START 2026-10-16T20:44:54Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.731090  val_mse=0.828228
+      epoch  2/10  train_mse=0.478732  val_mse=0.698530
+      epoch  3/10  train_mse=0.398680  val_mse=0.664575
+      epoch  4/10  train_mse=0.366850  val_mse=0.695596
+      epoch  5/10  train_mse=0.351603  val_mse=0.737485
+      epoch  6/10  train_mse=0.338581  val_mse=0.719556
+      epoch  7/10  train_mse=0.326235  val_mse=0.776183
+      epoch  8/10  train_mse=0.315778  val_mse=0.763950
+      epoch  9/10  train_mse=0.307448  val_mse=0.903884
+      epoch 10/10  train_mse=0.299991  val_mse=0.903202
+      FINAL val_mse=0.903202 test_mse=1.148372 train_mse=0.299991 (elapsed 1155s)
+      appended: {"cell_name": "Normal_r64", "seed": 8, "val_mse": 0.90320186, "test_mse": 1.14837217, "final_train_mse": 0.29999141, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T21:04:09Z"}
+--- [13/25] seed=9 START 2026-10-16T21:04:09Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.730257  val_mse=0.829041
+      epoch  2/10  train_mse=0.480704  val_mse=0.672137
+      epoch  3/10  train_mse=0.408984  val_mse=0.615609
+      epoch  4/10  train_mse=0.369245  val_mse=0.671682
+      epoch  5/10  train_mse=0.354732  val_mse=0.678145
+      epoch  6/10  train_mse=0.343364  val_mse=0.709957
+      epoch  7/10  train_mse=0.332494  val_mse=0.771593
+      epoch  8/10  train_mse=0.320793  val_mse=0.787365
+      epoch  9/10  train_mse=0.310389  val_mse=0.852890
+      epoch 10/10  train_mse=0.301130  val_mse=0.834646
+      FINAL val_mse=0.834646 test_mse=1.100460 train_mse=0.301130 (elapsed 1033s)
+      appended: {"cell_name": "Normal_r64", "seed": 9, "val_mse": 0.83464569, "test_mse": 1.10045993, "final_train_mse": 0.30113022, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T21:21:22Z"}
+--- [14/25] seed=10 START 2026-10-16T21:21:22Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.736568  val_mse=0.801791
+      epoch  2/10  train_mse=0.479663  val_mse=0.715298
+      epoch  3/10  train_mse=0.390308  val_mse=0.713543
+      epoch  4/10  train_mse=0.361196  val_mse=0.723034
+      epoch  5/10  train_mse=0.347579  val_mse=0.768442
+      epoch  6/10  train_mse=0.335024  val_mse=0.786621
+      epoch  7/10  train_mse=0.322710  val_mse=0.766710
+      epoch  8/10  train_mse=0.311080  val_mse=0.796742
+      epoch  9/10  train_mse=0.302001  val_mse=0.787940
+      epoch 10/10  train_mse=0.294105  val_mse=0.771248
+      FINAL val_mse=0.771248 test_mse=1.062658 train_mse=0.294105 (elapsed 879s)
+      appended: {"cell_name": "Normal_r64", "seed": 10, "val_mse": 0.77124756, "test_mse": 1.06265769, "final_train_mse": 0.29410519, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T21:36:01Z"}
+--- [15/25] seed=11 START 2026-10-16T21:36:01Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.742338  val_mse=0.789737
+      epoch  2/10  train_mse=0.482266  val_mse=0.671792
+      epoch  3/10  train_mse=0.402995  val_mse=0.636005
+      epoch  4/10  train_mse=0.366996  val_mse=0.644795
+      epoch  5/10  train_mse=0.352285  val_mse=0.684900
+      epoch  6/10  train_mse=0.339957  val_mse=0.713731
+      epoch  7/10  train_mse=0.327486  val_mse=0.698939
+      epoch  8/10  train_mse=0.315655  val_mse=0.765301
+      epoch  9/10  train_mse=0.306308  val_mse=0.801711
+      epoch 10/10  train_mse=0.297804  val_mse=0.806460
+      FINAL val_mse=0.806460 test_mse=0.979097 train_mse=0.297804 (elapsed 763s)
+      appended: {"cell_name": "Normal_r64", "seed": 11, "val_mse": 0.80645997, "test_mse": 0.97909732, "final_train_mse": 0.29780362, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T21:48:43Z"}
+--- [16/25] seed=12 START 2026-10-16T21:48:43Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.734866  val_mse=0.818637
+      epoch  2/10  train_mse=0.475827  val_mse=0.700471
+      epoch  3/10  train_mse=0.392271  val_mse=0.663533
+      epoch  4/10  train_mse=0.364215  val_mse=0.691418
+      epoch  5/10  train_mse=0.349174  val_mse=0.691083
+      epoch  6/10  train_mse=0.335350  val_mse=0.765870
+      epoch  7/10  train_mse=0.322125  val_mse=0.740894
+      epoch  8/10  train_mse=0.311810  val_mse=0.738220
+      epoch  9/10  train_mse=0.303486  val_mse=0.720802
+      epoch 10/10  train_mse=0.296463  val_mse=0.801805
+      FINAL val_mse=0.801805 test_mse=1.025758 train_mse=0.296463 (elapsed 1108s)
+      appended: {"cell_name": "Normal_r64", "seed": 12, "val_mse": 0.80180483, "test_mse": 1.02575829, "final_train_mse": 0.2964633, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T22:07:12Z"}
+--- [17/25] seed=13 START 2026-10-16T22:07:12Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.734608  val_mse=0.802651
+      epoch  2/10  train_mse=0.474964  val_mse=0.684505
+      epoch  3/10  train_mse=0.389449  val_mse=0.669585
+      epoch  4/10  train_mse=0.360977  val_mse=0.719621
+      epoch  5/10  train_mse=0.347495  val_mse=0.769952
+      epoch  6/10  train_mse=0.336010  val_mse=0.778268
+      epoch  7/10  train_mse=0.324414  val_mse=0.883448
+      epoch  8/10  train_mse=0.313459  val_mse=0.903925
+      epoch  9/10  train_mse=0.304318  val_mse=0.906162
+      epoch 10/10  train_mse=0.296740  val_mse=0.901142
+      FINAL val_mse=0.901142 test_mse=1.177272 train_mse=0.296740 (elapsed 958s)
+      appended: {"cell_name": "Normal_r64", "seed": 13, "val_mse": 0.90114238, "test_mse": 1.1772725, "final_train_mse": 0.29673968, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T22:23:10Z"}
+--- [18/25] seed=14 START 2026-10-16T22:23:10Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.723287  val_mse=0.806816
+      epoch  2/10  train_mse=0.473205  val_mse=0.614743
+      epoch  3/10  train_mse=0.390760  val_mse=0.629254
+      epoch  4/10  train_mse=0.362152  val_mse=0.667684
+      epoch  5/10  train_mse=0.346581  val_mse=0.708230
+      epoch  6/10  train_mse=0.333538  val_mse=0.738716
+      epoch  7/10  train_mse=0.320923  val_mse=0.748670
+      epoch  8/10  train_mse=0.310483  val_mse=0.732978
+      epoch  9/10  train_mse=0.301870  val_mse=0.768149
+      epoch 10/10  train_mse=0.294075  val_mse=0.753008
+      FINAL val_mse=0.753008 test_mse=1.023737 train_mse=0.294075 (elapsed 700s)
+      appended: {"cell_name": "Normal_r64", "seed": 14, "val_mse": 0.75300815, "test_mse": 1.02373664, "final_train_mse": 0.29407479, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T22:34:50Z"}
+--- [19/25] seed=15 START 2026-10-16T22:34:50Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.738139  val_mse=0.811560
+      epoch  2/10  train_mse=0.480302  val_mse=0.655289
+      epoch  3/10  train_mse=0.395258  val_mse=0.611882
+      epoch  4/10  train_mse=0.367449  val_mse=0.637039
+      epoch  5/10  train_mse=0.353130  val_mse=0.692583
+      epoch  6/10  train_mse=0.340207  val_mse=0.699023
+      epoch  7/10  train_mse=0.326831  val_mse=0.700571
+      epoch  8/10  train_mse=0.315398  val_mse=0.687146
+      epoch  9/10  train_mse=0.305887  val_mse=0.682876
+      epoch 10/10  train_mse=0.298056  val_mse=0.697388
+      FINAL val_mse=0.697388 test_mse=0.930480 train_mse=0.298056 (elapsed 873s)
+      appended: {"cell_name": "Normal_r64", "seed": 15, "val_mse": 0.69738784, "test_mse": 0.93048024, "final_train_mse": 0.29805647, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T22:49:23Z"}
+--- [20/25] seed=16 START 2026-10-16T22:49:23Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.731610  val_mse=0.799413
+      epoch  2/10  train_mse=0.472397  val_mse=0.639702
+      epoch  3/10  train_mse=0.391772  val_mse=0.632207
+      epoch  4/10  train_mse=0.365432  val_mse=0.708882
+      epoch  5/10  train_mse=0.349711  val_mse=0.781093
+      epoch  6/10  train_mse=0.336782  val_mse=0.813781
+      epoch  7/10  train_mse=0.323751  val_mse=0.811323
+      epoch  8/10  train_mse=0.312246  val_mse=0.811204
+      epoch  9/10  train_mse=0.302297  val_mse=0.833485
+      epoch 10/10  train_mse=0.294508  val_mse=0.811702
+      FINAL val_mse=0.811702 test_mse=1.103973 train_mse=0.294508 (elapsed 907s)
+      appended: {"cell_name": "Normal_r64", "seed": 16, "val_mse": 0.81170208, "test_mse": 1.10397348, "final_train_mse": 0.29450762, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T23:04:31Z"}
+--- [21/25] seed=17 START 2026-10-16T23:04:31Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.735681  val_mse=0.829636
+      epoch  2/10  train_mse=0.479089  val_mse=0.693544
+      epoch  3/10  train_mse=0.397270  val_mse=0.657531
+      epoch  4/10  train_mse=0.363432  val_mse=0.699764
+      epoch  5/10  train_mse=0.348349  val_mse=0.718829
+      epoch  6/10  train_mse=0.335249  val_mse=0.712256
+      epoch  7/10  train_mse=0.322561  val_mse=0.781106
+      epoch  8/10  train_mse=0.311740  val_mse=0.787965
+      epoch  9/10  train_mse=0.302756  val_mse=0.808752
+      epoch 10/10  train_mse=0.295382  val_mse=0.870875
+      FINAL val_mse=0.870875 test_mse=1.068462 train_mse=0.295382 (elapsed 938s)
+      appended: {"cell_name": "Normal_r64", "seed": 17, "val_mse": 0.87087465, "test_mse": 1.06846235, "final_train_mse": 0.29538202, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T23:20:09Z"}
+--- [22/25] seed=18 START 2026-10-16T23:20:09Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.737026  val_mse=0.803492
+      epoch  2/10  train_mse=0.479744  val_mse=0.676156
+      epoch  3/10  train_mse=0.396645  val_mse=0.655030
+      epoch  4/10  train_mse=0.366683  val_mse=0.646198
+      epoch  5/10  train_mse=0.352107  val_mse=0.683947
+      epoch  6/10  train_mse=0.339084  val_mse=0.768150
+      epoch  7/10  train_mse=0.326751  val_mse=0.773482
+      epoch  8/10  train_mse=0.315165  val_mse=0.762605
+      epoch  9/10  train_mse=0.305584  val_mse=0.799864
+      epoch 10/10  train_mse=0.298071  val_mse=0.825469
+      FINAL val_mse=0.825469 test_mse=1.125912 train_mse=0.298071 (elapsed 1148s)
+      appended: {"cell_name": "Normal_r64", "seed": 18, "val_mse": 0.82546939, "test_mse": 1.12591173, "final_train_mse": 0.29807122, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T23:39:17Z"}
+--- [23/25] seed=19 START 2026-10-16T23:39:17Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.725430  val_mse=0.820656
+      epoch  2/10  train_mse=0.469543  val_mse=0.740654
+      epoch  3/10  train_mse=0.395247  val_mse=0.677795
+      epoch  4/10  train_mse=0.365645  val_mse=0.706489
+      epoch  5/10  train_mse=0.351895  val_mse=0.726663
+      epoch  6/10  train_mse=0.339162  val_mse=0.742636
+      epoch  7/10  train_mse=0.326815  val_mse=0.734630
+      epoch  8/10  train_mse=0.315028  val_mse=0.774170
+      epoch  9/10  train_mse=0.306028  val_mse=0.791404
+      epoch 10/10  train_mse=0.297806  val_mse=0.775213
+      FINAL val_mse=0.775213 test_mse=0.971084 train_mse=0.297806 (elapsed 812s)
+      appended: {"cell_name": "Normal_r64", "seed": 19, "val_mse": 0.77521287, "test_mse": 0.97108439, "final_train_mse": 0.29780601, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-16T23:52:49Z"}
+--- [24/25] seed=20 START 2026-10-16T23:52:49Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.734210  val_mse=0.805704
+      epoch  2/10  train_mse=0.482419  val_mse=0.685534
+      epoch  3/10  train_mse=0.402702  val_mse=0.627795
+      epoch  4/10  train_mse=0.366307  val_mse=0.614654
+      epoch  5/10  train_mse=0.350913  val_mse=0.647037
+      epoch  6/10  train_mse=0.337541  val_mse=0.676138
+      epoch  7/10  train_mse=0.324930  val_mse=0.706501
+      epoch  8/10  train_mse=0.312957  val_mse=0.678431
+      epoch  9/10  train_mse=0.302544  val_mse=0.731927
+      epoch 10/10  train_mse=0.294364  val_mse=0.706596
+      FINAL val_mse=0.706596 test_mse=0.914651 train_mse=0.294364 (elapsed 845s)
+      appended: {"cell_name": "Normal_r64", "seed": 20, "val_mse": 0.70659616, "test_mse": 0.91465118, "final_train_mse": 0.29436381, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-17T00:06:55Z"}
+--- [25/25] seed=21 START 2026-10-17T00:06:55Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.735014  val_mse=0.809482
+      epoch  2/10  train_mse=0.476269  val_mse=0.682530
+      epoch  3/10  train_mse=0.393432  val_mse=0.631796
+      epoch  4/10  train_mse=0.366155  val_mse=0.660115
+      epoch  5/10  train_mse=0.352583  val_mse=0.699889
+      epoch  6/10  train_mse=0.340927  val_mse=0.667247
+      epoch  7/10  train_mse=0.330148  val_mse=0.704901
+      epoch  8/10  train_mse=0.319083  val_mse=0.715331
+      epoch  9/10  train_mse=0.309721  val_mse=0.793081
+      epoch 10/10  train_mse=0.301207  val_mse=0.808652
+      FINAL val_mse=0.808652 test_mse=0.970620 train_mse=0.301207 (elapsed 1150s)
+      appended: {"cell_name": "Normal_r64", "seed": 21, "val_mse": 0.80865221, "test_mse": 0.97062005, "final_train_mse": 0.30120686, "attn_params": 61536, "full_params": 314240, "o_lora_rank": 64, "provenance": "gate27/uv-torch2.6.0/r2-projection-matched", "completed_utc": "2026-10-17T00:26:05Z"}

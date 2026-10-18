@@ -1,0 +1,21 @@
+R5 causality extension — index-score masking, ties, boundaries/padding
+cells: [(4, 4), (8, 4), (4, 8), (8, 8), (16, 4), (32, 4)], S=256, adversarial split Q0=128
+  [4,4] A: past output bitwise True, token set True, block tensor True
+  [4,4] B: tie-duplicate past output bitwise True, token set True, block tensor True
+  [8,4] A: past output bitwise True, token set True, block tensor True
+  [8,4] B: tie-duplicate past output bitwise True, token set True, block tensor True
+  [4,8] A: past output bitwise True, token set True, block tensor True
+  [4,8] B: tie-duplicate past output bitwise True, token set True, block tensor True
+  [8,8] A: past output bitwise True, token set True, block tensor True
+  [8,8] B: tie-duplicate past output bitwise True, token set True, block tensor True
+  [16,4] A: past output bitwise True, token set True, block tensor True
+  [16,4] B: tie-duplicate past output bitwise True, token set True, block tensor True
+  [32,4] A: past output bitwise True, token set True, block tensor True
+  [32,4] B: tie-duplicate past output bitwise True, token set True, block tensor True
+C. non-divisible length (patch regime)
+  [4,4] C: S=31 forward OK; blocks reachable=[0, 1, 2, 3, 4, 5, 6] of nk=7
+  [8,4] C: S=31 forward OK; blocks reachable=[0, 1, 2] of nk=3
+  [4,8] C: S=31 forward OK; blocks reachable=[0, 1, 2, 3, 4, 5] of nk=7
+  [8,8] C: S=31 forward OK; blocks reachable=[0, 1, 2] of nk=3
+
+ALL R5 CAUSALITY CHECKS PASSED (6 cells at S=256; 4 cells at S=31)

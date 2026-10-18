@@ -1,0 +1,89 @@
+[train] syn_delayedcopy Normal seed=42
+      epoch  1/10  train_mse=0.762004  val_mse=0.400433
+      epoch  2/10  train_mse=0.312144  val_mse=0.290786
+      epoch  3/10  train_mse=0.287311  val_mse=0.289607
+      epoch  4/10  train_mse=0.286757  val_mse=0.289233
+      epoch  5/10  train_mse=0.286544  val_mse=0.288943
+      epoch  6/10  train_mse=0.286417  val_mse=0.288850
+      epoch  7/10  train_mse=0.286320  val_mse=0.288883
+      epoch  8/10  train_mse=0.286295  val_mse=0.288760
+      epoch  9/10  train_mse=0.286204  val_mse=0.288838
+      epoch 10/10  train_mse=0.286157  val_mse=0.288649
+  val 0.2886 test 0.3004 (629s)
+[train] syn_delayedcopy Flat seed=42
+      epoch  1/10  train_mse=0.774698  val_mse=0.424752
+      epoch  2/10  train_mse=0.321586  val_mse=0.295230
+      epoch  3/10  train_mse=0.290633  val_mse=0.291916
+      epoch  4/10  train_mse=0.288876  val_mse=0.291336
+      epoch  5/10  train_mse=0.288204  val_mse=0.290754
+      epoch  6/10  train_mse=0.287723  val_mse=0.290043
+      epoch  7/10  train_mse=0.287396  val_mse=0.289917
+      epoch  8/10  train_mse=0.287169  val_mse=0.289926
+      epoch  9/10  train_mse=0.286923  val_mse=0.289570
+      epoch 10/10  train_mse=0.286781  val_mse=0.289611
+  val 0.2896 test 0.3013 (1132s)
+[train] syn_delayedcopy DRRA seed=42
+      epoch  1/10  train_mse=0.771826  val_mse=0.422521
+      epoch  2/10  train_mse=0.321015  val_mse=0.294976
+      epoch  3/10  train_mse=0.290562  val_mse=0.293444
+      epoch  4/10  train_mse=0.288951  val_mse=0.291684
+      epoch  5/10  train_mse=0.288092  val_mse=0.290512
+      epoch  6/10  train_mse=0.287617  val_mse=0.290061
+      epoch  7/10  train_mse=0.287368  val_mse=0.289663
+      epoch  8/10  train_mse=0.287150  val_mse=0.289568
+      epoch  9/10  train_mse=0.286946  val_mse=0.289807
+      epoch 10/10  train_mse=0.286840  val_mse=0.289590
+  val 0.2896 test 0.3013 (986s)
+[train] syn_changepoints Normal seed=42
+      epoch  1/10  train_mse=0.334331  val_mse=6.425897
+      epoch  2/10  train_mse=0.068081  val_mse=6.274727
+      epoch  3/10  train_mse=0.060293  val_mse=6.244136
+      epoch  4/10  train_mse=0.059103  val_mse=6.169697
+      epoch  5/10  train_mse=0.058735  val_mse=6.121190
+      epoch  6/10  train_mse=0.058531  val_mse=6.101502
+      epoch  7/10  train_mse=0.058431  val_mse=6.027229
+      epoch  8/10  train_mse=0.058239  val_mse=5.995767
+      epoch  9/10  train_mse=0.058237  val_mse=5.963923
+      epoch 10/10  train_mse=0.058172  val_mse=5.947039
+  val 5.9470 test 12.1139 (1186s)
+[train] syn_changepoints Flat seed=42
+      epoch  1/10  train_mse=0.338968  val_mse=6.434151
+      epoch  2/10  train_mse=0.065974  val_mse=6.285099
+      epoch  3/10  train_mse=0.060026  val_mse=6.206197
+      epoch  4/10  train_mse=0.059047  val_mse=6.129026
+      epoch  5/10  train_mse=0.058710  val_mse=6.056657
+      epoch  6/10  train_mse=0.058397  val_mse=5.996256
+      epoch  7/10  train_mse=0.058648  val_mse=5.950664
+      epoch  8/10  train_mse=0.058226  val_mse=5.925932
+      epoch  9/10  train_mse=0.058188  val_mse=5.894545
+      epoch 10/10  train_mse=0.058159  val_mse=5.896333
+  val 5.8963 test 11.8828 (1119s)
+[train] syn_changepoints DRRA seed=42
+      epoch  1/10  train_mse=0.338208  val_mse=6.440745
+      epoch  2/10  train_mse=0.065434  val_mse=6.297118
+      epoch  3/10  train_mse=0.059779  val_mse=6.207311
+      epoch  4/10  train_mse=0.058898  val_mse=6.138846
+      epoch  5/10  train_mse=0.058616  val_mse=6.067415
+      epoch  6/10  train_mse=0.058328  val_mse=6.020656
+      epoch  7/10  train_mse=0.058620  val_mse=5.977873
+      epoch  8/10  train_mse=0.058187  val_mse=5.952360
+      epoch  9/10  train_mse=0.058145  val_mse=5.919979
+      epoch 10/10  train_mse=0.058140  val_mse=5.923257
+  val 5.9233 test 11.9372 (1080s)
+[per-channel] Normal: 0.0007 0.0008 0.0007 0.0007 0.0007 1.0453 1.0542
+[per-channel] Flat: 0.0014 0.0013 0.0013 0.0017 0.0032 1.0456 1.0547
+[per-channel] DRRA: 0.0013 0.0013 0.0013 0.0022 0.0026 1.0456 1.0545
+[cp-distance] Normal: 0-100=10.701(n=100)  100-500=11.765(n=644)  500-1000=12.225(n=1000)  1000-2000=12.248(n=1905)
+[cp-distance] Flat: 0-100=10.225(n=100)  100-500=11.551(n=644)  500-1000=12.011(n=1000)  1000-2000=12.015(n=1905)
+[cp-distance] DRRA: 0-100=10.297(n=100)  100-500=11.609(n=644)  500-1000=12.062(n=1000)  1000-2000=12.068(n=1905)
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+[gate3_datasets] ettm1: dropped non-numeric columns: ['date']
+[gate3_datasets] ettm2: dropped non-numeric columns: ['date']
+[gate3_datasets] electricity: dropped non-numeric columns: ['date']
+[gate3_datasets] traffic: dropped non-numeric columns: ['date']
+[gate3_datasets] weather: dropped non-numeric columns: ['date']
+[gate3_datasets] exchange: dropped non-numeric columns: ['date']
+[signal-dep] Flat: Δval -8.93% | vs lag1: r=-0.347 (p=0.270) rho=-0.217 | vs roughness: r=+0.184
+[signal-dep] DRRA: Δval -8.26% | vs lag1: r=-0.293 (p=0.355) rho=-0.245 | vs roughness: r=+0.181
+wrote /Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/gate26_r5probes/gate26_results.json

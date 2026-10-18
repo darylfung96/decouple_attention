@@ -202,8 +202,9 @@ Section~\ref{sec:stats}).
 \caption{Compressed vs.\ full attention (25 paired seeds, frozen protocol;
 validation and test MSE in standardized units, lower is better).
 $\Delta$val and $\Delta$test are relative changes against the Normal
-(full-attention) row, in percent, computed on the 4-decimal means
-(negative is better); ``Seeds beating Normal'' counts paired seeds where
+(full-attention) row, in percent, computed from the underlying per-seed means
+(not from the displayed four-decimal rounding) and then rounded to two
+decimals (negative is better); ``Seeds beating Normal'' counts paired seeds where
 the cell's value is lower. Bold: best (lowest) mean in each column.
 Parameter counts are not
 equalized across the rows: the as-run Normal is a different attention class and
@@ -216,7 +217,7 @@ compressed cells' rank-64 bottleneck and carries $\sim$10\% fewer.}
 Config & Val mean $\pm$ std & Test mean & $\Delta$val vs.\ Normal & $\Delta$test vs.\ Normal & Seeds beating Normal \\
 \midrule
 Normal & $0.8389 \pm 0.0814$ & 1.0804 & --- & --- & --- \\
-Normal-r64 & $0.7910 \pm 0.0649$ & 1.0281 & $-5.72\%$ & $-4.84\%$ & 15 / 25 \\
+Normal-r64 & $0.7910 \pm 0.0649$ & 1.0281 & $-5.72\%$ & $-4.85\%$ & 15 / 25 \\
 $(4,4)$ & $\mathbf{0.6148} \pm 0.0704$ & 0.8771 & $-26.72\%$ & $-18.82\%$ & 24 / 25 \\
 $(8,4)$ & $0.6190 \pm 0.0827$ & $\mathbf{0.8440}$ & $-26.22\%$ & $-21.89\%$ & 24 / 25 \\
 \bottomrule

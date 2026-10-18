@@ -105,3 +105,10 @@ frontier figure, and every efficiency claim in the abstract, §4.6 and the concl
   that were missing). Full-text check of the PDF: `verify_manuscript.py` 0 failures, 0 unresolved refs,
   31 pp; the matched numbers appear in exactly the intended places (0.7910 ×4, 0.0649/1.0281 ×2,
   0.2975 ×1, −0.110/−0.178 ×3, 21–25 ×2).
+- 2026-10-17 (final audit): two more fixes from the number cross-check — Table 3's caption claimed
+  percentages were computed on the 4-decimal means while the table (all rows, pre-existing) uses the
+  underlying means; the caption now states the actual rule and the Normal-r64 test delta is −4.85% (was
+  −4.84%, the only row that had followed the stale rule). Appendix D now prints the matched account
+  (76.86M → 66.38M) so the 7.8% is traceable inside the paper. Evidence logs for the three new gates
+  (R5, R4, R2: run/tests/comparison/analysis) were force-added to git under the `*.log` ignore rule, as
+  the paper's "released logs" claims require; historical gate logs stay as they were.

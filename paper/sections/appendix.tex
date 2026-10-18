@@ -127,7 +127,8 @@ the projection: the dense baseline uses a rank-128 output projection while
 the compressed cells use the equalized rank-64 bottleneck, and only the
 compressed cells pay the router and compressor terms. Of the $15.66$M
 whole-model gap between Normal and DRRA $(8,4)$, $10.49$M is the output
-projection alone; matching that rank leaves a $7.8\%$ whole-model
+projection alone; matching that rank changes the dense account from $76.86$M to
+$66.38$M and leaves a $7.8\%$ whole-model
 difference. That matched baseline was retrained too (25 paired seeds): it
 improves dense accuracy over the as-run Normal and every compressed cell still
 beats it, so the accuracy gap is not a projection artifact. Operations excluded

@@ -1,0 +1,39 @@
+== model val/test MSE: gate12 (historical) -> gate26 (regenerated) ==
+  syn_changepoints_DRRA        val 5.9233 -> 5.9233   test 11.9372 -> 11.9372
+  syn_changepoints_Flat        val 5.9415 -> 5.8963   test 11.9748 -> 11.8828
+  syn_changepoints_Normal      val 5.9470 -> 5.9470   test 12.1139 -> 12.1139
+  syn_delayedcopy_DRRA         val 0.2896 -> 0.2896   test 0.3013 -> 0.3013
+  syn_delayedcopy_Flat         val 0.2896 -> 0.2896   test 0.3013 -> 0.3013
+  syn_delayedcopy_Normal       val 0.2886 -> 0.2886   test 0.3004 -> 0.3004
+
+== (i) delayed-copy per-channel test MSE ==
+  Normal   old ['0.00070', '0.00079', '0.00071', '0.00068', '0.00071', '1.04529', '1.05422']
+  Normal   new ['0.00070', '0.00079', '0.00071', '0.00068', '0.00071', '1.04529', '1.05422']
+  Flat     old ['0.00127', '0.00156', '0.00208', '0.00198', '0.00220', '1.04549', '1.05439']
+  Flat     new ['0.00144', '0.00130', '0.00129', '0.00167', '0.00318', '1.04560', '1.05466']
+  DRRA     old ['0.00134', '0.00129', '0.00127', '0.00218', '0.00256', '1.04559', '1.05452']
+  DRRA     new ['0.00134', '0.00129', '0.00127', '0.00218', '0.00256', '1.04559', '1.05452']
+
+== (ii) change-point distance buckets (mean MSE) ==
+  Normal   0-100      10.701 -> 10.701
+  Normal   100-500    11.765 -> 11.765
+  Normal   1000-2000  12.248 -> 12.248
+  Normal   500-1000   12.225 -> 12.225
+  Flat     0-100      10.268 -> 10.225  <-- changed
+  Flat     100-500    11.640 -> 11.551  <-- changed
+  Flat     1000-2000  12.109 -> 12.015  <-- changed
+  Flat     500-1000   12.106 -> 12.011  <-- changed
+  DRRA     0-100      10.297 -> 10.297
+  DRRA     100-500    11.609 -> 11.609
+  DRRA     1000-2000  12.068 -> 12.068
+  DRRA     500-1000   12.062 -> 12.062
+  lowest cell per bucket (gate12): {'0-100': 'Flat', '100-500': 'DRRA', '1000-2000': 'DRRA', '500-1000': 'DRRA'}
+  lowest cell per bucket (gate26): {'0-100': 'Flat', '100-500': 'Flat', '1000-2000': 'Flat', '500-1000': 'Flat'}
+
+== (iii) signal-dependence correlations ==
+  Flat   old mean_dval -8.93%  r_lag1 -0.347 (p=0.270)
+  Flat   new mean_dval -8.93%  r_lag1 -0.347 (p=0.270)
+  DRRA   old mean_dval -8.26%  r_lag1 -0.293 (p=0.355)
+  DRRA   new mean_dval -8.26%  r_lag1 -0.293 (p=0.355)
+
+wrote /Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/gate26_r5probes/comparison.json

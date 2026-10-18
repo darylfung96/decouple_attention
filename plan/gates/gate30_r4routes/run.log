@@ -1,0 +1,13 @@
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+epoch  1/10  train_mse=0.722755  val_mse=0.781574  snapshot rows=32  route_H=3.1347
+epoch  2/10  train_mse=0.430298  val_mse=0.614625  snapshot rows=32  route_H=3.1332
+epoch  3/10  train_mse=0.371578  val_mse=0.625810  snapshot rows=32  route_H=3.1318
+epoch  4/10  train_mse=0.351548  val_mse=0.611728  snapshot rows=32  route_H=3.1313
+epoch  5/10  train_mse=0.335452  val_mse=0.623813  snapshot rows=32  route_H=3.1309
+epoch  6/10  train_mse=0.320351  val_mse=0.588604  snapshot rows=32  route_H=3.1309
+epoch  7/10  train_mse=0.309756  val_mse=0.593432  snapshot rows=32  route_H=3.1315
+epoch  8/10  train_mse=0.300615  val_mse=0.593125  snapshot rows=32  route_H=3.1322
+epoch  9/10  train_mse=0.292945  val_mse=0.597368  snapshot rows=32  route_H=3.1327
+epoch 10/10  train_mse=0.286128  val_mse=0.584458  snapshot rows=32  route_H=3.1334
+wrote /Users/darylfung/Documents/Work/Nicosia/new_attention/plan/gates/gate30_r4routes/results/route_snapshots.jsonl (10 epochs)
+elapsed 1029s
