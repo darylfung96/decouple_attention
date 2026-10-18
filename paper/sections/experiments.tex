@@ -526,7 +526,8 @@ projection ($21.0$M) where the compressed cells use the equalized rank-64
 bottleneck ($10.5$M), and that one asymmetry is $10.5$M of the $15.7$M
 whole-model gap. Matching the projection ranks leaves a $7.8\%$ whole-model
 difference, while the attention path itself falls $30.9\%$ and the attention core
-falls $80.9\%$ (Section~\ref{sec:forecast}). We therefore retrained the dense
+falls $80.9\%$ (Section~\ref{sec:forecast}). To test whether the accuracy
+advantage depends on that asymmetry, we retrained the dense
 baseline with the matched projection (25 paired seeds, same protocol): matching
 the rank makes the dense model \emph{better}, not worse ($0.7910$ vs $0.8389$
 validation MSE; paired mean $-0.048$, 95\% interval $[-0.088,-0.008]$), so the
