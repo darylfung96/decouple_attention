@@ -16,7 +16,8 @@ outperforms full causal attention on validation MSE (mean deltas $-18.8\%$
 to $-27.0\%$, in 95/100 paired seed comparisons; Holm-adjusted
 $p \le 3.3\times10^{-6}$) at an equal or slightly smaller parameter
 count; a bit-exact wiring audit confirms the baseline is correctly
-implemented, and the advantage survives a projection-matched dense retrain.
+implemented, and the advantage survives a dense retrain whose output
+projection is matched to the compressed cells' rank.
 Second, coarsening the router ($c_R{:}4{:}1 \to 8{:}1$)
 systematically deteriorates accuracy ($+0.030$ validation MSE), while
 coarsening KV compression is mildly beneficial ($-0.032$): the pre-registered

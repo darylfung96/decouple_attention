@@ -16,10 +16,10 @@ merged manifest confirm: (i) parameter equalization within tolerance
 (max attention delta $0.268\%$, max full-model delta $0.074\%$);
 (ii) matched training across all runs (final training MSE span
 $0.2756$--$0.3029$); and (iii) all 125 runs present, 25 seeds in every
-cell, no duplicates. A separate 25-run manifest holds the projection-matched
-dense baseline introduced in Section~\ref{sec:stats}; it follows the same
-protocol and seed list, and no other reported row depends on it. Reported
-validation and test metrics come from the
+cell, no duplicates. The projection-matched dense baseline of
+Section~\ref{sec:stats} is a separate 25-run manifest under the same protocol
+and seed list; the 125-run count above covers the factorial manifest only.
+Reported validation and test metrics come from the
 epoch-10 weights; no best-validation checkpoint selection is used. The 25 seeds capture training randomness on the fixed dataset and protocol, not future-period or dataset uncertainty.
 
 \subsection{RQ1: the $2\times2$ factorial}
@@ -189,7 +189,7 @@ $-48.3\%$ to $+9.9\%$ across cells; mean deltas $-18.8\%$ to $-27.0\%$).
 DRRA $(8,4)$ beats CSA $(4,4)$ head-to-head in 16 of 25 seeds on validation (CSA ahead in 9),
 and no cell is best of all four in more than 8 (DRRA 7, $(8,8)$ 8, CSA 8, $(4,8)$ 2;
 merged corrected-mapping analysis in the released logs). The advantage does not
-depend on the dense baseline's wider output projection: retrained with the
+depend on the dense baseline's higher-rank output projection: retrained with the
 compressed cells' rank-64 output projection (25 paired seeds, same protocol),
 the dense model improves to $0.7910$ validation MSE but every compressed cell
 still beats it (paired validation deltas $-0.110$ to $-0.178$ MSE, all four
@@ -210,7 +210,7 @@ Parameter counts are not
 equalized across the rows: the as-run Normal is a different attention class and
 carries $\sim$2\% more full-model parameters, while the projection-matched
 reference Normal-r64 replaces its rank-128 output projection with the
-compressed cells' rank-64 bottleneck and carries $\sim$10\% fewer.}
+compressed cells' rank-64 bottleneck and carries $\sim$10\% fewer parameters.}
 \label{tab:baseline}
 \begin{tabular}{lccccc}
 \toprule
@@ -448,8 +448,8 @@ with the source).} At 25 paired seeds, paired Wilcoxon signed-rank
 tests on validation MSE are powered: \emph{every} compressed cell beats
 full attention, and the result survives Holm correction across the five
 pre-registered contrasts (Holm-adjusted $p \le 3.3\times10^{-6}$
-for all four cell-vs-Normal contrasts). The projection-matched comparisons of
-Section~\ref{sec:stats} are robustness analyses of the same claim, not
+for all four cell-vs-Normal contrasts). The projection-matched comparisons
+reported below are robustness analyses of the same claim, not
 additional confirmatory tests: they are reported with paired 95\% intervals and
 unadjusted Wilcoxon $p$-values, and the pre-registered family remains the five
 contrasts of the pre-registration (the four cell-vs-Normal comparisons plus
@@ -530,7 +530,7 @@ falls $80.9\%$ (Section~\ref{sec:forecast}). We therefore retrained the dense
 baseline with the matched projection (25 paired seeds, same protocol): matching
 the rank makes the dense model \emph{better}, not worse ($0.7910$ vs $0.8389$
 validation MSE; paired mean $-0.048$, 95\% interval $[-0.088,-0.008]$), so the
-as-run Normal was not a conservative reference. Every compressed cell still
+as-run Normal was not a conservative reference point. Every compressed cell still
 beats the matched baseline, with paired validation deltas $-0.110$ to $-0.178$
 MSE whose 95\% intervals all exclude zero ($21$--$25$ of $25$ seeds per cell),
 and the ordering is the same on test MSE. The accuracy advantage is therefore
@@ -693,8 +693,8 @@ head needs all temporal outputs). On the forecast-required path Normal is
 fastest; on the full-layer path $(8,4)$ is fastest; accuracy is identical
 in the two panels. The open marker is the projection-matched dense baseline
 (Section~\ref{sec:stats}); its latency is anchored to the released Normal
-measurement by a same-run paired timing, because machine load shifts all
-models together. Measurement logs released with the source.}
+measurement using a paired timing from the same session, so that machine load
+shifts both models together. Measurement logs released with the source.}
 \label{fig:perf-speed}
 \end{figure}
 

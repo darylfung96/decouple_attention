@@ -112,3 +112,9 @@ frontier figure, and every efficiency claim in the abstract, §4.6 and the concl
   (76.86M → 66.38M) so the 7.8% is traceable inside the paper. Evidence logs for the three new gates
   (R5, R4, R2: run/tests/comparison/analysis) were force-added to git under the `*.log` ignore rule, as
   the paper's "released logs" claims require; historical gate logs stay as they were.
+- 2026-10-17 (language pass): proofread every inserted passage as rendered — abstract now defines the
+  treatment in words ("a dense retrain whose output projection is matched to the compressed cells'
+  rank") instead of using the undefined compound "projection-matched"; fixed a self-reference inside
+  §4.6 ("the comparisons of Section 4.6" → "reported below"); "wider" → "higher-rank"; intro's
+  limitations clause re-attached to the claim; appendix "retrained too" → "trained end to end, not
+  merely re-accounted"; §4.1 manifest sentence rewritten; figure caption anchoring phrased for readers.
