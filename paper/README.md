@@ -55,6 +55,12 @@ changes.
 | Cross-dataset table (tab:coverage), Figure data (fig6/7/8/9) | `plan/gates/gate3/results/*.jsonl` + latency JSONs, recomputed by `scripts/make_figures.py` — the script prints verification lines against the audited summaries |
 | External reference points (tab:refpoints) | `plan/gates/gate6_baselines/results/*.jsonl` (DLinear ×12, PatchTST ×8, 5 paired seeds; audited by `gate6_audit.py`; facts in `gate6_facts.json`) |
 | Protocol details (window 16, top-k 16, ranks 64/64, AdamW, seeds) | `plan/gates/gate2/gate2_design.md` §2, `plan/benchmark_protocol.md` |
+| Projection-matched dense baseline (Tables 1--2, §4.3/§4.6, Figure 6 open marker) | `plan/gates/gate27_r2matched/` — `results/normal_r64.jsonl` (25 seeds), `analysis.json` (paired intervals + predeclared KEEP/NARROW rule), `latency_4model.json` (4-model round-robin timing, anchored to the released Normal row) |
+| Mechanism probes §4.3 (i)--(ii), regenerated | `plan/gates/gate26_r5probes/gate26_results.json` (current implementation); `plan/gates/gate12/` is pre-fix history and is superseded for the $(4,4)$ cell; agreement in `gate26_r5probes/comparison.json` |
+| Causality probes (adversarial masking, ties, short-length fan-out) | `plan/gates/gate26_r5probes/test_r5_causality.py` + `tests.log` |
+| Route stability §4.3 (iv) | `plan/gates/gate30_r4routes/analysis.json` + `results/route_snapshots.jsonl` |
+| Interaction figure and per-seed conditional effects (R1) | `plan/gates/gate21_simple_effects/simple_effects.json` |
+| Component MAC accounts (§4.6, Appendix D) | `plan/gates/gate20_accounting/router_accounting_audit.json` |
 | Scaling forecast + energy projection (§4.8, App. D, `fig12_scaling_forecast`) | `paper/scripts/make_figures.py --scaling` reads `plan/gates/gate5/gate5_results.json`; asserts exact equality with the released per-component MAC accounts at L=256; prints the anchor/sensitivity tables used in the text |
 
 Derived numbers used in the abstract/intro that are **not** in the audited

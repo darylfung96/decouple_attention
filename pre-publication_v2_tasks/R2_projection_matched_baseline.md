@@ -97,3 +97,11 @@ frontier figure, and every efficiency claim in the abstract, §4.6 and the concl
   a projection artifact. Landed: Table 2 and Table 3 rows, §4.3 and §4.6 attribution text, abstract
   clause, conclusion, Appendix D note + audit-table row, Figure 6 fourth marker. `verify_manuscript.py`
   0 failures; 31 pp clean.
+- 2026-10-17 (audit pass): verified the landing is complete and consistent — §4.3 opening now names
+  the matched row, the data-integrity paragraph registers the separate 25-run manifest, §4.6 states the
+  matched comparisons are robustness analyses (not additional confirmatory tests) and corrects the
+  pre-existing mislabel "five pre-registered cell-vs-Normal contrasts" (the five include DRRA-vs-CSA),
+  and `paper/README.md`'s provenance map gains rows for this gate (and the R4/R5/R1/accounting artefacts
+  that were missing). Full-text check of the PDF: `verify_manuscript.py` 0 failures, 0 unresolved refs,
+  31 pp; the matched numbers appear in exactly the intended places (0.7910 ×4, 0.0649/1.0281 ×2,
+  0.2975 ×1, −0.110/−0.178 ×3, 21–25 ×2).

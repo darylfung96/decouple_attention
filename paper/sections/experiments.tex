@@ -16,7 +16,10 @@ merged manifest confirm: (i) parameter equalization within tolerance
 (max attention delta $0.268\%$, max full-model delta $0.074\%$);
 (ii) matched training across all runs (final training MSE span
 $0.2756$--$0.3029$); and (iii) all 125 runs present, 25 seeds in every
-cell, no duplicates. Reported validation and test metrics come from the
+cell, no duplicates. A separate 25-run manifest holds the projection-matched
+dense baseline introduced in Section~\ref{sec:stats}; it follows the same
+protocol and seed list, and no other reported row depends on it. Reported
+validation and test metrics come from the
 epoch-10 weights; no best-validation checkpoint selection is used. The 25 seeds capture training randomness on the fixed dataset and protocol, not future-period or dataset uncertainty.
 
 \subsection{RQ1: the $2\times2$ factorial}
@@ -177,7 +180,8 @@ sensible floor where this study stops.
 \label{sec:rq2}
 Table~\ref{tab:baseline} compares full causal attention (Normal, 256
 columns, no compression) with the two cells that anchor the family's
-design corners, CSA $(4,4)$ and DRRA $(8,4)$.
+design corners, CSA $(4,4)$ and DRRA $(8,4)$, and adds the projection-matched
+dense reference Normal-r64 (Section~\ref{sec:stats}).
 Every compressed cell beats Normal on mean validation
 and mean test MSE, and \emph{95 of the 100 paired seed comparisons}
 favor the compressed configuration (per-seed validation deltas span
@@ -442,8 +446,14 @@ Statistical status is reported separately for the two levels of the study.
 with the source).} At 25 paired seeds, paired Wilcoxon signed-rank
 tests on validation MSE are powered: \emph{every} compressed cell beats
 full attention, and the result survives Holm correction across the five
-pre-registered cell-vs-Normal contrasts (Holm-adjusted $p \le 3.3\times10^{-6}$
-for all four cells). The pre-registered H1 contrast (per-seed routing
+pre-registered contrasts (Holm-adjusted $p \le 3.3\times10^{-6}$
+for all four cell-vs-Normal contrasts). The projection-matched comparisons of
+Section~\ref{sec:stats} are robustness analyses of the same claim, not
+additional confirmatory tests: they are reported with paired 95\% intervals and
+unadjusted Wilcoxon $p$-values, and the pre-registered family remains the five
+contrasts of the pre-registration (the four cell-vs-Normal comparisons plus
+DRRA-vs-CSA).
+The pre-registered H1 contrast (per-seed routing
 effect minus KV effect) is likewise significant (exact Wilcoxon $p = 0.0074$;
 paired $t$ $p = 0.0107$). The DRRA-vs.-equal-rate edge is \emph{not} significant
 on validation (DRRA vs.\ CSA: exact Wilcoxon $p = 0.62$; 16/25 head-to-head; no cell
