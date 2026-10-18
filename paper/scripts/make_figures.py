@@ -917,6 +917,25 @@ if GATE3_RES.exists() and LQ_JSON.exists():
               "Flat": lq["CSA_4_4_FULL"]["mean_ms"],
               "DRRA": lq["DRRA_8_4_FULL"]["mean_ms"]}
 
+    # Projection-matched dense baseline (rank-64 output projection): loss from
+    # its 25-seed manifest on the same five seeds; latency anchored to the
+    # released Normal row by a same-run four-model round-robin measurement
+    # (machine load shifts all four series together, so the ratio is what
+    # transfers). Added only when that measurement exists.
+    R2_LAT = PLAN_DIR / "gates" / "gate27_r2matched" / "latency_4model.json"
+    R2_RES = PLAN_DIR / "gates" / "gate27_r2matched" / "results" / "normal_r64.jsonl"
+    matched = None
+    if V2 and R2_LAT.exists() and R2_RES.exists():
+        probe = _json.load(open(R2_LAT))["r64_anchored"]
+        mrows = [json.loads(l) for l in open(R2_RES)]
+        mloss = float(np.mean([r["test_mse"] for r in mrows
+                               if r["seed"] in SEEDS]))
+        matched = {"loss": mloss,
+                   "last": probe["LAST"]["released_anchored_ms"],
+                   "full": probe["FULL"]["released_anchored_ms"]}
+        print(f"v2 mode: fig9 projection-matched dense point loss {mloss:.4f} "
+              f"LAST {matched['last']:.2f} ms FULL {matched['full']:.2f} ms")
+
     style = {"Normal": C["red"], "Flat": C["orange"], "DRRA": C["blue"]}
     labels = {"Normal": "Normal", "Flat": "$(4,4)$", "DRRA": "$(8,4)$"}
     ylim = (min(loss.values()) - 0.03, max(loss.values()) + 0.03)
@@ -927,11 +946,18 @@ if GATE3_RES.exists() and LQ_JSON.exists():
          "Speed — mean forward latency (ms)"),
     )
     fig, axes = plt.subplots(1, 2, figsize=(6.5, 3.2))
-    for ax, (title, xs, xlim, xlabel) in zip(axes, panels):
+    for ax, (title, xs, xlim, xlabel), mkey in zip(
+            axes, panels, ("last", "full")):
         for v in ("Normal", "Flat", "DRRA"):
             ax.scatter(xs[v], loss[v], s=70, color=style[v], zorder=3)
             ax.annotate(labels[v], (xs[v], loss[v]),
                         textcoords="offset points", xytext=(8, -6), fontsize=8)
+        if matched is not None:
+            ax.scatter(matched[mkey], matched["loss"], s=60, facecolors="none",
+                       edgecolors="#555555", linewidths=1.1, zorder=3)
+            ax.annotate("Normal-r64", (matched[mkey], matched["loss"]),
+                        textcoords="offset points", xytext=(8, 4), fontsize=7.5,
+                        color="#333333")
         ax.axhline(loss["Normal"], color="#999999", linewidth=0.6,
                    linestyle="--")
         ax.set_xlabel(xlabel)

@@ -29,7 +29,10 @@ These results also carry a deployment-facing reading. DRRA $(8,4)$'s
 structural savings---$5.22\times$ fewer attention columns and $20\%$ fewer
 forward MACs than full attention at equal or fewer parameters (projection-matched,
 $7.8\%$; the dense baseline's rank-128 output projection accounts for two-thirds of the
-whole-model gap)---mean that
+whole-model gap), and matching that projection narrows the arithmetic gap but
+not the accuracy gap: the retrained matched baseline scores $0.79$ validation
+MSE, better than the as-run Normal, and every compressed cell still beats it
+(Section~\ref{sec:stats}). So
 per-forecast arithmetic work is roughly a fifth smaller on the frozen task at
 batched operating points (at batch 1 the dense baseline remains fastest,
 Section~\ref{sec:efficiency}, so this reading does not extend to single-window

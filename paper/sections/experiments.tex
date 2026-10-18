@@ -36,7 +36,8 @@ beats the full-attention baseline on mean validation and mean test MSE; per-seed
 pooled MSE (mean squared error) in standardized units, lower is better).
 Rows are cells $(c_{KV}, c_R)$: $c_{KV}$ is the KV-cache compression rate
 (positions per stored block) and $c_R$ the routing resolution (positions per
-index token). ``Beats $(4,4)$'' counts
+index token); the two dense reference rows are Normal (as-run) and Normal-r64
+(projection-matched, Section~\ref{sec:stats}). ``Beats $(4,4)$'' counts
 seeds where the cell's validation MSE is better than the same seed's $(4,4)$
 value. Bold: best (lowest) test mean among the four confirmatory cells.
 Starred rows are post-hoc exploratory probes, excluded from all confirmatory
@@ -47,6 +48,7 @@ contrasts (Section~\ref{sec:rq1}).}
 Cell & Val mean $\pm$ std & Test mean & Train mean & Beats $(4,4)$ \\
 \midrule
 Normal & $0.8389 \pm 0.0814$ & 1.0804 & 0.2864 & 1 / 25 \\
+Normal-r64 & $0.7910 \pm 0.0649$ & 1.0281 & 0.2975 & 1 / 25 \\
 $(4,4)$ & $0.6148 \pm 0.0704$ & 0.8771 & 0.2941 & --- \\
 $(8,4)$ & $0.6190 \pm 0.0827$ & $\mathbf{0.8440}$ & 0.2876 & 16 / 25 \\
 $(4,8)$ & $0.6810 \pm 0.0570$ & 0.9496 & 0.2863 & 6 / 25 \\
@@ -182,7 +184,13 @@ favor the compressed configuration (per-seed validation deltas span
 $-48.3\%$ to $+9.9\%$ across cells; mean deltas $-18.8\%$ to $-27.0\%$).
 DRRA $(8,4)$ beats CSA $(4,4)$ head-to-head in 16 of 25 seeds on validation (CSA ahead in 9),
 and no cell is best of all four in more than 8 (DRRA 7, $(8,8)$ 8, CSA 8, $(4,8)$ 2;
-merged corrected-mapping analysis in the released logs).
+merged corrected-mapping analysis in the released logs). The advantage does not
+depend on the dense baseline's wider output projection: retrained with the
+compressed cells' rank-64 output projection (25 paired seeds, same protocol),
+the dense model improves to $0.7910$ validation MSE but every compressed cell
+still beats it (paired validation deltas $-0.110$ to $-0.178$ MSE, all four
+95\% intervals excluding zero, $21$--$25$ of $25$ seeds per cell;
+Section~\ref{sec:stats}).
 
 \begin{table}[t]
 \centering
@@ -194,14 +202,17 @@ $\Delta$val and $\Delta$test are relative changes against the Normal
 (negative is better); ``Seeds beating Normal'' counts paired seeds where
 the cell's value is lower. Bold: best (lowest) mean in each column.
 Parameter counts are not
-equalized across the three rows: Normal is a different attention class and
-carries $\sim$2\% more full-model parameters.}
+equalized across the rows: the as-run Normal is a different attention class and
+carries $\sim$2\% more full-model parameters, while the projection-matched
+reference Normal-r64 replaces its rank-128 output projection with the
+compressed cells' rank-64 bottleneck and carries $\sim$10\% fewer.}
 \label{tab:baseline}
 \begin{tabular}{lccccc}
 \toprule
 Config & Val mean $\pm$ std & Test mean & $\Delta$val vs.\ Normal & $\Delta$test vs.\ Normal & Seeds beating Normal \\
 \midrule
 Normal & $0.8389 \pm 0.0814$ & 1.0804 & --- & --- & --- \\
+Normal-r64 & $0.7910 \pm 0.0649$ & 1.0281 & $-5.72\%$ & $-4.84\%$ & 15 / 25 \\
 $(4,4)$ & $\mathbf{0.6148} \pm 0.0704$ & 0.8771 & $-26.72\%$ & $-18.82\%$ & 24 / 25 \\
 $(8,4)$ & $0.6190 \pm 0.0827$ & $\mathbf{0.8440}$ & $-26.22\%$ & $-21.89\%$ & 24 / 25 \\
 \bottomrule
@@ -497,13 +508,23 @@ panel is where attention, not fixed overhead, dominates per-batch time).
 (L=256, dominant terms; closed-form accounting in the released benchmark
 scripts):
 Normal $76.9$M, CSA $(4,4)$ $63.3$M, DRRA $(8,4)$ $61.2$M --- DRRA $(8,4)$ needs
-$20\%$ fewer MACs than Normal. Three caveats bound that number. First, the rows are
+$20\%$ fewer MACs than Normal. Three caveats bound that number. First, the
+as-run rows are
 \emph{not} projection-matched: the dense baseline carries a rank-128 output
 projection ($21.0$M) where the compressed cells use the equalized rank-64
 bottleneck ($10.5$M), and that one asymmetry is $10.5$M of the $15.7$M
 whole-model gap. Matching the projection ranks leaves a $7.8\%$ whole-model
 difference, while the attention path itself falls $30.9\%$ and the attention core
-falls $80.9\%$ (Section~\ref{sec:forecast}).
+falls $80.9\%$ (Section~\ref{sec:forecast}). We therefore retrained the dense
+baseline with the matched projection (25 paired seeds, same protocol): matching
+the rank makes the dense model \emph{better}, not worse ($0.7910$ vs $0.8389$
+validation MSE; paired mean $-0.048$, 95\% interval $[-0.088,-0.008]$), so the
+as-run Normal was not a conservative reference. Every compressed cell still
+beats the matched baseline, with paired validation deltas $-0.110$ to $-0.178$
+MSE whose 95\% intervals all exclude zero ($21$--$25$ of $25$ seeds per cell),
+and the ordering is the same on test MSE. The accuracy advantage is therefore
+not a projection artifact: matching the projection removes the MAC wedge and
+leaves the accuracy gap.
 Second, the wrapper MLP
 ($33.9$M) is the largest single block for \emph{every} model, so attention
 is not the dominant compute at this scale. Third, measured latency differences
@@ -659,7 +680,10 @@ milliseconds (lower = faster = further left), batch 32; left: the
 accounting), right: the full-layer path (retained for architectures whose
 head needs all temporal outputs). On the forecast-required path Normal is
 fastest; on the full-layer path $(8,4)$ is fastest; accuracy is identical
-in the two panels. Measurement logs released with the source.}
+in the two panels. The open marker is the projection-matched dense baseline
+(Section~\ref{sec:stats}); its latency is anchored to the released Normal
+measurement by a same-run paired timing, because machine load shifts all
+models together. Measurement logs released with the source.}
 \label{fig:perf-speed}
 \end{figure}
 

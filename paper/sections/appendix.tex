@@ -128,7 +128,9 @@ the compressed cells use the equalized rank-64 bottleneck, and only the
 compressed cells pay the router and compressor terms. Of the $15.66$M
 whole-model gap between Normal and DRRA $(8,4)$, $10.49$M is the output
 projection alone; matching that rank leaves a $7.8\%$ whole-model
-difference. Operations excluded
+difference. That matched baseline was retrained too (25 paired seeds): it
+improves dense accuracy over the as-run Normal and every compressed cell still
+beats it, so the accuracy gap is not a projection artifact. Operations excluded
 from the accounting (RMS normalization, rotary embeddings, mask
 construction, the head-mixing weight of the index scores, and the softmax
 normalization itself) are negligible at
@@ -256,6 +258,7 @@ Normal 2.6--3.9 ms; compressed 5.8--9.5 ms \\
 Paired full-layer deltas & Directional & $(8,4)$ $-$ Normal $-9.0 \pm 1.7$ ms/round \\
 Unique routed blocks/query & Measured & $\approx$14 of 64 (equal-rate); $\approx$10 of 32 (dual-rate) \\
 Router gradient audit & No task gradient & All indexer grads exactly 0, both variants; route membership probed: mean Jaccard $0.83$ epoch 1 vs 10, set size $\approx$10 of 32 flat \\
+Projection-matched baseline & Advantage survives & Matched-rank dense retrain (25 seeds): beats the as-run Normal, loses to every compressed cell (paired val deltas $-0.110$ to $-0.178$, intervals exclude 0) \\
 Mechanism probes (regenerated) & Current implementation & Normal/$(8,4)$ bit-identical; $(4,4)$ updated post-fix \\
 Causality probes (masking/ties) & PASS, all six rate pairs & Past output/sets bitwise unchanged under adversarial future noise \\
 Index-to-block mapping & Fixed + re-run & Pre-fix: 3 of 4 cells misrouted; post-fix verified \\
