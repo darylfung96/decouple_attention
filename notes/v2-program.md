@@ -15,7 +15,16 @@ the durable-memory copy; if it disagrees with the trackers, the trackers win.
   `plan/gates/gate30_r4routes/` (R4: route-stability probe). Numbers 27–29 are reserved by the runbook
   for R2/C1/R3.
 
-## Findings worth remembering (2026-10-16)
+## Findings worth remembering (2026-10-16/17)
+
+- **R2 (projection-matched dense baseline, `plan/gates/gate27_r2matched/`)**: all four compressed
+  cells keep their accuracy advantage when the dense baseline is retrained with the compressed cells'
+  rank-64 output projection (paired val deltas −0.110 to −0.178 MSE, every 95% interval below zero,
+  21–25/25 seeds). The matched dense model is *better* than the as-run Normal (0.7910 vs 0.8389 val;
+  −0.048 [−0.088, −0.008]) — the rank-128 output projection was overfitting on ETTh1, so the as-run
+  Normal was not a conservative reference. Consequence: the accuracy claim holds against the matched
+  baseline; the MAC saving at matched projection is 7.8% (not 20.4%), and the matched model's latency
+  is 0.951× Normal on the full-layer path (4-model round-robin probe, anchored to the released run).
 
 - **Post-mapping-fix probe regeneration changes only the equal-rate (4,4) cell.** Normal and (8,4)
   regenerate bit-identically to the pre-fix run ((8,4) kept its bit-exact legacy path). (4,4) moved and
@@ -41,5 +50,6 @@ the durable-memory copy; if it disagrees with the trackers, the trackers win.
 ## Next phases
 
 Phase 1 (S1 packaging; no-input drafts are in the S1 file — author names/affiliations, code license,
-release tag, CRediT roles still needed) → Phase 3 (R2 matched dense) → Phase 4 (C1 all-block; needs D5)
-→ Phase 5 (R3, only if the venue call turns high-aim) → Phase 6 (R7 narrowing).
+release tag, CRediT roles still needed) → Phase 4 (C1 all-block control; **D5 margin must be frozen
+first**) → Phase 5 (R3, only if the venue call turns high-aim) → Phase 6 (R7 narrowing). Phase 3 (R2)
+is closed (see findings above).

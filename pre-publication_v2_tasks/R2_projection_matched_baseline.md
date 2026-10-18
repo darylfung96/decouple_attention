@@ -1,6 +1,6 @@
 # R2 — Mechanism-matched dense baseline (same projection ranks)
 
-**Status:** PARTIAL (claim fixed, experiment missing) · **Cost:** 3–4 h · **Depends:** nothing
+**Status:** DONE (2026-10-17) · **Cost:** ~6 h wall (25 seeds under machine load) · **Depends:** nothing
 **Blocks:** the "every headline improvement is attributable" submission condition
 
 **Verdict:** KEEP — the last accounting confound on the main headline.
@@ -33,19 +33,31 @@ whose projection was made equal.
 
 ## What is left
 
-- [ ] Add a `Normal-rank64` variant: identical to the as-run Normal except the output projection uses
-      the compressed cells' rank 64 (and any other rank that the equalization contract touches), with
-      the same normalization, positional treatment and sink handling.
-- [ ] Train it on the frozen protocol with the same 25 paired seeds and the same harness
-      (`plan/gates/gate2/gate2_factorial.py`), writing a new manifest, never editing old ones.
-- [ ] Compare it against Normal and the four factorial cells on validation and test MSE, and report the
-      paired per-seed differences with intervals.
-- [ ] Decide what happens to the headline if the matched baseline closes part of the gap: the sentence
-      "every compressed cell beats full attention" must then be stated against the matched baseline, or
-      the claim is narrowed to the attention path.
-- [ ] Add the variant to the accuracy-versus-cost frontier when R6 rebuilds Figure 6.
+- [x] Add a `Normal-rank64` variant — done (`gate27_r2matched/run.py`, one variable: attn `o_lora_rank`
+      128 → 64; every other attribute copied from `model.NormalTimeSeriesModel`). `--dry-run` asserts
+      Δ = 40,960 params, all in `o_a_proj`/`o_b_proj`, everything outside attention identical, and all
+      four compressed cells at o=64.
+- [x] Trained on the frozen protocol, 25 paired seeds, new manifest `results/normal_r64.jsonl`
+      (append-only; historical manifests untouched). Smoke passed; equality gate for the last-query path
+      passes (7e-7).
+- [x] Compared against Normal and the four cells with paired intervals (`analysis.json` / `.md`):
+      Normal-r64 − Normal val −0.048 [−0.088, −0.008]; each cell − Normal-r64 val: CSA −0.176, DRRA
+      −0.172, C48 −0.110, C88 −0.178, every interval excluding zero, 21–25/25 seeds.
+- [x] Headline decision — the predeclared rule returned **KEEP for all four cells**: matching the
+      projection makes the dense model *better* (not worse), so the as-run Normal was not a conservative
+      reference, and the accuracy advantage is not a projection artifact. The claim is stated against
+      the matched baseline in §4.3/§4.6, the abstract and the conclusion.
+- [x] Frontier figure — a fourth (open) marker added to both panels of Figure 6, placed at
+      loss 1.0251 (same five seeds) and latencies anchored to the released Normal by a same-run
+      four-model round-robin probe (`latency_probe.py`, `latency_4model.json`: FULL ratio 0.951,
+      LAST 1.034; the released-three reproduction is 1.03–1.09 on FULL and a uniform ~1.17 on LAST
+      under load, which the same-run ratio absorbs).
 
 ## Acceptance
+
+- [x] Matched baseline row beside Normal in both accuracy tables (Table 3 as-run vs matched with Δ
+      columns; Table 2 factorial), on the Figure 6 frontier, and the efficiency claims name their
+      source (§4.3, §4.6, abstract, conclusion, Appendix D + audit table).
 
 A row for the projection-matched dense baseline appears beside Normal in the accuracy tables and the
 frontier figure, and every efficiency claim in the abstract, §4.6 and the conclusion names its source.
@@ -76,3 +88,12 @@ frontier figure, and every efficiency claim in the abstract, §4.6 and the concl
   rank-128 projection was overfitting; this is exactly the outcome the predeclared rule was written for.
   Cost reality: ~24 min/seed under concurrent machine load (the old 8 min/seed figure assumed an idle
   machine), so the 25-seed run is ~8–10 h; it appends per seed and is idempotent across restarts.
+- 2026-10-17: **R2 COMPLETE.** 25/25 seeds (last finished 00:26Z); `analysis.py` applied the frozen
+  rule → **all four cells KEEP at the matched projection**. Means (val): CSA 0.6148, C88 0.6128, DRRA
+  0.6190, C48 0.6810, Normal-r64 0.7910, Normal 0.8389. Key paired intervals (val): cell − Normal-r64
+  CSA −0.1762 [−0.2174, −0.1349], DRRA −0.1720 [−0.2150, −0.1290], C48 −0.1100 [−0.1486, −0.0713],
+  C88 −0.1782 [−0.2219, −0.1344]; Normal-r64 − Normal −0.0480 [−0.0881, −0.0078]. Read: the rank-128
+  projection was overfitting on ETTh1, so matching it *helps* the dense model — the accuracy gap is not
+  a projection artifact. Landed: Table 2 and Table 3 rows, §4.3 and §4.6 attribution text, abstract
+  clause, conclusion, Appendix D note + audit-table row, Figure 6 fourth marker. `verify_manuscript.py`
+  0 failures; 31 pp clean.
