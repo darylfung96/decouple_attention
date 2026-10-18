@@ -40,13 +40,14 @@ instead of restating them.
 
 ## Current pointer (update when a phase closes)
 
-- **Next actions:** Phase 1 (S1 submission packaging — no-input drafts are in the S1 file; needs author
-  names/affiliations, code license, release tag, CRediT roles) and Phase 3 (R2 projection-matched dense,
-  ~3–4 h). **Phase 2 is complete**: R5 probes regenerated + causality suite, R6 figure, R4 route probe,
-  C4 MoBA all landed and verified.
-- **Then:** Phase 4 (C1 all-block control, needs D5 frozen) → Phase 5 (R3, only if D1 turns high-aim) →
-  Phase 6 (R7 narrowing).
-- **Open decisions:** D5 margin (no safe default; before Phase 4), D6 R7 handling, D7 MAE. D1 = Option A
+- **Next actions:** **Phase 4 — C1 all-block control** is the only remaining experiment, and it needs **D5**
+  (non-inferiority margin) frozen in `DECISIONS.md` first; it has no safe default. In parallel, **Phase 1
+  (S1 submission packaging)** is author time only — the drafts are in the S1 file and need author
+  names/affiliations, code license, release tag and CRediT roles.
+- **Then:** Phase 5 (R3, only if D1 turns high-aim) → Phase 6 (R7 narrowing). **Phases 2 and 3 are complete**:
+  R5 probes regenerated + causality suite, R6 figure, R4 route probe, C4 MoBA, and R2 projection-matched
+  dense baseline, all landed and verified (`verify_manuscript.py` 0 failures, 31 pp).
+- **Open decisions:** D5 margin (no safe default; blocks Phase 4), D6 R7 handling, D7 MAE. D1 = Option A
   is closed. Venue call (Q-6) still open; D1's stop rule after M2 is to stop after Phase 3 and submit
   the narrowed paper.
-- Last updated: 2026-10-16.
+- Last updated: 2026-10-17.
