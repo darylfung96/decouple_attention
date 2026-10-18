@@ -1,0 +1,39 @@
+# Gate 27 — R2 projection-matched dense baseline: analysis
+
+Matched rows: `results/normal_r64.jsonl` (25 seeds) · legacy Normal and the four factorial cells: unchanged manifests, merged as in `gate15_analyze.load_factorial`.
+
+## Means (validation MSE)
+
+- CSA: val 0.6148 · test 0.8771
+- DRRA: val 0.6190 · test 0.8440
+- C48: val 0.6810 · test 0.9496
+- C88: val 0.6128 · test 0.8505
+- Normal_r64: val 0.7910 · test 1.0281
+- Normal: val 0.8389 · test 1.0804
+
+## Comparisons (paired per-seed, n=25)
+
+| comparison | mean delta | 95% interval | Wilcoxon p | sign |
+|---|---|---|---|---|
+| Normal_r64 − Normal (val) | -0.0480 | [-0.0881, -0.0078] | 0.04512 | 15/25 |
+| Normal_r64 − Normal (test) | -0.0524 | [-0.1090, +0.0043] | 0.0667 | 17/25 |
+| CSA − Normal_r64 (val) | -0.1762 | [-0.2174, -0.1349] | 1.788e-07 | 24/25 |
+| CSA − Normal_r64 (test) | -0.1510 | [-0.1967, -0.1053] | 4.172e-06 | 21/25 |
+| DRRA − Normal_r64 (val) | -0.1720 | [-0.2150, -0.1290] | 1.788e-07 | 24/25 |
+| DRRA − Normal_r64 (test) | -0.1841 | [-0.2308, -0.1375] | 1.192e-07 | 24/25 |
+| C48 − Normal_r64 (val) | -0.1100 | [-0.1486, -0.0713] | 1.234e-05 | 21/25 |
+| C48 − Normal_r64 (test) | -0.0784 | [-0.1242, -0.0327] | 0.002508 | 19/25 |
+| C88 − Normal_r64 (val) | -0.1782 | [-0.2219, -0.1344] | 5.96e-08 | 25/25 |
+| C88 − Normal_r64 (test) | -0.1776 | [-0.2271, -0.1282] | 1.192e-07 | 24/25 |
+
+## Predeclared decision rule
+
+- CSA: **KEEP: claim holds at matched projection** — interval [-0.2174, -0.1349], beats matched in 24/25 seeds
+- DRRA: **KEEP: claim holds at matched projection** — interval [-0.2150, -0.1290], beats matched in 24/25 seeds
+- C48: **KEEP: claim holds at matched projection** — interval [-0.1486, -0.0713], beats matched in 21/25 seeds
+- C88: **KEEP: claim holds at matched projection** — interval [-0.2219, -0.1344], beats matched in 25/25 seeds
+
+## MAC context (L=256, per sequence; same accounting as the paper)
+
+- as-run Normal 76.86M · Normal_r64 66.38M · (8,4) 61.20M
+- whole-model saving as published: 20.4% (as-run) vs 7.8% (projection-matched, before accuracy) — asserted in `macs()`

@@ -78,6 +78,8 @@ def main():
     mY, mT = load_matched(seeds)
     Y64 = np.array([mY[s] for s in seeds])
     T64 = np.array([mT[s] for s in seeds])
+    Y, T = dict(Y), dict(T)          # copies: register the matched arrays for the
+    Y["Normal_r64"], T["Normal_r64"] = Y64, T64   # table loops below
 
     total_macs, whole_pct, matched_pct = macs()
     res = {

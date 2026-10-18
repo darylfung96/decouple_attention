@@ -1,0 +1,239 @@
+{
+  "provenance": "gate27 matched rows (new) + gate15/kept legacy rows (read-only)",
+  "n_seeds": 25,
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    42,
+    99,
+    123,
+    2024
+  ],
+  "cell_means_val": {
+    "CSA": 0.6147979204,
+    "DRRA": 0.6189891896,
+    "C48": 0.680970748,
+    "C88": 0.6127707824,
+    "Normal": 0.8389132128,
+    "Normal_r64": 0.7909567131999999
+  },
+  "cell_means_test": {
+    "CSA": 0.877091476,
+    "DRRA": 0.8439637568,
+    "C48": 0.9496376456,
+    "C88": 0.850459218,
+    "Normal": 1.080447802,
+    "Normal_r64": 1.02807723
+  },
+  "macs_per_seq_L256": {
+    "Normal": 76861440.0,
+    "Normal_r64": 66375680.0,
+    "(4,4)": 63295488.0,
+    "(8,4)": 61198336.0,
+    "(4,8)": 62246912.0,
+    "(8,8)": 60149760.0
+  },
+  "mac_saving_vs_Normal": 0.2037836397548628,
+  "mac_saving_vs_Normal_r64": 0.07800061709348971,
+  "Normal_r64_minus_Normal_val": {
+    "mean": -0.04795649959999998,
+    "ci95": [
+      -0.08812641725829953,
+      -0.00778658194170042
+    ],
+    "wilcoxon_p": 0.04512268304824829,
+    "ttest_p": 0.02129065750212743,
+    "n": 25,
+    "sign_consistent": 15
+  },
+  "Normal_r64_minus_Normal_test": {
+    "mean": -0.05237057199999996,
+    "ci95": [
+      -0.1090436838285979,
+      0.004302539828597976
+    ],
+    "wilcoxon_p": 0.06670159101486206,
+    "ttest_p": 0.0685313709024503,
+    "n": 25,
+    "sign_consistent": 17
+  },
+  "Normal_r64_better_than_Normal_count": 15,
+  "matched_comparisons": {
+    "CSA": {
+      "cell_minus_Normal_r64_val": {
+        "mean": -0.17615879280000002,
+        "ci95": [
+          -0.21738498224743283,
+          -0.1349326033525672
+        ],
+        "wilcoxon_p": 1.7881393432617188e-07,
+        "ttest_p": 5.389427625739314e-09,
+        "n": 25,
+        "sign_consistent": 24
+      },
+      "cell_minus_Normal_r64_test": {
+        "mean": -0.15098575400000003,
+        "ci95": [
+          -0.19671491638169306,
+          -0.105256591618307
+        ],
+        "wilcoxon_p": 4.172325134277344e-06,
+        "ttest_p": 4.769258565609327e-07,
+        "n": 25,
+        "sign_consistent": 21
+      },
+      "beats_Normal_r64_count_val": 24,
+      "decision": "KEEP: claim holds at matched projection",
+      "cell_minus_Normal_val": {
+        "mean": -0.2241152924,
+        "ci95": [
+          -0.26773272489658206,
+          -0.1804978599034179
+        ],
+        "wilcoxon_p": 1.1920928955078125e-07,
+        "ttest_p": 1.5426661140065885e-10,
+        "n": 25,
+        "sign_consistent": 24
+      }
+    },
+    "DRRA": {
+      "cell_minus_Normal_r64_val": {
+        "mean": -0.1719675236,
+        "ci95": [
+          -0.21496269019989603,
+          -0.12897235700010398
+        ],
+        "wilcoxon_p": 1.7881393432617188e-07,
+        "ttest_p": 1.8031307818909958e-08,
+        "n": 25,
+        "sign_consistent": 24
+      },
+      "cell_minus_Normal_r64_test": {
+        "mean": -0.18411347320000002,
+        "ci95": [
+          -0.2307701490606279,
+          -0.13745679733937213
+        ],
+        "wilcoxon_p": 1.1920928955078125e-07,
+        "ttest_p": 2.2959901790575015e-08,
+        "n": 25,
+        "sign_consistent": 24
+      },
+      "beats_Normal_r64_count_val": 24,
+      "decision": "KEEP: claim holds at matched projection",
+      "cell_minus_Normal_val": {
+        "mean": -0.21992402319999996,
+        "ci95": [
+          -0.2707846507962734,
+          -0.16906339560372652
+        ],
+        "wilcoxon_p": 1.7881393432617188e-07,
+        "ttest_p": 4.320702188466457e-09,
+        "n": 25,
+        "sign_consistent": 24
+      }
+    },
+    "C48": {
+      "cell_minus_Normal_r64_val": {
+        "mean": -0.10998596520000004,
+        "ci95": [
+          -0.1486379409598076,
+          -0.0713339894401925
+        ],
+        "wilcoxon_p": 1.233816146850586e-05,
+        "ttest_p": 4.660937549662245e-06,
+        "n": 25,
+        "sign_consistent": 21
+      },
+      "cell_minus_Normal_r64_test": {
+        "mean": -0.07843958440000001,
+        "ci95": [
+          -0.12416597459508755,
+          -0.03271319420491247
+        ],
+        "wilcoxon_p": 0.002507925033569336,
+        "ttest_p": 0.001666804353438296,
+        "n": 25,
+        "sign_consistent": 19
+      },
+      "beats_Normal_r64_count_val": 21,
+      "decision": "KEEP: claim holds at matched projection",
+      "cell_minus_Normal_val": {
+        "mean": -0.15794246480000002,
+        "ci95": [
+          -0.20041547836868062,
+          -0.11546945123131941
+        ],
+        "wilcoxon_p": 3.2782554626464844e-06,
+        "ttest_p": 6.524519407853458e-08,
+        "n": 25,
+        "sign_consistent": 22
+      }
+    },
+    "C88": {
+      "cell_minus_Normal_r64_val": {
+        "mean": -0.17818593080000003,
+        "ci95": [
+          -0.22192702888264287,
+          -0.1344448327173572
+        ],
+        "wilcoxon_p": 5.960464477539063e-08,
+        "ttest_p": 1.2950466561252377e-08,
+        "n": 25,
+        "sign_consistent": 25
+      },
+      "cell_minus_Normal_r64_test": {
+        "mean": -0.17761801199999996,
+        "ci95": [
+          -0.2270568575265726,
+          -0.12817916647342734
+        ],
+        "wilcoxon_p": 1.1920928955078125e-07,
+        "ttest_p": 1.1781170155367362e-07,
+        "n": 25,
+        "sign_consistent": 24
+      },
+      "beats_Normal_r64_count_val": 25,
+      "decision": "KEEP: claim holds at matched projection",
+      "cell_minus_Normal_val": {
+        "mean": -0.2261424304,
+        "ci95": [
+          -0.26665795532285613,
+          -0.18562690547714386
+        ],
+        "wilcoxon_p": 5.960464477539063e-08,
+        "ttest_p": 2.8964618162958215e-11,
+        "n": 25,
+        "sign_consistent": 25
+      }
+    }
+  },
+  "decision": {
+    "all_cells_keep": true,
+    "per_cell": {
+      "CSA": "KEEP: claim holds at matched projection",
+      "DRRA": "KEEP: claim holds at matched projection",
+      "C48": "KEEP: claim holds at matched projection",
+      "C88": "KEEP: claim holds at matched projection"
+    }
+  }
+}

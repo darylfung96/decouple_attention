@@ -1,0 +1,149 @@
+{
+  "equality_gate": [
+    {
+      "seed": 0,
+      "maxdiff": 7.152557373046875e-07,
+      "pass": true
+    },
+    {
+      "seed": 42,
+      "maxdiff": 5.960464477539062e-07,
+      "pass": true
+    },
+    {
+      "seed": 123,
+      "maxdiff": 5.960464477539062e-07,
+      "pass": true
+    }
+  ],
+  "latency": {
+    "Normal_FULL": {
+      "mean_ms": 41.961815223408244,
+      "stdev_ms": 1.3175000552959535,
+      "rounds": 25,
+      "passes": 30
+    },
+    "CSA_4_4_FULL": {
+      "mean_ms": 40.00386233751973,
+      "stdev_ms": 2.8365264112592135,
+      "rounds": 25,
+      "passes": 30
+    },
+    "DRRA_8_4_FULL": {
+      "mean_ms": 34.538219388884805,
+      "stdev_ms": 2.3038117817558237,
+      "rounds": 25,
+      "passes": 30
+    },
+    "Normal_r64_FULL": {
+      "mean_ms": 39.91139283714195,
+      "stdev_ms": 1.3886422435208359,
+      "rounds": 25,
+      "passes": 30
+    },
+    "Normal_LAST": {
+      "mean_ms": 3.0488056655352316,
+      "stdev_ms": 0.37741405202362655,
+      "rounds": 25,
+      "passes": 30
+    },
+    "CSA_4_4_LAST": {
+      "mean_ms": 7.2537501674766345,
+      "stdev_ms": 0.922305163156952,
+      "rounds": 25,
+      "passes": 30
+    },
+    "DRRA_8_4_LAST": {
+      "mean_ms": 6.805890498682857,
+      "stdev_ms": 0.8163664432346665,
+      "rounds": 25,
+      "passes": 30
+    },
+    "Normal_r64_LAST": {
+      "mean_ms": 3.1517794985945025,
+      "stdev_ms": 0.7401452797710759,
+      "rounds": 25,
+      "passes": 30
+    },
+    "Normal_paired_LAST_minus_FULL": {
+      "mean_ms": -38.91300955787301,
+      "stdev_ms": 1.3545578395597377,
+      "ci95": 0.5309866731074172
+    },
+    "CSA_4_4_paired_LAST_minus_FULL": {
+      "mean_ms": -32.75011217004309,
+      "stdev_ms": 2.7752134484526625,
+      "ci95": 1.0878836717934437
+    },
+    "DRRA_8_4_paired_LAST_minus_FULL": {
+      "mean_ms": -27.73232889020195,
+      "stdev_ms": 2.4772544314032254,
+      "ci95": 0.9710837371100643
+    },
+    "Normal_r64_paired_LAST_minus_FULL": {
+      "mean_ms": -36.759613338547446,
+      "stdev_ms": 1.3642334620753775,
+      "ci95": 0.534779517133548
+    },
+    "paired_FULL_DRRA_8_4_minus_Normal": {
+      "mean_ms": -7.423595834523438,
+      "stdev_ms": 1.6396157530488995,
+      "ci95": 0.6427293751951686
+    },
+    "paired_FULL_CSA_4_4_minus_Normal": {
+      "mean_ms": -1.957952885888516,
+      "stdev_ms": 2.272519582452478,
+      "ci95": 0.8908276763213715
+    },
+    "paired_FULL_DRRA_8_4_minus_CSA_4_4": {
+      "mean_ms": -5.465642948634922,
+      "stdev_ms": 1.5742568366365235,
+      "ci95": 0.6171086799615172
+    }
+  },
+  "reproduction_vs_released": {
+    "Normal_FULL": {
+      "same_run": 41.961815223408244,
+      "released": 40.73177883354947,
+      "ratio": 1.0301984451718968
+    },
+    "Normal_LAST": {
+      "same_run": 3.0488056655352316,
+      "released": 2.62121399724856,
+      "ratio": 1.1631273405130242
+    },
+    "CSA_4_4_FULL": {
+      "same_run": 40.00386233751973,
+      "released": 36.960139166253306,
+      "ratio": 1.0823515073245589
+    },
+    "CSA_4_4_LAST": {
+      "same_run": 7.2537501674766345,
+      "released": 6.176206107717007,
+      "ratio": 1.174466985227916
+    },
+    "DRRA_8_4_FULL": {
+      "same_run": 34.538219388884805,
+      "released": 31.74136805254966,
+      "ratio": 1.088113761565185
+    },
+    "DRRA_8_4_LAST": {
+      "same_run": 6.805890498682857,
+      "released": 5.82336900010705,
+      "ratio": 1.168720460365425
+    }
+  },
+  "reproduction_ok_15pct": false,
+  "worst_ratio_dev": 0.17446698522791593,
+  "r64_anchored": {
+    "FULL": {
+      "ratio_vs_same_run_Normal": 0.9511359941091759,
+      "released_anchored_ms": 38.74146095268316
+    },
+    "LAST": {
+      "ratio_vs_same_run_Normal": 1.0337751383183662,
+      "released_anchored_ms": 2.709745862567668
+    }
+  },
+  "method": "gate13 canonical instrument, 4 models round-robin, 25x30, B=32, L=256"
+}
