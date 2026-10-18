@@ -53,3 +53,17 @@ Phase 1 (S1 packaging; no-input drafts are in the S1 file — author names/affil
 release tag, CRediT roles still needed) → Phase 4 (C1 all-block control; **D5 margin must be frozen
 first**) → Phase 5 (R3, only if the venue call turns high-aim) → Phase 6 (R7 narrowing). Phase 3 (R2)
 is closed (see findings above).
+
+## Phase 4 — C1 all-block control (started 2026-10-17)
+
+- Design frozen at `plan/gates/gate28_c1control/design.md`: two cells (c_KV = 4 and 8, c_R = 4),
+  single variable `index_topk` 16 -> 64 (= n_idx). No new parameters or compute path: the selection
+  enters only as a mask, so MACs equal the routed reference cell.
+- Dry run: state_dicts bitwise equal at a fixed seed; 0 of 256 positions deviate from the brute-force
+  safe set; realized distinct blocks 31.75 of 64 ((4,4) vs routed 13.94) and 15.62 of 32 ((8,4) vs
+  routed 9.91).
+- 50 runs launched 2026-10-18T05:07Z into `plan/gates/gate28_c1control/results/allblock.jsonl`.
+- `analysis.py` is pre-registered and refuses to run until D5 is in the DECISIONS freeze log at the
+  coded 2% relative margin; branch table in design.md (routed_better / within_margin /
+  allblock_better / indeterminate; mixed reported per cell).
+- `.gitignore` now re-includes `plan/gates/**/*.log`; 11 historical gate logs committed (632K).
