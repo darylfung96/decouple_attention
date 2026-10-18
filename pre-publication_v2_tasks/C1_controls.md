@@ -1,6 +1,6 @@
 # C1 — Decisive controls: is the router needed at all?
 
-**Status:** TODO · **Cost:** 25–40 h including implementation · **Depends:** R2 for the matched row
+**Status:** IN FLIGHT (all-block control only) · **Cost:** 25–40 h including implementation · **Depends:** R2 for the matched row
 **Source:** Q1 review §4 "Establish whether the router is needed at all" (PDF p. 5; `source/q1_review_text.txt` lines 203–267), the control table at lines 208–249; the external comparators also come from the manager's email.
 
 **Verdict:** PARTIAL KEEP — only the all-block compression control is kept; the other seven controls in the review's table are parked (see `N_necessity_audit.md`).
@@ -58,3 +58,5 @@ the result whichever way it goes, including the possibility that routing is unne
 ## Log
 
 - 2026-10-16: created from the review's P1 table and the manager's email.
+
+- 2026-10-17 (Phase 4 start): design frozen pre-run at `plan/gates/gate28_c1control/design.md` — two control cells (c_KV = 4 and 8, c_R = 4), single variable `index_topk` 16 -> 64 (= n_idx); no new parameters (state_dicts bitwise equal at a fixed seed) and no new compute path (selection enters only as a mask). `--dry-run` passes: 0 of 256 positions deviate from the brute-force safe set, realized distinct blocks 31.75 of 64 (4,4) vs routed 13.94, and 15.62 of 32 (8,4) vs routed 9.91. `--smoke` finite. `--full` launched 2026-10-18T05:07Z into `results/allblock.jsonl` (50 runs). `analysis.py` refuses to run while D5 is unfrozen — D5 (2% relative, the plan's anchor) is the one input this phase is waiting on. Branch rule: `design.md` §"D5 margin and branch rule".

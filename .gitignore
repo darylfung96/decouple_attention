@@ -23,6 +23,9 @@ paper/tectonic
 *.bbl
 *.blg
 *.log
+# Evidence logs: the paper ships its logs with the source, so gate logs are
+# tracked explicitly and outrank the blanket ignore above.
+!plan/gates/**/*.log
 *.out
 *.synctex.gz
 

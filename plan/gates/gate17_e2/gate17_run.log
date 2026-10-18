@@ -1,0 +1,522 @@
+=== Gate17: 40 pending (4 cells x 2 ds x 5 seeds) ===
+--- [1/40] etth1 (4, 4) seed=42 START 2026-09-30T05:28:44Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.477294  val=0.389021
+      epoch  2/10  train=0.391952  val=0.376424
+      epoch  3/10  train=0.377789  val=0.370971
+      epoch  4/10  train=0.368827  val=0.372339
+      epoch  5/10  train=0.362888  val=0.372291
+      epoch  6/10  train=0.358866  val=0.369923
+      epoch  7/10  train=0.355494  val=0.369762
+      epoch  8/10  train=0.352193  val=0.368867
+      epoch  9/10  train=0.350088  val=0.369732
+      epoch 10/10  train=0.347554  val=0.368516
+      FINAL val=0.368516 test=0.429812 (535.4s)
+--- [2/40] etth1 (4, 4) seed=123 START 2026-09-30T05:37:39Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.475087  val=0.393624
+      epoch  2/10  train=0.392513  val=0.379168
+      epoch  3/10  train=0.376759  val=0.375838
+      epoch  4/10  train=0.367874  val=0.374366
+      epoch  5/10  train=0.362516  val=0.372129
+      epoch  6/10  train=0.358345  val=0.375309
+      epoch  7/10  train=0.355572  val=0.375257
+      epoch  8/10  train=0.352522  val=0.384224
+      epoch  9/10  train=0.350357  val=0.377903
+      epoch 10/10  train=0.347718  val=0.383901
+      FINAL val=0.383901 test=0.436942 (479.2s)
+--- [3/40] etth1 (4, 4) seed=2024 START 2026-09-30T05:45:38Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.471593  val=0.393979
+      epoch  2/10  train=0.394744  val=0.380438
+      epoch  3/10  train=0.378992  val=0.373516
+      epoch  4/10  train=0.370494  val=0.371656
+      epoch  5/10  train=0.363777  val=0.368649
+      epoch  6/10  train=0.359020  val=0.368688
+      epoch  7/10  train=0.355026  val=0.366197
+      epoch  8/10  train=0.352272  val=0.367270
+      epoch  9/10  train=0.349546  val=0.369989
+      epoch 10/10  train=0.346914  val=0.373113
+      FINAL val=0.373113 test=0.431504 (541.0s)
+--- [4/40] etth1 (4, 4) seed=7 START 2026-09-30T05:54:39Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.473505  val=0.391086
+      epoch  2/10  train=0.391846  val=0.376986
+      epoch  3/10  train=0.376660  val=0.371432
+      epoch  4/10  train=0.367444  val=0.370788
+      epoch  5/10  train=0.360611  val=0.368833
+      epoch  6/10  train=0.356014  val=0.369703
+      epoch  7/10  train=0.352127  val=0.369946
+      epoch  8/10  train=0.348790  val=0.371119
+      epoch  9/10  train=0.346269  val=0.368211
+      epoch 10/10  train=0.344087  val=0.368709
+      FINAL val=0.368709 test=0.429905 (388.3s)
+--- [5/40] etth1 (4, 4) seed=99 START 2026-09-30T06:01:08Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.468860  val=0.392865
+      epoch  2/10  train=0.390204  val=0.380001
+      epoch  3/10  train=0.375091  val=0.376244
+      epoch  4/10  train=0.366940  val=0.372747
+      epoch  5/10  train=0.361522  val=0.375559
+      epoch  6/10  train=0.357733  val=0.379994
+      epoch  7/10  train=0.354835  val=0.371229
+      epoch  8/10  train=0.351627  val=0.371053
+      epoch  9/10  train=0.348448  val=0.376798
+      epoch 10/10  train=0.346045  val=0.370516
+      FINAL val=0.370516 test=0.428921 (382.9s)
+--- [6/40] etth1 (8, 4) seed=42 START 2026-09-30T06:07:30Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.476964  val=0.388930
+      epoch  2/10  train=0.391723  val=0.376374
+      epoch  3/10  train=0.377796  val=0.370674
+      epoch  4/10  train=0.369082  val=0.371121
+      epoch  5/10  train=0.363442  val=0.370571
+      epoch  6/10  train=0.359011  val=0.369495
+      epoch  7/10  train=0.355294  val=0.368963
+      epoch  8/10  train=0.351599  val=0.371132
+      epoch  9/10  train=0.349066  val=0.373532
+      epoch 10/10  train=0.346577  val=0.370298
+      FINAL val=0.370298 test=0.432770 (364.6s)
+--- [7/40] etth1 (8, 4) seed=123 START 2026-09-30T06:13:35Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.473771  val=0.392898
+      epoch  2/10  train=0.392101  val=0.378601
+      epoch  3/10  train=0.376876  val=0.374746
+      epoch  4/10  train=0.368450  val=0.372241
+      epoch  5/10  train=0.362924  val=0.370309
+      epoch  6/10  train=0.358543  val=0.372192
+      epoch  7/10  train=0.355434  val=0.372006
+      epoch  8/10  train=0.351831  val=0.376354
+      epoch  9/10  train=0.349639  val=0.371148
+      epoch 10/10  train=0.346956  val=0.375073
+      FINAL val=0.375073 test=0.434552 (365.5s)
+--- [8/40] etth1 (8, 4) seed=2024 START 2026-09-30T06:19:41Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.472016  val=0.392422
+      epoch  2/10  train=0.393975  val=0.378904
+      epoch  3/10  train=0.378397  val=0.373857
+      epoch  4/10  train=0.369596  val=0.372626
+      epoch  5/10  train=0.363011  val=0.370029
+      epoch  6/10  train=0.358066  val=0.369282
+      epoch  7/10  train=0.354394  val=0.366466
+      epoch  8/10  train=0.351510  val=0.365423
+      epoch  9/10  train=0.348749  val=0.368630
+      epoch 10/10  train=0.346708  val=0.369666
+      FINAL val=0.369666 test=0.430415 (365.3s)
+--- [9/40] etth1 (8, 4) seed=7 START 2026-09-30T06:25:46Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.472787  val=0.390145
+      epoch  2/10  train=0.391375  val=0.375677
+      epoch  3/10  train=0.376276  val=0.369280
+      epoch  4/10  train=0.367912  val=0.368001
+      epoch  5/10  train=0.361699  val=0.365830
+      epoch  6/10  train=0.357350  val=0.365511
+      epoch  7/10  train=0.353956  val=0.366004
+      epoch  8/10  train=0.350702  val=0.365812
+      epoch  9/10  train=0.348375  val=0.363236
+      epoch 10/10  train=0.346372  val=0.365048
+      FINAL val=0.365048 test=0.430963 (329.3s)
+--- [10/40] etth1 (8, 4) seed=99 START 2026-09-30T06:31:15Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.468662  val=0.392883
+      epoch  2/10  train=0.390842  val=0.379394
+      epoch  3/10  train=0.376209  val=0.376015
+      epoch  4/10  train=0.368195  val=0.372639
+      epoch  5/10  train=0.362939  val=0.375270
+      epoch  6/10  train=0.359011  val=0.378462
+      epoch  7/10  train=0.355945  val=0.371423
+      epoch  8/10  train=0.352993  val=0.369970
+      epoch  9/10  train=0.350076  val=0.377161
+      epoch 10/10  train=0.347836  val=0.372293
+      FINAL val=0.372293 test=0.430857 (333.3s)
+--- [11/40] etth1 (4, 8) seed=42 START 2026-09-30T06:36:48Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.476909  val=0.388550
+      epoch  2/10  train=0.391682  val=0.376501
+      epoch  3/10  train=0.377604  val=0.371435
+      epoch  4/10  train=0.368610  val=0.372726
+      epoch  5/10  train=0.362396  val=0.372959
+      epoch  6/10  train=0.357996  val=0.372187
+      epoch  7/10  train=0.354509  val=0.371349
+      epoch  8/10  train=0.351149  val=0.370747
+      epoch  9/10  train=0.348954  val=0.371037
+      epoch 10/10  train=0.346600  val=0.370116
+      FINAL val=0.370116 test=0.431553 (332.3s)
+--- [12/40] etth1 (4, 8) seed=123 START 2026-09-30T06:42:21Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.473883  val=0.392187
+      epoch  2/10  train=0.391855  val=0.378600
+      epoch  3/10  train=0.376036  val=0.375209
+      epoch  4/10  train=0.367101  val=0.373656
+      epoch  5/10  train=0.361493  val=0.372405
+      epoch  6/10  train=0.357086  val=0.376801
+      epoch  7/10  train=0.354235  val=0.377250
+      epoch  8/10  train=0.350825  val=0.384623
+      epoch  9/10  train=0.348498  val=0.378938
+      epoch 10/10  train=0.346002  val=0.385156
+      FINAL val=0.385156 test=0.434287 (336.3s)
+--- [13/40] etth1 (4, 8) seed=2024 START 2026-09-30T06:47:57Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.471593  val=0.391735
+      epoch  2/10  train=0.394098  val=0.378497
+      epoch  3/10  train=0.378185  val=0.373509
+      epoch  4/10  train=0.369228  val=0.372341
+      epoch  5/10  train=0.362618  val=0.370516
+      epoch  6/10  train=0.357391  val=0.371495
+      epoch  7/10  train=0.354006  val=0.367556
+      epoch  8/10  train=0.350909  val=0.368430
+      epoch  9/10  train=0.348187  val=0.372417
+      epoch 10/10  train=0.345357  val=0.377127
+      FINAL val=0.377127 test=0.432211 (337.7s)
+--- [14/40] etth1 (4, 8) seed=7 START 2026-09-30T06:53:35Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.473077  val=0.389551
+      epoch  2/10  train=0.391067  val=0.375546
+      epoch  3/10  train=0.375721  val=0.370485
+      epoch  4/10  train=0.366549  val=0.370531
+      epoch  5/10  train=0.359860  val=0.369206
+      epoch  6/10  train=0.355248  val=0.369500
+      epoch  7/10  train=0.351665  val=0.368282
+      epoch  8/10  train=0.348124  val=0.369447
+      epoch  9/10  train=0.345968  val=0.365785
+      epoch 10/10  train=0.343786  val=0.366216
+      FINAL val=0.366216 test=0.433816 (340.0s)
+--- [15/40] etth1 (4, 8) seed=99 START 2026-09-30T06:59:15Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.468852  val=0.391679
+      epoch  2/10  train=0.390562  val=0.379230
+      epoch  3/10  train=0.375151  val=0.376365
+      epoch  4/10  train=0.366731  val=0.374494
+      epoch  5/10  train=0.361217  val=0.377815
+      epoch  6/10  train=0.357388  val=0.381985
+      epoch  7/10  train=0.354408  val=0.374058
+      epoch  8/10  train=0.351467  val=0.372969
+      epoch  9/10  train=0.348637  val=0.378936
+      epoch 10/10  train=0.346571  val=0.373858
+      FINAL val=0.373858 test=0.431899 (338.9s)
+--- [16/40] etth1 (8, 8) seed=42 START 2026-09-30T07:04:54Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.476939  val=0.388851
+      epoch  2/10  train=0.391704  val=0.376282
+      epoch  3/10  train=0.377745  val=0.370677
+      epoch  4/10  train=0.368960  val=0.371094
+      epoch  5/10  train=0.363304  val=0.370535
+      epoch  6/10  train=0.358872  val=0.369474
+      epoch  7/10  train=0.355149  val=0.368724
+      epoch  8/10  train=0.351430  val=0.370832
+      epoch  9/10  train=0.348888  val=0.373471
+      epoch 10/10  train=0.346413  val=0.370008
+      FINAL val=0.370008 test=0.432310 (317.2s)
+--- [17/40] etth1 (8, 8) seed=123 START 2026-09-30T07:10:11Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.473678  val=0.392838
+      epoch  2/10  train=0.392012  val=0.378546
+      epoch  3/10  train=0.376817  val=0.374801
+      epoch  4/10  train=0.368405  val=0.372213
+      epoch  5/10  train=0.362866  val=0.370257
+      epoch  6/10  train=0.358472  val=0.372257
+      epoch  7/10  train=0.355389  val=0.371713
+      epoch  8/10  train=0.351702  val=0.376096
+      epoch  9/10  train=0.349477  val=0.371245
+      epoch 10/10  train=0.346774  val=0.374992
+      FINAL val=0.374992 test=0.434305 (319.5s)
+--- [18/40] etth1 (8, 8) seed=2024 START 2026-09-30T07:15:30Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.471988  val=0.392464
+      epoch  2/10  train=0.393916  val=0.379050
+      epoch  3/10  train=0.378322  val=0.374212
+      epoch  4/10  train=0.369495  val=0.372799
+      epoch  5/10  train=0.362919  val=0.370179
+      epoch  6/10  train=0.357955  val=0.369706
+      epoch  7/10  train=0.354331  val=0.366553
+      epoch  8/10  train=0.351491  val=0.365494
+      epoch  9/10  train=0.348681  val=0.368614
+      epoch 10/10  train=0.346496  val=0.369665
+      FINAL val=0.369665 test=0.430228 (313.9s)
+--- [19/40] etth1 (8, 8) seed=7 START 2026-09-30T07:20:44Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.472749  val=0.390111
+      epoch  2/10  train=0.391326  val=0.375644
+      epoch  3/10  train=0.376223  val=0.369301
+      epoch  4/10  train=0.367824  val=0.368079
+      epoch  5/10  train=0.361619  val=0.365882
+      epoch  6/10  train=0.357281  val=0.365534
+      epoch  7/10  train=0.353888  val=0.365948
+      epoch  8/10  train=0.350625  val=0.365720
+      epoch  9/10  train=0.348276  val=0.363181
+      epoch 10/10  train=0.346284  val=0.364848
+      FINAL val=0.364848 test=0.431245 (319.1s)
+--- [20/40] etth1 (8, 8) seed=99 START 2026-09-30T07:26:03Z ---
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.468634  val=0.392883
+      epoch  2/10  train=0.390796  val=0.379316
+      epoch  3/10  train=0.376152  val=0.375887
+      epoch  4/10  train=0.368123  val=0.372508
+      epoch  5/10  train=0.362870  val=0.375255
+      epoch  6/10  train=0.358939  val=0.378799
+      epoch  7/10  train=0.355867  val=0.371756
+      epoch  8/10  train=0.352896  val=0.370508
+      epoch  9/10  train=0.349964  val=0.377623
+      epoch 10/10  train=0.347737  val=0.372536
+      FINAL val=0.372536 test=0.431356 (317.2s)
+--- [21/40] etth2 (4, 4) seed=42 START 2026-09-30T07:31:21Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.493010  val=0.257615
+      epoch  2/10  train=0.423623  val=0.247975
+      epoch  3/10  train=0.403863  val=0.249525
+      epoch  4/10  train=0.390890  val=0.248530
+      epoch  5/10  train=0.379444  val=0.255518
+      epoch  6/10  train=0.368985  val=0.253630
+      epoch  7/10  train=0.360454  val=0.255054
+      epoch  8/10  train=0.351951  val=0.254693
+      epoch  9/10  train=0.345126  val=0.253018
+      epoch 10/10  train=0.338238  val=0.250767
+      FINAL val=0.250767 test=0.198193 (361.8s)
+--- [22/40] etth2 (4, 4) seed=123 START 2026-09-30T07:37:22Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.484577  val=0.256137
+      epoch  2/10  train=0.419436  val=0.250950
+      epoch  3/10  train=0.401164  val=0.253789
+      epoch  4/10  train=0.388130  val=0.249990
+      epoch  5/10  train=0.376761  val=0.250598
+      epoch  6/10  train=0.365625  val=0.261509
+      epoch  7/10  train=0.356977  val=0.257367
+      epoch  8/10  train=0.348749  val=0.253906
+      epoch  9/10  train=0.340580  val=0.252377
+      epoch 10/10  train=0.334178  val=0.257705
+      FINAL val=0.257705 test=0.195387 (361.2s)
+--- [23/40] etth2 (4, 4) seed=2024 START 2026-09-30T07:43:24Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.484792  val=0.258798
+      epoch  2/10  train=0.421944  val=0.255229
+      epoch  3/10  train=0.402558  val=0.247578
+      epoch  4/10  train=0.388527  val=0.251533
+      epoch  5/10  train=0.376092  val=0.254799
+      epoch  6/10  train=0.366285  val=0.254119
+      epoch  7/10  train=0.357238  val=0.255934
+      epoch  8/10  train=0.350073  val=0.257034
+      epoch  9/10  train=0.343204  val=0.252421
+      epoch 10/10  train=0.337261  val=0.254512
+      FINAL val=0.254512 test=0.194213 (361.5s)
+--- [24/40] etth2 (4, 4) seed=7 START 2026-09-30T07:49:25Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.475993  val=0.257493
+      epoch  2/10  train=0.413450  val=0.250955
+      epoch  3/10  train=0.393988  val=0.255815
+      epoch  4/10  train=0.380361  val=0.256730
+      epoch  5/10  train=0.370210  val=0.262273
+      epoch  6/10  train=0.360301  val=0.257634
+      epoch  7/10  train=0.352467  val=0.257050
+      epoch  8/10  train=0.343797  val=0.255364
+      epoch  9/10  train=0.336595  val=0.253090
+      epoch 10/10  train=0.330851  val=0.258613
+      FINAL val=0.258613 test=0.192958 (359.4s)
+--- [25/40] etth2 (4, 4) seed=99 START 2026-09-30T07:55:25Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.479855  val=0.256077
+      epoch  2/10  train=0.417449  val=0.249146
+      epoch  3/10  train=0.397227  val=0.250508
+      epoch  4/10  train=0.381650  val=0.249465
+      epoch  5/10  train=0.368930  val=0.247934
+      epoch  6/10  train=0.360247  val=0.246666
+      epoch  7/10  train=0.353083  val=0.248260
+      epoch  8/10  train=0.344933  val=0.254712
+      epoch  9/10  train=0.339246  val=0.250739
+      epoch 10/10  train=0.333670  val=0.257704
+      FINAL val=0.257704 test=0.191400 (360.2s)
+--- [26/40] etth2 (8, 4) seed=42 START 2026-09-30T08:01:25Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.493010  val=0.257132
+      epoch  2/10  train=0.422653  val=0.247718
+      epoch  3/10  train=0.402684  val=0.248270
+      epoch  4/10  train=0.390082  val=0.247378
+      epoch  5/10  train=0.379454  val=0.254959
+      epoch  6/10  train=0.370417  val=0.254747
+      epoch  7/10  train=0.363576  val=0.256920
+      epoch  8/10  train=0.356438  val=0.256702
+      epoch  9/10  train=0.349923  val=0.256973
+      epoch 10/10  train=0.344416  val=0.251768
+      FINAL val=0.251768 test=0.193003 (339.7s)
+--- [27/40] etth2 (8, 4) seed=123 START 2026-09-30T08:07:04Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.482977  val=0.255946
+      epoch  2/10  train=0.417383  val=0.251149
+      epoch  3/10  train=0.398611  val=0.254154
+      epoch  4/10  train=0.386556  val=0.249868
+      epoch  5/10  train=0.376721  val=0.251423
+      epoch  6/10  train=0.367279  val=0.261915
+      epoch  7/10  train=0.358964  val=0.261370
+      epoch  8/10  train=0.352213  val=0.260728
+      epoch  9/10  train=0.344706  val=0.260323
+      epoch 10/10  train=0.339207  val=0.267580
+      FINAL val=0.267580 test=0.193425 (337.2s)
+--- [28/40] etth2 (8, 4) seed=2024 START 2026-09-30T08:12:42Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.482519  val=0.258124
+      epoch  2/10  train=0.419350  val=0.254823
+      epoch  3/10  train=0.400435  val=0.247916
+      epoch  4/10  train=0.386600  val=0.251940
+      epoch  5/10  train=0.375902  val=0.255919
+      epoch  6/10  train=0.367322  val=0.254320
+      epoch  7/10  train=0.359363  val=0.255945
+      epoch  8/10  train=0.351929  val=0.258060
+      epoch  9/10  train=0.342671  val=0.253957
+      epoch 10/10  train=0.335316  val=0.261756
+      FINAL val=0.261756 test=0.191046 (339.6s)
+--- [29/40] etth2 (8, 4) seed=7 START 2026-09-30T08:18:21Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.475415  val=0.256697
+      epoch  2/10  train=0.412925  val=0.249949
+      epoch  3/10  train=0.392847  val=0.254897
+      epoch  4/10  train=0.379157  val=0.257552
+      epoch  5/10  train=0.369846  val=0.262607
+      epoch  6/10  train=0.361584  val=0.259992
+      epoch  7/10  train=0.355563  val=0.260122
+      epoch  8/10  train=0.348923  val=0.260773
+      epoch  9/10  train=0.343791  val=0.256373
+      epoch 10/10  train=0.338229  val=0.263971
+      FINAL val=0.263971 test=0.193504 (340.1s)
+--- [30/40] etth2 (8, 4) seed=99 START 2026-09-30T08:24:01Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.479939  val=0.256266
+      epoch  2/10  train=0.418574  val=0.247956
+      epoch  3/10  train=0.400666  val=0.248217
+      epoch  4/10  train=0.386887  val=0.250334
+      epoch  5/10  train=0.373908  val=0.249690
+      epoch  6/10  train=0.364442  val=0.249238
+      epoch  7/10  train=0.355971  val=0.251447
+      epoch  8/10  train=0.346538  val=0.259364
+      epoch  9/10  train=0.340547  val=0.258649
+      epoch 10/10  train=0.333776  val=0.261436
+      FINAL val=0.261436 test=0.190522 (338.8s)
+--- [31/40] etth2 (4, 8) seed=42 START 2026-09-30T08:29:40Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.491650  val=0.256860
+      epoch  2/10  train=0.422033  val=0.247466
+      epoch  3/10  train=0.403195  val=0.248465
+      epoch  4/10  train=0.392206  val=0.246508
+      epoch  5/10  train=0.382896  val=0.254233
+      epoch  6/10  train=0.374486  val=0.255038
+      epoch  7/10  train=0.367346  val=0.257435
+      epoch  8/10  train=0.360260  val=0.257482
+      epoch  9/10  train=0.354282  val=0.256640
+      epoch 10/10  train=0.348606  val=0.255170
+      FINAL val=0.255170 test=0.194330 (342.8s)
+--- [32/40] etth2 (4, 8) seed=123 START 2026-09-30T08:35:23Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.483544  val=0.255516
+      epoch  2/10  train=0.419776  val=0.249754
+      epoch  3/10  train=0.402970  val=0.252195
+      epoch  4/10  train=0.392051  val=0.248687
+      epoch  5/10  train=0.383371  val=0.248189
+      epoch  6/10  train=0.374530  val=0.257913
+      epoch  7/10  train=0.367285  val=0.256792
+      epoch  8/10  train=0.361008  val=0.255365
+      epoch  9/10  train=0.354057  val=0.251663
+      epoch 10/10  train=0.347164  val=0.257402
+      FINAL val=0.257402 test=0.189753 (342.2s)
+--- [33/40] etth2 (4, 8) seed=2024 START 2026-09-30T08:41:05Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.482766  val=0.257867
+      epoch  2/10  train=0.419950  val=0.254854
+      epoch  3/10  train=0.402222  val=0.246310
+      epoch  4/10  train=0.390087  val=0.249642
+      epoch  5/10  train=0.379950  val=0.252327
+      epoch  6/10  train=0.372298  val=0.252926
+      epoch  7/10  train=0.364812  val=0.255353
+      epoch  8/10  train=0.358155  val=0.259390
+      epoch  9/10  train=0.351148  val=0.253820
+      epoch 10/10  train=0.344911  val=0.259851
+      FINAL val=0.259851 test=0.193051 (337.6s)
+--- [34/40] etth2 (4, 8) seed=7 START 2026-09-30T08:46:43Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.475567  val=0.256744
+      epoch  2/10  train=0.413209  val=0.249834
+      epoch  3/10  train=0.394692  val=0.253046
+      epoch  4/10  train=0.382401  val=0.255239
+      epoch  5/10  train=0.373299  val=0.259522
+      epoch  6/10  train=0.363452  val=0.256559
+      epoch  7/10  train=0.356557  val=0.259386
+      epoch  8/10  train=0.349101  val=0.261104
+      epoch  9/10  train=0.341917  val=0.261022
+      epoch 10/10  train=0.336200  val=0.269638
+      FINAL val=0.269638 test=0.186179 (340.9s)
+--- [35/40] etth2 (4, 8) seed=99 START 2026-09-30T08:52:24Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.479045  val=0.255966
+      epoch  2/10  train=0.417836  val=0.248247
+      epoch  3/10  train=0.399972  val=0.248746
+      epoch  4/10  train=0.386284  val=0.249818
+      epoch  5/10  train=0.373704  val=0.248908
+      epoch  6/10  train=0.363721  val=0.250561
+      epoch  7/10  train=0.357211  val=0.252614
+      epoch  8/10  train=0.348795  val=0.261234
+      epoch  9/10  train=0.341315  val=0.259279
+      epoch 10/10  train=0.335453  val=0.265065
+      FINAL val=0.265065 test=0.187200 (340.4s)
+--- [36/40] etth2 (8, 8) seed=42 START 2026-09-30T08:58:04Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.492943  val=0.257120
+      epoch  2/10  train=0.422569  val=0.247704
+      epoch  3/10  train=0.402668  val=0.248188
+      epoch  4/10  train=0.390070  val=0.247232
+      epoch  5/10  train=0.379569  val=0.254616
+      epoch  6/10  train=0.370503  val=0.254863
+      epoch  7/10  train=0.363750  val=0.256705
+      epoch  8/10  train=0.356653  val=0.256440
+      epoch  9/10  train=0.349999  val=0.257011
+      epoch 10/10  train=0.344463  val=0.251580
+      FINAL val=0.251580 test=0.193262 (317.1s)
+--- [37/40] etth2 (8, 8) seed=123 START 2026-09-30T09:03:21Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.482954  val=0.255933
+      epoch  2/10  train=0.417330  val=0.251261
+      epoch  3/10  train=0.398522  val=0.254727
+      epoch  4/10  train=0.386458  val=0.250124
+      epoch  5/10  train=0.376468  val=0.251916
+      epoch  6/10  train=0.367048  val=0.262208
+      epoch  7/10  train=0.358667  val=0.261852
+      epoch  8/10  train=0.351824  val=0.261016
+      epoch  9/10  train=0.344448  val=0.260272
+      epoch 10/10  train=0.338840  val=0.267095
+      FINAL val=0.267095 test=0.193308 (320.8s)
+--- [38/40] etth2 (8, 8) seed=2024 START 2026-09-30T09:08:42Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.482428  val=0.257969
+      epoch  2/10  train=0.419145  val=0.254698
+      epoch  3/10  train=0.400130  val=0.247987
+      epoch  4/10  train=0.386404  val=0.251989
+      epoch  5/10  train=0.375657  val=0.256072
+      epoch  6/10  train=0.367177  val=0.254332
+      epoch  7/10  train=0.359280  val=0.255969
+      epoch  8/10  train=0.351816  val=0.257503
+      epoch  9/10  train=0.342436  val=0.254049
+      epoch 10/10  train=0.334929  val=0.261644
+      FINAL val=0.261644 test=0.190890 (317.8s)
+--- [39/40] etth2 (8, 8) seed=7 START 2026-09-30T09:14:00Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.475368  val=0.256714
+      epoch  2/10  train=0.412762  val=0.249861
+      epoch  3/10  train=0.392489  val=0.254952
+      epoch  4/10  train=0.378893  val=0.257608
+      epoch  5/10  train=0.369619  val=0.262988
+      epoch  6/10  train=0.361412  val=0.259727
+      epoch  7/10  train=0.355195  val=0.260067
+      epoch  8/10  train=0.348643  val=0.261050
+      epoch  9/10  train=0.343195  val=0.256339
+      epoch 10/10  train=0.337563  val=0.264681
+      FINAL val=0.264681 test=0.193927 (318.0s)
+--- [40/40] etth2 (8, 8) seed=99 START 2026-09-30T09:19:18Z ---
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+      epoch  1/10  train=0.479885  val=0.256199
+      epoch  2/10  train=0.418493  val=0.247937
+      epoch  3/10  train=0.400632  val=0.248187
+      epoch  4/10  train=0.386907  val=0.250224
+      epoch  5/10  train=0.373918  val=0.249787
+      epoch  6/10  train=0.364317  val=0.249540
+      epoch  7/10  train=0.355747  val=0.251842
+      epoch  8/10  train=0.346157  val=0.259591
+      epoch  9/10  train=0.340200  val=0.259371
+      epoch 10/10  train=0.333393  val=0.261731
+      FINAL val=0.261731 test=0.190536 (319.2s)
+=== Gate17 complete ===

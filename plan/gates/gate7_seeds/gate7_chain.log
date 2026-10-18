@@ -1,0 +1,5 @@
+[chain] waiting for gate6 to reach the heavy tail (solar START marker)...
+[chain] pausing gate6 (pid 52673) at 2026-09-02T17:49:35Z
+[chain] gate6 confirmed paused; starting gate7 (8 threads)
+[chain] gate7 finished at 2026-09-03T16:14:57Z; resuming gate6
+[chain] done

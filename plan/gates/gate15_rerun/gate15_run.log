@@ -1,0 +1,977 @@
+=== Gate15 factorial: 75 pending (3 cells x 25 seeds) ===
+--- [1/75] (4,4) seed=42 START 2026-09-28T20:31:02Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.722990  val_mse=0.756937
+      epoch  2/10  train_mse=0.438130  val_mse=0.618751
+      epoch  3/10  train_mse=0.377065  val_mse=0.580317
+      epoch  4/10  train_mse=0.357622  val_mse=0.572539
+      epoch  5/10  train_mse=0.342874  val_mse=0.584506
+      epoch  6/10  train_mse=0.328680  val_mse=0.626027
+      epoch  7/10  train_mse=0.317332  val_mse=0.572455
+      epoch  8/10  train_mse=0.308508  val_mse=0.601999
+      epoch  9/10  train_mse=0.301001  val_mse=0.628031
+      epoch 10/10  train_mse=0.294132  val_mse=0.603263
+      FINAL val=0.603263 test=0.857550 (384.1s)
+--- [2/75] (4,4) seed=123 START 2026-09-28T20:37:26Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.722207  val_mse=0.732109
+      epoch  2/10  train_mse=0.435734  val_mse=0.646186
+      epoch  3/10  train_mse=0.382563  val_mse=0.610014
+      epoch  4/10  train_mse=0.363265  val_mse=0.610177
+      epoch  5/10  train_mse=0.348024  val_mse=0.638842
+      epoch  6/10  train_mse=0.333186  val_mse=0.665590
+      epoch  7/10  train_mse=0.321382  val_mse=0.630415
+      epoch  8/10  train_mse=0.311591  val_mse=0.680164
+      epoch  9/10  train_mse=0.304033  val_mse=0.659883
+      epoch 10/10  train_mse=0.297857  val_mse=0.731739
+      FINAL val=0.731739 test=0.977093 (405.4s)
+--- [3/75] (4,4) seed=2024 START 2026-09-28T20:44:12Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.721710  val_mse=0.718879
+      epoch  2/10  train_mse=0.432729  val_mse=0.602692
+      epoch  3/10  train_mse=0.379684  val_mse=0.576860
+      epoch  4/10  train_mse=0.360919  val_mse=0.612532
+      epoch  5/10  train_mse=0.346350  val_mse=0.584940
+      epoch  6/10  train_mse=0.332810  val_mse=0.554163
+      epoch  7/10  train_mse=0.319890  val_mse=0.583585
+      epoch  8/10  train_mse=0.309865  val_mse=0.539686
+      epoch  9/10  train_mse=0.302091  val_mse=0.573303
+      epoch 10/10  train_mse=0.295123  val_mse=0.542484
+      FINAL val=0.542484 test=0.818210 (412.7s)
+--- [4/75] (4,4) seed=7 START 2026-09-28T20:51:04Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.731639  val_mse=0.733907
+      epoch  2/10  train_mse=0.441069  val_mse=0.575941
+      epoch  3/10  train_mse=0.379218  val_mse=0.550290
+      epoch  4/10  train_mse=0.358259  val_mse=0.533553
+      epoch  5/10  train_mse=0.342660  val_mse=0.501980
+      epoch  6/10  train_mse=0.328791  val_mse=0.515792
+      epoch  7/10  train_mse=0.316813  val_mse=0.498165
+      epoch  8/10  train_mse=0.307484  val_mse=0.498402
+      epoch  9/10  train_mse=0.299556  val_mse=0.533236
+      epoch 10/10  train_mse=0.293016  val_mse=0.492634
+      FINAL val=0.492634 test=0.839772 (407.1s)
+--- [5/75] (4,4) seed=99 START 2026-09-28T20:57:51Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.725392  val_mse=0.725803
+      epoch  2/10  train_mse=0.441135  val_mse=0.616689
+      epoch  3/10  train_mse=0.376853  val_mse=0.582009
+      epoch  4/10  train_mse=0.356902  val_mse=0.610142
+      epoch  5/10  train_mse=0.341971  val_mse=0.618951
+      epoch  6/10  train_mse=0.328658  val_mse=0.653115
+      epoch  7/10  train_mse=0.316464  val_mse=0.651174
+      epoch  8/10  train_mse=0.306388  val_mse=0.558937
+      epoch  9/10  train_mse=0.298310  val_mse=0.635857
+      epoch 10/10  train_mse=0.291676  val_mse=0.584234
+      FINAL val=0.584234 test=0.920166 (346.1s)
+--- [6/75] (4,4) seed=1 START 2026-09-28T21:03:38Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.735301  val_mse=0.716978
+      epoch  2/10  train_mse=0.444218  val_mse=0.588582
+      epoch  3/10  train_mse=0.383746  val_mse=0.600940
+      epoch  4/10  train_mse=0.362694  val_mse=0.594173
+      epoch  5/10  train_mse=0.347278  val_mse=0.669979
+      epoch  6/10  train_mse=0.333180  val_mse=0.665953
+      epoch  7/10  train_mse=0.320751  val_mse=0.633799
+      epoch  8/10  train_mse=0.311113  val_mse=0.587051
+      epoch  9/10  train_mse=0.303193  val_mse=0.648678
+      epoch 10/10  train_mse=0.296292  val_mse=0.614806
+      FINAL val=0.614806 test=0.914789 (345.0s)
+--- [7/75] (4,4) seed=2 START 2026-09-28T21:09:23Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.721489  val_mse=0.740638
+      epoch  2/10  train_mse=0.425284  val_mse=0.592347
+      epoch  3/10  train_mse=0.372787  val_mse=0.575264
+      epoch  4/10  train_mse=0.353594  val_mse=0.564345
+      epoch  5/10  train_mse=0.339299  val_mse=0.571235
+      epoch  6/10  train_mse=0.325699  val_mse=0.591273
+      epoch  7/10  train_mse=0.313967  val_mse=0.621508
+      epoch  8/10  train_mse=0.304720  val_mse=0.609621
+      epoch  9/10  train_mse=0.296661  val_mse=0.609490
+      epoch 10/10  train_mse=0.290287  val_mse=0.594771
+      FINAL val=0.594771 test=0.858871 (423.5s)
+--- [8/75] (4,4) seed=3 START 2026-09-28T21:16:26Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.711354  val_mse=0.730076
+      epoch  2/10  train_mse=0.426637  val_mse=0.567867
+      epoch  3/10  train_mse=0.374598  val_mse=0.572370
+      epoch  4/10  train_mse=0.352760  val_mse=0.583256
+      epoch  5/10  train_mse=0.335382  val_mse=0.640488
+      epoch  6/10  train_mse=0.320815  val_mse=0.577446
+      epoch  7/10  train_mse=0.310374  val_mse=0.589807
+      epoch  8/10  train_mse=0.302791  val_mse=0.598886
+      epoch  9/10  train_mse=0.295764  val_mse=0.612042
+      epoch 10/10  train_mse=0.289633  val_mse=0.632412
+      FINAL val=0.632412 test=0.810219 (389.7s)
+--- [9/75] (4,4) seed=4 START 2026-09-28T21:22:56Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.730984  val_mse=0.775893
+      epoch  2/10  train_mse=0.437980  val_mse=0.617718
+      epoch  3/10  train_mse=0.380494  val_mse=0.645826
+      epoch  4/10  train_mse=0.361985  val_mse=0.642823
+      epoch  5/10  train_mse=0.347868  val_mse=0.642098
+      epoch  6/10  train_mse=0.334180  val_mse=0.647837
+      epoch  7/10  train_mse=0.321645  val_mse=0.648378
+      epoch  8/10  train_mse=0.311129  val_mse=0.616287
+      epoch  9/10  train_mse=0.301799  val_mse=0.687638
+      epoch 10/10  train_mse=0.294535  val_mse=0.697217
+      FINAL val=0.697217 test=0.886708 (389.4s)
+--- [10/75] (4,4) seed=5 START 2026-09-28T21:29:25Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.717952  val_mse=0.745478
+      epoch  2/10  train_mse=0.435919  val_mse=0.623808
+      epoch  3/10  train_mse=0.375317  val_mse=0.614745
+      epoch  4/10  train_mse=0.356028  val_mse=0.640186
+      epoch  5/10  train_mse=0.342098  val_mse=0.640417
+      epoch  6/10  train_mse=0.328572  val_mse=0.630865
+      epoch  7/10  train_mse=0.317531  val_mse=0.669619
+      epoch  8/10  train_mse=0.308119  val_mse=0.644078
+      epoch  9/10  train_mse=0.300011  val_mse=0.717204
+      epoch 10/10  train_mse=0.292882  val_mse=0.705223
+      FINAL val=0.705223 test=0.951640 (390.1s)
+--- [11/75] (4,4) seed=6 START 2026-09-28T21:35:55Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.716454  val_mse=0.722846
+      epoch  2/10  train_mse=0.430743  val_mse=0.615559
+      epoch  3/10  train_mse=0.376287  val_mse=0.544962
+      epoch  4/10  train_mse=0.356957  val_mse=0.555285
+      epoch  5/10  train_mse=0.341058  val_mse=0.553255
+      epoch  6/10  train_mse=0.327900  val_mse=0.552906
+      epoch  7/10  train_mse=0.316424  val_mse=0.533604
+      epoch  8/10  train_mse=0.307578  val_mse=0.545971
+      epoch  9/10  train_mse=0.300478  val_mse=0.548058
+      epoch 10/10  train_mse=0.294262  val_mse=0.527650
+      FINAL val=0.527650 test=0.767764 (369.0s)
+--- [12/75] (4,4) seed=8 START 2026-09-28T21:42:04Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.734197  val_mse=0.733793
+      epoch  2/10  train_mse=0.439269  val_mse=0.586629
+      epoch  3/10  train_mse=0.374971  val_mse=0.595636
+      epoch  4/10  train_mse=0.355350  val_mse=0.591836
+      epoch  5/10  train_mse=0.340081  val_mse=0.601082
+      epoch  6/10  train_mse=0.326795  val_mse=0.551337
+      epoch  7/10  train_mse=0.314562  val_mse=0.601732
+      epoch  8/10  train_mse=0.305337  val_mse=0.555532
+      epoch  9/10  train_mse=0.296957  val_mse=0.593811
+      epoch 10/10  train_mse=0.290767  val_mse=0.589990
+      FINAL val=0.589990 test=0.944065 (393.3s)
+--- [13/75] (4,4) seed=9 START 2026-09-28T21:48:37Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.725535  val_mse=0.706758
+      epoch  2/10  train_mse=0.425457  val_mse=0.613634
+      epoch  3/10  train_mse=0.373921  val_mse=0.576780
+      epoch  4/10  train_mse=0.355685  val_mse=0.605377
+      epoch  5/10  train_mse=0.340561  val_mse=0.626155
+      epoch  6/10  train_mse=0.327134  val_mse=0.535538
+      epoch  7/10  train_mse=0.316577  val_mse=0.600721
+      epoch  8/10  train_mse=0.309072  val_mse=0.605380
+      epoch  9/10  train_mse=0.301880  val_mse=0.563926
+      epoch 10/10  train_mse=0.295505  val_mse=0.552629
+      FINAL val=0.552629 test=0.818188 (378.2s)
+--- [14/75] (4,4) seed=10 START 2026-09-28T21:54:56Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.719654  val_mse=0.727971
+      epoch  2/10  train_mse=0.433819  val_mse=0.607615
+      epoch  3/10  train_mse=0.378851  val_mse=0.588974
+      epoch  4/10  train_mse=0.361439  val_mse=0.571300
+      epoch  5/10  train_mse=0.348364  val_mse=0.560706
+      epoch  6/10  train_mse=0.336543  val_mse=0.539080
+      epoch  7/10  train_mse=0.324608  val_mse=0.536069
+      epoch  8/10  train_mse=0.315153  val_mse=0.514525
+      epoch  9/10  train_mse=0.306470  val_mse=0.567372
+      epoch 10/10  train_mse=0.299193  val_mse=0.558663
+      FINAL val=0.558663 test=0.839135 (342.8s)
+--- [15/75] (4,4) seed=11 START 2026-09-28T22:00:38Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.721739  val_mse=0.778461
+      epoch  2/10  train_mse=0.440598  val_mse=0.601963
+      epoch  3/10  train_mse=0.380039  val_mse=0.601637
+      epoch  4/10  train_mse=0.360470  val_mse=0.636504
+      epoch  5/10  train_mse=0.344560  val_mse=0.680812
+      epoch  6/10  train_mse=0.331080  val_mse=0.647070
+      epoch  7/10  train_mse=0.319578  val_mse=0.703005
+      epoch  8/10  train_mse=0.310302  val_mse=0.691782
+      epoch  9/10  train_mse=0.302682  val_mse=0.724867
+      epoch 10/10  train_mse=0.295823  val_mse=0.719060
+      FINAL val=0.719060 test=1.005304 (345.7s)
+--- [16/75] (4,4) seed=12 START 2026-09-28T22:06:24Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.724000  val_mse=0.735541
+      epoch  2/10  train_mse=0.431412  val_mse=0.598486
+      epoch  3/10  train_mse=0.377902  val_mse=0.578964
+      epoch  4/10  train_mse=0.359067  val_mse=0.574014
+      epoch  5/10  train_mse=0.344522  val_mse=0.572079
+      epoch  6/10  train_mse=0.330849  val_mse=0.600170
+      epoch  7/10  train_mse=0.319671  val_mse=0.564476
+      epoch  8/10  train_mse=0.310605  val_mse=0.624886
+      epoch  9/10  train_mse=0.303205  val_mse=0.588978
+      epoch 10/10  train_mse=0.296798  val_mse=0.622919
+      FINAL val=0.622919 test=0.812894 (365.1s)
+--- [17/75] (4,4) seed=13 START 2026-09-28T22:12:29Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.724522  val_mse=0.722207
+      epoch  2/10  train_mse=0.437157  val_mse=0.656377
+      epoch  3/10  train_mse=0.375854  val_mse=0.635687
+      epoch  4/10  train_mse=0.355760  val_mse=0.667769
+      epoch  5/10  train_mse=0.340417  val_mse=0.613165
+      epoch  6/10  train_mse=0.326295  val_mse=0.651957
+      epoch  7/10  train_mse=0.314125  val_mse=0.613232
+      epoch  8/10  train_mse=0.304384  val_mse=0.626013
+      epoch  9/10  train_mse=0.295714  val_mse=0.572640
+      epoch 10/10  train_mse=0.289738  val_mse=0.593744
+      FINAL val=0.593744 test=0.830397 (368.6s)
+--- [18/75] (4,4) seed=14 START 2026-09-28T22:18:38Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.718607  val_mse=0.734428
+      epoch  2/10  train_mse=0.440480  val_mse=0.599079
+      epoch  3/10  train_mse=0.378851  val_mse=0.580230
+      epoch  4/10  train_mse=0.359855  val_mse=0.604215
+      epoch  5/10  train_mse=0.345042  val_mse=0.581691
+      epoch  6/10  train_mse=0.330654  val_mse=0.636394
+      epoch  7/10  train_mse=0.318090  val_mse=0.615942
+      epoch  8/10  train_mse=0.307820  val_mse=0.609735
+      epoch  9/10  train_mse=0.300117  val_mse=0.621659
+      epoch 10/10  train_mse=0.293690  val_mse=0.694970
+      FINAL val=0.694970 test=0.938010 (369.8s)
+--- [19/75] (4,4) seed=15 START 2026-09-28T22:24:48Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.739472  val_mse=0.767277
+      epoch  2/10  train_mse=0.441648  val_mse=0.632316
+      epoch  3/10  train_mse=0.378192  val_mse=0.599140
+      epoch  4/10  train_mse=0.357649  val_mse=0.583902
+      epoch  5/10  train_mse=0.342907  val_mse=0.612738
+      epoch  6/10  train_mse=0.330099  val_mse=0.618259
+      epoch  7/10  train_mse=0.318906  val_mse=0.605406
+      epoch  8/10  train_mse=0.309048  val_mse=0.579910
+      epoch  9/10  train_mse=0.300672  val_mse=0.582227
+      epoch 10/10  train_mse=0.293613  val_mse=0.595710
+      FINAL val=0.595710 test=0.932428 (371.3s)
+--- [20/75] (4,4) seed=16 START 2026-09-28T22:30:59Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.724864  val_mse=0.723283
+      epoch  2/10  train_mse=0.441184  val_mse=0.634186
+      epoch  3/10  train_mse=0.378548  val_mse=0.621771
+      epoch  4/10  train_mse=0.358349  val_mse=0.659492
+      epoch  5/10  train_mse=0.343984  val_mse=0.659504
+      epoch  6/10  train_mse=0.329931  val_mse=0.655010
+      epoch  7/10  train_mse=0.317723  val_mse=0.670512
+      epoch  8/10  train_mse=0.308327  val_mse=0.684597
+      epoch  9/10  train_mse=0.300800  val_mse=0.677231
+      epoch 10/10  train_mse=0.294499  val_mse=0.676182
+      FINAL val=0.676182 test=0.917809 (374.9s)
+--- [21/75] (4,4) seed=17 START 2026-09-28T22:37:14Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.720769  val_mse=0.722102
+      epoch  2/10  train_mse=0.435153  val_mse=0.612683
+      epoch  3/10  train_mse=0.381681  val_mse=0.588363
+      epoch  4/10  train_mse=0.362687  val_mse=0.567981
+      epoch  5/10  train_mse=0.347397  val_mse=0.555711
+      epoch  6/10  train_mse=0.333786  val_mse=0.529032
+      epoch  7/10  train_mse=0.321145  val_mse=0.569260
+      epoch  8/10  train_mse=0.310743  val_mse=0.563457
+      epoch  9/10  train_mse=0.302575  val_mse=0.578224
+      epoch 10/10  train_mse=0.296266  val_mse=0.569037
+      FINAL val=0.569037 test=0.900061 (377.8s)
+--- [22/75] (4,4) seed=18 START 2026-09-28T22:43:32Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.724885  val_mse=0.743903
+      epoch  2/10  train_mse=0.448360  val_mse=0.612867
+      epoch  3/10  train_mse=0.382010  val_mse=0.608127
+      epoch  4/10  train_mse=0.363414  val_mse=0.629162
+      epoch  5/10  train_mse=0.350214  val_mse=0.605020
+      epoch  6/10  train_mse=0.337998  val_mse=0.614681
+      epoch  7/10  train_mse=0.327130  val_mse=0.649162
+      epoch  8/10  train_mse=0.317622  val_mse=0.696352
+      epoch  9/10  train_mse=0.309635  val_mse=0.589461
+      epoch 10/10  train_mse=0.302878  val_mse=0.561941
+      FINAL val=0.561941 test=0.817175 (362.7s)
+--- [23/75] (4,4) seed=19 START 2026-09-28T22:49:34Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.725162  val_mse=0.756628
+      epoch  2/10  train_mse=0.438886  val_mse=0.665049
+      epoch  3/10  train_mse=0.373230  val_mse=0.697991
+      epoch  4/10  train_mse=0.352586  val_mse=0.683907
+      epoch  5/10  train_mse=0.337397  val_mse=0.747383
+      epoch  6/10  train_mse=0.322830  val_mse=0.737181
+      epoch  7/10  train_mse=0.311573  val_mse=0.744629
+      epoch  8/10  train_mse=0.302667  val_mse=0.818964
+      epoch  9/10  train_mse=0.295340  val_mse=0.770911
+      epoch 10/10  train_mse=0.288796  val_mse=0.765571
+      FINAL val=0.765571 test=0.918232 (337.2s)
+--- [24/75] (4,4) seed=20 START 2026-09-28T22:55:12Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.733422  val_mse=0.718370
+      epoch  2/10  train_mse=0.447569  val_mse=0.569749
+      epoch  3/10  train_mse=0.383726  val_mse=0.556091
+      epoch  4/10  train_mse=0.360307  val_mse=0.580073
+      epoch  5/10  train_mse=0.343896  val_mse=0.564675
+      epoch  6/10  train_mse=0.329746  val_mse=0.575247
+      epoch  7/10  train_mse=0.316364  val_mse=0.536907
+      epoch  8/10  train_mse=0.305179  val_mse=0.567984
+      epoch  9/10  train_mse=0.296584  val_mse=0.567298
+      epoch 10/10  train_mse=0.289378  val_mse=0.572194
+      FINAL val=0.572194 test=0.878142 (336.9s)
+--- [25/75] (4,4) seed=21 START 2026-09-28T23:00:49Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.730041  val_mse=0.742134
+      epoch  2/10  train_mse=0.444044  val_mse=0.572714
+      epoch  3/10  train_mse=0.379853  val_mse=0.557752
+      epoch  4/10  train_mse=0.358913  val_mse=0.550522
+      epoch  5/10  train_mse=0.344020  val_mse=0.533582
+      epoch  6/10  train_mse=0.330358  val_mse=0.524753
+      epoch  7/10  train_mse=0.319007  val_mse=0.561315
+      epoch  8/10  train_mse=0.309859  val_mse=0.581009
+      epoch  9/10  train_mse=0.302450  val_mse=0.625097
+      epoch 10/10  train_mse=0.296067  val_mse=0.570904
+      FINAL val=0.570904 test=0.772665 (338.5s)
+--- [26/75] (4,8) seed=42 START 2026-09-28T23:06:27Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.721936  val_mse=0.762826
+      epoch  2/10  train_mse=0.428329  val_mse=0.657822
+      epoch  3/10  train_mse=0.370474  val_mse=0.647490
+      epoch  4/10  train_mse=0.350833  val_mse=0.672541
+      epoch  5/10  train_mse=0.334882  val_mse=0.696078
+      epoch  6/10  train_mse=0.319591  val_mse=0.759173
+      epoch  7/10  train_mse=0.307767  val_mse=0.718067
+      epoch  8/10  train_mse=0.298458  val_mse=0.740198
+      epoch  9/10  train_mse=0.290683  val_mse=0.760550
+      epoch 10/10  train_mse=0.284073  val_mse=0.743821
+      FINAL val=0.743821 test=0.988333 (327.9s)
+--- [27/75] (4,8) seed=123 START 2026-09-28T23:11:55Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.723623  val_mse=0.746454
+      epoch  2/10  train_mse=0.437044  val_mse=0.654611
+      epoch  3/10  train_mse=0.380950  val_mse=0.615633
+      epoch  4/10  train_mse=0.359814  val_mse=0.607014
+      epoch  5/10  train_mse=0.344098  val_mse=0.614846
+      epoch  6/10  train_mse=0.329687  val_mse=0.676080
+      epoch  7/10  train_mse=0.318040  val_mse=0.641601
+      epoch  8/10  train_mse=0.307624  val_mse=0.659298
+      epoch  9/10  train_mse=0.299453  val_mse=0.612060
+      epoch 10/10  train_mse=0.292568  val_mse=0.696385
+      FINAL val=0.696385 test=0.954087 (337.1s)
+--- [28/75] (4,8) seed=2024 START 2026-09-28T23:17:32Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.724675  val_mse=0.741459
+      epoch  2/10  train_mse=0.435403  val_mse=0.599962
+      epoch  3/10  train_mse=0.376584  val_mse=0.585181
+      epoch  4/10  train_mse=0.355950  val_mse=0.647265
+      epoch  5/10  train_mse=0.340470  val_mse=0.638768
+      epoch  6/10  train_mse=0.325801  val_mse=0.597737
+      epoch  7/10  train_mse=0.312466  val_mse=0.655506
+      epoch  8/10  train_mse=0.301922  val_mse=0.611926
+      epoch  9/10  train_mse=0.293883  val_mse=0.639655
+      epoch 10/10  train_mse=0.286896  val_mse=0.657996
+      FINAL val=0.657996 test=0.987038 (322.9s)
+--- [29/75] (4,8) seed=7 START 2026-09-28T23:22:55Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.729734  val_mse=0.746002
+      epoch  2/10  train_mse=0.431428  val_mse=0.584151
+      epoch  3/10  train_mse=0.371710  val_mse=0.608811
+      epoch  4/10  train_mse=0.350709  val_mse=0.636287
+      epoch  5/10  train_mse=0.333317  val_mse=0.682945
+      epoch  6/10  train_mse=0.317448  val_mse=0.743241
+      epoch  7/10  train_mse=0.305337  val_mse=0.783674
+      epoch  8/10  train_mse=0.296339  val_mse=0.776820
+      epoch  9/10  train_mse=0.288296  val_mse=0.828858
+      epoch 10/10  train_mse=0.281950  val_mse=0.795596
+      FINAL val=0.795596 test=1.038452 (325.3s)
+--- [30/75] (4,8) seed=99 START 2026-09-28T23:28:20Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.725566  val_mse=0.728018
+      epoch  2/10  train_mse=0.443524  val_mse=0.648111
+      epoch  3/10  train_mse=0.376275  val_mse=0.624855
+      epoch  4/10  train_mse=0.355776  val_mse=0.657169
+      epoch  5/10  train_mse=0.340233  val_mse=0.674331
+      epoch  6/10  train_mse=0.326097  val_mse=0.738270
+      epoch  7/10  train_mse=0.313308  val_mse=0.776163
+      epoch  8/10  train_mse=0.302424  val_mse=0.687299
+      epoch  9/10  train_mse=0.293863  val_mse=0.828435
+      epoch 10/10  train_mse=0.286278  val_mse=0.757825
+      FINAL val=0.757825 test=1.058848 (344.9s)
+--- [31/75] (4,8) seed=1 START 2026-09-28T23:34:05Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.734922  val_mse=0.724141
+      epoch  2/10  train_mse=0.448858  val_mse=0.582932
+      epoch  3/10  train_mse=0.380358  val_mse=0.574914
+      epoch  4/10  train_mse=0.359080  val_mse=0.611676
+      epoch  5/10  train_mse=0.344309  val_mse=0.662091
+      epoch  6/10  train_mse=0.330644  val_mse=0.710443
+      epoch  7/10  train_mse=0.318092  val_mse=0.643601
+      epoch  8/10  train_mse=0.307821  val_mse=0.651194
+      epoch  9/10  train_mse=0.299562  val_mse=0.696637
+      epoch 10/10  train_mse=0.292867  val_mse=0.713988
+      FINAL val=0.713988 test=0.988823 (389.0s)
+--- [32/75] (4,8) seed=2 START 2026-09-28T23:40:34Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.722478  val_mse=0.761415
+      epoch  2/10  train_mse=0.432194  val_mse=0.619654
+      epoch  3/10  train_mse=0.370618  val_mse=0.632071
+      epoch  4/10  train_mse=0.350828  val_mse=0.640310
+      epoch  5/10  train_mse=0.335042  val_mse=0.678082
+      epoch  6/10  train_mse=0.320317  val_mse=0.762538
+      epoch  7/10  train_mse=0.307705  val_mse=0.807325
+      epoch  8/10  train_mse=0.297788  val_mse=0.782799
+      epoch  9/10  train_mse=0.290139  val_mse=0.726920
+      epoch 10/10  train_mse=0.283844  val_mse=0.749768
+      FINAL val=0.749768 test=1.001956 (385.4s)
+--- [33/75] (4,8) seed=3 START 2026-09-28T23:47:00Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.711692  val_mse=0.711118
+      epoch  2/10  train_mse=0.425184  val_mse=0.542428
+      epoch  3/10  train_mse=0.372601  val_mse=0.529144
+      epoch  4/10  train_mse=0.352963  val_mse=0.534642
+      epoch  5/10  train_mse=0.336671  val_mse=0.604350
+      epoch  6/10  train_mse=0.320692  val_mse=0.581909
+      epoch  7/10  train_mse=0.308516  val_mse=0.611584
+      epoch  8/10  train_mse=0.298815  val_mse=0.653629
+      epoch  9/10  train_mse=0.290764  val_mse=0.661553
+      epoch 10/10  train_mse=0.283698  val_mse=0.675352
+      FINAL val=0.675352 test=0.877251 (386.6s)
+--- [34/75] (4,8) seed=4 START 2026-09-28T23:53:26Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.731108  val_mse=0.781492
+      epoch  2/10  train_mse=0.440167  val_mse=0.610694
+      epoch  3/10  train_mse=0.378480  val_mse=0.642938
+      epoch  4/10  train_mse=0.360124  val_mse=0.610308
+      epoch  5/10  train_mse=0.345777  val_mse=0.605607
+      epoch  6/10  train_mse=0.331967  val_mse=0.601292
+      epoch  7/10  train_mse=0.319131  val_mse=0.632620
+      epoch  8/10  train_mse=0.307967  val_mse=0.581907
+      epoch  9/10  train_mse=0.299214  val_mse=0.599320
+      epoch 10/10  train_mse=0.291749  val_mse=0.639736
+      FINAL val=0.639736 test=0.863046 (386.2s)
+--- [35/75] (4,8) seed=5 START 2026-09-28T23:59:52Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.719582  val_mse=0.753111
+      epoch  2/10  train_mse=0.441791  val_mse=0.619732
+      epoch  3/10  train_mse=0.373734  val_mse=0.604267
+      epoch  4/10  train_mse=0.352961  val_mse=0.670144
+      epoch  5/10  train_mse=0.337148  val_mse=0.673369
+      epoch  6/10  train_mse=0.322143  val_mse=0.680353
+      epoch  7/10  train_mse=0.309937  val_mse=0.760287
+      epoch  8/10  train_mse=0.300442  val_mse=0.681709
+      epoch  9/10  train_mse=0.292361  val_mse=0.722950
+      epoch 10/10  train_mse=0.285912  val_mse=0.705580
+      FINAL val=0.705580 test=1.013852 (385.9s)
+--- [36/75] (4,8) seed=6 START 2026-09-29T00:06:18Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.718086  val_mse=0.740531
+      epoch  2/10  train_mse=0.435696  val_mse=0.638143
+      epoch  3/10  train_mse=0.375032  val_mse=0.581355
+      epoch  4/10  train_mse=0.354532  val_mse=0.648073
+      epoch  5/10  train_mse=0.337645  val_mse=0.657094
+      epoch  6/10  train_mse=0.323216  val_mse=0.670920
+      epoch  7/10  train_mse=0.310226  val_mse=0.658094
+      epoch  8/10  train_mse=0.299970  val_mse=0.641458
+      epoch  9/10  train_mse=0.292151  val_mse=0.646561
+      epoch 10/10  train_mse=0.284915  val_mse=0.586023
+      FINAL val=0.586023 test=0.895646 (389.3s)
+--- [37/75] (4,8) seed=8 START 2026-09-29T00:12:47Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.733362  val_mse=0.762450
+      epoch  2/10  train_mse=0.440258  val_mse=0.604876
+      epoch  3/10  train_mse=0.372100  val_mse=0.591421
+      epoch  4/10  train_mse=0.352254  val_mse=0.583992
+      epoch  5/10  train_mse=0.336535  val_mse=0.587207
+      epoch  6/10  train_mse=0.322541  val_mse=0.589231
+      epoch  7/10  train_mse=0.309759  val_mse=0.651194
+      epoch  8/10  train_mse=0.300028  val_mse=0.592344
+      epoch  9/10  train_mse=0.291665  val_mse=0.622559
+      epoch 10/10  train_mse=0.284928  val_mse=0.649447
+      FINAL val=0.649447 test=0.920897 (384.9s)
+--- [38/75] (4,8) seed=9 START 2026-09-29T00:19:12Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.726455  val_mse=0.713161
+      epoch  2/10  train_mse=0.427854  val_mse=0.659865
+      epoch  3/10  train_mse=0.371278  val_mse=0.628687
+      epoch  4/10  train_mse=0.350955  val_mse=0.637849
+      epoch  5/10  train_mse=0.336005  val_mse=0.737821
+      epoch  6/10  train_mse=0.322182  val_mse=0.619739
+      epoch  7/10  train_mse=0.310499  val_mse=0.680806
+      epoch  8/10  train_mse=0.301751  val_mse=0.737774
+      epoch  9/10  train_mse=0.294654  val_mse=0.651637
+      epoch 10/10  train_mse=0.288105  val_mse=0.631829
+      FINAL val=0.631829 test=0.920922 (383.1s)
+--- [39/75] (4,8) seed=10 START 2026-09-29T00:25:35Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.719175  val_mse=0.739371
+      epoch  2/10  train_mse=0.429346  val_mse=0.608693
+      epoch  3/10  train_mse=0.371978  val_mse=0.619552
+      epoch  4/10  train_mse=0.353591  val_mse=0.608958
+      epoch  5/10  train_mse=0.337200  val_mse=0.622515
+      epoch  6/10  train_mse=0.323082  val_mse=0.643266
+      epoch  7/10  train_mse=0.310826  val_mse=0.643152
+      epoch  8/10  train_mse=0.301447  val_mse=0.643011
+      epoch  9/10  train_mse=0.292838  val_mse=0.715187
+      epoch 10/10  train_mse=0.286031  val_mse=0.690857
+      FINAL val=0.690857 test=0.935662 (366.9s)
+--- [40/75] (4,8) seed=11 START 2026-09-29T00:31:42Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.721392  val_mse=0.769949
+      epoch  2/10  train_mse=0.436750  val_mse=0.577952
+      epoch  3/10  train_mse=0.375688  val_mse=0.547929
+      epoch  4/10  train_mse=0.354489  val_mse=0.568886
+      epoch  5/10  train_mse=0.337222  val_mse=0.584840
+      epoch  6/10  train_mse=0.321785  val_mse=0.564501
+      epoch  7/10  train_mse=0.309870  val_mse=0.601023
+      epoch  8/10  train_mse=0.300217  val_mse=0.565218
+      epoch  9/10  train_mse=0.292328  val_mse=0.607419
+      epoch 10/10  train_mse=0.286039  val_mse=0.573783
+      FINAL val=0.573783 test=0.902637 (324.5s)
+--- [41/75] (4,8) seed=12 START 2026-09-29T00:37:07Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.724555  val_mse=0.748120
+      epoch  2/10  train_mse=0.430775  val_mse=0.610388
+      epoch  3/10  train_mse=0.372725  val_mse=0.596731
+      epoch  4/10  train_mse=0.353738  val_mse=0.586091
+      epoch  5/10  train_mse=0.338316  val_mse=0.578046
+      epoch  6/10  train_mse=0.323590  val_mse=0.604729
+      epoch  7/10  train_mse=0.312394  val_mse=0.576839
+      epoch  8/10  train_mse=0.302411  val_mse=0.606809
+      epoch  9/10  train_mse=0.293879  val_mse=0.642991
+      epoch 10/10  train_mse=0.287138  val_mse=0.635225
+      FINAL val=0.635225 test=0.894729 (324.2s)
+--- [42/75] (4,8) seed=13 START 2026-09-29T00:42:31Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.720586  val_mse=0.721545
+      epoch  2/10  train_mse=0.423876  val_mse=0.627354
+      epoch  3/10  train_mse=0.368802  val_mse=0.598529
+      epoch  4/10  train_mse=0.349748  val_mse=0.644084
+      epoch  5/10  train_mse=0.333004  val_mse=0.638405
+      epoch  6/10  train_mse=0.317649  val_mse=0.671332
+      epoch  7/10  train_mse=0.304898  val_mse=0.633233
+      epoch  8/10  train_mse=0.295258  val_mse=0.629390
+      epoch  9/10  train_mse=0.287402  val_mse=0.629567
+      epoch 10/10  train_mse=0.280656  val_mse=0.636147
+      FINAL val=0.636147 test=0.902792 (323.3s)
+--- [43/75] (4,8) seed=14 START 2026-09-29T00:47:54Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.717988  val_mse=0.750377
+      epoch  2/10  train_mse=0.433421  val_mse=0.622797
+      epoch  3/10  train_mse=0.376369  val_mse=0.616273
+      epoch  4/10  train_mse=0.357437  val_mse=0.622946
+      epoch  5/10  train_mse=0.342896  val_mse=0.616493
+      epoch  6/10  train_mse=0.328085  val_mse=0.694005
+      epoch  7/10  train_mse=0.315057  val_mse=0.654945
+      epoch  8/10  train_mse=0.304886  val_mse=0.640305
+      epoch  9/10  train_mse=0.296588  val_mse=0.662592
+      epoch 10/10  train_mse=0.289491  val_mse=0.676504
+      FINAL val=0.676504 test=0.985106 (321.0s)
+--- [44/75] (4,8) seed=15 START 2026-09-29T00:53:15Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.739977  val_mse=0.782816
+      epoch  2/10  train_mse=0.439246  val_mse=0.657469
+      epoch  3/10  train_mse=0.373998  val_mse=0.636708
+      epoch  4/10  train_mse=0.354291  val_mse=0.669626
+      epoch  5/10  train_mse=0.339214  val_mse=0.711858
+      epoch  6/10  train_mse=0.324955  val_mse=0.750186
+      epoch  7/10  train_mse=0.311735  val_mse=0.694842
+      epoch  8/10  train_mse=0.300232  val_mse=0.679910
+      epoch  9/10  train_mse=0.291662  val_mse=0.684881
+      epoch 10/10  train_mse=0.284791  val_mse=0.740780
+      FINAL val=0.740780 test=0.939127 (321.4s)
+--- [45/75] (4,8) seed=16 START 2026-09-29T00:58:37Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.721713  val_mse=0.718993
+      epoch  2/10  train_mse=0.431413  val_mse=0.620053
+      epoch  3/10  train_mse=0.371500  val_mse=0.587015
+      epoch  4/10  train_mse=0.350975  val_mse=0.615072
+      epoch  5/10  train_mse=0.334839  val_mse=0.583562
+      epoch  6/10  train_mse=0.319559  val_mse=0.598470
+      epoch  7/10  train_mse=0.307024  val_mse=0.607400
+      epoch  8/10  train_mse=0.297984  val_mse=0.597382
+      epoch  9/10  train_mse=0.290230  val_mse=0.629980
+      epoch 10/10  train_mse=0.283439  val_mse=0.613243
+      FINAL val=0.613243 test=0.974214 (320.5s)
+--- [46/75] (4,8) seed=17 START 2026-09-29T01:03:57Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.722011  val_mse=0.731161
+      epoch  2/10  train_mse=0.433495  val_mse=0.617524
+      epoch  3/10  train_mse=0.376134  val_mse=0.643717
+      epoch  4/10  train_mse=0.356235  val_mse=0.668636
+      epoch  5/10  train_mse=0.340817  val_mse=0.646958
+      epoch  6/10  train_mse=0.326830  val_mse=0.665463
+      epoch  7/10  train_mse=0.315042  val_mse=0.673497
+      epoch  8/10  train_mse=0.304642  val_mse=0.716522
+      epoch  9/10  train_mse=0.296357  val_mse=0.696391
+      epoch 10/10  train_mse=0.289914  val_mse=0.689119
+      FINAL val=0.689119 test=0.992469 (323.3s)
+--- [47/75] (4,8) seed=18 START 2026-09-29T01:09:21Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.723984  val_mse=0.752818
+      epoch  2/10  train_mse=0.440510  val_mse=0.626310
+      epoch  3/10  train_mse=0.375277  val_mse=0.619336
+      epoch  4/10  train_mse=0.357027  val_mse=0.630594
+      epoch  5/10  train_mse=0.342807  val_mse=0.631625
+      epoch  6/10  train_mse=0.329443  val_mse=0.626340
+      epoch  7/10  train_mse=0.316798  val_mse=0.667589
+      epoch  8/10  train_mse=0.306017  val_mse=0.698796
+      epoch  9/10  train_mse=0.298858  val_mse=0.625784
+      epoch 10/10  train_mse=0.291743  val_mse=0.650038
+      FINAL val=0.650038 test=0.873364 (326.0s)
+--- [48/75] (4,8) seed=19 START 2026-09-29T01:14:47Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.722661  val_mse=0.750912
+      epoch  2/10  train_mse=0.430438  val_mse=0.623739
+      epoch  3/10  train_mse=0.369825  val_mse=0.649302
+      epoch  4/10  train_mse=0.348844  val_mse=0.643457
+      epoch  5/10  train_mse=0.329855  val_mse=0.710051
+      epoch  6/10  train_mse=0.313283  val_mse=0.661388
+      epoch  7/10  train_mse=0.301607  val_mse=0.702700
+      epoch  8/10  train_mse=0.292931  val_mse=0.801536
+      epoch  9/10  train_mse=0.284930  val_mse=0.734237
+      epoch 10/10  train_mse=0.278922  val_mse=0.734462
+      FINAL val=0.734462 test=0.989353 (324.7s)
+--- [49/75] (4,8) seed=20 START 2026-09-29T01:20:11Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.734173  val_mse=0.758464
+      epoch  2/10  train_mse=0.437291  val_mse=0.597078
+      epoch  3/10  train_mse=0.375120  val_mse=0.604812
+      epoch  4/10  train_mse=0.355756  val_mse=0.636756
+      epoch  5/10  train_mse=0.339626  val_mse=0.645576
+      epoch  6/10  train_mse=0.324152  val_mse=0.610947
+      epoch  7/10  train_mse=0.310319  val_mse=0.615690
+      epoch  8/10  train_mse=0.299676  val_mse=0.678735
+      epoch  9/10  train_mse=0.291536  val_mse=0.649021
+      epoch 10/10  train_mse=0.284213  val_mse=0.743666
+      FINAL val=0.743666 test=0.991540 (324.6s)
+--- [50/75] (4,8) seed=21 START 2026-09-29T01:25:36Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.729079  val_mse=0.768009
+      epoch  2/10  train_mse=0.438804  val_mse=0.592200
+      epoch  3/10  train_mse=0.375776  val_mse=0.604930
+      epoch  4/10  train_mse=0.354692  val_mse=0.616644
+      epoch  5/10  train_mse=0.339126  val_mse=0.596280
+      epoch  6/10  train_mse=0.324095  val_mse=0.591942
+      epoch  7/10  train_mse=0.312396  val_mse=0.641905
+      epoch  8/10  train_mse=0.302673  val_mse=0.657057
+      epoch  9/10  train_mse=0.294913  val_mse=0.710539
+      epoch 10/10  train_mse=0.288043  val_mse=0.637099
+      FINAL val=0.637099 test=0.850797 (326.8s)
+--- [51/75] (8,8) seed=42 START 2026-09-29T01:31:03Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.720233  val_mse=0.778079
+      epoch  2/10  train_mse=0.428924  val_mse=0.667659
+      epoch  3/10  train_mse=0.370930  val_mse=0.651342
+      epoch  4/10  train_mse=0.350993  val_mse=0.675573
+      epoch  5/10  train_mse=0.334338  val_mse=0.696267
+      epoch  6/10  train_mse=0.320480  val_mse=0.721705
+      epoch  7/10  train_mse=0.308877  val_mse=0.685440
+      epoch  8/10  train_mse=0.299886  val_mse=0.707986
+      epoch  9/10  train_mse=0.292288  val_mse=0.699733
+      epoch 10/10  train_mse=0.285115  val_mse=0.706195
+      FINAL val=0.706195 test=0.933405 (303.4s)
+--- [52/75] (8,8) seed=123 START 2026-09-29T01:36:06Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.720887  val_mse=0.742811
+      epoch  2/10  train_mse=0.431435  val_mse=0.657240
+      epoch  3/10  train_mse=0.374527  val_mse=0.634180
+      epoch  4/10  train_mse=0.353569  val_mse=0.647153
+      epoch  5/10  train_mse=0.337977  val_mse=0.671318
+      epoch  6/10  train_mse=0.323638  val_mse=0.702297
+      epoch  7/10  train_mse=0.311103  val_mse=0.644115
+      epoch  8/10  train_mse=0.301745  val_mse=0.649454
+      epoch  9/10  train_mse=0.293797  val_mse=0.572577
+      epoch 10/10  train_mse=0.287104  val_mse=0.628170
+      FINAL val=0.628170 test=0.824679 (306.5s)
+--- [53/75] (8,8) seed=2024 START 2026-09-29T01:41:13Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.720200  val_mse=0.742945
+      epoch  2/10  train_mse=0.430400  val_mse=0.605263
+      epoch  3/10  train_mse=0.373281  val_mse=0.550780
+      epoch  4/10  train_mse=0.353471  val_mse=0.569507
+      epoch  5/10  train_mse=0.337321  val_mse=0.584472
+      epoch  6/10  train_mse=0.323102  val_mse=0.551704
+      epoch  7/10  train_mse=0.310982  val_mse=0.599009
+      epoch  8/10  train_mse=0.301247  val_mse=0.567559
+      epoch  9/10  train_mse=0.293840  val_mse=0.557794
+      epoch 10/10  train_mse=0.286878  val_mse=0.585760
+      FINAL val=0.585760 test=0.898617 (308.6s)
+--- [54/75] (8,8) seed=7 START 2026-09-29T01:46:21Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.728448  val_mse=0.746318
+      epoch  2/10  train_mse=0.434144  val_mse=0.581227
+      epoch  3/10  train_mse=0.373471  val_mse=0.572014
+      epoch  4/10  train_mse=0.352196  val_mse=0.577410
+      epoch  5/10  train_mse=0.335304  val_mse=0.582295
+      epoch  6/10  train_mse=0.319971  val_mse=0.561015
+      epoch  7/10  train_mse=0.307894  val_mse=0.564492
+      epoch  8/10  train_mse=0.299225  val_mse=0.539091
+      epoch  9/10  train_mse=0.291220  val_mse=0.567781
+      epoch 10/10  train_mse=0.284829  val_mse=0.528251
+      FINAL val=0.528251 test=0.790116 (303.8s)
+--- [55/75] (8,8) seed=99 START 2026-09-29T01:51:25Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.722175  val_mse=0.734694
+      epoch  2/10  train_mse=0.437827  val_mse=0.617154
+      epoch  3/10  train_mse=0.373798  val_mse=0.585018
+      epoch  4/10  train_mse=0.354612  val_mse=0.609137
+      epoch  5/10  train_mse=0.339443  val_mse=0.598451
+      epoch  6/10  train_mse=0.324904  val_mse=0.635217
+      epoch  7/10  train_mse=0.311853  val_mse=0.665492
+      epoch  8/10  train_mse=0.300853  val_mse=0.608727
+      epoch  9/10  train_mse=0.292335  val_mse=0.673512
+      epoch 10/10  train_mse=0.284828  val_mse=0.617015
+      FINAL val=0.617015 test=0.827916 (302.1s)
+--- [56/75] (8,8) seed=1 START 2026-09-29T01:56:27Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.731650  val_mse=0.716081
+      epoch  2/10  train_mse=0.438726  val_mse=0.574435
+      epoch  3/10  train_mse=0.376763  val_mse=0.583694
+      epoch  4/10  train_mse=0.355459  val_mse=0.625412
+      epoch  5/10  train_mse=0.338448  val_mse=0.640333
+      epoch  6/10  train_mse=0.323316  val_mse=0.637291
+      epoch  7/10  train_mse=0.310498  val_mse=0.618626
+      epoch  8/10  train_mse=0.300769  val_mse=0.626387
+      epoch  9/10  train_mse=0.292653  val_mse=0.642387
+      epoch 10/10  train_mse=0.285453  val_mse=0.623546
+      FINAL val=0.623546 test=0.883512 (302.7s)
+--- [57/75] (8,8) seed=2 START 2026-09-29T02:01:30Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.718910  val_mse=0.755716
+      epoch  2/10  train_mse=0.424414  val_mse=0.610126
+      epoch  3/10  train_mse=0.369242  val_mse=0.592384
+      epoch  4/10  train_mse=0.349272  val_mse=0.604186
+      epoch  5/10  train_mse=0.333777  val_mse=0.610392
+      epoch  6/10  train_mse=0.319257  val_mse=0.656032
+      epoch  7/10  train_mse=0.306657  val_mse=0.697206
+      epoch  8/10  train_mse=0.296734  val_mse=0.685800
+      epoch  9/10  train_mse=0.288042  val_mse=0.642627
+      epoch 10/10  train_mse=0.280901  val_mse=0.669613
+      FINAL val=0.669613 test=0.857436 (303.6s)
+--- [58/75] (8,8) seed=3 START 2026-09-29T02:06:33Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.709847  val_mse=0.702012
+      epoch  2/10  train_mse=0.420747  val_mse=0.528802
+      epoch  3/10  train_mse=0.369997  val_mse=0.527726
+      epoch  4/10  train_mse=0.347116  val_mse=0.518446
+      epoch  5/10  train_mse=0.328293  val_mse=0.563011
+      epoch  6/10  train_mse=0.311778  val_mse=0.555150
+      epoch  7/10  train_mse=0.300370  val_mse=0.525981
+      epoch  8/10  train_mse=0.291748  val_mse=0.535856
+      epoch  9/10  train_mse=0.284493  val_mse=0.546174
+      epoch 10/10  train_mse=0.277900  val_mse=0.557800
+      FINAL val=0.557800 test=0.794341 (303.3s)
+--- [59/75] (8,8) seed=4 START 2026-09-29T02:11:37Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.727085  val_mse=0.766601
+      epoch  2/10  train_mse=0.426511  val_mse=0.592282
+      epoch  3/10  train_mse=0.374598  val_mse=0.623547
+      epoch  4/10  train_mse=0.356337  val_mse=0.614092
+      epoch  5/10  train_mse=0.340232  val_mse=0.656838
+      epoch  6/10  train_mse=0.324907  val_mse=0.649092
+      epoch  7/10  train_mse=0.311509  val_mse=0.653942
+      epoch  8/10  train_mse=0.300606  val_mse=0.606182
+      epoch  9/10  train_mse=0.291165  val_mse=0.624144
+      epoch 10/10  train_mse=0.283943  val_mse=0.679635
+      FINAL val=0.679635 test=0.920718 (300.8s)
+--- [60/75] (8,8) seed=5 START 2026-09-29T02:16:37Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.715238  val_mse=0.732291
+      epoch  2/10  train_mse=0.426014  val_mse=0.585430
+      epoch  3/10  train_mse=0.369411  val_mse=0.540415
+      epoch  4/10  train_mse=0.348500  val_mse=0.536246
+      epoch  5/10  train_mse=0.332585  val_mse=0.504763
+      epoch  6/10  train_mse=0.317395  val_mse=0.485261
+      epoch  7/10  train_mse=0.304516  val_mse=0.498721
+      epoch  8/10  train_mse=0.294527  val_mse=0.482105
+      epoch  9/10  train_mse=0.286149  val_mse=0.490363
+      epoch 10/10  train_mse=0.279895  val_mse=0.489377
+      FINAL val=0.489377 test=0.779101 (297.9s)
+--- [61/75] (8,8) seed=6 START 2026-09-29T02:21:35Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.714723  val_mse=0.721832
+      epoch  2/10  train_mse=0.424742  val_mse=0.613458
+      epoch  3/10  train_mse=0.369940  val_mse=0.536907
+      epoch  4/10  train_mse=0.350256  val_mse=0.573215
+      epoch  5/10  train_mse=0.332605  val_mse=0.554119
+      epoch  6/10  train_mse=0.317745  val_mse=0.566020
+      epoch  7/10  train_mse=0.305194  val_mse=0.568027
+      epoch  8/10  train_mse=0.295563  val_mse=0.556166
+      epoch  9/10  train_mse=0.288171  val_mse=0.559947
+      epoch 10/10  train_mse=0.281454  val_mse=0.537700
+      FINAL val=0.537700 test=0.774442 (305.2s)
+--- [62/75] (8,8) seed=8 START 2026-09-29T02:26:40Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.732411  val_mse=0.759814
+      epoch  2/10  train_mse=0.436174  val_mse=0.603999
+      epoch  3/10  train_mse=0.369088  val_mse=0.599507
+      epoch  4/10  train_mse=0.347724  val_mse=0.594618
+      epoch  5/10  train_mse=0.330782  val_mse=0.591283
+      epoch  6/10  train_mse=0.316412  val_mse=0.557564
+      epoch  7/10  train_mse=0.304448  val_mse=0.585719
+      epoch  8/10  train_mse=0.295822  val_mse=0.552647
+      epoch  9/10  train_mse=0.288210  val_mse=0.547870
+      epoch 10/10  train_mse=0.281594  val_mse=0.552402
+      FINAL val=0.552402 test=0.717167 (304.0s)
+--- [63/75] (8,8) seed=9 START 2026-09-29T02:31:44Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.724029  val_mse=0.708891
+      epoch  2/10  train_mse=0.425587  val_mse=0.629328
+      epoch  3/10  train_mse=0.370458  val_mse=0.604596
+      epoch  4/10  train_mse=0.350623  val_mse=0.629712
+      epoch  5/10  train_mse=0.335106  val_mse=0.697213
+      epoch  6/10  train_mse=0.321341  val_mse=0.612101
+      epoch  7/10  train_mse=0.310124  val_mse=0.688116
+      epoch  8/10  train_mse=0.301060  val_mse=0.714999
+      epoch  9/10  train_mse=0.293442  val_mse=0.693574
+      epoch 10/10  train_mse=0.286732  val_mse=0.668167
+      FINAL val=0.668167 test=0.880228 (306.0s)
+--- [64/75] (8,8) seed=10 START 2026-09-29T02:36:50Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.716693  val_mse=0.726449
+      epoch  2/10  train_mse=0.423553  val_mse=0.625900
+      epoch  3/10  train_mse=0.370094  val_mse=0.645425
+      epoch  4/10  train_mse=0.351620  val_mse=0.656527
+      epoch  5/10  train_mse=0.336449  val_mse=0.662782
+      epoch  6/10  train_mse=0.323123  val_mse=0.689397
+      epoch  7/10  train_mse=0.311843  val_mse=0.694532
+      epoch  8/10  train_mse=0.302652  val_mse=0.684972
+      epoch  9/10  train_mse=0.294320  val_mse=0.775174
+      epoch 10/10  train_mse=0.287506  val_mse=0.748697
+      FINAL val=0.748697 test=0.961970 (307.8s)
+--- [65/75] (8,8) seed=11 START 2026-09-29T02:41:58Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.719240  val_mse=0.778012
+      epoch  2/10  train_mse=0.435519  val_mse=0.579798
+      epoch  3/10  train_mse=0.374588  val_mse=0.564669
+      epoch  4/10  train_mse=0.352947  val_mse=0.599544
+      epoch  5/10  train_mse=0.335654  val_mse=0.629085
+      epoch  6/10  train_mse=0.319649  val_mse=0.562780
+      epoch  7/10  train_mse=0.307447  val_mse=0.597445
+      epoch  8/10  train_mse=0.296926  val_mse=0.593918
+      epoch  9/10  train_mse=0.289395  val_mse=0.596630
+      epoch 10/10  train_mse=0.282908  val_mse=0.589263
+      FINAL val=0.589263 test=0.845643 (303.3s)
+--- [66/75] (8,8) seed=12 START 2026-09-29T02:47:02Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.723071  val_mse=0.742640
+      epoch  2/10  train_mse=0.427651  val_mse=0.600971
+      epoch  3/10  train_mse=0.371353  val_mse=0.573152
+      epoch  4/10  train_mse=0.351699  val_mse=0.562551
+      epoch  5/10  train_mse=0.336151  val_mse=0.560505
+      epoch  6/10  train_mse=0.322354  val_mse=0.581276
+      epoch  7/10  train_mse=0.311466  val_mse=0.539442
+      epoch  8/10  train_mse=0.302216  val_mse=0.611583
+      epoch  9/10  train_mse=0.293921  val_mse=0.601030
+      epoch 10/10  train_mse=0.286943  val_mse=0.600399
+      FINAL val=0.600399 test=0.783872 (301.5s)
+--- [67/75] (8,8) seed=13 START 2026-09-29T02:52:03Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.719456  val_mse=0.711998
+      epoch  2/10  train_mse=0.424883  val_mse=0.640669
+      epoch  3/10  train_mse=0.369093  val_mse=0.612964
+      epoch  4/10  train_mse=0.349289  val_mse=0.655371
+      epoch  5/10  train_mse=0.333313  val_mse=0.594794
+      epoch  6/10  train_mse=0.318872  val_mse=0.654205
+      epoch  7/10  train_mse=0.306143  val_mse=0.613713
+      epoch  8/10  train_mse=0.296431  val_mse=0.640386
+      epoch  9/10  train_mse=0.288415  val_mse=0.624848
+      epoch 10/10  train_mse=0.281600  val_mse=0.634049
+      FINAL val=0.634049 test=0.830808 (302.4s)
+--- [68/75] (8,8) seed=14 START 2026-09-29T02:57:05Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.714574  val_mse=0.739392
+      epoch  2/10  train_mse=0.424405  val_mse=0.595240
+      epoch  3/10  train_mse=0.370617  val_mse=0.565744
+      epoch  4/10  train_mse=0.351385  val_mse=0.586862
+      epoch  5/10  train_mse=0.335682  val_mse=0.556704
+      epoch  6/10  train_mse=0.321052  val_mse=0.588145
+      epoch  7/10  train_mse=0.308566  val_mse=0.558291
+      epoch  8/10  train_mse=0.298589  val_mse=0.549093
+      epoch  9/10  train_mse=0.290341  val_mse=0.576497
+      epoch 10/10  train_mse=0.283361  val_mse=0.627046
+      FINAL val=0.627046 test=0.881427 (304.0s)
+--- [69/75] (8,8) seed=15 START 2026-09-29T03:02:09Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.737452  val_mse=0.760746
+      epoch  2/10  train_mse=0.436159  val_mse=0.649057
+      epoch  3/10  train_mse=0.373427  val_mse=0.619765
+      epoch  4/10  train_mse=0.353247  val_mse=0.632040
+      epoch  5/10  train_mse=0.337302  val_mse=0.654951
+      epoch  6/10  train_mse=0.323094  val_mse=0.619372
+      epoch  7/10  train_mse=0.310489  val_mse=0.611771
+      epoch  8/10  train_mse=0.300234  val_mse=0.616143
+      epoch  9/10  train_mse=0.292177  val_mse=0.642853
+      epoch 10/10  train_mse=0.285099  val_mse=0.662536
+      FINAL val=0.662536 test=0.912186 (303.9s)
+--- [70/75] (8,8) seed=16 START 2026-09-29T03:07:13Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.718706  val_mse=0.716591
+      epoch  2/10  train_mse=0.425278  val_mse=0.616620
+      epoch  3/10  train_mse=0.368498  val_mse=0.591774
+      epoch  4/10  train_mse=0.348996  val_mse=0.589675
+      epoch  5/10  train_mse=0.333005  val_mse=0.589370
+      epoch  6/10  train_mse=0.318820  val_mse=0.580555
+      epoch  7/10  train_mse=0.307474  val_mse=0.614633
+      epoch  8/10  train_mse=0.298622  val_mse=0.569327
+      epoch  9/10  train_mse=0.290778  val_mse=0.566134
+      epoch 10/10  train_mse=0.283446  val_mse=0.572031
+      FINAL val=0.572031 test=0.901468 (302.7s)
+--- [71/75] (8,8) seed=17 START 2026-09-29T03:12:16Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.720262  val_mse=0.724243
+      epoch  2/10  train_mse=0.426823  val_mse=0.615876
+      epoch  3/10  train_mse=0.372000  val_mse=0.649282
+      epoch  4/10  train_mse=0.351728  val_mse=0.658819
+      epoch  5/10  train_mse=0.335239  val_mse=0.605474
+      epoch  6/10  train_mse=0.319491  val_mse=0.595528
+      epoch  7/10  train_mse=0.306758  val_mse=0.578527
+      epoch  8/10  train_mse=0.295654  val_mse=0.559586
+      epoch  9/10  train_mse=0.287114  val_mse=0.545658
+      epoch 10/10  train_mse=0.280619  val_mse=0.520023
+      FINAL val=0.520023 test=0.818913 (325.9s)
+--- [72/75] (8,8) seed=18 START 2026-09-29T03:17:42Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.721120  val_mse=0.748443
+      epoch  2/10  train_mse=0.429387  val_mse=0.628331
+      epoch  3/10  train_mse=0.369221  val_mse=0.619177
+      epoch  4/10  train_mse=0.350835  val_mse=0.632656
+      epoch  5/10  train_mse=0.336070  val_mse=0.656292
+      epoch  6/10  train_mse=0.322033  val_mse=0.687898
+      epoch  7/10  train_mse=0.310403  val_mse=0.686149
+      epoch  8/10  train_mse=0.300870  val_mse=0.695052
+      epoch  9/10  train_mse=0.293244  val_mse=0.636284
+      epoch 10/10  train_mse=0.286076  val_mse=0.644792
+      FINAL val=0.644792 test=0.932854 (330.9s)
+--- [73/75] (8,8) seed=19 START 2026-09-29T03:23:13Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.719940  val_mse=0.756817
+      epoch  2/10  train_mse=0.427786  val_mse=0.620153
+      epoch  3/10  train_mse=0.366155  val_mse=0.625715
+      epoch  4/10  train_mse=0.342830  val_mse=0.629738
+      epoch  5/10  train_mse=0.323857  val_mse=0.710764
+      epoch  6/10  train_mse=0.309199  val_mse=0.660421
+      epoch  7/10  train_mse=0.298468  val_mse=0.703196
+      epoch  8/10  train_mse=0.289726  val_mse=0.793606
+      epoch  9/10  train_mse=0.282085  val_mse=0.657198
+      epoch 10/10  train_mse=0.275559  val_mse=0.726093
+      FINAL val=0.726093 test=0.877224 (308.8s)
+--- [74/75] (8,8) seed=20 START 2026-09-29T03:28:22Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.729744  val_mse=0.721715
+      epoch  2/10  train_mse=0.432978  val_mse=0.554325
+      epoch  3/10  train_mse=0.374978  val_mse=0.547447
+      epoch  4/10  train_mse=0.355285  val_mse=0.580427
+      epoch  5/10  train_mse=0.338898  val_mse=0.573190
+      epoch  6/10  train_mse=0.323551  val_mse=0.578172
+      epoch  7/10  train_mse=0.310623  val_mse=0.552992
+      epoch  8/10  train_mse=0.299994  val_mse=0.588834
+      epoch  9/10  train_mse=0.292026  val_mse=0.585106
+      epoch 10/10  train_mse=0.285363  val_mse=0.580710
+      FINAL val=0.580710 test=0.868595 (307.5s)
+--- [75/75] (8,8) seed=21 START 2026-09-29T03:33:29Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.726087  val_mse=0.760187
+      epoch  2/10  train_mse=0.431624  val_mse=0.590058
+      epoch  3/10  train_mse=0.372137  val_mse=0.597456
+      epoch  4/10  train_mse=0.351564  val_mse=0.593417
+      epoch  5/10  train_mse=0.335570  val_mse=0.556732
+      epoch  6/10  train_mse=0.321197  val_mse=0.560622
+      epoch  7/10  train_mse=0.309686  val_mse=0.578266
+      epoch  8/10  train_mse=0.300979  val_mse=0.578370
+      epoch  9/10  train_mse=0.292942  val_mse=0.612265
+      epoch 10/10  train_mse=0.286391  val_mse=0.570003
+      FINAL val=0.570003 test=0.764843 (307.7s)
+=== Gate15 factorial complete ===

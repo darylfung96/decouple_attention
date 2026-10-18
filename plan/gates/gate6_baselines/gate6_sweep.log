@@ -1,0 +1,1024 @@
+=== Gate 6 baselines sweep started 2026-09-03T18:26:00Z ===
+python: /Users/darylfung/Documents/Work/Nicosia/new_attention/.venv-gate6/bin/python
+env: torch 2.12.1 | pandas 3.0.5 | numpy 2.4.4 | threads 8
+--- etth1 DLinear seed=42 START 2026-09-03T18:26:01Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth1, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (DLinear, seed=42) already completed — skipping (idempotent)
+--- etth1 DLinear seed=42 EXIT=0 2026-09-03T18:26:02Z ---
+--- etth1 DLinear seed=123 START 2026-09-03T18:26:02Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth1, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (DLinear, seed=123) already completed — skipping (idempotent)
+--- etth1 DLinear seed=123 EXIT=0 2026-09-03T18:26:03Z ---
+--- etth1 DLinear seed=2024 START 2026-09-03T18:26:03Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth1, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (DLinear, seed=2024) already completed — skipping (idempotent)
+--- etth1 DLinear seed=2024 EXIT=0 2026-09-03T18:26:04Z ---
+--- etth1 DLinear seed=7 START 2026-09-03T18:26:04Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth1, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (DLinear, seed=7) already completed — skipping (idempotent)
+--- etth1 DLinear seed=7 EXIT=0 2026-09-03T18:26:05Z ---
+--- etth1 DLinear seed=99 START 2026-09-03T18:26:05Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth1, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (DLinear, seed=99) already completed — skipping (idempotent)
+--- etth1 DLinear seed=99 EXIT=0 2026-09-03T18:26:06Z ---
+--- etth1 PatchTST seed=42 START 2026-09-03T18:26:06Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth1, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (PatchTST, seed=42) already completed — skipping (idempotent)
+--- etth1 PatchTST seed=42 EXIT=0 2026-09-03T18:26:07Z ---
+--- etth1 PatchTST seed=123 START 2026-09-03T18:26:07Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth1, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (PatchTST, seed=123) already completed — skipping (idempotent)
+--- etth1 PatchTST seed=123 EXIT=0 2026-09-03T18:26:08Z ---
+--- etth1 PatchTST seed=2024 START 2026-09-03T18:26:08Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth1, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (PatchTST, seed=2024) already completed — skipping (idempotent)
+--- etth1 PatchTST seed=2024 EXIT=0 2026-09-03T18:26:09Z ---
+--- etth1 PatchTST seed=7 START 2026-09-03T18:26:09Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth1, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (PatchTST, seed=7) already completed — skipping (idempotent)
+--- etth1 PatchTST seed=7 EXIT=0 2026-09-03T18:26:10Z ---
+--- etth1 PatchTST seed=99 START 2026-09-03T18:26:10Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth1, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth1: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (PatchTST, seed=99) already completed — skipping (idempotent)
+--- etth1 PatchTST seed=99 EXIT=0 2026-09-03T18:26:11Z ---
+--- etth2 DLinear seed=42 START 2026-09-03T18:26:11Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth2, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (DLinear, seed=42) already completed — skipping (idempotent)
+--- etth2 DLinear seed=42 EXIT=0 2026-09-03T18:26:13Z ---
+--- etth2 DLinear seed=123 START 2026-09-03T18:26:13Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth2, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (DLinear, seed=123) already completed — skipping (idempotent)
+--- etth2 DLinear seed=123 EXIT=0 2026-09-03T18:26:14Z ---
+--- etth2 DLinear seed=2024 START 2026-09-03T18:26:14Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth2, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (DLinear, seed=2024) already completed — skipping (idempotent)
+--- etth2 DLinear seed=2024 EXIT=0 2026-09-03T18:26:15Z ---
+--- etth2 DLinear seed=7 START 2026-09-03T18:26:15Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth2, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (DLinear, seed=7) already completed — skipping (idempotent)
+--- etth2 DLinear seed=7 EXIT=0 2026-09-03T18:26:16Z ---
+--- etth2 DLinear seed=99 START 2026-09-03T18:26:16Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth2, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (DLinear, seed=99) already completed — skipping (idempotent)
+--- etth2 DLinear seed=99 EXIT=0 2026-09-03T18:26:17Z ---
+--- etth2 PatchTST seed=42 START 2026-09-03T18:26:17Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth2, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (PatchTST, seed=42) already completed — skipping (idempotent)
+--- etth2 PatchTST seed=42 EXIT=0 2026-09-03T18:26:18Z ---
+--- etth2 PatchTST seed=123 START 2026-09-03T18:26:18Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth2, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (PatchTST, seed=123) already completed — skipping (idempotent)
+--- etth2 PatchTST seed=123 EXIT=0 2026-09-03T18:26:19Z ---
+--- etth2 PatchTST seed=2024 START 2026-09-03T18:26:19Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth2, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (PatchTST, seed=2024) already completed — skipping (idempotent)
+--- etth2 PatchTST seed=2024 EXIT=0 2026-09-03T18:26:20Z ---
+--- etth2 PatchTST seed=7 START 2026-09-03T18:26:20Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth2, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (PatchTST, seed=7) already completed — skipping (idempotent)
+--- etth2 PatchTST seed=7 EXIT=0 2026-09-03T18:26:21Z ---
+--- etth2 PatchTST seed=99 START 2026-09-03T18:26:21Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=etth2, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] etth2: dropped non-numeric columns: ['date']
+  windows: train=10101 val=3133 test=3133 (batches: 315 / 97 / 97)
+[full] (PatchTST, seed=99) already completed — skipping (idempotent)
+--- etth2 PatchTST seed=99 EXIT=0 2026-09-03T18:26:22Z ---
+--- ettm1 DLinear seed=42 START 2026-09-03T18:26:22Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm1, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm1: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (DLinear, seed=42) already completed — skipping (idempotent)
+--- ettm1 DLinear seed=42 EXIT=0 2026-09-03T18:26:23Z ---
+--- ettm1 DLinear seed=123 START 2026-09-03T18:26:23Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm1, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm1: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (DLinear, seed=123) already completed — skipping (idempotent)
+--- ettm1 DLinear seed=123 EXIT=0 2026-09-03T18:26:24Z ---
+--- ettm1 DLinear seed=2024 START 2026-09-03T18:26:24Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm1, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm1: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (DLinear, seed=2024) already completed — skipping (idempotent)
+--- ettm1 DLinear seed=2024 EXIT=0 2026-09-03T18:26:25Z ---
+--- ettm1 DLinear seed=7 START 2026-09-03T18:26:25Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm1, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm1: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (DLinear, seed=7) already completed — skipping (idempotent)
+--- ettm1 DLinear seed=7 EXIT=0 2026-09-03T18:26:26Z ---
+--- ettm1 DLinear seed=99 START 2026-09-03T18:26:26Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm1, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm1: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (DLinear, seed=99) already completed — skipping (idempotent)
+--- ettm1 DLinear seed=99 EXIT=0 2026-09-03T18:26:27Z ---
+--- ettm1 PatchTST seed=42 START 2026-09-03T18:26:27Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm1, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm1: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (PatchTST, seed=42) already completed — skipping (idempotent)
+--- ettm1 PatchTST seed=42 EXIT=0 2026-09-03T18:26:28Z ---
+--- ettm1 PatchTST seed=123 START 2026-09-03T18:26:28Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm1, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm1: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (PatchTST, seed=123) already completed — skipping (idempotent)
+--- ettm1 PatchTST seed=123 EXIT=0 2026-09-03T18:26:29Z ---
+--- ettm1 PatchTST seed=2024 START 2026-09-03T18:26:29Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm1, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm1: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (PatchTST, seed=2024) already completed — skipping (idempotent)
+--- ettm1 PatchTST seed=2024 EXIT=0 2026-09-03T18:26:31Z ---
+--- ettm1 PatchTST seed=7 START 2026-09-03T18:26:31Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm1, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm1: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (PatchTST, seed=7) already completed — skipping (idempotent)
+--- ettm1 PatchTST seed=7 EXIT=0 2026-09-03T18:26:32Z ---
+--- ettm1 PatchTST seed=99 START 2026-09-03T18:26:32Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm1, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm1: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (PatchTST, seed=99) already completed — skipping (idempotent)
+--- ettm1 PatchTST seed=99 EXIT=0 2026-09-03T18:26:33Z ---
+--- ettm2 DLinear seed=42 START 2026-09-03T18:26:33Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm2, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm2: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (DLinear, seed=42) already completed — skipping (idempotent)
+--- ettm2 DLinear seed=42 EXIT=0 2026-09-03T18:26:34Z ---
+--- ettm2 DLinear seed=123 START 2026-09-03T18:26:34Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm2, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm2: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (DLinear, seed=123) already completed — skipping (idempotent)
+--- ettm2 DLinear seed=123 EXIT=0 2026-09-03T18:26:35Z ---
+--- ettm2 DLinear seed=2024 START 2026-09-03T18:26:35Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm2, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm2: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (DLinear, seed=2024) already completed — skipping (idempotent)
+--- ettm2 DLinear seed=2024 EXIT=0 2026-09-03T18:26:36Z ---
+--- ettm2 DLinear seed=7 START 2026-09-03T18:26:36Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm2, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm2: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (DLinear, seed=7) already completed — skipping (idempotent)
+--- ettm2 DLinear seed=7 EXIT=0 2026-09-03T18:26:37Z ---
+--- ettm2 DLinear seed=99 START 2026-09-03T18:26:37Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm2, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm2: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (DLinear, seed=99) already completed — skipping (idempotent)
+--- ettm2 DLinear seed=99 EXIT=0 2026-09-03T18:26:38Z ---
+--- ettm2 PatchTST seed=42 START 2026-09-03T18:26:38Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm2, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm2: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (PatchTST, seed=42) already completed — skipping (idempotent)
+--- ettm2 PatchTST seed=42 EXIT=0 2026-09-03T18:26:39Z ---
+--- ettm2 PatchTST seed=123 START 2026-09-03T18:26:39Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm2, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm2: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (PatchTST, seed=123) already completed — skipping (idempotent)
+--- ettm2 PatchTST seed=123 EXIT=0 2026-09-03T18:26:40Z ---
+--- ettm2 PatchTST seed=2024 START 2026-09-03T18:26:40Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm2, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm2: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (PatchTST, seed=2024) already completed — skipping (idempotent)
+--- ettm2 PatchTST seed=2024 EXIT=0 2026-09-03T18:26:41Z ---
+--- ettm2 PatchTST seed=7 START 2026-09-03T18:26:41Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm2, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm2: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (PatchTST, seed=7) already completed — skipping (idempotent)
+--- ettm2 PatchTST seed=7 EXIT=0 2026-09-03T18:26:42Z ---
+--- ettm2 PatchTST seed=99 START 2026-09-03T18:26:42Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=ettm2, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] ettm2: dropped non-numeric columns: ['date']
+  windows: train=41457 val=13585 test=13585 (batches: 1295 / 424 / 424)
+[full] (PatchTST, seed=99) already completed — skipping (idempotent)
+--- ettm2 PatchTST seed=99 EXIT=0 2026-09-03T18:26:44Z ---
+--- exchange DLinear seed=42 START 2026-09-03T18:26:44Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=exchange, variant=DLinear, F=8) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] exchange: dropped non-numeric columns: ['date']
+  windows: train=4201 val=1167 test=1167 (batches: 131 / 36 / 36)
+[full] (DLinear, seed=42) already completed — skipping (idempotent)
+--- exchange DLinear seed=42 EXIT=0 2026-09-03T18:26:45Z ---
+--- exchange DLinear seed=123 START 2026-09-03T18:26:45Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=exchange, variant=DLinear, F=8) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] exchange: dropped non-numeric columns: ['date']
+  windows: train=4201 val=1167 test=1167 (batches: 131 / 36 / 36)
+[full] (DLinear, seed=123) already completed — skipping (idempotent)
+--- exchange DLinear seed=123 EXIT=0 2026-09-03T18:26:46Z ---
+--- exchange DLinear seed=2024 START 2026-09-03T18:26:46Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=exchange, variant=DLinear, F=8) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] exchange: dropped non-numeric columns: ['date']
+  windows: train=4201 val=1167 test=1167 (batches: 131 / 36 / 36)
+[full] (DLinear, seed=2024) already completed — skipping (idempotent)
+--- exchange DLinear seed=2024 EXIT=0 2026-09-03T18:26:47Z ---
+--- exchange DLinear seed=7 START 2026-09-03T18:26:47Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=exchange, variant=DLinear, F=8) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] exchange: dropped non-numeric columns: ['date']
+  windows: train=4201 val=1167 test=1167 (batches: 131 / 36 / 36)
+[full] (DLinear, seed=7) already completed — skipping (idempotent)
+--- exchange DLinear seed=7 EXIT=0 2026-09-03T18:26:48Z ---
+--- exchange DLinear seed=99 START 2026-09-03T18:26:48Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=exchange, variant=DLinear, F=8) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] exchange: dropped non-numeric columns: ['date']
+  windows: train=4201 val=1167 test=1167 (batches: 131 / 36 / 36)
+[full] (DLinear, seed=99) already completed — skipping (idempotent)
+--- exchange DLinear seed=99 EXIT=0 2026-09-03T18:26:49Z ---
+--- exchange PatchTST seed=42 START 2026-09-03T18:26:49Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=exchange, variant=PatchTST, F=8) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] exchange: dropped non-numeric columns: ['date']
+  windows: train=4201 val=1167 test=1167 (batches: 131 / 36 / 36)
+[full] (PatchTST, seed=42) already completed — skipping (idempotent)
+--- exchange PatchTST seed=42 EXIT=0 2026-09-03T18:26:50Z ---
+--- exchange PatchTST seed=123 START 2026-09-03T18:26:50Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=exchange, variant=PatchTST, F=8) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] exchange: dropped non-numeric columns: ['date']
+  windows: train=4201 val=1167 test=1167 (batches: 131 / 36 / 36)
+[full] (PatchTST, seed=123) already completed — skipping (idempotent)
+--- exchange PatchTST seed=123 EXIT=0 2026-09-03T18:26:51Z ---
+--- exchange PatchTST seed=2024 START 2026-09-03T18:26:51Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=exchange, variant=PatchTST, F=8) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] exchange: dropped non-numeric columns: ['date']
+  windows: train=4201 val=1167 test=1167 (batches: 131 / 36 / 36)
+[full] (PatchTST, seed=2024) already completed — skipping (idempotent)
+--- exchange PatchTST seed=2024 EXIT=0 2026-09-03T18:26:52Z ---
+--- exchange PatchTST seed=7 START 2026-09-03T18:26:52Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=exchange, variant=PatchTST, F=8) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] exchange: dropped non-numeric columns: ['date']
+  windows: train=4201 val=1167 test=1167 (batches: 131 / 36 / 36)
+[full] (PatchTST, seed=7) already completed — skipping (idempotent)
+--- exchange PatchTST seed=7 EXIT=0 2026-09-03T18:26:53Z ---
+--- exchange PatchTST seed=99 START 2026-09-03T18:26:53Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=exchange, variant=PatchTST, F=8) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] exchange: dropped non-numeric columns: ['date']
+  windows: train=4201 val=1167 test=1167 (batches: 131 / 36 / 36)
+[full] (PatchTST, seed=99) already completed — skipping (idempotent)
+--- exchange PatchTST seed=99 EXIT=0 2026-09-03T18:26:54Z ---
+--- syn_sinusoids DLinear seed=42 START 2026-09-03T18:26:54Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_sinusoids, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (DLinear, seed=42) already completed — skipping (idempotent)
+--- syn_sinusoids DLinear seed=42 EXIT=0 2026-09-03T18:26:55Z ---
+--- syn_sinusoids DLinear seed=123 START 2026-09-03T18:26:55Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_sinusoids, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (DLinear, seed=123) already completed — skipping (idempotent)
+--- syn_sinusoids DLinear seed=123 EXIT=0 2026-09-03T18:26:57Z ---
+--- syn_sinusoids DLinear seed=2024 START 2026-09-03T18:26:57Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_sinusoids, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (DLinear, seed=2024) already completed — skipping (idempotent)
+--- syn_sinusoids DLinear seed=2024 EXIT=0 2026-09-03T18:26:58Z ---
+--- syn_sinusoids DLinear seed=7 START 2026-09-03T18:26:58Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_sinusoids, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (DLinear, seed=7) already completed — skipping (idempotent)
+--- syn_sinusoids DLinear seed=7 EXIT=0 2026-09-03T18:26:59Z ---
+--- syn_sinusoids DLinear seed=99 START 2026-09-03T18:26:59Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_sinusoids, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (DLinear, seed=99) already completed — skipping (idempotent)
+--- syn_sinusoids DLinear seed=99 EXIT=0 2026-09-03T18:27:00Z ---
+--- syn_sinusoids PatchTST seed=42 START 2026-09-03T18:27:00Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_sinusoids, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (PatchTST, seed=42) already completed — skipping (idempotent)
+--- syn_sinusoids PatchTST seed=42 EXIT=0 2026-09-03T18:27:01Z ---
+--- syn_sinusoids PatchTST seed=123 START 2026-09-03T18:27:01Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_sinusoids, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (PatchTST, seed=123) already completed — skipping (idempotent)
+--- syn_sinusoids PatchTST seed=123 EXIT=0 2026-09-03T18:27:02Z ---
+--- syn_sinusoids PatchTST seed=2024 START 2026-09-03T18:27:02Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_sinusoids, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (PatchTST, seed=2024) already completed — skipping (idempotent)
+--- syn_sinusoids PatchTST seed=2024 EXIT=0 2026-09-03T18:27:03Z ---
+--- syn_sinusoids PatchTST seed=7 START 2026-09-03T18:27:03Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_sinusoids, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (PatchTST, seed=7) already completed — skipping (idempotent)
+--- syn_sinusoids PatchTST seed=7 EXIT=0 2026-09-03T18:27:04Z ---
+--- syn_sinusoids PatchTST seed=99 START 2026-09-03T18:27:04Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_sinusoids, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (PatchTST, seed=99) already completed — skipping (idempotent)
+--- syn_sinusoids PatchTST seed=99 EXIT=0 2026-09-03T18:27:06Z ---
+--- syn_changepoints DLinear seed=42 START 2026-09-03T18:27:06Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_changepoints, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (DLinear, seed=42) already completed — skipping (idempotent)
+--- syn_changepoints DLinear seed=42 EXIT=0 2026-09-03T18:27:07Z ---
+--- syn_changepoints DLinear seed=123 START 2026-09-03T18:27:07Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_changepoints, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (DLinear, seed=123) already completed — skipping (idempotent)
+--- syn_changepoints DLinear seed=123 EXIT=0 2026-09-03T18:27:08Z ---
+--- syn_changepoints DLinear seed=2024 START 2026-09-03T18:27:08Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_changepoints, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (DLinear, seed=2024) already completed — skipping (idempotent)
+--- syn_changepoints DLinear seed=2024 EXIT=0 2026-09-03T18:27:09Z ---
+--- syn_changepoints DLinear seed=7 START 2026-09-03T18:27:09Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_changepoints, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (DLinear, seed=7) already completed — skipping (idempotent)
+--- syn_changepoints DLinear seed=7 EXIT=0 2026-09-03T18:27:10Z ---
+--- syn_changepoints DLinear seed=99 START 2026-09-03T18:27:10Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_changepoints, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (DLinear, seed=99) already completed — skipping (idempotent)
+--- syn_changepoints DLinear seed=99 EXIT=0 2026-09-03T18:27:11Z ---
+--- syn_changepoints PatchTST seed=42 START 2026-09-03T18:27:11Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_changepoints, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (PatchTST, seed=42) already completed — skipping (idempotent)
+--- syn_changepoints PatchTST seed=42 EXIT=0 2026-09-03T18:27:12Z ---
+--- syn_changepoints PatchTST seed=123 START 2026-09-03T18:27:12Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_changepoints, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (PatchTST, seed=123) already completed — skipping (idempotent)
+--- syn_changepoints PatchTST seed=123 EXIT=0 2026-09-03T18:27:14Z ---
+--- syn_changepoints PatchTST seed=2024 START 2026-09-03T18:27:14Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_changepoints, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (PatchTST, seed=2024) already completed — skipping (idempotent)
+--- syn_changepoints PatchTST seed=2024 EXIT=0 2026-09-03T18:27:15Z ---
+--- syn_changepoints PatchTST seed=7 START 2026-09-03T18:27:15Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_changepoints, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (PatchTST, seed=7) already completed — skipping (idempotent)
+--- syn_changepoints PatchTST seed=7 EXIT=0 2026-09-03T18:27:16Z ---
+--- syn_changepoints PatchTST seed=99 START 2026-09-03T18:27:16Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_changepoints, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (PatchTST, seed=99) already completed — skipping (idempotent)
+--- syn_changepoints PatchTST seed=99 EXIT=0 2026-09-03T18:27:17Z ---
+--- syn_delayedcopy DLinear seed=42 START 2026-09-03T18:27:17Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_delayedcopy, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (DLinear, seed=42) already completed — skipping (idempotent)
+--- syn_delayedcopy DLinear seed=42 EXIT=0 2026-09-03T18:27:18Z ---
+--- syn_delayedcopy DLinear seed=123 START 2026-09-03T18:27:18Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_delayedcopy, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (DLinear, seed=123) already completed — skipping (idempotent)
+--- syn_delayedcopy DLinear seed=123 EXIT=0 2026-09-03T18:27:19Z ---
+--- syn_delayedcopy DLinear seed=2024 START 2026-09-03T18:27:19Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_delayedcopy, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (DLinear, seed=2024) already completed — skipping (idempotent)
+--- syn_delayedcopy DLinear seed=2024 EXIT=0 2026-09-03T18:27:21Z ---
+--- syn_delayedcopy DLinear seed=7 START 2026-09-03T18:27:21Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_delayedcopy, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (DLinear, seed=7) already completed — skipping (idempotent)
+--- syn_delayedcopy DLinear seed=7 EXIT=0 2026-09-03T18:27:22Z ---
+--- syn_delayedcopy DLinear seed=99 START 2026-09-03T18:27:22Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_delayedcopy, variant=DLinear, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (DLinear, seed=99) already completed — skipping (idempotent)
+--- syn_delayedcopy DLinear seed=99 EXIT=0 2026-09-03T18:27:23Z ---
+--- syn_delayedcopy PatchTST seed=42 START 2026-09-03T18:27:23Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_delayedcopy, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (PatchTST, seed=42) already completed — skipping (idempotent)
+--- syn_delayedcopy PatchTST seed=42 EXIT=0 2026-09-03T18:27:24Z ---
+--- syn_delayedcopy PatchTST seed=123 START 2026-09-03T18:27:24Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_delayedcopy, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (PatchTST, seed=123) already completed — skipping (idempotent)
+--- syn_delayedcopy PatchTST seed=123 EXIT=0 2026-09-03T18:27:25Z ---
+--- syn_delayedcopy PatchTST seed=2024 START 2026-09-03T18:27:25Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_delayedcopy, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (PatchTST, seed=2024) already completed — skipping (idempotent)
+--- syn_delayedcopy PatchTST seed=2024 EXIT=0 2026-09-03T18:27:27Z ---
+--- syn_delayedcopy PatchTST seed=7 START 2026-09-03T18:27:27Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_delayedcopy, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (PatchTST, seed=7) already completed — skipping (idempotent)
+--- syn_delayedcopy PatchTST seed=7 EXIT=0 2026-09-03T18:27:28Z ---
+--- syn_delayedcopy PatchTST seed=99 START 2026-09-03T18:27:28Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=syn_delayedcopy, variant=PatchTST, F=7) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=11649 val=3649 test=3649 (batches: 364 / 114 / 114)
+[full] (PatchTST, seed=99) already completed — skipping (idempotent)
+--- syn_delayedcopy PatchTST seed=99 EXIT=0 2026-09-03T18:27:29Z ---
+--- solar DLinear seed=42 START 2026-09-03T18:27:29Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=solar, variant=DLinear, F=137) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=31185 val=10161 test=10161 (batches: 974 / 317 / 317)
+[full] (DLinear, seed=42) already completed — skipping (idempotent)
+--- solar DLinear seed=42 EXIT=0 2026-09-03T18:27:31Z ---
+--- solar DLinear seed=123 START 2026-09-03T18:27:31Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=solar, variant=DLinear, F=137) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=31185 val=10161 test=10161 (batches: 974 / 317 / 317)
+[full] (DLinear, seed=123) already completed — skipping (idempotent)
+--- solar DLinear seed=123 EXIT=0 2026-09-03T18:27:33Z ---
+--- solar DLinear seed=2024 START 2026-09-03T18:27:33Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=solar, variant=DLinear, F=137) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=31185 val=10161 test=10161 (batches: 974 / 317 / 317)
+[full] (DLinear, seed=2024) already completed — skipping (idempotent)
+--- solar DLinear seed=2024 EXIT=0 2026-09-03T18:27:35Z ---
+--- solar DLinear seed=7 START 2026-09-03T18:27:35Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=solar, variant=DLinear, F=137) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=31185 val=10161 test=10161 (batches: 974 / 317 / 317)
+[full] (DLinear, seed=7) already completed — skipping (idempotent)
+--- solar DLinear seed=7 EXIT=0 2026-09-03T18:27:37Z ---
+--- solar DLinear seed=99 START 2026-09-03T18:27:37Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=solar, variant=DLinear, F=137) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+  windows: train=31185 val=10161 test=10161 (batches: 974 / 317 / 317)
+[full] (DLinear, seed=99) already completed — skipping (idempotent)
+--- solar DLinear seed=99 EXIT=0 2026-09-03T18:27:39Z ---
+--- solar PatchTST seed=42 START 2026-09-03T18:27:39Z ---
+[gate6] DECLARED OMISSION: solar/PatchTST seed=42 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- solar PatchTST seed=42 EXIT=0 2026-09-03T18:27:40Z ---
+--- solar PatchTST seed=123 START 2026-09-03T18:27:40Z ---
+[gate6] DECLARED OMISSION: solar/PatchTST seed=123 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- solar PatchTST seed=123 EXIT=0 2026-09-03T18:27:41Z ---
+--- solar PatchTST seed=2024 START 2026-09-03T18:27:41Z ---
+[gate6] DECLARED OMISSION: solar/PatchTST seed=2024 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- solar PatchTST seed=2024 EXIT=0 2026-09-03T18:27:42Z ---
+--- solar PatchTST seed=7 START 2026-09-03T18:27:42Z ---
+[gate6] DECLARED OMISSION: solar/PatchTST seed=7 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- solar PatchTST seed=7 EXIT=0 2026-09-03T18:27:43Z ---
+--- solar PatchTST seed=99 START 2026-09-03T18:27:43Z ---
+[gate6] DECLARED OMISSION: solar/PatchTST seed=99 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- solar PatchTST seed=99 EXIT=0 2026-09-03T18:27:44Z ---
+--- electricity DLinear seed=42 START 2026-09-03T18:27:44Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=electricity, variant=DLinear, F=321) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] electricity: dropped non-numeric columns: ['date']
+  windows: train=15431 val=4910 test=4910 (batches: 482 / 153 / 153)
+[gate3_datasets] electricity: dropped non-numeric columns: ['date']
+[full] train batches=483 val batches=154 test batches=154
+      epoch  1/10  train_mse=0.343921  val_mse=0.221700
+      epoch  2/10  train_mse=0.199316  val_mse=0.188687
+      epoch  3/10  train_mse=0.178378  val_mse=0.173964
+      epoch  4/10  train_mse=0.168090  val_mse=0.166200
+      epoch  5/10  train_mse=0.162075  val_mse=0.160836
+      epoch  6/10  train_mse=0.158204  val_mse=0.157543
+      epoch  7/10  train_mse=0.155579  val_mse=0.155434
+      epoch  8/10  train_mse=0.153678  val_mse=0.153386
+      epoch  9/10  train_mse=0.152345  val_mse=0.152278
+      epoch 10/10  train_mse=0.151305  val_mse=0.151838
+      FINAL test_mse=0.159029 train_mse=0.151305 (elapsed 159s)
+      appended: {"dataset": "electricity", "variant": "DLinear", "cell": null, "seed": 42, "val_mse": 0.15183814, "test_mse": 0.15902908, "final_train_mse": 0.15130461, "attn_params": 49344, "full_params": 49344, "n_train_batches": 483, "n_val_batches": 154, "n_test_batches": 154, "completed_utc": "2026-09-03T18:30:25Z"}
+--- electricity DLinear seed=42 EXIT=0 2026-09-03T18:30:26Z ---
+--- electricity DLinear seed=123 START 2026-09-03T18:30:26Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=electricity, variant=DLinear, F=321) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] electricity: dropped non-numeric columns: ['date']
+  windows: train=15431 val=4910 test=4910 (batches: 482 / 153 / 153)
+[gate3_datasets] electricity: dropped non-numeric columns: ['date']
+[full] train batches=483 val batches=154 test batches=154
+      epoch  1/10  train_mse=0.336147  val_mse=0.221582
+      epoch  2/10  train_mse=0.199022  val_mse=0.188111
+      epoch  3/10  train_mse=0.178234  val_mse=0.174286
+      epoch  4/10  train_mse=0.167861  val_mse=0.165810
+      epoch  5/10  train_mse=0.161806  val_mse=0.160378
+      epoch  6/10  train_mse=0.157975  val_mse=0.157477
+      epoch  7/10  train_mse=0.155390  val_mse=0.154930
+      epoch  8/10  train_mse=0.153592  val_mse=0.154019
+      epoch  9/10  train_mse=0.152232  val_mse=0.153082
+      epoch 10/10  train_mse=0.151250  val_mse=0.151317
+      FINAL test_mse=0.158744 train_mse=0.151250 (elapsed 141s)
+      appended: {"dataset": "electricity", "variant": "DLinear", "cell": null, "seed": 123, "val_mse": 0.15131683, "test_mse": 0.15874378, "final_train_mse": 0.15124975, "attn_params": 49344, "full_params": 49344, "n_train_batches": 483, "n_val_batches": 154, "n_test_batches": 154, "completed_utc": "2026-09-03T18:32:50Z"}
+--- electricity DLinear seed=123 EXIT=0 2026-09-03T18:32:51Z ---
+--- electricity DLinear seed=2024 START 2026-09-03T18:32:51Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=electricity, variant=DLinear, F=321) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] electricity: dropped non-numeric columns: ['date']
+  windows: train=15431 val=4910 test=4910 (batches: 482 / 153 / 153)
+[gate3_datasets] electricity: dropped non-numeric columns: ['date']
+[full] train batches=483 val batches=154 test batches=154
+      epoch  1/10  train_mse=0.345951  val_mse=0.223488
+      epoch  2/10  train_mse=0.200928  val_mse=0.189576
+      epoch  3/10  train_mse=0.179351  val_mse=0.174636
+      epoch  4/10  train_mse=0.168630  val_mse=0.166126
+      epoch  5/10  train_mse=0.162362  val_mse=0.160984
+      epoch  6/10  train_mse=0.158346  val_mse=0.157765
+      epoch  7/10  train_mse=0.155651  val_mse=0.155124
+      epoch  8/10  train_mse=0.153718  val_mse=0.154045
+      epoch  9/10  train_mse=0.152374  val_mse=0.153121
+      epoch 10/10  train_mse=0.151301  val_mse=0.150984
+      FINAL test_mse=0.158550 train_mse=0.151301 (elapsed 136s)
+      appended: {"dataset": "electricity", "variant": "DLinear", "cell": null, "seed": 2024, "val_mse": 0.15098418, "test_mse": 0.15855007, "final_train_mse": 0.15130076, "attn_params": 49344, "full_params": 49344, "n_train_batches": 483, "n_val_batches": 154, "n_test_batches": 154, "completed_utc": "2026-09-03T18:35:09Z"}
+--- electricity DLinear seed=2024 EXIT=0 2026-09-03T18:35:10Z ---
+--- electricity DLinear seed=7 START 2026-09-03T18:35:10Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=electricity, variant=DLinear, F=321) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] electricity: dropped non-numeric columns: ['date']
+  windows: train=15431 val=4910 test=4910 (batches: 482 / 153 / 153)
+[gate3_datasets] electricity: dropped non-numeric columns: ['date']
+[full] train batches=483 val batches=154 test batches=154
+      epoch  1/10  train_mse=0.345091  val_mse=0.222170
+      epoch  2/10  train_mse=0.199689  val_mse=0.188920
+      epoch  3/10  train_mse=0.178731  val_mse=0.174265
+      epoch  4/10  train_mse=0.168410  val_mse=0.166740
+      epoch  5/10  train_mse=0.162278  val_mse=0.160967
+      epoch  6/10  train_mse=0.158342  val_mse=0.157849
+      epoch  7/10  train_mse=0.155663  val_mse=0.154857
+      epoch  8/10  train_mse=0.153773  val_mse=0.153763
+      epoch  9/10  train_mse=0.152387  val_mse=0.153194
+      epoch 10/10  train_mse=0.151358  val_mse=0.151579
+      FINAL test_mse=0.158935 train_mse=0.151358 (elapsed 141s)
+      appended: {"dataset": "electricity", "variant": "DLinear", "cell": null, "seed": 7, "val_mse": 0.151579, "test_mse": 0.15893482, "final_train_mse": 0.15135798, "attn_params": 49344, "full_params": 49344, "n_train_batches": 483, "n_val_batches": 154, "n_test_batches": 154, "completed_utc": "2026-09-03T18:37:33Z"}
+--- electricity DLinear seed=7 EXIT=0 2026-09-03T18:37:34Z ---
+--- electricity DLinear seed=99 START 2026-09-03T18:37:34Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=electricity, variant=DLinear, F=321) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] electricity: dropped non-numeric columns: ['date']
+  windows: train=15431 val=4910 test=4910 (batches: 482 / 153 / 153)
+[gate3_datasets] electricity: dropped non-numeric columns: ['date']
+[full] train batches=483 val batches=154 test batches=154
+      epoch  1/10  train_mse=0.353245  val_mse=0.224818
+      epoch  2/10  train_mse=0.201432  val_mse=0.190431
+      epoch  3/10  train_mse=0.179774  val_mse=0.175189
+      epoch  4/10  train_mse=0.169051  val_mse=0.167231
+      epoch  5/10  train_mse=0.162738  val_mse=0.162046
+      epoch  6/10  train_mse=0.158665  val_mse=0.159070
+      epoch  7/10  train_mse=0.155880  val_mse=0.155238
+      epoch  8/10  train_mse=0.153932  val_mse=0.153678
+      epoch  9/10  train_mse=0.152510  val_mse=0.151930
+      epoch 10/10  train_mse=0.151465  val_mse=0.151405
+      FINAL test_mse=0.158732 train_mse=0.151465 (elapsed 148s)
+      appended: {"dataset": "electricity", "variant": "DLinear", "cell": null, "seed": 99, "val_mse": 0.15140469, "test_mse": 0.15873171, "final_train_mse": 0.15146498, "attn_params": 49344, "full_params": 49344, "n_train_batches": 483, "n_val_batches": 154, "n_test_batches": 154, "completed_utc": "2026-09-03T18:40:04Z"}
+--- electricity DLinear seed=99 EXIT=0 2026-09-03T18:40:05Z ---
+--- electricity PatchTST seed=42 START 2026-09-03T18:40:05Z ---
+[gate6] DECLARED OMISSION: electricity/PatchTST seed=42 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- electricity PatchTST seed=42 EXIT=0 2026-09-03T18:40:06Z ---
+--- electricity PatchTST seed=123 START 2026-09-03T18:40:06Z ---
+[gate6] DECLARED OMISSION: electricity/PatchTST seed=123 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- electricity PatchTST seed=123 EXIT=0 2026-09-03T18:40:07Z ---
+--- electricity PatchTST seed=2024 START 2026-09-03T18:40:07Z ---
+[gate6] DECLARED OMISSION: electricity/PatchTST seed=2024 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- electricity PatchTST seed=2024 EXIT=0 2026-09-03T18:40:08Z ---
+--- electricity PatchTST seed=7 START 2026-09-03T18:40:08Z ---
+[gate6] DECLARED OMISSION: electricity/PatchTST seed=7 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- electricity PatchTST seed=7 EXIT=0 2026-09-03T18:40:09Z ---
+--- electricity PatchTST seed=99 START 2026-09-03T18:40:09Z ---
+[gate6] DECLARED OMISSION: electricity/PatchTST seed=99 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- electricity PatchTST seed=99 EXIT=0 2026-09-03T18:40:10Z ---
+--- weather DLinear seed=42 START 2026-09-03T18:40:10Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=weather, variant=DLinear, F=21) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] weather: dropped non-numeric columns: ['date']
+  windows: train=31266 val=10188 test=10189 (batches: 977 / 318 / 318)
+[gate3_datasets] weather: dropped non-numeric columns: ['date']
+[full] train batches=978 val batches=319 test batches=319
+      epoch  1/10  train_mse=0.561610  val_mse=0.484505
+      epoch  2/10  train_mse=0.491960  val_mse=0.467559
+      epoch  3/10  train_mse=0.480152  val_mse=0.462954
+      epoch  4/10  train_mse=0.474140  val_mse=0.462899
+      epoch  5/10  train_mse=0.470511  val_mse=0.459305
+      epoch  6/10  train_mse=0.468154  val_mse=0.460248
+      epoch  7/10  train_mse=0.466874  val_mse=0.459770
+      epoch  8/10  train_mse=0.465884  val_mse=0.458121
+      epoch  9/10  train_mse=0.465359  val_mse=0.458526
+      epoch 10/10  train_mse=0.465003  val_mse=0.457246
+      FINAL test_mse=0.180101 train_mse=0.465003 (elapsed 24s)
+      appended: {"dataset": "weather", "variant": "DLinear", "cell": null, "seed": 42, "val_mse": 0.45724624, "test_mse": 0.18010136, "final_train_mse": 0.46500286, "attn_params": 49344, "full_params": 49344, "n_train_batches": 978, "n_val_batches": 319, "n_test_batches": 319, "completed_utc": "2026-09-03T18:40:36Z"}
+--- weather DLinear seed=42 EXIT=0 2026-09-03T18:40:36Z ---
+--- weather DLinear seed=123 START 2026-09-03T18:40:36Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=weather, variant=DLinear, F=21) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] weather: dropped non-numeric columns: ['date']
+  windows: train=31266 val=10188 test=10189 (batches: 977 / 318 / 318)
+[gate3_datasets] weather: dropped non-numeric columns: ['date']
+[full] train batches=978 val batches=319 test batches=319
+      epoch  1/10  train_mse=0.556183  val_mse=0.482084
+      epoch  2/10  train_mse=0.489875  val_mse=0.467645
+      epoch  3/10  train_mse=0.479142  val_mse=0.465059
+      epoch  4/10  train_mse=0.473654  val_mse=0.459719
+      epoch  5/10  train_mse=0.470271  val_mse=0.459060
+      epoch  6/10  train_mse=0.467978  val_mse=0.458896
+      epoch  7/10  train_mse=0.466650  val_mse=0.458636
+      epoch  8/10  train_mse=0.465680  val_mse=0.457723
+      epoch  9/10  train_mse=0.465244  val_mse=0.458626
+      epoch 10/10  train_mse=0.464930  val_mse=0.456982
+      FINAL test_mse=0.181455 train_mse=0.464930 (elapsed 21s)
+      appended: {"dataset": "weather", "variant": "DLinear", "cell": null, "seed": 123, "val_mse": 0.45698197, "test_mse": 0.18145496, "final_train_mse": 0.46493042, "attn_params": 49344, "full_params": 49344, "n_train_batches": 978, "n_val_batches": 319, "n_test_batches": 319, "completed_utc": "2026-09-03T18:40:58Z"}
+--- weather DLinear seed=123 EXIT=0 2026-09-03T18:40:59Z ---
+--- weather DLinear seed=2024 START 2026-09-03T18:40:59Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=weather, variant=DLinear, F=21) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] weather: dropped non-numeric columns: ['date']
+  windows: train=31266 val=10188 test=10189 (batches: 977 / 318 / 318)
+[gate3_datasets] weather: dropped non-numeric columns: ['date']
+[full] train batches=978 val batches=319 test batches=319
+      epoch  1/10  train_mse=0.561407  val_mse=0.481570
+      epoch  2/10  train_mse=0.489760  val_mse=0.467085
+      epoch  3/10  train_mse=0.479078  val_mse=0.461613
+      epoch  4/10  train_mse=0.473504  val_mse=0.460885
+      epoch  5/10  train_mse=0.470167  val_mse=0.459589
+      epoch  6/10  train_mse=0.467968  val_mse=0.457107
+      epoch  7/10  train_mse=0.466585  val_mse=0.457815
+      epoch  8/10  train_mse=0.465855  val_mse=0.457931
+      epoch  9/10  train_mse=0.465173  val_mse=0.456978
+      epoch 10/10  train_mse=0.465003  val_mse=0.457359
+      FINAL test_mse=0.180726 train_mse=0.465003 (elapsed 21s)
+      appended: {"dataset": "weather", "variant": "DLinear", "cell": null, "seed": 2024, "val_mse": 0.45735915, "test_mse": 0.18072553, "final_train_mse": 0.46500288, "attn_params": 49344, "full_params": 49344, "n_train_batches": 978, "n_val_batches": 319, "n_test_batches": 319, "completed_utc": "2026-09-03T18:41:20Z"}
+--- weather DLinear seed=2024 EXIT=0 2026-09-03T18:41:20Z ---
+--- weather DLinear seed=7 START 2026-09-03T18:41:20Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=weather, variant=DLinear, F=21) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] weather: dropped non-numeric columns: ['date']
+  windows: train=31266 val=10188 test=10189 (batches: 977 / 318 / 318)
+[gate3_datasets] weather: dropped non-numeric columns: ['date']
+[full] train batches=978 val batches=319 test batches=319
+      epoch  1/10  train_mse=0.564510  val_mse=0.485803
+      epoch  2/10  train_mse=0.491425  val_mse=0.468441
+      epoch  3/10  train_mse=0.479947  val_mse=0.462991
+      epoch  4/10  train_mse=0.473975  val_mse=0.462020
+      epoch  5/10  train_mse=0.470521  val_mse=0.460974
+      epoch  6/10  train_mse=0.468175  val_mse=0.458404
+      epoch  7/10  train_mse=0.466802  val_mse=0.461319
+      epoch  8/10  train_mse=0.465891  val_mse=0.458117
+      epoch  9/10  train_mse=0.465185  val_mse=0.458188
+      epoch 10/10  train_mse=0.464956  val_mse=0.457913
+      FINAL test_mse=0.180017 train_mse=0.464956 (elapsed 21s)
+      appended: {"dataset": "weather", "variant": "DLinear", "cell": null, "seed": 7, "val_mse": 0.45791257, "test_mse": 0.18001716, "final_train_mse": 0.46495559, "attn_params": 49344, "full_params": 49344, "n_train_batches": 978, "n_val_batches": 319, "n_test_batches": 319, "completed_utc": "2026-09-03T18:41:43Z"}
+--- weather DLinear seed=7 EXIT=0 2026-09-03T18:41:43Z ---
+--- weather DLinear seed=99 START 2026-09-03T18:41:43Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=weather, variant=DLinear, F=21) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] weather: dropped non-numeric columns: ['date']
+  windows: train=31266 val=10188 test=10189 (batches: 977 / 318 / 318)
+[gate3_datasets] weather: dropped non-numeric columns: ['date']
+[full] train batches=978 val batches=319 test batches=319
+      epoch  1/10  train_mse=0.565554  val_mse=0.485324
+      epoch  2/10  train_mse=0.491134  val_mse=0.469022
+      epoch  3/10  train_mse=0.479615  val_mse=0.464058
+      epoch  4/10  train_mse=0.473822  val_mse=0.460670
+      epoch  5/10  train_mse=0.470215  val_mse=0.459563
+      epoch  6/10  train_mse=0.468140  val_mse=0.457590
+      epoch  7/10  train_mse=0.466677  val_mse=0.457370
+      epoch  8/10  train_mse=0.465765  val_mse=0.458460
+      epoch  9/10  train_mse=0.465266  val_mse=0.457107
+      epoch 10/10  train_mse=0.464907  val_mse=0.457793
+      FINAL test_mse=0.179938 train_mse=0.464907 (elapsed 21s)
+      appended: {"dataset": "weather", "variant": "DLinear", "cell": null, "seed": 99, "val_mse": 0.45779268, "test_mse": 0.17993842, "final_train_mse": 0.46490703, "attn_params": 49344, "full_params": 49344, "n_train_batches": 978, "n_val_batches": 319, "n_test_batches": 319, "completed_utc": "2026-09-03T18:42:04Z"}
+--- weather DLinear seed=99 EXIT=0 2026-09-03T18:42:05Z ---
+--- weather PatchTST seed=42 START 2026-09-03T18:42:05Z ---
+[gate6] DECLARED OMISSION: weather/PatchTST seed=42 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- weather PatchTST seed=42 EXIT=0 2026-09-03T18:42:06Z ---
+--- weather PatchTST seed=123 START 2026-09-03T18:42:06Z ---
+[gate6] DECLARED OMISSION: weather/PatchTST seed=123 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- weather PatchTST seed=123 EXIT=0 2026-09-03T18:42:06Z ---
+--- weather PatchTST seed=2024 START 2026-09-03T18:42:06Z ---
+[gate6] DECLARED OMISSION: weather/PatchTST seed=2024 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- weather PatchTST seed=2024 EXIT=0 2026-09-03T18:42:07Z ---
+--- weather PatchTST seed=7 START 2026-09-03T18:42:07Z ---
+[gate6] DECLARED OMISSION: weather/PatchTST seed=7 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- weather PatchTST seed=7 EXIT=0 2026-09-03T18:42:09Z ---
+--- weather PatchTST seed=99 START 2026-09-03T18:42:09Z ---
+[gate6] DECLARED OMISSION: weather/PatchTST seed=99 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- weather PatchTST seed=99 EXIT=0 2026-09-03T18:42:10Z ---
+--- traffic DLinear seed=42 START 2026-09-03T18:42:10Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=traffic, variant=DLinear, F=862) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] traffic: dropped non-numeric columns: ['date']
+  windows: train=10175 val=3158 test=3158 (batches: 317 / 98 / 98)
+[gate3_datasets] traffic: dropped non-numeric columns: ['date']
+[full] train batches=318 val batches=99 test batches=99
+      epoch  1/10  train_mse=0.613468  val_mse=0.552441
+      epoch  2/10  train_mse=0.394588  val_mse=0.457199
+      epoch  3/10  train_mse=0.344133  val_mse=0.413974
+      epoch  4/10  train_mse=0.318914  val_mse=0.390490
+      epoch  5/10  train_mse=0.304414  val_mse=0.376674
+      epoch  6/10  train_mse=0.295192  val_mse=0.367168
+      epoch  7/10  train_mse=0.288874  val_mse=0.360980
+      epoch  8/10  train_mse=0.284322  val_mse=0.356303
+      epoch  9/10  train_mse=0.280906  val_mse=0.352469
+      epoch 10/10  train_mse=0.278323  val_mse=0.350042
+      FINAL test_mse=0.483061 train_mse=0.278323 (elapsed 192s)
+      appended: {"dataset": "traffic", "variant": "DLinear", "cell": null, "seed": 42, "val_mse": 0.35004155, "test_mse": 0.48306063, "final_train_mse": 0.27832268, "attn_params": 49344, "full_params": 49344, "n_train_batches": 318, "n_val_batches": 99, "n_test_batches": 99, "completed_utc": "2026-09-03T18:45:24Z"}
+--- traffic DLinear seed=42 EXIT=0 2026-09-03T18:45:24Z ---
+--- traffic DLinear seed=123 START 2026-09-03T18:45:24Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=traffic, variant=DLinear, F=862) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] traffic: dropped non-numeric columns: ['date']
+  windows: train=10175 val=3158 test=3158 (batches: 317 / 98 / 98)
+[gate3_datasets] traffic: dropped non-numeric columns: ['date']
+[full] train batches=318 val batches=99 test batches=99
+      epoch  1/10  train_mse=0.603618  val_mse=0.548783
+      epoch  2/10  train_mse=0.391630  val_mse=0.453982
+      epoch  3/10  train_mse=0.341908  val_mse=0.411631
+      epoch  4/10  train_mse=0.317520  val_mse=0.388838
+      epoch  5/10  train_mse=0.303587  val_mse=0.375275
+      epoch  6/10  train_mse=0.294673  val_mse=0.366021
+      epoch  7/10  train_mse=0.288550  val_mse=0.360333
+      epoch  8/10  train_mse=0.284119  val_mse=0.355129
+      epoch  9/10  train_mse=0.280775  val_mse=0.351910
+      epoch 10/10  train_mse=0.278239  val_mse=0.349723
+      FINAL test_mse=0.482667 train_mse=0.278239 (elapsed 194s)
+      appended: {"dataset": "traffic", "variant": "DLinear", "cell": null, "seed": 123, "val_mse": 0.34972314, "test_mse": 0.48266719, "final_train_mse": 0.27823861, "attn_params": 49344, "full_params": 49344, "n_train_batches": 318, "n_val_batches": 99, "n_test_batches": 99, "completed_utc": "2026-09-03T18:48:41Z"}
+--- traffic DLinear seed=123 EXIT=0 2026-09-03T18:48:42Z ---
+--- traffic DLinear seed=2024 START 2026-09-03T18:48:42Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=traffic, variant=DLinear, F=862) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] traffic: dropped non-numeric columns: ['date']
+  windows: train=10175 val=3158 test=3158 (batches: 317 / 98 / 98)
+[gate3_datasets] traffic: dropped non-numeric columns: ['date']
+[full] train batches=318 val batches=99 test batches=99
+      epoch  1/10  train_mse=0.613476  val_mse=0.554062
+      epoch  2/10  train_mse=0.394890  val_mse=0.458141
+      epoch  3/10  train_mse=0.343696  val_mse=0.413363
+      epoch  4/10  train_mse=0.318458  val_mse=0.389785
+      epoch  5/10  train_mse=0.304080  val_mse=0.375569
+      epoch  6/10  train_mse=0.294958  val_mse=0.366890
+      epoch  7/10  train_mse=0.288725  val_mse=0.360765
+      epoch  8/10  train_mse=0.284232  val_mse=0.356111
+      epoch  9/10  train_mse=0.280871  val_mse=0.352305
+      epoch 10/10  train_mse=0.278287  val_mse=0.349535
+      FINAL test_mse=0.482820 train_mse=0.278287 (elapsed 185s)
+      appended: {"dataset": "traffic", "variant": "DLinear", "cell": null, "seed": 2024, "val_mse": 0.34953538, "test_mse": 0.48281961, "final_train_mse": 0.2782866, "attn_params": 49344, "full_params": 49344, "n_train_batches": 318, "n_val_batches": 99, "n_test_batches": 99, "completed_utc": "2026-09-03T18:51:49Z"}
+--- traffic DLinear seed=2024 EXIT=0 2026-09-03T18:51:49Z ---
+--- traffic DLinear seed=7 START 2026-09-03T18:51:49Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=traffic, variant=DLinear, F=862) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] traffic: dropped non-numeric columns: ['date']
+  windows: train=10175 val=3158 test=3158 (batches: 317 / 98 / 98)
+[gate3_datasets] traffic: dropped non-numeric columns: ['date']
+[full] train batches=318 val batches=99 test batches=99
+      epoch  1/10  train_mse=0.616895  val_mse=0.555696
+      epoch  2/10  train_mse=0.395550  val_mse=0.458622
+      epoch  3/10  train_mse=0.344113  val_mse=0.413871
+      epoch  4/10  train_mse=0.318682  val_mse=0.390378
+      epoch  5/10  train_mse=0.304258  val_mse=0.376501
+      epoch  6/10  train_mse=0.295137  val_mse=0.367318
+      epoch  7/10  train_mse=0.288881  val_mse=0.360726
+      epoch  8/10  train_mse=0.284323  val_mse=0.355907
+      epoch  9/10  train_mse=0.280943  val_mse=0.352953
+      epoch 10/10  train_mse=0.278356  val_mse=0.350230
+      FINAL test_mse=0.483369 train_mse=0.278356 (elapsed 177s)
+      appended: {"dataset": "traffic", "variant": "DLinear", "cell": null, "seed": 7, "val_mse": 0.35023032, "test_mse": 0.48336852, "final_train_mse": 0.2783564, "attn_params": 49344, "full_params": 49344, "n_train_batches": 318, "n_val_batches": 99, "n_test_batches": 99, "completed_utc": "2026-09-03T18:54:49Z"}
+--- traffic DLinear seed=7 EXIT=0 2026-09-03T18:54:49Z ---
+--- traffic DLinear seed=99 START 2026-09-03T18:54:49Z ---
+== Gate 6 baseline harness (CPU PyTorch, threads=8, dataset=traffic, variant=DLinear, F=862) ==
+  task: frozen direct-96, L=256, H=96, batch=32
+  protocol: AdamW lr=0.0001 wd=1e-05 clip=10.0 epochs=10 (fixed), no scheduler/warm-up, fp32
+[gate3_datasets] traffic: dropped non-numeric columns: ['date']
+  windows: train=10175 val=3158 test=3158 (batches: 317 / 98 / 98)
+[gate3_datasets] traffic: dropped non-numeric columns: ['date']
+[full] train batches=318 val batches=99 test batches=99
+      epoch  1/10  train_mse=0.625363  val_mse=0.556998
+      epoch  2/10  train_mse=0.396223  val_mse=0.458566
+      epoch  3/10  train_mse=0.344876  val_mse=0.414742
+      epoch  4/10  train_mse=0.319502  val_mse=0.390987
+      epoch  5/10  train_mse=0.305015  val_mse=0.377517
+      epoch  6/10  train_mse=0.295781  val_mse=0.367724
+      epoch  7/10  train_mse=0.289445  val_mse=0.361531
+      epoch  8/10  train_mse=0.284831  val_mse=0.356392
+      epoch  9/10  train_mse=0.281383  val_mse=0.353133
+      epoch 10/10  train_mse=0.278732  val_mse=0.350017
+      FINAL test_mse=0.483692 train_mse=0.278732 (elapsed 168s)
+      appended: {"dataset": "traffic", "variant": "DLinear", "cell": null, "seed": 99, "val_mse": 0.35001724, "test_mse": 0.48369249, "final_train_mse": 0.27873202, "attn_params": 49344, "full_params": 49344, "n_train_batches": 318, "n_val_batches": 99, "n_test_batches": 99, "completed_utc": "2026-09-03T18:57:40Z"}
+--- traffic DLinear seed=99 EXIT=0 2026-09-03T18:57:41Z ---
+--- traffic PatchTST seed=42 START 2026-09-03T18:57:41Z ---
+[gate6] DECLARED OMISSION: traffic/PatchTST seed=42 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- traffic PatchTST seed=42 EXIT=0 2026-09-03T18:57:42Z ---
+--- traffic PatchTST seed=123 START 2026-09-03T18:57:42Z ---
+[gate6] DECLARED OMISSION: traffic/PatchTST seed=123 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- traffic PatchTST seed=123 EXIT=0 2026-09-03T18:57:42Z ---
+--- traffic PatchTST seed=2024 START 2026-09-03T18:57:42Z ---
+[gate6] DECLARED OMISSION: traffic/PatchTST seed=2024 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- traffic PatchTST seed=2024 EXIT=0 2026-09-03T18:57:43Z ---
+--- traffic PatchTST seed=7 START 2026-09-03T18:57:43Z ---
+[gate6] DECLARED OMISSION: traffic/PatchTST seed=7 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- traffic PatchTST seed=7 EXIT=0 2026-09-03T18:57:44Z ---
+--- traffic PatchTST seed=99 START 2026-09-03T18:57:44Z ---
+[gate6] DECLARED OMISSION: traffic/PatchTST seed=99 skipped — PatchTST anchor cut (user decision 2026-09-03; heavy CPU tail, no message beyond DLinear); see README gate6 notes
+--- traffic PatchTST seed=99 EXIT=0 2026-09-03T18:57:45Z ---
+=== Gate 6 baselines sweep finished 2026-09-03T18:57:45Z ===

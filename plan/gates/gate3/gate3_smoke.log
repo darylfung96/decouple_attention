@@ -1,0 +1,145 @@
+=== SMOKE etth1 Normal ===
+      epoch  1/1  train_mse=1.306849  val_mse=1.853998
+      smoke train_mse=1.306849 val_mse=1.853998
+      [estimate] 0.13 s/batch -> full 10-epoch run ~7 min
+=== SMOKE etth1 Flat ===
+      epoch  1/1  train_mse=1.275802  val_mse=1.903555
+      smoke train_mse=1.275802 val_mse=1.903555
+      [estimate] 0.13 s/batch -> full 10-epoch run ~7 min
+=== SMOKE etth1 DRRA ===
+      epoch  1/1  train_mse=1.276140  val_mse=1.902330
+      smoke train_mse=1.276140 val_mse=1.902330
+      [estimate] 0.12 s/batch -> full 10-epoch run ~6 min
+=== SMOKE etth2 Normal ===
+      epoch  1/1  train_mse=0.876608  val_mse=3.098014
+      smoke train_mse=0.876608 val_mse=3.098014
+      [estimate] 0.13 s/batch -> full 10-epoch run ~7 min
+=== SMOKE etth2 Flat ===
+      epoch  1/1  train_mse=0.846117  val_mse=3.440227
+      smoke train_mse=0.846117 val_mse=3.440227
+      [estimate] 0.12 s/batch -> full 10-epoch run ~6 min
+=== SMOKE etth2 DRRA ===
+      epoch  1/1  train_mse=0.847567  val_mse=3.435904
+      smoke train_mse=0.847567 val_mse=3.435904
+      [estimate] 0.15 s/batch -> full 10-epoch run ~8 min
+=== SMOKE ettm1 Normal ===
+      epoch  1/1  train_mse=0.937152  val_mse=1.754214
+      smoke train_mse=0.937152 val_mse=1.754214
+      [estimate] 0.24 s/batch -> full 10-epoch run ~51 min
+=== SMOKE ettm1 Flat ===
+      epoch  1/1  train_mse=0.913061  val_mse=1.793344
+      smoke train_mse=0.913061 val_mse=1.793344
+      [estimate] 0.22 s/batch -> full 10-epoch run ~47 min
+=== SMOKE ettm1 DRRA ===
+      epoch  1/1  train_mse=0.914715  val_mse=1.791763
+      smoke train_mse=0.914715 val_mse=1.791763
+      [estimate] 0.18 s/batch -> full 10-epoch run ~38 min
+=== SMOKE ettm2 Normal ===
+      epoch  1/1  train_mse=0.501832  val_mse=1.320665
+      smoke train_mse=0.501832 val_mse=1.320665
+      [estimate] 0.20 s/batch -> full 10-epoch run ~43 min
+=== SMOKE ettm2 Flat ===
+      epoch  1/1  train_mse=0.500592  val_mse=1.411935
+      smoke train_mse=0.500592 val_mse=1.411935
+      [estimate] 0.19 s/batch -> full 10-epoch run ~42 min
+=== SMOKE ettm2 DRRA ===
+      epoch  1/1  train_mse=0.501433  val_mse=1.411913
+      smoke train_mse=0.501433 val_mse=1.411913
+      [estimate] 0.18 s/batch -> full 10-epoch run ~38 min
+=== SMOKE electricity Normal ===
+      epoch  1/1  train_mse=1.336944  val_mse=1.000835
+      smoke train_mse=1.336944 val_mse=1.000835
+      [estimate] 0.24 s/batch -> full 10-epoch run ~19 min
+=== SMOKE electricity Flat ===
+      epoch  1/1  train_mse=1.340717  val_mse=0.999138
+      smoke train_mse=1.340717 val_mse=0.999138
+      [estimate] 0.23 s/batch -> full 10-epoch run ~19 min
+=== SMOKE electricity DRRA ===
+      epoch  1/1  train_mse=1.341021  val_mse=0.999210
+      smoke train_mse=1.341021 val_mse=0.999210
+      [estimate] 0.29 s/batch -> full 10-epoch run ~23 min
+=== SMOKE traffic Normal ===
+      epoch  1/1  train_mse=1.177054  val_mse=1.046244
+      smoke train_mse=1.177054 val_mse=1.046244
+      [estimate] 0.30 s/batch -> full 10-epoch run ~16 min
+=== SMOKE traffic Flat ===
+      epoch  1/1  train_mse=1.177612  val_mse=1.047843
+      smoke train_mse=1.177612 val_mse=1.047843
+      [estimate] 0.32 s/batch -> full 10-epoch run ~17 min
+=== SMOKE traffic DRRA ===
+      epoch  1/1  train_mse=1.177512  val_mse=1.048034
+      smoke train_mse=1.177512 val_mse=1.048034
+      [estimate] 0.31 s/batch -> full 10-epoch run ~16 min
+=== SMOKE weather Normal ===
+      epoch  1/1  train_mse=0.678175  val_mse=3.262423
+      smoke train_mse=0.678175 val_mse=3.262423
+      [estimate] 0.23 s/batch -> full 10-epoch run ~37 min
+=== SMOKE weather Flat ===
+      epoch  1/1  train_mse=0.689913  val_mse=3.241974
+      smoke train_mse=0.689913 val_mse=3.241974
+      [estimate] 0.23 s/batch -> full 10-epoch run ~38 min
+=== SMOKE weather DRRA ===
+      epoch  1/1  train_mse=0.691362  val_mse=3.235720
+      smoke train_mse=0.691362 val_mse=3.235720
+      [estimate] 0.22 s/batch -> full 10-epoch run ~36 min
+=== SMOKE exchange Normal ===
+      epoch  1/1  train_mse=0.999785  val_mse=2.399261
+      smoke train_mse=0.999785 val_mse=2.399261
+      [estimate] 0.23 s/batch -> full 10-epoch run ~5 min
+=== SMOKE exchange Flat ===
+      epoch  1/1  train_mse=0.979256  val_mse=2.295591
+      smoke train_mse=0.979256 val_mse=2.295591
+      [estimate] 0.22 s/batch -> full 10-epoch run ~5 min
+=== SMOKE exchange DRRA ===
+      epoch  1/1  train_mse=0.977802  val_mse=2.290660
+      smoke train_mse=0.977802 val_mse=2.290660
+      [estimate] 0.22 s/batch -> full 10-epoch run ~5 min
+=== SMOKE solar Normal ===
+      epoch  1/1  train_mse=0.909509  val_mse=0.982210
+      smoke train_mse=0.909509 val_mse=0.982210
+      [estimate] 0.28 s/batch -> full 10-epoch run ~46 min
+=== SMOKE solar Flat ===
+      epoch  1/1  train_mse=0.907279  val_mse=0.975536
+      smoke train_mse=0.907279 val_mse=0.975536
+      [estimate] 0.15 s/batch -> full 10-epoch run ~25 min
+=== SMOKE solar DRRA ===
+      epoch  1/1  train_mse=0.907931  val_mse=0.976543
+      smoke train_mse=0.907931 val_mse=0.976543
+      [estimate] 0.14 s/batch -> full 10-epoch run ~23 min
+=== SMOKE syn_sinusoids Normal ===
+      epoch  1/1  train_mse=1.165422  val_mse=1.052690
+      smoke train_mse=1.165422 val_mse=1.052690
+      [estimate] 0.14 s/batch -> full 10-epoch run ~8 min
+=== SMOKE syn_sinusoids Flat ===
+      epoch  1/1  train_mse=1.173912  val_mse=1.053127
+      smoke train_mse=1.173912 val_mse=1.053127
+      [estimate] 0.12 s/batch -> full 10-epoch run ~7 min
+=== SMOKE syn_sinusoids DRRA ===
+      epoch  1/1  train_mse=1.174396  val_mse=1.053151
+      smoke train_mse=1.174396 val_mse=1.053151
+      [estimate] 0.11 s/batch -> full 10-epoch run ~7 min
+=== SMOKE syn_changepoints Normal ===
+      epoch  1/1  train_mse=1.373443  val_mse=8.068982
+      smoke train_mse=1.373443 val_mse=8.068982
+      [estimate] 0.13 s/batch -> full 10-epoch run ~8 min
+=== SMOKE syn_changepoints Flat ===
+      epoch  1/1  train_mse=1.347748  val_mse=8.228955
+      smoke train_mse=1.347748 val_mse=8.228955
+      [estimate] 0.11 s/batch -> full 10-epoch run ~7 min
+=== SMOKE syn_changepoints DRRA ===
+      epoch  1/1  train_mse=1.346002  val_mse=8.220517
+      smoke train_mse=1.346002 val_mse=8.220517
+      [estimate] 0.11 s/batch -> full 10-epoch run ~7 min
+=== SMOKE syn_delayedcopy Normal ===
+      epoch  1/1  train_mse=1.167535  val_mse=1.059259
+      smoke train_mse=1.167535 val_mse=1.059259
+      [estimate] 0.12 s/batch -> full 10-epoch run ~8 min
+=== SMOKE syn_delayedcopy Flat ===
+      epoch  1/1  train_mse=1.170629  val_mse=1.077920
+      smoke train_mse=1.170629 val_mse=1.077920
+      [estimate] 0.12 s/batch -> full 10-epoch run ~7 min
+=== SMOKE syn_delayedcopy DRRA ===
+      epoch  1/1  train_mse=1.171072  val_mse=1.077044
+      smoke train_mse=1.171072 val_mse=1.077044
+      [estimate] 0.11 s/batch -> full 10-epoch run ~7 min
+SMOKE_ALL_DONE
