@@ -60,3 +60,16 @@ the result whichever way it goes, including the possibility that routing is unne
 - 2026-10-16: created from the review's P1 table and the manager's email.
 
 - 2026-10-17 (Phase 4 start): design frozen pre-run at `plan/gates/gate28_c1control/design.md` — two control cells (c_KV = 4 and 8, c_R = 4), single variable `index_topk` 16 -> 64 (= n_idx); no new parameters (state_dicts bitwise equal at a fixed seed) and no new compute path (selection enters only as a mask). `--dry-run` passes: 0 of 256 positions deviate from the brute-force safe set, realized distinct blocks 31.75 of 64 (4,4) vs routed 13.94, and 15.62 of 32 (8,4) vs routed 9.91. `--smoke` finite. `--full` launched 2026-10-18T05:07Z into `results/allblock.jsonl` (50 runs). `analysis.py` refuses to run while D5 is unfrozen — D5 (2% relative, the plan's anchor) is the one input this phase is waiting on. Branch rule: `design.md` §"D5 margin and branch rule".
+
+- 2026-10-18 (D5 frozen + run incident): D5 frozen at 2% relative for the label, with the *bound* as the
+  primary output (`DECISIONS.md` freeze log). Rationale from a pre-run precision check on the six existing
+  cell pairs: paired relative half-widths are 5.3--7.7% at n=25 (paired SD 0.079--0.116), so a 2% containment
+  test needs seed-correlation >= 0.91 while the study's same-family pairs measure 0.11--0.18; a 6% margin
+  would sit at the resolution limit *and* contradict the paper's reading of the 5.72% matched-dense gap, so
+  it was rejected. `analysis.py` now reports U (95% upper limit on the relative cost of removing routing),
+  the pre-registered all-block-vs-Normal test, and a five-way label including "within margin but not
+  resolvable". Synthetic end-to-end test done before real data (0%, +15%, -15% cases behave correctly).
+- 2026-10-18 (incident): seed 123's wall clock (30,575 s vs 409 s for seed 42) was ~8.4 h of macOS system
+  sleep, not compute; `caffeinate -dimsu -w <pid>` attached, and the ETA is now a median of completed runs.
+  Manifests are unaffected: rows carry trained numbers, no timing field.
+

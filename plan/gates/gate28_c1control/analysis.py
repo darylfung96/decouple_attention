@@ -68,12 +68,16 @@ def classify(e_rel, margin):
         return "allblock_better"
     if lo > -margin and hi < margin:
         return "within_margin"
+    if -margin < e_rel["mean"] < margin:
+        return "within_margin_unresolved"
     return "indeterminate"
 
 
 READING = {
     "routed_better": "routing adds accuracy beyond the margin (paper's attribution stands)",
     "within_margin": "all-block is non-inferior at this margin (boundary -> D4 b)",
+    "within_margin_unresolved": "point estimate inside the margin but n=25 cannot resolve it; "
+                                "report the bound, no claim",
     "allblock_better": "the router costs accuracy (report plainly -> D4 b)",
     "indeterminate": "interval straddles a margin edge (report as indeterminate, no claim)",
 }
@@ -81,6 +85,8 @@ READING = {
 
 def main():
     row, margin = frozen_margin()
+    if not RESULTS.exists():
+        raise SystemExit(f"no results yet: {RESULTS} — run --full first")
     seeds, Y, T = load_factorial()
     ctrl = load_controls()
 
@@ -103,6 +109,8 @@ def main():
         d_rel = d_abs / Y[ref]
         e_abs, e_rel = est(d_abs), est(d_rel)
         branch = classify(e_rel, margin)
+        d_normal = v - Y["Normal"]
+        e_normal = est(d_normal)
         first = ctrl[name][seeds[0]]
         res["cells"][name] = {
             "reference": ref,
@@ -120,15 +128,30 @@ def main():
             "n_idx": first["n_idx"],
             "branch": branch,
             "reading": READING[branch],
+            # primary output: upper 95% limit on the relative cost of removing routing
+            "bound_rel_upper": max(float(e_rel["ci95"][1]), 0.0),
+            # pre-registered secondary test: all-block vs Normal (large effect)
+            "vs_Normal": e_normal,
+            "beats_Normal_count_val": int((v < Y["Normal"]).sum()),
+            "compression_alone_reproduces_headline": bool(e_normal["ci95"][1] < 0),
         }
 
     branches = {c: res["cells"][c]["branch"] for c in CONTROLS}
+    res["bound_rel_upper"] = max(res["cells"][c]["bound_rel_upper"] for c in CONTROLS)
+    res["compression_alone"] = all(
+        res["cells"][c]["compression_alone_reproduces_headline"] for c in CONTROLS)
     if all(b in ("within_margin", "allblock_better") for b in branches.values()):
         overall = ("boundary", "compression without routing suffices at this margin; "
                    "retitle per D4 (b) and add the control to the paper")
     elif all(b == "routed_better" for b in branches.values()):
         overall = ("routing_confirmed", "routing pays for itself beyond the margin; "
                    "no paper change beyond reporting the control")
+    elif all(b in ("within_margin", "within_margin_unresolved", "allblock_better")
+             for b in branches.values()):
+        overall = ("bounded", "no cell shows routing helping beyond the margin; the "
+                   "deliverable is the bound U = "
+                   f"{100*res['bound_rel_upper']:.1f}% on the relative cost of "
+                   "removing routing")
     elif "indeterminate" in branches.values():
         overall = ("indeterminate", "at least one cell is indeterminate at this margin; "
                    "report the intervals, make no equivalence claim")
@@ -156,8 +179,19 @@ def main():
     ]
     md += [line(c, c) for c in CONTROLS]
     md += ["", f"**Overall: {res['overall']}** — {res['overall_reading']}.", "",
+           f"Primary bound: removing routing costs at most **{100*res['bound_rel_upper']:.1f}%** "
+           "relative validation MSE (95% upper limit, worst cell).", "",
+           "Pre-registered secondary test (all-block vs Normal): " + "; ".join(
+               f"{c} {e['vs_Normal']['mean']:+.4f} "
+               f"[{e['vs_Normal']['ci95'][0]:+.4f}, {e['vs_Normal']['ci95'][1]:+.4f}], "
+               f"{e['beats_Normal_count_val']}/25"
+               for c, e in res["cells"].items())
+           + (" — compression alone reproduces the headline advantage."
+              if res["compression_alone"] else " — compression alone does not reproduce it."), "",
            "Equivalence is declared only on interval containment inside the margin; a "
-           "non-significant test is reported as indeterminate, never as equivalence.", "",
+           "non-significant test is reported as indeterminate, never as equivalence. At n=25 "
+           "the empirical paired resolution is 5.3-7.7% relative, so a 2% criterion is "
+           "usually unavailable and the bound is the deliverable.", "",
            "Realized selection: " + "; ".join(
                f"{c} {res['cells'][c]['realized_blocks_mean']:.2f} of "
                f"{res['cells'][c]['n_blocks']} blocks per query "

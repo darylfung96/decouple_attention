@@ -54,10 +54,31 @@ so every control seed pairs with the reference cell's seed.
 D5 freeze-log line in `pre-publication_v2_tasks/DECISIONS.md`; `analysis.py` refuses to run while D5 is
 unfrozen and refuses if the frozen value differs from the one coded here.
 
+### Precision measured before the run (this is why the margin is not the primary output)
+
+On the six existing cell pairs at n=25, the paired relative half-width is **5.3–7.7%** (paired
+SD 0.079–0.116 on means near 0.62), i.e. the study resolves differences of roughly 6%, not 2%. A 2%
+containment test can only pass if the control and its routed reference have seed-correlation
+`>= 0.91`; the same-family cell pairs measure 0.11–0.18. A 3% test needs `>= 0.80`; a 6% test needs
+`>= 0.19`.
+
+Accordingly the **primary output is a bound**: the 95% upper limit `U` on the relative accuracy cost of
+removing routing. The margin supplies labels, not the headline, and a wide interval is reported as a
+bound rather than converted into a verdict. A 6% margin would sit at the study's own resolution limit
+and would also contradict the paper's reading of the 5.72% matched-dense difference as meaningful, so it
+is rejected.
+
+### Pre-registered secondary test
+
+All-block versus Normal on the same 25 seeds (a large effect, §4.3): if the paired 95% interval's upper
+bound is below zero, compression without routing reproduces the paper's headline advantage and the story
+does not depend on the selector.
+
 | Outcome (both cells unless noted) | Reading | Paper action |
 |---|---|---|
 | `d ≥ margin` and the 95% interval's lower bound `> margin` | routing adds accuracy beyond the margin | none; the paper's attribution stands |
 | the whole 95% interval lies inside `(−margin, margin)` | all-block is non-inferior: compression suffices | boundary result → retitle per D4 (b) and add the control to §4.6 |
+| point estimate inside the margin but the interval is wider | within the margin, not resolvable at n=25 | report `U` as the bound; no retitle |
 | `d ≤ −margin` and the interval's upper bound `< −margin` | the router costs accuracy | report plainly; retitle per D4 (b) |
 | interval straddles a margin edge | indeterminate at this margin | report as indeterminate; no claim, no retitle |
 

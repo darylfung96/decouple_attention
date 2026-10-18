@@ -232,6 +232,7 @@ def run_full(threads):
     print(f"=== Gate28 C1 all-block: {len(todo)} pending of "
           f"{len(CONTROLS) * len(SEEDS)} runs ===", flush=True)
     t_start = time.time()
+    elapsed_runs = []          # wall-clock can be frozen by system sleep; use a median
     for i, (name, seed) in enumerate(todo, 1):
         ck, cr, _ref = CONTROLS[name]
         n_idx = n_idx_for(ck, cr)
@@ -264,10 +265,11 @@ def run_full(threads):
                              .strftime("%Y-%m-%dT%H:%M:%SZ"),
         }
         append(rec)
-        rate = (time.time() - t_start) / i
+        elapsed_runs.append(time.time() - t0)
+        med = sorted(elapsed_runs)[len(elapsed_runs) // 2]
         print(f"      FINAL val_mse={final_val:.6f} test_mse={test_mse:.6f} "
               f"train_mse={final_train:.6f} (elapsed {time.time() - t0:.0f}s, "
-              f"eta {(len(todo) - i) * rate / 3600:.1f}h)")
+              f"median {med:.0f}s, eta {(len(todo) - i) * med / 3600:.1f}h)")
         print(f"      appended: {json.dumps(rec)}", flush=True)
     print(f"=== done in {(time.time() - t_start) / 3600:.2f}h ===")
     return 0

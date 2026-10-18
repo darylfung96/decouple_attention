@@ -1,0 +1,30 @@
+=== Gate28 C1 all-block: 50 pending of 50 runs ===
+--- [1/50] C1(4,4) seed=42 START 2026-10-18T05:07:24Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.719640  val_mse=0.775501
+      epoch  2/10  train_mse=0.425728  val_mse=0.645826
+      epoch  3/10  train_mse=0.366933  val_mse=0.655586
+      epoch  4/10  train_mse=0.344312  val_mse=0.674161
+      epoch  5/10  train_mse=0.325676  val_mse=0.741576
+      epoch  6/10  train_mse=0.310120  val_mse=0.760792
+      epoch  7/10  train_mse=0.298093  val_mse=0.713119
+      epoch  8/10  train_mse=0.288678  val_mse=0.768407
+      epoch  9/10  train_mse=0.280525  val_mse=0.733965
+      epoch 10/10  train_mse=0.273295  val_mse=0.727466
+      FINAL val_mse=0.727466 test_mse=1.062734 train_mse=0.273295 (elapsed 409s, eta 5.6h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 42, "val_mse": 0.7274663, "test_mse": 1.06273391, "final_train_mse": 0.27329543, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T05:14:13Z"}
+--- [2/50] C1(4,4) seed=123 START 2026-10-18T05:14:13Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.723524  val_mse=0.755587
+      epoch  2/10  train_mse=0.429251  val_mse=0.655229
+      epoch  3/10  train_mse=0.369559  val_mse=0.642633
+      epoch  4/10  train_mse=0.347459  val_mse=0.668893
+      epoch  5/10  train_mse=0.329729  val_mse=0.722492
+      epoch  6/10  train_mse=0.314357  val_mse=0.753317
+      epoch  7/10  train_mse=0.303589  val_mse=0.691028
+      epoch  8/10  train_mse=0.294011  val_mse=0.730475
+      epoch  9/10  train_mse=0.286469  val_mse=0.665517
+      epoch 10/10  train_mse=0.279336  val_mse=0.725188
+      FINAL val_mse=0.725188 test_mse=1.118900 train_mse=0.279336 (elapsed 30575s, eta 206.6h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 123, "val_mse": 0.72518846, "test_mse": 1.11890014, "final_train_mse": 0.27933629, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T13:43:48Z"}
+--- [3/50] C1(4,4) seed=2024 START 2026-10-18T13:43:48Z ---
