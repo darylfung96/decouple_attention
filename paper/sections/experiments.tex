@@ -560,13 +560,14 @@ depth/width sweeps remain future work (Appendix future-work item~4).
 \textbf{Is the router necessary?} The matched projection removes one confound;
 a second control removes the selection. Both $c_R{=}4$ cells were retrained
 with the selector's budget raised from 16 index tokens to all of them
-($k{=}n_{idx}{=}64$), which maps through the same geometry dispatch to every
-safe KV block; compressors, window, ranks and head are unchanged. The control
+($k{=}M{=}64$, the number of index tokens), which maps through the same
+geometry dispatch to every causally complete KV block; compressors, window,
+ranks and head are unchanged. The control
 is the reference cell's model with one attribute changed, so parameter tensors
-are bitwise identical, and the counted forward MACs are unchanged: the attention
+are bitwise identical, and the analytic MAC count is unchanged: the attention
 core is computed over every compressed column regardless of the mask, so raising
 $k$ adds selector work (a top-$k$ over $64$ rather than $16$ candidates, and a
-wider mask) but no multiply-adds in the counted account.
+wider mask) but no multiply-adds in the analytic account.
 The selection does grow as intended: $31.75$ of $64$ blocks are unmasked per
 query for $(4,4)$ and $15.62$ of $32$ for $(8,4)$, against routed values of
 $13.94$ and $9.91$ measured on the same validation batch.
@@ -598,13 +599,18 @@ router-free model.
 \centering
 \small
 \caption{All-block control: each routed cell with its selection removed
-($k=n_{idx}$, so every safe KV block is unmasked) at identical parameter counts
-and counted forward MACs (25 paired seeds). $\Delta$rel is the paired mean of the
-per-seed relative validation-MSE changes, not the ratio of the displayed means;
-positive = all-block worse. Intervals are paired $t$-intervals. Realized
-blocks: distinct safe KV blocks unmasked per query, mean over positions, with
-the routed cell's value in parentheses from the same validation batch; counted
-MACs are unchanged because the attention core is computed over every
+($k=M$, so every causally complete KV block---one whose entire span ends at or
+before the query---is unmasked) at identical parameter counts and analytic MAC
+count (25 paired seeds). Cells are $(c_{KV},c_R)$ as in
+Table~\ref{tab:factorial}; ``routed'' is the factorial cell, ``all-block'' the
+same model with $k$ raised from $16$ to $M{=}64$. $\Delta$rel is the paired
+mean of the per-seed relative validation-MSE changes, not the ratio of the
+displayed means; positive = all-block worse. Intervals are 95\% paired
+$t$-intervals. ``Seeds better'' counts seeds where the all-block control's
+validation MSE is lower than the routed cell's. Realized blocks: distinct
+causally complete KV blocks unmasked per query, mean over positions, with the
+routed cell's value in parentheses from the same validation batch; the analytic
+MAC count is unchanged because the attention core is computed over every
 compressed column regardless of the mask.}
 \label{tab:allblock}
 \begin{tabular}{lccccc}

@@ -19,7 +19,7 @@ count; a bit-exact wiring audit confirms the baseline is correctly
 implemented, and the advantage survives a dense retrain whose output
 projection is matched to the compressed cells' rank; removing the router's
 selection costs $12$--$27\%$ relative accuracy at identical parameters and
-counted MACs, but the selection-free cells still beat full attention.
+MAC count, but the selection-free cells still beat full attention.
 Second, coarsening the router ($c_R{:}4{:}1 \to 8{:}1$)
 systematically deteriorates accuracy ($+0.030$ validation MSE), while
 coarsening KV compression is mildly beneficial ($-0.032$): the pre-registered
