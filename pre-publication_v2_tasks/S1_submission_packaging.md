@@ -56,7 +56,7 @@ change is made until you approve, except that they carry no task IDs and can be 
 - Per forecast the dense baseline is fastest; full-layer gains do not transfer. *(77)*
 - An audit corrects the router work term and downstream energy projections. *(73)*
 
-### Trimmed abstract (239 words; replaces the current 386-word abstract on approval)
+### Trimmed abstract (262 words; replaces the current 386-word abstract on approval)
 
 > Long-horizon time-series forecasting with Transformers is dominated by the cost of quadratic attention
 > over long lookback windows. Compressed-and-indexed attention---compressing the key/value (KV) stream
@@ -68,7 +68,8 @@ change is made until you approve, except that they carry no task IDs and can be 
 > Attention design point), and the dual-rate $(8,4)$ corner---across twelve datasets. Four findings.
 > First, on ETTh1 every compressed configuration outperforms full causal attention (mean deltas $-18.8\%$
 > to $-27.0\%$, 95/100 paired comparisons, Holm-adjusted $p \le 3.3\times10^{-6}$) at equal or smaller
-> parameter count. Second, coarsening the router ($+0.030$ MSE) hurts while coarsening KV compression is
+> parameter count; the same cells with the routing selection removed still beat full attention, but lose
+> $12$--$27\%$ relative accuracy at identical parameters and MACs, so the router is load-bearing. Second, coarsening the router ($+0.030$ MSE) hurts while coarsening KV compression is
 > mildly beneficial ($-0.032$), supporting the decoupling hypothesis (paired Wilcoxon $p = 0.0074$); a
 > conditional reading localizes the effect to the fine-content/coarse-router cell, and a three-dataset
 > replication did not reproduce the sign structure. Third, the dual-rate corner reduces the attention

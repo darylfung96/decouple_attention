@@ -1,6 +1,6 @@
 # C1 — Decisive controls: is the router needed at all?
 
-**Status:** IN FLIGHT (all-block control only) · **Cost:** 25–40 h including implementation · **Depends:** R2 for the matched row
+**Status:** DONE 2026-10-19 (all-block control only) · **Verdict:** routing is load-bearing; compression alone also beats full attention · **Cost:** 25–40 h including implementation · **Depends:** R2 for the matched row
 **Source:** Q1 review §4 "Establish whether the router is needed at all" (PDF p. 5; `source/q1_review_text.txt` lines 203–267), the control table at lines 208–249; the external comparators also come from the manager's email.
 
 **Verdict:** PARTIAL KEEP — only the all-block compression control is kept; the other seven controls in the review's table are parked (see `N_necessity_audit.md`).
@@ -72,4 +72,14 @@ the result whichever way it goes, including the possibility that routing is unne
 - 2026-10-18 (incident): seed 123's wall clock (30,575 s vs 409 s for seed 42) was ~8.4 h of macOS system
   sleep, not compute; `caffeinate -dimsu -w <pid>` attached, and the ETA is now a median of completed runs.
   Manifests are unaffected: rows carry trained numbers, no timing field.
+
+- 2026-10-19 (CLOSED, branch `routing_confirmed`): 50 runs complete. Removing the selection at
+  identical parameters and MACs costs +27.1% [(4,4), CI 18.9-35.3] and +11.8% [(8,4), CI 4.6-19.1]
+  paired relative validation MSE (1/25 and 5/25 seeds favour the control; exact Wilcoxon p = 1.2e-7 and
+  0.0015; test MSE same direction). Pre-registered secondary test: the selection-free cells still beat
+  Normal (-0.066 [-0.112,-0.020], 18/25; -0.153 [-0.203,-0.103], 24/25), so compression alone reproduces
+  the headline and the router adds a separate gain. Paper: §4.6 paragraph + Table 6, intro (c),
+  conclusion, audit-table row. D4 stays (a) keep the title (no boundary); D3 default (a) applies — the
+  indexer receives no task gradient (B2-1), so a trained selector is a design change, not a control.
+  Evidence: `plan/gates/gate28_c1control/{design.md,run.py,analysis.py,results/allblock.jsonl,analysis.json,analysis.md,run.log}`.
 

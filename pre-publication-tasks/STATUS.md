@@ -1,13 +1,14 @@
 # STATUS — where we left off (edit this every session)
 
-Updated: 2026-10-18 (Phase 4 STARTED: C1 all-block control design frozen, dry-run + smoke pass, 50-run manifest in flight; D5 margin still needs a freeze) | Prior: 2026-10-17 (Phase 3 COMPLETE: R2 projection-matched baseline landed in the paper, six audit commits, 0 verification failures)
+Updated: 2026-10-19 (Phase 4 COMPLETE: C1 all-block control closed with branch `routing_confirmed`; D5/D3/D4 frozen; paper now 32 pp) | Prior: 2026-10-17 (Phase 3 COMPLETE: R2 projection-matched baseline landed in the paper, six audit commits, 0 verification failures)
 Current stage: **Bounded paper complete (v2 + D-3 + E-2 + exploratory + transfer speed/figure + scaling/energy forecast); Stage-2 runs deferred**
 Source review: https://chatgpt.com/s/t_6ab8df73ca3c81919e3cc733a559fd0a
 Canonical env: `~/.uv_env/py311/bin/python` (uv, torch 2.6.0) — always use uv, any project.
 
 ## DOING (max 2 at a time)
 
-- [ ] PHASE 4 IN FLIGHT 2026-10-18 — C1 all-block control (`plan/gates/gate28_c1control/`, 50 runs started 05:07Z). Blocked on D5 (2% relative margin, the plan's anchor) for interpretation only: `analysis.py` exits until D5 is in the `DECISIONS.md` freeze log. Evidence: design.md, run.py --dry-run/--smoke output, run.log.
+- [x] PHASE 4 DONE 2026-10-19 — C1 all-block control closed (`plan/gates/gate28_c1control/`): removing the routing selection costs +27.1% ((4,4)) and +11.8% ((8,4)) relative validation MSE at identical parameters and MACs, while the selection-free cells still beat Normal (18/25, 24/25) → routing is load-bearing *and* compression alone reproduces the headline. Landed in §4.6 + Table 6, intro (c), conclusion, audit table. D4 stays (a); D3 default (a). Evidence: `analysis.json/.md`, `results/allblock.jsonl`, `run.log`.
+- [x] SUPERSEDED 2026-10-18 (Phase 4 start) 2026-10-18 — C1 all-block control (`plan/gates/gate28_c1control/`, 50 runs started 05:07Z). Blocked on D5 (2% relative margin, the plan's anchor) for interpretation only: `analysis.py` exits until D5 is in the `DECISIONS.md` freeze log. Evidence: design.md, run.py --dry-run/--smoke output, run.log.
 - [ ] Q-1 REMAINS: approve ~30-50h Stage-2 compute only if Neurocomputing/Information Sciences-track (B1-3, E-3, F-3, H-1/H-2, promotion replication, plus the review's all-block-compressed and projection-matched controls) is wanted; bounded submission needs no new runs.
 - [ ] Q-6 NEW (2026-10-16): venue call after the manager's Information Sciences email. The bounded paper fits a soundness-first venue now; the email's package (MEAformer/PMformer comparators, multi-horizon/lookback, forecast-required latency as the headline measure) needs the Stage-2 envelope plus external-baseline engineering. Triage: `L_q1_review_triage.md`.
 - [x] L / K-7 DONE 2026-10-16 — Q1 review triaged item by item; the account-taking defect it found (router term) and the (32,4) column cell fixed and propagated. Evidence: `L_q1_review_triage.md`, `plan/gates/gate20_accounting/`, `K_scaling_energy.md` K-7.

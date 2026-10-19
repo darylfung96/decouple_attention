@@ -16,6 +16,10 @@ on per-seed paired contrasts (exact Wilcoxon $p = 0.0074$) and its interaction
 localized to the $(4,8)$ cell (Section~\ref{sec:rq1}); DRRA
 $(8,4)$ cuts the attention matrix 5.22$\times$ (256 vs.\ 49 complete columns) at equal parameters (its
 edge over the equal-rate cell is not significant on validation, exact Wilcoxon $p = 0.62$).
+The attribution is measured rather than assumed: with the selection removed at
+identical parameters and MACs, accuracy falls $12$--$27\%$ relative, while the
+selection-free cells still beat full attention
+(Table~\ref{tab:allblock}).
 Replicating the three-way comparison across twelve datasets shows the
 advantage is \emph{signal-dependent}, not universal: DRRA $(8,4)$ and CSA $(4,4)$ beat
 full attention on mean validation MSE in 8/12 datasets each, with the wins concentrated on the ETT family, solar, and

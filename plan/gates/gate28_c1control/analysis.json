@@ -1,0 +1,141 @@
+{
+  "provenance": "gate28 all-block rows (new) + gate15/kept legacy rows (read-only)",
+  "d5_freeze_row": "| 2026-10-18 | D5 | **2% relative validation MSE for the label, with the bound as the primary output** \u2014 the label applies per cell to (MSE_ctrl \u2212 MSE_ref)/MSE_ref; non-inferiority is declared only on interval containment, and the 95% upper limit U on the relative cost of removing routing is reported as the headline whatever the label says | the anchor is decision-relevant (~1/10 of the 19\u201327% headline) and strict relative to the paper's own reading of the 5.72% matched-dense difference; the pre-run precision check shows n=25 resolves ~6% (paired half-widths 5.3\u20137.7%, a 2% test would need seed-correlation \u2265 0.91), so a binary verdict at 2% is pre-declared unavailable rather than manufactured | Daryl (delegated; investigated recommendation) |",
+  "margin_rel": 0.02,
+  "n_seeds": 25,
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    42,
+    99,
+    123,
+    2024
+  ],
+  "cells": {
+    "C1(4,4)": {
+      "reference": "CSA",
+      "ckv": 4,
+      "mean_val": 0.7727409596000001,
+      "mean_val_reference": 0.6147979204,
+      "mean_test": 1.0694512763999997,
+      "mean_test_reference": 0.877091476,
+      "delta_abs": {
+        "mean": 0.1579430392,
+        "ci95": [
+          0.11246940718036773,
+          0.20341667121963225
+        ],
+        "wilcoxon_p": 1.1920928955078125e-07,
+        "ttest_p": 2.0795296878819203e-07,
+        "n": 25,
+        "sign_consistent": 24
+      },
+      "delta_rel": {
+        "mean": 0.27085463754521844,
+        "ci95": [
+          0.18867023058770127,
+          0.3530390445027356
+        ],
+        "wilcoxon_p": 1.1920928955078125e-07,
+        "ttest_p": 4.912223085117449e-07,
+        "n": 25,
+        "sign_consistent": 24
+      },
+      "allblock_better_count_val": 1,
+      "realized_blocks_mean": 31.75,
+      "n_blocks": 64,
+      "index_topk": 64,
+      "n_idx": 64,
+      "branch": "routed_better",
+      "reading": "routing adds accuracy beyond the margin (paper's attribution stands)",
+      "bound_rel_upper": 0.3530390445027356,
+      "vs_Normal": {
+        "mean": -0.06617225320000002,
+        "ci95": [
+          -0.11224089702944609,
+          -0.020103609370553943
+        ],
+        "wilcoxon_p": 0.006129205226898193,
+        "ttest_p": 0.006750019716152712,
+        "n": 25,
+        "sign_consistent": 18
+      },
+      "beats_Normal_count_val": 18,
+      "compression_alone_reproduces_headline": true
+    },
+    "C1(8,4)": {
+      "reference": "DRRA",
+      "ckv": 8,
+      "mean_val": 0.6856790883999999,
+      "mean_val_reference": 0.6189891896,
+      "mean_test": 0.9551111724000001,
+      "mean_test_reference": 0.8439637568,
+      "delta_abs": {
+        "mean": 0.0666898988,
+        "ci95": [
+          0.020612039521211135,
+          0.11276775807878886
+        ],
+        "wilcoxon_p": 0.0030878782272338867,
+        "ttest_p": 0.006398092932767436,
+        "n": 25,
+        "sign_consistent": 20
+      },
+      "delta_rel": {
+        "mean": 0.11823253909304123,
+        "ci95": [
+          0.04579243170559849,
+          0.19067264648048396
+        ],
+        "wilcoxon_p": 0.0014527440071105957,
+        "ttest_p": 0.0025466974881485347,
+        "n": 25,
+        "sign_consistent": 20
+      },
+      "allblock_better_count_val": 5,
+      "realized_blocks_mean": 15.625,
+      "n_blocks": 32,
+      "index_topk": 64,
+      "n_idx": 64,
+      "branch": "routed_better",
+      "reading": "routing adds accuracy beyond the margin (paper's attribution stands)",
+      "bound_rel_upper": 0.19067264648048396,
+      "vs_Normal": {
+        "mean": -0.1532341244,
+        "ci95": [
+          -0.20312943989661575,
+          -0.10333880890338426
+        ],
+        "wilcoxon_p": 1.0073184967041016e-05,
+        "ttest_p": 1.4913095563973859e-06,
+        "n": 25,
+        "sign_consistent": 24
+      },
+      "beats_Normal_count_val": 24,
+      "compression_alone_reproduces_headline": true
+    }
+  },
+  "bound_rel_upper": 0.3530390445027356,
+  "compression_alone": true,
+  "overall": "routing_confirmed",
+  "overall_reading": "routing pays for itself beyond the margin; no paper change beyond reporting the control"
+}

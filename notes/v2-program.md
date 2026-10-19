@@ -67,3 +67,15 @@ is closed (see findings above).
   coded 2% relative margin; branch table in design.md (routed_better / within_margin /
   allblock_better / indeterminate; mixed reported per cell).
 - `.gitignore` now re-includes `plan/gates/**/*.log`; 11 historical gate logs committed (632K).
+
+### Phase 4 result (2026-10-19, closed)
+
+- All-block control (selection removed, k = n_idx, identical params/MACs): +27.1% [(4,4), CI 18.9–35.3]
+  and +11.8% [(8,4), 4.6–19.1] paired relative validation MSE vs the routed cells; test same direction.
+- Secondary: selection-free cells still beat Normal (−0.066 [−0.112,−0.020], 18/25; −0.153
+  [−0.203,−0.103], 24/25). Reading: compression creates the headline, the router adds a measured gain.
+- D5 frozen as 2% label + bound-primary because n=25 resolves ~6% (paired half-widths 5.3–7.7%).
+- Paper: §4.6 paragraph + Table 6, intro (c), conclusion, audit-table row; D4 (a) keep title.
+- Incident: two stalls were (i) ~8.4 h system sleep and (ii) OpenMP spin-wait livelock under Docker load;
+  fixed with caffeinate and OMP_WAIT_POLICY=PASSIVE. Rows are per-seed appends, so restarts are safe.
+

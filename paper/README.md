@@ -58,6 +58,7 @@ changes.
 | Projection-matched dense baseline (Tables 2--3, §4.3/§4.6, Figure 6 open marker) | `plan/gates/gate27_r2matched/` — `results/normal_r64.jsonl` (25 seeds), `analysis.json` (paired intervals + predeclared KEEP/NARROW rule), `latency_4model.json` (4-model round-robin timing, anchored to the released Normal row) |
 | Mechanism probes §4.3 (i)--(ii), regenerated | `plan/gates/gate26_r5probes/gate26_results.json` (current implementation); `plan/gates/gate12/` is pre-fix history and is superseded for the $(4,4)$ cell; agreement in `gate26_r5probes/comparison.json` |
 | Causality probes (adversarial masking, ties, short-length fan-out) | `plan/gates/gate26_r5probes/test_r5_causality.py` + `tests.log` |
+| All-block control (Table 6, §4.6) | `plan/gates/gate28_c1control/` — `results/allblock.jsonl` (2 cells × 25 seeds), `analysis.json` (paired relative intervals + pre-registered D5 branch), `design.md` (single variable, branch rule) |
 | Route stability §4.3 (iv) | `plan/gates/gate30_r4routes/analysis.json` + `results/route_snapshots.jsonl` |
 | Interaction figure and per-seed conditional effects (R1) | `plan/gates/gate21_simple_effects/simple_effects.json` |
 | Component MAC accounts (§4.6, Appendix D) | `plan/gates/gate20_accounting/router_accounting_audit.json` |
@@ -70,6 +71,7 @@ the figure script's printout):
   (CSA 24, DRRA 24, C48 22, C88 25);
 - mean validation deltas -18.8% (4,8) to -27.0% (8,8); per-seed range
   −48.3% to +9.9%;
+- all-block control: paired relative +27.1% (4,4) and +11.8% (8,4) validation MSE vs the routed cells (intervals [18.9, 35.3] and [4.6, 19.1]), identical params/MACs; selection-free cells still beat Normal (18/25 and 24/25 seeds);
 - test-delta range -18.82% (4,4) to -21.89% (8,4); v2 sources: `plan/gates/gate15_rerun/gate15_analysis.json`, `gate16_d3`, `gate17_e2` (+`gate17_speed`), `gate18_d5`, `gate19_324`.
 
 ## Honesty checklist (mirrors plan/paper_notes.md §3)

@@ -28,3 +28,679 @@ Downloading ETTh1 dataset...
       FINAL val_mse=0.725188 test_mse=1.118900 train_mse=0.279336 (elapsed 30575s, eta 206.6h)
       appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 123, "val_mse": 0.72518846, "test_mse": 1.11890014, "final_train_mse": 0.27933629, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T13:43:48Z"}
 --- [3/50] C1(4,4) seed=2024 START 2026-10-18T13:43:48Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.721715  val_mse=0.740101
+      epoch  2/10  train_mse=0.429764  val_mse=0.609606
+      epoch  3/10  train_mse=0.369369  val_mse=0.607575
+      epoch  4/10  train_mse=0.349909  val_mse=0.673789
+      epoch  5/10  train_mse=0.334354  val_mse=0.680841
+      epoch  6/10  train_mse=0.319701  val_mse=0.648514
+      epoch  7/10  train_mse=0.306018  val_mse=0.700892
+      epoch  8/10  train_mse=0.295358  val_mse=0.695532
+      epoch  9/10  train_mse=0.286468  val_mse=0.707490
+      epoch 10/10  train_mse=0.278974  val_mse=0.686383
+      FINAL val_mse=0.686383 test_mse=0.987823 train_mse=0.278974 (elapsed 395s, eta 136.6h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 2024, "val_mse": 0.68638335, "test_mse": 0.98782308, "final_train_mse": 0.27897354, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T13:50:22Z"}
+--- [4/50] C1(4,4) seed=7 START 2026-10-18T13:50:23Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.729328  val_mse=0.765033
+      epoch  2/10  train_mse=0.431455  val_mse=0.599087
+      epoch  3/10  train_mse=0.368554  val_mse=0.605097
+      epoch  4/10  train_mse=0.347481  val_mse=0.636574
+      epoch  5/10  train_mse=0.328631  val_mse=0.629378
+      epoch  6/10  train_mse=0.311706  val_mse=0.699335
+      epoch  7/10  train_mse=0.298526  val_mse=0.714132
+      epoch  8/10  train_mse=0.288074  val_mse=0.669794
+      epoch  9/10  train_mse=0.279456  val_mse=0.731428
+      epoch 10/10  train_mse=0.271433  val_mse=0.731722
+      FINAL val_mse=0.731722 test_mse=1.060994 train_mse=0.271433 (elapsed 361s, eta 101.4h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 7, "val_mse": 0.73172155, "test_mse": 1.06099357, "final_train_mse": 0.27143289, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T13:56:24Z"}
+--- [5/50] C1(4,4) seed=99 START 2026-10-18T13:56:24Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.722367  val_mse=0.755540
+      epoch  2/10  train_mse=0.437378  val_mse=0.635772
+      epoch  3/10  train_mse=0.369714  val_mse=0.639104
+      epoch  4/10  train_mse=0.349417  val_mse=0.714553
+      epoch  5/10  train_mse=0.332553  val_mse=0.736260
+      epoch  6/10  train_mse=0.316951  val_mse=0.854611
+      epoch  7/10  train_mse=0.304047  val_mse=0.883459
+      epoch  8/10  train_mse=0.293989  val_mse=0.798457
+      epoch  9/10  train_mse=0.285507  val_mse=0.892890
+      epoch 10/10  train_mse=0.278380  val_mse=0.861206
+      FINAL val_mse=0.861206 test_mse=1.133188 train_mse=0.278380 (elapsed 395s, eta 80.3h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 99, "val_mse": 0.86120577, "test_mse": 1.13318791, "final_train_mse": 0.27838047, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T14:02:59Z"}
+--- [6/50] C1(4,4) seed=1 START 2026-10-18T14:02:59Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.732983  val_mse=0.763058
+      epoch  2/10  train_mse=0.441017  val_mse=0.630985
+      epoch  3/10  train_mse=0.372515  val_mse=0.626781
+      epoch  4/10  train_mse=0.349995  val_mse=0.671108
+      epoch  5/10  train_mse=0.332983  val_mse=0.751425
+      epoch  6/10  train_mse=0.316233  val_mse=0.804382
+      epoch  7/10  train_mse=0.302720  val_mse=0.829493
+      epoch  8/10  train_mse=0.292589  val_mse=0.833177
+      epoch  9/10  train_mse=0.284054  val_mse=0.897627
+      epoch 10/10  train_mse=0.277116  val_mse=0.858007
+      FINAL val_mse=0.858007 test_mse=1.100258 train_mse=0.277116 (elapsed 410s, eta 66.3h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 1, "val_mse": 0.85800695, "test_mse": 1.10025756, "final_train_mse": 0.27711558, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T14:09:49Z"}
+--- [7/50] C1(4,4) seed=2 START 2026-10-18T14:09:49Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.719145  val_mse=0.758019
+      epoch  2/10  train_mse=0.427272  val_mse=0.601853
+      epoch  3/10  train_mse=0.366510  val_mse=0.586349
+      epoch  4/10  train_mse=0.345381  val_mse=0.593214
+      epoch  5/10  train_mse=0.327756  val_mse=0.612280
+      epoch  6/10  train_mse=0.311372  val_mse=0.652673
+      epoch  7/10  train_mse=0.299090  val_mse=0.730846
+      epoch  8/10  train_mse=0.289947  val_mse=0.710909
+      epoch  9/10  train_mse=0.282142  val_mse=0.686959
+      epoch 10/10  train_mse=0.275689  val_mse=0.643590
+      FINAL val_mse=0.643590 test_mse=0.873554 train_mse=0.275689 (elapsed 405s, eta 56.2h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 2, "val_mse": 0.64359008, "test_mse": 0.87355369, "final_train_mse": 0.27568859, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T14:16:34Z"}
+--- [8/50] C1(4,4) seed=3 START 2026-10-18T14:16:34Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.710682  val_mse=0.712084
+      epoch  2/10  train_mse=0.420691  val_mse=0.549510
+      epoch  3/10  train_mse=0.369640  val_mse=0.536779
+      epoch  4/10  train_mse=0.349632  val_mse=0.551077
+      epoch  5/10  train_mse=0.332309  val_mse=0.600566
+      epoch  6/10  train_mse=0.315467  val_mse=0.603021
+      epoch  7/10  train_mse=0.301847  val_mse=0.623837
+      epoch  8/10  train_mse=0.291666  val_mse=0.638580
+      epoch  9/10  train_mse=0.283696  val_mse=0.696265
+      epoch 10/10  train_mse=0.275995  val_mse=0.689275
+      FINAL val_mse=0.689275 test_mse=1.010961 train_mse=0.275995 (elapsed 799s, eta 49.2h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 3, "val_mse": 0.68927465, "test_mse": 1.01096059, "final_train_mse": 0.27599541, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T14:29:54Z"}
+--- [9/50] C1(4,4) seed=4 START 2026-10-18T14:29:54Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.730123  val_mse=0.768751
+      epoch  2/10  train_mse=0.434536  val_mse=0.603873
+      epoch  3/10  train_mse=0.373105  val_mse=0.655888
+      epoch  4/10  train_mse=0.354285  val_mse=0.652705
+      epoch  5/10  train_mse=0.337549  val_mse=0.729237
+      epoch  6/10  train_mse=0.320815  val_mse=0.788366
+      epoch  7/10  train_mse=0.306962  val_mse=0.829128
+      epoch  8/10  train_mse=0.295866  val_mse=0.862963
+      epoch  9/10  train_mse=0.286965  val_mse=0.905108
+      epoch 10/10  train_mse=0.279167  val_mse=0.989656
+      FINAL val_mse=0.989656 test_mse=1.207224 train_mse=0.279167 (elapsed 803s, eta 43.7h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 4, "val_mse": 0.98965555, "test_mse": 1.20722392, "final_train_mse": 0.27916668, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T14:43:17Z"}
+--- [10/50] C1(4,4) seed=5 START 2026-10-18T14:43:17Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.718346  val_mse=0.753567
+      epoch  2/10  train_mse=0.433393  val_mse=0.608503
+      epoch  3/10  train_mse=0.365641  val_mse=0.645258
+      epoch  4/10  train_mse=0.344596  val_mse=0.732034
+      epoch  5/10  train_mse=0.327738  val_mse=0.809605
+      epoch  6/10  train_mse=0.312095  val_mse=0.829334
+      epoch  7/10  train_mse=0.299692  val_mse=0.873853
+      epoch  8/10  train_mse=0.289508  val_mse=0.863980
+      epoch  9/10  train_mse=0.281477  val_mse=0.873754
+      epoch 10/10  train_mse=0.274302  val_mse=0.788576
+      FINAL val_mse=0.788576 test_mse=1.189247 train_mse=0.274302 (elapsed 806s, eta 39.3h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 5, "val_mse": 0.78857567, "test_mse": 1.18924709, "final_train_mse": 0.27430156, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T14:56:43Z"}
+--- [11/50] C1(4,4) seed=6 START 2026-10-18T14:56:43Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.718351  val_mse=0.740394
+      epoch  2/10  train_mse=0.438289  val_mse=0.680036
+      epoch  3/10  train_mse=0.374847  val_mse=0.653965
+      epoch  4/10  train_mse=0.355222  val_mse=0.762971
+      epoch  5/10  train_mse=0.339197  val_mse=0.797617
+      epoch  6/10  train_mse=0.323645  val_mse=0.857178
+      epoch  7/10  train_mse=0.309464  val_mse=0.822680
+      epoch  8/10  train_mse=0.298130  val_mse=0.904883
+      epoch  9/10  train_mse=0.289263  val_mse=0.873379
+      epoch 10/10  train_mse=0.281659  val_mse=0.858423
+      FINAL val_mse=0.858423 test_mse=1.093234 train_mse=0.281659 (elapsed 852s, eta 35.7h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 6, "val_mse": 0.8584231, "test_mse": 1.09323435, "final_train_mse": 0.2816587, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T15:10:56Z"}
+--- [12/50] C1(4,4) seed=8 START 2026-10-18T15:10:56Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.732062  val_mse=0.782059
+      epoch  2/10  train_mse=0.438208  val_mse=0.612279
+      epoch  3/10  train_mse=0.368467  val_mse=0.622123
+      epoch  4/10  train_mse=0.348210  val_mse=0.624539
+      epoch  5/10  train_mse=0.332036  val_mse=0.669211
+      epoch  6/10  train_mse=0.317132  val_mse=0.619368
+      epoch  7/10  train_mse=0.303702  val_mse=0.681570
+      epoch  8/10  train_mse=0.293101  val_mse=0.640182
+      epoch  9/10  train_mse=0.283947  val_mse=0.663424
+      epoch 10/10  train_mse=0.276525  val_mse=0.662795
+      FINAL val_mse=0.662795 test_mse=0.934034 train_mse=0.276525 (elapsed 608s, eta 32.4h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 8, "val_mse": 0.6627947, "test_mse": 0.93403391, "final_train_mse": 0.27652472, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T15:21:04Z"}
+--- [13/50] C1(4,4) seed=9 START 2026-10-18T15:21:04Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.726265  val_mse=0.717948
+      epoch  2/10  train_mse=0.432048  val_mse=0.649466
+      epoch  3/10  train_mse=0.371022  val_mse=0.646561
+      epoch  4/10  train_mse=0.349281  val_mse=0.711640
+      epoch  5/10  train_mse=0.331708  val_mse=0.799210
+      epoch  6/10  train_mse=0.316211  val_mse=0.705393
+      epoch  7/10  train_mse=0.303179  val_mse=0.876178
+      epoch  8/10  train_mse=0.292345  val_mse=0.923517
+      epoch  9/10  train_mse=0.284086  val_mse=0.840859
+      epoch 10/10  train_mse=0.276731  val_mse=0.817600
+      FINAL val_mse=0.817600 test_mse=0.960620 train_mse=0.276731 (elapsed 382s, eta 29.4h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 9, "val_mse": 0.81760028, "test_mse": 0.96062008, "final_train_mse": 0.27673115, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T15:27:26Z"}
+--- [14/50] C1(4,4) seed=10 START 2026-10-18T15:27:26Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.718058  val_mse=0.737375
+      epoch  2/10  train_mse=0.424598  val_mse=0.611654
+      epoch  3/10  train_mse=0.364660  val_mse=0.655349
+      epoch  4/10  train_mse=0.343833  val_mse=0.689095
+      epoch  5/10  train_mse=0.325531  val_mse=0.698732
+      epoch  6/10  train_mse=0.311810  val_mse=0.739931
+      epoch  7/10  train_mse=0.300517  val_mse=0.740435
+      epoch  8/10  train_mse=0.291640  val_mse=0.756926
+      epoch  9/10  train_mse=0.283739  val_mse=0.837017
+      epoch 10/10  train_mse=0.276893  val_mse=0.799387
+      FINAL val_mse=0.799387 test_mse=1.014125 train_mse=0.276893 (elapsed 449s, eta 26.9h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 10, "val_mse": 0.79938744, "test_mse": 1.01412476, "final_train_mse": 0.27689311, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T15:34:55Z"}
+--- [15/50] C1(4,4) seed=11 START 2026-10-18T15:34:55Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.720555  val_mse=0.778406
+      epoch  2/10  train_mse=0.429638  val_mse=0.577371
+      epoch  3/10  train_mse=0.368890  val_mse=0.616041
+      epoch  4/10  train_mse=0.346959  val_mse=0.742128
+      epoch  5/10  train_mse=0.327221  val_mse=0.789685
+      epoch  6/10  train_mse=0.310140  val_mse=0.703854
+      epoch  7/10  train_mse=0.297174  val_mse=0.837645
+      epoch  8/10  train_mse=0.286487  val_mse=0.831416
+      epoch  9/10  train_mse=0.278084  val_mse=0.846329
+      epoch 10/10  train_mse=0.271368  val_mse=0.842696
+      FINAL val_mse=0.842696 test_mse=1.165123 train_mse=0.271368 (elapsed 412s, eta 24.7h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 11, "val_mse": 0.84269554, "test_mse": 1.16512301, "final_train_mse": 0.27136812, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T15:41:46Z"}
+--- [16/50] C1(4,4) seed=12 START 2026-10-18T15:41:46Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.726085  val_mse=0.750114
+      epoch  2/10  train_mse=0.433934  val_mse=0.590417
+      epoch  3/10  train_mse=0.370639  val_mse=0.600712
+      epoch  4/10  train_mse=0.350410  val_mse=0.628021
+      epoch  5/10  train_mse=0.334638  val_mse=0.624284
+      epoch  6/10  train_mse=0.318693  val_mse=0.716313
+      epoch  7/10  train_mse=0.306252  val_mse=0.674361
+      epoch  8/10  train_mse=0.295312  val_mse=0.739387
+      epoch  9/10  train_mse=0.286448  val_mse=0.746376
+      epoch 10/10  train_mse=0.278719  val_mse=0.797388
+      FINAL val_mse=0.797388 test_mse=1.055977 train_mse=0.278719 (elapsed 382s, eta 22.7h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 12, "val_mse": 0.79738782, "test_mse": 1.05597693, "final_train_mse": 0.27871876, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T15:48:08Z"}
+--- [17/50] C1(4,4) seed=13 START 2026-10-18T15:48:08Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.718147  val_mse=0.712511
+      epoch  2/10  train_mse=0.418041  val_mse=0.610650
+      epoch  3/10  train_mse=0.364489  val_mse=0.611172
+      epoch  4/10  train_mse=0.343563  val_mse=0.686786
+      epoch  5/10  train_mse=0.325989  val_mse=0.649030
+      epoch  6/10  train_mse=0.310954  val_mse=0.702317
+      epoch  7/10  train_mse=0.299060  val_mse=0.671516
+      epoch  8/10  train_mse=0.289583  val_mse=0.643979
+      epoch  9/10  train_mse=0.282110  val_mse=0.642976
+      epoch 10/10  train_mse=0.275295  val_mse=0.644363
+      FINAL val_mse=0.644363 test_mse=0.973136 train_mse=0.275295 (elapsed 382s, eta 20.9h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 13, "val_mse": 0.64436328, "test_mse": 0.9731358, "final_train_mse": 0.27529508, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T15:54:29Z"}
+--- [18/50] C1(4,4) seed=14 START 2026-10-18T15:54:29Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.718088  val_mse=0.768860
+      epoch  2/10  train_mse=0.429320  val_mse=0.637561
+      epoch  3/10  train_mse=0.368440  val_mse=0.658714
+      epoch  4/10  train_mse=0.347096  val_mse=0.676773
+      epoch  5/10  train_mse=0.328765  val_mse=0.618536
+      epoch  6/10  train_mse=0.312796  val_mse=0.700000
+      epoch  7/10  train_mse=0.299583  val_mse=0.687639
+      epoch  8/10  train_mse=0.289824  val_mse=0.656486
+      epoch  9/10  train_mse=0.281231  val_mse=0.679702
+      epoch 10/10  train_mse=0.274793  val_mse=0.708413
+      FINAL val_mse=0.708413 test_mse=1.109689 train_mse=0.274793 (elapsed 386s, eta 19.4h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 14, "val_mse": 0.70841338, "test_mse": 1.1096888, "final_train_mse": 0.2747925, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T16:00:56Z"}
+--- [19/50] C1(4,4) seed=15 START 2026-10-18T16:00:56Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.739951  val_mse=0.779320
+      epoch  2/10  train_mse=0.440458  val_mse=0.646831
+      epoch  3/10  train_mse=0.372007  val_mse=0.648947
+      epoch  4/10  train_mse=0.350906  val_mse=0.670168
+      epoch  5/10  train_mse=0.334772  val_mse=0.687728
+      epoch  6/10  train_mse=0.319687  val_mse=0.724740
+      epoch  7/10  train_mse=0.305591  val_mse=0.696795
+      epoch  8/10  train_mse=0.293311  val_mse=0.683714
+      epoch  9/10  train_mse=0.284388  val_mse=0.720220
+      epoch 10/10  train_mse=0.277241  val_mse=0.761329
+      FINAL val_mse=0.761329 test_mse=1.110928 train_mse=0.277241 (elapsed 388s, eta 17.9h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 15, "val_mse": 0.76132902, "test_mse": 1.1109282, "final_train_mse": 0.27724122, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T16:07:24Z"}
+--- [20/50] C1(4,4) seed=16 START 2026-10-18T16:07:24Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.720669  val_mse=0.726102
+      epoch  2/10  train_mse=0.430336  val_mse=0.609096
+      epoch  3/10  train_mse=0.370366  val_mse=0.598393
+      epoch  4/10  train_mse=0.349696  val_mse=0.649007
+      epoch  5/10  train_mse=0.332648  val_mse=0.605857
+      epoch  6/10  train_mse=0.315892  val_mse=0.609645
+      epoch  7/10  train_mse=0.301887  val_mse=0.642353
+      epoch  8/10  train_mse=0.290263  val_mse=0.663487
+      epoch  9/10  train_mse=0.282018  val_mse=0.721337
+      epoch 10/10  train_mse=0.275327  val_mse=0.712568
+      FINAL val_mse=0.712568 test_mse=1.171100 train_mse=0.275327 (elapsed 401s, eta 16.7h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 16, "val_mse": 0.7125682, "test_mse": 1.17110016, "final_train_mse": 0.27532679, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T16:14:04Z"}
+--- [21/50] C1(4,4) seed=17 START 2026-10-18T16:14:04Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.718958  val_mse=0.724307
+      epoch  2/10  train_mse=0.425148  val_mse=0.617620
+      epoch  3/10  train_mse=0.370818  val_mse=0.666743
+      epoch  4/10  train_mse=0.350596  val_mse=0.701327
+      epoch  5/10  train_mse=0.333333  val_mse=0.691061
+      epoch  6/10  train_mse=0.317449  val_mse=0.728985
+      epoch  7/10  train_mse=0.304123  val_mse=0.777933
+      epoch  8/10  train_mse=0.293995  val_mse=0.846161
+      epoch  9/10  train_mse=0.285418  val_mse=0.826148
+      epoch 10/10  train_mse=0.278674  val_mse=0.923206
+      FINAL val_mse=0.923206 test_mse=1.184943 train_mse=0.278674 (elapsed 382s, eta 15.5h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 17, "val_mse": 0.92320612, "test_mse": 1.18494348, "final_train_mse": 0.27867433, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T16:20:27Z"}
+--- [22/50] C1(4,4) seed=18 START 2026-10-18T16:20:27Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.723935  val_mse=0.761198
+      epoch  2/10  train_mse=0.436782  val_mse=0.625073
+      epoch  3/10  train_mse=0.370000  val_mse=0.642657
+      epoch  4/10  train_mse=0.350594  val_mse=0.706713
+      epoch  5/10  train_mse=0.335018  val_mse=0.719670
+      epoch  6/10  train_mse=0.319360  val_mse=0.795083
+      epoch  7/10  train_mse=0.305121  val_mse=0.806968
+      epoch  8/10  train_mse=0.293156  val_mse=0.850239
+      epoch  9/10  train_mse=0.284158  val_mse=0.810628
+      epoch 10/10  train_mse=0.276438  val_mse=0.894727
+      FINAL val_mse=0.894727 test_mse=1.136538 train_mse=0.276438 (elapsed 387s, eta 14.4h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 18, "val_mse": 0.89472699, "test_mse": 1.13653841, "final_train_mse": 0.27643767, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T16:26:53Z"}
+--- [23/50] C1(4,4) seed=19 START 2026-10-18T16:26:53Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.722381  val_mse=0.758049
+      epoch  2/10  train_mse=0.440947  val_mse=0.628520
+      epoch  3/10  train_mse=0.370172  val_mse=0.629920
+      epoch  4/10  train_mse=0.347435  val_mse=0.661263
+      epoch  5/10  train_mse=0.329048  val_mse=0.741414
+      epoch  6/10  train_mse=0.311605  val_mse=0.644709
+      epoch  7/10  train_mse=0.298045  val_mse=0.731758
+      epoch  8/10  train_mse=0.287901  val_mse=0.838817
+      epoch  9/10  train_mse=0.279782  val_mse=0.730529
+      epoch 10/10  train_mse=0.272241  val_mse=0.809120
+      FINAL val_mse=0.809120 test_mse=1.096723 train_mse=0.272241 (elapsed 368s, eta 13.4h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 19, "val_mse": 0.80912028, "test_mse": 1.09672271, "final_train_mse": 0.27224054, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T16:33:01Z"}
+--- [24/50] C1(4,4) seed=20 START 2026-10-18T16:33:01Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.732527  val_mse=0.750002
+      epoch  2/10  train_mse=0.432600  val_mse=0.591604
+      epoch  3/10  train_mse=0.369823  val_mse=0.607337
+      epoch  4/10  train_mse=0.348535  val_mse=0.680087
+      epoch  5/10  train_mse=0.331103  val_mse=0.707975
+      epoch  6/10  train_mse=0.314499  val_mse=0.675746
+      epoch  7/10  train_mse=0.301191  val_mse=0.672024
+      epoch  8/10  train_mse=0.290598  val_mse=0.682713
+      epoch  9/10  train_mse=0.282806  val_mse=0.691462
+      epoch 10/10  train_mse=0.276114  val_mse=0.700449
+      FINAL val_mse=0.700449 test_mse=0.977111 train_mse=0.276114 (elapsed 380s, eta 12.5h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 20, "val_mse": 0.70044883, "test_mse": 0.97711113, "final_train_mse": 0.27611401, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T16:39:21Z"}
+--- [25/50] C1(4,4) seed=21 START 2026-10-18T16:39:21Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.727676  val_mse=0.761966
+      epoch  2/10  train_mse=0.436433  val_mse=0.593512
+      epoch  3/10  train_mse=0.373789  val_mse=0.608666
+      epoch  4/10  train_mse=0.351952  val_mse=0.662628
+      epoch  5/10  train_mse=0.334708  val_mse=0.660147
+      epoch  6/10  train_mse=0.318470  val_mse=0.676046
+      epoch  7/10  train_mse=0.305788  val_mse=0.682689
+      epoch  8/10  train_mse=0.295863  val_mse=0.709597
+      epoch  9/10  train_mse=0.287791  val_mse=0.764630
+      epoch 10/10  train_mse=0.280638  val_mse=0.684991
+      FINAL val_mse=0.684991 test_mse=1.008119 train_mse=0.280638 (elapsed 373s, eta 11.6h)
+      appended: {"cell_name": "C1(4,4)", "control": "all-block", "reference_cell": "Flat", "seed": 21, "val_mse": 0.68499068, "test_mse": 1.00811872, "final_train_mse": 0.28063756, "attn_params": 95396, "full_params": 348100, "ckv": 4, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 31.75, "n_blocks": 64, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T16:45:34Z"}
+--- [26/50] C1(8,4) seed=42 START 2026-10-18T16:45:34Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.719126  val_mse=0.770632
+      epoch  2/10  train_mse=0.428422  val_mse=0.646058
+      epoch  3/10  train_mse=0.366869  val_mse=0.632157
+      epoch  4/10  train_mse=0.344310  val_mse=0.650935
+      epoch  5/10  train_mse=0.325216  val_mse=0.726980
+      epoch  6/10  train_mse=0.309058  val_mse=0.742565
+      epoch  7/10  train_mse=0.296450  val_mse=0.709746
+      epoch  8/10  train_mse=0.287152  val_mse=0.775888
+      epoch  9/10  train_mse=0.279230  val_mse=0.734802
+      epoch 10/10  train_mse=0.271528  val_mse=0.790973
+      FINAL val_mse=0.790973 test_mse=1.014235 train_mse=0.271528 (elapsed 357s, eta 10.8h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 42, "val_mse": 0.79097274, "test_mse": 1.01423506, "final_train_mse": 0.27152784, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T16:51:32Z"}
+--- [27/50] C1(8,4) seed=123 START 2026-10-18T16:51:32Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.720474  val_mse=0.748943
+      epoch  2/10  train_mse=0.425486  val_mse=0.639744
+      epoch  3/10  train_mse=0.368242  val_mse=0.622531
+      epoch  4/10  train_mse=0.347393  val_mse=0.638184
+      epoch  5/10  train_mse=0.330760  val_mse=0.670153
+      epoch  6/10  train_mse=0.315127  val_mse=0.729289
+      epoch  7/10  train_mse=0.302674  val_mse=0.664694
+      epoch  8/10  train_mse=0.292561  val_mse=0.647066
+      epoch  9/10  train_mse=0.284253  val_mse=0.704497
+      epoch 10/10  train_mse=0.277318  val_mse=0.716962
+      FINAL val_mse=0.716962 test_mse=0.988944 train_mse=0.277318 (elapsed 363s, eta 10.1h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 123, "val_mse": 0.7169622, "test_mse": 0.98894401, "final_train_mse": 0.27731814, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T16:57:34Z"}
+--- [28/50] C1(8,4) seed=2024 START 2026-10-18T16:57:34Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.716996  val_mse=0.732395
+      epoch  2/10  train_mse=0.416890  val_mse=0.603603
+      epoch  3/10  train_mse=0.364658  val_mse=0.616805
+      epoch  4/10  train_mse=0.344422  val_mse=0.673214
+      epoch  5/10  train_mse=0.327465  val_mse=0.679269
+      epoch  6/10  train_mse=0.312029  val_mse=0.636790
+      epoch  7/10  train_mse=0.299084  val_mse=0.675748
+      epoch  8/10  train_mse=0.289087  val_mse=0.639524
+      epoch  9/10  train_mse=0.280884  val_mse=0.641247
+      epoch 10/10  train_mse=0.273829  val_mse=0.618834
+      FINAL val_mse=0.618834 test_mse=0.935326 train_mse=0.273829 (elapsed 365s, eta 9.4h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 2024, "val_mse": 0.61883352, "test_mse": 0.93532585, "final_train_mse": 0.27382866, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T17:03:39Z"}
+--- [29/50] C1(8,4) seed=7 START 2026-10-18T17:03:39Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.727399  val_mse=0.775667
+      epoch  2/10  train_mse=0.429546  val_mse=0.615934
+      epoch  3/10  train_mse=0.365998  val_mse=0.600823
+      epoch  4/10  train_mse=0.343992  val_mse=0.606027
+      epoch  5/10  train_mse=0.325341  val_mse=0.558106
+      epoch  6/10  train_mse=0.309298  val_mse=0.577604
+      epoch  7/10  train_mse=0.297716  val_mse=0.581713
+      epoch  8/10  train_mse=0.288909  val_mse=0.539681
+      epoch  9/10  train_mse=0.280440  val_mse=0.594643
+      epoch 10/10  train_mse=0.273402  val_mse=0.552751
+      FINAL val_mse=0.552751 test_mse=0.839681 train_mse=0.273402 (elapsed 368s, eta 8.7h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 7, "val_mse": 0.55275083, "test_mse": 0.83968112, "final_train_mse": 0.27340237, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T17:09:47Z"}
+--- [30/50] C1(8,4) seed=99 START 2026-10-18T17:09:47Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.718538  val_mse=0.735680
+      epoch  2/10  train_mse=0.426040  val_mse=0.598579
+      epoch  3/10  train_mse=0.363777  val_mse=0.587728
+      epoch  4/10  train_mse=0.342480  val_mse=0.622729
+      epoch  5/10  train_mse=0.324811  val_mse=0.625821
+      epoch  6/10  train_mse=0.308988  val_mse=0.676912
+      epoch  7/10  train_mse=0.296561  val_mse=0.679627
+      epoch  8/10  train_mse=0.286428  val_mse=0.648858
+      epoch  9/10  train_mse=0.278364  val_mse=0.687173
+      epoch 10/10  train_mse=0.270684  val_mse=0.675984
+      FINAL val_mse=0.675984 test_mse=0.979492 train_mse=0.270684 (elapsed 363s, eta 8.1h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 99, "val_mse": 0.67598405, "test_mse": 0.97949177, "final_train_mse": 0.27068427, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T17:15:50Z"}
+--- [31/50] C1(8,4) seed=1 START 2026-10-18T17:15:50Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.728012  val_mse=0.745428
+      epoch  2/10  train_mse=0.427717  val_mse=0.592973
+      epoch  3/10  train_mse=0.367554  val_mse=0.595669
+      epoch  4/10  train_mse=0.345536  val_mse=0.631358
+      epoch  5/10  train_mse=0.328120  val_mse=0.662825
+      epoch  6/10  train_mse=0.311705  val_mse=0.720597
+      epoch  7/10  train_mse=0.299148  val_mse=0.743727
+      epoch  8/10  train_mse=0.289688  val_mse=0.715125
+      epoch  9/10  train_mse=0.282030  val_mse=0.752066
+      epoch 10/10  train_mse=0.275363  val_mse=0.747542
+      FINAL val_mse=0.747542 test_mse=1.089911 train_mse=0.275363 (elapsed 366s, eta 7.5h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 1, "val_mse": 0.74754209, "test_mse": 1.08991053, "final_train_mse": 0.2753626, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T17:21:56Z"}
+--- [32/50] C1(8,4) seed=2 START 2026-10-18T17:21:56Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.716983  val_mse=0.746942
+      epoch  2/10  train_mse=0.418676  val_mse=0.613148
+      epoch  3/10  train_mse=0.363902  val_mse=0.601322
+      epoch  4/10  train_mse=0.343217  val_mse=0.619037
+      epoch  5/10  train_mse=0.325664  val_mse=0.646931
+      epoch  6/10  train_mse=0.309040  val_mse=0.685673
+      epoch  7/10  train_mse=0.295965  val_mse=0.712728
+      epoch  8/10  train_mse=0.285798  val_mse=0.699032
+      epoch  9/10  train_mse=0.277546  val_mse=0.667287
+      epoch 10/10  train_mse=0.270770  val_mse=0.722661
+      FINAL val_mse=0.722661 test_mse=0.887341 train_mse=0.270770 (elapsed 371s, eta 6.9h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 2, "val_mse": 0.72266094, "test_mse": 0.88734124, "final_train_mse": 0.27077011, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T17:28:08Z"}
+--- [33/50] C1(8,4) seed=3 START 2026-10-18T17:28:08Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.707363  val_mse=0.701811
+      epoch  2/10  train_mse=0.415716  val_mse=0.541057
+      epoch  3/10  train_mse=0.366728  val_mse=0.526891
+      epoch  4/10  train_mse=0.344871  val_mse=0.524082
+      epoch  5/10  train_mse=0.324911  val_mse=0.581775
+      epoch  6/10  train_mse=0.307882  val_mse=0.544713
+      epoch  7/10  train_mse=0.295794  val_mse=0.556931
+      epoch  8/10  train_mse=0.286258  val_mse=0.549966
+      epoch  9/10  train_mse=0.278723  val_mse=0.596562
+      epoch 10/10  train_mse=0.271564  val_mse=0.571868
+      FINAL val_mse=0.571868 test_mse=0.818216 train_mse=0.271564 (elapsed 371s, eta 6.4h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 3, "val_mse": 0.57186812, "test_mse": 0.81821594, "final_train_mse": 0.2715645, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T17:34:18Z"}
+--- [34/50] C1(8,4) seed=4 START 2026-10-18T17:34:18Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.726591  val_mse=0.758728
+      epoch  2/10  train_mse=0.427349  val_mse=0.598412
+      epoch  3/10  train_mse=0.370693  val_mse=0.656698
+      epoch  4/10  train_mse=0.351289  val_mse=0.683877
+      epoch  5/10  train_mse=0.334647  val_mse=0.764734
+      epoch  6/10  train_mse=0.319096  val_mse=0.828447
+      epoch  7/10  train_mse=0.306365  val_mse=0.825566
+      epoch  8/10  train_mse=0.295627  val_mse=0.862403
+      epoch  9/10  train_mse=0.286823  val_mse=0.918712
+      epoch 10/10  train_mse=0.278717  val_mse=0.970582
+      FINAL val_mse=0.970582 test_mse=1.153073 train_mse=0.278717 (elapsed 372s, eta 5.9h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 4, "val_mse": 0.9705817, "test_mse": 1.15307278, "final_train_mse": 0.27871667, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T17:40:31Z"}
+--- [35/50] C1(8,4) seed=5 START 2026-10-18T17:40:31Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.713617  val_mse=0.733882
+      epoch  2/10  train_mse=0.421358  val_mse=0.565076
+      epoch  3/10  train_mse=0.364732  val_mse=0.553321
+      epoch  4/10  train_mse=0.342191  val_mse=0.584972
+      epoch  5/10  train_mse=0.323170  val_mse=0.596434
+      epoch  6/10  train_mse=0.307809  val_mse=0.604559
+      epoch  7/10  train_mse=0.295839  val_mse=0.627090
+      epoch  8/10  train_mse=0.286534  val_mse=0.660530
+      epoch  9/10  train_mse=0.278364  val_mse=0.639710
+      epoch 10/10  train_mse=0.270929  val_mse=0.615713
+      FINAL val_mse=0.615713 test_mse=0.973513 train_mse=0.270929 (elapsed 375s, eta 5.4h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 5, "val_mse": 0.61571327, "test_mse": 0.97351313, "final_train_mse": 0.27092857, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T17:46:46Z"}
+--- [36/50] C1(8,4) seed=6 START 2026-10-18T17:46:46Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.711907  val_mse=0.735366
+      epoch  2/10  train_mse=0.423009  val_mse=0.643720
+      epoch  3/10  train_mse=0.369287  val_mse=0.583812
+      epoch  4/10  train_mse=0.348360  val_mse=0.621831
+      epoch  5/10  train_mse=0.329314  val_mse=0.610843
+      epoch  6/10  train_mse=0.313103  val_mse=0.622993
+      epoch  7/10  train_mse=0.300262  val_mse=0.606764
+      epoch  8/10  train_mse=0.290289  val_mse=0.607756
+      epoch  9/10  train_mse=0.282313  val_mse=0.608259
+      epoch 10/10  train_mse=0.274966  val_mse=0.575338
+      FINAL val_mse=0.575338 test_mse=0.885748 train_mse=0.274966 (elapsed 375s, eta 5.0h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 6, "val_mse": 0.57533787, "test_mse": 0.88574825, "final_train_mse": 0.27496588, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T17:53:01Z"}
+--- [37/50] C1(8,4) seed=8 START 2026-10-18T17:53:01Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.730478  val_mse=0.760251
+      epoch  2/10  train_mse=0.433573  val_mse=0.595867
+      epoch  3/10  train_mse=0.365966  val_mse=0.603178
+      epoch  4/10  train_mse=0.344744  val_mse=0.571914
+      epoch  5/10  train_mse=0.327291  val_mse=0.564535
+      epoch  6/10  train_mse=0.311918  val_mse=0.570434
+      epoch  7/10  train_mse=0.299371  val_mse=0.592054
+      epoch  8/10  train_mse=0.290079  val_mse=0.578433
+      epoch  9/10  train_mse=0.281894  val_mse=0.580443
+      epoch 10/10  train_mse=0.274666  val_mse=0.596615
+      FINAL val_mse=0.596615 test_mse=0.857220 train_mse=0.274666 (elapsed 372s, eta 4.5h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 8, "val_mse": 0.59661457, "test_mse": 0.85722046, "final_train_mse": 0.27466647, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T17:59:13Z"}
+--- [38/50] C1(8,4) seed=9 START 2026-10-18T17:59:13Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.721899  val_mse=0.712024
+      epoch  2/10  train_mse=0.420107  val_mse=0.638617
+      epoch  3/10  train_mse=0.365767  val_mse=0.639762
+      epoch  4/10  train_mse=0.344540  val_mse=0.669477
+      epoch  5/10  train_mse=0.325898  val_mse=0.734387
+      epoch  6/10  train_mse=0.309696  val_mse=0.627955
+      epoch  7/10  train_mse=0.297465  val_mse=0.705910
+      epoch  8/10  train_mse=0.287831  val_mse=0.759648
+      epoch  9/10  train_mse=0.279861  val_mse=0.641808
+      epoch 10/10  train_mse=0.273301  val_mse=0.667605
+      FINAL val_mse=0.667605 test_mse=0.962671 train_mse=0.273301 (elapsed 463s, eta 4.1h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 9, "val_mse": 0.66760539, "test_mse": 0.96267105, "final_train_mse": 0.27330074, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-18T18:06:56Z"}
+--- [39/50] C1(8,4) seed=10 START 2026-10-18T18:06:56Z ---
+
+### 2026-10-19T03:3xZ restart: OMP_WAIT_POLICY=passive (spin-wait livelock under external load); rows so far kept, same protocol, 8 threads
+=== Gate28 C1 all-block: 12 pending of 50 runs ===
+--- [1/12] C1(8,4) seed=10 START 2026-10-19T03:26:12Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.713593  val_mse=0.731317
+      epoch  2/10  train_mse=0.414905  val_mse=0.617898
+      epoch  3/10  train_mse=0.363216  val_mse=0.660667
+      epoch  4/10  train_mse=0.343802  val_mse=0.628606
+      epoch  5/10  train_mse=0.326718  val_mse=0.649990
+      epoch  6/10  train_mse=0.312012  val_mse=0.696235
+      epoch  7/10  train_mse=0.299429  val_mse=0.699092
+      epoch  8/10  train_mse=0.289860  val_mse=0.698045
+      epoch  9/10  train_mse=0.281544  val_mse=0.751315
+      epoch 10/10  train_mse=0.274709  val_mse=0.723406
+      FINAL val_mse=0.723406 test_mse=0.950175 train_mse=0.274709 (elapsed 2345s, median 2345s, eta 7.2h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 10, "val_mse": 0.72340572, "test_mse": 0.95017484, "final_train_mse": 0.27470867, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-19T04:05:17Z"}
+--- [2/12] C1(8,4) seed=11 START 2026-10-19T04:05:17Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.717437  val_mse=0.788600
+      epoch  2/10  train_mse=0.423352  val_mse=0.606167
+      epoch  3/10  train_mse=0.367792  val_mse=0.648186
+      epoch  4/10  train_mse=0.346358  val_mse=0.749937
+      epoch  5/10  train_mse=0.327111  val_mse=0.760374
+      epoch  6/10  train_mse=0.310456  val_mse=0.678021
+      epoch  7/10  train_mse=0.297596  val_mse=0.748533
+      epoch  8/10  train_mse=0.287902  val_mse=0.775588
+      epoch  9/10  train_mse=0.279326  val_mse=0.781107
+      epoch 10/10  train_mse=0.272376  val_mse=0.751851
+      FINAL val_mse=0.751851 test_mse=1.068812 train_mse=0.272376 (elapsed 3336s, median 3336s, eta 9.3h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 11, "val_mse": 0.75185058, "test_mse": 1.06881184, "final_train_mse": 0.27237582, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-19T05:00:53Z"}
+--- [3/12] C1(8,4) seed=12 START 2026-10-19T05:00:53Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.723155  val_mse=0.747783
+      epoch  2/10  train_mse=0.429845  val_mse=0.617553
+      epoch  3/10  train_mse=0.367152  val_mse=0.587672
+      epoch  4/10  train_mse=0.345632  val_mse=0.603116
+      epoch  5/10  train_mse=0.328456  val_mse=0.561328
+      epoch  6/10  train_mse=0.311720  val_mse=0.584937
+      epoch  7/10  train_mse=0.299267  val_mse=0.541145
+      epoch  8/10  train_mse=0.288745  val_mse=0.546539
+      epoch  9/10  train_mse=0.279455  val_mse=0.524130
+      epoch 10/10  train_mse=0.272286  val_mse=0.591201
+      FINAL val_mse=0.591201 test_mse=0.793372 train_mse=0.272286 (elapsed 2803s, median 2803s, eta 7.0h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 12, "val_mse": 0.59120061, "test_mse": 0.79337176, "final_train_mse": 0.27228626, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-19T05:47:37Z"}
+--- [4/12] C1(8,4) seed=13 START 2026-10-19T05:47:37Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.715674  val_mse=0.700996
+      epoch  2/10  train_mse=0.415589  val_mse=0.592173
+      epoch  3/10  train_mse=0.362612  val_mse=0.567538
+      epoch  4/10  train_mse=0.341211  val_mse=0.636678
+      epoch  5/10  train_mse=0.323172  val_mse=0.630776
+      epoch  6/10  train_mse=0.307548  val_mse=0.690783
+      epoch  7/10  train_mse=0.294767  val_mse=0.680212
+      epoch  8/10  train_mse=0.284954  val_mse=0.684699
+      epoch  9/10  train_mse=0.277192  val_mse=0.719803
+      epoch 10/10  train_mse=0.269781  val_mse=0.704192
+      FINAL val_mse=0.704192 test_mse=1.022111 train_mse=0.269781 (elapsed 1899s, median 2803s, eta 6.2h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 13, "val_mse": 0.70419196, "test_mse": 1.02211086, "final_train_mse": 0.26978083, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-19T06:19:15Z"}
+--- [5/12] C1(8,4) seed=14 START 2026-10-19T06:19:15Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.713469  val_mse=0.733781
+      epoch  2/10  train_mse=0.420912  val_mse=0.591474
+      epoch  3/10  train_mse=0.366872  val_mse=0.601677
+      epoch  4/10  train_mse=0.345622  val_mse=0.690003
+      epoch  5/10  train_mse=0.326363  val_mse=0.598578
+      epoch  6/10  train_mse=0.311171  val_mse=0.743808
+      epoch  7/10  train_mse=0.298966  val_mse=0.696999
+      epoch  8/10  train_mse=0.290190  val_mse=0.662447
+      epoch  9/10  train_mse=0.282114  val_mse=0.761729
+      epoch 10/10  train_mse=0.275462  val_mse=0.766156
+      FINAL val_mse=0.766156 test_mse=1.094605 train_mse=0.275462 (elapsed 1851s, median 2345s, eta 4.6h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 14, "val_mse": 0.76615579, "test_mse": 1.09460518, "final_train_mse": 0.27546223, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-19T06:50:06Z"}
+--- [6/12] C1(8,4) seed=15 START 2026-10-19T06:50:06Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.736804  val_mse=0.791697
+      epoch  2/10  train_mse=0.430679  val_mse=0.689989
+      epoch  3/10  train_mse=0.365562  val_mse=0.649269
+      epoch  4/10  train_mse=0.345060  val_mse=0.697564
+      epoch  5/10  train_mse=0.328614  val_mse=0.670577
+      epoch  6/10  train_mse=0.312621  val_mse=0.694077
+      epoch  7/10  train_mse=0.299432  val_mse=0.710114
+      epoch  8/10  train_mse=0.288626  val_mse=0.723790
+      epoch  9/10  train_mse=0.280299  val_mse=0.695302
+      epoch 10/10  train_mse=0.273408  val_mse=0.725668
+      FINAL val_mse=0.725668 test_mse=0.958124 train_mse=0.273408 (elapsed 1882s, median 2345s, eta 3.9h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 15, "val_mse": 0.72566771, "test_mse": 0.95812404, "final_train_mse": 0.27340841, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-19T07:21:28Z"}
+--- [7/12] C1(8,4) seed=16 START 2026-10-19T07:21:28Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.716810  val_mse=0.720850
+      epoch  2/10  train_mse=0.424706  val_mse=0.617319
+      epoch  3/10  train_mse=0.366316  val_mse=0.608057
+      epoch  4/10  train_mse=0.345452  val_mse=0.697401
+      epoch  5/10  train_mse=0.328291  val_mse=0.681463
+      epoch  6/10  train_mse=0.312405  val_mse=0.652247
+      epoch  7/10  train_mse=0.300142  val_mse=0.665149
+      epoch  8/10  train_mse=0.290227  val_mse=0.667546
+      epoch  9/10  train_mse=0.283018  val_mse=0.689948
+      epoch 10/10  train_mse=0.276273  val_mse=0.703554
+      FINAL val_mse=0.703554 test_mse=0.995124 train_mse=0.276273 (elapsed 1818s, median 1899s, eta 2.6h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 16, "val_mse": 0.70355376, "test_mse": 0.99512371, "final_train_mse": 0.2762734, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-19T07:51:46Z"}
+--- [8/12] C1(8,4) seed=17 START 2026-10-19T07:51:46Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.716063  val_mse=0.725610
+      epoch  2/10  train_mse=0.420682  val_mse=0.614298
+      epoch  3/10  train_mse=0.367460  val_mse=0.650476
+      epoch  4/10  train_mse=0.346482  val_mse=0.696009
+      epoch  5/10  train_mse=0.329078  val_mse=0.694172
+      epoch  6/10  train_mse=0.313403  val_mse=0.726836
+      epoch  7/10  train_mse=0.300683  val_mse=0.771929
+      epoch  8/10  train_mse=0.290794  val_mse=0.755968
+      epoch  9/10  train_mse=0.282780  val_mse=0.791833
+      epoch 10/10  train_mse=0.276078  val_mse=0.828002
+      FINAL val_mse=0.828002 test_mse=0.988356 train_mse=0.276078 (elapsed 1943s, median 1943s, eta 2.2h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 17, "val_mse": 0.82800219, "test_mse": 0.98835627, "final_train_mse": 0.27607807, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-19T08:24:09Z"}
+--- [9/12] C1(8,4) seed=18 START 2026-10-19T08:24:09Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.720352  val_mse=0.755034
+      epoch  2/10  train_mse=0.427867  val_mse=0.621469
+      epoch  3/10  train_mse=0.366907  val_mse=0.637845
+      epoch  4/10  train_mse=0.346570  val_mse=0.662593
+      epoch  5/10  train_mse=0.329260  val_mse=0.690197
+      epoch  6/10  train_mse=0.312961  val_mse=0.726700
+      epoch  7/10  train_mse=0.299873  val_mse=0.745978
+      epoch  8/10  train_mse=0.289177  val_mse=0.813317
+      epoch  9/10  train_mse=0.280646  val_mse=0.714231
+      epoch 10/10  train_mse=0.273337  val_mse=0.752377
+      FINAL val_mse=0.752377 test_mse=1.056634 train_mse=0.273337 (elapsed 1874s, median 1899s, eta 1.6h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 18, "val_mse": 0.75237681, "test_mse": 1.05663369, "final_train_mse": 0.27333665, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-19T08:55:23Z"}
+--- [10/12] C1(8,4) seed=19 START 2026-10-19T08:55:23Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.720560  val_mse=0.744930
+      epoch  2/10  train_mse=0.443163  val_mse=0.597238
+      epoch  3/10  train_mse=0.368286  val_mse=0.592261
+      epoch  4/10  train_mse=0.344923  val_mse=0.596774
+      epoch  5/10  train_mse=0.326843  val_mse=0.649161
+      epoch  6/10  train_mse=0.310061  val_mse=0.577255
+      epoch  7/10  train_mse=0.297059  val_mse=0.615238
+      epoch  8/10  train_mse=0.286660  val_mse=0.682449
+      epoch  9/10  train_mse=0.278170  val_mse=0.557994
+      epoch 10/10  train_mse=0.270553  val_mse=0.603966
+      FINAL val_mse=0.603966 test_mse=0.884261 train_mse=0.270553 (elapsed 1952s, median 1943s, eta 1.1h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 19, "val_mse": 0.6039662, "test_mse": 0.8842608, "final_train_mse": 0.2705526, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-19T09:27:56Z"}
+--- [11/12] C1(8,4) seed=20 START 2026-10-19T09:27:56Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.729182  val_mse=0.735291
+      epoch  2/10  train_mse=0.427432  val_mse=0.600877
+      epoch  3/10  train_mse=0.366996  val_mse=0.617576
+      epoch  4/10  train_mse=0.345152  val_mse=0.672321
+      epoch  5/10  train_mse=0.326626  val_mse=0.664754
+      epoch  6/10  train_mse=0.310771  val_mse=0.618173
+      epoch  7/10  train_mse=0.298420  val_mse=0.618269
+      epoch  8/10  train_mse=0.288576  val_mse=0.634267
+      epoch  9/10  train_mse=0.281292  val_mse=0.607252
+      epoch 10/10  train_mse=0.274495  val_mse=0.672472
+      FINAL val_mse=0.672472 test_mse=0.929258 train_mse=0.274495 (elapsed 1972s, median 1943s, eta 0.5h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 20, "val_mse": 0.67247161, "test_mse": 0.92925839, "final_train_mse": 0.27449519, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-19T10:00:47Z"}
+--- [12/12] C1(8,4) seed=21 START 2026-10-19T10:00:47Z ---
+Downloading ETTh1 dataset...
+      epoch  1/10  train_mse=0.725045  val_mse=0.752133
+      epoch  2/10  train_mse=0.427003  val_mse=0.568840
+      epoch  3/10  train_mse=0.369662  val_mse=0.576507
+      epoch  4/10  train_mse=0.347052  val_mse=0.573406
+      epoch  5/10  train_mse=0.328262  val_mse=0.525791
+      epoch  6/10  train_mse=0.311349  val_mse=0.506341
+      epoch  7/10  train_mse=0.298687  val_mse=0.491162
+      epoch  8/10  train_mse=0.288734  val_mse=0.497033
+      epoch  9/10  train_mse=0.280333  val_mse=0.510996
+      epoch 10/10  train_mse=0.273231  val_mse=0.495707
+      FINAL val_mse=0.495707 test_mse=0.751577 train_mse=0.273231 (elapsed 2042s, median 1952s, eta 0.0h)
+      appended: {"cell_name": "C1(8,4)", "control": "all-block", "reference_cell": "DRRA", "seed": 21, "val_mse": 0.49570698, "test_mse": 0.75157674, "final_train_mse": 0.2732309, "attn_params": 95652, "full_params": 348356, "ckv": 8, "cr": 4, "index_topk": 64, "n_idx": 64, "realized_blocks_mean": 15.625, "n_blocks": 32, "provenance": "gate28/uv-torch2.6.0/c1-allblock", "completed_utc": "2026-10-19T10:34:49Z"}
+=== done in 7.14h ===
