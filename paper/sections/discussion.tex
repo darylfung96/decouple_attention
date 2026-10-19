@@ -75,6 +75,12 @@ future work.
         (Section~\ref{sec:stats}); ``best on mean'' and ``directional'' are
         used advisedly. Figures show means only; per-seed tables are in the released manifests. No equivalence tests are run because no equivalence
         claims are made.
+  \item \textbf{Router control scope.} The all-block control
+        (Section~\ref{sec:stats}) is one dataset, one scale, and 25 seeds. It
+        removes the selection mask but keeps the indexer's scoring path, so it
+        measures the selection's contribution at fixed compute, not the
+        accuracy of a cheaper router-free model, and it does not establish that
+        routing is necessary at larger scales.
   \item \textbf{External architectures as reference points only.} DLinear
         and PatchTST were run under the frozen protocol to calibrate absolute
         error levels (Section~\ref{sec:refpoints}); they are not peer methods

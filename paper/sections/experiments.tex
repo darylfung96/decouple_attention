@@ -449,8 +449,8 @@ tests on validation MSE are powered: \emph{every} compressed cell beats
 full attention, and the result survives Holm correction across the five
 pre-registered contrasts (Holm-adjusted $p \le 3.3\times10^{-6}$
 for all four cell-vs-Normal contrasts). The projection-matched comparisons
-reported below are robustness analyses of the same claim, not
-additional confirmatory tests: they are reported with paired 95\% intervals and
+and the all-block control reported below are robustness analyses of the same
+claim, not additional confirmatory tests: they are reported with paired 95\% intervals and
 unadjusted Wilcoxon $p$-values, and the pre-registered family remains the five
 contrasts of the pre-registration (the four cell-vs-Normal comparisons plus
 DRRA-vs-CSA).
@@ -563,11 +563,13 @@ with the selector's budget raised from 16 index tokens to all of them
 ($k{=}n_{idx}{=}64$), which maps through the same geometry dispatch to every
 safe KV block; compressors, window, ranks and head are unchanged. The control
 is the reference cell's model with one attribute changed, so parameter tensors
-are bitwise identical and forward MACs are unchanged---the attention core is
-computed over every compressed column and the selection enters only as a mask.
+are bitwise identical, and the counted forward MACs are unchanged: the attention
+core is computed over every compressed column regardless of the mask, so raising
+$k$ adds selector work (a top-$k$ over $64$ rather than $16$ candidates, and a
+wider mask) but no multiply-adds in the counted account.
 The selection does grow as intended: $31.75$ of $64$ blocks are unmasked per
-query for $(4,4)$ (routed: $13.94$) and $15.62$ of $32$ for $(8,4)$
-(routed: $9.91$).
+query for $(4,4)$ and $15.62$ of $32$ for $(8,4)$, against routed values of
+$13.94$ and $9.91$ measured on the same validation batch.
 
 Removing it costs accuracy. On the same 25 paired seeds, all-block raises
 validation MSE from $0.6148$ to $0.7727$ for $(4,4)$ and from $0.6190$ to
@@ -588,19 +590,22 @@ attention is therefore created by compression, and the router adds a separate,
 measurable gain on top rather than being the source of the effect. This control
 is a robustness analysis: unadjusted, one dataset, one scale---it does not
 establish necessity at larger scales, where selection may matter less or more.
+It also isolates the selection, not the indexer's cost: the scoring path still
+runs, so the comparison is at fixed compute rather than against a cheaper
+router-free model.
 
 \begin{table}[t]
 \centering
 \small
 \caption{All-block control: each routed cell with its selection removed
 ($k=n_{idx}$, so every safe KV block is unmasked) at identical parameter counts
-and forward MACs (25 paired seeds). $\Delta$rel is the paired mean of the
+and counted forward MACs (25 paired seeds). $\Delta$rel is the paired mean of the
 per-seed relative validation-MSE changes, not the ratio of the displayed means;
 positive = all-block worse. Intervals are paired $t$-intervals. Realized
 blocks: distinct safe KV blocks unmasked per query, mean over positions, with
-the routed cell's value in parentheses; MACs are unchanged because the
-attention core is computed over every compressed column regardless of the
-mask.}
+the routed cell's value in parentheses from the same validation batch; counted
+MACs are unchanged because the attention core is computed over every
+compressed column regardless of the mask.}
 \label{tab:allblock}
 \begin{tabular}{lccccc}
 \toprule
