@@ -82,4 +82,5 @@ the result whichever way it goes, including the possibility that routing is unne
   conclusion, audit-table row. D4 stays (a) keep the title (no boundary); D3 default (a) applies — the
   indexer receives no task gradient (B2-1), so a trained selector is a design change, not a control.
   Evidence: `plan/gates/gate28_c1control/{design.md,run.py,analysis.py,results/allblock.jsonl,analysis.json,analysis.md,run.log}`.
+- 2026-10-19 (completeness pass): audited the phase against the built paper and fixed four gaps — abstract now carries the finding; the multiplicity paragraph names the control as a robustness analysis; "MACs unchanged" corrected to *counted* MACs (the selector's top-k widens 16 -> 64 candidates, no multiply-adds) and used consistently in abstract/intro/caption/audit row/conclusion; Limitations gained a "Router control scope" item (one dataset/scale, indexer scoring path retained). Routed set sizes labelled as same-batch measurements. 30/30 independently recomputed PDF checks pass; 32 pp, 0 failures.
 
