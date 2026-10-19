@@ -56,7 +56,7 @@ change is made until you approve, except that they carry no task IDs and can be 
 - Per forecast the dense baseline is fastest; full-layer gains do not transfer. *(77)*
 - An audit corrects the router work term and downstream energy projections. *(73)*
 
-### Trimmed abstract (262 words; replaces the current 386-word abstract on approval)
+### Trimmed abstract (263 words; replaces the current 404-word abstract on approval)
 
 > Long-horizon time-series forecasting with Transformers is dominated by the cost of quadratic attention
 > over long lookback windows. Compressed-and-indexed attention---compressing the key/value (KV) stream
