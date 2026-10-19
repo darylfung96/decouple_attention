@@ -118,3 +118,5 @@ frontier figure, and every efficiency claim in the abstract, §4.6 and the concl
   §4.6 ("the comparisons of Section 4.6" → "reported below"); "wider" → "higher-rank"; intro's
   limitations clause re-attached to the claim; appendix "retrained too" → "trained end to end, not
   merely re-accounted"; §4.1 manifest sentence rewritten; figure caption anchoring phrased for readers.
+- 2026-10-19 (verification): Table 3's CSA $\Delta$val corrected $-26.72\%\to-26.71\%$ (recomputed $0.6147979/0.8389132-1=-26.7149\%$). All other R2 numbers re-derived from `results/normal_r64.jsonl` and the factorial loader and verified in the PDF.
+

@@ -255,8 +255,8 @@ deltas are within-round.}
 Audit & Result & Headline numbers \\
 \midrule
 Last-query equivalence & PASS (max diff 0.00) & Earlier outputs provably unused \\
-Forecast-required latency (B32) & PASS (bit-exact ${\sim}5\times10^{-7}$) &
-Normal 2.6--3.9 ms; compressed 5.8--9.5 ms \\
+Forecast-required latency (B32) & PASS ($\le 7.2\times10^{-7}$) &
+Normal 2.6--3.0 ms; compressed 5.8--7.3 ms \\
 Paired full-layer deltas & Directional & $(8,4)$ $-$ Normal $-9.0 \pm 1.7$ ms/round \\
 Unique routed blocks/query & Measured & $\approx$14 of 64 (equal-rate); $\approx$10 of 32 (dual-rate) \\
 Router gradient audit & No task gradient & All indexer grads exactly 0, both variants; route membership probed: mean Jaccard $0.83$ epoch 1 vs 10, set size $\approx$10 of 32 flat \\

@@ -71,3 +71,5 @@ Figure code and caption ≈30 min; text edits ≈15 min. No runs.
   `paper/figures/fig9_perf_speed.pdf/.png`, `paper/sections/experiments.tex` §4.7 + caption,
   `paper/sections/conclusion.tex`, `verify_manuscript.py` 0 failures, clean rebuild. The R2 matched row
   on the frontier stays open as a Phase 3 landing step (tracked there, not here).
+- 2026-10-19 (verification): two corrections. (i) The paired figure $-5.2\pm0.9$ ms was DRRA$-$CSA, not CSA$-$Normal; CSA$-$Normal is $-3.8\pm1.6$ ms (gate13 log). Both are now stated with their comparanda. (ii) The drift claim "level shifts 6--9% between runs" was not supported by the paper's own runs (Normal measures 40.7, 42.0 and 52.5 ms across the three logged sessions); replaced with those three levels. Last-query ranges narrowed to the two runs whose JSON ships (Normal 2.6--3.0, CSA 6.2--7.3, DRRA 5.8--6.8 ms; ~17% session gap) because the wider range's upper values came from a contended run whose output file was overwritten during the A-2 rerun. "bit-exact ~5e-7" replaced by the measured bound $\le7.2\times10^{-7}$.
+

@@ -218,7 +218,7 @@ Config & Val mean $\pm$ std & Test mean & $\Delta$val vs.\ Normal & $\Delta$test
 \midrule
 Normal & $0.8389 \pm 0.0814$ & 1.0804 & --- & --- & --- \\
 Normal-r64 & $0.7910 \pm 0.0649$ & 1.0281 & $-5.72\%$ & $-4.85\%$ & 15 / 25 \\
-$(4,4)$ & $\mathbf{0.6148} \pm 0.0704$ & 0.8771 & $-26.72\%$ & $-18.82\%$ & 24 / 25 \\
+$(4,4)$ & $\mathbf{0.6148} \pm 0.0704$ & 0.8771 & $-26.71\%$ & $-18.82\%$ & 24 / 25 \\
 $(8,4)$ & $0.6190 \pm 0.0827$ & $\mathbf{0.8440}$ & $-26.22\%$ & $-21.89\%$ & 24 / 25 \\
 \bottomrule
 \end{tabular}
@@ -655,18 +655,21 @@ each round, so each round shares the same thermal/contention window; 25
 rounds of 30 passes after warm-up; mean over per-round medians with 95\%
 percentile bootstrap CIs, plus p90/p99 tails). DRRA $(8,4)$ has the lowest
 mean latency ($49.3$ ms vs.\ $52.5$ ms for Normal, $-6.1\%$; CSA $(4,4)$
-$-0.7\%$), and the ordering $(8,4) < (4,4) <$ Normal replicated across a
-second run, but the 95\% CIs overlap and the level shifts by
-${\sim}6$--$9\%$ between runs (thermal and contention effects), so we report
-the latency comparison as \emph{directional} only. Paired within-round analysis tightens
-this without changing the stance: in a 25-round round-robin rerun under the frozen protocol
-(released audit log), DRRA $(8,4)$ beats Normal by $-9.0 \pm 1.7$ ms per paired round
-and CSA $(4,4)$ by $-5.2 \pm 0.9$ ms (95\% CIs exclude zero \emph{in that run}); absolute
-levels still drift across runs, so directional-only stands. A last-query audit reframes
+$-0.7\%$), and the ordering $(8,4) < (4,4) <$ Normal held in all three runs
+that measured all three models, but the 95\% CIs overlap and absolute levels
+differ between sessions (Normal measures $40.7$, $42.0$ and $52.5$ ms across
+those three runs; thermal and contention effects), so we report the latency
+comparison as \emph{directional} only. Paired within-round analysis tightens
+the comparison without changing the stance: in the 25-round round-robin behind
+Figure~\ref{fig:perf-speed} (released audit log), DRRA $(8,4)$ beats Normal by
+$-9.0 \pm 1.7$ ms per paired round, CSA $(4,4)$ by $-3.8 \pm 1.6$ ms, and
+DRRA beats CSA by $-5.2 \pm 0.9$ ms (95\% CIs exclude zero \emph{in that
+run}); levels still differ across sessions, so directional-only stands. A last-query audit reframes
 the comparison further: the forecast uses only the last position (Section~\ref{sec:task}),
-and recomputing latency for that forecast-required path (bit-exact to ${\sim}5\times10^{-7}$)
-gives Normal $2.6$--$3.9$ ms, CSA $(4,4)$ $6.2$--$9.5$ ms, DRRA $(8,4)$ $5.8$--$8.6$ ms per
-batch-32 pass---ranges span two runs showing the same level drift. Under last-query accounting
+and recomputing latency for that forecast-required path (agrees with the full-layer computation to $\le 7.2\times10^{-7}$)
+gives Normal $2.6$--$3.0$ ms, CSA $(4,4)$ $6.2$--$7.3$ ms and DRRA
+$(8,4)$ $5.8$--$6.8$ ms per batch-32 pass in the two runs of the audit, a
+${\sim}17\%$ level difference between the two sessions. Under last-query accounting
 the dense baseline's last-query path is the fastest, because it pays no
 compressor/indexer work: Table~\ref{tab:speed} compares full-layer costs, both costs are
 reported, and efficiency claims are stated against the last-query baseline. The exploratory
@@ -761,7 +764,10 @@ fastest; on the full-layer path $(8,4)$ is fastest; accuracy is identical
 in the two panels. The open marker is the projection-matched dense baseline
 (Section~\ref{sec:stats}); its latency is anchored to the released Normal
 measurement using a paired timing from the same session, so that machine load
-shifts both models together. Measurement logs released with the source.}
+shifts both models together. Both panels use one audited session, so
+their absolute levels sit below Table~\ref{tab:speed}'s run; levels differ
+across sessions (Section~\ref{sec:efficiency}). Measurement logs released
+with the source.}
 \label{fig:perf-speed}
 \end{figure}
 
