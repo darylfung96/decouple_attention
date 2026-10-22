@@ -1,0 +1,8 @@
+# Dependencies for reproducing the paper's experiments and figures.
+# Tested with Python 3.11.12 and PyTorch 2.6.0 (CPU); newer patch releases of
+# numpy/pandas/matplotlib are fine, torch is pinned because the study's timing
+# and gradient audits were run against it.
+torch==2.6.0
+numpy>=1.26
+pandas>=2.0
+matplotlib>=3.8
