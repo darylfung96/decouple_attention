@@ -1,6 +1,18 @@
 \section{Experiments}
 \label{sec:experiments}
 
+The experiments answer three questions in order. \textbf{RQ1} asks how the two
+rates trade off inside the family on one frozen task: does coarsening routing
+cost accuracy more than coarsening KV compression, and are the two effects
+separable at all? \textbf{RQ2} asks whether the family as configured beats full
+causal attention under matched conditions, and whether any advantage survives
+the rival explanations that could manufacture it without attention changing.
+\textbf{RQ3} asks whether either answer travels across datasets and signal
+types. Sections~\ref{sec:rq1}--\ref{sec:rq3} answer them in that order;
+Sections~\ref{sec:stats}--\ref{sec:forecast} then report the statistical
+treatment, the accounting and controls behind the accuracy claims, and the cost
+measurements.
+
 \subsection{Setup and data integrity}
 The factorial comprises $4$ compressed cells $\times$ $25$ paired seeds plus
 the full-attention baseline at the same $25$ seeds $= 125$ runs under the
@@ -13,11 +25,11 @@ were subsequently re-run under a corrected index-to-block mapping (the original 
 one mapping rule to all geometries; Section~\ref{sec:family-mech}) and merged by seed,
 replacing their rows; the $(8,4)$ and Normal rows are untouched originals. Data-integrity checks on the
 merged manifest confirm: (i) parameter equalization within tolerance
-(max attention delta $0.268\%$, max full-model delta $0.074\%$);
+(max attention deviation $0.268\%$, max full-model deviation $0.073\%$);
 (ii) matched training across all runs (final training MSE span
 $0.2756$--$0.3029$); and (iii) all 125 runs present, 25 seeds in every
 cell, no duplicates. The projection-matched dense baseline of
-Section~\ref{sec:stats} is a separate 25-run manifest under the same protocol
+Section~\ref{sec:controls} is a separate 25-run manifest under the same protocol
 and seed list; the 125-run count above covers the factorial manifest only.
 Reported validation and test metrics come from the
 epoch-10 weights; no best-validation checkpoint selection is used. The 25 seeds capture training randomness on the fixed dataset and protocol, not future-period or dataset uncertainty.
@@ -30,17 +42,22 @@ means are $(8,8)$ ($0.6128 \pm 0.0660$), CSA $(4,4)$ ($0.6148 \pm 0.0704$), and
 DRRA $(8,4)$ ($0.6190 \pm 0.0827$)---all within seed noise of each other---while
 $(4,8)$ is the worst compressed cell ($0.6810 \pm 0.0570$). Every compressed cell
 beats the full-attention baseline on mean validation and mean test MSE; per-seed,
-22--25 of 25 paired comparisons favor each compressed cell (95/100 in total). Head-to-head on validation against CSA, DRRA wins 16/25 and (8,8) wins 12/25 while (4,8) wins 6/25; best-of-four counts are 8 CSA, 8 (8,8), 7 DRRA and 2 (4,8), so there is no best cell. On test the same DRRA-vs-CSA contrast favors DRRA by -0.0331 (95% CI [-0.070, +0.004], exact p = 0.032, 17/25; best-of-four 12/25 for DRRA), reported as a secondary unadjusted contrast alongside the pre-registered validation analysis.
+22--25 of 25 paired comparisons favor each compressed cell (95/100 in total). Head-to-head on validation against CSA, DRRA wins 16/25 and (8,8) wins 12/25 while (4,8) wins 6/25; best-of-four counts are 8 CSA, 8 (8,8), 7 DRRA and 2 (4,8), so there is no best cell. On test the same DRRA-vs-CSA contrast favors DRRA by -0.0331 (95\% confidence interval (CI) [-0.070, +0.004], exact p = 0.032, 17/25; best-of-four 12/25 for DRRA), reported as a secondary unadjusted contrast alongside the pre-registered validation analysis.
 
 \begin{table}[t]
 \centering
 \small
 \caption{Factorial results (25 paired seeds, frozen direct-96 protocol;
 pooled MSE (mean squared error) in standardized units, lower is better).
+Columns: \emph{Val mean} and \emph{Test mean} are the validation- and
+test-split means of the per-seed MSE; \emph{Train mean} is the mean
+final-epoch training MSE; $\pm$ is one sample standard deviation across the
+25 seeds.
 Rows are cells $(c_{KV}, c_R)$: $c_{KV}$ is the KV-cache compression rate
 (positions per stored block) and $c_R$ the routing resolution (positions per
-index token); the two dense reference rows are Normal (as-run) and Normal-r64
-(projection-matched, Section~\ref{sec:stats}). ``Beats $(4,4)$'' counts
+index token); the two dense reference rows are Normal (as-run) and Normal-r64,
+its projection-matched variant with output-projection rank $r{=}64$ instead of
+the as-run $128$ (Section~\ref{sec:controls}). ``Beats $(4,4)$'' counts
 seeds where the cell's validation MSE is better than the same seed's $(4,4)$
 value. Bold: best (lowest) test mean among the four confirmatory cells.
 Starred rows are post-hoc exploratory probes, excluded from all confirmatory
@@ -69,7 +86,10 @@ $(32,4)^*$ & $0.6122 \pm 0.0652$ & 0.8586 & 0.2702 & 14 / 25 \\
 means over 25 paired seeds, error bars $\pm$ one seed standard deviation,
 and each dot is one seed's value. Lower is better. The dashed line
 marks the full-attention (Normal) baseline at $0.8389$ validation MSE:
-bars below it beat full attention. The $(8,4)$ corner
+bars below it beat full attention. The projection-matched dense reference
+(Normal-r64, Table~\ref{tab:baseline}) sits at $0.7910$, also below the line;
+it has no bar here because its geometry is dense rather than a
+$(c_{KV}, c_R)$ cell. The $(8,4)$ corner
 $(c_{KV}{=}8, c_R{=}4)$ combines coarse KV compression with fine routing.
 Starred bars (labels with $*$) are
 post-hoc exploratory probes, excluded from all confirmatory contrasts.}
@@ -107,15 +127,18 @@ full recomputation from unrounded seeds in the released analysis log). This
 per-seed contrast is one of four reported estimates (the two main effects, the
 interaction, and the direct DRRA-vs.-equal-rate difference below)---it pairs all
 four $(c_{KV}, c_R)$ observations within a seed, and it is algebraically identical
-to the off-diagonal difference $y_{4,8} - y_{8,4}$, so the off-diagonal alone carries
+to the off-diagonal difference $y_{4,8} - y_{8,4}$, where $y_{c}$ is the
+per-seed validation MSE of cell $c$, so the off-diagonal alone carries
 no independent information. Both individual effects remain modest relative to seed noise (${\sim}0.03$ vs.\ mean
-within-cell std $0.070$, per-cell range $0.057$--$0.083$; sign consistency
+within-cell std $0.069$, per-cell range $0.057$--$0.083$; sign consistency
 20/25 (KV) and 16/25 (routing)), and --- with a significant interaction and no single
 best cell --- we report the decoupling as a \emph{statistically supported sign structure
 with non-additive axes} whose mechanism-level reading is still
 interpretation (Section~\ref{sec:discussion}; the mixed-effects model
 $\mathrm{MSE} = \beta_0 + \beta_1 \log_2 c_{KV} + \beta_2 \log_2 c_R +
-\beta_3 \log_2 c_{KV}\log_2 c_R + \text{random effects}$ is deferred as a robustness re-expression (the $2\times2$ with seed blocking already
+\beta_3 \log_2 c_{KV}\log_2 c_R + \text{random effects}$, with $\beta_0$ an
+intercept, $\beta_1$/$\beta_2$ the two main effects, $\beta_3$ their
+interaction and the random effects reserved for seeds, is deferred as a robustness re-expression (the $2\times2$ with seed blocking already
 identifies all three fixed effects; more rate levels would add shape, not
 identification)). Per-seed trajectories show the
 ordering across cells is not unanimous for every seed---with the top three cells tied
@@ -178,39 +201,58 @@ sensible floor where this study stops.
 
 \subsection{RQ2: compressed vs.\ full attention}
 \label{sec:rq2}
+\textbf{Why the comparison is checked four ways.} A compressed model beating a
+correctly specified dense baseline by ${\sim}19$--$27\%$ is a claim about the
+baseline as much as about the model, and four different failures could produce
+it. The baseline could be mis-wired, in which case the family wins by default.
+The gap could come from the dense model's wider output projection rather than
+from attention. The router's selection could be decorative, with
+compression alone producing the result---the paper would then be about
+compression, not routing. Or the mechanism probes could describe an earlier
+implementation of the cells. Each check below is aimed at one of those
+failures: a bit-exact wiring audit of the Normal module (this subsection); a
+dense model retrained at the compressed cells' projection rank, and an all-block
+control that removes the selection at identical parameters and counted
+multiplications (Section~\ref{sec:controls}); and regeneration of the mechanism
+probes against the current code together with a route-stability probe
+(Section~\ref{sec:probes}).
+
 Table~\ref{tab:baseline} compares full causal attention (Normal, 256
 columns, no compression) with the two cells that anchor the family's
 design corners, CSA $(4,4)$ and DRRA $(8,4)$, and adds the projection-matched
-dense reference Normal-r64 (Section~\ref{sec:stats}).
+dense reference Normal-r64---the same dense model with its output-projection
+bottleneck narrowed from rank $128$ to the $64$ every compressed cell uses
+(Section~\ref{sec:controls}). Without it the dense projection would be twice as wide
+as the compressed cells' (rank $128$ vs.\ $64$), an asymmetry worth $10.5$M of the
+$13.6$M whole-model MAC gap that could otherwise pass for the source of the
+accuracy edge.
 Every compressed cell beats Normal on mean validation
 and mean test MSE, and \emph{95 of the 100 paired seed comparisons}
 favor the compressed configuration (per-seed validation deltas span
 $-48.3\%$ to $+9.9\%$ across cells; mean deltas $-18.8\%$ to $-27.0\%$).
 DRRA $(8,4)$ beats CSA $(4,4)$ head-to-head in 16 of 25 seeds on validation (CSA ahead in 9),
 and no cell is best of all four in more than 8 (DRRA 7, $(8,8)$ 8, CSA 8, $(4,8)$ 2;
-merged corrected-mapping analysis in the released logs). The advantage does not
-depend on the dense baseline's higher-rank output projection: retrained with the
-compressed cells' rank-64 output projection (25 paired seeds, same protocol),
+merged corrected-mapping analysis in the released logs). The advantage survives
+the matched projection: retrained at rank $64$ (25 paired seeds, same protocol),
 the dense model improves to $0.7910$ validation MSE but every compressed cell
 still beats it (paired validation deltas $-0.110$ to $-0.178$ MSE, all four
 95\% intervals excluding zero, $21$--$25$ of $25$ seeds per cell;
-Section~\ref{sec:stats}).
+Section~\ref{sec:controls}).
 
 \begin{table}[t]
 \centering
 \small
 \caption{Compressed vs.\ full attention (25 paired seeds, frozen protocol;
-validation and test MSE in standardized units, lower is better).
+validation and test MSE in standardized units, lower is better; $\pm$ is one
+sample standard deviation across the 25 seeds).
 $\Delta$val and $\Delta$test are relative changes against the Normal
 (full-attention) row, in percent, computed from the underlying per-seed means
 (not from the displayed four-decimal rounding) and then rounded to two
 decimals (negative is better); ``Seeds beating Normal'' counts paired seeds where
 the cell's value is lower. Bold: best (lowest) mean in each column.
 Parameter counts are not
-equalized across the rows: the as-run Normal is a different attention class and
-carries $\sim$2\% more full-model parameters, while the projection-matched
-reference Normal-r64 replaces its rank-128 output projection with the
-compressed cells' rank-64 bottleneck and carries $\sim$10\% fewer parameters.}
+equalized across the rows: the as-run Normal carries $\sim$2\% more full-model
+parameters, the projection-matched Normal-r64 $\sim$10\% fewer.}
 \label{tab:baseline}
 \begin{tabular}{lccccc}
 \toprule
@@ -224,44 +266,59 @@ $(8,4)$ & $0.6190 \pm 0.0827$ & $\mathbf{0.8440}$ & $-26.22\%$ & $-21.89\%$ & 24
 \end{tabular}
 \end{table}
 
-\textbf{Wiring verification.} Because the compressed variants beating an
-unmodified baseline by ${\sim}18$--$26\%$ is a surprising direction, we
-audited the Normal attention implementation before reporting it: a
-from-scratch naive reference (true causal masking, $1/\sqrt{d}$ scaling,
-independent RoPE reimplementation) matches the module output
-bit-exactly at $L{=}32$ and $L{=}64$ ($0.0$ max absolute difference) and to
-$1.19 \times 10^{-7}$ at $L{=}256$ (fp32 accumulation noise); future
-positions receive exactly zero weight and future-token perturbation leaves
-outputs unchanged. The baseline is correctly implemented, so the comparison
-stands. We also note the direction is surprising in the other sense:
-compression acting as a task-appropriate inductive bias (see
-Section~\ref{sec:discussion}) is a plausible but \emph{unverified}
-explanation \emph{that three mechanistic probes now support descriptively}
-(models retrained with per-run checkpoints under the same frozen protocol;
-seed 42; regenerated against the current implementation after the mapping
-correction): (i) on the delayed-copy dataset
-(five channels periodic with in-window lags 96--256, plus two noise
-channels), \emph{all three} models learn the exact-offset copy ---
-per-channel copy MSE $0.0007$ (Normal) and $0.0013$--$0.00318$ (compressed
-cells) against a noise floor of ${\approx}1.05$ --- so exact-offset recall
-is not the differentiator, though Normal is ${\sim}2\times$ more precise
-on the copy channels, with a mild lag gradient for the compressed cells;
-(ii) on the change-point dataset, CSA $(4,4)$ has the lowest per-window error
-in \emph{every} distance-from-change bucket (the across-bucket gradient is
-confounded by the generator's random-walk drift and should not be
-over-read); and (iii) across the twelve datasets, the compression
-advantage correlates with signal smoothness in the predicted direction
-(Pearson $r = -0.29$ for DRRA $(8,4)$, $-0.35$ for CSA $(4,4)$ against lag-1
-autocorrelation; $p \approx 0.3$) --- smoother series favor compression
-more; and (iv) a route-stability probe (one $(8,4)$ run, seed 42, on a fixed
-validation batch) shows what the gradient-free selector does over training:
-the selected sets are \emph{not} fixed (mean Jaccard overlap between the
-first and final epoch $0.83$, with $37\%$ of positions unchanged), while the
-routed \emph{amount} is --- the selected-set size holds at about $10$ of $32$
-blocks and the route-score entropy stays flat ($3.13$) across all ten epochs
---- so membership follows the drift of upstream features and the routing
-amount does not. These probes are descriptive ($n{=}1$ seed for (i)--(ii)
-and (iv), $n{=}12$ for (iii)) and do not establish the mechanism.
+\textbf{Wiring verification.} A from-scratch naive reference (true causal
+masking, $1/\sqrt{d_h}$ scaling, independent RoPE reimplementation) matches the
+Normal module's output bit-exactly at $L{=}32$ and $L{=}64$ ($0.0$ maximum
+absolute difference) and to $1.19 \times 10^{-7}$ at $L{=}256$ (fp32
+accumulation noise); future positions receive exactly zero weight, and
+perturbing future tokens leaves the output unchanged. The baseline is correctly
+implemented, which removes the first rival explanation and leaves the other
+three to the checks referenced above.
+
+\subsection{Mechanism probes (descriptive)}
+\label{sec:probes}
+
+The accuracy results say nothing about \emph{why} compression helps, and the
+gradient audit establishes only that no task-loss signal reaches the
+indexer---not that the selected set is fixed. Three probes test candidate
+readings of the result, and a fourth measures what the gradient-free route
+actually does over training; none of them is a mechanism test. All four were
+regenerated against the current implementation after the index-to-block
+correction, so none describes a model that no longer exists (models retrained
+with per-run checkpoints under the frozen protocol; seed 42).
+
+(i)~\emph{Exact recall.} On the delayed-copy dataset (five channels periodic
+with in-window lags 96--256, plus two noise channels), \emph{all three} models
+learn the exact-offset copy---per-channel copy MSE $0.0007$ (Normal) and
+$0.0013$--$0.00318$ (compressed cells) against a noise floor of
+${\approx}1.05$---so exact-offset recall is not the differentiator, though
+Normal is ${\sim}2\times$ more precise on the copy channels, with a mild lag
+gradient for the compressed cells.
+
+(ii)~\emph{Change points.} On the change-point dataset, CSA $(4,4)$ has the
+lowest per-window error in \emph{every} distance-from-change bucket; the
+across-bucket gradient is confounded by the generator's random-walk drift and
+should not be over-read.
+
+(iii)~\emph{Signal dependence.} Across the twelve datasets, the compression
+advantage correlates with signal smoothness in the predicted direction (Pearson
+$r = -0.29$ for DRRA $(8,4)$ and $-0.35$ for CSA $(4,4)$ against lag-1
+autocorrelation; $p \approx 0.3$): smoother series favor compression more.
+
+(iv)~\emph{Route stability.} A probe on one $(8,4)$ run (seed 42, fixed
+validation batch) shows what the gradient-free selector does over training: the
+selected sets are \emph{not} fixed (mean Jaccard overlap---the size of the
+intersection over the size of the union of the two selected block sets---of
+$0.83$ between the first and
+final epochs, with $37\%$ of positions unchanged), while the routed
+\emph{amount} is. The selected-set size holds at about $10$ of $32$ blocks and
+the entropy of the normalized router scores stays flat ($3.13$) across all
+ten epochs, so
+membership follows the drift of upstream features and the routing amount does
+not.
+
+These probes are descriptive ($n{=}1$ seed for (i)--(ii) and (iv), $n{=}12$ for
+(iii)) and do not establish the mechanism.
 
 \subsection{RQ3: cross-dataset coverage}
 \label{sec:rq3}
@@ -290,9 +347,7 @@ datasets, but \emph{columns are not comparable to each other}: every
 dataset is standardized with its own train-only statistics, so MSE values
 only have meaning within a column. The final $\Delta$val row is
 scale-free (a ratio per dataset) and is therefore the row to compare across
-columns; it also carries the notable exceptions---positive entries on
-Exchange ($+8.6\%$) and on all three synthetic families ($+0.2\%$ to
-$+3.1\%$).
+columns.
 
 The compressed configurations beat full attention on mean validation MSE in
 8/12 datasets each (DRRA $(8,4)$ and CSA $(4,4)$), but the advantage is
@@ -301,7 +356,7 @@ The compressed configurations beat full attention on mean validation MSE in
 ETT family (up to $-48.4\%$ on ETTm2) and on solar-energy; both compressed
 variants \emph{lose} on all three synthetic families ($+0.2\%$ to $+4.0\%$)
 and on exchange-rate validation, and their test error is worse on weather
-(CSA $+11.2\%$, DRRA $+14.2\%$). This pattern is consistent with the
+(CSA $+14.2\%$, DRRA $+5.9\%$). This pattern is consistent with the
 compression-as-inductive-bias reading: pooling adjacent timesteps is nearly
 lossless on smooth, temporally redundant real-world series, while tasks
 requiring exact in-window content recall (the delayed-copy probe,
@@ -332,7 +387,7 @@ Model & ETTh1 & ETTh2 & ETTm1 & ETTm2 & Elec & Traf & Wea & Exc & Sol & sSin & s
 Normal    & 0.8416 & 1.9187 & 0.4285 & 1.5618 & 0.4047 & 0.5994 & 0.4460 & $\mathbf{2.9800}$ & 0.1899 & $\mathbf{0.1227}$ & $\mathbf{5.9456}$ & $\mathbf{0.2888}$ \\
 $(4,4)$   & $\mathbf{0.5909}$ & $\mathbf{1.7817}$ & 0.4121 & 0.9326 & $\mathbf{0.3775}$ & 0.5907 & 0.4448 & 3.1364 & $\mathbf{0.1693}$ & 0.1276 & 5.9733 & 0.2894 \\
 $(8,4)$   & 0.5967 & 1.8080 & $\mathbf{0.3832}$ & $\mathbf{0.8053}$ & 0.3808 & $\mathbf{0.5874}$ & $\mathbf{0.4424}$ & 3.2350 & 0.1722 & 0.1264 & 6.0013 & 0.2894 \\
-$\Delta$val $(8,4)$ vs Normal & $-29.1\%$ & $-5.8\%$ & $-10.6\%$ & $-48.4\%$ & $-5.9\%$ & $-2.0\%$ & $-0.8\%$ & $+8.6\%$ & $-9.3\%$ & $+3.1\%$ & $+0.9\%$ & $+0.2\%$ \\
+$\Delta$val $(8,4)$ vs Normal & $-29.1\%$ & $-5.8\%$ & $-10.6\%$ & $-48.4\%$ & $-5.9\%$ & $-2.0\%$ & $-0.8\%$ & $+8.6\%$ & $-9.3\%$ & $+3.0\%$ & $+0.9\%$ & $+0.2\%$ \\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -363,8 +418,9 @@ forecasting architectures under the \emph{identical frozen protocol} (task,
 split, train-only normalization, optimizer, schedule, five paired seeds) as
 \emph{reference points}, not as peer methods: \textbf{DLinear}
 \citep{zeng2023dlinear} (channel-shared configuration) and \textbf{PatchTST}
-\citep{nie2023patchtst} (official supervised ETTh1 configuration: patch 16,
-stride 8, $d_{\mathrm{model}}=16$, 3 layers, dropout 0.3, RevIN). Their edge
+\citep{nie2023patchtst} (official supervised ETTh1 configuration: patch
+length 16, stride 8, model width $d_{\mathrm{model}}=16$, 3 layers, dropout
+0.3, RevIN (reversible instance normalization)). Their edge
 over our minimal single-block backbone comes from their full architecture
 (patching, channel independence, decomposition; in DLinear's case no
 attention at all), not from their attention; the comparison is therefore
@@ -376,8 +432,9 @@ protocol-comparable but not method-comparable.
 
 Table~\ref{tab:refpoints} reports the result. The anchors are decisively
 ahead on the real-world sets---most starkly, DLinear (49K parameters, no
-attention) outperforms every configuration of the family on ETTh1 validation
-and test. This is the LTSF-linear result of \citet{zeng2023dlinear}
+attention) outperforms every configuration of the family on ETTh1, at $0.352$
+against $0.591$ for the best cell on validation and $0.437$ against $0.799$ on
+test. This is the long-term-forecasting (LTSF) linear result of \citet{zeng2023dlinear}
 reproduced under our frozen protocol, and it re-anchors the paper's reading:
 at this scale, the attention module is not the accuracy bottleneck, and the
 design-space structure measured in RQ1--RQ3 is a property of the attention
@@ -415,7 +472,10 @@ where it fits the CPU budget and is a declared omission on the wide
 datasets (solar/electricity/traffic/weather; --- = not run). Bold marks the
 better of the two external reference points (DLinear vs.\ PatchTST) in each
 row; the family columns (Normal and the compressed cells) are never bolded, so where a
-family cell has the lower mean the bold anchor is not the row minimum.}
+family cell has the lower mean the bold anchor is not the row minimum.
+Row names: sSin = synthetic sinusoids, sCP = synthetic change points,
+sDC = synthetic delayed copy---the three mechanistic probes of
+Section~\ref{sec:rq3}.}
 \label{tab:refpoints}
 \setlength{\tabcolsep}{4pt}
 \resizebox{\linewidth}{!}{%
@@ -446,7 +506,8 @@ Statistical status is reported separately for the two levels of the study.
 \textbf{Factorial (ETTh1, $n{=}25$ paired seeds; full analysis log released
 with the source).} At 25 paired seeds, paired Wilcoxon signed-rank
 tests on validation MSE are powered: \emph{every} compressed cell beats
-full attention, and the result survives Holm correction across the five
+full attention, and the result survives Holm's step-down (Holm--Bonferroni)
+family-wise correction across the five
 pre-registered contrasts (Holm-adjusted $p \le 3.3\times10^{-6}$
 for all four cell-vs-Normal contrasts). The projection-matched comparisons
 and the all-block control reported below are robustness analyses of the same
@@ -486,66 +547,60 @@ for both variants (CSA $(4,4)$: $-7.5\%$ $[-15.8, -0.9]$; DRRA $(8,4)$:
 $-8.3\%$ $[-17.5, -0.8]$). The cross-dataset pattern is therefore
 directionally consistent but not statistically established per dataset:
 the ETTh1 factorial, not the suite, is where significance is established (25 paired seeds versus 5 per dataset).
-Deferred items, with written justification in the project plan: the
-mixed-effects model (Section~\ref{sec:rq1}), HAC/block-bootstrap
-corrections (the analyses are at the seed level, where the paired runs are
-independent, so stride-1 window overlap does not invalidate the paired
-tests), and TOST/ROPE (the paper makes no equivalence claims).
+Deferred analyses: the mixed-effects model (Section~\ref{sec:rq1}),
+HAC (heteroskedasticity- and autocorrelation-consistent)
+block-bootstrap corrections (the analyses are at the seed level, where the
+paired runs are independent, so stride-1 window overlap does not invalidate the
+paired tests), and equivalence tests (TOST, region of practical equivalence)
+(the paper makes no equivalence claims, so none is run).
 
-\textbf{Sequence-length scaling and complexity.}
-Figure~\ref{fig:lscale} sweeps the lookback $L \in \{128, \dots, 4096\}$ at
-batch 1 and 32. At batch 32 DRRA $(8,4)$'s advantage over Normal grows from
-$-32\%$ at $L{=}512$ to $-56\%$ at $L{=}2048$ ($869$ vs.\ $1984$ ms/batch, a
-$2.3\times$ speedup), and at batch 1/$L{=}4096$ it reaches $-63\%$ ($86$ vs.\
-$235$ ms)---while at $L \le 256$ and batch 1 Normal is fastest (fixed overheads
-again). The
-empirical log-log slopes ($L \ge 512$) are $1.40$ (DRRA $(8,4)$), $1.42$
-(CSA $(4,4)$), and $1.72$ (Normal) at batch 32: consistent with the complexity
-analysis of Section~\ref{sec:factorial}---the routing term
-$O(L^2/c_R)$ keeps every cell asymptotically quadratic, with a reduced
-constant for the compressed cells, and Normal approaches the quadratic
-slope fastest. We therefore do \emph{not} claim subquadratic scaling. At
-the extreme, batch-32/$L{=}4096$ full attention requires a ${\sim}8$ GB
-score tensor and was skipped on the 16 GB machine. That ${\sim}8$ GB wall is a
-property of our materializing implementation, not of dense attention as such:
-fused kernels (e.g.\ FlashAttention \citep{dao2022flashattention}) avoid
-materializing the score tensor and move the wall elsewhere---so the memory
-advantage reported here is implementation-relative, and GPU transfer may erase it. All models
-process the frozen task in under $2$ ms per sequence at batch 32 (mean
-$1.6$--$1.8$ ms/seq at $L{=}256$; the $L{\ge}512$ region of the scaling
-panel is where attention, not fixed overhead, dominates per-batch time).
+\subsection{Accounting and controls}
+\label{sec:controls}
 
 \textbf{Compute and memory accounting.} Analytic forward MACs per sequence
 (L=256, dominant terms; closed-form accounting in the released benchmark
-scripts):
-Normal $76.9$M, CSA $(4,4)$ $63.3$M, DRRA $(8,4)$ $61.2$M --- DRRA $(8,4)$ needs
-$20\%$ fewer MACs than Normal. Three caveats bound that number. First, the
-as-run rows are
-\emph{not} projection-matched: the dense baseline carries a rank-128 output
-projection ($21.0$M) where the compressed cells use the equalized rank-64
-bottleneck ($10.5$M), and that one asymmetry is $10.5$M of the $15.7$M
-whole-model gap. Matching the projection ranks leaves a $7.8\%$ whole-model
-difference, while the attention path itself falls $30.9\%$ and the attention core
-falls $80.9\%$ (Section~\ref{sec:forecast}). To test whether the accuracy
-advantage depends on that asymmetry, we retrained the dense
-baseline with the matched projection (25 paired seeds, same protocol): matching
-the rank makes the dense model \emph{better}, not worse ($0.7910$ vs $0.8389$
-validation MSE; paired mean $-0.048$, 95\% interval $[-0.088,-0.008]$), so the
-as-run Normal was not a conservative reference point. Every compressed cell still
-beats the matched baseline, with paired validation deltas $-0.110$ to $-0.178$
-MSE whose 95\% intervals all exclude zero ($21$--$25$ of $25$ seeds per cell),
-and the ordering is the same on test MSE. The accuracy advantage is therefore
-not a projection artifact: matching the projection removes the MAC wedge and
-leaves the accuracy gap.
-Second, the wrapper MLP
-($33.9$M) is the largest single block for \emph{every} model, so attention
-is not the dominant compute at this scale. Third, measured latency differences
-($-6\%$) are smaller than the MAC difference because dense-masked
-CPU GEMMs are efficient relative to the extra compressor/indexer work.
-And MACs are not energy: arithmetic counts omit memory traffic and
-hardware-specific efficiency, so any of these MAC gaps is a work statement, not an
-energy claim (the deployment reading in Section~\ref{sec:conclusion} is explicitly
-conditional on hardware where attention dominates).
+scripts): Normal $76.9$M, CSA $(4,4)$ $65.4$M, DRRA $(8,4)$ $63.3$M --- DRRA
+$(8,4)$ needs $17.6\%$ fewer MACs than Normal. Three caveats bound that number.
+First, the as-run rows are \emph{not} projection-matched: the dense baseline
+carries a rank-128 output projection ($21.0$M) where the compressed cells use
+the equalized rank-64 bottleneck ($10.5$M), and that one asymmetry is $10.5$M of
+the $13.6$M whole-model gap; matching the ranks leaves a $4.6\%$ whole-model
+difference at $L{=}256$, while at that same length the attention path itself
+falls $18.4\%$ and the attention core (scores and values;
+Table~\ref{tab:energy-components}) falls $80.9\%$ (Section~\ref{sec:forecast}). Second, the wrapper MLP ($33.9$M)
+is the largest single block for \emph{every} model, so attention is not the
+dominant compute at this scale. Third, measured latency differences ($-6\%$) are
+smaller than the MAC difference because dense-masked CPU GEMMs (general
+matrix multiplications) are efficient
+relative to the extra compressor/indexer work. And MACs are not energy:
+arithmetic counts omit memory traffic and hardware-specific efficiency, so any of
+these MAC gaps is a work statement, not an energy claim (the deployment reading
+in Section~\ref{sec:conclusion} is explicitly conditional on hardware where
+attention dominates).
+
+\textbf{Projection-matched dense baseline.} The projection width is the one
+asymmetry that could manufacture the accuracy gap, so it is worth stating why
+the matched comparison is the right one. The output projection costs $640r$
+weights and as many MACs per token, where $r$ is its rank ($128$ as-run,
+$64$ in every compressed cell), so halving $r$ halves both; $64$ is not tuned for the
+dense model but is the rank every compressed cell already uses, so matching it
+cancels the bottleneck rather than favouring either side. The rival reading
+matters because it predicts the same ordering of the as-run rows: the compressed
+cells could owe their edge to the narrower bottleneck itself---a regularization
+effect at this parameter scale---rather than to compression. Only a dense model
+retrained at the same rank separates the two readings, so we trained one (25
+paired seeds, same protocol): matching the rank makes the dense model
+\emph{better}, not worse ($0.7910$ vs $0.8389$ validation MSE; paired mean
+$-0.048$, 95\% interval $[-0.088,-0.008]$), so the as-run Normal was not a
+conservative reference point. Every compressed cell still beats the matched
+baseline, with paired validation deltas $-0.110$ to $-0.178$ MSE whose 95\%
+intervals all exclude zero ($21$--$25$ of $25$ seeds per cell), and the ordering
+is the same on test MSE. The row is projection-matched, not parameter-matched:
+DRRA $(8,4)$ carries $34{,}116$ more full-model parameters, all of them the
+router and compressors, i.e.\ part of the treatment rather than a confound. The
+accuracy advantage is therefore not a projection artifact: matching the
+projection removes the MAC wedge and leaves the accuracy gap.
+
 Peak resident memory during a batch-32 forward burst grows by
 ${\sim}0.3$ GB (process watermark; parameter memory is only ${\sim}1.4$ MB
 per model), and at batch-32/$L{=}4096$ the full-attention score tensor
@@ -603,7 +658,9 @@ router-free model.
 before the query---is unmasked) at identical parameter counts and analytic MAC
 count (25 paired seeds). Cells are $(c_{KV},c_R)$ as in
 Table~\ref{tab:factorial}; ``routed'' is the factorial cell, ``all-block'' the
-same model with $k$ raised from $16$ to $M{=}64$. $\Delta$rel is the paired
+same model with $k$ raised from $16$ to $M{=}64$; the Routed and All-block
+columns are mean validation MSE (lower is better), and both models have
+bitwise identical parameters. $\Delta$rel is the paired
 mean of the per-seed relative validation-MSE changes, not the ratio of the
 displayed means; positive = all-block worse. Intervals are 95\% paired
 $t$-intervals. ``Seeds better'' counts seeds where the all-block control's
@@ -622,22 +679,6 @@ $(8,4)$ & $0.6190$ & $0.6857$ & $+11.8\%$ $[4.6,19.1]$ & $5/25$ & $15.62/32$ ($9
 \bottomrule
 \end{tabular}
 \end{table}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.92\linewidth]{figures/fig8_lscale.pdf}
-\caption{Forward-pass latency vs.\ lookback length $L$ (log-log; batch 32
-= 32 input windows per forward pass; mean over per-round medians); curves:
-Normal (full attention), $(4,4)$, $(8,4)$; slope = fitted exponent
-on the log-log axes ($2$ = quadratic). All cells are asymptotically
-quadratic
-(routing term $O(L^2/c_R)$, with $c_R$ = routing resolution in positions per
-index token); the compressed cells have smaller constants
-and lower empirical slopes ($1.40$/$1.42$ vs.\ $1.72$ for Normal at batch
-32), and batch-32/$L{=}4096$ full attention exceeds practical memory (see
-text). All measurement and regeneration logs are released with the source (batch-1 sweep in the same logs).}
-\label{fig:lscale}
-\end{figure}
 
 \subsection{Efficiency}
 \label{sec:efficiency}
@@ -667,9 +708,9 @@ DRRA beats CSA by $-5.2 \pm 0.9$ ms (95\% CIs exclude zero \emph{in that
 run}); levels still differ across sessions, so directional-only stands. A last-query audit reframes
 the comparison further: the forecast uses only the last position (Section~\ref{sec:task}),
 and recomputing latency for that forecast-required path (agrees with the full-layer computation to $\le 7.2\times10^{-7}$)
-gives Normal $2.6$--$3.0$ ms, CSA $(4,4)$ $6.2$--$7.3$ ms and DRRA
-$(8,4)$ $5.8$--$6.8$ ms per batch-32 pass in the two runs of the audit, a
-${\sim}17\%$ level difference between the two sessions. Under last-query accounting
+gives Normal $2.62$ ms, CSA $(4,4)$ $6.18$ ms and DRRA $(8,4)$ $5.82$ ms per
+batch-32 pass in the audited run; the ordering is stable, but the levels carry
+the same session caveat as Table~\ref{tab:speed}. Under last-query accounting
 the dense baseline's last-query path is the fastest, because it pays no
 compressor/indexer work: Table~\ref{tab:speed} compares full-layer costs, both costs are
 reported, and efficiency claims are stated against the last-query baseline. The exploratory
@@ -682,23 +723,58 @@ gains at this scale: dense-masked CPU GEMMs are efficient and the
 compressor/indexer add overhead. These are single-machine CPU measurements
 (fp32, 8 threads); cross-hardware transfer (Linux x86, GPU) remains
 follow-up work (Appendix future-work item~4).
-The pilot-era speed figures from earlier stages of this project remain
-superseded and are not used here.
 
 \textbf{Batch-size scaling.} Figure~\ref{fig:latency-scale} shows how the
 comparison changes with the number of input windows processed per forward
 pass (mean ms per sequence). At batch size 1 the fixed per-model overheads
 (compressor, indexer) dominate and Normal is fastest ($2.5$ vs.\ $3.3$
-ms/seq for DRRA $(8,4)$, $+30.8\%$). From batch 8 onward the compressed cells run
-at or below Normal, and at large batches the attention-column reduction
-takes over: the DRRA $(8,4)$ mean advantage over Normal is $-6.1\%$ at batch 64,
-$-5.1\%$ at 100, $-10.5\%$ at 128, and $-21.1\%$ at 256 ($3.49$ vs.\ $4.42$
-ms/seq). At the mid-range batches 16--32 the two are within run-to-run
-noise (the scaling run shows $-0.1$ to $+0.2\%$ there while the canonical
-Table~\ref{tab:speed} run shows $-6.1\%$ at batch 32). The overall pattern
-is the expected signature of amortized overheads: the compression machinery
-costs fixed work per pass, while the saved attention columns scale with the
-batch.
+ms/seq for DRRA $(8,4)$, $+30.8\%$). From batch 8 onward the compressed cells
+run at the same level as Normal or below, and at large batches the
+attention-column reduction takes over: the DRRA $(8,4)$ mean advantage over
+Normal is $-6.1\%$ at batch 64, $-5.1\%$ at 100, $-10.5\%$ at 128, and $-21.1\%$
+at 256 ($3.49$ vs.\ $4.42$ ms/seq). At the mid-range batches 16--32 the two are
+within run-to-run noise (the scaling run shows $-0.1$ to $+0.2\%$ there while
+the canonical Table~\ref{tab:speed} run shows $-6.1\%$ at batch 32), and the
+non-power-of-two batch of 100 sits below its neighbours for all three models,
+so only within-batch comparisons are used. The overall pattern is the expected
+signature of amortized overheads: the compression machinery costs fixed work
+per pass, while the saved attention columns scale with the batch.
+
+\textbf{Sequence length.} Figure~\ref{fig:lscale} sweeps the lookback at batch
+32 ($L \in \{128, \dots, 2048\}$) and at batch 1 ($L \in \{128, \dots,
+4096\}$). At batch 32 the DRRA $(8,4)$ advantage over Normal grows from $-32\%$
+at $L{=}512$ to $-56\%$ at $L{=}2048$ ($869$ vs.\ $1984$ ms/batch, a
+$2.3\times$ speedup), and at batch 1/$L{=}4096$ it reaches $-63\%$ ($86$ vs.\
+$235$ ms); at $L \le 256$ and batch 1, Normal is fastest, as at small batches
+above. The empirical log-log slopes at $L \ge 512$ are $1.40$ (DRRA $(8,4)$),
+$1.42$ (CSA $(4,4)$) and $1.72$ (Normal) at batch 32, consistent with the
+complexity analysis of Section~\ref{sec:factorial}: the routing term
+$O(L^2/c_R)$ keeps every cell asymptotically quadratic with a reduced constant,
+and Normal approaches the quadratic slope fastest. We therefore do not claim
+subquadratic scaling. At batch 32/$L{=}4096$ the full-attention score tensor
+would need ${\sim}8$ GB and was skipped on the 16 GB machine; a fused kernel
+\citep{dao2022flashattention} avoids materializing that tensor and would move
+the wall, so the memory advantage reported here is implementation-relative. All
+models process the frozen task in under $2$ ms per sequence at batch 32 (mean
+$1.6$--$1.8$ ms/seq at $L{=}256$ in this sweep; the $L \ge 512$ region is where
+attention, rather than fixed overhead, dominates per-batch time).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/fig8_lscale.pdf}
+\caption{Forward-pass latency versus lookback length $L$ (log-log; batch 32 =
+32 input windows per forward pass; mean over per-round medians). Curves:
+Normal (full attention), $(4,4)$, $(8,4)$; the title gives the fitted exponent
+on the log-log axes ($2$ = quadratic), so all cells are asymptotically
+quadratic (routing term $O(L^2/c_R)$, with $c_R$ = routing resolution in
+positions per index token), and the compressed cells have smaller constants and
+lower empirical slopes ($1.40$/$1.42$ vs.\ $1.72$ for Normal). At
+batch-32/$L{=}4096$ full attention exceeds practical memory (see text). One
+session, so levels are not comparable with Table~\ref{tab:speed}'s run (Normal
+measures 56 ms/batch at $L{=}256$ here against 52.5 ms there); the batch-1
+sweep is in the same released logs.}
+\label{fig:lscale}
+\end{figure}
 
 \textbf{Synthesis: is the dual-rate design better?} Each table speaks to one
 axis of ``better.'' Table~\ref{tab:configs} establishes the \emph{structural}
@@ -740,7 +816,7 @@ while on the full-layer path DRRA $(8,4)$ is fastest ($31.7$ vs.\
 $37.0$/$40.7$ ms; means of one audited 25-round round-robin run). Accuracy
 is the same in both panels: \textbf{DRRA $(8,4)$} has the lowest mean test
 loss on ETTh1 ($0.799$ vs.\ $0.883$ for CSA $(4,4)$ and $1.081$ for Normal).
-The honest reading is a trade-off, not dominance: under forecast-required
+The reading is a trade-off, not dominance: under forecast-required
 accounting the dense baseline is the fastest per forecast and the
 compressed cells are more accurate on ETTh1, whereas under full-layer
 accounting DRRA $(8,4)$ is lower-left (best on both axes). The full-layer
@@ -761,8 +837,12 @@ milliseconds (lower = faster = further left), batch 32; left: the
 accounting), right: the full-layer path (retained for architectures whose
 head needs all temporal outputs). On the forecast-required path Normal is
 fastest; on the full-layer path $(8,4)$ is fastest; accuracy is identical
-in the two panels. The open marker is the projection-matched dense baseline
-(Section~\ref{sec:stats}); its latency is anchored to the released Normal
+in the two panels. These are the suite's five-seed test means; the 25-seed
+factorial test means are in Table~\ref{tab:factorial}. The grey dashed
+horizontal line in each panel marks the Normal baseline's mean test loss, and
+the open marker is the
+projection-matched dense baseline
+(Section~\ref{sec:controls}); its latency is anchored to the released Normal
 measurement using a paired timing from the same session, so that machine load
 shifts both models together. Both panels use one audited session, so
 their absolute levels sit below Table~\ref{tab:speed}'s run; levels differ
@@ -780,8 +860,10 @@ frozen protocol (development machine, fp32 = single precision, 8 threads;
 mean over per-round
 medians, 15 rounds $\times$ 15 passes per model per batch size). At batch
 size 1 the fixed overheads of the compressor/indexer dominate and Normal is
-fastest; from batch 64 onward $(8,4)$ is clearly fastest, with the gap
-widening to $-21\%$ at batch 256. Measurement log released with the source.}
+fastest; from batch 64 onward $(8,4)$ is fastest, with the gap widening to
+$-21\%$ at batch 256. The non-power-of-two batch of 100 lies below its
+neighbours for all three models, so the comparison is read within a batch size,
+not across batch sizes. Measurement log released with the source.}
 \label{fig:latency-scale}
 \end{figure}
 
@@ -831,7 +913,7 @@ is performed; the forecast is a statement about the geometry this paper
 has already measured, and Appendix~\ref{sec:appendix-energy} gives its
 full derivation, sensitivity analysis, and audit.
 
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.92\linewidth]{figures/fig12_scaling_forecast.pdf}
 \caption{Structural scaling forecast for the compressed-and-indexed
@@ -852,9 +934,12 @@ end-to-end $(8,4)$ time savings for the study's backbone overlaid as open
 markers (squares: batch 1; diamonds: batch 32; positive savings only).
 The measured points sit on or below the projection, as expected, because
 they include non-attention work. \textbf{(d)}~Closed-form asymptotic
-savings over the design plane; white squares mark the tested cells. All
+savings over the design plane, with $c_{KV}$ horizontal and $c_R$ vertical
+and the colorbar giving $S_\infty$ in percent; white squares mark the tested
+cells. Grey vertical dotted guides in panels (a)--(c) mark $4$k, $8$k,
+$32$k and $128$k tokens. All
 curves are analytic projections, not measurements; the accompanying
-script asserts exact equality with the released component accounts at
+script asserts exact equality with the audited component accounts at
 $L{=}256$ before drawing.}
 \label{fig:scaling-forecast}
 \end{figure}
@@ -876,9 +961,9 @@ Table~\ref{tab:notation} collects the notation with the frozen values.
 \begin{table}[t]
 \centering
 \small
-\caption{Notation for the projection, with values for the frozen
-configuration. The rates $c_{KV}$ and $c_R$ take the values listed per
-cell in Table~\ref{tab:configs}.}
+\caption{Notation used by the work and energy projections, with values for
+the frozen configuration. The rates $c_{KV}$ and $c_R$ take the values listed
+per cell in Table~\ref{tab:configs}.}
 \label{tab:notation}
 \begin{tabular}{lll}
 \toprule
@@ -907,7 +992,7 @@ while a compressed cell with rates $(c_{KV}, c_R)$ performs
 W_C(L; c_{KV}, c_R)
 = 2 h d_h L\!\left(\frac{L}{c_{KV}} + W + 1\right)
 + d \frac{L^{2}}{c_R}
-+ 2 L d\,(64 + d_h),
++ 4 L d \cdot 64,
 \end{equation}
 where the three terms price, in order, the score--value computation over
 the fixed column set, the router, and the two-series compressors. The
@@ -920,11 +1005,12 @@ head of the shared routing query, at $h d_h = d$ MACs per comparison
 per token pair would under-count by $h$; the executed tensor shapes are
 recorded in the released audit log), leaving the routing cost quadratic in $L$
 with the reduced constant $1/c_R$; the third is the per-token cost of
-building both compressed series, $2d(64 + d_h)$ MACs, the only term
-linear in $L$. That linear term dominates at short context---6.29M of
-the 11.60M attention-path MACs of DRRA $(8,4)$ at $L{=}256$ (the router
+building both compressed series, $4d\cdot 64$ MACs (two projections of
+width 64 for each of the two compressors), the only term
+linear in $L$. That linear term dominates at short context---8.39M of
+the 13.70M attention-path MACs of DRRA $(8,4)$ at $L{=}256$ (the router
 contributes 2.10M), hence its
-30.9\% saving there---and is asymptotically negligible.
+18.4\% saving there---and is asymptotically negligible.
 The corresponding attention-path saving,
 \begin{equation}
 \label{eq:cf-savings}
@@ -949,15 +1035,15 @@ Dividing
 Equation~\ref{eq:cf-work} by $W_N$ exposes the same decomposition at
 finite context: with the frozen geometry ($d = h d_h$) the compressed
 path pays four fixed shares of dense work,
-$1/c_{KV} + (W+1)/L + 1/(2 c_R) + (64 + d_h)/L$, of which the two
+$1/c_{KV} + (W+1)/L + 1/(2 c_R) + 128/L$, of which the two
 $1/L$ shares shrink as context grows; in the evaluated form the
 compressed path reads $W_C(L) = 256\,L\,(L/c_{KV} + 17) + 128\,L^2/c_R +
-24{,}576\,L$, with $256 = 2 h d_h$, $17 = W + 1$, $128 = h d_h = d$, and
-$24{,}576 = 2d(64 + d_h)$. At the frozen context the
-savings are modest---18.4\% to 40.2\% across the four cells, because the
+32{,}768\,L$, with $256 = 2 h d_h$, $17 = W + 1$, $128 = h d_h = d$, and
+$32{,}768 = 4d\cdot 64$. At the frozen context the
+savings are modest---5.9\% to 27.7\% across the four cells, because the
 linear compressor term dominates at $L{=}256$---but they grow with
 context and saturate at the limit: at $L{=}32{,}768$ the four cells
-remove 62.2\%, 74.7\%, 80.9\%, and 84.0\% of attention-path work,
+remove 62.1\%, 74.6\%, 80.8\%, and 83.9\% of attention-path work,
 respectively, within a few tenths of a percentage point of $S_\infty$,
 approaching it from below with the gap set by the compressor term
 (Table~\ref{tab:forecast}). The map over the design plane
@@ -977,18 +1063,18 @@ Equation~\ref{eq:cf-savings}; columns are the $(c_{KV}, c_R)$ rates (positions
 per block/token). The frozen-task row anchors the measured
 operating point; the limit row is the closed-form asymptote $S_\infty$.
 All values are analytic projections of the audited component accounting,
-not measurements; the accompanying script reproduces the released
+not measurements; the accompanying script reproduces the audited
 per-component totals exactly before drawing them.}
 \label{tab:forecast}
 \begin{tabular}{lcccc}
 \toprule
 Context $L$ & $(4,4)$ & $(8,4)$ & $(16,4)$ & $(32,4)$ \\
 \midrule
-$256$ (frozen task) & 18.4\% & 30.9\% & 37.1\% & 40.2\% \\
-$4{,}096$   & 59.7\% & 72.2\% & 78.5\% & 81.6\% \\
-$8{,}192$   & 61.1\% & 73.6\% & 79.9\% & 83.0\% \\
-$32{,}768$  & 62.2\% & 74.7\% & 80.9\% & 84.0\% \\
-$131{,}072$ & 62.4\% & 74.9\% & 81.2\% & 84.3\% \\
+$256$ (frozen task) & 5.9\% & 18.4\% & 24.6\% & 27.7\% \\
+$4{,}096$   & 59.0\% & 71.5\% & 77.7\% & 80.8\% \\
+$8{,}192$   & 60.7\% & 73.2\% & 79.5\% & 82.6\% \\
+$32{,}768$  & 62.1\% & 74.6\% & 80.8\% & 83.9\% \\
+$131{,}072$ & 62.4\% & 74.9\% & 81.1\% & 84.3\% \\
 $L \to \infty$ ($S_\infty$) & 62.5\% & 75.0\% & 81.2\% & 84.4\% \\
 \bottomrule
 \end{tabular}
@@ -1006,7 +1092,7 @@ operations per sequence), the projected whole-layer saving is
 \label{eq:cf-whole}
 S_{\mathrm{layer}}(L; d) =
 \frac{2dL - \left[\,2d\!\left(\frac{L}{c_{KV}} + W + 1\right)
-+ d \frac{L}{c_R} + 2d(64 + d_h)\,\right]}{2dL + 12 d^{2}}.
++ d \frac{L}{c_R} + 4d\cdot 64\,\right]}{2dL + 12 d^{2}}.
 \end{equation}
 Both terms are per-token: the numerator is the attention-path work
 removed, and the denominator the dense layer cost---attention $2dL$,
@@ -1014,18 +1100,18 @@ which is $2 h d_h L^2$ divided by $L$ since $d = h d_h$, plus the
 unchanged $12 d^2$ block---so the ratio is the fraction of
 whole-layer work removed. At a
 $32$k-token context, DRRA $(8,4)$ removes $68.3\%$ of whole-layer
-work at $d{=}512$, $62.9\%$ at $d{=}1024$, and $42.7\%$ at $d{=}4096$
-(an 8B-class width), while the $(32,4)$ probe removes $76.8\%$,
-$70.8\%$, and $48.0\%$; the fraction shrinks as $d$ grows because
+work at $d{=}512$, $62.8\%$ at $d{=}1024$, and $42.6\%$ at $d{=}4096$
+(an 8B-class width), while the $(32,4)$ probe removes $76.7\%$,
+$70.7\%$, and $48.0\%$; the fraction shrinks as $d$ grows because
 attention is then a smaller share of layer work. For the study's own
-backbone ($d{=}128$) the projected whole-layer saving is $50.5\%$ at
-$L{=}2048$ and $60.8\%$ at $L{=}4096$.
+backbone ($d{=}128$) the projected whole-layer saving is $49.4\%$ at
+$L{=}2048$ and $60.2\%$ at $L{=}4096$.
 
 The deeper KV cuts continue the trend with sharply diminishing returns at
 the studied scale. The asymptotic attention-path saving rises from
 $75.0\%$ for $(8,4)$ to $81.2\%$ and $84.4\%$ for $(16,4)$ and $(32,4)$;
 at the frozen context the same cuts add $6.2$ and $9.3$ points
-($37.1\%$ and $40.2\%$ against $30.9\%$), because the compressor cost is
+($24.6\%$ and $27.7\%$ against $18.4\%$), because the compressor cost is
 invariant to $c_{KV}$, and the measured full-layer speedup plateaus at
 $1.22\times$ for both probes against $1.18\times$ for $(8,4)$---a
 difference within the run-to-run drift documented for these measurements.
@@ -1052,7 +1138,9 @@ coefficients $\varepsilon_k$. Here $\theta$ denotes the configuration
 the number of operations of type $k$ (the counts of
 Equation~\ref{eq:cf-work}), and $\varepsilon_k$ is the energy per
 operation of type $k$, a hardware rather than a model property. With a
-single coefficient, $E \propto W$, so the savings in
+single coefficient ($\varepsilon_k = \varepsilon$ for every $k$) the model
+reduces to $E(\theta) \propto \sum_k n_k(\theta)$, the total arithmetic work
+of configuration $\theta$, so the savings in
 Equations~\ref{eq:cf-savings} and~\ref{eq:cf-whole} \emph{are}
 fractional energy savings: the
 coefficient is common to the baseline and
@@ -1061,10 +1149,10 @@ projections independent of processor and process node under the stated
 model. Figure~\ref{fig:energy-composition} shows the composition this
 leaves at the study operating point ($L{=}2048$): compression shrinks
 the attention core from $72.7\%$ of dense per-token work to $18.8\%$
-(CSA) and $9.7\%$ (DRRA), the router and compressor add $12.5\%$, and
+(CSA) and $9.7\%$ (DRRA), the router and compressor add $13.6\%$, and
 the projections-and-MLP block is untouched at $27.3\%$, so the
 whole-model saving is smaller than the attention-path
-saving---$41.4\%$ versus $57.0\%$ for CSA and $50.5\%$ versus $69.5\%$
+saving---$40.3\%$ versus $55.4\%$ for CSA and $49.4\%$ versus $67.9\%$
 for DRRA. Two consistency checks on the
 work-to-time linkage that any such model requires are available from the
 systems measurements. First, the measured forward latencies rank with the
@@ -1072,9 +1160,9 @@ analytic attention-path work across the audited lookback sweep (Spearman
 $\rho = 1.000$ at batch 32 and $0.992$ at batch 1). Second, at the
 operating points where the two are commensurate, the whole-layer
 projection tracks the measured end-to-end saving: at $L{=}2048$/batch 32
-it predicts $50.5\%$ against $56.2\%$ measured, and at $L{=}4096$/batch 1
-it predicts $60.8\%$ against $63.3\%$ measured. The measured saving now
-exceeds the arithmetic projection by $2.5$--$5.7$ points, the opposite of
+it predicts $49.4\%$ against $56.2\%$ measured, and at $L{=}4096$/batch 1
+it predicts $60.2\%$ against $63.3\%$ measured. The measured saving now
+exceeds the arithmetic projection by $3.1$--$6.8$ points, the opposite of
 what a pure work model predicts; the likely source is that the
 dense baseline is memory-bound at these contexts (the materialized score
 tensor dominates its time), so its wall-clock cost is larger than its
@@ -1084,12 +1172,12 @@ already reports. Two
 sensitivities bound the model's assumptions
 (Appendix~\ref{sec:appendix-energy}): reweighting the router and
 compressor terms by a factor of $0.5$ leaves the $32$k DRRA projection at
-$81.1\%$ and by a factor of $2$ at $61.9\%$ (central case $74.7\%$), with the
+$81.0\%$ and by a factor of $2$ at $61.7\%$ (central case $74.6\%$), with the
 direction unchanged; and the executed
 router is the expensive arrangement---it scores every index token with
 every head of the shared query, and a single-head indexer (as in a
 Lightning-Indexer-style design, which this module does not use) would raise the
-$32$k DRRA projection from $74.7\%$ to $84.0\%$ and the asymptote from
+$32$k DRRA projection from $74.6\%$ to $83.9\%$ and the asymptote from
 $75.0\%$ to $84.4\%$.
 
 What is \emph{not} claimed is equally explicit. These are model-based
@@ -1102,7 +1190,7 @@ hardware-independent ratio---the work reduction---which any energy
 evaluation of this family must account for, and which the measurements
 above anchor in direction.
 
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.92\linewidth]{figures/fig13_energy_composition.pdf}
 \caption{From work to energy at the study operating point
@@ -1110,13 +1198,13 @@ above anchor in direction.
 single-coefficient model (energy $E$ proportional to total arithmetic
 work) the per-token work shares are also its energy shares, so
 the bars are normalized to the dense model and imply no absolute
-energy. The attention path alone saves $57.0\%$ $(4,4)$ and $69.5\%$
+energy. The attention path alone saves $55.4\%$ $(4,4)$ and $67.9\%$
 $(8,4)$ of attention work (Equation~\ref{eq:cf-savings}), but the fixed
 per-token block of $12 d^2$ projections-and-MLP operations ($4d^2$ q/k/v/o
 projections plus $8d^2$ MLP)
 (Equation~\ref{eq:cf-whole}) is untouched by the cell definition and
-caps the whole-model saving at $41.4\%$ and $50.5\%$. Counted from the
-released component accounts (Table~\ref{tab:energy-components}); no new
+caps the whole-model saving at $40.3\%$ and $49.4\%$. Counted from the
+audited component accounts (Table~\ref{tab:energy-components}); no new
 runs.}
 \label{fig:energy-composition}
 \end{figure}

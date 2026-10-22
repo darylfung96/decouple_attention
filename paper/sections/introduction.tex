@@ -14,29 +14,32 @@ efficient-attention designs for large language models
 routing \citep{roy2020routing}, low-rank KV compression
 \citep{deepseekv2_2024}---are individually well known.
 
-The efficiency stakes are concrete. In large-scale ML, arithmetic work is
-now the dominant driver of the energy and carbon cost of training and
-inference \citep{strubell2019energy,patterson2021carbon,schwartz2020green,wu2022sustainable},
+The efficiency stakes are large, and they are concentrated in data centers.
+A long-horizon forecaster is not trained once and then retired: it is
+\emph{served}, and serving is a data-center workload, because every monitored
+series is re-queried on a fixed cadence and the query rate never falls to
+zero. In large-scale machine learning, arithmetic work is the dominant driver
+of the energy and carbon cost of training and inference
+\citep{strubell2019energy,patterson2021carbon,schwartz2020green,wu2022sustainable},
 and energy is, to a first order, proportional to that work. Dense attention
-sits on the steepest part of this curve: its dominant term is quadratic in
-the lookback, so each doubling of $L$ quadruples the attention-layer
-arithmetic---and, at a fixed hardware generation, the energy per window---
-until a routing or compression remedy is applied. Long-horizon forecasting
-turns this from an abstraction into an operating constraint: its
-deployments (grid and building energy management, traffic control,
-financial risk systems) are served continuously at sustained query volume,
-often on power-constrained edge hardware, so per-forecast energy is a real
-cost rather than an afterthought. For this family, efficiency is therefore
-not a ``nice to have'': it is the difference between a forecasting system
-that can and one that cannot be deployed at the volumes real applications
-demand. The design question this paper measures---\emph{which compression
-axis buys efficiency, and which axis, when coarsened, is the accuracy we
-silently give away}---is thus also an energy question, and its answer
-determines how cheaply accurate long-horizon forecasting can be run. We
-return to that question quantitatively in Section~\ref{sec:forecast},
-where the audited component accounting is used to forecast attention work
-at contexts up to $2^{17}$ tokens and to project energy savings under
-explicit first-order assumptions.
+sits on the steepest part of this curve: its dominant term is quadratic in the
+lookback, so each doubling of $L$ quadruples the attention-layer arithmetic
+and, at a fixed hardware generation, the energy per window. Long-horizon
+forecasting turns this into an operating constraint, because its deployments
+(grid and building energy management, traffic control, financial risk
+systems) are served continuously at sustained query volume, often on
+power-constrained hardware. Which axis buys efficiency---and which axis, when
+coarsened, is the accuracy given away---is therefore also a question about
+energy, and this paper puts numbers to it: at $L{=}2048$ the equal-rate cell
+removes $55.4\%$ of attention-path work and $40.3\%$ of whole-layer work, the
+dual-rate corner $67.9\%$ and $49.4\%$, and both shares rise with context, a
+forecast Section~\ref{sec:forecast} carries out to $2^{17}$ tokens. We report
+these as work reductions, not joules:
+energy follows them only to the extent that a deployment is arithmetic-bound,
+a dependency Section~\ref{sec:efficiency} states and
+Appendix~\ref{sec:appendix-energy} bounds. The saving is therefore a property
+of the design that any energy account can use, rather than an electricity
+figure measured here.
 
 What is not well studied is the \emph{design space} of this family: how the
 two independent compression axes interact. We identify two axes:
@@ -113,5 +116,4 @@ reported---as development-machine measurements with a directional-only stance
 (Table~\ref{tab:speed}, with paired and forecast-required companions in
 Section~\ref{sec:efficiency}); cross-hardware transfer remains future work.
 Analytic MACs are likewise reported with explicit caveats (the wrapper MLP
-dominates; MACs are not energy). Pre-freeze latency figures from earlier stages
-of this project are superseded and are deliberately \emph{not} used here.
+dominates; MACs are not energy).

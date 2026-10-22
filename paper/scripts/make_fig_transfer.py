@@ -13,6 +13,9 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
+# TrueType, not Type 3: submission PDFs must not embed Type 3 fonts.
+plt.rcParams.update({"pdf.fonttype": 42, "ps.fonttype": 42})
+
 REPO = Path(__file__).resolve().parents[2]
 G17 = REPO / "plan" / "gates" / "gate17_e2"
 FIG = REPO / "paper" / "figures"

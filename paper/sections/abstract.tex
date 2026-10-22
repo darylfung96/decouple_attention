@@ -3,39 +3,27 @@ Long-horizon time-series forecasting with Transformers is dominated by the
 cost of quadratic attention over long lookback windows. Compressed-and-indexed
 attention---compressing the key/value (KV) stream and routing each query to a
 few compressed blocks---reduces this cost, but its design space is rarely
-studied systematically. We treat the family as a two-axis design problem: the
-KV compression rate $c_{KV}$ and the routing resolution $c_R$. Under a frozen
-direct-96-step forecasting protocol with twenty-five paired seeds, we run a
-parameter-equalized $2\times2$ factorial on ETTh1 and a three-way
-comparison---full attention, the equal-rate CSA configuration $(4,4)$ (the
-design point of DeepSeek-V4's Compressed Sparse Attention), and the dual-rate
-corner DRRA $(8,4)$---across twelve datasets spanning the ETT family, large
-multivariate series, different dynamics, and mechanistic synthetic probes. We
-report four findings. First, on ETTh1 \emph{every} compressed configuration
-outperforms full causal attention on validation MSE (mean deltas $-18.8\%$
-to $-27.0\%$, in 95/100 paired seed comparisons; Holm-adjusted
-$p \le 3.3\times10^{-6}$) at an equal or slightly smaller parameter
-count; a bit-exact wiring audit confirms the baseline is correctly
-implemented, and the advantage survives a dense retrain whose output
-projection is matched to the compressed cells' rank; removing the router's
-selection costs $12$--$27\%$ relative accuracy at identical parameters and
-MAC count, but the selection-free cells still beat full attention.
-Second, coarsening the router ($c_R{:}4{:}1 \to 8{:}1$)
-systematically deteriorates accuracy ($+0.030$ validation MSE), while
-coarsening KV compression is mildly beneficial ($-0.032$): the pre-registered
-decoupling hypothesis is supported on ETTh1 (per-seed paired contrast, exact Wilcoxon $p = 0.0074$)---
-and the conditional reading localizes it, since the interaction is carried by the
-$(4,8)$ cell (fine content, coarse router: $+0.0662$) and at coarse content the
-finer router adds nothing. Routing here is non-learned (the hard top-$k$ selector
-gives the indexer no task gradient, though route membership still follows the drift
-of upstream features), so this is a selection-architecture effect, not learned routing.
-Third, the dual-rate corner DRRA $(8,4)$ reduces the attention matrix to 48 (+1 sink)
-columns
-versus 256 (5.22$\times$) at a matching parameter count. Fourth, the advantage
-is \emph{signal-dependent}: 8/12 datasets each (DRRA and CSA), concentrated
-on smooth, redundant real-world series, with slight losses on the synthetic
-exact-recall probes. The factorial conclusions are statistically established
-at $n{=}25$ on ETTh1 (a three-dataset replication did not reproduce the sign structure); the cross-dataset pattern remains descriptive (five seeds per
-dataset, per-dataset tests capped at $p = 0.0625$), and latency is reported
-for the development machine only.
+studied systematically. We vary two axes: the KV compression rate $c_{KV}$ and
+the routing resolution $c_R$. Under a frozen direct-96-step protocol with
+twenty-five paired seeds, we run a parameter-equalized $2\times2$ factorial on
+ETTh1 and a three-way comparison---full attention, the equal-rate $(4,4)$
+configuration (DeepSeek-V4's Compressed Sparse Attention design point), and the
+dual-rate $(8,4)$ corner---across twelve datasets. We report four findings.
+First, on ETTh1 every compressed configuration outperforms full causal
+attention on validation mean squared error (MSE; mean deltas $-18.8\%$ to
+$-27.0\%$, 95/100 paired comparisons, Holm-adjusted $p \le 3.3\times10^{-6}$)
+at equal or smaller parameter count; removing the routing selection costs
+$12$--$27\%$ relative accuracy at identical parameters and multiply--accumulate
+(MAC) count, yet the selection-free cells still beat full attention. Second,
+coarsening the router ($+0.030$ validation MSE) hurts while coarsening KV
+compression is mildly beneficial ($-0.032$), supporting the decoupling
+hypothesis (paired Wilcoxon $p = 0.0074$); a conditional reading localizes the
+effect to the fine-content/coarse-router cell, and a three-dataset
+replication did not reproduce the sign structure. Third, the dual-rate corner
+reduces the attention matrix to 48 (+1 sink) columns versus 256
+($5.22\times$) at matching parameters. Fourth, the advantage is signal-dependent:
+smoother, more redundant series benefit most. Routing is a non-learned hard
+top-$k$ selector, so no task gradient reaches the indexer and the effects are
+architectural. Conclusions are established at $n{=}25$ on ETTh1; the
+cross-dataset pattern is descriptive and latency is single-machine.
 \end{abstract}

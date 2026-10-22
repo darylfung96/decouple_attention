@@ -5,9 +5,9 @@
 \label{sec:task}
 All experiments use a single frozen task specification---stated in full in
 this section and frozen before any model-comparison run---applied to twelve
-datasets: the ETT family
-(ETTh1, ETTh2, ETTm1, ETTm2; 7 features, hourly and 15-minute)
-\citep{zhou2021informer}, the large multivariate sets Electricity (321
+datasets: the Electricity Transformer Temperature (ETT) family
+\citep{zhou2021informer} (ETTh1, ETTh2, ETTm1, ETTm2---7 features each, at
+hourly ($h$) and 15-minute ($m$) sampling), the large multivariate sets Electricity (321
 channels), Traffic (862), and Weather (21) and the Exchange rates (8,
 daily), as benchmarked by \citet{wu2021autoformer} and redistributed by the
 Time-Series Library \citep{wu2023timesnet}, Solar-Energy (137, 10-minute)
@@ -22,9 +22,11 @@ statistics are fit on the \emph{train} split only and applied to all splits
 (the earlier practice of fitting over the full series was a future-statistics
 leak and is fixed); channels with zero training variance are normalized with
 unit scale. The task is \emph{direct} 96-step forecasting: in one forward
-pass the model maps $x \in \mathbb{R}^{B \times 256 \times F}$ to
-$\hat{y} \in \mathbb{R}^{B \times 96 \times F}$ ($F$ features per dataset),
-and the loss is the pooled MSE over all $(B, 96, F)$ elements, reported in
+pass the model maps an input window $x \in \mathbb{R}^{B \times L \times F}$
+to a forecast $\hat{y} \in \mathbb{R}^{B \times H \times F}$, where $B$ is the
+number of windows in the batch, $L{=}256$ the lookback, $H{=}96$ the horizon,
+and $F$ the number of features (channels) of the dataset. The loss is the
+pooled mean squared error (MSE) over all $(B, H, F)$ elements, reported in
 standardized units (lower is better).
 No autoregressive decoding and no teacher forcing is used. Causality is
 enforced by construction and verified empirically: a future-invariance and
@@ -48,37 +50,71 @@ systematically, so the budget does not bias cell comparisons.
 
 \subsection{Model family}
 \label{sec:family}
-All configurations share one minimal Transformer block (hidden size 128,
-4 heads, head dimension 32) with a horizon head
-$\mathrm{Linear}(128 \rightarrow 96 \cdot F)$ applied to the last hidden
-state:
+All configurations share one minimal Transformer block (hidden size
+$d{=}128$, $h{=}4$ heads, head dimension $d_h{=}32$, hence
+$d = h\,d_h$) with a horizon head
+$\mathrm{Linear}(128 \rightarrow H \cdot F)$ applied to the last position:
 \begin{equation}
-x = \mathrm{input\_proj}(u) + \mathrm{pos\_embedding}, \qquad
-h = \mathrm{MLP}(\mathrm{LN}(\mathrm{attn}(x) + x)), \qquad
-\hat{y} = \mathrm{horizon\_head}(h[:, -1, :]),
+e = \mathrm{input\_proj}(x) + \mathrm{pos\_embedding}, \qquad
+z = \mathrm{MLP}(\mathrm{LN}(\mathrm{attn}(e) + e)), \qquad
+\hat{y} = \mathrm{horizon\_head}(z[:, -1, :]),
 \end{equation}
-The only difference between configurations is the attention module. The
-shared Q/KV/O projections follow the MLA-style pattern: a low-rank query
-projection with RMSNorm, a tied single-head KV projection (K = V) with
-RoPE applied to the last 8 of 32 dimensions, and a grouped O projection.
+where $x$ is the input window of Section~\ref{sec:task}, $e$ the embedded
+sequence, $\mathrm{LN}$ layer normalization, $\mathrm{MLP}$ the
+feed-forward block, and $z$ the block output; $z[:, -1, :]$ is its last
+position, the only position the forecast head reads. The only difference
+between configurations is the attention module. The shared Q/KV/O
+(query, key--value, output) projections follow the MLA-style pattern: a
+low-rank query projection with root-mean-square normalization (RMSNorm), a
+tied single-head KV projection ($K = V$) with rotary position embeddings
+(RoPE) applied to the last 8 of the $d_h{=}32$ dimensions, and a grouped
+output projection.
 A full causal attention variant (\emph{Normal}) with no compression serves
 as the task-appropriate baseline.
 
+Figure~\ref{fig:arch} draws the two paths side by side at the same level of
+detail, so that the quantity that separates the two families---how many key
+columns a query reads---can be read from the figure rather than inferred from
+the prose. Panel~(a) reads all $L$
+columns under a causal mask. Panel~(b) reads a column set assembled from
+three sources---$L/c_{KV}$ compressed blocks, the last $W{=}16$ positions
+kept at full resolution, and one learned sink---and each attention box
+carries a strip marking those columns. Two properties of panel~(b) carry
+into the rest of the paper. Its per-query column count grows as $L/c_{KV}$
+plus a constant (the window and the sink), rather than as $L$, so at fixed
+rates the saving is a constant factor and not a change of asymptotic order;
+Section~\ref{sec:forecast} therefore reports it as a ratio that saturates
+rather than as a speedup that compounds with context. And the selection is
+applied as a mask rather than as a reduction in work---every block column is
+computed either way---so the arithmetic is set by the two rates and not by
+which blocks are kept, and what the selection does buy is measured in
+Section~\ref{sec:controls}.
+
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.72\linewidth]{figures/fig5_architecture.pdf}
-\caption{Architecture of the compressed-and-indexed family (the
-$(c_{KV}, c_R) = (8,4)$ cell drawn; $c_{KV}$ = KV-cache compression rate,
-positions per stored block; $c_R$ = routing resolution, positions per index
-token). One shared Transformer block whose only varying component is
-the attention module: a KV compressor ($c_{KV}{=}8$: 256 positions $\to$ 32
-blocks), a routing indexer ($c_R{=}4$: 64 index tokens) with top-$k{=}16$
-selection (the router keeps the 16 best-scoring index tokens per query),
-and dense masked attention over the fixed
-column set (32 KV blocks + 16-token sliding window + 1 always-visible sink
-column $= 49$ columns; Normal = full attention, attends
-to all 256). The horizon head maps the last hidden state to the 96-step
-forecast.}
+\includegraphics[width=\linewidth]{figures/fig1_architecture_compare.pdf}
+\caption{The attention module, standard beside compressed. Both panels start
+from the same hidden-state tensor $[B, L, d]$ ($B$ = batch size, $L$ =
+lookback, $d$ = hidden size) and feed the next layer. \textbf{(a)}~Standard
+causal attention, the \emph{Normal} baseline: every position keeps its own key
+and value, so each query scores all $L{=}256$ keys, restricted only by the
+causal mask---cost growing with $L^2$. \textbf{(b)}~The compressed-and-indexed
+module, drawn at the $(c_{KV}, c_R) = (8,4)$ cell ($c_{KV}$ = KV-cache
+compression rate, positions per stored block; $c_R$ = routing resolution,
+positions per index token). From the same hidden states, two branches run in
+parallel: a KV compressor ($c_{KV}{=}8$: 256 positions $\to$ 32 blocks) and a
+routing indexer ($c_R{=}4$: 256 positions $\to$ 64 index tokens). The router
+scores the index tokens with the query and keeps the top-$k{=}16$; two index
+tokens map to one block at this cell, so up to 16 of the 32 block columns are
+attended. The 32 block columns, the sliding window (16 uncompressed
+positions) and an always-visible sink column are combined into a fixed column
+set of $16 + 32 + 1 = 49$, and attention is computed densely over that set
+with unselected blocks masked to $-\infty$ (Section~\ref{sec:family-mech});
+the hatched cells are the ones computed and then masked. Cost therefore
+scales with the strip's width, 49 against 256, not with the selection. Both panels
+share the Transformer block and the Q/KV/O projections; only the attention
+module differs, and the horizon head maps the last hidden state to the
+96-step forecast.}
 \label{fig:arch}
 \end{figure}
 
@@ -91,14 +127,21 @@ components, all inherited verbatim from the reference implementation:
 width and gated by a per-dimension softmax over $2m$ slots, so that every
 token contributes to two adjacent windows (its own and the next); the
 weighted sum is RMSNormed and RoPE-encoded at block starts. With rate
-$m$, this yields $C = L/m$ KV blocks covering $[mj, mj + m - 1]$. The
+$m$---the cell's KV compression rate, $m = c_{KV}$---this yields
+$C = L/m$ KV blocks, block $j$ covering $[mj, mj + m - 1]$. The
 same compressor, with its own parameters, produces the $M = L / m_{idx}$
-routing index tokens.
+routing index tokens, where $m_{idx} = c_R$ is the routing resolution. The
+two rates are the only quantities the factorial varies
+(Section~\ref{sec:factorial}); $C$ and $M$ are the column counts they imply.
 
-\textbf{Router (scorer + top-$k$ selector).} Each query scores all $M$ index
-tokens ($\mathrm{ReLU}(q \cdot \mathrm{idx}^\top)/\sqrt{d}$, head-mixed by a
-weight that is fixed in practice --- see the trainability note below), masks tokens that lie in the future, and selects the
-top-$k$ ($k{=}16$). We use ``router'' for the scorer-plus-selector
+\textbf{Router (scorer + top-$k$ selector).} Each query vector $q$ (one per
+head, of dimension $d_h$) scores all $M$ index tokens as
+$\mathrm{ReLU}(q \cdot \mathrm{idx}^\top)/\sqrt{d_h}$, where
+$\mathrm{idx}$ denotes the index-token matrix and
+$\mathrm{ReLU}(z) = \max(z, 0)$; the per-head scores are combined by a
+head-mixing weight that is fixed in practice (see the trainability note
+below). The router masks tokens that lie in the future and selects the
+top-$k$ ($k{=}16$) of the remaining ones. We use ``router'' for the scorer-plus-selector
 combination; DeepSeek-V4 \citep{deepseekv4_2026} calls the analogous scorer
 the \emph{Lightning Indexer} and the selection step the \emph{top-$k$
 selector} (their paper uses neither ``router'' nor a standalone indexer
@@ -116,7 +159,7 @@ than absent from the graph. The audit
 establishes gradient isolation, not literal route constancy---index scores are
 computed from features produced by trainable upstream components, so the selected
 set can change as those features drift over training. A route-overlap probe across
-epochs measures that drift rather than assuming it away (Section~\ref{sec:rq2});
+epochs measures that drift rather than assuming it away (Section~\ref{sec:probes});
 a trained selector remains deferred future work (both audit limits are in the
 released logs).
 
@@ -130,8 +173,9 @@ CPU this formulation is several times faster than per-query gather in our
 implementation, and it keeps the softmax exact.
 
 \textbf{Index-to-block mapping (per cell).} The router selects top-$k{=}16$ index
-tokens; each token $t$ covers $[4t, 4t{+}3]$ at $c_R{=}4$ ($[8t, 8t{+}7]$ at $c_R{=}8$)
-and must be translated to KV-block ids before the dense masked attention:
+tokens; index token $t$ covers $[4t, 4t{+}3]$ at $c_R{=}4$ ($[8t, 8t{+}7]$ at $c_R{=}8$)
+and must be translated to KV-block id $j$ before the dense masked attention
+($\sslash$ below denotes integer division):
 \begin{itemize}
   \item $(8,4)$: two fine tokens per coarse block --- block $j = t \sslash 2$,
         covering $[8j, 8j{+}7]$ (at most two of the 16 selections collide per block).
@@ -142,16 +186,17 @@ and must be translated to KV-block ids before the dense masked attention:
         $j = t \sslash p$ with $p = 4, 8$ (the general many-to-one rule).
 \end{itemize}
 A selected block is read only when its entire span ends at or before the query
-($\mathrm{block\_end} \le q$); otherwise --- and for tokens masked as future or
+($\mathrm{block\_end} \le$ the query's position); otherwise --- and for tokens masked as future or
 out of range --- it maps to a sentinel id that \_attend drops, so no query reads
 future positions. Causality holds through the overlapping compressor as well: each
 compressed block mixes only its own and the previous window (receptive field
 $[m(j{-}1), mj{+}m{-}1]$), i.e.\ strictly backward, so the block-end guard is
 sufficient. Any other $(c_{KV}, c_R)$ geometry raises instead of guessing a mapping
 (the general rule above covers every tested cell).
-\emph{Historical note:} before 2026-09-28 the implementation applied $t \sslash 2$
-unconditionally, misrouting every cell but $(8,4)$; the audit, fix, and re-run of the
-affected cells are logged in the source release.
+The per-cell rule is exercised by a regression test at every tested rate pair and
+at non-divisible token counts (Appendix~\ref{sec:appendix-repro}); an earlier
+implementation applied the $(8,4)$ rule to every geometry, which is why the three
+affected cells reported in Section~\ref{sec:experiments} are re-runs.
 
 \subsection{The two design axes and the factorial}
 \label{sec:factorial}
@@ -216,7 +261,7 @@ and full model). All compressed cells share the auxiliary contract
 (window 16 = tokens visible to every query, top-$k$ 16 = best-scoring index
 tokens routed per query, 4 heads, head dimension 32, hidden 128, shared-Q
 = one query projection shared by router and attention,
-$q$/$o$ ranks 64 = low-rank bottleneck dimensions) and differ only in
+query/output projection ranks 64 = low-rank bottleneck dimensions) and differ only in
 $(c_{KV}, c_R)$ = (KV-cache compression rate, routing resolution, in
 positions per stored block and per index token); the low-rank
 bottlenecks are equalized to within $0.27\%$ of the $(8,4)$ reference;
@@ -250,10 +295,10 @@ thereby the softmax columns ($48{+}1$ vs.\ $80{+}1$; 256/49 complete columns,
 i.e.\ 5.22$\times$
 fewer than Normal); $c_R$ sets how many routing candidates the router
 selects from (64 for $c_R{=}4$, 32 for $c_R{=}8$) without changing the
-attention cost. All compressed cells carry slightly \emph{fewer} attention
-parameters than Normal ($-6.7\%$ to $-6.9\%$; the low-rank $q$/$o$
-bottlenecks replace dense projections), and full-model counts are
-${\sim}2\%$ below Normal's. The DRRA $(8,4)$ cell therefore combines the smallest attention geometry among the
+attention cost. The four factorial cells carry $6.4$--$6.9\%$ fewer attention
+parameters than Normal (the low-rank $q$/$o$ bottlenecks replace dense
+projections), and the exploratory cells $5.2$--$6.2\%$ fewer; full-model counts
+are ${\sim}2\%$ below Normal's. The DRRA $(8,4)$ cell therefore combines the smallest attention geometry among the
 factorial cells with the fine-router candidate count. Realized routing is sparser than the dense-masked budget (about 14 of 64 unique blocks for equal-rate cells, about 10 of 32 for the dual-rate cell; compute still pays the dense-masked width).
 
 \textbf{Parameter equalization.} The factorial is pre-registered with an
@@ -263,17 +308,19 @@ definition. Because the position-bias terms of the two compressors grow with
 their rates, attention-parameter counts differ slightly between cells; the
 only free compute-quality knobs not part of the cell definition (the
 low-rank $q$ and $o$ bottlenecks) are fixed at the DRRA $(8,4)$ ranks
-$(64, 64)$, which is the lattice minimum for \emph{every} factorial cell. The largest
-remaining attention-parameter delta among the four factorial cells is $0.268\%$ (full-model delta
-$\le 0.074\%$), well inside the pre-registered $0.5\%$ tolerance; the exploratory cells
-keep the same ranks with disclosed deltas ($+0.54\%$, $+1.6\%$).
+$(64, 64)$, which is the lattice minimum for \emph{every} factorial cell. Each
+factorial cell's attention-parameter count deviates from the $(8,4)$ reference
+by at most $0.268\%$ (full-model $0.073\%$), well inside the pre-registered
+$0.5\%$ tolerance; the exploratory cells keep the same ranks with disclosed
+deviations ($+0.54\%$, $+1.6\%$).
 
 \textbf{Complexity.} Attention cost per query is proportional to the number
 of softmax columns: 256 for Normal, 80 for $c_{KV}{=}4$ cells, 48 for
 $c_{KV}{=}8$ cells (5.22$\times$ fewer complete columns than Normal), and 32/16 for the
 exploratory $(16,4)$/$(32,4)$ cells, giving
-$O(L \cdot \mathrm{cols} \cdot d)$ per sequence for the score/value
-computation. The router, however, compares every query against
+$O(L \, C_{\mathrm{cols}} \, d)$ per sequence for the score/value
+computation, where $C_{\mathrm{cols}} = C + W + 1$ is the softmax-column
+count listed in Table~\ref{tab:configs}. The router, however, compares every query against
 $M = L/c_R$ index tokens, $O(L \cdot M) = O(L^2/c_R)$: the total
 attention-path cost is therefore \emph{quadratic in $L$ with a reduced
 constant} ($1/c_R$ on the routing term), \emph{not} subquadratic. Routing

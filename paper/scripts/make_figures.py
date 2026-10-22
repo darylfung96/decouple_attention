@@ -12,7 +12,8 @@ Writes into ../figures/:
   fig2_main_effects.{pdf,png}    c_KV / c_R main effects vs seed noise
   fig3_per_seed.{pdf,png}        per-seed parallel coordinates
   fig4_learning_curves.png       copy of the audited learning-curve plot
-  fig5_architecture.{pdf,png}    architecture schematic
+  fig1_architecture_compare.{pdf,png}  Figure 1, two panels (standard vs
+                                 compressed attention)
   fig6_dataset_coverage.{pdf,png}  per-dataset Delta-val vs Normal (Gate 3)
 
 Every number in the paper's figures is derived here from the audited JSONL
@@ -63,6 +64,11 @@ V2_FIXED_CELLS = [(4, 4), (4, 8), (8, 8)]
 # ---------------------------------------------------------------------------
 plt.rcParams.update({
     "font.family": "serif",
+    # Embed TrueType (Type 42), never Type 3: publishers' PDF checks reject
+    # Type 3 fonts. Applies to every figure drawn below; the architecture
+    # figure re-asserts it in its own rc_context because it also swaps family.
+    "pdf.fonttype": 42,
+    "ps.fonttype": 42,
     "font.size": 9,
     "axes.labelsize": 9.5,
     "axes.titlesize": 9.5,
@@ -83,6 +89,192 @@ C = {
 }
 
 CELLS = [(4, 4), (8, 4), (4, 8), (8, 8)]
+
+
+# ---------------------------------------------------------------------------
+# Figure 1: architecture comparison — standard causal attention on the left,
+# the compressed-and-indexed module on the right, drawn as one figure.
+#
+# Both panels are generated here so they share a single visual language (box
+# geometry, palette, and the key-column strip under each attention box); the
+# palette is the one the original hand-drawn schematic used (draw.io defaults,
+# blue #DAE8FC / lavender #E1D5E7 / green #D5E8D4 / orange #FFE6CC). Panel (b)
+# keeps the hand-drawn topology — parallel compressor and indexer branches off
+# the same hidden states, a router scoring index tokens, a gathered column set
+# — and adds the attention step the drawing left implicit, because the only
+# difference between the two panels is what happens inside that box.
+#
+# Column arithmetic, verified against attention.py forward()/_attend and the
+# gate20 accounting audit: at c_KV=8, L=256 -> 256/8 = 32 compressed blocks; at
+# c_R=4 -> 256/4 = 64 index tokens; k=16 blocks are kept and the rest are
+# masked to -inf; the sliding window holds 16 raw positions and the learned
+# sink adds 1. Dense compute therefore runs over 16 + 32 + 1 = 49 columns, not
+# over the 16 selected blocks alone — the assertion below pins that identity.
+# Standalone:  python scripts/make_figures.py --arch
+# ---------------------------------------------------------------------------
+ARCH = "--arch" in sys.argv
+
+ARCH_FILL = {
+    "blue":   ("#DAE8FC", "#6C8EBF"),   # raw tokens / hidden states
+    "lav":    ("#E1D5E7", "#9673A6"),   # projection / compression modules
+    "green":  ("#D5E8D4", "#82B366"),   # selection + attention
+    "orange": ("#FFE6CC", "#D79B00"),   # learned sink
+    "grey":   ("#F7F7F7", "#9A9A9A"),   # something the baseline does not have
+}
+
+
+def _arch_box(ax, x0, x1, yslot, text="", kind="lav", fs=6.9, lw=0.8,
+              ls="-", z=2):
+    y0, y1 = yslot
+    fc, ec = ARCH_FILL[kind]
+    ax.add_patch(matplotlib.patches.FancyBboxPatch(
+        (x0, y0), x1 - x0, y1 - y0,
+        boxstyle="round,pad=0,rounding_size=0.09",
+        facecolor=fc, edgecolor=ec, linewidth=lw, linestyle=ls, zorder=z))
+    if text:
+        ax.text((x0 + x1) / 2, (y0 + y1) / 2, text, ha="center", va="center",
+                fontsize=fs, zorder=z + 1, linespacing=1.32, color="#111111")
+
+
+def _arch_arrow(ax, x0, y0, x1, y1, color="#3F3F3F", lw=0.8, z=3):
+    ax.annotate("", xy=(x1, y1), xytext=(x0, y0), zorder=z,
+                arrowprops=dict(arrowstyle="-|>", mutation_scale=6.5,
+                                color=color, lw=lw, shrinkA=0, shrinkB=0))
+
+
+def _arch_label(ax, x, y, text, fs=6.3, ha="center", va="center",
+                style="normal", color="#333333", z=4):
+    ax.text(x, y, text, fontsize=fs, ha=ha, va=va, style=style,
+            color=color, zorder=z, linespacing=1.25)
+
+
+def make_fig1_arch_compare():
+    # 16 + 32 + 1 columns: the identity the caption and Section 3.3 rely on.
+    assert 16 + 256 // 8 + 1 == 49
+
+    with matplotlib.rc_context({"font.family": "DejaVu Sans",
+                                "hatch.linewidth": 0.35,
+                                # embed TrueType, not Type 3: Type 3 fonts in a
+                                # submitted PDF trip IEEE/ACM/Springer checks.
+                                "pdf.fonttype": 42}):
+        fig = plt.figure(figsize=(6.6, 2.95))
+        ax_a = fig.add_axes([0.004, 0.030, 0.468, 0.850])
+        ax_b = fig.add_axes([0.528, 0.030, 0.468, 0.850])
+        for ax, tag, name in (
+                (ax_a, "(a)", "standard causal attention (baseline)"),
+                (ax_b, "(b)", "compressed and indexed attention (this work)")):
+            ax.set_xlim(0, 10)
+            ax.set_ylim(0, 10.55)
+            ax.axis("off")
+            ax.text(0.02, 10.36, tag, fontsize=7.9, weight="bold",
+                    ha="left", va="center", clip_on=False, color="#111111")
+            ax.text(0.66, 10.36, name, fontsize=7.9,
+                    ha="left", va="center", clip_on=False, color="#111111")
+
+        # ---------------- shared slots ------------------------------------
+        Y_IN = (0.15, 1.10)
+        Y_BR = (2.00, 3.20)
+        Y_SEL = (3.85, 4.85)
+        Y_ATT = (5.45, 7.80)
+        Y_OUT = (8.55, 9.45)
+
+        # ---------------- (a) standard causal attention --------------------
+        _arch_box(ax_a, 2.55, 7.45, Y_IN, "hidden states\n$[B,\\,L,\\,d]$", "blue")
+        _arch_box(ax_a, 1.45, 8.55, Y_BR,
+                  "K/V projection\n"
+                  "one key per position — all 256 kept", "lav")
+        _arch_box(ax_a, 1.70, 8.30, Y_SEL,
+                  "causal mask — the only selection\n"
+                  "query $t$ reads keys $\\leq t$", "green")
+        _arch_box(ax_a, 0.55, 9.45, Y_ATT, "", "green")
+        _arch_box(ax_a, 2.55, 7.45, Y_OUT, "hidden states\n(next layer)", "blue")
+
+        _arch_label(ax_a, 5.0, 7.45, "dense causal attention", fs=7.2)
+        AX0, AX1, AN = 1.05, 8.95, 256
+        aw = (AX1 - AX0) / AN
+        ax_a.add_patch(matplotlib.patches.Rectangle(
+            (AX0, 6.72), AX1 - AX0, 0.36, facecolor="#DAE8FC",
+            edgecolor="#6C8EBF", linewidth=0.5, zorder=3))
+        for _i in range(1, AN):
+            ax_a.plot([AX0 + _i * aw, AX0 + _i * aw], [6.72, 7.08],
+                      color="#FFFFFF", lw=0.18, zorder=4, solid_capstyle="butt")
+        _arch_label(ax_a, 5.0, 6.44, "$L{=}256$ key columns, one per position",
+                    fs=6.3)
+        _arch_label(ax_a, 5.0, 5.80,
+                    "every query scores all 256 — cost $\\propto L^2$", fs=6.7)
+
+        for y0, y1 in ((Y_IN, Y_BR), (Y_BR, Y_SEL), (Y_SEL, Y_ATT),
+                       (Y_ATT, Y_OUT)):
+            _arch_arrow(ax_a, 5.0, y0[1], 5.0, y1[0])
+
+        # ---------------- (b) compressed and indexed -----------------------
+        _arch_box(ax_b, 2.55, 7.45, Y_IN, "hidden states\n$[B,\\,L,\\,d]$", "blue")
+        _arch_box(ax_b, 0.35, 4.65, Y_BR,
+                  "KV compressor\n$c_{KV}{=}8$: 256 $\\to$ 32 blocks",
+                  "lav", fs=6.7)
+        _arch_box(ax_b, 5.35, 9.65, Y_BR,
+                  "indexer\n$c_{R}{=}4$: 256 $\\to$ 64 tokens", "lav",
+                  fs=6.7)
+        _arch_box(ax_b, 2.05, 7.95, Y_SEL,
+                  "top-$k$ selector ($k{=}16$)\n"
+                  "scores 64 index tokens $\\to$ keeps 16", "green")
+        _arch_box(ax_b, 0.55, 9.45, Y_ATT, "", "green")
+        _arch_box(ax_b, 2.55, 7.45, Y_OUT, "hidden states\n(next layer)", "blue")
+
+        _arch_arrow(ax_b, 3.55, Y_IN[1], 2.75, Y_BR[0])
+        _arch_arrow(ax_b, 6.45, Y_IN[1], 7.25, Y_BR[0])
+        _arch_arrow(ax_b, 7.45, Y_BR[1], 6.30, Y_SEL[0])
+        _arch_arrow(ax_b, 5.00, Y_SEL[1], 5.00, Y_ATT[0])
+        _arch_arrow(ax_b, 5.00, Y_ATT[1], 5.00, Y_OUT[0])
+        # compressed blocks bypass the selector and reach attention directly
+        _arch_arrow(ax_b, 0.85, Y_BR[1], 0.85, Y_ATT[0])
+
+        _arch_label(ax_b, 5.62, 5.16, "top-$k$ mask", fs=6.0, ha="left")
+
+        # ---- gathered column strip: 16 window + 32 blocks + 1 sink --------
+        _arch_label(ax_b, 5.0, 7.45, "dense masked attention", fs=7.2)
+        X0, X1, GAP = 1.05, 8.95, 0.08
+        n_win, n_blk = 16, 32
+        cw = (X1 - X0 - 2 * GAP) / (n_win + n_blk + 1)
+        y0s, y1s = 6.72, 7.08
+        selected = {0, 2, 3, 6, 7, 9, 13, 14, 17, 18, 20, 23, 25, 27, 30, 31}
+        assert len(selected) == 16
+
+        def cell(x, kind, hatch=None, ec=None):
+            fc, edge = ARCH_FILL[kind]
+            ax_b.add_patch(matplotlib.patches.Rectangle(
+                (x + 0.010, y0s), cw - 0.020, y1s - y0s, facecolor=fc,
+                edgecolor=ec or edge, linewidth=0.35, hatch=hatch, zorder=3))
+
+        for i in range(n_win):
+            cell(X0 + i * cw, "blue")
+        bx = X0 + n_win * cw + GAP
+        for i in range(n_blk):
+            if i in selected:
+                cell(bx + i * cw, "green")
+            else:
+                cell(bx + i * cw, "grey", hatch="////", ec="#9A9A9A")
+        sx = bx + n_blk * cw + GAP
+        cell(sx, "orange")
+
+        _arch_label(ax_b, X0 + n_win * cw / 2 - 0.04, 6.44, "window 16", fs=6.1)
+        _arch_label(ax_b, bx + n_blk * cw / 2, 6.44,
+                    "32 blocks (16 kept)", fs=6.0)
+        _arch_label(ax_b, sx + cw / 2, 6.44, "sink", fs=6.1)
+        _arch_label(ax_b, 5.0, 5.80,
+                    "$\\approx$5$\\times$ fewer columns than (a) — "
+                    "cost $\\propto 49\\,L$", fs=6.7)
+
+        fig.savefig(FIG_DIR / "fig1_architecture_compare.pdf")
+        fig.savefig(FIG_DIR / "fig1_architecture_compare.png", dpi=300)
+        plt.close(fig)
+        print("fig1_architecture_compare: two panels written "
+              "(49-column strip = 16 window + 32 blocks + 1 sink)")
+
+
+if ARCH:
+    make_fig1_arch_compare()
+    sys.exit(0)
 
 
 def load_jsonl(path: Path) -> list[dict]:
@@ -130,7 +322,17 @@ def router_term(L, cr):
 
 
 def compress_term(L):
-    return 2 * L * D * 64 + 2 * L * D * DH
+    """Two projections of width 2*d_h per compressor, two compressors.
+
+    ``_flat_two_series_compress`` runs a value projection and a gate
+    projection, both ``Linear(hidden, 2 * dim)``; for the KV series and for
+    the index series ``dim`` is the head dimension (32), so every projection
+    is 64 wide and all four cost ``d * 64`` MACs per token. The gate20 account
+    charged the index pair at width ``d_h`` (32), i.e. half the executed
+    width; gate31 measures the four projections through forward hooks
+    (8,388,608 MACs/sequence at L=256, not 6,291,456).
+    """
+    return 4 * L * D * 64
 
 
 def rest_exact(L, o_rank):
@@ -158,7 +360,7 @@ def s_net(L, d, ckv, cr):
     plus 12 d^2 non-attention MACs per token (q/k/v/o 4 d^2, MLP 8 d^2);
     the family's fixed compressor (rank 64) and indexer (32-dim) are held."""
     a_n = 2 * d * L
-    a_c = 2 * d * (L // ckv + W + 1) + d * (L // cr) + 2 * d * (64 + DH)
+    a_c = 2 * d * (L // ckv + W + 1) + d * (L // cr) + 4 * d * 64
     return (a_n - a_c) / (a_n + 12 * d * d)
 
 
@@ -185,6 +387,17 @@ def make_fig12():
     g20 = json.load(open(PLAN_DIR / "gates" / "gate20_accounting" /
                          "router_accounting_audit.json"))
     audited_totals = {k: v["total"] for k, v in g20["components_L256"].items()}
+    # gate31 correction: the gate20 compressor row charged the index pair at
+    # width d_h instead of 2*d_h. Replace that row with the measured value
+    # (gate20's published JSON is append-only and is not rewritten).
+    g31 = json.load(open(PLAN_DIR / "gates" / "gate31_compressor_accounting" /
+                         "results.json"))
+    measured_compress = g31["executed_total"]
+    assert compress_term(256) == measured_compress, (
+        f"compressor term {compress_term(256)} != measured {measured_compress}")
+    delta = measured_compress - g20["components_L256"]["CSA"]["compress"]
+    for k in ("CSA", "DRRA"):
+        audited_totals[k] += delta
     checks = {
         "Normal": (path_normal(256) + rest_exact(256, 128), "Normal"),
         "CSA": (path_cell(256, 4, 4) + rest_exact(256, 64), "CSA"),
@@ -390,6 +603,14 @@ def make_fig13():
     g20 = json.load(open(PLAN_DIR / "gates" / "gate20_accounting" /
                          "router_accounting_audit.json"))
     audited_totals = {k: v["total"] for k, v in g20["components_L256"].items()}
+    # gate31 compressor correction (see make_fig12): the index compressor is
+    # two 64-wide projections, not one 32-wide one.
+    g31 = json.load(open(PLAN_DIR / "gates" / "gate31_compressor_accounting" /
+                         "results.json"))
+    assert compress_term(256) == g31["executed_total"]
+    delta = g31["executed_total"] - g20["components_L256"]["CSA"]["compress"]
+    for k in ("CSA", "DRRA"):
+        audited_totals[k] += delta
     checks = {
         "Normal": (path_normal(256) + rest_exact(256, 128), "Normal"),
         "CSA": (path_cell(256, 4, 4) + rest_exact(256, 64), "CSA"),
@@ -648,97 +869,50 @@ fig.savefig(FIG_DIR / "fig2_main_effects.png")
 plt.close(fig)
 
 # ---------------------------------------------------------------------------
-# Figure 4 (formerly 5): architecture schematic.
-# REPLACED BY HAND-DRAWN FIGURE (user, 2026-09-05): the user supplied their
-# own fig5_architecture.png (parallel-branch topology); it is converted to
-# PDF losslessly (img2pdf) and this script MUST NOT overwrite it. The
-# matplotlib schematic below is kept only as a commented fallback.
-# Topology note (verified against attention.py forward() and DSV4 §2.3.1):
-# the KV compressor and the indexer are PARALLEL branches consuming the same
+# Figure 1: architecture schematic.
+#
+# Current figure: the two-panel comparison built by make_fig1_arch_compare()
+# above (standard causal attention beside the compressed-and-indexed module).
+# Topology note (verified against attention.py forward() and DSV4 §2.3.1): the
+# KV compressor and the indexer are PARALLEL branches consuming the same
 # hidden states; the router scores index tokens and top-k-selects among KV
-# blocks; dense masked attention consumes both branches. Earlier version drew
-# a linear chain (compressor → indexer → router) — corrected 2026-09-03.
+# blocks; dense masked attention consumes both branches. An earlier drawing
+# showed a linear chain (compressor → indexer → router) — corrected 2026-09-03.
+#
+# The user's hand-drawn fig5_architecture.png (2026-09-05) is kept on disk as
+# the provenance of the compressed-side topology but is no longer included by
+# method.tex, so its PDF is only re-converted if the PNG is still present.
 # ---------------------------------------------------------------------------
+make_fig1_arch_compare()
+
 FIG5_PNG = FIG_DIR / "fig5_architecture.png"
-if not FIG5_PNG.exists():
-    raise SystemExit(
-        "fig5_architecture.png is missing — it is user-supplied and NOT "
-        "regenerated by this script. Restore it from the repository before "
-        "re-running (its PDF is img2pdf-converted from the PNG).")
 
-import subprocess
-import sys as _sys
+if FIG5_PNG.exists():
+    import subprocess
+    import sys as _sys
 
+    def _ensure_fig5_pdf():
+        """Convert the archived hand-drawn PNG to PDF (idempotent)."""
+        pdf = FIG_DIR / "fig5_architecture.pdf"
+        if pdf.exists() and pdf.stat().st_mtime >= FIG5_PNG.stat().st_mtime:
+            return
+        r = subprocess.run([_sys.executable, "-c",
+                            "import img2pdf,sys; open(sys.argv[1],'wb')"
+                            ".write(img2pdf.convert(sys.argv[2]))",
+                            str(pdf), str(FIG5_PNG)],
+                           capture_output=True, text=True)
+        if r.returncode != 0:
+            raise SystemExit(f"img2pdf conversion failed:\n{r.stderr}")
+        print("fig5_architecture.pdf regenerated from archived hand drawing")
 
-def _ensure_fig5_pdf():
-    """Convert the user-supplied PNG to the PDF that method.tex includes.
-    Skips when the PDF is newer than the PNG (idempotent)."""
-    pdf = FIG_DIR / "fig5_architecture.pdf"
-    if pdf.exists() and pdf.stat().st_mtime >= FIG5_PNG.stat().st_mtime:
-        return
-    r = subprocess.run([_sys.executable, "-c",
-                        "import img2pdf,sys; open(sys.argv[1],'wb')"
-                        ".write(img2pdf.convert(sys.argv[2]))",
-                        str(pdf), str(FIG5_PNG)],
-                       capture_output=True, text=True)
-    if r.returncode != 0:
-        raise SystemExit(f"img2pdf conversion failed:\n{r.stderr}")
-    print("fig5_architecture.pdf regenerated from user-supplied PNG (img2pdf)")
+    _ensure_fig5_pdf()
+else:
+    print("note: archived fig5_architecture.png absent; skipped its PDF "
+          "conversion (Figure 1 is generated by make_fig1_arch_compare)")
 
-
-_ensure_fig5_pdf()
-
-if False:  # commented-out matplotlib fallback (kept for reference)
-    fig, ax = plt.subplots(figsize=(6.9, 3.1))
-    ax.set_xlim(0, 11.2)
-    ax.set_ylim(0, 6.2)
-    ax.axis("off")
-
-    BOX = dict(boxstyle="round,pad=0.35", facecolor="#f2f2f2", edgecolor="#555555", linewidth=1.0)
-    HILITE = dict(boxstyle="round,pad=0.35", facecolor="#e8f0e8", edgecolor=C["green"], linewidth=1.4)
-    BRANCH = dict(boxstyle="round,pad=0.35", facecolor="#eef2f8", edgecolor=C["blue"], linewidth=1.2)
-
-
-    def box(x, y, w, h, text, style=BOX, fs=8.5):
-        ax.add_patch(matplotlib.patches.FancyBboxPatch((x, y), w, h, **style))
-        ax.text(x + w / 2, y + h / 2, text, ha="center", va="center", fontsize=fs)
-
-
-    def arrow(x1, y1, x2, y2, color="#555555", lw=1.1):
-        ax.annotate("", xy=(x2, y2), xytext=(x1, y1),
-                    arrowprops=dict(arrowstyle="-|>", color=color, lw=lw))
-
-
-    # main spine: input -> block -> attention -> horizon head
-    box(0.1, 2.3, 1.55, 0.95, "Input\n$[B, 256, 7]$", HILITE)
-    box(1.95, 2.3, 1.8, 0.95, "Shared block\ninput proj + pos\n(hidden 128)", BRANCH)
-    box(9.15, 2.3, 1.95, 1.45, "Dense masked\nattention\n32 KV + 16 win\n+1 sink = 48+1", HILITE)
-    box(9.15, 0.45, 1.95, 0.9, "Horizon head\n$[B, 96, 7]$", BRANCH)
-
-    # two PARALLEL branches off the shared block (both read the same hidden states)
-    box(4.35, 4.65, 2.6, 0.9, "KV compressor   (branch 1)\n$c_{KV}{=}8$ → 32 KV blocks", BRANCH)
-    box(4.35, 3.35, 2.6, 0.9, "Indexer   (branch 2)\n$c_R{=}4$ → 64 index tokens", BRANCH)
-    box(7.25, 3.35, 1.7, 0.9, "Router\nscorer + top-$k$\n($k{=}16$, shared-Q)", BRANCH)
-
-    ax.text(3.62, 4.45, "same hidden\nstates →\nparallel", fontsize=6.6,
-            color="#666666", ha="center", va="center", style="italic")
-    arrow(1.65, 2.77, 1.95, 2.77)
-    arrow(3.75, 3.05, 4.35, 4.85)          # shared block -> KV compressor
-    arrow(3.75, 2.77, 4.35, 3.8)           # shared block -> indexer
-    arrow(6.95, 3.8, 7.25, 3.8)            # indexer -> router
-    arrow(6.95, 5.1, 9.7, 3.8)             # KV blocks -> attention
-    ax.text(8.15, 4.85, "32 KV blocks", fontsize=7, color="#555555", ha="center")
-    arrow(8.95, 3.8, 9.15, 3.55)           # router selection -> attention
-    ax.text(8.62, 4.18, "top-$k$ selection", fontsize=6.8, color="#555555", ha="center")
-    arrow(10.12, 2.3, 10.12, 1.35)         # attention -> horizon head
-
-    # alternative Normal path note
-    ax.text(4.6, 1.05, "Normal: full causal attention, 256 cols, no compression\n(same shared block; baseline)",
-            ha="center", fontsize=7.5, style="italic", color="#666666")
-    fig.tight_layout()
-    fig.savefig(FIG_DIR / "fig5_architecture.pdf")
-    fig.savefig(FIG_DIR / "fig5_architecture.png")
-plt.close(fig)
+# (the earlier hand-positioned matplotlib schematic that this replaced was
+#  retired in 2026-10-21: make_fig1_arch_compare() above supersedes it and
+#  is the single source of Figure 1.)
 
 # ---------------------------------------------------------------------------
 # Figure 6: cross-dataset coverage (Gate 3) — Delta-val vs Normal per dataset

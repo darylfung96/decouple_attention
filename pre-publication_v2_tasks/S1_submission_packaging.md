@@ -28,6 +28,7 @@ two-column template; Elsevier's format applies at revision. The following are re
 | Ethics statement | Present (public data, no human subjects); keep |
 | Review model (single or double anonymized) | **Unverified** — confirm in the current guide before uploading; if double-anonymized, strip names from the manuscript and upload them separately |
 | Cover letter and suggested reviewers | **Missing** |
+| PDF font embedding | **Partly Type 3** — Figures 2–13 are written by matplotlib with its default `pdf.fonttype=3`, which Elsevier's PDF check flags. Figure 1 was fixed on 2026-10-21 (`pdf.fonttype: 42` in its `rc_context`); the rest need the same line in the global rcParams of `paper/scripts/make_figures.py` plus `make_fig_exploratory.py` / `make_fig_transfer.py`, then regenerate all figures with `make_figures.py --v2 --scaling` and rebuild |
 
 Code and data sharing are *encouraged* by Neurocomputing, and a Data Availability Statement is required;
 code release is mandatory only in the journal's separate Software Track, which this paper is not

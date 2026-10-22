@@ -1,0 +1,45 @@
+{
+  "generated_utc": "2026-10-22T03:24:07Z",
+  "geometry": {
+    "d": 128,
+    "d_h": 32,
+    "L": 256
+  },
+  "paper_term": 6291456,
+  "cells": {
+    "(4, 4)": {
+      "per_projection": {
+        "comp_kv_proj": 2097152,
+        "comp_gate_proj": 2097152,
+        "idx_kv_proj": 2097152,
+        "idx_gate_proj": 2097152
+      },
+      "projection_widths": {
+        "comp_kv_proj": 64,
+        "comp_gate_proj": 64,
+        "idx_kv_proj": 64,
+        "idx_gate_proj": 64
+      },
+      "total": 8388608,
+      "per_token": 32768
+    },
+    "(8, 4)": {
+      "per_projection": {
+        "comp_kv_proj": 2097152,
+        "comp_gate_proj": 2097152,
+        "idx_kv_proj": 2097152,
+        "idx_gate_proj": 2097152
+      },
+      "projection_widths": {
+        "comp_kv_proj": 64,
+        "comp_gate_proj": 64,
+        "idx_kv_proj": 64,
+        "idx_gate_proj": 64
+      },
+      "total": 8388608,
+      "per_token": 32768
+    }
+  },
+  "executed_total": 8388608,
+  "undercount": 2097152
+}

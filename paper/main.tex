@@ -1,13 +1,15 @@
 % ===========================================================================
 % Decoupling Compression and Routing in Attention for Time-Series
-% Forecasting -- workshop draft (NeurIPS-style layout)
+% Forecasting -- manuscript (NeurIPS-style layout)
 %
-% How to compile: pdflatex -> bibtex -> pdflatex -> pdflatex (or use the
-% Overleaf "NeurIPS 2026" template and paste the files in). See README.md.
+% How to compile: pdflatex -> bibtex -> pdflatex -> pdflatex, or
+% `tectonic -X compile main.tex`. See README.md.
 %
 % NOTE ON THE STYLE FILE: paper/neurips_2026.sty is a self-contained layout
-% fallback. Replace it with the official NeurIPS style before submission;
-% the rest of this preamble is written to match the official template.
+% fallback. Replace it with the target venue's official class before
+% submission (NeurIPS or the journal's two-column template); the rest of this
+% preamble is written to match the NeurIPS template, and the references use
+% author-year citations, which a numbered journal style converts.
 % ===========================================================================
 \documentclass{article}
 
@@ -23,9 +25,22 @@
 \usepackage{xcolor}
 \usepackage{url}
 \usepackage{hyperref}
+% PDF metadata: set the title explicitly (pdfusetitle would copy the
+% author-address markup verbatim; add pdfauthor when the author block is final).
+\hypersetup{pdftitle={Decoupling Compression and Routing in Attention for Time-Series Forecasting}}
 
 % relax overly-tight paragraph breaking in the working draft
 \emergencystretch=1.5em
+
+% Float placement: allow large floats to share a page with text instead of
+% being deferred to the end of the document (standard for journal layouts).
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
 
 % --- working-draft markers (remove all TODO/NEEDS-VERIFICATION before
 %     submission; grep for "TODO:" and "NEEDS VERIFICATION" to find them) ---
@@ -85,6 +100,9 @@ no claim about specific production systems. All findings are scoped to the
 frozen task and CPU scale (Section~\ref{sec:limitations}).
 
 \bibliographystyle{plainnat}
+% Tighten inter-entry spacing slightly so the last entry does not spill
+% alone onto an otherwise-blank page ahead of the appendix break.
+\setlength{\bibsep}{6pt}
 \bibliography{references}
 
 \newpage

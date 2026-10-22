@@ -1,14 +1,14 @@
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{The decoupling insight (directional)}
+\subsection{The decoupling result (directional)}
 The cleanest reading of the factorial is that the two axes play different
 roles on ETTh1, and that the roles are conditional: \emph{coarse routing costs
 accuracy where the KV content is fine (the $(4,8)$ cell), while coarser KV
 content is mildly beneficial to accuracy and buys efficiency}. The control logic is
 internal to the design: the DRRA $(8,4)$ cell (coarse content, fine router) matches
-or beats the equal-rate cells with roughly three-fifths the attention columns
-(49 vs.\ 81 complete columns), while the $(4,8)$ cell (fine content, coarse
+or beats the equal-rate CSA cell $(4,4)$ with roughly three-fifths its attention
+columns (49 vs.\ 81 complete columns), while the $(4,8)$ cell (fine content, coarse
 router) is the worst cell despite having the same columns as CSA $(4,4)$ --- and
 at $c_{KV}{=}8$ the finer router adds nothing on the mean ($(8,8)$ $0.6128$ vs.\
 DRRA $0.6190$).
@@ -18,12 +18,12 @@ interaction ($p = 0.014$; the axes are not additive) establish this as a \emph{s
 supported sign structure with non-additive axes on ETTh1}, whose interaction is carried by the
 experiment's worst cell rather than by a general benefit of fine routing; the effect sizes remain
 modest relative to seed noise (both effects ${\sim}0.03$ vs.\ within-cell std
-${\sim}0.070$), no cell is best on validation (top three tied within noise; DRRA-vs.-CSA
+${\sim}0.069$), no cell is best on validation (top three tied within noise; DRRA-vs.-CSA
 $p = 0.62$), and multi-dataset confirmation of the
 full factorial is still future work before this can be stated as a general design
 principle. An exploratory (16,4) probe (best mean 0.5810, ahead of Normal 25/25) and a further (32,4) probe (0.6122, inside the top group) suggest the KV-rate profile stays flat-to-beneficial out to 32:1 on ETTh1, with 4 KV blocks as the sensible floor.
 
-\subsection{Why might compression help on this task?}
+\subsection{Candidate explanations for the compression advantage}
 We do not have a verified explanation for the compressed $>$ full-attention
 outcome, and we explicitly do not claim one. Candidate (unverified)
 explanations include: compression acting as an inductive-bias regularizer;
@@ -69,14 +69,18 @@ future work.
         validation, and weather test error. No cross-scale claim is made
         (CPU-scale models only), and horizons beyond $H{=}96$ with lookbacks
         beyond $L{=}256$ are not yet evaluated.
-  \item \textbf{Descriptive statistics.} Five paired seeds; per-dataset
+  \item \textbf{Descriptive statistics.} The cross-dataset suite uses five
+        paired seeds per dataset, so per-dataset
         paired tests cannot reach significance at this sample size
         (two-sided floor $p = 0.0625$) and nothing survives Holm correction
         (Section~\ref{sec:stats}); ``best on mean'' and ``directional'' are
-        used advisedly. Figures show means only; per-seed tables are in the released manifests. No equivalence tests are run because no equivalence
-        claims are made.
+        used advisedly. Figures show means only; per-seed tables are in the
+        released manifests. No equivalence tests are run because no
+        equivalence claims are made, and only squared error is reported: the
+        frozen protocol trains and evaluates on MSE, and no claim is made that
+        the ordering would survive a different loss.
   \item \textbf{Router control scope.} The all-block control
-        (Section~\ref{sec:stats}) is one dataset, one scale, and 25 seeds. It
+        (Section~\ref{sec:controls}) is one dataset, one scale, and 25 seeds. It
         removes the selection mask but keeps the indexer's scoring path, so it
         measures the selection's contribution at fixed compute, not the
         accuracy of a cheaper router-free model, and it does not establish that
@@ -86,7 +90,7 @@ future work.
         error levels (Section~\ref{sec:refpoints}); they are not peer methods
         (different architectures, and DLinear has no attention), so no
         competitiveness claim is made. Efficiency-oriented peers (Informer's
-        ProbSparse, iTransformer, TimesNet, SSM baselines) remain pending
+        ProbSparse, iTransformer, TimesNet, state-space-model baselines) remain pending
         (Appendix future-work item~3).
   \item \textbf{Single-machine systems measurements.} Forward latency
         (batch and lookback scaling), MACs, memory, and training time are
@@ -97,11 +101,12 @@ future work.
         in Section~\ref{sec:forecast} are derived from these counts under
         a stated first-order model; they are not energy measurements, and
         their validation against measured latency is directional.
-  \item \textbf{Non-IID samples.} Stride-1 windows overlap heavily; samples
-        are not independent, which standard per-window significance tests
-        would assume. Our paired tests are at the seed level (five
+  \item \textbf{Non-IID samples.} Stride-1 windows overlap heavily, so samples
+        are neither independent nor identically distributed (non-IID), which
+        standard per-window significance tests would assume. Our paired tests are at the seed level (five
         independent runs), where the overlap does not invalidate them;
-        block-bootstrap or HAC-robust corrections are deferred until
+        block-bootstrap or heteroskedasticity- and autocorrelation-consistent (HAC)
+        corrections are deferred until
         per-window statistics are used (Section~\ref{sec:stats}).
   \item \textbf{Fixed budget, single checkpoint policy.} 10 epochs,
         epoch-10 weights; no early stopping or best-validation selection.
@@ -112,7 +117,8 @@ future work.
         literal route constancy: index scores are computed from features produced by
         trainable upstream components, so the selected set can still change as those
         features drift over training. Route-overlap probes on fixed inputs across
-        epochs and an explicitly trained selector (aux loss, relaxation, STE) are
+        epochs and an explicitly trained selector (auxiliary loss, relaxation, or a
+        straight-through estimator) are
         deferred future work.
   \item \textbf{Single-block backbone retained.} The study keeps the minimal
         one-block backbone deliberately (the backbone, not the attention module,
@@ -131,10 +137,9 @@ future work.
         GPU-flash-attention regimes.
 \end{itemize}
 
-\subsection{What this paper does not claim}
-Consistent with the project's pre-registered warnings: this is not a novel
-sparse-attention mechanism; it is not a state-of-the-art forecasting
-system; the word ``equivalence'' is not used for any accuracy comparison;
-no subquadratic claim is made beyond the structural column counts above;
-and no component is claimed to be original. The contribution is the
-controlled study, its measurements, and its honest boundaries.
+No claim beyond these limits is made. The paper does not propose a new
+attention mechanism, does not claim state-of-the-art forecasting accuracy,
+uses ``equivalence'' for no accuracy comparison, and makes no subquadratic
+claim beyond the structural column counts of Section~\ref{sec:factorial}.
+What it contributes is the controlled comparison, its measurements, and their
+boundaries.

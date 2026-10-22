@@ -20,6 +20,8 @@ R19 = [json.loads(l) for l in open(REPO / "plan/gates/gate19_324/results/etth1.j
 
 plt.rcParams.update({"font.family": "serif", "font.size": 9, "axes.labelsize": 9.5,
                      "axes.titlesize": 9.5, "figure.dpi": 300,
+                     # TrueType, not Type 3 (submission PDFs must not embed Type 3)
+                     "pdf.fonttype": 42, "ps.fonttype": 42,
                      "axes.spines.top": False, "axes.spines.right": False})
 order = [("(4,4)", A["cell_means_val"]["CSA"]["mean"], A["cell_means_val"]["CSA"]["std"],
           A["cell_means_test"]["CSA"]),

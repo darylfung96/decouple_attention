@@ -2,7 +2,7 @@
 
 ## Python virtualenv (settled 2026-09-28)
 
-- Global rule (all projects): ALWAYS use `uv` — never plain `python -m venv` / `.venv` / system python for runs. Canonical: `~/pi-memory/shared/toolchain.md`.
+- Global rule (all projects): ALWAYS use `uv` — never plain `python -m venv` / `.venv` / system python for runs. Canonical: `~/agent-memory/shared/toolchain.md`.
 - This project (`new_attention`): canonical interpreter `~/.uv_env/py311/bin/python` (Python 3.11.12, torch 2.6.0 — matches `plan/environment-lock.txt` `torch==2.6.0`).
 - Do NOT use `/opt/homebrew/bin/python3.13` (torch 2.12.1, wrong version) or system python3 for runs.
 - Repo `.venv` (12MB, pip-only, no torch, nothing executed from it) REMOVED 2026-09-28. Kept: `.venv-gate6` (246MB, Gate-6 baselines env, still referenced by `gate6_sweep.sh` / `run_after_gate6.sh` / `gate6_audit.py` / `gate7_stats.py` — do not delete without migrating those scripts).

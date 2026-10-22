@@ -46,8 +46,12 @@ require independent replication (fresh seeds and the cross-dataset suite,
 as itemized in Appendix~\ref{sec:appendix-roadmap}).
 
 The same four cells were also grafted onto the published PatchTST backbone
-(ETTh1/ETTh2, five seeds each) as a transfer test. Table~\ref{tab:transfer} shows
-all four tied within noise on both datasets. The transfer is
+(ETTh1/ETTh2, five seeds each) as a transfer test. The block's dimensions are
+adapted to the patch regime---hidden 16, head dimension 4, sliding window 8,
+top-$k{=}4$, and query/output projection ranks 8, with the published patch, depth, dropout and
+optimizer unchanged---so this auxiliary contract differs from the $L{=}256$
+factorial and is stated here rather than assumed. Table~\ref{tab:transfer}
+shows all four tied within noise on both datasets. The transfer is
 boundary-limited, and the tie does not by itself show that a strong backbone
 washes out routing: with lookback 256, patch length 16 and stride 8 the
 backbone carries 31 tokens, so at $c_R{=}4$ there are 6--7 candidate index
@@ -83,7 +87,7 @@ Forward ms (B32 mean) & 37.4 & 33.7 & 33.0 & 29.4 \\
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.92\linewidth]{figures/fig11_transfer_speed.pdf}
-\caption{PatchTST-backbone transfer, performance vs. speed: y-axis = mean validation MSE (mean squared error) over five seeds (lower is better); x-axis = mean forward-pass latency at batch 32 (lower = faster = further left). Point labels are the cells' $(c_{KV}, c_R)$ rates. Left ETTh1, right ETTh2. Accuracy ties within noise on both sets while latency separates the cells ($(8,4)$ is 1.11$\times$ and $(8,8)$ 1.27$\times$ the speed of $(4,4)$ at tied accuracy). Points are means only with no error bars; single machine, descriptive; FULL path only (the PatchTST head reads all patches).}
+\caption{PatchTST-backbone transfer, performance vs. speed: y-axis = mean validation MSE (mean squared error) over five seeds (lower is better; note that the two panels have different y-ranges and are therefore not comparable vertically); x-axis = mean forward-pass latency at batch 32 (lower = faster = further left). Point labels are the cells' $(c_{KV}, c_R)$ rates. Left ETTh1, right ETTh2. Accuracy ties within noise on both sets while latency separates the cells ($(8,4)$ is 1.11$\times$ and $(8,8)$ 1.27$\times$ the speed of $(4,4)$ at tied accuracy). Points are means only with no error bars; single machine, descriptive; FULL path only (the PatchTST head reads all patches).}
 \label{fig:transfer-speed}
 \end{figure}
 
@@ -94,9 +98,11 @@ Forward ms (B32 mean) & 37.4 & 33.7 & 33.0 & 29.4 \\
 standard deviation over 25 seeds for all
 cells (cells are $(c_{KV}, c_R)$ pairs; lower is better). Starred cells
 (labels with $*$) are post-hoc exploratory probes, excluded from the confirmatory
-tables. The horizontal dashed line marks the full-attention (Normal)
-validation baseline at $0.8389$ MSE, so validation bars below it beat full
-attention; test values lie higher and are not marked.}
+tables. The horizontal dashed line is the full-attention (Normal)
+\emph{validation} baseline at $0.8389$ MSE, so validation bars below it beat
+full attention; it is a reference for the blue bars only---the test bars are
+plotted on the same axis for comparison with Table~\ref{tab:factorial} and are
+not measured against that line.}
 \label{fig:exploratory}
 \end{figure}
 
@@ -113,22 +119,31 @@ projection does and does not support.
 \paragraph{Operation counts.} Table~\ref{tab:energy-components} lists the
 per-component forward arithmetic of the three named configurations at
 $L{=}256$, in millions of multiply--accumulate operations per sequence.
-These are the released component accounts: the analytic totals in the last
-row equal the audited totals exactly ($76.86$M, $63.30$M, and $61.20$M for
+These are the audited component accounts: the analytic totals in the last
+row equal them exactly ($76.86$M, $65.39$M, and $63.30$M for
 Normal, CSA $(4,4)$, and DRRA $(8,4)$), and the figure script asserts this
 equality before drawing Figure~\ref{fig:scaling-forecast}. The router row
 counts what the module executes: the routing query is the main multi-head
 query and the index stream is single-headed, so the score matmul runs at
-$[B, H, S, d_h] \times [B, 1, d_h, M]$, i.e.\ $h d_h = d = 128$ MACs per
+$[B, h, L, d_h] \times [B, 1, d_h, M]$ (batch, heads, sequence length, head
+dimension, against batch, one index head, head dimension, index tokens),
+i.e.\ $h d_h = d = 128$ MACs per
 (query, index-token) pair, as verified against the executed tensor shapes
-in the released accounting log. Two asymmetries
+in the released accounting log. The compressor row is the one charge that
+moved after the first release: each two-series compressor runs two
+projections---a value projection and a gate projection---both of width
+$2d_h{=}64$, so the four projections cost $4d\cdot 64$ MACs per token. The
+earlier account charged the index pair at width $d_h$, halving that part of
+the row ($6.29$M instead of $8.39$M, and totals $63.30$/$61.20$M instead of
+$65.39$/$63.30$M); a forward-hook shape check of the four projections fixes
+the row (Table~\ref{tab:audits}). Two asymmetries
 between the columns are properties of the as-run configurations, not of
 the projection: the dense baseline uses a rank-128 output projection while
 the compressed cells use the equalized rank-64 bottleneck, and only the
-compressed cells pay the router and compressor terms. Of the $15.66$M
+compressed cells pay the router and compressor terms. Of the $13.57$M
 whole-model gap between Normal and DRRA $(8,4)$, $10.49$M is the output
-projection alone; matching that rank changes the dense account from $76.86$M to
-$66.38$M and leaves a $7.8\%$ whole-model
+projection alone (77\%); matching that rank changes the dense account from $76.86$M to
+$66.38$M and leaves a $4.6\%$ whole-model
 difference. The matched baseline was itself trained end to end (25 paired seeds), not
 merely re-accounted: it improves dense accuracy over the as-run Normal, yet
 every compressed cell still beats it, so the accuracy gap is not a projection
@@ -142,8 +157,8 @@ these dimensions and are excluded consistently across configurations.
 \centering
 \small
 \caption{Forward component accounts at $L{=}256$, per sequence, in
-millions of multiply--accumulate operations (released accounting). The
-analytic totals equal the released totals exactly; the figure script
+millions of multiply--accumulate operations (audited accounting). The
+analytic totals equal the audited totals exactly; the figure script
 asserts this equality before drawing Figure~\ref{fig:scaling-forecast}.
 Dashes mark components a configuration does not have.}
 \label{tab:energy-components}
@@ -156,10 +171,10 @@ Query low-rank projection & 4.19 & 4.19 & 4.19 \\
 Key/value projection (tied) & 1.05 & 1.05 & 1.05 \\
 Attention core (scores and values) & 16.78 & 5.31 & 3.21 \\
 Router & --- & 2.10 & 2.10 \\
-Compressors (two-series) & --- & 6.29 & 6.29 \\
+Compressors (two-series) & --- & 8.39 & 8.39 \\
 Output projection & 20.97 & 10.49 & 10.49 \\
 \midrule
-Total & 76.86 & 63.30 & 61.20 \\
+Total & 76.86 & 65.39 & 63.30 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -169,15 +184,15 @@ Total & 76.86 & 63.30 & 61.20 \\
 \paragraph{Sensitivity.} Three perturbations bound the assumptions.
 (i)~\emph{Auxiliary weighting.} Reweighting the router and compressor
 terms by a common factor $\lambda$ leaves the $32$k DRRA attention-path
-saving at $81.1\%$ ($\lambda{=}0.5$), $74.7\%$ ($\lambda{=}1$), and
-$61.9\%$ ($\lambda{=}2$): the direction is unchanged, and the spread sets
+saving at $81.0\%$ ($\lambda{=}0.5$), $74.6\%$ ($\lambda{=}1$), and
+$61.7\%$ ($\lambda{=}2$): the direction is unchanged, and the spread sets
 how much of the result rests on how the two auxiliary terms are costed.
 (ii)~\emph{Single-head indexer.} The executed router scores each index
 token with every head of the shared query, at $h d_h = d$ MACs per
 comparison, so the frozen $h{=}4$ geometry pays four times what a
 single-head indexer would; a single-head indexer (as in a
 Lightning-Indexer-style design, which this module does not implement)
-would raise the $32$k DRRA projection from $74.7\%$ to $84.0\%$ and the
+would raise the $32$k DRRA projection from $74.6\%$ to $83.9\%$ and the
 asymptote from $75.0\%$ to $84.4\%$. The executed
 arrangement is therefore the conservative one for the saving claim, and
 the asymptotic router share $1/(2 c_R)$ does not shrink with the head
@@ -201,8 +216,8 @@ Spearman $\rho = 1.000$ (batch 32, $n{=}15$) and $\rho = 0.992$
 (batch 1, $n{=}18$), and the paired DRRA-versus-Normal saving ratio
 correlates with the work ratio at Pearson $r = 0.96$ ($n{=}5$, batch 32).
 Third, magnitude agreement where commensurate: the whole-layer projection
-for the study's backbone is $50.5\%$ at $L{=}2048$/batch 32 against
-$56.2\%$ measured, and $60.8\%$ at $L{=}4096$/batch 1 against $63.3\%$
+for the study's backbone is $49.4\%$ at $L{=}2048$/batch 32 against
+$56.2\%$ measured, and $60.2\%$ at $L{=}4096$/batch 1 against $63.3\%$
 measured. The measured saving exceeds the arithmetic projection at both
 points, consistently with the dense baseline being memory-bound at these
 contexts (its materialized score tensor dominates its time), so wall-clock
@@ -256,7 +271,7 @@ Audit & Result & Headline numbers \\
 \midrule
 Last-query equivalence & PASS (max diff 0.00) & Earlier outputs provably unused \\
 Forecast-required latency (B32) & PASS ($\le 7.2\times10^{-7}$) &
-Normal 2.6--3.0 ms; compressed 5.8--7.3 ms \\
+Normal 2.62 ms; compressed 5.82--6.18 ms \\
 Paired full-layer deltas & Directional & $(8,4)$ $-$ Normal $-9.0 \pm 1.7$ ms/round \\
 Unique routed blocks/query & Measured & $\approx$14 of 64 (equal-rate); $\approx$10 of 32 (dual-rate) \\
 Router gradient audit & No task gradient & All indexer grads exactly 0, both variants; route membership probed: mean Jaccard $0.83$ epoch 1 vs 10, set size $\approx$10 of 32 flat \\
@@ -264,7 +279,7 @@ Projection-matched baseline & Advantage survives & Matched-rank dense retrain (2
 Mechanism probes (regenerated) & Current implementation & Normal/$(8,4)$ bit-identical; $(4,4)$ updated post-fix \\
 Causality probes (masking/ties) & PASS, all six rate pairs & Past output/sets bitwise unchanged under adversarial future noise \\
 Index-to-block mapping & Fixed + re-run & Pre-fix: 3 of 4 cells misrouted; post-fix verified \\
-Component accounting & Rechecked & Router counted per executed tensor shapes ($h d_h$ per comparison); totals 76.86/63.30/61.20M \\
+Component accounting & Rechecked & Router and compressors counted per executed tensor shapes ($h d_h$ per query pair; four 64-wide compressor projections); totals 76.86/65.39/63.30M \\
 Factorial recompute (25 seeds) & MATCH & All headline values; H1 exact $p = 0.0074$ \\
 Backbone transfer (PatchTST) & Tie within noise & All four cells tied; speed $(8,4)$ 1.11x, $(8,8)$ 1.27x vs $(4,4)$ \\
 Exploratory speeds (FULL) & Plateau past 16:1 & 1.18x $(8,4)$, 1.22x $(16,4)$/$(32,4)$ vs Normal \\
@@ -297,9 +312,11 @@ Scope completed in this study versus open follow-ups, by axis:
         (Section~\ref{sec:stats}); per-seed main-effect contrast for H1.
         Deferred with justification: mixed-effects model (the $2\times2$ already
         identifies the three fixed effects; deferred as a robustness re-expression),
-        HAC/block bootstrap (seed-level analyses), TOST/ROPE (no
-        equivalence claims); temporal-dependence-aware statistics for the
-        cross-dataset suite remain future work. Realized-budget control at matched unique blocks, and any test-primary/MAE re-headline, are deferred by design (reported as measured, with test alongside validation; per-seed values in the released manifests).
+        heteroskedasticity- and autocorrelation-consistent (HAC) block
+        bootstrap (seed-level analyses), and equivalence testing (TOST, region
+        of practical equivalence) rather than null-hypothesis tests (no
+        equivalence claims are made); temporal-dependence-aware statistics for the
+        cross-dataset suite remain future work. Realized-budget control at matched unique blocks, and any test-primary or mean-absolute-error (MAE) re-headline, are deferred by design (reported as measured, with test alongside validation; per-seed values in the released manifests).
   \item \textbf{Datasets.} The suite covers
         the ETT family (ETTh1, ETTh2, ETTm1, ETTm2), large multivariate
         (Electricity, Traffic, Weather), different dynamics (Exchange,
@@ -314,8 +331,8 @@ Scope completed in this study versus open follow-ups, by axis:
         twelve datasets; PatchTST on the eight datasets where its
         channel-independent training fits the single-machine CPU budget
         (declared omissions on solar/electricity/traffic/weather).
-        Remaining as future work: iTransformer, Informer, TimesNet, and an
-        SSM baseline. All-block (selection-free) compression is now reported in Section~\ref{sec:stats}; the remaining diagnostic controls at matched budget (window-only, fixed/random routing) are deferred.
+        Remaining as future work: iTransformer, Informer, TimesNet, and a
+        state-space-model (SSM) baseline. All-block (selection-free) compression is now reported in Section~\ref{sec:controls}; the remaining diagnostic controls at matched budget (window-only, fixed/random routing) are deferred.
   \item \textbf{Hardware/latency.} Development-machine measurement is complete:
         Mean/p90/p99 forward latency with bootstrap
         CIs, throughput, analytic MACs, peak-memory accounting, training

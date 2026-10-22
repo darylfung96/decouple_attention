@@ -64,7 +64,7 @@ comparison, with a budget-matched control deferred rather than assumed
 away (Appendix~\ref{sec:appendix-roadmap}). Third, MoBA trains
 its selection pathway end to end, so its query and key streams adapt to
 the routing they induce, while our indexer is parameter-free and receives
-no task gradient (Section~\ref{sec:rq2} measures what that implies for
+no task gradient (Section~\ref{sec:probes} measures what that implies for
 route stability in practice).
 
 \subsection{Efficient and accurate time-series forecasting}
@@ -87,4 +87,9 @@ how two configurable axes of a fixed attention family trade off accuracy
 and efficiency on one frozen task, and it does so with the reproducibility
 discipline (pre-registered factorial, paired seeds, parameter
 equalization, frozen task spec) that makes the trade-off structure
-measurable rather than anecdotal.
+measurable rather than anecdotal. What this study compares against is
+therefore the published, reproducible design space of compressed and
+selected attention: the mechanisms above are each described in enough
+detail to check or reimplement. The attention internals of production
+systems are largely undisclosed and change between model versions, so no
+claim is made about them.
