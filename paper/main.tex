@@ -63,6 +63,10 @@
 \maketitle
 
 \input{sections/abstract}
+
+\vspace{0.6em}
+\noindent\textbf{Keywords:} Compressed attention; Sparse attention; Time-series forecasting; KV-cache compression; Attention routing; Efficient inference
+
 \input{sections/introduction}
 \input{sections/related_work}
 \input{sections/method}
@@ -98,6 +102,33 @@ projection of the energy consequences of the measured work reductions
 under stated assumptions, rather than energy measurements, and it makes
 no claim about specific production systems. All findings are scoped to the
 frozen task and CPU scale (Section~\ref{sec:limitations}).
+
+\section*{CRediT authorship contribution statement}
+\textbf{[A.B.]}: Conceptualization, Methodology, Software, Validation, Formal
+analysis, Investigation, Data curation, Writing---original draft, Visualization.
+\textbf{[C.D.]}: Conceptualization, Supervision, Writing---review \& editing,
+Project administration.
+
+\section*{Declaration of competing interest}
+The authors declare that they have no known competing financial interests or
+personal relationships that could have appeared to influence the work reported
+in this paper.
+
+\section*{Data availability}
+The code and machine-readable artifacts that reproduce every result in this
+paper are archived at
+\begin{center}\url{https://github.com/darylfung96/new_attention}\end{center}
+under the MIT licence, release tag \texttt{v1.0.0}. The frozen task specification,
+the pre-registered factorial manifests, per-run JSONL records, the analysis and
+figure scripts, and the causality and wiring-audit suites are included. Public
+benchmark datasets are provided as download scripts and retain their original
+licences and terms.
+
+\section*{Declaration of generative AI and AI-assisted technologies in the writing process}
+During the preparation of this work the authors used an AI-based assistant to
+implement and audit analysis scripts and to check the manuscript for internal
+consistency. After using this tool, the authors reviewed and edited the content
+as needed and take full responsibility for the content of the publication.
 
 \bibliographystyle{plainnat}
 % Tighten inter-entry spacing slightly so the last entry does not spill

@@ -36,3 +36,7 @@ paper-for-overleaf.zip
 # originals, so both stay out of git; manifests (and digests, when earned) are tracked.
 sources/**/source/
 sources/**/chunks/
+
+# Build tool: install it yourself (brew install tectonic / cargo install tectonic).
+# The paper compiles with it, but it is a 52 MB binary and does not belong in the repo.
+/tectonic

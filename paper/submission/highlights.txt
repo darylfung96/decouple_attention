@@ -1,0 +1,12 @@
+Highlights for
+"Decoupling Compression and Routing in Attention for Time-Series Forecasting"
+
+Elsevier asks for 3-5 bullet points, at most 85 characters each including
+spaces. Paste these into the submission system, or export this file to Word/PDF
+if a separate highlights file is requested.
+
+- Factorial design separates KV compression rate from routing resolution.
+- Routing granularity, not compression, is the accuracy-sensitive axis on ETTh1.
+- The dual-rate corner attends to 5.2x fewer columns at equal parameters.
+- Removing the router's selection costs 12-27% accuracy at equal compute.
+- The advantage is signal-dependent: 8 of 12 datasets, on smooth series.
