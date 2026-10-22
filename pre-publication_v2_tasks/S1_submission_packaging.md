@@ -4,9 +4,9 @@
 **These are the journal's hard requirements.** Everything in R1–R8 and C1–C6 is a research-evidence
 standard, not a rule Neurocomputing enforces at submission.
 
-**Verdict:** KEEP, REQUIRED — the only block the journal enforces.
-**Start when:** now, in parallel with everything else. No compute, no dependency.
-**Milestone:** M1. Nothing can be submitted until every checkbox here is ticked.
+**Verdict:** KEEP, because this is the only block the journal enforces at submission.
+**Start when:** now, in parallel with everything else; it needs no compute and no dependency.
+**Milestone:** M1 — every checkbox here must be ticked before the package can be sent.
 
 **Source:** not the review — Neurocomputing's Guide for Authors and Elsevier's data policy. The review's own submission-gate section §9 supplies the minimum-package context (PDF p. 10; `source/q1_review_text.txt` line 487, with the package quoted at line 525).
 
@@ -45,9 +45,10 @@ submitting to. So the repository release is a strength of the submission, not a 
 
 ## Drafts (prepared 2026-10-16; confirm or edit before use)
 
-These are the no-input pieces of S1. They still need the submitting author's sign-off, plus the items
-marked TODO (real names, license, tag). Nothing here has been placed in `paper/` yet — no manuscript
-change is made until you approve, except that they carry no task IDs and can be pasted as-is.
+These are the no-input pieces of S1. The manuscript statements, keywords, highlights and cover letter
+are already in place; what remains is the submitting author's sign-off on the names, the CRediT
+initials, the reviewer list and the venue style. The drafts carry no task IDs, so they can still be
+pasted as-is into a submission system that asks for them separately.
 
 ### Highlights (5 bullets, each within the 85-character limit)
 
@@ -82,12 +83,13 @@ change is made until you approve, except that they carry no task IDs and can be 
 
 ### Data Availability Statement (draft)
 
-> The code and machine-readable artifacts that reproduce every result in this paper are archived at
-> https://github.com/darylfung96/new_attention (release tag: TODO). The frozen task specification, the
-> pre-registered factorial manifests, per-run JSONL records, the analysis and figure scripts, and the
-> causality/wiring-audit suites are included. Public benchmark datasets are provided as download
-> scripts and retain their original licenses and terms. TODO: choose the code license (for example
-> MIT) and confirm the repository is public at submission.
+> The code and machine-readable artifacts that reproduce every result in this paper are
+> archived at https://github.com/darylfung96/decouple_attention (release tag `v1.0.0`).
+> The frozen task specification, the pre-registered factorial manifests, per-run JSONL
+> records, the analysis and figure scripts, and the causality/wiring-audit suites are
+> included. Public benchmark datasets are provided as download scripts and retain their
+> original licenses and terms. The repository is public and the code is released under
+> the MIT licence.
 
 ### Declaration of interest (draft)
 

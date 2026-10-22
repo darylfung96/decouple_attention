@@ -50,7 +50,7 @@ contribution *[Journal name]* publishes.
 **Declarations.** The manuscript is original, has not been published, and is not
 under consideration elsewhere. All authors have approved the submission and
 declare no competing interests. Code and machine-readable results are archived
-at https://github.com/darylfung96/new_attention (MIT licence, tag `v1.0.0`).
+at https://github.com/darylfung96/decouple_attention (MIT licence, tag `v1.0.0`).
 <!-- prose-ok: required declaration formula -->
 
 Suggested reviewers (no conflicts of interest): [Name, affiliation, email],

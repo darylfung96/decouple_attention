@@ -7,7 +7,7 @@ harmonized docs; no documented model number is typed by hand except the surrogat
 ## Regenerate
 
 ```bash
-cd /path/to/new_attention
+cd /path/to/decouple_attention
 ~/.uv_env/py311/bin/python plan/gates/gate0/build_manifest.py   # canonical env (uv py311, torch 2.6.0); repo .venv removed 2026-09-28 (was empty, no torch)
 ~/.uv_env/py311/bin/python -m json.tool plan/gates/gate0/gate0_manifest.json > /dev/null && echo OK
 ```

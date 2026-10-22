@@ -1,7 +1,11 @@
-# Project instructions — new_attention
+# Project instructions — decouple_attention
 
 Written 2026-10-16. Keep this file short: it is loaded into every session, so it points at owners
 instead of restating them.
+
+The public repository is `darylfung96/decouple_attention` (release tag `v1.0.0`); this checkout keeps
+its original directory name `new_attention`, so absolute paths in `RUNBOOK.md` and the logs still say
+`new_attention`.
 
 ## Session resume ritual (do this first, in order)
 

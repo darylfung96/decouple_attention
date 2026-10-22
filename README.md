@@ -131,11 +131,11 @@ number it illustrates.
 If you use this code or the released results, please cite the manuscript:
 
 ```bibtex
-@article{new_attention_2026,
+@article{decouple_attention_2026,
   title  = {Decoupling Compression and Routing in Attention for Time-Series Forecasting},
-  author = {{new_attention authors}},
+  author = {{decouple_attention authors}},
   year   = {2026},
-  note   = {Manuscript; code and results at https://github.com/darylfung96/new_attention}
+  note   = {Manuscript; code and results at https://github.com/darylfung96/decouple_attention}
 }
 ```
 
